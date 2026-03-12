@@ -1,21 +1,55 @@
+{% assign slideDelay = section.settings.slide_delay %}
 {%- for block in section.blocks -%}
     {%- assign _block = block.settings -%}
-
     <style>
-        .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__title {
-            font-size: {{_block.heading_font_size}}px;
-            line-height: 0.85;
-            color: {{_block.heading_color}};
-            text-align: {{_block.heading_self_align}};
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
 
-        .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__title strong {
-            color: {{_block.heading_strong_color}} !important;
+        .image-wrapper-{{block.id}} img {
+            position: absolute !important;
+
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: {{_block.image_position_desktop}} center;
+
+            @media (max-width: 768px) {
+              object-position: {{_block.image_position_mobile}} center;
+            }
+        }
+
+        {% if block.settings.button__alignment_desktop == 'center' %}
+          @media screen and (min-width: 768px) {
+            .homepage-carousel__actions-{{block.id}} {
+              margin: 0 auto;
+            }
+          }
+        {% endif %}
+
+        section:has(.homepage-carousel) {
+            max-height: 600px;
+            @media (max-width: 768px) {
+              height: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section:has(.homepage-carousel) {
+                max-height: 70vh;
+            }
         }
 
         .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__subtitle {
-            font-size: {{_block.subheading_font_size}}px;
-            line-height: 1.5;
             color: {{_block.subheading_color}} !important;
             text-align: {{_block.subheading_self_align}};
         }
@@ -40,130 +74,454 @@
             color: {{_block.secondary_text_color_hover}};
         }
 
-        @media(max-width: 1024px) {
-            .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__title {
-                font-size: {{_block.heading_font_size_tablet}}px;
-            }
+        .homepage-carousel__btn-primary,
+        .homepage-carousel__btn-secondary {
+            font-size: {{_block.button_font_size}}px;
+        }
 
-            .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__subtitle {
-                font-size: {{_block.subheading_font_size_tablet}}px;
+        .homepage-carousel__content--{{block.id}} {
+            padding-left: {{_block.slider_padding_left}}vw;
+            padding-right: {{_block.slider_padding_right}}vw;
+            padding-top: {{_block.slider_padding_top}}vh;
+            padding-bottom: {{_block.slider_padding_bottom}}vh;
+        }
+
+        @media screen and (max-width: 1109px) {
+            .homepage-carousel__content--{{block.id}} {
+                padding-left: {{_block.slider_padding_left_tablet}}vw;
+                padding-right: {{_block.slider_padding_right_tablet}}vw;
+                padding-top: {{_block.slider_padding_top_tablet}}vh;
+                padding-bottom: {{_block.slider_padding_bottom_tablet}}vh;
             }
         }
 
-        @media(max-width: 767px) {
-            .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__title {
-                font-size: {{_block.heading_font_size_mobile}}px;
-                line-height: 0.85;
-                color: {{_block.heading_color_mobile}};
-                text-align: {{_block.heading_self_align_mobile}};
-            }
-
-            .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__title strong {
-                color: {{_block.heading_strong_color_mobile}} !important;
-            }
-
+        @media (max-width: 767px) {
             .homepage-carousel .homepage-carousel__content--{{block.id}} .homepage-carousel__subtitle {
                 font-size: {{_block.subheading_font_size_mobile}}px;
-                line-height: 1.5;
                 color: {{_block.subheading_color_mobile}} !important;
                 text-align: {{_block.subheading_self_align_mobile}};
             }
+
+            .homepage-carousel .homepage-carousel__content--{{block.id}} .hero-title {
+                text-align: {{_block.heading_self_align_mobile}};
+            }
+
+            .homepage-carousel__content--{{block.id}} {
+                padding-left: {{_block.slider_padding_left_mobile}}vw;
+                padding-right: {{_block.slider_padding_right_mobile}}vw;
+                padding-top: {{_block.slider_padding_top_mobile}}vh;
+                padding-bottom: {{_block.slider_padding_bottom_mobile}}vh;
+            }
         }
+
+        @media (min-width: 768px) {
+            .homepage-carousel .homepage-carousel__content--{{block.id}} .hero-title {
+                text-align: {{_block.heading_self_align}};
+            }
+
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__btn-primary,
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__btn-secondary {
+                min-width: 172px;
+            }
+
+        }
+
+        .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 {
+            line-height: 1;
+        }
+
+        /* desktop */
+        @media (min-width: 1110px) {
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 {
+                font-size: {{_block.heading_font_size }}px;
+                color: {{_block.heading_color }};
+                max-width: {{ _block.heading_maxwidth }}%;
+            }
+
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 strong,
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 b {
+                color: {{_block.heading_strong_color }};
+            }
+
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__subtitle {
+                font-size: {{_block.subheading_font_size}}px;
+                max-width: {{ _block.subheading_maxwidth }}%;
+            }
+        }
+
+
+        /* tablet */
+        @media (min-width: 481px) and (max-width: 1109px) {
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 {
+                font-size: {{_block.heading_font_size_tablet }}px;
+                color: {{_block.heading_color }};
+            }
+
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__subtitle {
+                font-size: {{_block.subheading_font_size_tablet}}px;
+                line-height: 1.2;
+            }
+
+            .homepage-carousel__content--{{block.id}} {
+                /* padding: 4vw; */
+            }
+
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 {
+                max-width: {{ _block.heading_tablet_maxwidth }}%;
+            }
+
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner .homepage-carousel__entry p {
+                max-width: {{ _block.subheading_maxwidth_tablet }}%;
+            }
+        }
+
+        /* tablet landscape */
+        @media (min-width: 768px) and (max-width: 1109px) and (orientation: landscape) {
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1:after {
+                content: '';
+            }
+        }
+
+        /* mobile */
+        @media (max-width: 480px) {
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner {
+                flex: 1;
+            }
+
+            /* .homepage-carousel__content--{{block.id}} {
+                padding: 4vw;
+            } */
+        }
+
+        @media (max-width: 480px) {
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 {
+                font-size: {{_block.heading_font_size_mobile }}px;
+                color: {{_block.heading_color_mobile }};
+                line-height: 1;
+            }
+
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 strong,
+            .homepage-carousel__content--{{block.id}} .homepage-carousel__content-inner h1 b {
+                color: {{_block.heading_strong_color_mobile }};
+            }
+
+            .homepage-carousel__btn-primary {
+                margin-bottom: 1em;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .homepage-carousel__content-inner {
+                margin-bottom: 18px;
+            }
+
+            .homepage-carousel__content-inner a {
+                width: 100%;
+            }
+        }
+
+        {% if _block.foreground_image_max_width > 0 %}
+        @media (min-width: 768px) {
+            .foreground-image-wrapper--{{ block.id }} {
+                max-width: {{ _block.foreground_image_max_width }}px;
+            }
+        }
+        {% endif %}
+
+        {% if _block.foreground_image_max_width_mobile > 0 %}
+        @media (max-width: 767px) {
+            .foreground-image-wrapper--{{ block.id }} {
+                max-width: {{ _block.foreground_image_max_width_mobile }}px;
+            }
+        }
+        {% endif %}
     </style>
 {%- endfor -%}
 
-<homepage-carousel class="grid {% unless _block.video != blank %} lg:grid-cols-2 {% endunless %} relative overflow-hidden homepage-carousel">
-    <div class="swiper-wrapper">
-        {%- for block in section.blocks -%}
-            {%- assign _block = block.settings -%}
-            <div aria-hidden="true" class="{% if section.blocks.size > 1 %}swiper-slide{% endif %} relative h-180 sm:h-200 w-full">
-                {% if _block.video != blank %}
-                    <video id="vidplayer" src='{{ _block.video }}' muted autoplay playsinline loop class='w-full hidden lg:block'></video>
-                    <video id="vidplayer" src='{{ _block.video_mob }}' muted autoplay playsinline loop class='w-full lg:hidden mobile'></video>
-                {% else %}
-                    <img srcset="{%- if _block.image.width >= 375 -%}{{ _block.image | img_url: '375x' }} 375w,{%- endif -%}
-            {%- if _block.image.width >= 750 -%}{{ _block.image | img_url: '750x' }} 750w,{%- endif -%}
-            {%- if _block.image.width >= 1100 -%}{{ _block.image | img_url: '1100x' }} 1100w,{%- endif -%}
-            {%- if _block.image.width >= 1500 -%}{{ _block.image | img_url: '1500x' }} 1500w,{%- endif -%}
-            {%- if _block.image.width >= 1780 -%}{{ _block.image | img_url: '1780x' }} 1780w,{%- endif -%}
-            {%- if _block.image.width >= 2000 -%}{{ _block.image | img_url: '2000x' }} 2000w,{%- endif -%}
-            {%- if _block.image.width >= 3000 -%}{{ _block.image | img_url: '3000x' }} 3000w,{%- endif -%}
-            {%- if _block.image.width >= 3840 -%}{{ _block.image | img_url: '3840x' }} 3840w,{%- endif -%}
-            {{ _block.image | img_url: 'master' }} {{ _block.image.width }}w" sizes="100vw"
-                         src="{{ _block.image | img_url: '1500x' }}"
-                            {% if _block.enable_lazy_loading == true %}
-                                loading='lazy'
-                            {% endif %}
-                         class="hidden md:block w-full h-full object-center object-cover"
-                         alt="{{ _block.image.alt | escape }}" width="{{ _block.image.width }}"
-                         height="{{ _block.image.width | divided_by: _block.image.aspect_ratio }}">
+{%- assign visible_slide_count = 0 -%}
 
-                    <img srcset="{%- if _block.image_2.width >= 375 -%}{{ _block.image_2 | img_url: '375x' }} 375w,{%- endif -%}
-            {%- if _block.image_2.width >= 750 -%}{{ _block.image_2 | img_url: '750x' }} 750w,{%- endif -%}
-            {%- if _block.image_2.width >= 1100 -%}{{ _block.image_2 | img_url: '1100x' }} 1100w,{%- endif -%}
-            {%- if _block.image_2.width >= 1500 -%}{{ _block.image_2 | img_url: '1500x' }} 1500w,{%- endif -%}
-            {%- if _block.image_2.width >= 1780 -%}{{ _block.image_2 | img_url: '1780x' }} 1780w,{%- endif -%}
-            {%- if _block.image_2.width >= 2000 -%}{{ _block.image_2 | img_url: '2000x' }} 2000w,{%- endif -%}
-            {%- if _block.image_2.width >= 3000 -%}{{ _block.image_2 | img_url: '3000x' }} 3000w,{%- endif -%}
-            {%- if _block.image_2.width >= 3840 -%}{{ _block.image_2 | img_url: '3840x' }} 3840w,{%- endif -%}
-            {{ _block.image_2 | img_url: 'master' }} {{ _block.image_2.width }}w" sizes="100vw"
-                         src="{{ _block.image_2 | img_url: '1500x' }}"
-                            {% if _block.enable_lazy_loading == true %}
-                                loading='lazy'
-                            {% endif %}
-                         class="block md:hidden w-full h-full object-center object-cover"
-                         alt="{{ _block.image_2.alt | escape }}" width="{{ _block.image_2.width }}"
-                         height="{{ _block.image_2.width | divided_by: _block.image_2.aspect_ratio }}">
-                {% endif %}
+{%- assign homepage_carousel_slides_count = 0 -%}
+{%- assign homepage_carousel_slides = "" -%}
+{%- assign homepage_carousel_pagination = "" -%}
+
+{%- assign homepage_carousel_slide_index = 0 -%}
+{%- for block in section.blocks -%}
+    {%- assign index = forloop.index0 -%}
+
+    {%- assign _block = block.settings -%}
+    {%- assign hide_section = false -%}
+
+    {%- assign key = block.id | split: '__' | last -%}
+
+    {%- assign current_timestamp = 'now' | date: '%s' | plus: 0 -%}
+    {%- assign start_timestamp = _block.start_date | date: '%s' | times: 1 -%}
+    {%- assign end_timestamp = _block.end_date | date: '%s' | times: 1 -%}
+
+    {%- if start_timestamp > current_timestamp -%}
+        {%- assign hide_section = true -%}
+    {%- endif -%}
+
+    {%- if current_timestamp > end_timestamp -%}
+        {%- assign hide_section = true -%}
+    {%- endif -%}
+
+    {%- if start_timestamp == 0 and end_timestamp == 0 -%}
+        {%- assign hide_section = false -%}
+        {%- assign visible_slide_count = visible_slide_count | plus: 1 -%}
+    {%- endif -%}
+
+    {%- if hide_section -%}
+        {%- continue -%}
+    {%- endif -%}
+
+    {%- assign loading = "lazy" -%}
+    {%- if homepage_carousel_slide_index == 0 -%}
+        {%- assign loading = "eager" -%}
+    {%- endif -%}
+
+    {%- capture homepage_carousel_slide -%}
+        <div class="{% if section.blocks.size > 1 %}swiper-slide{% endif %} {% if homepage_carousel_slide_index == 0 %}swiper-slide-active{% endif %} relative w-full max-w-full min-h-[70vh] md:min-h-[600px] md:max-h-[55vh]">
+            <div class="max-h-full h-full">
+                {%- if _block.video != blank -%}
+                    <video
+                        id="vidplayer"
+                        src='{{ _block.video }}'
+                        muted
+                        playsinline
+                        loop
+                        class='w-full hidden lg:block desktop'
+                    ></video>
+
+                    <video
+                        id="vidplayer"
+                        src='{{ _block.video_mob }}'
+                        muted
+                        playsinline
+                        loop
+                        class='w-full lg:hidden mobile'
+                    ></video>
+                {%- else -%}
+                    {%- capture sources -%}
+                        <source srcset="{{- _block.image | image_url: width: 2800 -}}" media="(min-width: 1920px)" />
+                        <source srcset="{{- _block.image | image_url: width: 2400 -}}" media="(min-width: 1440px)" />
+                        <source srcset="{{- _block.image | image_url: width: 1800 -}}" media="(min-width: 1280px)" />
+                        <source srcset="{{- _block.image | image_url: width: 1600 -}}" media="(min-width: 1024px)" />
+                        <source srcset="{{- _block.image | image_url: width: 1400 -}}" media="(min-width: 768px)" />
+                        <source srcset="{{- _block.image_2 | image_url: width: 900 -}}" media="(max-width: 767px)" />
+                    {%- endcapture -%}
+
+                    {%- assign src = _block.image_2 | image_url: width: 900 -%}
+
+                    {%- if homepage_carousel_slide_index == 0 -%}
+                        {%- assign lazy_load = 'eager' -%}
+                        {%- assign fetchpriority = 'high' -%}
+                        {%- assign importance = 'high' -%}
+                        {%- assign preload = true -%}
+                    {%- else -%}
+                        {%- assign lazy_load = 'lazy' -%}
+                        {%- assign fetchpriority = 'low' -%}
+                        {%- assign importance = 'low' -%}
+                        {%- assign preload = false -%}
+                    {%- endif -%}
+
+                    {%- capture link_preloads -%}
+                        <link href="{{- _block.image | image_url: width: 2800 -}}" as="image" media="(min-width: 1920px)" fetchpriority="{{- fetchpriority -}}" />
+                        <link href="{{- _block.image | image_url: width: 2400 -}}" as="image" media="(min-width: 1440px)" fetchpriority="{{- fetchpriority -}}" />
+                        <link href="{{- _block.image | image_url: width: 1800 -}}" as="image" media="(min-width: 1280px)" fetchpriority="{{- fetchpriority -}}" />
+                        <link href="{{- _block.image | image_url: width: 1600 -}}" as="image" media="(min-width: 1024px)" fetchpriority="{{- fetchpriority -}}" />
+                        <link href="{{- _block.image | image_url: width: 1400 -}}" as="image" media="(min-width: 768px)" fetchpriority="{{- fetchpriority -}}" />
+                        <link href="{{- _block.image_2 | image_url: width: 900 -}}" as="image" media="(max-width: 767px)" fetchpriority="{{- fetchpriority -}}" />
+                    {%- endcapture -%}
+
+                    <div class="image-wrapper image-wrapper-{{block.id}} h-auto min-h-[70vh] md:min-h-[600px] md:max-h-[55vh]">
+                        {%- render 'media',
+                            sources: sources,
+                            link_preloads: link_preloads,
+                            src: src,
+                            alt: _block.image_2.alt,
+                            classes: 'w-full h-auto',
+                            loading: loading,
+                            lazy_load: lazy_load,
+                            fetchpriority: fetchpriority,
+                            importance: importance,
+                            img_sizes: img_sizes,
+                            preload: preload,
+                            width: _block.image.width,
+                            height: _block.image.height,
+                            no_default_position: true
+                        -%}
+                    </div>
+                {%- endif -%}
+
                 <div class="gradient-overlay"></div>
-                <div class="homepage-carousel__content homepage-carousel__content--{{block.id}} {{_block.x_align}} {{_block.y_align}} {{_block.x_align_mobile}} {{_block.y_align_mobile}} absolute top-0 left-0 w-full h-full flex">
-                    <div class="homepage-carousel__content-inner">
-                        {% if _block.custom_heading != blank%}
-                            <div class='hero-title text-[56px] xl:text-[80px] text-white font-albertRegular font-medium mb-4 lg:mb-[40px] text-center max-w-[333px] lg:max-w-[unset]'>
-                                {{ _block.custom_heading | newline_to_br }}
+
+                <div class="homepage-carousel__content homepage-carousel__content--{{ block.id }} {{ _block.x_align }} {{ _block.y_align }} {{ _block.x_align_mobile }} {{ _block.y_align_mobile }}
+
+                {% if _block.foreground_image != blank %}
+                  w-full
+                {% endif %}
+                absolute top-0 left-0 md:w-full h-full flex">
+                    <div class="homepage-carousel__content-inner
+                    {% if _block.foreground_image != blank %}
+                      w-full md:w-auto h-full md:h-auto flex flex-col items-center md:items-start md:justify-center
+                      {%- if _block.y_align_mobile == 'is-top-mobile' -%} justify-start
+                      {%- elsif _block.y_align_mobile == 'is-middle-mobile' -%} justify-center
+                      {%- else -%} justify-end
+                      {%- endif -%}
+                    {% endif %}">
+                       {% if _block.foreground_image != blank %}
+                        {% capture sources_foreground %}
+                          <source srcset="{{- _block.foreground_image | image_url: width: 1920 -}}" media="(min-width: 1920px)" />
+                          <source srcset="{{- _block.foreground_image | image_url: width: 1440 -}}" media="(min-width: 1440px)" />
+                          <source srcset="{{- _block.foreground_image | image_url: width: 1280 -}}" media="(min-width: 1280px)" />
+                          <source srcset="{{- _block.foreground_image | image_url: width: 1024 -}}" media="(min-width: 1024px)" />
+                          <source srcset="{{- _block.foreground_image | image_url: width: 1023 -}}" media="(min-width: 768px)" />
+                          <source srcset="{{- _block.foreground_image_mobile | image_url: width: 480 -}}" media="(max-width: 767px)" />
+                        {% endcapture %}
+                        <div class="relative foreground-image-wrapper--{{ block.id }}">
+                          {% render 'media',
+                            sources: sources_foreground,
+                            link_preloads: link_preloads,
+                            src: src,
+                            alt: _block.foreground_image.alt,
+                            classes: 'max-w-full w-auto max-h-[300px] md:max-h-[400px]',
+                            loading: loading,
+                            lazy_load: lazy_load,
+                            fetchpriority: fetchpriority,
+                            importance: importance,
+                            img_sizes: img_sizes,
+                            preload: preload,
+                            width: _block.foreground_image.width,
+                            height: _block.foreground_image.height
+                          -%}
+                        </div>
+                        {% endif %}
+                        {% if _block.custom_heading != blank %}
+                            <div class='hero-title text-white font-albertRegular font-medium mb-4 lg:max-w-[unset] {{ _block.heading_self_align }} {{ _block.heading_self_align_mobile }}'>
+                                <h1 class="xanimate uppercase mx-auto md:mx-0">
+                                    {{ _block.custom_heading | newline_to_br | remove: "<p>" | remove: "</p>" }}
+                                </h1>
                             </div>
                         {% endif %}
 
                         <div class="homepage-carousel__entry">
-                            <p class="homepage-carousel__subtitle animate lg:text-xl md:text-lg font-light font-sans mb-4 sm:mb-8 lg:max-w-[550px]">
-                                {{ _block.subheading }}
+                            <p class="homepage-carousel__subtitle xanimate lg:text-xl md:text-lg font-bebasNeue mb-4 -sm:mb-8 mx-auto md:mx-0">
+                                {{ _block.subheading | newline_to_br }}
                             </p>
                         </div>
 
-                        {% if _block.button_label != blank or _block.secondary_button_label != blank%}
-                            <div class="homepage-carousel__actions flex">
-                                {% if _block.button_label != blank %}
-                                    <a href='{{ _block.button_link }}' class='homepage-carousel__btn-primary button-light !text-[18px] lg:!text-[24px]'>
-                                        {{ _block.button_label }}
+                        {% if _block.button_label != blank or _block.secondary_button_label != blank %}
+                            <div class="homepage-carousel__actions homepage-carousel__actions-{{block.id}} flex flex-wrap
+                            {% if _block.button__alignment_desktop == 'left' and _block.foreground_image != blank %}
+                              ml-[18px]
+                            {% endif %}
+                            ">
+                                {%- if _block.button_label != blank -%}
+                                    <a
+                                            href='{{- _block.button_link -}}'
+                                            class='homepage-carousel__btn-primary button-light flex justify-center items-center'
+                                    >
+                                        {{- _block.button_label -}}
                                     </a>
-                                {% endif %}
-                                {% if _block.secondary_button_label != blank %}
-                                    <a href="{{ _block.secondary_button_link }}"
-                                       class="homepage-carousel__btn-secondary ml-6 button--secondary block button-light !text-[18px] lg:!text-[24px]">{{
-                                        _block.secondary_button_label }}
+                                {%- endif -%}
+
+                                {%- if _block.secondary_button_label != blank -%}
+                                    <a
+                                            href="{{- _block.secondary_button_link -}}"
+                                            class="homepage-carousel__btn-secondary md:ml-6 mt-3 md:mt-0 button--secondary block button-light"
+                                    >
+                                        {{- _block.secondary_button_label -}}
                                     </a>
-                                {% endif %}
+                                {%- endif -%}
                             </div>
                         {% endif %}
                     </div>
                 </div>
             </div>
-        {%- endfor -%}
-    </div>
-    <div class="hero-pagination z-10 text-right"></div>
+        </div>
+    {%- endcapture -%}
+    {%- assign homepage_carousel_slides = homepage_carousel_slides | append: homepage_carousel_slide -%}
 
-</homepage-carousel>
+    {%- capture homepage_carousel_pagination_dot -%}
+        <span class="swiper-pagination-bullet {% if homepage_carousel_slides_count == 0 %}swiper-pagination-bullet-active{% endif %}"></span>
+    {%- endcapture -%}
+    {%- assign homepage_carousel_pagination = homepage_carousel_pagination | append: homepage_carousel_pagination_dot -%}
+
+    {%- assign homepage_carousel_slide_index = homepage_carousel_slide_index | plus: 1 -%}
+    {%- assign homepage_carousel_slides_count = homepage_carousel_slides_count | plus: 1 -%}
+{%- endfor -%}
+
+{%- if homepage_carousel_slides -%}
+    {{ 'bundle.section-homepage-carousel.css' | asset_url | stylesheet_tag }}
+
+    <homepage-carousel
+        class="swiper swiper-fade h-full {% unless _block.video != blank %} /*lg:grid-cols-2*/ {% endunless %} relative overflow-hidden homepage-carousel min-h-[70vh] md:min-h-[600px]"
+        data-slide-delay="{{- section.settings.slide_delay -}}"
+    >
+        <div class="swiper-wrapper min-h-[70vh] md:min-h-[600px]">
+            {{- homepage_carousel_slides -}}
+        </div>
+
+        {% if visible_slide_count > 1 %}
+        <div class="swiper-button-next text-white">
+            {% render 'icon-triangle-right', classes: '!w-6 !h-6 text-white' %}
+        </div>
+
+        <div class="swiper-button-prev text-white">
+            {% render 'icon-triangle-left', classes: '!w-6 !h-6 text-white' %}
+        </div>
+        {% endif %}
+        {%- if homepage_carousel_pagination -%}
+            <div class="hero-pagination z-10 text-right mb-4 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                {{- homepage_carousel_pagination -}}
+            </div>
+        {%- endif -%}
+    </homepage-carousel>
+
+    <script>
+        if (window.innerWidth < 1024) {
+            let vmobile = document.querySelector('video.mobile');
+            if (vmobile) {
+                vmobile.setAttribute('autoplay', 'true');
+            }
+        } else {
+            let vdesktop = document.querySelector('video.desktop');
+            if (vdesktop) {
+                vdesktop.setAttribute('autoplay', 'true');
+            }
+        }
+    </script>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Homepage Carousel",
   "tag": "section",
   "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "text",
+      "id": "slide_delay",
+      "label": "Delay (milliseconds)"
+    }
+  ],
   "blocks": [
     {
       "name": "Slide",
       "type": "slide",
       "settings": [
+        {
+          "type": "text",
+          "id": "start_date",
+          "label": "Start Date",
+          "info": "Start Date in format YYYY-MM-DD HH:MM:SS. Example: 2025-03-24 12:00:00"
+        },
+        {
+          "type": "text",
+          "id": "end_date",
+          "label": "End Date",
+          "info": "End Date in format YYYY-MM-DD HH:MM:SS. Example: 2025-03-24 12:00:00"
+        },
         {
           "type": "text",
           "id": "video",
@@ -185,13 +543,85 @@
           "label": "Mobile"
         },
         {
+          "type": "image_picker",
+          "id": "foreground_image",
+          "label": "Foreground Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "foreground_image_mobile",
+          "label": "Foreground Image Mobile"
+        },
+        {
+          "type": "range",
+          "id": "foreground_image_max_width",
+          "label": "Foreground Image Max Width - Desktop",
+          "min": 50,
+          "max": 800,
+          "step": 10,
+          "unit": "px",
+          "default": 400,
+          "info": "Only applies when a foreground image is set"
+        },
+        {
+          "type": "range",
+          "id": "foreground_image_max_width_mobile",
+          "label": "Foreground Image Max Width - Mobile",
+          "min": 50,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "default": 300,
+          "info": "Only applies when a foreground image is set"
+        },
+        {
           "type": "checkbox",
           "id": "enable_lazy_loading",
           "label": "Enable Lazy Loading (disable for in viewport content)",
           "default": true
         },
         {
-          "type": "richtext",
+          "type": "select",
+          "id": "image_position_desktop",
+          "label": "Image Position Desktop",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "image_position_mobile",
+          "label": "Image Position Mobile",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "center",
+                  "label": "Center"
+                }
+              ],
+              "default": "top"
+        },
+        {
+          "type": "textarea",
           "id": "custom_heading",
           "label": "HTML Heading"
         },
@@ -217,6 +647,16 @@
           "label": "Button Link"
         },
         {
+          "type": "range",
+          "id": "button_font_size",
+          "min": 14,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Font Size",
+          "default": 21
+        },
+        {
           "type": "color",
           "id": "primary_text_color",
           "label": "Text Color",
@@ -226,7 +666,7 @@
           "type": "color",
           "id": "primary_bg_color",
           "label": "Background Color",
-          "default": "#FEDD00"
+          "default": "#F5D500"
         },
         {
           "type": "color",
@@ -280,6 +720,22 @@
           "default": "#212121"
         },
         {
+          "type": "select",
+          "id": "button__alignment_desktop",
+          "label": "Button Alignment Desktop",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "left"
+        },
+        {
           "type": "header",
           "content": "Alignment Options - Desktop"
         },
@@ -288,9 +744,18 @@
           "id": "x_align",
           "label": "Horizontal Alignment",
           "options": [
-            { "value": "", "label": "Left" },
-            { "value": "is-center", "label": "Center" },
-            { "value": "is-right", "label": "Right" }
+            {
+              "value": "",
+              "label": "Left"
+            },
+            {
+              "value": "is-center",
+              "label": "Center"
+            },
+            {
+              "value": "is-right",
+              "label": "Right"
+            }
           ],
           "default": ""
         },
@@ -299,11 +764,20 @@
           "id": "y_align",
           "label": "Vertical Alignment",
           "options": [
-            { "value": "", "label": "Top" },
-            { "value": "is-middle", "label": "Middle" },
-            { "value": "is-bottom", "label": "Bottom" }
+            {
+              "value": "",
+              "label": "Top"
+            },
+            {
+              "value": "is-middle",
+              "label": "Middle"
+            },
+            {
+              "value": "is-bottom",
+              "label": "Bottom"
+            }
           ],
-          "default": ""
+          "default": "is-middle"
         },
         {
           "type": "header",
@@ -314,9 +788,18 @@
           "id": "x_align_mobile",
           "label": "Horizontal Alignment",
           "options": [
-            { "value": "is-left-mobile", "label": "Left" },
-            { "value": "is-center-mobile", "label": "Center" },
-            { "value": "is-right-mobile", "label": "Right" }
+            {
+              "value": "is-left-mobile",
+              "label": "Left"
+            },
+            {
+              "value": "is-center-mobile",
+              "label": "Center"
+            },
+            {
+              "value": "is-right-mobile",
+              "label": "Right"
+            }
           ],
           "default": "is-center-mobile"
         },
@@ -325,9 +808,18 @@
           "id": "y_align_mobile",
           "label": "Vertical Alignment",
           "options": [
-            { "value": "is-top-mobile", "label": "Top" },
-            { "value": "is-middle-mobile", "label": "Middle" },
-            { "value": "is-bottom-mobile", "label": "Bottom" }
+            {
+              "value": "is-top-mobile",
+              "label": "Top"
+            },
+            {
+              "value": "is-middle-mobile",
+              "label": "Middle"
+            },
+            {
+              "value": "is-bottom-mobile",
+              "label": "Bottom"
+            }
           ],
           "default": "is-bottom-mobile"
         },
@@ -360,10 +852,10 @@
           "id": "heading_font_size",
           "min": 28,
           "max": 200,
-          "step": 4,
+          "step": 2,
           "unit": "px",
           "label": "Heading Font size",
-          "default": 176
+          "default": 120
         },
         {
           "type": "color",
@@ -378,6 +870,16 @@
           "default": "#f5d500"
         },
         {
+          "type": "range",
+          "id": "heading_maxwidth",
+          "min": 30,
+          "max": 100,
+          "step": 2,
+          "unit": "%",
+          "label": "Heading Max-Width",
+          "default": 60
+        },
+        {
           "type": "header",
           "content": "Heading Options - Tablet"
         },
@@ -389,7 +891,17 @@
           "step": 4,
           "unit": "px",
           "label": "Heading Font size",
-          "default": 152
+          "default": 100
+        },
+        {
+          "type": "range",
+          "id": "heading_tablet_maxwidth",
+          "min": 30,
+          "max": 100,
+          "step": 2,
+          "unit": "%",
+          "label": "Heading Max-Width",
+          "default": 60
         },
         {
           "type": "header",
@@ -420,10 +932,10 @@
           "id": "heading_font_size_mobile",
           "min": 28,
           "max": 200,
-          "step": 4,
+          "step": 2,
           "unit": "px",
           "label": "Heading Font size",
-          "default": 100
+          "default": 74
         },
         {
           "type": "color",
@@ -472,6 +984,16 @@
           "default": 24
         },
         {
+          "type": "range",
+          "id": "subheading_maxwidth",
+          "min": 30,
+          "max": 100,
+          "step": 2,
+          "unit": "%",
+          "label": "Subheading Max-Width",
+          "default": 50
+        },
+        {
           "type": "color",
           "id": "subheading_color",
           "label": "Sub Heading Color",
@@ -488,8 +1010,18 @@
           "max": 50,
           "step": 2,
           "unit": "px",
-          "label": "Sub Heading Font size",
-          "default": 22
+          "label": "Subheading Font size",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "subheading_maxwidth_tablet",
+          "min": 30,
+          "max": 100,
+          "step": 2,
+          "unit": "%",
+          "label": "Subheading Max-Width",
+          "default": 50
         },
         {
           "type": "header",
@@ -530,6 +1062,138 @@
           "id": "subheading_color_mobile",
           "label": "Sub Heading Color",
           "default": "#fff"
+        },
+        {
+          "type": "header",
+          "content": "Slider Padding - Desktop"
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_right",
+          "label": "Slider Padding Right",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vw",
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_left",
+          "label": "Slider Padding Left",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vw",
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_top",
+          "label": "Slider Padding Top",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vh",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_bottom",
+          "label": "Slider Padding Bottom",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vh",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Slider Padding - Tablet"
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_right_tablet",
+          "label": "Slider Padding Right",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vw",
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_left_tablet",
+          "label": "Slider Padding Left",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_top_tablet",
+          "label": "Slider Padding Top",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vh",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_bottom_tablet",
+          "label": "Slider Padding Bottom",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vh",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Slider Padding - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_right_mobile",
+          "label": "Slider Padding Right",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vw",
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_left_mobile",
+          "label": "Slider Padding Left",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vw",
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_top_mobile",
+          "label": "Slider Padding Top",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vh",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "slider_padding_bottom_mobile",
+          "label": "Slider Padding Bottom",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "vh",
+          "default": 0
         }
       ]
     }
@@ -546,74 +1210,3 @@
   ]
 }
 {% endschema %}
-<style>
-    /* suppl style */
-    .overflow-hidden {
-        overflow: hidden;
-    }
-    .grid {
-        display: grid;
-    }
-    .relative {
-        position: relative;
-    }
-    .swiper-wrapper {
-        box-sizing: content-box;
-        display: flex;
-        height: 100%;
-        position: relative;
-        transition-property: transform;
-        width: 100%;
-        z-index: 1;
-    }
-    .swiper-android .swiper-slide, .swiper-wrapper {
-        transform: translateZ(0);
-    }
-    @media (min-width:640px) {
-        .sm\:h-200 {
-            height: unset;
-        }
-    }
-    .w-full {
-        width: 100%;
-    }
-    @media (min-width:1024px) {
-        .lg\:block {
-            display: block;
-        }
-        .lg\:hidden {
-            display: none;
-        }
-    }
-    .homepage-carousel__content.is-middle {
-        align-items: center;
-    }
-    .homepage-carousel__content.is-center {
-        justify-content: center;
-        text-align: center;
-    }
-    .homepage-carousel__btn-primary {
-        font-family: Anton,sans-serif;
-        font-size: 21px;
-        font-weight: 400;
-        line-height: 32px;
-        letter-spacing: 0em;
-        text-align: center;
-        text-transform: uppercase;
-        color: #000;
-        padding: 10px 50px;
-        height: 51px;
-        border-radius: 4px;
-    }
-    @media (max-width:767px){
-        .homepage-carousel__content {
-            padding: 3rem;
-        }
-
-    }
-    .homepage-carousel__content-inner {
-        display:flex;
-        align-items: flex-end;
-        padding-bottom:30px;
-    }
-</style>

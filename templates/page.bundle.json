@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -33,12 +42,12 @@
       "settings": {
         "bg": "#212121",
         "text_color": "#ffffff",
-        "img": "shopify:\/\/shop_images\/SubscribeandSave_Desktop_Version2.png",
+        "img": "shopify://shop_images/SubscribeandSave_Desktop_Version2.png",
         "title": "Build your own bundle",
         "subtitle": "Mix & Match to Build Your Own Stack - Subscribe and Save More.",
         "box_title": "Not sure where to start?",
         "box_subtitle": "Why not see our curated stacks here.",
-        "link": "shopify:\/\/collections\/supplement-stacks",
+        "link": "shopify://collections/supplement-stacks",
         "discount": "* Save an additional 5% when you subscribe to a bundle."
       }
     },
@@ -96,10 +105,7 @@
         "04d48d1e-c9b3-4231-9e6b-ad1046ccf27c",
         "66a8389b-ad5c-47a4-89b8-c00f1ad04efd"
       ],
-      "settings": {
-        "gift_enabled": true,
-        "gift_product": "animal-cuts-powder-strawberry-sample"
-      }
+      "settings": {}
     }
   },
   "order": [

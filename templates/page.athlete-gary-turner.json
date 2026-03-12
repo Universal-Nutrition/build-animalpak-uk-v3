@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -6,9 +15,9 @@
         "breadcrumbs": false,
         "d_height": 450,
         "m_height": 500,
-        "image": "shopify:\/\/shop_images\/garyturnerbanner.png",
-        "image_2": "shopify:\/\/shop_images\/garyturner.png",
-        "custom_heading": "<p>GARY TURNER<\/p>",
+        "image": "shopify://shop_images/garyturnerbanner.png",
+        "image_2": "shopify://shop_images/garyturner.png",
+        "custom_heading": "<p>GARY TURNER</p>",
         "subheading": "",
         "text_alignment": "left"
       }
@@ -16,8 +25,8 @@
     "info": {
       "type": "athlete-info",
       "settings": {
-        "custom_heading": "<p>GARY TURNER<\/p>",
-        "subheading": "<p>Gary Turner or as he’s known by his alias “G-Six,” is an NPC National level bodybuilder. Known for his passion, unwavering work ethic and “no excuses” mindset, Gary was added to the Animal roster in 2018 after many years of internal employment. Nothing has come easy for him and that includes bodybuilding. Every ounce of progress in the last decade was forged by blood, sweat and tears. To put it in simple terms: G-Six lives and breathes this shit.<\/p>",
+        "custom_heading": "<p>GARY TURNER</p>",
+        "subheading": "<p>Gary Turner or as he’s known by his alias “G-Six,” is an NPC National level bodybuilder. Known for his passion, unwavering work ethic and “no excuses” mindset, Gary was added to the Animal roster in 2018 after many years of internal employment. Nothing has come easy for him and that includes bodybuilding. Every ounce of progress in the last decade was forged by blood, sweat and tears. To put it in simple terms: G-Six lives and breathes this shit.</p>",
         "accolade": "accolades",
         "video_url": "{{ page.metafields.custom.video_link.value }}"
       }
@@ -39,21 +48,21 @@
         "b47589bd-c958-4775-93b9-39c702046bfb": {
           "type": "article",
           "settings": {
-            "article": "fitness-bodybuilding\/the-dos-and-donts-for-the-gym",
+            "article": "fitness-bodybuilding/the-dos-and-donts-for-the-gym",
             "page": "gary-turner"
           }
         },
         "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
           "type": "article",
           "settings": {
-            "article": "fitness-bodybuilding\/holiday-gift-guide-for-bodybuilders",
+            "article": "fitness-bodybuilding/holiday-gift-guide-for-bodybuilders",
             "page": "gary-turner"
           }
         },
         "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
           "type": "article",
           "settings": {
-            "article": "fitness-bodybuilding\/how-the-gym-environment-affects-the-lifters-mentality",
+            "article": "fitness-bodybuilding/how-the-gym-environment-affects-the-lifters-mentality",
             "page": "gary-turner"
           }
         }
@@ -70,10 +79,9 @@
     },
     "1674587792cf93d53d": {
       "type": "apps",
-      "disabled": true,
       "blocks": {
         "239dd5b9-41cd-4a75-ac00-63c3b98b1c54": {
-          "type": "shopify:\/\/apps\/presidio-quiz-kit\/blocks\/button\/0b04f315-849a-4507-8339-7be41cc01813",
+          "type": "shopify://apps/quiz-kit-ai-product-finder/blocks/button/0b04f315-849a-4507-8339-7be41cc01813",
           "settings": {
             "key": "",
             "button_label": "Start Quiz",
@@ -91,6 +99,7 @@
       "block_order": [
         "239dd5b9-41cd-4a75-ac00-63c3b98b1c54"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true,
         "title": ""

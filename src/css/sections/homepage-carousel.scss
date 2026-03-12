@@ -1,0 +1,132 @@
+.homepage-carousel {
+  .swiper-pagination-bullets {
+    position: absolute;
+    display: flex;
+    left: unset;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet {
+    background: white;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: yellow;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: '';
+    font-size: 0;
+  }
+
+  .swiper-slide {
+    img {
+      display: none;
+    }
+
+    &.swiper-slide-active {
+      img {
+        display: block;
+      }
+    }
+  }
+
+  &.swiper-initialized {
+    .swiper-slide {
+      img {
+        display: block;
+      }
+    }
+  }
+}
+
+.homepage-carousel__btn-primary,
+.homepage-carousel__btn-secondary {
+  font-family: Anton, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 20px;
+}
+
+.homepage-carousel__btn-primary {
+  border-radius: 0;
+}
+
+.homepage-carousel__subtitle {
+
+}
+
+.homepage-carousel__btn-primary {
+  &:hover {
+  }
+}
+
+.homepage-carousel__btn-secondary {
+
+}
+
+.homepage-carousel__btn-primary {
+  border-radius: 0px;
+}
+
+@media screen and (max-width: 767px) {
+  .homepage-carousel__content.is-top-mobile {
+    align-items: flex-start;
+  }
+
+  .homepage-carousel__content.is-middle-mobile {
+    align-items: center;
+  }
+
+  .homepage-carousel__content.is-bottom-mobile {
+    align-items: flex-end;
+  }
+
+  .homepage-carousel__content.is-center-mobile {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .homepage-carousel__content.is-right-mobile {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 768px) {
+  .homepage-carousel__content.is-top {
+    align-items: flex-start;
+  }
+
+  .homepage-carousel__content.is-middle {
+    align-items: center;
+  }
+
+  .homepage-carousel__content.is-bottom {
+    align-items: flex-end;
+  }
+
+  .homepage-carousel__content.is-center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .homepage-carousel__content.is-right {
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-carousel__btn-primary {
+    margin-bottom: 1em;
+  }
+
+  .homepage-carousel .swiper-button-prev,
+  .homepage-carousel .swiper-button-next {
+    display: none !important;
+  }
+}

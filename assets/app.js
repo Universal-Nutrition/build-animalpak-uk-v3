@@ -1640,6 +1640,114 @@ customElements.define("hero-slider", HeroSlider);
 
 /***/ }),
 
+/***/ "./scripts/sections/homepage-carousel.js":
+/*!***********************************************!*\
+  !*** ./scripts/sections/homepage-carousel.js ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var HomepageCarousel = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(HomepageCarousel, _HTMLElement);
+  var _super = _createSuper(HomepageCarousel);
+  function HomepageCarousel() {
+    _classCallCheck(this, HomepageCarousel);
+    return _super.call(this);
+  }
+  _createClass(HomepageCarousel, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.init();
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var slideDelay = this.dataset.slideDelay || 0;
+      var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](this, _objectSpread(_objectSpread({
+        slidesPerView: 1,
+        loop: true,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Autoplay, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade, swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+        pagination: {
+          el: '.hero-pagination',
+          clickable: true
+        }
+      }, slideDelay ? {
+        autoplay: {
+          delay: slideDelay || 0,
+          disableOnInteraction: false
+        }
+      } : {}), {}, {
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        on: {
+          slideChange: function slideChange() {
+            var bullets = document.querySelectorAll('.swiper-bullets');
+            if (!bullets) {
+              return;
+            }
+            if (!(bullets !== null && bullets !== void 0 && bullets.length)) {
+              return;
+            }
+            setTimeout(function () {
+              bullets === null || bullets === void 0 || bullets.forEach(function (bullet) {
+                var _bullet$classList;
+                bullet === null || bullet === void 0 || (_bullet$classList = bullet.classList) === null || _bullet$classList === void 0 || _bullet$classList.remove('prev');
+              });
+            }, 5300);
+            var activeBullets = document.querySelectorAll('.swiper-pagination-bullet-active');
+            if (!activeBullets) {
+              return;
+            }
+            if (!(activeBullets !== null && activeBullets !== void 0 && activeBullets.length)) {
+              return;
+            }
+            activeBullets === null || activeBullets === void 0 || activeBullets.forEach(function (bullet) {
+              var prev = bullet === null || bullet === void 0 ? void 0 : bullet.previousElementSibling;
+              while (prev) {
+                var _prev;
+                (_prev = prev) === null || _prev === void 0 || (_prev = _prev.classList) === null || _prev === void 0 || _prev.add('prev');
+                prev = prev.previousElementSibling;
+              }
+            });
+          }
+        }
+      }));
+    }
+  }]);
+  return HomepageCarousel;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
+customElements.define('homepage-carousel', HomepageCarousel);
+
+/***/ }),
+
 /***/ "./scripts/sections/lazyloading.js":
 /*!*****************************************!*\
   !*** ./scripts/sections/lazyloading.js ***!
@@ -28966,6 +29074,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_sections_stack_products_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../scripts/sections/stack-products.js */ "./scripts/sections/stack-products.js");
 /* harmony import */ var _scripts_sections_search_facets_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../scripts/sections/search-facets.js */ "./scripts/sections/search-facets.js");
 /* harmony import */ var _scripts_sections_search_facets_js__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_scripts_sections_search_facets_js__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _scripts_sections_homepage_carousel_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../scripts/sections/homepage-carousel.js */ "./scripts/sections/homepage-carousel.js");
+
 
 
 
