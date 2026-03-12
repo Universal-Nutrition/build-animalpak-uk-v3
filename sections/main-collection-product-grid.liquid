@@ -1,0 +1,838 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js" defer></script>
+
+<style>
+  .sortselect{
+    width:100%;
+  }
+  .checkbox-container{position:relative;height:50px;width:50px;margin-top:10px;cursor:pointer;}
+  .checkbox-container input{position:absolute;top:0;left:0;height:100%;width:100%;opacity:0;z-index:9999;}
+  .flex-checkbx:nth-child(1) .checkbox-container .checkbox-design{border:2px solid red;height:100%;width:100%;position:relative;margin-right:auto;border-radius:4px;}
+  .flex-checkbx:nth-child(2) .checkbox-container .checkbox-design{border:2px solid #f5d500;height:100%;width:100%;position:relative;margin-right:auto;border-radius:4px;}
+  .flex-checkbx:nth-child(3) .checkbox-container .checkbox-design{border:2px solid cyan;height:100%;width:100%;position:relative;margin-right:auto;border-radius:4px;}
+  .flex-checkbx:nth-child(1) .checkbox-container input:checked + .checkbox-design:after{background:red;}
+  .flex-checkbx:nth-child(2) .checkbox-container input:checked + .checkbox-design:after{background:yellow;}
+  .flex-checkbx:nth-child(3) .checkbox-container input:checked + .checkbox-design:after{background:cyan;}
+  .checkbox-container .checkbox-design:after{content:'';display:block;border-radius:50px;height:70%;width:70%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#21212140;}
+  .irs--round .irs-handle{background:#f5d500;border:none;}
+  .irs--round .irs-bar{background-color:#cecece;}
+  .irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single{
+    background-color: #f5d500;
+    color:#000000;
+  }
+  .irs--round .irs-from::before, .irs--round .irs-to::before, .irs--round .irs-single::before{
+    border-top-color: #f5d500;
+  }
+  .irs--round .irs-handle{
+    width: 18px;
+  height: 18px;
+    top: 30px;
+  }
+</style>
+{% capture filters %}
+ <div
+  class="mb-6 pb-3 {% unless i == 3 %} border-0 border border-b border-[#DBDBDB] border-solid {% endunless %} lg:w-[236px]">
+  <div class="text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold">Sort By : </div>
+  
+  <div class="flex items-center mb-3 sswrap">
+    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+     <select name="sort_by"
+          class="sortselect w-[48%] font-bold lg:w-auto select__select uppercase caption-large cursor-pointer block w-full pl-3 pr-10 py-2 text-[12.1px] border-gray-300 border-solid focus:outline-none sm:text-sm"
+          id="SortBy">
+       {%- for option in collection.sort_options -%}
+          <option class="text-gray-500 block px-4 py-2 text-sm cursor-pointer" value="{{ option.value }}" {% if
+            option.value==sort_by %} selected="selected" {% endif %}>{{ option.name | capitalize  }}</option>
+          {%- endfor -%}
+     </select>
+  </div>
+   
+</div>
+<div
+  class="mb-6 pb-3 {% unless i == 3 %} border-0 border border-b border-[#DBDBDB] border-solid {% endunless %} lg:w-[236px]">
+  <div class="text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold">Price : </div>
+  
+  <div class="mb-3" >
+     {% for filter in collection.filters %}
+        {% if filter.type == 'price_range' %}
+          {{ filter.max_value.url_to_add }}
+           <input
+                data-minvalue="{{  filter.min_value.value | default : 0 | money_without_currency | replace: ',', ''   }}"
+                data-maxvalue="{{  filter.max_value.value | default : filter.range_max| money_without_currency | replace: ',', ''   }}"
+                type="text"
+                class="js-range-slider"
+                name="my_range"
+                value=""
+                data-skin="round"
+                data-type="double"
+                data-min="0"
+                data-max="{{  filter.range_max | money_without_currency | replace: ',', ''   }}"
+                data-grid="false"
+              >
+        {% endif %}  
+     {% endfor %}  
+  </div>
+   
+</div>
+<div
+  class="mb-6 pb-3 {% unless i == 3 %} border-0 border border-b border-[#DBDBDB] border-solid {% endunless %} lg:w-[236px]">
+  <div class="text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold">Format : </div>
+
+  {% assign formattags = 'format_Powder,format_Pills,format_Chews' %}
+  {% assign arformats = formattags | split : ',' %}
+  <div class="grid" style="grid-template-columns:1fr 1fr 1fr;margin-left:0px;">
+  {% for format in arformats %}
+  <div class="flex items-left mb-3 flex-checkbx" style="flex-direction:column;">
+     
+         <div style="display:none!important;">
+           {% if current_tags contains format %}
+             {{ format | link_to_remove_tag: format }}
+           {% else %}  
+             {{ format | link_to_add_tag: format }}
+           {% endif %}  
+         </div>
+         <label for="cb-{{format}}" class="font-sans text-[13.91px] text-[#212121] cursor-pointer">{{format | replace :'format_',''}}</label>
+          <div class="checkbox-container">
+         <input {% if current_tags contains format %}checked{% endif %} type="checkbox" name="format" id="cb-{{format}}" >
+            <div class="checkbox-design">
+              
+            </div>
+          </div>
+         
+      
+  </div>
+   {% endfor %} 
+  </div>
+</div>
+{% endcapture %}
+<div class="block-tops">
+  <div class="inner-container relative">
+        <div
+      style="left:-300px"
+      class="filters-wrap overflow-scroll lg:mb-[50px] lg:overflow-[unset] px-6 lg:px-0 bg-white z-[9999] lg:z-[unset] fixed top-0 left-0 w-full h-full lg:relative lg:w-[300px] lg:h-[unset] lg:min-w-[300px] hidden lg:block"
+    >
+      <a href="#" class="menu-close">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none"
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+        >
+          <path d="M12.4444 0H1.55556C1.143 0 0.747335 0.163888 0.455612 0.455612C0.163888 0.747335 0 1.143 0 1.55556V12.4444C0 12.857 0.163888 13.2527 0.455612 13.5444C0.747335 13.8361 1.143 14 1.55556 14H12.4444C12.857 14 13.2527 13.8361 13.5444 13.5444C13.8361 13.2527 14 12.857 14 12.4444V1.55556C14 1.143 13.8361 0.747335 13.5444 0.455612C13.2527 0.163888 12.857 0 12.4444 0ZM9.8 10.8889L7 8.08889L4.2 10.8889L3.11111 9.8L5.91111 7L3.11111 4.2L4.2 3.11111L7 5.91111L9.8 3.11111L10.8889 4.2L8.08889 7L10.8889 9.8L9.8 10.8889Z" fill="black"/>
+        </svg>
+      </a>
+      {% if is_apparel %}
+        <div class="apparel-links-wrap hidden ss__facet ss__facet--list ss__facet--expanded mb-6 pb-3  border-0 border border-b border-[#DBDBDB] border-solid  lg:w-[236px]">
+          <div class="apparel-links-title active flex justify-between items-center ss__title ss__pointer text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold cursor-pointer">
+            {{ linklists['apparel-accessories'].title }}
+            <span class="ss__icon__wrapper">
+              <svg
+                class="ss__icon ss__icon--angle-down w-[12px] h-[12px]"
+                viewBox="0 0 56 56"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M56 16.329c0 0.449-0.224 0.954-0.561 1.291l-26.148 26.148c-0.337 0.337-0.842 0.561-1.291 0.561s-0.954-0.224-1.291-0.561l-26.148-26.148c-0.337-0.337-0.561-0.842-0.561-1.291s0.224-0.954 0.561-1.291l2.806-2.806c0.337-0.337 0.786-0.561 1.291-0.561 0.449 0 0.954 0.224 1.291 0.561l22.052 22.052 22.052-22.052c0.337-0.337 0.842-0.561 1.291-0.561s0.954 0.224 1.291 0.561l2.806 2.806c0.337 0.337 0.561 0.842 0.561 1.291z"></path>
+              </svg>
+            </span>
+          </div>
+          <div class="ss__facet__options apparel-links-options active">
+            <div class="ss__list">
+              {% for link in linklists['apparel-accessories'].links %}
+                <div class="ss__list__option mb-3">
+                  <a href="{{link.url}}" class="ss__list__link font-sans text-[13.91px] text-[#212121] cursor-pointer">
+                    {{- link.title -}}
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="filtopt text-[42.56px] uppercase font-compacta text-[#212121] mt-[48px] leading-[34.05px] mb-10 lg:hidden">
+        filters
+      </div>
+      <span class="close-mobile-filters absolute top-8 right-8 lg:hidden">{% include 'icon-close' %}</span>
+      <div class="mb-20 lg:mb-0">
+        {{ filters }}
+      </div>
+      <div
+        class="filter-footer flex justify-between items-center lg:hidden fixed w-full left-0 bottom-[200px] p-4 bg-white border-0 border border-t border-[#DBDBDB] border-solid "
+      >
+        <button
+          class="text-white text-[12.1px] h-[54px] flex items-center justify-center w-[48%] text-[13.9px] font-bold uppercase bg-black"
+        >
+          clear
+        </button>
+        <button
+          class="text-black text-[12.1px] h-[54px] flex items-center justify-center w-[48%] text-[13.9px] font-bold uppercase bg-yellow"
+        >
+          apply
+        </button>
+      </div>
+    </div>
+    {% include 'breadcrumbs', color: '#fff', arrow_color: '#FEDD00' %}
+    <h1>{{ collection.metafields.custom.collection_title_seo }}</h1>
+    {% if collection.description != blank %}
+      <div class="col-desc"><br>{{ collection.description }}</div>
+    {% endif %}
+    <ul id="sbg" class="items-center lg:absolute">
+      {% for link in linklists.shop-by-goal.links %}
+        <a href="{{ link.url }}" class="{% if link.active %}active{% endif %} shop-by-goal">{{ link.title }}</a>
+      {% endfor %}
+    </ul>
+    <ul id="settingsmenu" class="items-center lg:absolute">
+      {% for link in linklists[section.settings.menu].links %}
+        <a href="{{ link.url }}" class="{% if link.active %}active{% endif %} {{ section.settings.menu.handle }}">{{ link.title }}</a>
+      {% endfor %}
+    </ul>
+    <!-- {% assign path_parts = request.path | split: '/' %}
+    {% if request.path == '/collections/all' %}
+        <a href="#" class="menu-toggle flex items-center gap-[10px] !relative !right-0 !top-0 menu-top-toggle pl-[40px]" id="mt_dt">
+            {% render 'filter-icon' %} <span>Filter</span>
+        </a>
+    {% elsif path_parts[1] == 'collections' and path_parts[2] == 'all' %}
+        <a href="#" class="menu-toggle flex items-center gap-[10px] !relative !right-0 !top-0 menu-top-toggle pl-[40px]" id="mt_dt">
+            {% render 'filter-icon' %} <span>Filter</span>
+        </a>
+    {% endif %} -->
+    
+  </div>
+  <img src="https://cdn.shopify.com/s/files/1/0674/6164/4518/files/yellow-tear.png?v=1724036386" width="100%" class="relative" style="z-index: 1;">
+</div>
+<div class="px-6 lg:px-[58px] pt-[35px] coll_nudge">
+  {% if settings.ss_enable %}
+    <a href="#" class="menu-toggle2"><div id="searchspring-toolbar" class="lg:flex justify-between items-center pb-[32px]"></div></a>
+  {% else %}
+    <div class="showing_block lg:flex justify-between items-center pb-[32px]">
+      {% comment %} results counter {% endcomment %}
+      <div class="text-base font-sans text-center lg:text-left mb-4 lg:mb-0 text-[#5E5A59]">
+        Showing 1 - 24 of 36 results
+      </div>
+      {% comment %} sorting {% endcomment %}
+      <div class="flex items-center justify-between">
+        <div
+          class="mobile-filter-trigger font-bold uppercase lg:hidden p-3 bg-black flex justify-between text-white text-[12.1px] w-[48%]"
+        >
+          <span class="mr-[28px]">{% include 'icon-filtering' %}</span>
+          filter by
+        </div>
+        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+
+        <select
+          name="sort_by"
+          class="12 facet-filters__sort w-[48%] font-bold lg:w-auto select__select uppercase caption-large cursor-pointer block w-full pl-3 pr-10 py-2 text-[12.1px] border-gray-300 border-solid focus:outline-none sm:text-sm"
+          id="SortBy"
+          aria-describedby="a11y-refresh-page-message"
+        >
+          {%- for option in collection.sort_options -%}
+            <option
+              class="text-gray-500 block px-4 py-2 text-sm cursor-pointer"
+              value="{{ option.value | capitalize  }}"
+              {% if option.value == sort_by %}
+                selected="selected"
+              {% endif %}
+            >
+              {{ option.name | capitalize }}
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    </div>
+  {% endif %}
+  {% unless request.path == '/collections/all' %}
+  <a href="#" class="menu-toggle menu-toggle-mobile md:!hidden !flex !relative !top-0 !left-0 pt-[10px] justify-end" id="mt_dt"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/filter.svg"></a>
+  {% endunless %}
+
+  {% assign is_apparel = false %}
+  {% for link in linklists['apparel-accessories'].links %}
+    {% if collection.url == link.url %}
+      {% assign is_apparel = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  <script>
+$(document).ready(function() {
+  // Toggle filter for menu-toggle
+  $('.menu-toggle').click(function() {
+    if ($(".filters-wrap").hasClass("someClass active")) {
+      // If it's open, hide the filter by removing the classes
+      $(".filters-wrap").removeClass("someClass active hidden");
+    } else {
+      // If it's closed, show the filter by adding the classes
+      $(".filters-wrap").addClass("someClass active").removeClass("hidden");
+    }
+  });
+
+  // Toggle filter for menu-toggle2
+  $('.menu-toggle2').click(function() {
+    if ($(".filters-wrap").hasClass("someClass active")) {
+      // If it's open, hide the filter by removing the classes
+      $(".filters-wrap").removeClass("someClass active hidden");
+    } else {
+      // If it's closed, show the filter by adding the classes
+      $(".filters-wrap").addClass("someClass active").removeClass("hidden");
+    }
+  });
+
+  // Close filter when clicking on menu-close
+  $('.menu-close').click(function() {
+    $(".filters-wrap").removeClass("someClass active hidden");
+  });
+});
+
+  </script>
+  <div class="flex flex-col">
+
+    <div class="mb-[64px] lg:mb-[96px]">
+      {% comment %} product grid {% endcomment %}
+      <div class="collection-wrapper lg:grid grid-cols-3 gap-6">
+        {% for product in collection.products %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+        {% comment %}{% include 'promo-item' %}{% endcomment %}
+      </div>
+      {% comment %} pagination {% endcomment %}
+      <div class="pagination mt-[46px] flex justify-center items-center">
+        <div class="w-[50px] h-[50px] flex justify-center items-center border border-solid border-[#DBDBDB]">
+          {% include 'icon-chevron-left' %}
+        </div>
+        <div class="pl-4 pr-8">
+          {% for i in (1..4) %}
+            <span class="ml-4 text-[#212121] fon-bold">{{ i }}</span>
+          {% endfor %}
+        </div>
+        <div class="w-[50px] h-[50px] flex justify-center items-center border border-solid border-[#DBDBDB]">
+          {% include 'icon-chevron-right' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  [type="checkbox"]:checked:focus, [type="checkbox"]:checked:hover, [type="checkbox"]:indeterminate, [type="radio"]:checked:focus, [type="radio"]:checked:hover {
+    background-color: none;
+    border-color: transparent;
+  }
+  #searchspring-content .hover-change-image1 .ss__result > a:first-child{position:relative;margin-bottom:15px;}
+  #searchspring-content .hover-change-image1 .ss__result > a:last-child{width: calc(100% - 30px);top: 0px;padding-top: calc(100% - 30px);left: 15px;}
+  #searchspring-content .hover-change-image1 .ss__result > a:first-child{padding-top:100%;height:0;}
+  #searchspring-content .hover-change-image1 .ss__result > a img{position:absolute;top:0;border-radius: 8px;}
+  #searchspring-content .hover-change-image1 .ss__result{position:relative;}
+  #searchspring-content .hover-change-image1 .ss__result > a:last-child{opacity:1;z-index:1;display:block}
+  #searchspring-content .hover-change-image1 .ss__result:hover > a:last-child{opacity:0;z-index:1}
+    body #searchspring-content .hover-change-image1 .ss__results .ss__inline-banner.ss__inline-banner--grid > div,
+    #searchspring-content .hover-change-image1 .ss__results .ss__result img{border-radius: 8px;}
+    @media (max-width:767px){
+      body #searchspring-content .hover-change-image1 .ss__results .ss__result>a.block.ss__title{margin-top:0;}
+  body #searchspring-content .hover-change-image1 .ss__result > a:last-child{width: calc(100% - 0px);top: 0px;padding-top: calc(100% - 0px);left: 0px;}
+    }
+    .yotpo-icon-half-star, .yotpo-icon-star {
+      color: #FEDD00 !important;
+    }
+    .ypm.yotpo.bottomLine {
+      margin: 12px;
+      margin-bottom: 0;
+    }
+    .ypm.yotpo.bottomLine span.yotpo-stars {
+      margin-right: 5px;
+    }
+    .product-grid-item .absolute.hidden{
+        height: 55%;
+        top: 5%;
+
+    }
+    .product-grid-item .absolute.hidden img{
+        object-fit: contain !important;
+    }
+    img.px-3{
+        transition: .5s;
+    }
+    .hover-change-image:hover img.px-3{
+        opacity: 0;
+    }
+    .apparel-links-title svg {
+      transition: .5s;
+    }
+    .apparel-links-title.active svg{
+      transform: rotate(180deg);
+    }
+    .apparel-links-options{
+      display: none;
+    }
+    .apparel-links-options.active{
+      display: block;
+    }
+    .pagination path {
+      stroke: #000;
+    }
+    .filters-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filters-wrap {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .mobile-filter-trigger,
+    .facet-filters__sort {
+      font-weight: 700;
+      letter-spacing: 1px;
+      height: 48px;
+      align-items: center;
+    }
+    .facet-filters__sort{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-indent: 1px;
+      background: #fff;
+      height: 48px;
+    }
+    #searchspring-toolbar .ss__theme{
+      position: relative;
+    }
+    #searchspring-toolbar .ss__theme:after{
+      content: '';
+      position: absolute;
+      top: 16px;
+      right: 15px;
+      width: 9px;
+      height: 9px;
+      display: block;
+      border-bottom: 2px solid #000;
+      border-right: 2px solid #000;
+      transform: rotate(45deg);
+    }
+    .ss__title{
+      letter-spacing: 1px;
+    }
+    .ss__list .ss__icon__wrapper .ss__icon {
+      background: #000;
+    }
+    .ss__list .ss__icon__wrapper {
+      border-color: #000 !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      .filters-wrap{
+      top: 200px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      transition: .3s;
+      transform: translateY(100%);
+      overflow: scroll;
+    }
+    .filters-wrap.active{
+      transform: translateY(0);
+    }
+
+    #searchspring-sidebar,
+    #searchspring-sidebar .ss__sidebar {
+      height: 100%;
+    }
+
+    #searchspring-sidebar .ss__facets {
+      height: calc(100% - 400px);
+      overflow: scroll;
+    }
+    #searchspring-sidebar .ss__facets::-webkit-scrollbar {
+      display: none;
+    }
+
+    #searchspring-sidebar .ss__facets {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    #searchspring-sidebar .ss__sidebar .bottom-0 {
+      bottom: 200px;
+    }
+    }
+    .facet-filters__sort{min-width:300px;}
+    body .filters-wrap.active {
+      left: 0 !important;
+      position: fixed !important;
+    }
+
+    .collection .block-tops {
+      background-color: #181818;
+      margin-bottom: 0;
+      padding: 0;
+    }
+  /* Default background for desktop */
+  .collection .block-tops {
+    background: url({% if collection.metafields.custom.image_for_desktop != blank %}
+    {{ collection.metafields.custom.image_for_desktop | img_url: 'master' }}
+  {% else %}
+    'https://cdn.shopify.com/s/files/1/0674/6164/4518/files/7d7ae487fab1a6a37e18fa84510b6db8.png?v=1725003168'
+  {% endif %});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #000000;
+    {% if collection.metafields.custom.image_for_desktop != blank %}
+    background-position-x: 240px;
+    {% else %}
+    background-position-x: 0;
+    {% endif %}
+  }
+
+  /* Media query for mobile devices */
+  @media (max-width: 768px) {
+    .collection .block-tops {
+      background: url({% if collection.metafields.custom.image_for_mobile != blank %}
+      {{ collection.metafields.custom.image_for_mobile | img_url: 'master' }}
+    {% else %}
+      'https://cdn.shopify.com/s/files/1/0674/6164/4518/files/7d7ae487fab1a6a37e18fa84510b6db8.png?v=1725003168'
+    {% endif %});
+      background-position-y: -90px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  /* Adding gradient overlay with ::before */
+  .collection .block-tops::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(24,24,24,1) 0%, rgba(24,24,24,0.8408) 50%, rgba(24,24,24,0.32) 100%);
+    z-index: 1; /* Ensure the overlay is on top of the background */
+    pointer-events: none; /* Allow clicks to pass through the overlay */
+  }
+    .collection .block-tops .inner-container {
+      position: relative;
+    z-index: 2;
+      padding-bottom: 80px;
+    }
+    @media (max-width: 1409px) {
+      .collection .block-tops{
+        background-position-y: 0;
+      }
+    }
+    @media (max-width: 1000px) {
+      .collection .block-tops {
+          background-position-x: 80%;
+      }
+    }
+    .inner-container {
+      padding: 35px 58px 10px 58px;
+    }
+
+    @media screen and (max-width: 992px) {
+        .inner-container {
+        padding: 20px 25px 20px 25px;
+        }
+      }
+
+    .block-tops:after {
+      height: 0;
+    }
+
+    .pt-\[35px\] {
+      background-color: #FEDD00;
+    }
+
+    .col-desc span {
+      color: #FFFFFF;
+    }
+
+    .col-desc {
+      color: #FFFFFF;
+    }
+
+    h1 {
+      color: #FEDD00;
+      font-family: Anton;
+      font-size: 50px !important;
+      text-transform: Uppercase;
+    }
+
+    .all-cls .active-menu:nth-of-type(2) {
+      /*display: flex !important;*/
+    }
+
+    .collection .product-grid-item .product-title {
+      font-family: Anton;
+      text-transform: Uppercase;
+      font-size: 30px;
+      margin-left: 15px;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 767px) {
+      body.collection .ypm {
+          margin-left: 15px;
+      }
+      body.collection .product-price {
+        margin-left: 15px;
+        font-size: 18px;
+      }
+      .collection .product-des {
+        padding-right: 15px !important;
+      }
+  }
+
+  @media (max-width: 1109px) {
+    .collection .product-grid-item .product-title {
+      font-size: 24px !important;
+      line-height: 25px;
+      padding-right: 15px !important;
+    }
+  }
+
+    .collection .product-des {
+      margin-left: 15px;
+    }
+
+    .collection .product-price {
+      margin-left: 15px;
+    }
+
+    .block-tops .breadcrumbs a,
+    .block-tops span {
+      color: #FFFFFF;
+    }
+
+    .px-4 svg {
+      fill: #FEDD00 !important;
+    }
+
+    .block-tops ul a {
+      color: #FFFFFF !important;
+    }
+
+    .block-tops ul a.active {
+      color: #FEDD00 !important;
+    }
+
+    .px-3 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .collection .coll-img {
+      border-radius: 0;
+    }
+
+    .collection .menu-toggle {
+      top: 30px;
+    }
+    .menu-top-toggle::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 30px;
+    position: absolute;
+    left: 4px;
+    background: white;
+}
+@media  (max-width: 1107px) {
+  
+  .menu-toggle-mobile {
+    top: 0 !important;
+    position: relative !important;
+    left: 0;
+    right: 100% !important;
+    display: flex !important;
+    justify-content: end;
+  }
+  .menu-toggle-mobile img {
+    margin-bottom: 0;
+  }
+  
+}
+@media  (min-width: 1850px) {
+  .menu-toggle-desktop-all {
+  display: flex !important;
+}
+.menu-toggle-mobile-all {
+  display: none !important;
+}
+}
+@media  (max-width: 1848px) {
+  .menu-toggle-desktop-all {
+  display: none !important;
+}
+  .menu-toggle-mobile-all {
+    top: 0 !important;
+    position: relative !important;
+    left: 0;
+    right: 100% !important;
+    display: flex !important;
+    justify-content: end;
+  }
+
+  
+}
+</style>
+<script type="text/javascript">
+(function() {
+  function initMenus() {
+    if (typeof jQuery === 'undefined') {
+      // jQuery not loaded yet, wait and try again
+      setTimeout(initMenus, 100);
+      return;
+    }
+
+    jQuery(document).ready(function($){
+      setTimeout(function(){
+        // Check which menu has an active link and show only that one
+        var $sbgMenu = $('#sbg');
+        var $settingsMenu = $('#settingsmenu');
+
+        // Count links in each menu (excluding the filter button)
+        var sbgLinks = $sbgMenu.find('a:not(.menu-toggle)');
+        var settingsLinks = $settingsMenu.find('a:not(.menu-toggle)');
+        var sbgHasActive = sbgLinks.filter('.active').length > 0;
+        var settingsHasActive = settingsLinks.filter('.active').length > 0;
+
+        console.log('SBG has active:', sbgHasActive, 'Settings has active:', settingsHasActive);
+        console.log('SBG links:', sbgLinks.length, 'Settings links:', settingsLinks.length);
+
+        if(sbgHasActive) {
+          $sbgMenu.addClass('active-menu');
+        } else if(settingsHasActive) {
+          $settingsMenu.addClass('active-menu');
+        } else if(settingsLinks.length > 0) {
+          // If neither has active but settings has links, show settings menu
+          $settingsMenu.addClass('active-menu');
+        } else if(sbgLinks.length > 0) {
+          // If settings is empty, show sbg menu
+          $sbgMenu.addClass('active-menu');
+        }
+      }, 100);
+    });
+  }
+
+  initMenus();
+})();
+</script>
+<script>
+  // let interval = setInterval(function() {
+
+  //     if(document.querySelector('.mobile-filter-trigger')) {
+  //       clearInterval(interval)
+
+  //       document.querySelector('.mobile-filter-trigger').addEventListener('click', function () {
+  //         document.querySelector('.filters-wrap').classList.remove('hidden')
+  //         setTimeout(function() {
+  //           document.querySelector('.filters-wrap').classList.add('active')
+  //         }, 300)
+  //       })
+
+  //       document.querySelector('.close-mobile-filters').addEventListener('click', function () {
+  //         document.querySelector('.filters-wrap').classList.remove('hidden')
+  //         document.querySelector('.filters-wrap').classList.remove('active')
+  //         setTimeout(function() {
+  //           document.querySelector('.filters-wrap').classList.add('hidden')
+  //         }, 1000)
+  //       })
+
+  //       document.querySelector('.apparel-links-wrap').classList.remove('hidden')
+  //       document.querySelector('.apparel-links-title').addEventListener('click', function() {
+  //         this.classList.toggle('active')
+  //         document.querySelector('.apparel-links-options').classList.toggle('active')
+  //       })
+  //     }
+
+  // }, 500)
+      var $range = $(".js-range-slider"),
+          from = '{{  }}',
+          to;
+
+      var updateValues = function () {
+          var params = new URLSearchParams(window.location.search)
+          var newparams = []
+          for (let param of params) {
+              var k = param[0]
+              var v = param[1]
+              if (k !== 'filter.v.price.gte' && k !== 'filter.v.price.lte') {
+                  newparams.push(encodeURIComponent(k) + '=' + encodeURIComponent(v))
+              }
+          }
+      
+          newparams.unshift('filter.v.price.gte=' + from)
+          newparams.unshift('filter.v.price.lte=' + to)
+          window.location.search = newparams.join('&')
+          // $from.prop("value", from);
+          // $to.prop("value", to);
+      };
+
+      $range.ionRangeSlider({
+          onChange: function (data) {
+            from = data.from;
+            to = data.to;
+
+          },
+          onFinish :  function (data) {
+             updateValues();
+          }
+      });
+      var range = $range.data("ionRangeSlider");
+      if(range){
+      range.update({
+        from: $range.data('minvalue'),
+        to:  $range.data('maxvalue')
+      });
+      }
+      document.querySelector('.sortselect').addEventListener('change', function (e) {
+        var params = new URLSearchParams(window.location.search)
+        var newparams = []
+        for (let param of params) {
+            var k = param[0]
+            var v = param[1]
+            if (k !== 'sort_by') {
+                newparams.push(encodeURIComponent(k) + '=' + encodeURIComponent(v))
+            }
+        }
+    
+        newparams.unshift('sort_by=' + e.currentTarget.value)
+        window.location.search = newparams.join('&')
+    })
+  $('input[name="format"]').change(function(){
+    window.location.href=$(this).parents('.flex-checkbx').find('a').attr('href');
+  })
+</script>
+
+{% schema %}
+{
+  "name": "collection",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu List"
+    },
+    {
+      "type": "text",
+      "id": "promo_title",
+      "label": "Promo item title",
+      "default": "Save 25% on your first order"
+    },
+    {
+      "type": "textarea",
+      "id": "promo_subtitle",
+      "label": "Promo item subtitle",
+      "default": "Subscribe & save 25% on your first order plus free shipping, 10% off and free shipping on subsequent orders."
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Promo item image"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Promo item background color",
+      "default": "#FEDD00"
+    }
+  ]
+}
+{% endschema %}

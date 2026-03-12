@@ -1,0 +1,81 @@
+<div class="flex flex-col -lg:m-auto">
+  {% for image in product.images %}
+    {% assign size = forloop.length %}
+  {% endfor %}
+  {% if product.tags contains 'stack' %}
+    {% assign size = 0 %}
+  {% endif %}
+
+  {% assign product_collection = product.collections[0] %}
+  {% for tag in product.tags %}
+      {% if tag contains "Category:" %}
+          {% assign category = tag | replace: 'Category:', '' | strip %}
+          {% for collection in product.collections %}
+              {% if collection.title == category  %}
+                  {% assign product_collection = collection %}
+                  {% break %}
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+  {% endfor %}
+    <!-- Image selector -->
+    <product-gallery class="w-full swiper-product-gallery overflow-hidden relative" data-size="{{size}}">
+      <!-- Tab panel, show/hide based on tab state. -->
+      <div class="{% if size > 1 %}swiper-wrapper{% endif %} ">
+        {% for image in product.images %}
+          {% unless image.alt == 'hidden' %}
+           
+            <img src="{{ image | image_url: width: 800 }}" alt="{{image.alt}}" data-src="{{image | img_url: 'master'}}" class="{% if size > 1 %}swiper-slide{% endif %} w-full h-full object-center  object-contain  bg-[#F5F5F5]" data-index="{{forloop.index}}"{% if forloop.first %} fetchpriority="high" loading="eager"{% endif %}>
+          
+          {% endunless %}
+        {% endfor %}
+      </div>
+      <div style="bottom: auto" class="swiper-pagination sm:hidden"></div>
+
+      {% assign progress = 100 | divided_by: size %}
+      {% if size > 1 %}
+      <div class="progress bg-[#DBDBDB] relative w-full h-[3px] lg:hidden">
+        <div class="inner-progress absolute top-0 left-0 bg-[#212121] h-[3px] transition-all duration-500" style="width: {{progress}}%"></div>
+      </div>
+      
+      <span class="absolute cursor-pointer swiper-product-prev -scale-x-[1] hidden lg:inline-flex left-[20px] z-[9] -translate-y-[50%] top-[50%] w-[50px] h-[50px] flex justify-center items-center border border-solid border-[#DBDBDB] bg-white">{% render 'icon-arrow' %}</span>
+      <span class="absolute cursor-pointer swiper-product-next hidden lg:inline-flex right-[20px] z-[9] -translate-y-[50%] top-[50%] w-[50px] h-[50px] flex justify-center items-center border border-solid border-[#DBDBDB] bg-white">{% render 'icon-arrow' %}</span>
+      {% endif %}
+     
+
+      <div class="absolute hidden lg:inline-block lg:top-[16px] lg:!left-[16px] z-[9]">
+        {%- assign customBadge = false -%}
+        {%- assign isAwardWinning = false -%}
+        {% for tag in product.tags %}
+          {%- if tag contains '__label:' -%}
+            {% unless tag contains '__label:Award-winning' %}
+              {% assign customBadge = tag | split: 'label:' | last %}
+            {% endunless %}
+          {%- endif -%}
+
+          {%- if tag contains '__label:Award-winning' -%}
+            {% assign isAwardWinning = true %}
+          {%- endif -%}
+        {% endfor %}
+        {%- if product.available == false -%}
+          <span class="bg-primary !text-[#fff] text-[12.098px] leading-[160%] font-semibold px-[9px] py-[3px] h-fit mr-2">{{ 'products.product.sold_out' | t }}</span>
+        {%- elsif product.compare_at_price > product.price and product.available -%}
+          <span class="bg-primary !text-[#fff] text-[12.098px] leading-[160%] font-semibold px-[9px] py-[3px] h-fit mr-2">{{ 'products.product.on_sale' | t }}</span>
+        {%- elsif customBadge -%}
+          <span class="bg-primary !text-[#fff] text-[12.098px] leading-[160%] font-semibold px-[9px] py-[3px] h-fit mr-2">{{customBadge}}</span>
+        {%- elsif isAwardWinning -%}
+          <span class="bg-transparent border border-solid border-[#F05A28] !text-[#F05A28] text-[12.098px] leading-[160%] font-semibold px-[9px] py-[3px] h-fit mr-2">Award winning</span>
+        {%- endif -%}
+      </div>
+      
+    </product-gallery>
+   </div>
+    {% if product.metafields.custom.video != blank or product.metafields.custom.youtube_video_id != blank %}
+        <video-block class="vid-block flex justify-center mt-[22px] lg:mt-0 lg:inline-flex items-center cursor-pointer z-[9] top-6 right-6" {% if product.metafields.custom.youtube_video_id != blank %} data-youtube="true" {% endif %} data-src="{{product.metafields.custom.youtube_video_id | default: product.metafields.custom.video.value.sources[0].url}}">
+          <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 21V2L17 11.5L1 21Z" stroke="#212121" stroke-width="2"/>
+          </svg>
+            
+          <span class="ml-2 text-[13.9px] uppercase font-bold">watch video</span>
+        </video-block>
+      {% endif %}

@@ -1,0 +1,93 @@
+<div class="blog-post" style="background: {{section.settings.bg}};">
+   
+        <div class="block-top">
+            <div class="text-primary blog-subtitle">
+                {{section.settings.pretitle}}
+            </div>
+            <h2 class=" blog-title text-primary font-bold">
+                {{section.settings.title | replace: '.', '<span class="yellow">.</span>'}}
+            </h2>
+        </div>
+        <featured-blog class="relative block w-full mt-6 lg:mt-0">
+            <div class="blog-wapper w-full" id="section-{{ section.id }}">
+                {% for article in section.settings.blog.articles limit:4 %}
+                    <div class="swiper-slide">
+                        {% include 'article-grid-item' %}
+                    </div>
+                {% endfor %}
+            </div>
+        </featured-blog>
+  
+</div>
+   <script>
+      $(document).ready(function(){
+      $('#section-{{ section.id }}').slick({
+        dots: true,
+        infinite: false,arrows: true,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+      });
+    </script>
+
+{% schema %}
+    {
+        "name": "Blog carousel",
+        "class":"spaced-section--boxed",
+        "settings": [
+            {
+                "type": "blog",
+                "id": "blog",
+                "label": "Blog"
+            },
+            {
+                "type": "color",
+                "id": "bg",
+                "label": "Background color",
+                "default": "#F5F5F5"
+            },
+            {
+                "type": "text",
+                "id": "pretitle",
+                "label": "Pretitle",
+                "default": "Essential Reading"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "dare to Go the extra mile."
+            }
+        ],
+        "presets": [
+            {
+                "name": "Blog carousel",
+                "category": "Homepage"
+            }
+        ]
+    }
+{% endschema %}

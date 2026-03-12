@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner-alt",
+      "settings": {
+        "breadcrumbs": false,
+        "image": "shopify:\/\/shop_images\/military_1280x270_82e22983-fbc1-490e-bdb7-e5fb20ad1f52.webp",
+        "image_2": "shopify:\/\/shop_images\/military_1280x270_82e22983-fbc1-490e-bdb7-e5fb20ad1f52.webp",
+        "custom_heading": "<p>ANIMAL SUPPORTS OUR TROOPS<\/p>",
+        "subheading": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "breadcrumbs": false,
+        "subtitle": "<p>Page subtitle<\/p>"
+      }
+    },
+    "info": {
+      "type": "page-banner",
+      "settings": {
+        "color": "#ffffff",
+        "image": "shopify:\/\/shop_images\/Military_1920x960_Desktop.webp",
+        "image_2": "shopify:\/\/shop_images\/Military_768x1042_Mobile.webp",
+        "heading": "SHOP ALL SUPPS",
+        "subheading": "Military and First Responders get 10% off all normal purchases when verified during checkout.",
+        "button_label": "shop now",
+        "button_link": "shopify:\/\/collections\/shop-all-supplements"
+      }
+    },
+    "products": {
+      "type": "page-products-gallery",
+      "settings": {
+        "title": "featured products",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "info",
+    "products"
+  ]
+}

@@ -1,0 +1,21 @@
+{% assign overlap_class = '' %}
+{% assign position_class = '' %}
+
+{% if position == 'bottom' %}
+  {% assign position_class = "bottom-0" %}
+
+  {% if overlap == true %}
+    {% assign overlap_class = "-mt-[36px]" %}
+  {% endif %}
+{% elsif position == 'top' %}
+  {% assign position_class = "top-0" %}
+
+  {% if overlap == true %}
+    {% assign overlap_class = "-mt-[36px]" %}
+  {% endif %}
+{% endif %}
+
+
+<div class="absolute w-full {{ position_class }} {{ class }} {{ overlap_class }}">
+  {{ image | image_url: height: 36 | image_tag: class: 'w-full h-[36px]' }}
+</div>

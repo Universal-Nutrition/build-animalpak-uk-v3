@@ -1,0 +1,1208 @@
+{% assign is_transparent = false %}
+{% if section.settings.homepage and template.name == 'index' %}
+    {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.plp and template.name == 'collection' %}
+    {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.pdp and template.name == 'product' %}
+    {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.blog and template.name == 'blog' %}
+    {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.article and template.name == 'article' %}
+    {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.page and template.name == 'page' %}
+    {% assign is_transparent = true %}
+{% endif %}
+
+{% for block in section.blocks %}
+    {% if block.type == 'transparent' %}
+        {% if canonical_url contains block.settings.page %}
+            {% assign is_transparent = true %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{% style %}
+    @font-face {
+    font-family: 'BebasNeuePro-ExpandedRegular';
+    src: url('{{ 'Bebas-Neue-Pro-Expanded-Regular.woff' | asset_url }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    }
+
+    .accordion-faq .accordion-content {
+    display: none;
+    padding-bottom: 40px;
+    }
+    .faq-wrap span {
+    font-family: benton-sans, sans-serif;
+    font-size: 15px;
+    }
+    .faq-wrap .accordion-content .collapsible-content__inner {
+    font-size: 16px;
+    line-height: 22px;
+    padding-left: 20px;
+    }
+    .accordion-header {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 24px;
+    border-bottom: 1px solid #e8e8e1;
+    padding-bottom: 10px;
+    }
+    .accordion-header:after {
+    content: '';
+    background: url(https://cdn.shopify.com/s/files/1/0675/6882/8736/files/chev.svg);
+    height: 9px;
+    width: 14px;
+    background-size: contain;
+    display: block;
+    position: absolute;
+    right: 2px;
+    top: 7px;
+    }
+    .accordion-header.active:after {
+    transform: rotate(-180deg);
+    }
+    .accordion-faq2 .accordion-content {
+    display: none;
+    padding-bottom: 40px;
+    }
+    .faq-wrap span {
+    font-family: benton-sans, sans-serif;
+    font-size: 15px;
+    }
+    .accordion-header2 {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: left;
+    padding-left: 0px;
+    border-bottom: 1px solid #e8e8e1;
+    padding-bottom: 10px;
+    }
+    .accordion-header2:after {
+    content: '';
+    background: url(https://cdn.shopify.com/s/files/1/0675/6882/8736/files/chev.svg);
+    height: 9px;
+    width: 14px;
+    background-size: contain;
+    display: block;
+    position: absolute;
+    right: 2px;
+    top: 7px;
+    }
+    .accordion-header2.active:after {
+    transform: rotate(-180deg);
+    }
+    .accordion-faq3 .accordion-content {
+    display: none;
+    padding-bottom: 40px;
+    }
+    .faq-wrap span {
+    font-family: benton-sans, sans-serif;
+    font-size: 15px;
+    }
+    .accordion-header3 {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: left;
+    padding-left: 0px;
+    border-bottom: 1px solid #e8e8e1;
+    padding-bottom: 10px;
+    }
+    .accordion-header3:after {
+    content: '';
+    background: url(https://cdn.shopify.com/s/files/1/0675/6882/8736/files/chev.svg);
+    height: 9px;
+    width: 14px;
+    background-size: contain;
+    display: block;
+    position: absolute;
+    right: 2px;
+    top: 7px;
+    }
+    .accordion-header3.active:after {
+    transform: rotate(-180deg);
+    }
+    .supplements-2-wrap .mt-0 {
+    background-color: #000;
+    }
+
+    .service-links:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    background-color: #fff;
+    z-index: 10;
+    font-size: 14px;
+    width: 157px;
+    margin: 0 auto;
+    }
+
+    sticky-header #custom__md-footer-selector-block,
+    sticky-header #custom__md-footer-selector-block > *,
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__container,
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__content,
+    sticky-header #custom__md-footer-selector-block #md-footer-selector__form__id {
+    background-color: {{ section.settings.upper_nav_bg }} !important;
+    }
+
+    .custom-orbe-wrap {
+    background-color: {{ section.settings.upper_nav_bg }};
+    }
+
+    .custom-orbe,
+    .custom-orbe span {
+    font-size: 14px !important;
+    font-family: 'BebasNeuePro-ExpandedRegular' !important;
+    }
+
+    #custom__md-footer-selector-block .md-footer-selector__content .md-form__select span {
+    font-size: 14px !important;
+    font-family: 'BebasNeuePro-ExpandedRegular' !important;
+    }
+
+    .mega-nav__item,
+    .mega-nav .nav__link a {
+    font-family: 'BebasNeuePro-ExpandedRegular' !important;
+    text-transform: uppercase !important;
+    }
+
+    .mega-nav__item,
+    .mega-nav .nav__link a,
+    .service-links a {
+    font-family: 'BebasNeuePro-ExpandedRegular' !important;
+    }
+
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__content button.md-form__select {
+    background-color: {{ section.settings.upper_nav_bg }} !important;
+    color: {{ section.settings.header_text_color }} !important;
+    filter: hue-rotate(0deg) !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.99996 11.2929L13.1464 8.14648L13.8535 8.85359L9.99996 12.7071L6.14641 8.85359L6.85352 8.14648L9.99996 11.2929Z' fill='white'/%3E%3C/svg%3E")!important;
+    background-position: right 6px center !important;
+    background-size: auto !important;
+    font-family: 'BebasNeuePro-ExpandedRegular' !important;
+    font-size: 14px !important;
+    border-radius: 0 !important;
+    }
+
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__content button.md-form__select:hover {
+    background-color: {{ section.settings.upper_nav_bg }} !important;
+    color: {{ section.settings.header_text_color }} !important;
+    filter: hue-rotate(0deg) !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.99996 11.2929L13.1464 8.14648L13.8535 8.85359L9.99996 12.7071L6.14641 8.85359L6.85352 8.14648L9.99996 11.2929Z' fill='white'/%3E%3C/svg%3E")!important;
+    background-position: right 6px center !important;
+    background-size: auto !important;
+    }
+
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__content button.md-form__select span {
+    color: {{ section.settings.header_text_color }} !important;
+    filter: hue-rotate(0deg) !important;
+    }
+
+    @media screen and (max-width: 1110px) {
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__content button.md-form__select {
+    background-color: {{ section.settings.upper_nav_bg }} !important;
+    color: {{ section.settings.header_text_color }} !important;
+    filter: hue-rotate(0deg) !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.99996 11.2929L13.1464 8.14648L13.8535 8.85359L9.99996 12.7071L6.14641 8.85359L6.85352 8.14648L9.99996 11.2929Z' fill='white'/%3E%3C/svg%3E")!important;
+    }
+
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__content button.md-form__select:hover {
+    background-color: {{ section.settings.upper_nav_bg }} !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.99996 11.2929L13.1464 8.14648L13.8535 8.85359L9.99996 12.7071L6.14641 8.85359L6.85352 8.14648L9.99996 11.2929Z' fill='white'/%3E%3C/svg%3E")!important;
+    }
+
+    sticky-header #custom__md-footer-selector-block .md-footer-selector__content button.md-form__select span {
+    color: {{ section.settings.header_text_color }} !important;
+    filter: hue-rotate(0deg) !important;
+    }
+    }
+{% endstyle %}
+
+{{ 'bundle.section-header-style-2.css' | asset_url | stylesheet_tag }}
+
+<sticky-header class="header-s2 block group blurred transition duration-300 z-10">
+    <!--
+      Mobile menu
+
+      Off-canvas menu for mobile, show/hide based on off-canvas menu state.
+    -->
+    <div class="relative z-40 xl:hidden h-0" role="dialog" aria-modal="true" aria-labelledby="mobile-navigation-menu">
+        <!--
+          Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+
+          Entering: "transition-opacity ease-linear duration-300"
+            From: "opacity-0"
+            To: "opacity-100"
+          Leaving: "transition-opacity ease-linear duration-300"
+            From: "opacity-100"
+            To: "opacity-0"
+        -->
+        {% render 'navigation-mobile' %}
+    </div>
+    <!-- Top navigation -->
+    <div class="w-full flex items-center justify-between" style="background-color: {{ section.settings.upper_nav_bg }}">
+        <div class="block mx-8 lg:mx-15 w-full">
+            <div class="flex items-center justify-between w-full">
+                {% comment %} left side {% endcomment %}
+                <div class="custom-orbe-wrap flex lg:justify-end lg:max-h-[28px] lg:pr-[20px]">
+                    <button class="custom-orbe flex items-center lg:text-white text-[13.913px] leading-[160%] font-bebasNeueExpanded pr-4" aria-label="country selector">
+                        <span class="orbe-flags-gb w-[15px] h-[15px] rounded-full bg-no-repeat bg-cover bg-center mr-2"></span>
+                        <span style="color: {{ section.settings.header_text_color }};">
+                UK
+                </span>
+                        <span class="ml-2 custom-orbe-arrow" style="color: {{ section.settings.header_text_color }};">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                    <path d="M4.71152 6.29486L0 1.58336L0.878188 0.70517L4.71152 4.5385L8.54486 0.70517L9.42304 1.58336L4.71152 6.29486Z" fill="currentColor"/>
+                  </svg>
+                </span>
+                    </button>
+                    <div id="custom__md-footer-selector-block"></div>
+                </div>
+                {% comment %} right side {% endcomment %}
+                <div class="hidden lg:flex items-center">
+                    <div class="flex items-center relative">
+                        {% assign nav_links = 0 %}
+                        {% for link in linklists[section.settings.upper_nav_menu].links %}
+                                {% liquid
+                                    assign link_icon = ''
+                                    if link.title == 'Services'
+                                        capture link_icon
+                                            render 'icon-customer-service' with classes: 'w-4 h-4'
+                                        endcapture
+                                    elsif link.title == 'Orders'
+                                        capture link_icon
+                                            render 'icon-orders' with classes: 'w-4 h-4'
+                                        endcapture
+                                    elsif link.title == 'About Animal'
+                                        capture link_icon
+                                            render 'icon-about' with classes: 'w-4 h-4'
+                                        endcapture
+                                    elsif link.title == 'Blog'
+                                        capture link_icon
+                                            render 'icon-blog' with classes: 'w-4 h-4'
+                                        endcapture
+                                    elsif link.title == 'Programs'
+                                        capture link_icon
+                                            render 'icon-programs' with classes: 'w-4 h-4'
+                                        endcapture
+                                    endif
+                                %}
+                                <div class="service-links flex justify-center items-center relative">
+                                    <a href="{{ link.url }}" class="h-10 flex gap-2.5 items-center text-white text-[13.913px] leading-[160%] font-bebasNeueExpanded pr-4 lg:pl-4">
+                                        {% comment %} {% render 'icon-customer-service' with classes: 'w-4 h-4' %} {% endcomment %}
+                                        {{ link_icon }}
+                                        {{ link.title }}
+                                        {% if link.links.size > 0 %}{% render 'icon-chevron-bottom' with classes: 'w-4 h-4' %}{% endif %}
+                                    </a>
+                                    {% if link.links.size > 0 %}
+                                        <ul class="dropdown-menu invisible flex flex-col gap-2 absolute top-full shadow-md
+                                      {% if forloop.last %} right-3 left-auto {% else %} left-3 right-auto {% endif %} rounded-lg py-5">
+                                            <svg class="absolute {% if forloop.last %} right-5 {% else %} left-5 {% endif %} -top-2" xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8" fill="none">
+                                                <path d="M8 0L0 8H16L8 0Z" fill="white"/>
+                                            </svg>
+                                            {% for link in link.links %}
+                                                <li>
+                                                    <a href="{{ link.url }}" class="text-black leading-[160%] font-bebasNeueExpanded px-4 transition hover:underline w-full block">
+                                                        {{ link.title }}
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="relative pb-2 pt-2 xl:py-0" style="background-color: {{ section.settings.header_bg }}; color: {{ section.settings.header_text_color }};">
+        <nav aria-label="Top">
+            <!-- Secondary navigation -->
+            <main-header>
+                <div class="mx-8 lg:mx-15 main-header__recharge-styles">
+                    <div class="">
+                        <div class="w-full mx-auto h-10.5 xl:h-16 flex items-center xl:justify-between">
+                            <div class="flex items-center xl:hidden 121">
+                                <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
+                                <button
+                                        id="mobile-menu-button"
+                                        js-trigger="mobile-menu-button"
+                                        type="button"
+                                        class=" bg-white-900 p-0 rounded-md text-black"
+                                >
+                                    <span class="sr-only">Open menu</span>
+                                    <!-- Heroicon name: outline/menu -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17" viewBox="0 0 22 17" fill="none">
+                                        <path d="M1 1H21M1 8.38387H21M1 15.7677H21" stroke="{{ section.settings.header_text_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <div class="mobile-search xl:flex ml-4">
+                                    {% comment %} Mobile {% endcomment %}
+                                    <a href="#" class="block md:hidden trigger-search mobile-trigger-search">
+                                        <span class="sr-only">Search</span>
+                                        <!-- Heroicon name: outline/search -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5003 1.96903C9.14485 1.96914 7.80912 2.28837 6.60451 2.90008C5.3999 3.51179 4.36135 4.39824 3.57549 5.48548C2.78963 6.57272 2.27926 7.82921 2.08696 9.15013C1.89466 10.4711 2.026 11.8181 2.47003 13.0789C2.91406 14.3397 3.6579 15.4776 4.63949 16.3978C5.62108 17.318 6.81196 17.9938 8.11277 18.3687C9.41358 18.7436 10.7866 18.8069 12.1173 18.5531C13.448 18.2994 14.6977 17.736 15.7623 16.91L19.4143 20.5055C19.6029 20.6848 19.8555 20.7841 20.1177 20.7818C20.3799 20.7796 20.6307 20.676 20.8161 20.4935C21.0015 20.311 21.1066 20.064 21.1089 19.8059C21.1112 19.5478 21.0104 19.2991 20.8283 19.1134L17.1763 15.5179C18.1642 14.284 18.7794 12.8011 18.9514 11.239C19.1233 9.67686 18.8451 8.09865 18.1485 6.68495C17.4519 5.27126 16.3651 4.0792 15.0126 3.24519C13.66 2.41118 12.0962 1.96893 10.5003 1.96903ZM4.00025 10.3374C4.00025 8.6402 4.68507 7.0125 5.90406 5.81239C7.12305 4.61228 8.77635 3.93806 10.5003 3.93806C12.2242 3.93806 13.8775 4.61228 15.0964 5.81239C16.3154 7.0125 17.0003 8.6402 17.0003 10.3374C17.0003 12.0346 16.3154 13.6623 15.0964 14.8624C13.8775 16.0626 12.2242 16.7368 10.5003 16.7368C8.77635 16.7368 7.12305 16.0626 5.90406 14.8624C4.68507 13.6623 4.00025 12.0346 4.00025 10.3374Z" fill="currentColor"></path>
+                                        </svg>
+                                    </a>
+                                    {% comment %} Desktop {% endcomment %}
+                                    <a href="#" class="hidden md:block trigger-search">
+                                        <span class="sr-only">Search</span>
+                                        <!-- Heroicon name: outline/search -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5003 1.96903C9.14485 1.96914 7.80912 2.28837 6.60451 2.90008C5.3999 3.51179 4.36135 4.39824 3.57549 5.48548C2.78963 6.57272 2.27926 7.82921 2.08696 9.15013C1.89466 10.4711 2.026 11.8181 2.47003 13.0789C2.91406 14.3397 3.6579 15.4776 4.63949 16.3978C5.62108 17.318 6.81196 17.9938 8.11277 18.3687C9.41358 18.7436 10.7866 18.8069 12.1173 18.5531C13.448 18.2994 14.6977 17.736 15.7623 16.91L19.4143 20.5055C19.6029 20.6848 19.8555 20.7841 20.1177 20.7818C20.3799 20.7796 20.6307 20.676 20.8161 20.4935C21.0015 20.311 21.1066 20.064 21.1089 19.8059C21.1112 19.5478 21.0104 19.2991 20.8283 19.1134L17.1763 15.5179C18.1642 14.284 18.7794 12.8011 18.9514 11.239C19.1233 9.67686 18.8451 8.09865 18.1485 6.68495C17.4519 5.27126 16.3651 4.0792 15.0126 3.24519C13.66 2.41118 12.0962 1.96893 10.5003 1.96903ZM4.00025 10.3374C4.00025 8.6402 4.68507 7.0125 5.90406 5.81239C7.12305 4.61228 8.77635 3.93806 10.5003 3.93806C12.2242 3.93806 13.8775 4.61228 15.0964 5.81239C16.3154 7.0125 17.0003 8.6402 17.0003 10.3374C17.0003 12.0346 16.3154 13.6623 15.0964 14.8624C13.8775 16.0626 12.2242 16.7368 10.5003 16.7368C8.77635 16.7368 7.12305 16.0626 5.90406 14.8624C4.68507 13.6623 4.00025 12.0346 4.00025 10.3374Z" fill="currentColor"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="header-s2__icons flex xl:hidden"></div>
+
+                            <div class="h-full flex xl:flex-0-auto relative z-[2] w-full xl:!w-fit justify-center xl:justify-start">
+                                <a href="{{ shop.url }}" class="flex items-center">
+                                    <span class="sr-only">Workflow</span>
+                                    {%- if section.settings.logo_text == blank and section.settings.logo != blank -%}
+                                        {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+                                        {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio | floor -%}
+                                        {{
+                                            section.settings.logo
+                                            | image_url: width: section.settings.width
+                                            | image_tag:
+                                            class: 'h-8 w-auto lg:w-[105px] lg:h-[52px] header-s2__logo',
+                                            widths: '50, 100, 150, 200, 250, 300, 400, 500',
+                                            height: logo_height,
+                                            width: section.settings.logo_width,
+                                            alt: logo_alt,
+                                            loading: 'eager',
+                                            fetchpriority: 'high'
+                                        }}
+                                    {%- elsif section.settings.logo_text != blank -%}
+                                        <span class="max-h-10.5 lg:max-h-full flex lg:inline lg:h-10 max-w-logomob lg:max-w-full w-auto logo-container">
+                                            {{- section.settings.logo_text -}}
+                                        </span>
+                                    {% endif %}
+                                </a>
+                            </div>
+
+                            <div class="hidden xl:flex ml-0 w-full items-center justify-center pb-0 -xl:w-full w-auto xl:absolute xl:translate-x-2/4 xl:right-1/2">
+                                <!-- /desktop view -->
+                                <div class='mega-nav'>
+                                    <div class='h-full flex justify-center space-x-8 gap-3 3xl:gap-5'>
+                                        {% for link in linklists[section.settings.menu].links %}
+                                            {% if link.links != blank %}
+                                                <div class='flex mega-nav__link' data-item-index='{{ forloop.index }}'>
+                                                    <div class='relative flex item-1' tabindex='-1'>
+                                                        <!--
+                                                          Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800"
+                                                        -->
+                                                        <button
+                                                                id='meganav-heading--{{ forloop.index }}'
+                                                                type='button'
+                                                                class='!font-bebasNeueExpanded uppercase !text-base 3xl:!text-lg mega-nav__item py-1 px-2 gap-1 h-[62px] border-transparent text-black relative z-10 flex items-center transition-colors ease-out duration-200 border-b-1'
+                                                                aria-expanded='false'
+                                                                meganav_heading_index='{{forloop.index}}'
+                                                                style="color: {{ section.settings.header_text_color }};"
+                                                        >
+                                                            {{ link.title -}}
+                                                            {%- render 'icon-caret', stroke: 'currentColor', with dataAttributeVal: forloop.index, dataAttributeName: 'meganav_heading_index' %}
+                                                        </button>
+                                                    </div>
+
+                                                    <!--
+                                                      'Women' mega menu, show/hide based on flyout menu state.
+
+                                                      Entering: "transition ease-out duration-200"
+                                                        From: "opacity-0"
+                                                        To: "opacity-100"
+                                                      Leaving: "transition ease-in duration-150"
+                                                        From: "opacity-100"
+                                                        To: "opacity-0"
+                                                    -->
+                                                    {% render 'navigation-desktop', index: forloop.index, parent_link: link %}
+                                                </div>
+
+                                            {% else %}
+                                                <div class="flex items-center h-[62px] !ml-0 !py-1 !px-2 nav__link">
+                                                    <a
+                                                            href='{{ link.url }}'
+                                                            data-item-index='{{ forloop.index }}'
+                                                            class='!font-bebasNeueExpanded uppercase mega-nav__item inline-flex items-center relative h-full !text-base 3xl:!text-lg'
+                                                            style="color: {{ section.settings.header_text_color }};"
+                                                    >
+                                                        {{- link.title -}}
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="header-s2__icons flex items-center justify-end h-full">
+                                <div class="flex items-center h-full">
+                                    <!-- Search -->
+                                    <div class="hidden xl:flex mr-6 header_icon pb-0 h-full justify-center items-center">
+                                        <a href="#" class="trigger-search">
+                                            <span class="sr-only">Search</span>
+                                            <!-- Heroicon name: outline/search -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5003 1.96903C9.14485 1.96914 7.80912 2.28837 6.60451 2.90008C5.3999 3.51179 4.36135 4.39824 3.57549 5.48548C2.78963 6.57272 2.27926 7.82921 2.08696 9.15013C1.89466 10.4711 2.026 11.8181 2.47003 13.0789C2.91406 14.3397 3.6579 15.4776 4.63949 16.3978C5.62108 17.318 6.81196 17.9938 8.11277 18.3687C9.41358 18.7436 10.7866 18.8069 12.1173 18.5531C13.448 18.2994 14.6977 17.736 15.7623 16.91L19.4143 20.5055C19.6029 20.6848 19.8555 20.7841 20.1177 20.7818C20.3799 20.7796 20.6307 20.676 20.8161 20.4935C21.0015 20.311 21.1066 20.064 21.1089 19.8059C21.1112 19.5478 21.0104 19.2991 20.8283 19.1134L17.1763 15.5179C18.1642 14.284 18.7794 12.8011 18.9514 11.239C19.1233 9.67686 18.8451 8.09865 18.1485 6.68495C17.4519 5.27126 16.3651 4.0792 15.0126 3.24519C13.66 2.41118 12.0962 1.96893 10.5003 1.96903ZM4.00025 10.3374C4.00025 8.6402 4.68507 7.0125 5.90406 5.81239C7.12305 4.61228 8.77635 3.93806 10.5003 3.93806C12.2242 3.93806 13.8775 4.61228 15.0964 5.81239C16.3154 7.0125 17.0003 8.6402 17.0003 10.3374C17.0003 12.0346 16.3154 13.6623 15.0964 14.8624C13.8775 16.0626 12.2242 16.7368 10.5003 16.7368C8.77635 16.7368 7.12305 16.0626 5.90406 14.8624C4.68507 13.6623 4.00025 12.0346 4.00025 10.3374Z" fill="currentColor"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <div class="flex mr-4 xl:mr-6 header_icon pb-0 h-full justify-center items-center">
+                                        <a
+                                                href="{% if customer %}/a/account/orders{% else %}/a/account/login{% endif %}"
+                                                class="w-6 h-6"
+                                                aria-label="icon-account"
+                                        >
+                                            {%- render 'icon-account' -%}
+                                        </a>
+                                    </div>
+
+                                    <div class="flex mr-0 xl:mr-6 main-header__recharge-styles-cart-icon header_icon pb-0 h-full justify-center items-center">
+                                        <a class="group flex items-center w-6 h-6 relative" id="cart-icon-bubble">
+                                            <!-- Heroicon name: outline/shopping-cart -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path d="M11.9999 1.96903C13.0607 1.96903 14.0782 2.38393 14.8283 3.12246C15.5785 3.86099 15.9999 4.86266 15.9999 5.90709H18.0349C18.5531 5.90703 19.0511 6.10497 19.4239 6.45922C19.7968 6.81348 20.0155 7.29639 20.0339 7.80623L20.4619 19.6204C20.4714 19.8847 20.4268 20.1481 20.3307 20.395C20.2346 20.6418 20.089 20.8672 19.9025 21.0574C19.716 21.2477 19.4926 21.3991 19.2454 21.5025C18.9982 21.6059 18.7324 21.6593 18.4639 21.6593H5.53588C5.26732 21.6593 5.00154 21.6059 4.75437 21.5025C4.50721 21.3991 4.28373 21.2477 4.09727 21.0574C3.91081 20.8672 3.76518 20.6418 3.66907 20.395C3.57296 20.1481 3.52835 19.8847 3.53788 19.6204L3.96588 7.80623C3.98428 7.29639 4.20295 6.81348 4.57583 6.45922C4.94871 6.10497 5.4467 5.90703 5.96488 5.90709H7.99988C7.99988 4.86266 8.42131 3.86099 9.17145 3.12246C9.9216 2.38393 10.939 1.96903 11.9999 1.96903ZM7.99988 7.87613H5.96488L5.53588 19.6903H18.4639L18.0349 7.87613H15.9999V8.86064C15.9996 9.11158 15.902 9.35293 15.727 9.5354C15.5521 9.71786 15.3129 9.82767 15.0585 9.84237C14.804 9.85708 14.5535 9.77558 14.358 9.61452C14.1626 9.45346 14.037 9.22501 14.0069 8.97583L13.9999 8.86064V7.87613H9.99988V8.86064C9.9996 9.11158 9.902 9.35293 9.72703 9.5354C9.55206 9.71786 9.31293 9.82767 9.05849 9.84237C8.80405 9.85708 8.5535 9.77558 8.35805 9.61452C8.1626 9.45346 8.03699 9.22501 8.00688 8.97583L7.99988 8.86064V7.87613ZM11.9999 3.93806C11.4953 3.93791 11.0093 4.12552 10.6393 4.4633C10.2694 4.80108 10.0427 5.26405 10.0049 5.75942L9.99988 5.90709H13.9999C13.9999 5.38488 13.7892 4.88404 13.4141 4.51478C13.039 4.14551 12.5303 3.93806 11.9999 3.93806Z" fill="currentColor"/>
+                                            </svg>
+                                            <span class="ml-2 text-sm font-medium text-inherit absolute left-5 cart-count">
+                            {{- cart.item_count -}}
+                          </span>
+                                            <span class="sr-only">items in cart, view bag</span>
+                                        </a>
+                                    </div>
+                                    {% if section.settings.info_icon_link != blank %}
+                                        <div class="hidden xl:flex header_icon pb-0 h-full justify-center items-center">
+                                            <a href="{{ section.settings.info_icon_link }}" class="" aria-label="icon-info">
+                                                {%- render 'icon-info' -%}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% include 'search' %}
+            </main-header>
+        </nav>
+    </header>
+</sticky-header>
+
+{{- 'header-style-2.js' | asset_url | script_tag -}}
+
+<script>
+    function setRecentlyViewedProducts() {
+        const productData = {
+            productTitle: "{{ product.title }}",
+            productImg: "{{ product.featured_media | img_url: 'master' }}",
+            productPrice: '{{ product.price | money }}',
+            productUrl: '{{ product.url }}',
+            productImageAltText: '{{ product.featured_media.alt | escape }}',
+        };
+        const productList = [];
+        let jsonResp, jsonRespArr, jsonRespArrStr;
+        const numberOfProducts = 3;
+        productList.push(productData);
+        const currProductPageTitle = productData.productTitle;
+        const productDataString = JSON.stringify(productList);
+        const localData = localStorage.getItem('recentlyViewedProduct');
+
+        if (localData === null) {
+            localStorage.setItem('recentlyViewedProduct', productDataString);
+        } else if (localData) {
+            const oldProductData = localStorage.getItem('recentlyViewedProduct');
+            const countProductData = (oldProductData.match(/productTitle/g) || []).length;
+            const sameProduct = oldProductData.includes(currProductPageTitle);
+            if (countProductData < numberOfProducts && sameProduct == false) {
+                jsonResp = JSON.parse(oldProductData);
+                jsonRespArr = jsonResp.concat(productList);
+                jsonRespArrStr = JSON.stringify(jsonRespArr);
+                localStorage.setItem('recentlyViewedProduct', jsonRespArrStr);
+            } else if (countProductData >= numberOfProducts && sameProduct == false) {
+                jsonResp = JSON.parse(oldProductData);
+                jsonResp.shift();
+                jsonRespArr = jsonResp.concat(productList);
+                jsonRespArr = JSON.stringify(jsonRespArr);
+                localStorage.setItem('recentlyViewedProduct', jsonRespArr);
+            }
+        }
+    }
+
+    setRecentlyViewedProducts();
+    const localViewed = localStorage.recentlyViewedProduct;
+
+    function getRecentlyViewedProducts() {
+        const productData = JSON.parse(localStorage.getItem('recentlyViewedProduct'));
+        const recentlyViewedHtml = [];
+        productData.map((item) => {
+            recentlyViewedHtml.unshift(`
+    <li class="recently-viewed-grid-item">
+      <a href="${item.productUrl}" class="recently-viewed-a">
+		  <img class="recently-viewed-img" src='${item.productImg}' loading="lazy" alt="${item.productImageAltText}"/>
+      <h3>${item.productTitle}</h3>
+      </a>
+       <p>${item.productPrice}</p>
+    </li>
+   `);
+        });
+        const productString = JSON.stringify(productData);
+        var parsedArray = JSON.parse(productString);
+        for (var i = 0; i < parsedArray.length; i++) {
+            var title = parsedArray[i].productTitle;
+        }
+        if (title != '') {
+            const newProductData = `${recentlyViewedHtml.join('')}`;
+            const fullContent = document.getElementsByClassName('recently-viewed-grid');
+            for (var i = 0; i < fullContent.length; i++) {
+                fullContent[i].innerHTML = newProductData;
+            }
+        }
+
+       // Hide empty recently viewed grid items and set heading if not empty
+        document.querySelectorAll('.recently-viewed-grid-item').forEach((item) => {
+            const emptytext = item.querySelector('.recently-viewed-a h3')?.textContent.trim() || '';
+            
+            if (emptytext === '') {
+                item.style.display = 'none';
+            } else {
+                const heading = document.querySelector('.recently_heading');
+                if (heading) heading.textContent = 'Recently Viewed';
+            }
+        });
+
+        // Remove links with empty href
+        document.querySelectorAll('.recently-viewed-grid-item a').forEach((link) => {
+            const emptyurl = link.getAttribute('href')?.trim() || '';
+            if (emptyurl === '') {
+                const parentLi = link.closest('li');
+                if (parentLi) parentLi.remove();
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function (event) {
+        getRecentlyViewedProducts();
+    });
+</script>
+
+<style>
+    .mega-nav-wrap {
+        /*grid-template-columns: 45% auto;*/
+        /*grid-template-columns: max-content;*/
+        grid-template-columns: auto 60%;
+        min-height: 410px;
+    }
+    .supp-2-text {
+        color: #FFF;
+        text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.8);
+    }
+    .mobilenav-footer:before{background:inherit;clip-path:polygon(100% 0,0 100%,100% 100%);content:"";height:2.5rem;left:0;position:absolute;top:-2.5rem;width:100%;z-index:1}
+    .mobile-nav__blog-container {
+        padding-bottom: 100px !important;
+    }
+    .mobile-nav__item__header {
+        font-size: 42px;
+        text-transform: uppercase;
+        margin-top: 4px;
+        margin-left: 4px;
+    }
+    .mega-nav .menu-article-card__header {
+        flex-direction: column;
+    }
+    .mega-nav .menu-article-card__header h2 {
+        text-align: left;
+    }
+    @media only screen and (min-width: 1080px) {
+        .mega-nav__blog-container {
+
+        }
+        .supplements-2-wrap img {
+            max-height: 280px;
+        }
+        .accent-yellow {
+            max-width: 100%;
+        }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "w-full z-40 relative",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "liquid",
+      "id": "logo_text",
+      "label": "Logo text label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 100,
+      "unit": "t:sections.header.settings.logo_width.unit",
+      "label": "t:sections.header.settings.logo_width.label"
+    },
+    {
+      "type": "color",
+      "id": "upper_nav_bg",
+      "label": "Upper Nav Background Color",
+      "default": "#2C2C2C"
+    },
+    {
+      "type": "link_list",
+      "id": "upper_nav_menu",
+      "label": "Upper Nav Menu",
+    },
+    {
+      "type": "color",
+      "id": "header_bg",
+      "label": "Header Background Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "blog",
+      "id": "meganav_blog_1",
+      "label": "Choose a blog for the megamenu"
+    },
+    {
+      "type": "color",
+      "id": "meganav_bg",
+      "label": "Background color for the megamenu",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "meganav_bg_style2",
+      "label": "Add an image for the megamenu rhs",
+      "info": "This will override the background color."
+    },
+    {
+      "type": "url",
+      "id": "info_icon_link",
+      "label": "Link for the info icon"
+    },
+    {
+      "type": "header",
+      "content": "Mobile menu"
+    },
+    {
+      "type": "color",
+      "id": "mobile_menu_footer_bg",
+      "label": "Mobile menu footer backrgound color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "mobile_menu_footer_text_color",
+      "label": "Mobile menu footer text color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "mobile_menu_footer_title",
+      "label": "Mobile menu footer title"
+    },
+    {
+      "type": "header",
+      "content": "Select pages with transparent background nav"
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage",
+      "label": "Homepage"
+    },
+    {
+      "type": "checkbox",
+      "id": "pdp",
+      "label": "PDP"
+    },
+    {
+      "type": "checkbox",
+      "id": "plp",
+      "label": "PLP"
+    },
+    {
+      "type": "checkbox",
+      "id": "page",
+      "label": "Custom pages"
+    },
+    {
+      "type": "checkbox",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "article",
+      "label": "Article"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Menu"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "transparent header",
+      "type": "transparent",
+      "settings": [
+        {
+          "type": "url",
+          "id": "page",
+          "label": "Select page",
+          "info": "Select page where header nav should be with transparent background"
+        }
+      ]
+    },
+    {
+      "type": "supplements-2",
+      "name": "Supplements - Image Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Card name",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image",
+          "info": "Card Image pref 260px by 150px; "
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Show Accent",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent Color",
+          "default": "#E4002B"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link",
+          "info": "Link to product or collection"
+        }
+      ]
+    },
+    {
+      "type": "gear-2",
+      "name": "Gear - Image Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Card name",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Card Image pref 260px by 150px; "
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Show Accent",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent Color",
+          "default": "#E4002B"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link",
+          "info": "Link to product or collection"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "nav_menu",
+          "label": "Menu name",
+          "info": "For which menu to apply the product blocks. Max 2 blocks for one megamenu"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Heading",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "textarea",
+          "id": "product_description",
+          "label": "Product Description",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show product price",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Product link",
+          "info": "If the field is empty the value will be taken from the product."
+        }
+      ]
+    },
+    {
+      "name": "Category Megamenu",
+      "type": "category-megamenu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "col_1_title",
+          "label": "Col 1 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "linklist_1",
+          "label": "Col 1 Linklist"
+        },
+        {
+          "type": "text",
+          "id": "col_1_link_title",
+          "label": "Col 1 Link Title"
+        },
+        {
+          "type": "url",
+          "id": "col_1_link_url",
+          "label": "Col 1 Link URL"
+        },
+        {
+          "type": "select",
+          "id": "col_1_image_fit",
+          "label": "Col 1 Image Fit",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Cover"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "text",
+          "id": "col_2_title",
+          "label": "Col 2 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "linklist_2",
+          "label": "Col 2 Linklist"
+        },
+        {
+          "type": "text",
+          "id": "col_2_link_title",
+          "label": "Col 2 Link Title"
+        },
+        {
+          "type": "url",
+          "id": "col_2_link_url",
+          "label": "Col 2 Link URL"
+        },
+        {
+          "type": "select",
+          "id": "col_2_image_fit",
+          "label": "Col 2 Image Fit",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Cover"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "header",
+          "content": "Image Blocks"
+        },
+        {
+          "type": "text",
+          "id": "image_block_title",
+          "label": "Image Block Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Link 1"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Title 1"
+        },
+        {
+          "type": "text",
+          "id": "link_description_1",
+          "label": "Link Description 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Link 2"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Title 2"
+        },
+        {
+          "type": "text",
+          "id": "link_description_2",
+          "label": "Link Description 2"
+        },
+        {
+          "type": "header",
+          "content": "Product Blocks",
+          "info": "Will override the image blocks"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "text",
+          "id": "product_1_description",
+          "label": "Product 1 Description"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "text",
+          "id": "product_2_description",
+          "label": "Product 2 Description"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse_columns",
+          "label": "Reverse Columns",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "mobile-footer-menu",
+      "name": "Mobile Footer Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "link_list",
+          "id": "product_linklist",
+          "label": "Menu Linklist"
+        }
+      ]
+    },
+    {
+      "type": "product-slider-megamenu",
+      "name": "Product Slider Megamenu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "product_linklist",
+          "label": "Menu Linklist"
+        }
+      ]
+    },
+    {
+      "type": "product-megamenu",
+      "name": "Product Megamenu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "product_linklist",
+          "label": "Menu Linklist"
+        }
+      ]
+    },
+    {
+      "name": "Category Card Megamenu",
+      "type": "category-card-megamenu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "image_block_title",
+          "label": "Image Block Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Link 1"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Title 1"
+        },
+        {
+          "type": "text",
+          "id": "link_description_1",
+          "label": "Link Description 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Link 2"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Title 2"
+        },
+        {
+          "type": "text",
+          "id": "link_description_2",
+          "label": "Link Description 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Link 3"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "Title 3"
+        },
+        {
+          "type": "text",
+          "id": "link_description_3",
+          "label": "Link Description 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image 4"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Link 4"
+        },
+        {
+          "type": "text",
+          "id": "title_4",
+          "label": "Title 4"
+        },
+        {
+          "type": "text",
+          "id": "link_description_4",
+          "label": "Link Description 4"
+        }
+      ]
+    },
+  ]
+}
+{% endschema %}

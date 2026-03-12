@@ -1,0 +1,297 @@
+{% assign section_id = section.id | replace: '-', '_' | replace: '--', '_' | replace: '__', '_' %}
+{% # the ID is just used for linking buttons to %}
+<section id="shop-by-goal" class='bg-black relative'>
+  <div class='w-full absolute z-10'>
+    {{ section.settings.top_divider_image | image_url: width: 1920, height: 68 | image_tag: class: 'w-full', loading: 'lazy' }}
+  </div>
+
+  <div class='flex flex-col lg:flex-row pt-20 lg:pt-0 lg:h-[550px] items-center'>
+    {% # Title, subtitle, content %}
+    <div class='flex flex-col w-full justify-center items-center lg:block flex-1 ml-[5vw] lg:ml-[6vw] xl:ml-[11vw] gap-2 space-y-3 pb-6 lg:pb-0'>
+      <div class='text-white text-3xl font-anton ml-2'>{{ section.settings.title }}</div>
+
+      {% comment %}
+        Note we have a "shrinkwrap" issue here that cannot be solved without
+        JavaScript. When the text wraps to two lines, the width of the div
+        fills the available width of the parent container. Using w-fit prevents
+        the div being two wide when it's one line, but there is no way to
+        prevent it occupying full width when it wraps. As a (not great)
+        solution, we use a breakpoints to switch between w-min and w-fit.
+      {% endcomment %}
+      <div class='text-black text-[64px] font-anton bg-goalYellow px-2 w-fit lg:w-min 3xl:w-fit [clip-path:polygon(0%_5%,100%_0%,100%_95%,0%_100%)] leading-none py-3'>
+        {{ section.settings.subtitle }}
+      </div>
+      <div class='text-white font-familjen px-[20vw] lg:px-0 lg:max-w-[312px] text-[15px] lg:text-[20px]'>
+        {{ section.settings.content_text }}
+      </div>
+    </div>
+
+    {% # Desktop version, shown as columns. %}
+    <div class='flex-[3] hidden lg:flex flex-row h-[550px]'>
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class='relative flex-1'>
+          <div class='absolute inset-0 h-full w-full flex flex-col'>
+            <div class='flex-1'>
+              {{ block.settings.influencer_image | image_url: width: 894, height: 1386 | image_tag: class: 'object-cover h-full', loading: 'lazy' }}
+            </div>
+            <div class='flex-1' style='background-color: {{ block.settings.background_color }}'></div>
+          </div>
+
+          {% # Left gradient on first image %}%
+          {% if forloop.index0 == 0 %}
+            <div
+              class='h-full w-full absolute inset-0 [background:linear-gradient(to_right,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_20%)]'
+            ></div>
+          {% endif %}
+
+          {% # Middle gradient %}%
+          <div
+            class='h-full w-full absolute inset-0 [background:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_40%,rgba(0,0,0,10)_50%,rgb(0,0,0)_55%,rgba(0,0,0,0)_80%)]'
+          ></div>
+
+          <div class='absolute inset-0 flex justify-center items-center'>
+            <div class='font-anton text-white text-[30px] px-6 lg:px-4 2xl:px-6 mb-10 text-center leading-tight text-balance'>
+              {{ block.settings.title }}
+            </div>
+          </div>
+
+          <div class='absolute bottom-0 w-full z-20'>
+            <div class='flex justify-center'>
+              {{ block.settings.packshot_image | image_url: width: 254, height: 254 | image_tag: class: '', loading: 'lazy' }}
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    {% # Mobile version, shown as carousel. %}
+    <div
+      class='flex relative lg:hidden h-[550px] w-full'
+      x-data='shopByGoalCarousel_{{ section_id }}()'
+    >
+      {% # Carousel container. %}
+      <div
+        class='min-w-full flex h-full overflow-y-hidden smooth-scroll overflow-x-scroll snap-x snap-mandatory no-scrollbar'
+        x-ref='carousel'
+        @scroll.debounce='updateActiveIndex'
+      >
+        {% for block in section.blocks %}
+          {% # Carousel block. %}
+          <a href="{{ block.settings.link }}" class='relative inline-block shrink-0 w-full snap-center'>
+            <div class='absolute inset-0 flex flex-col h-full w-full'>
+              <div class='flex-1 min-h-0'>
+                {{
+                  block.settings.influencer_image
+                  | image_url: width: 894, height: 1386
+                  | image_tag: class: 'object-cover w-full h-full', loading: 'lazy'
+                }}
+              </div>
+              <div class='flex-1 min-h-0' style='background-color: {{ block.settings.background_color }}'></div>
+            </div>
+
+            {% # Middle gradient %}
+            <div
+              class='h-full w-full absolute inset-0 [background:linear-gradient(to_bottom,rgba(0,0,0,100)_0%,rgba(0,0,0,0)_10%,rgba(0,0,0,10)_50%,rgb(0,0,0)_55%,rgba(0,0,0,0)_80%)]'
+            ></div>
+
+            <div class='absolute inset-0 flex justify-center items-center'>
+              <div class='font-anton text-white text-[30px] px-14 mb-10 text-center leading-tight text-balance'>
+                {{ block.settings.title }}
+              </div>
+            </div>
+
+            <div class='absolute bottom-0 w-full z-20'>
+              <div class='flex justify-center'>
+                {{ block.settings.packshot_image | image_url: width: 254, height: 254 | image_tag: loading: 'lazy' }}
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      {% # Carousel controls %}
+      <div class='absolute w-full flex justify-center -bottom-4 z-30 gap-3'>
+        {% for block in section.blocks %}
+          <div
+            class='cursor-pointer'
+            @click='scrollToactiveIndex({{ forloop.index0 }})'
+          >
+            <svg
+              x-show='activeIndex === {{ forloop.index0 }}'
+              width='12'
+              height='12'
+              viewBox='0 0 12 12'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <circle cx="6" cy="6" r="6" fill="black"/>
+              <circle cx="6" cy="6" r="4" fill="white"/>
+            </svg>
+            <svg
+              x-show='activeIndex !== {{ forloop.index0 }}'
+              width='12'
+              height='12'
+              viewBox='0 0 12 12'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <circle cx="6" cy="6" r="6" fill="black"/>
+            </svg>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class='w-full bottom-0 absolute z-10'>
+        {{ section.settings.bottom_divider_image | image_url: width: 1920, height: 68 | image_tag: class: 'w-full', loading: 'lazy' }}
+      </div>
+    </div>
+
+    <div class='w-full hidden lg:block bottom-0 absolute z-10'>
+      {{ section.settings.bottom_divider_image | image_url: width: 1920, height: 68 | image_tag: class: 'w-full', loading: 'lazy' }}
+    </div>
+  </div>
+</section>
+
+<script>
+  function shopByGoalCarousel_{{ section_id }}() {
+    return {
+      activeIndex: 0,
+
+      updateActiveIndex() {
+        const carousel = this.$refs.carousel;
+        if (!carousel) return;
+        const scrollLeft = carousel.scrollLeft;
+        const activeIndexWidth = carousel.children[0].offsetWidth + 16;
+        this.activeIndex = Math.round(scrollLeft / activeIndexWidth);
+      },
+
+      scrollToactiveIndex(index) {
+        const carousel = this.$refs.carousel;
+        if (!carousel) return;
+        const activeIndexWidth = carousel.children[0].offsetWidth + 16;
+        carousel.scrollTo({ left: index * activeIndexWidth, behavior: "smooth" });
+        this.activeIndex = index;
+      }
+    };
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Shop By Goal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (small)"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle (small)"
+    },
+    {
+      "type": "richtext",
+      "id": "content_text",
+      "label": "Content Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_divider_image",
+      "label": "Top Divider Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_divider_image",
+      "label": "Bottom Divider Image"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Goal",
+      "type": "goal",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Goal Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "influencer_image",
+          "label": "Influencer Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "packshot_image",
+          "label": "Packshot Image"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Colour"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Goal",
+      "settings": {
+        "title": "EVERY GOAL IS PERSONAL...",
+        "subtitle": "WHAT'S YOURS?",
+        "content_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eros mi, volutpat ut sem eget, maximus sodales sem.</p>",
+        "top_divider_image": "shopify://shop_images/yellow-to-transparent-tear.png"
+      },
+      "blocks": [
+        {
+          "type": "goal",
+          "settings": {
+            "title": "MAINTAIN MY HEALTH & ENERGY",
+            "influencer_image": "shopify://shop_images/maintain-my-health-and-energy-influencer.png",
+            "packshot_image": "shopify://shop_images/maintain-my-health-and-energy-packshot.png",
+            "background_color": "#ffdd04",
+            "link": ""
+          }
+        },
+        {
+          "type": "goal",
+          "settings": {
+            "title": "INCREASE MY PERFORMANCE",
+            "influencer_image": "shopify://shop_images/increaase-my-performance-influencer.png",
+            "packshot_image": "shopify://shop_images/increase-my-performance-packshot.png",
+            "background_color": "#8ccaee",
+            "link": ""
+          }
+        },
+        {
+          "type": "goal",
+          "settings": {
+            "title": "MANAGE MY WEIGHT",
+            "influencer_image": "shopify://shop_images/manage-my-weight-influencer.png",
+            "packshot_image": "shopify://shop_images/manage-my-weight-packshot_985f11f7-cfd6-4794-99d3-c33e2aff08c7.png",
+            "background_color": "#ff2636",
+            "link": ""
+          }
+        },
+        {
+          "type": "goal",
+          "settings": {
+            "title": "BUILD STRENGTH & MUSCLE",
+            "influencer_image": "shopify://shop_images/build-strength-and-muscle-influencer.png",
+            "packshot_image": "shopify://shop_images/build-strength-and-muscle-packshot_9fbc6dcc-217a-4977-830e-21e39c7a099f.png",
+            "background_color": "#fddaa5",
+            "link": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,59 @@
+<div class="our-story-block overflow-hidden relative mb-[64px] lg:mb-[96px] py-16 lg:py-[160px] px-6" style="background: {{section.settings.bg}};">
+    <h2 class="block text-center uppercase text-base font-bold font-sans tracking-[1px]">
+        {{section.settings.pretitle}}
+    </h2>
+    <div class="m-auto uppercase mt-6 text-[48.94px] lg:text-[85.6px] max-w-[1104px] text-center leading-[80%] font-compacta text-[#212121] tracking-[-1px]">
+        {{section.settings.text}}
+    </div>
+    <div class="flex justify-center mt-[45px] lg:mt-16">
+        <video-block class="inline-flex items-center cursor-pointer" data-src="{{section.settings.video}}">
+            {% include 'icon-play' %}
+            <span class="ml-2 text-base uppercase font-bold">watch video</span>
+        </video-block>
+    </div>
+    {% if section.settings.img != blank %}
+        <img src="{{section.settings.img | img_url: "600x"}}" class="absolute hidden lg:block right-0 -bottom-[100px]">
+    {% endif %}
+</div> 
+
+{% schema %}
+    {
+        "name": "Our story",
+        "settings": [
+            {
+                "type": "text",
+                "id": "pretitle",
+                "label": "Pretitle",
+                "default": "our story"
+            },
+            {
+                "type": "textarea",
+                "id": "text",
+                "label": "Text",
+                "default": "For more than three decades Animal has evolved from just bodybuilding supplement brand, to an ethos for living."
+            },
+            {
+                "type": "text",
+                "id": "video",
+                "label": "Video link"
+            },
+            {
+                "type": "color",
+                "id": "bg",
+                "label": "Background color",
+                "default": "#FEDD00"
+            },
+            {
+                "type": "image_picker",
+                "id": "img",
+                "label": "Desktop image"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Our story",
+                "category": "homepage"
+            }
+        ]
+    }
+{% endschema %}

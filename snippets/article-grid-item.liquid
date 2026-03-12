@@ -1,0 +1,70 @@
+<div class="block w-full bg-white rounded-lg overflow-hidden">
+  <div class="blog-image relative">
+    {% if article.metafields.custom.custom_label != blank %}
+    <span class="inline-block font-semibold bg-primary text-yellow tracking-wide uppercase absolute top-4 left-4 z-10" style="font-size: 12px; border-radius: 3px; padding: 4px 8px;">{{ article.metafields.custom.custom_label }}</span>
+      {% endif %}
+    {% if article.image != blank %}
+            <img 
+            srcset="{% if article.image.width >= 288 %}{{ article.image | img_url: '288x' }} 288w,{% endif %}
+                {% if article.image.width >= 576 %}{{ article.image | img_url: '904x' }} 904w,{% endif %}
+                {% if article.image.width >= 550 %}{{ article.image | img_url: '904x' }} 904w,{% endif %}
+                {% if article.image.width >= 1100 %}{{ article.image | img_url: '1100x' }} 1100w,{% endif %}
+                {{ article.image | img_url: 'master' }} {{ article.image.width }}w"
+            sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+            loading="lazy"
+            src="{{article.image | img_url: 'master'}}" class="w-full aspect-1 object-cover"
+            alt="{{ article.image.alt | escape }}">
+    {% endif %}
+  </div>
+    <div class="article-item__text-container p-4">
+
+        <div class="flex flex-col">
+          <a href="{{article.url}}" class="article-item__title text-primary font-anton uppercase">
+            {{article.title}}
+          </a>
+          <div class="text-[13px] text-primary mt-2">{{ article.published_at | date: '%B %d, %Y' }}</div>
+          <a href="{{article.url}}" class="text-[13px] text-primary mt-2 font-semibold inline-flex items-center hover:underline">
+            Read more
+            <svg class="ml-1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="flex justify-between font-bold items-center mt-2">
+            {% for tag in article.tags %}
+              {% if tag contains 'author:' %}
+                  {% assign author_tag = true %}
+                  {% assign author_tag_name = tag | handle %}
+                  {% assign author_tag_name_for_render = tag %}
+                  {% break %}
+              {% else %}
+                  {% assign author_tag = false %}
+                  {% assign author_tag_name_for_render = '' %}
+              {% endif %}
+            {% endfor %}
+            {% if author_tag and template contains 'blog' or author_tag and template contains 'article' %}
+              <a href="{{ blog.url }}/tagged/{{ author_tag_name | remove: "author-" }}" class="text-primary font-semibold">{{ author_tag_name_for_render | remove: "author:" }}</a>
+            {% else %}
+                <a href="{{ blogs.fitness-bodybuilding.url }}/tagged/{{ author_tag_name | remove: "author-" }}" class="text-primary font-semibold">{{ author_tag_name_for_render | remove: "author:" }}</a>
+            {% endif %}
+            {% for tag in article.tags %}
+              {% if tag contains 'read_time' %}
+                <span class="font-normal text-primary">{{tag | remove: 'read_time: '}} read</span>
+              {% endif %} 
+            {% endfor %}
+          </div>
+        <!-- <div class="mt-3 flex items-center flex-wrap mb-[-8px]">
+            {% for tag in article.tags %}
+                {% unless tag contains 'read_time' or tag contains 'featured_banner' %}
+                    {% if tag == 'News & events' or tag == 'Supplementation' or tag == 'Diet & Nutrition' or tag == 'Training' or tag == 'Lifestyle' or tag == 'news & events' or tag == 'supplementation' or tag == 'diet & nutrition' or tag == 'training' or tag == 'lifestyle' %}
+                        {% if template contains 'blog' or template contains 'article' %}
+                            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article-item__article-tag font-semibold bg-primary text-white py-[2px] text-[12.1px] px-2 capitalize mr-2 mb-2">{{ tag | replace: '_', ' '}}</a>
+                        {% else %}
+                            <a href="{{ blogs.fitness-bodybuilding.url }}/tagged/{{ tag | handle }}" class="article-item__article-tag font-semibold bg-primary text-white py-[2px] text-[12.1px] px-2 capitalize mr-2 mb-2">{{ tag | replace: '_', ' '}}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endunless %}
+             {% endfor %}
+        </div> -->
+    </div>
+</div>

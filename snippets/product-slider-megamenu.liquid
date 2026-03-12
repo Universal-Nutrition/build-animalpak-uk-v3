@@ -1,0 +1,28 @@
+<div class="p-10 megamenu-slider">
+    <swiper-slider>
+    <div class="swiper" data-swiper
+    data-swiper-options='{
+    "slidesPerView": 4,
+    "spaceBetween": 10,
+    "loop": false
+  }'>
+    {% if block.settings.product_linklist.links.size > 4 %}
+      <div class="swiper-button-prev"></div>
+    {% endif %}
+        <div class="swiper-wrapper">
+            {% for link in block.settings.product_linklist.links %}
+                {% assign product_handle = link.url | split: '/' | last %}
+                {% assign product = all_products[product_handle] %}
+                <div class="swiper-slide !border-none">
+                    {% render 'product-card-new', product: product, parent_link: parent_link, link: link, loading: 'lazy' %}
+                </div>
+            {% endfor %}
+        </div>
+        {% if block.settings.product_linklist.links.size > 4 %}
+            <div class="swiper-button-next"></div>
+        {% endif %}
+        </div>
+    </swiper-slider>
+</div>
+
+{% comment %}swiper-slider.js loaded via app.js{% endcomment %}

@@ -1,0 +1,63 @@
+<script>
+  (function(algolia) {
+    'use strict';
+
+    algolia.productTemplate = function productTemplate({ item, html, components }, distinct, itemLink, getConversionData) {
+
+      var meta = ''
+      if(item.meta.custom){
+        meta = item.meta.custom.subtitle
+      }
+      
+      var pricenot = ''
+      if(algolia.helpers.displayPrice(item, distinct) == '$0.00'){
+        var pricenot = 'customprnotprice';
+      }
+      
+      return html `<a
+        href="${itemLink}"
+        class="aa-ItemLink aa-ProductItem ${pricenot}"
+        onClick="${(event) => getConversionData(event, item)}"
+      >
+        <div class="aa-ItemContent" data-item='${item.meta}'>
+          <div class="aa-ItemPicture aa-ItemPicture--loaded">
+            <img src="${algolia.helpers.largeImage(item)}" alt="${item.title}" />
+          </div>
+          <div class="aa-ItemContentBody">
+            
+            <div class="yotpo-widget-instance" data-yotpo-instance-id="442240" data-yotpo-product-id="${item.id}" data-yotpo-cart-product-id="${item.id}"></div>
+            <div class="aa-ItemContentTitleWrapper">
+              <div class="aa-ItemContentTitle">
+                ${components.Highlight({ hit: item, attribute: 'title' })}
+                <span class="algolia-variant">
+                  ${algolia.helpers.variantTitleAddition (item, distinct)}
+                </span>
+              </div> 
+            </div>
+           <div class="aa-ItemContentContent">${meta}</div>
+            <div class="aa-ItemContentPrice ${pricenot}">
+              <div class="aa-ItemContentPriceCurrent">
+                ${algolia.helpers.displayPrice(item, distinct)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>`
+    };
+  })(window.algoliaShopify);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

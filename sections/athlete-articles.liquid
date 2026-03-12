@@ -1,0 +1,69 @@
+{% if section.blocks.size > 0 %}
+  <div class='py-[64px] lg:py-[96px] pl-6 lg:px-[56px]' style='background: {{section.settings.bg}};'>
+    {%- if section.settings.title != blank -%}
+      <h2 class='md:mb-10 font-bold text-primary leading-[80%] tracking-[-1px] text-[48.944px] md:text-[85.604px] uppercase md:text-center'>
+        {{ section.settings.title }}
+      </h2>
+    {%- endif -%}
+    <div class='lg:flex'>
+      <related-articles class='relative block w-full mt-6 lg:mt-0'>
+        <div class='overflow-hidden related-article-js'>
+          <div class='swiper-wrapper w-full'>
+            {% for block in section.blocks %}
+              {% if block.settings.page.handle == page.handle %}
+                <div class='swiper-slide'>
+                  {% include 'article-grid-item', article: block.settings.article %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <span class='absolute cursor-pointer swiper-article-next hidden md:inline-flex right-[20px] lg:right-[-20px] z-[99] -translate-y-[50%] top-[50%] w-[50px] h-[50px] flex justify-center items-center border border-solid border-[#DBDBDB] bg-white'>
+          {%- render 'icon-arrow' -%}
+        </span>
+      </related-articles>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Related Articles",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Related articles"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "article",
+      "type": "article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Article"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Related to page"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related Articles"
+    }
+  ]
+}
+{% endschema %}

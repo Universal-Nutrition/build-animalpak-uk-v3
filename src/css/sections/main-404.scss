@@ -1,0 +1,54 @@
+.main-404 {
+  &__title {
+    /* Heading/One */
+
+    font-family: 'Compacta Std';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 113.211px;
+    line-height: 80%;
+    /* or 91px */
+
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #fff;
+
+    >strong {
+      color: #FEDD00;
+    }
+
+    @media only screen and (max-width: 768px) {
+
+      font-size: 74.44px;
+
+    }
+
+  }
+
+  &__copy {
+    /* Heading/Five */
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24.334px;
+    line-height: 160%;
+    /* or 39px */
+
+
+
+    /* Primary/White */
+
+    color: #FFFFFF;
+
+    @media only screen and (max-width: 768px) {
+
+      /* Heading/Mobile Five */
+
+
+      font-size: 18.4px;
+
+
+    }
+  }
+}

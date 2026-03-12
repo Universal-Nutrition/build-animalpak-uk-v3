@@ -1,0 +1,96 @@
+.about-rich-text {
+  &__container {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+  }
+
+  .rich-text {
+    padding: 10rem;
+    margin: 0rem auto !important;
+
+    @media only screen and (max-width: 1110px) {
+      padding: 4rem 1.5rem;
+    }
+  }
+
+  &__title {
+    /* Heading/One */
+
+    font-family: 'Compacta Std';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 113.211px;
+    line-height: 80%;
+    /* or 91px */
+
+    text-align: left;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+
+    /* Primary/Black */
+
+    color: #212121;
+
+    @media only screen and (max-width: 1110px) {
+      /* Heading/Three */
+
+      font-size: 56.29px;
+
+    }
+  }
+
+  &__block-title {
+    /* Support/Label */
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+
+    align-items: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    /* Primary/Black */
+
+    color: #212121;
+
+    @media only screen and (max-width: 1110px) {
+
+      font-size: 13.9px;
+      line-height: 130%;
+      /* identical to box height, or 18px */
+
+
+    }
+  }
+
+  &__block-text {
+    /* Body/Paragraph */
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    /* or 26px */
+
+    font-feature-settings: 'ss08'on, 'ss10'on;
+    text-align: left;
+
+    /* Primary/Black */
+
+    color: #212121;
+
+    @media only screen and (max-width: 1110px) {
+
+      font-size: 13.913px;
+
+    }
+  }
+}

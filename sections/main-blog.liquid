@@ -1,0 +1,242 @@
+{{ 'bundle.section-blog.css' | asset_url | stylesheet_tag }}
+{% paginate blog.articles by 20 %}
+  <div class="relative blog-page py-6 px-6 md:px-14 md:py-8" style="background-color: #F5F5F5;">
+    <div class="relative mx-auto max-w-[1600px]">
+      <div class="flex items-center justify-between flex-col md:flex-row">
+        <div class="blog-page__mobile-dropbox md:hidden order-2 md:order-1 w-full">
+          {%- if current_tags == blank -%}
+            <div class="flex justify-between items-center h-14 border border-solid border-[#212121] p-4 mb-4">
+              <div class="text-[13.913px] text-primary font-semibold">All</div>
+              {%- include 'icon-caret-large' -%}
+            </div>
+          {%- else -%}
+            {% for tag in blog.all_tags %}
+              {% assign current_tags_downcased = current_tags | downcase %}
+              {% assign tag_downcased = tag | downcase %}
+              {%- if tag contains 'read_time: ' or tag contains 'featured_banner' -%}
+                {% continue %}
+              {%- elsif current_tags_downcased contains tag_downcased -%}
+                {% if tag == 'News & events'
+                  or tag == 'Supplementation'
+                  or tag == 'Diet & Nutrition'
+                  or tag == 'Training & Lifestyle'
+                  or tag == 'news & events'
+                  or tag == 'supplementation'
+                  or tag == 'diet & nutrition'
+                  or tag == 'training & lifestyle'
+                %}
+                  <div class="flex justify-between items-center h-14 border border-solid border-[#212121] p-4 mb-4 capitalize">
+                    <div>{{ tag }}</div>
+                    {%- include 'icon-caret-large' -%}
+                  </div>
+                {% endif %}
+              {%- endif -%}
+            {% endfor %}
+          {%- endif -%}
+        </div>
+        <ul class="blog-page__tag-items mb-0 flex flex-wrap h-0 md:h-full overflow-hidden order-2 md:order-1">
+          {%- unless current_tags -%}
+            <li class="md:pr-4 md:pb-4 w-full md:w-auto pb-2 pr-0">
+              <a
+                href="{{ blog.url }}"
+                class="block px-4 py-3 border border-solid border-yellow text-primary bg-yellow text-[14px] font-anton leading-[130%] tracking-[0px] uppercase rounded-md"
+              >
+                All
+              </a>
+            </li>
+          {%- else -%}
+            <li class="md:pr-4 md:pb-4 w-full md:w-auto pb-2 pr-0">
+              <a
+                href="{{ blog.url }}"
+                class="block px-4 py-3 border border-solid text-primary border-primary text-[14px] font-anton leading-[130%] tracking-[0px] uppercase rounded-md"
+              >
+                All
+              </a>
+            </li>
+          {%- endunless -%}
+          {% for tag in blog.all_tags %}
+            {%- if tag contains 'read_time: ' or tag contains 'featured_banner' -%}
+              {% continue %}
+            {%- elsif tag == 'News & events'
+              or tag == 'Supplementation'
+              or tag == 'Diet & Nutrition'
+              or tag == 'Training & Lifestyle'
+              or tag == 'news & events'
+              or tag == 'supplementation'
+              or tag == 'diet & nutrition'
+              or tag == 'training & lifestyle'
+            -%}
+              {% assign current_tags_downcased = current_tags | downcase %}
+              {% if current_tags_downcased == '["news_and_events"]' %}
+                {% assign current_tags_downcased = 'news & events' %}
+              {% endif %}
+              {% assign tag_downcased = tag | downcase %}
+              {%- if current_tags_downcased contains tag_downcased -%}
+                <li class="md:pr-4 md:pb-4 w-full md:w-auto pb-2 pr-0">
+                  <a
+                    href="{{ blog.url }}/tagged/{% if tag == 'News & events' %}news_and_events{% else %}{{ tag | handle }}{% endif %}"
+                    class="block px-4 py-3 border border-solid border-yellow text-primary bg-yellow text-[14px] font-anton leading-[130%] tracking-[0px] uppercase rounded-md"
+                  >
+                    {{ tag }}
+                  </a>
+                </li>
+              {%- else -%}
+                <li class="md:pr-4 md:pb-4 w-full md:w-auto pb-2 pr-0">
+                  {%- if tag == 'all' -%}
+                    <a
+                      href="{{ blog.url }}"
+                      class="block px-4 py-3 border border-solid text-primary border-primary text-[14px] font-anton leading-[130%] tracking-[0px] uppercase rounded-md"
+                    >
+                      {{ tag }}
+                    </a>
+                  {%- else -%}
+                    <a
+                      href="{{ blog.url }}/tagged/{% if tag == 'News & events' %}news_and_events{% else %}{{ tag | handle }}{% endif %}"
+                      class="block px-4 py-3 border text-primary border-solid border-primary text-[14px] font-anton leading-[130%] tracking-[0px] uppercase rounded-md"
+                    >
+                      {{ tag | replace: '_', ' ' }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endif -%}
+            {%- endif -%}
+          {% endfor %}
+        </ul>
+        <div class="pb-[10px] md:pb-4 md:pl-6 order-1 w-full md:w-auto">
+          {% if settings.ss_enable %}
+            <form action="{{ collections[settings.ss_collection_handle].url }}" method="get" class="relative">
+              <input type="hidden" name="view" value="articles">
+              <label for="search_articles" class="sr-only">Search</label>
+              <input
+                type="text"
+                name="q"
+                placeholder="Search Articles"
+                id="search_articles"
+                class="appearance-none block w-full h-14 md:w-[300px] font-semibold px-3 pl-4 pr-11 py-2 text-primary border border-primary placeholder-primary focus:outline-none focus:ring-primary focus:border-primary text-[13.91px]"
+              >
+              <button type="submit" class="absolute right-4 top-4">
+                <svg
+                  id="search"
+                  role="img"
+                  aria-describedby="searchIcon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title id="searchIcon">Search</title>
+                  <path d="M14.8398 15.1072L20.143 21" stroke="#212121" stroke-width="2"/>
+                  <path d="M10.7126 16.7143C14.4997 16.7143 17.5698 13.6442 17.5698 9.85714C17.5698 6.07005 14.4997 3 10.7126 3C6.92552 3 3.85547 6.07005 3.85547 9.85714C3.85547 13.6442 6.92552 16.7143 10.7126 16.7143Z" stroke="#212121" stroke-width="2"/>
+                </svg>
+              </button>
+            </form>
+          {% else %}
+            <form method="get" action="/search" class="relative">
+              <input type="hidden" name="type" value="article">
+              <input
+                type="text"
+                name="q"
+                placeholder="Search Articles"
+                class="appearance-none block w-full h-14 md:w-[300px] font-semibold px-3 pl-4 pr-11 py-2 text-primary border border-primary placeholder-primary focus:outline-none focus:ring-primary focus:border-primary text-[13.91px]"
+              >
+              <button type="submit" class="absolute right-4 top-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.8398 15.1072L20.143 21" stroke="#212121" stroke-width="2"/>
+                  <path d="M10.7126 16.7143C14.4997 16.7143 17.5698 13.6442 17.5698 9.85714C17.5698 6.07005 14.4997 3 10.7126 3C6.92552 3 3.85547 6.07005 3.85547 9.85714C3.85547 13.6442 6.92552 16.7143 10.7126 16.7143Z" stroke="#212121" stroke-width="2"/>
+                </svg>
+              </button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+      <div class="mt-[10px] md:mt-4 mx-auto flex flex-wrap md:mx-[-16px]">
+        {% assign counter = 0 %}
+        {% assign featured_positions = section.settings.featured_positions | split: ',' %}
+        {% assign featured_count = 0 %}
+        {%- for article in blog.articles -%}
+          {% assign is_featured = false %}
+          {% assign should_reverse = false %}
+
+          {% for position in featured_positions %}
+            {% assign position_int = position | strip | times: 1 %}
+            {% if position_int == forloop.index %}
+              {% assign is_featured = true %}
+              {% assign count_mod = featured_count | modulo: 2 %}
+              {% if count_mod == 1 %}
+                {% assign should_reverse = true %}
+              {% endif %}
+              {% assign featured_count = featured_count | plus: 1 %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          <div class="flex flex-col {% if is_featured %} blog-page__full-width-item w-full md:pt-4 mb-14 md:mb-[50px]{% else %}w-full md:w-1/2 lg:w-1/4 overflow-hidden md:px-4 mb-[26px] md:mb-6{% endif %}">
+            {%- if is_featured -%}
+              <div class="mx-[-24px] md:mx-[-40px]">
+                {% include 'article-full-width-grid-item', is_featured_banner_reverse: should_reverse %}
+              </div>
+            {%- else -%}
+              {% include 'article-grid-item' %}
+            {%- endif -%}
+          </div>
+        {% endfor %}
+
+        {% render 'pagination', paginate: paginate, anchor: anchorId %}
+      </div>
+    </div>
+  </div>
+{% endpaginate %}
+
+<style>
+  .blog-page .article-item__title {
+    font-size: 24px !important;
+    line-height: 28px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    .blog-page .article-item__title {
+      font-size: 24px !important;
+      line-height: 28px !important;
+      letter-spacing: -0.01em !important;
+    }
+  }
+
+  .blog-page .blog-image img {
+    border-radius: 8px 8px 0 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .blog-page > div > div:last-child > div:not(.blog-page__full-width-item) {
+      width: 25% !important;
+    }
+  }
+</style>
+
+<script>
+  document.querySelector('.blog-page__mobile-dropbox').addEventListener('click', function (e) {
+    document.querySelector('.blog-page__tag-items').classList.toggle('active');
+    document.querySelector('.blog-page__mobile-dropbox').classList.toggle('active');
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Featured Articles"
+    },
+    {
+      "type": "text",
+      "id": "featured_positions",
+      "label": "Featured Article Positions",
+      "placeholder": "e.g., 7,14",
+      "info": "Enter comma-separated article positions to display as featured (full-width). Leave empty to disable featured articles."
+    }
+  ]
+}
+{% endschema %}

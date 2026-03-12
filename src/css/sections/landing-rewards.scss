@@ -1,0 +1,74 @@
+.landing-rewards {
+  position: relative;
+  &::before {
+    @media only screen and (min-width: 768px){
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background: #F5F5F5;
+      clip-path: polygon(100% 0, 100% 50%, 68% 100%, 27% 100%, 90.5% 0);
+    }
+  }
+  &__block {
+
+    ul {
+
+      li {
+        position: relative;
+        padding: 0 0 8px 21px;
+        color: #212121;
+        @media only screen and (min-width: 768px){
+          padding: 0 0 10px 24px;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          left: 10px;
+          top: 5px;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          background: #212121;
+        }
+      }
+    }
+
+    &--alt {
+
+      ul {
+        line-height: 160%;
+
+        li {
+          padding: 0 0 0 22px;
+          color: #fff;
+          &::before {
+            left: 8px;
+            top: 10px;
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .button{
+    border: 1px solid #FEDD00;
+    &:hover {
+      border: 1px solid #000;
+    }
+  }
+
+  yellow {
+    display: inline;
+  }
+}
+
+.hero-landing-page {
+  .breadcrumbs {
+    position: static;
+  }
+}

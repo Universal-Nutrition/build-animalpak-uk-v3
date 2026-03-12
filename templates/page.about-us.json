@@ -1,0 +1,183 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "img_block_ezgwbQ": {
+      "type": "img-block",
+      "disabled": true,
+      "settings": {
+        "desktop": "shopify:\/\/shop_images\/about-main-banner.jpg",
+        "mobile": "shopify:\/\/shop_images\/about-main-banner-mobile.jpg"
+      }
+    },
+    "main": {
+      "type": "main-page-about",
+      "settings": {
+        "title": "FOR NEARLY <strong>FOUR DECADES<\/strong> animal has fueled people’s ambition to reach their full potential, EVOLVING FROM A SPORTS NUTRITION BRAND TO AN ETHOS FOR LIVING<strong>.<\/strong>",
+        "subtitle": "{{ page.metafields.my_fields.subtitle.value }}",
+        "banner": "shopify:\/\/shop_images\/about-us-banner.png"
+      }
+    },
+    "dea7576f-9cda-4a23-a081-87c1515bf1ca": {
+      "type": "about-us-story",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "pretitle": "DEDICATED TO PUSHING THE BOUNDARIES OF SPORTS AND PERFORMANCE SUPPLEMENTS",
+        "text": "Your drive and determination are unparalleled, and we will always be pioneers in supplementing your journey to a better, stronger, self.",
+        "bg": "rgba(0,0,0,0)",
+        "bg_image": "shopify:\/\/shop_images\/Frame_991413.png",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=T2R-YdvAFk4",
+        "description": "",
+        "full_width": false
+      }
+    },
+    "dc2f2962-c7ff-4b91-ba9e-e51e7166e9f2": {
+      "type": "image-text",
+      "custom_css": [
+        "@media (max-width: 1110px) {svg {margin-bottom: 1.5rem; }}"
+      ],
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>BUILT, NOT BORN<\/p>",
+        "description": "We recognize that building a better you takes every last ounce of the old you. The journey isn’t as much about where you started but where you can go.\n\nAnd this is why we’ve created the most effective products in the industry to supplement that hard work, determination, and drive. Like you, we believe that we are all built, not born.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": false,
+        "img": "shopify:\/\/shop_images\/AboutUS_BuiltNotBorn_Desktop.png",
+        "icon": "<svg width=\"68\" height=\"45\" viewbox=\"0 0 68 45\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M5.32233 14.9162V18.9998H0.421875V26.0003H5.32233V30.0839C5.32233 32.3004 7.18947 34.1675 9.40595 34.1675C10.2227 34.1675 11.0394 33.9339 11.7396 33.4672V11.533C11.0394 11.0664 10.2226 10.8328 9.40595 10.8328C7.18947 10.832 5.32233 12.6992 5.32233 14.9156V14.9162Z\" fill=\"#FFFFFF\"><\/path>\n<path d=\"M18.0556 0.681827C15.7219 0.681827 13.7383 2.54896 13.7383 4.9991V31.3681L13.739 40.0014C13.739 42.3351 15.6061 44.3186 18.0563 44.3186C20.5057 44.3186 22.373 42.3351 22.373 40.0014V4.99891C22.373 2.66523 20.5059 0.681641 18.0557 0.681641L18.0556 0.681827Z\" fill=\"#FFFFFF\"><\/path>\n<path d=\"M24.375 18.9998H43.6277V26.0002H24.375V18.9998Z\" fill=\"#FFFFFF\"><\/path>\n<path d=\"M49.9462 0.680664C47.6125 0.680664 45.6289 2.5478 45.6289 4.99793V40.0023C45.6289 42.336 47.496 44.3195 49.9462 44.3195C52.3963 44.3195 54.2635 42.4524 54.2635 40.0023V4.99793C54.2635 2.66425 52.3963 0.680664 49.9462 0.680664Z\" fill=\"#FFFFFF\"><\/path>\n<path d=\"M62.679 19V14.9164C62.679 12.6999 60.8119 10.8328 58.5954 10.8328C57.7787 10.8328 56.9619 11.0664 56.2617 11.533V33.4672C56.962 33.9339 57.7787 34.1675 58.5954 34.1675C60.8119 34.1675 62.679 32.3004 62.679 30.0839V26.001H67.5795V19.0005L62.679 19Z\" fill=\"#FFFFFF\"><\/path>\n<\/svg>",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": ""
+      }
+    },
+    "d8f7871a-ddf2-4bdc-9dcf-ef9bd2e4fd5c": {
+      "type": "bg-image-with-text",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Trustedfor40Years_Desktop.png",
+        "image_2": "shopify:\/\/shop_images\/Trustedfor40Years_Mobile.png",
+        "background": "linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 100%)",
+        "mob_background": "linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 53.65%, rgba(0, 0, 0, 0) 100%)",
+        "heading": "<p>TRUSTED FOR<br\/> 40 YEARS<\/p>",
+        "copy": "Since 1983 the Animal brand has been pushing sports nutrition forward, supplying athletes with the nutrition they need to fuel their goals.\n<br><br>\nToday we continue to help you reach your optimal health, body, and fitness goals. We aim to inform, to inspire, and to make your extraordinary goals attainable. Your passion and hard work are our fuel. Our goal is to make your passion and hard work, work harder for you.",
+        "icon": "shopify:\/\/shop_images\/Group_991113_9cfa1ff0-8c9b-408c-ac9e-0a66b681bf43.png"
+      }
+    },
+    "25fe13b7-c6bc-4101-a8b7-00689ab74fc0": {
+      "type": "about-rich-text",
+      "blocks": {
+        "0955bba9-fa89-4be9-8cac-75eba8e4cbbc": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "UL Certified",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Trust_indicators.svg?v=1671110403",
+            "text": "Our formulations are backed by science and proven by third-party lab testing in pharmaceutical grade facilities."
+          }
+        },
+        "e94de63b-68e8-434e-b6b4-4b323f6c752f": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "FDA Registered",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Trust_indicators_c4062bc5-65f5-404c-96ca-40dd74aa1766.svg?v=1671110414",
+            "text": "Highest quality production and safety standards right here in the US"
+          }
+        },
+        "0edef4fc-e320-4b2f-af69-fb38615919f4": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "Made in the USA",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Frame.svg?v=1671110423",
+            "text": "There’s a reason why athletes have trusted us for so long – we are committed to crafting pure and potent formulas that work in harmony, delivering consistent results every time."
+          }
+        },
+        "230f76d2-40b0-4010-99e3-ead30c6fbd56": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "Good manufacturing practice",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Trust_indicators_8501871c-a93f-453d-a4b3-9b13a0a78952.svg?v=1671110437",
+            "text": "Animal products are produced in our GMP certified facility, right here in the USA, and held to the highest quality, safety, and potency standards."
+          }
+        }
+      },
+      "block_order": [
+        "0955bba9-fa89-4be9-8cac-75eba8e4cbbc",
+        "e94de63b-68e8-434e-b6b4-4b323f6c752f",
+        "0edef4fc-e320-4b2f-af69-fb38615919f4",
+        "230f76d2-40b0-4010-99e3-ead30c6fbd56"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "background_image": "shopify:\/\/shop_images\/Rcih_text.png",
+        "title": "GOLD-STANDARD QUALITY AND EFFECTIVENESS"
+      }
+    },
+    "2d9c46a1-b9e8-412b-bf0f-3efd0a72b964": {
+      "type": "image-text",
+      "custom_css": [
+        "@media (min-width: 1110px) {svg {max-height: 80px; }}",
+        "@media (max-width: 1110px) {svg {max-height: 60px; margin-bottom: 1.5rem; }}"
+      ],
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>FORMULATED WITH PURPOSE<\/p>",
+        "description": "Whether you've just started your journey or have reached your peak performance, Animal makes your hard work, work harder.\n\n<p>Our commitment is to always curate leading edge ingredients and technology, delivering convenience, value and reassurance. We are comprehensive in our approach and consistent in our products, from foundation to performance and recovery.<\/p>",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": false,
+        "img": "shopify:\/\/shop_images\/Formulated_with_Purpose_Desktop.png",
+        "icon": "<svg width=\"82\" height=\"81\" viewbox=\"0 0 82 81\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M22.9108 4.37808H30.589C29.9378 3.72687 29.2964 3.08541 28.6451 2.43411V32.7973C28.7326 32.4669 28.82 32.1461 28.9075 31.8157C27.6245 33.6624 26.3513 35.509 25.0683 37.3655C22.5703 40.9812 20.0628 44.5968 17.5649 48.2123C15.8445 50.7005 14.1243 53.1789 12.4039 55.667C11.1209 57.5234 9.83787 59.3799 8.55505 61.2265C6.51404 64.1812 4.46326 67.1359 2.42208 70.0906C2.3832 70.1489 2.34433 70.2072 2.30545 70.2655C2.86918 69.9448 3.42318 69.624 3.98689 69.3033C3.083 69.3713 2.62619 69.8087 2.12077 70.4793C1.94582 70.7029 1.78059 70.9264 1.64452 71.1791C0.973889 72.4524 0.769771 73.8326 0.983593 75.2515C1.28489 77.2634 2.69421 79.1004 4.55055 79.9168C5.59053 80.3737 6.61111 80.5 7.70928 80.5H74.5399C76.9115 80.5 79.2246 79.3531 80.3521 77.1858C81.3823 75.2127 81.3823 72.7245 80.148 70.839C79.7884 70.2947 79.3996 69.7601 79.0302 69.2256C74.3747 62.4901 69.719 55.7643 65.0537 49.0288C61.2923 43.586 57.5309 38.1529 53.7695 32.71C53.5654 32.4184 53.3613 32.1269 53.1669 31.8353C53.2544 32.1657 53.3419 32.4865 53.4294 32.8169V2.45369C52.7782 3.1049 52.1367 3.74637 51.4854 4.39766H59.1637C60.1842 4.39766 61.1562 3.50348 61.1077 2.45369C61.0591 1.4039 60.2523 0.509728 59.1637 0.509728H51.4854C50.4357 0.509728 49.5414 1.4039 49.5414 2.45369V31.0384C49.5414 31.5827 49.5317 32.127 49.5414 32.6713C49.5511 33.3613 49.8039 33.7987 50.1635 34.3138C52.0198 36.9964 53.8763 39.6886 55.7425 42.3712C61.9046 51.2838 68.0763 60.1971 74.2384 69.119C75.0257 70.2561 75.8129 71.3933 76.6002 72.5304C76.6585 72.6179 76.7168 72.6957 76.7751 72.7831C76.7849 72.7929 76.7946 72.8026 76.7946 72.8123C76.8821 72.9484 76.9501 73.0942 77.0376 73.2302C77.1348 73.4343 77.1348 73.4246 77.0376 73.2108C77.0764 73.3177 77.1056 73.4149 77.1348 73.5218C77.1834 73.6773 77.2125 73.8426 77.2417 74.0078C77.1736 73.5413 77.2222 74.0953 77.2222 74.173C77.2222 74.2119 77.232 74.5715 77.2028 74.5812C77.2125 74.4938 77.232 74.416 77.2417 74.3285C77.232 74.416 77.2125 74.5035 77.1931 74.591C77.1639 74.7173 77.1348 74.8437 77.0959 74.97C77.0862 75.0089 77.0667 75.0478 77.057 75.0964C76.9793 75.2908 76.9987 75.2616 77.1153 74.9894C77.1445 75.038 76.7168 75.767 76.6682 75.7573C76.7168 75.6892 76.7654 75.6309 76.814 75.5629C76.7654 75.6309 76.7071 75.6892 76.6488 75.7573C76.5613 75.8545 76.4738 75.942 76.3767 76.0294C76.3475 76.0586 76.3183 76.0877 76.2795 76.1169C76.124 76.253 76.1531 76.2238 76.3767 76.0489C76.3864 76.078 76.0851 76.2433 76.0559 76.2627C75.949 76.3307 75.8324 76.3793 75.7157 76.4474C75.3367 76.6612 76.124 76.3307 75.706 76.4474C75.5797 76.4862 75.463 76.5251 75.3367 76.5543C75.2492 76.5737 75.1617 76.5931 75.084 76.6126C74.8702 76.6515 74.909 76.6417 75.2103 76.5931C75.1909 76.6417 74.841 76.6126 74.7146 76.6126H6.92239C6.87379 76.6126 7.25286 76.2238 6.78632 76.6029C6.8738 76.6126 6.95155 76.632 7.03903 76.6417C6.95155 76.632 6.86408 76.6126 6.7766 76.5931C6.65025 76.564 6.52389 76.5348 6.39755 76.4959C6.35867 76.4862 6.31979 76.4668 6.27119 76.4571C6.0768 76.3793 6.10596 76.3988 6.3781 76.5154C6.29063 76.564 5.79495 76.1946 5.70748 76.1461C5.33814 75.9225 6.00877 76.4376 5.69776 76.1363C5.5714 76.0197 5.44505 75.9128 5.33814 75.7864C5.30899 75.7573 5.27983 75.7281 5.25067 75.6892C5.1146 75.5337 5.14376 75.5629 5.31871 75.7864C5.28955 75.7864 5.12431 75.4949 5.10488 75.4657C5.03685 75.3588 4.98825 75.2421 4.92021 75.1255C4.70639 74.7465 5.03684 75.5337 4.92021 75.1158C4.89105 75.0089 4.65778 74.4354 4.73553 74.3577C4.74525 74.4451 4.76469 74.5229 4.77441 74.6104C4.76469 74.5229 4.76469 74.4354 4.75497 74.3382C4.75497 74.1827 4.76469 74.0272 4.76469 73.862C4.78413 73.3663 4.63834 74.1925 4.79385 73.7259C4.84245 73.5704 4.88132 73.4149 4.92992 73.2594C5.06599 72.7929 4.72582 73.5412 4.98823 73.1428C5.04655 73.0456 5.09515 72.9484 5.15346 72.8609C5.29926 72.6471 5.46449 72.443 5.62 72.2389C5.05627 72.5596 4.50226 72.8803 3.93855 73.2011C4.72582 73.1428 5.23122 72.8123 5.67832 72.1806C5.74636 72.0834 5.80468 71.9959 5.87272 71.8987C6.13515 71.5196 6.39756 71.1406 6.65999 70.7518C7.56389 69.4494 8.46782 68.1373 9.37173 66.8349C11.2281 64.1523 13.0942 61.4601 14.9507 58.7775C15.5728 57.8736 16.2045 56.9697 16.8266 56.0658C18.5956 53.5193 20.3548 50.9631 22.1237 48.4166C24.2037 45.4134 26.2836 42.41 28.3539 39.4068C29.598 37.6088 30.8421 35.8107 32.0862 34.0125C32.4166 33.5362 32.5041 32.992 32.5041 32.4282V2.44397C32.5041 1.39428 31.6099 0.5 30.5601 0.5H22.8819C21.8613 0.5 20.8894 1.39417 20.9379 2.44397C21.0156 3.48395 21.8224 4.37816 22.911 4.37816L22.9108 4.37808Z\" fill=\"#FEDD00\"><\/path>\n<path d=\"M30.5884 24.7895H40.9881C42.0086 24.7895 42.9806 23.8954 42.9321 22.8456C42.8835 21.7958 42.0768 20.9016 40.9881 20.9016H30.5884C29.5679 20.9016 28.5959 21.7958 28.6444 22.8456C28.6929 23.8954 29.4997 24.7895 30.5884 24.7895Z\" fill=\"#FEDD00\"><\/path>\n<path d=\"M30.5884 12.5425H40.9881C42.0086 12.5425 42.9806 11.6483 42.9321 10.5985C42.8835 9.54869 42.0768 8.65452 40.9881 8.65452H30.5884C29.5679 8.65452 28.5959 9.54869 28.6444 10.5985C28.6929 11.6483 29.4997 12.5425 30.5884 12.5425Z\" fill=\"#FEDD00\"><\/path>\n<path d=\"M13.8717 58.904H61.5063C63.7028 58.904 65.9091 58.9526 68.1058 58.904H68.1933C69.2138 58.904 70.1857 58.0099 70.1372 56.9601C70.0886 55.9104 69.2819 55.0161 68.1933 55.0161H20.5586C18.3621 55.0161 16.1558 54.9675 13.9591 55.0161H13.8717C12.8511 55.0161 11.8792 55.9103 11.9277 56.9601C11.9762 58.0099 12.783 58.904 13.8717 58.904Z\" fill=\"#FEDD00\"><\/path>\n<\/svg>",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": ""
+      }
+    },
+    "f2de2123-daf1-4bdc-83f3-1d2e34201a44": {
+      "type": "bg-image-with-text",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/FamilyOwned_Desktop.png",
+        "image_2": "shopify:\/\/shop_images\/FamilyOwned_Mobile.png",
+        "background": "linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 100%)",
+        "mob_background": "linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 53.65%, rgba(0, 0, 0, 0) 100%)",
+        "heading": "<p>Family Owned & Pack Focused<\/p>",
+        "copy": "We at Animal have dedicated ourselves to pushing the limits of human performance and have kept this pioneering spirit, continuously improving, and pushing the bar higher. This is why for over 40 years, time and time again, we have pushed the reinvention of the sports nutrition supplement category. And Animal consumers are part of our family because we are, before anything else, athletes ourselves.",
+        "icon": "shopify:\/\/shop_images\/Group_991112_3542f4f0-410c-4233-8b5b-d2bb1b1e877a.png"
+      }
+    }
+  },
+  "order": [
+    "img_block_ezgwbQ",
+    "main",
+    "dea7576f-9cda-4a23-a081-87c1515bf1ca",
+    "dc2f2962-c7ff-4b91-ba9e-e51e7166e9f2",
+    "d8f7871a-ddf2-4bdc-9dcf-ef9bd2e4fd5c",
+    "25fe13b7-c6bc-4101-a8b7-00689ab74fc0",
+    "2d9c46a1-b9e8-412b-bf0f-3efd0a72b964",
+    "f2de2123-daf1-4bdc-83f3-1d2e34201a44"
+  ]
+}

@@ -1,0 +1,75 @@
+{% # 2025-02-07 placeholder section component, needs styling. %}
+{% schema %}
+{
+  "name": "Goal Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Every Goal is Personal"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "What’s Yours?"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eros mi, volutpat ut sem eget, maximus sodales sem."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "goal",
+      "name": "Goal",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "goal_title",
+          "label": "Goal Title",
+          "default": "Build Strength & Muscle"
+        },
+        {
+          "type": "url",
+          "id": "goal_link",
+          "label": "Goal Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Goal Banner",
+    }
+  ],
+  "max_blocks": 4,
+}
+{% endschema %}
+
+<section class="relative bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+    <h1 class="text-4xl font-extrabold mb-4">{{ section.settings.title }}</h1>
+    <h2 class="text-2xl font-bold mb-6 text-yellow-400">{{ section.settings.subtitle }}</h2>
+    <p class="text-lg mb-8">{{ section.settings.body }}</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-6">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.goal_link }}" class="relative group block overflow-hidden rounded-lg shadow-lg">
+        <img src="{{ block.settings.background_image | file_url }}" alt="{{ block.settings.goal_title }}" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-300">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <h3 class="text-lg font-bold text-white text-center">{{ block.settings.goal_title }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>

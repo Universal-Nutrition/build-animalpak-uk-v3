@@ -1,0 +1,178 @@
+{%- comment -%}
+    @description:
+    @dependencies:
+    @params:
+        @param classes
+            type: string
+            required: false
+            description:
+            default:
+        @param picture_classes
+            type: string
+            required: false
+            description:
+            default:
+        @param sources
+            type: html
+            required: false
+            description:
+            default:
+        @param src
+            type: string
+            required: true
+            description:
+            default:
+        @param alt
+            type: string
+            required: false
+            description:
+            default:
+        @param width
+            type: string
+            required: false
+            description:
+            default: 100%
+        @param height
+            type: string
+            required: false
+            description:
+            default: 100%
+        @param importance
+            type: string
+            required: false
+            description:
+            default:
+        @param srcset
+            type: string
+            required: false
+            description:
+            default:
+        @param sizes
+            type: string
+            required: false
+            description:
+            default:
+        @param styles
+            type: string
+            required: false
+            description:
+            default:
+        @param data_attributes
+            type: string
+            required: false
+            description:
+            default:
+        @param loading
+            type: string
+            required: false
+            description:
+            default: lazy
+        @param src_attribute
+            type: string
+            required: false
+            description:
+            default: data-src
+        @param fetchpriority
+            type: string
+            required: false
+            description:
+            default: low
+        @param decoding
+            type: string
+            required: false
+            description:
+            default: async
+    @examples:
+        @example
+{%- endcomment -%}
+{%- assign classes = classes | default: '' -%}
+{%- assign picture_classes = picture_classes | default: '' -%}
+{%- assign sources = sources | default: '' -%}
+{%- assign src = src | default: '' -%}
+{%- assign alt = alt | default: '' -%}
+{%- assign width = width | default: '100%' -%}
+{%- assign height = height | default: '100%' -%}
+{%- assign importance = importance | default: 'low' -%}
+{%- assign srcset = srcset | default: '' -%}
+{%- assign sizes = sizes | default: '' -%}
+{%- assign styles = styles | default: '' -%}
+{%- assign data_attributes = data_attributes | default: '' -%}
+{%- assign link_preloads = link_preloads | default: '' -%}
+{%- assign loading = loading | default: 'lazy' -%}
+{%- assign src_attribute = src_attribute | default: 'data-src' -%}
+{%- assign srcset_attribute = srcset_attribute | default: 'data-srcset' -%}
+{%- assign fetchpriority = fetchpriority | default: 'low' -%}
+{%- assign decoding = decoding | default: 'async' -%}
+{%- if loading == 'eager' -%}
+    {%- assign src_attribute = 'src' -%}
+    {%- assign srcset_attribute = 'srcset' -%}
+    {%- assign fetchpriority = 'high' -%}
+    {%- assign decoding = 'sync' -%}
+{%- endif -%}
+{%- capture image_attributes -%}
+    {%- if styles != '' -%}style="{{- styles -}}",{%- endif -%}
+    {%- if src != '' -%}[[src-attribute]]="{{- src -}}",{%- endif -%}
+    {%- if srcset != '' -%}[[srcset-attribute]]="{{- srcset -}}",{%- endif -%}
+    {%- if sizes != '' -%}sizes="{{- sizes -}}",{%- endif -%}
+    {%- if alt != '' -%}alt="{{- alt -}}",{%- endif -%}
+    {%- if width -%}width="{{- width -}}",{%- endif -%}
+    {%- if height -%}height="{{- height -}}",{%- endif -%}
+    {%- if loading -%}loading="{{- loading -}}",{%- endif -%}
+    {%- if decoding -%}decoding="{{- decoding -}}",{%- endif -%}
+    {%- if fetchpriority -%}fetchpriority="{{- fetchpriority -}}",{%- endif -%}
+    {%- if importance -%}importance="{{- importance -}}",{%- endif -%}
+{%- endcapture -%}
+{%- assign image_attributes = image_attributes | split: ',' | join: ' ' | strip -%}
+{%- capture picture_classes_merged -%}
+    picture,
+    {%- if loading == 'lazy' -%}lazy,{%- endif -%}
+    {%- if picture_classes != '' -%}{{- picture_classes -}}{%- endif -%}
+{%- endcapture -%}
+{%- assign picture_classes_merged = picture_classes_merged | split: ',' | join: ' ' | strip -%}
+{%- capture image_classes_merged -%}
+    image,
+    {%- if loading == 'lazy' -%}lazy,{%- endif -%}
+    {%- if classes != '' -%}{{- classes -}}{%- endif -%}
+{%- endcapture -%}
+{%- assign image_classes_merged = image_classes_merged | split: ',' | join: ' ' | strip -%}
+{%- capture image_html -%}
+    <img
+        class="{{- image_classes_merged -}}"
+        {{ image_attributes }}
+        {{ data_attributes }}
+        {%- if no_default_position != true and image_position != 'center' -%}
+            style="object-position: center {{ image_position }};"
+        {%- endif -%}
+        {%- if parallel_scroll -%}
+            :style="`object-position: 0 ${Math.min(100, Math.max(0, scrollSectionY * 1.5))}%;`"
+        {%- endif -%}
+        {%- if transition_product -%}
+            :class="`${inViewImage ? 'translate-y-0 scale-100 brightness-100 opacity-100' : 'translate-y-[40px] scale-70 brightness-20 opacity-0'}`"
+        {%- endif -%}
+        {% if alt == ''  %}
+            role="presentation"
+        {% else %}
+            alt="{{- alt -}}"
+        {% endif %}
+    />
+{%- endcapture -%}
+{%- if loading == 'eager' -%}
+    {%- if link_preloads != '' -%}
+        {{- link_preloads -}}
+    {%- else -%}
+        <link rel="preload" href="{{- src -}}" as="image" fetchpriority="high" />
+    {%- endif -%}
+{%- endif -%}
+{%- capture picture_html -%}
+    {%- if src != '' -%}
+        {%- if sources != '' -%}
+            <picture class="{{- picture_classes_merged -}}">
+                {{- sources -}}
+                {{- image_html -}}
+            </picture>
+        {%- else -%}
+            {{- image_html -}}
+        {%- endif -%}
+    {%- endif -%}
+{%- endcapture -%}
+{{- picture_html | replace: '[[src-attribute]]', src_attribute | replace: '[[srcset-attribute]]', srcset_attribute -}}

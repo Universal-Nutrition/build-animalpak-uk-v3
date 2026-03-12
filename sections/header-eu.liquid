@@ -1,0 +1,378 @@
+<!-- All Pages Script -->
+            <!-- Start Tradedoubler All Pages Tag Insert on all pages to handle first party cookie-->
+            <script type="text/javascript">
+            (function(c,w,v){function getUrlParameter(e){var t=new RegExp("[\?&]"+e+"=([^&#]*)").exec(location.search);return null===t?"":decodeURIComponent(t[1].replace(/\+/g," "))}function setCookie(e,t){var r,n=w.location.host,a=n.substring(n.indexOf("."));(a.match(/\./g).length<2||".co"===a.substring(0,a.indexOf(".",1)))&&(a="."+n),r='domain='+a;var i=new Date,o=i.getTime()+31536e6;i.setTime(o);var c="expires="+i.toUTCString();v.cookie='e'+'='+'t'+';'+'c'+';'+'r'+';path=/;sameSite=none;Secure=true'}var tdclid_sn=getUrlParameter("tdclid_sn");tdclid_sn&&setCookie("tdclid_sn",tdclid_sn);var q='?org='+c.organization+'&prog='+c.programId;w.tdfallback=function(e){var t,r=v.getElementsByTagName("script")[0];(t=v.createElement("script")).src=e+q,r.parentNode.insertBefore(t,r)};
+            (function(i,s,o,g,r,a,m){i.TDConversionObject=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script', 'https://sdk.tradedoubler.com/trsdk'+q, 'tdconv'); tdconv('init',c);
+            })({organization: '2424256', programId: '376170', program: false, element: 'iframe'}, window, document);
+            tdconv('cookie-consent', '[COOKIE_CONSENT]');
+            
+          
+            </script>
+            
+            <script src="https://swrap.tradedoubler.com/wrap?id=31958" async></script>
+
+<link
+  rel='stylesheet'
+  href='{{ 'component-cart-notification.css' | asset_url }}'
+  media='print'
+  onload="this.media='all'"
+>
+{{ 'bundle.section-header-style-2.css' | asset_url | stylesheet_tag }}
+{{ 'recently-viewed.js' | asset_url | script_tag }}
+
+<script src='{{ 'sticky-header.js' | asset_url }}' defer='defer'></script>
+
+<div
+  class='header-s2 bg-white font-header'
+  x-data='{ menuOpen: null, mobileMenuOpen: false }'
+  @mouseover.outside='menuOpen = null'
+>
+  <!-- Mobile menu -->
+  <header>
+    <nav
+      aria-label='Top'
+    >
+    {% comment %}
+      main-header is a custom element that provides search functionality, and
+      intercepts clicks for the Orbe GeoLocation app.
+
+      You must only have one main-header element on the page otherwise the Orbe
+      Country Selector won't work.
+    {% endcomment %}
+      <main-header>
+        {% # Mobile navigation. %}
+        <div>
+          <div class='flex items-center mx-5 lg-header:hidden '>
+            <!-- Left -->
+            <div class='flex-1 flex gap-3'>
+              <div>
+                <button
+                  id='mobile-menu-button'
+                  type='button'
+                  class='bg-white-900 p-0 rounded-md text-black'
+                  @click='mobileMenuOpen = !mobileMenuOpen; modalOpen = !modalOpen'
+                >
+                  <span class='sr-only'>Open menu</span>
+                  <!-- Heroicon name: outline/menu -->
+                  <svg xmlns='http://www.w3.org/2000/svg' width='22' height='17' viewBox='0 0 22 17' fill='none'>
+                    <path d="M1 1H21M1 8.38387H21M1 15.7677H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              <div>
+                {% render 'header-search' %}
+              </div>
+            </div>
+
+            {% # Center section with logo %}
+            <div class='mx-20 py-2 flex items-center'>
+              {% render 'header-logo' %}
+            </div>
+
+            {% # Right %}
+            <div class='flex-1 flex gap-3 justify-end'>
+              <div>
+                {% render 'header-profile' %}
+              </div>
+
+              <div>
+                {% render 'header-cart' %}
+              </div>
+
+              <div>{% render 'header-help' %}</div>
+            </div>
+          </div>
+
+          {% # Mobile drop down. %}
+          <div class='relative lg-header:hidden' x-show='mobileMenuOpen'>{% render 'header-mobile-drop-down' %}</div>
+
+          {% # The search bar. %}
+          {% render 'search' %}
+        </div>
+
+        {% # Desktop navigation. %}
+        {% # main-header is a custom element that provides search functionality. %}
+        <div id='desktop-menu' class='hidden lg-header:flex lg-header:items-stretch lg-header:justify-between lg-header:mx-10 font-bold'>
+          {% # Left side menu %}
+          <div class='flex-1 flex flex-row justify-between gap-3 relative'>
+            {% render 'header-menu-side', links: linklists['header-menu-left-side'].links %}
+          </div>
+
+          {% # Center section with logo %}
+          <div class='mx-20 py-2 flex items-center'>
+            {% render 'header-logo' %}
+          </div>
+
+          {% # Right side menu %}
+          <div class='flex-1 flex flex-row justify-between items-center gap-3 relative'>
+            {% render 'header-menu-side', links: linklists['header-menu-right-side'].links %}
+
+            <div class='flex gap-3'>
+              {% render 'header-search' %}
+              {% render 'header-profile' %}
+              {% render 'header-cart' %}
+              {% if section.settings.info_icon_link != blank %}
+                {% render 'header-help' %}
+              {% endif %}
+            </div>
+          </div>
+
+          {% # The search bar. %}
+          {% include 'search' %}
+        </div>
+      </main-header>
+
+      {% # Desktop Menu dropdown. %}
+      <template x-if='menuOpen !== null'>
+        <div class='hidden lg-header:block w-full min-h-[400px] bg-button-primary px-20 py-10 absolute' id='desktop-nav'>
+          {% for link in linklists['header-menu-left-side'].links %}
+            <template x-if='menuOpen === "{{ link.title | handleize }}"'>
+              {% render 'header-desktop-menu-collections', links: link.links %}
+            </template>
+          {% endfor %}
+
+          {% for link in linklists['header-menu-right-side'].links %}
+            <template x-if='menuOpen === "{{ link.title | handleize }}"'>
+              {% render 'header-desktop-menu-collections', links: link.links %}
+            </template>
+          {% endfor %}
+        </div>
+      </template>
+    </nav>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "liquid",
+      "id": "logo_text",
+      "label": "Logo text label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 100,
+      "unit": "t:sections.header.settings.logo_width.unit",
+      "label": "t:sections.header.settings.logo_width.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "blog",
+      "id": "meganav_blog_1",
+      "label": "Choose a blog for the megamenu"
+    },
+    {
+      "type": "color",
+      "id": "meganav_bg",
+      "label": "Background color for the megamenu",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "meganav_bg_style2",
+      "label": "Add an image for the megamenu rhs",
+      "info": "This will override the background color."
+    },
+    {
+      "type": "url",
+      "id": "info_icon_link",
+      "label": "Link for the info icon"
+    },
+    {
+      "type": "header",
+      "content": "Mobile menu"
+    },
+    {
+      "type": "color",
+      "id": "mobile_menu_footer_bg",
+      "label": "Mobile menu footer backrgound color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "mobile_menu_footer_title",
+      "label": "Mobile menu footer title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "supplements-2",
+      "name": "Supplements - Block 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Card name",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Card Image pref 260px by 150px; "
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Show yellow accent",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link",
+          "info": "Link to product or collection"
+        }
+      ]
+    },
+    {
+      "type": "supplements-1",
+      "name": "Supplements - menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Menu title",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "main-menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "learn-1",
+      "name": "Learn - menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Menu title",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "main-menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "gear-2",
+      "name": "Gear - Block 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Card name",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Card Image pref 260px by 150px; "
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Show yellow accent",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link",
+          "info": "Link to product or collection"
+        }
+      ]
+    },
+    {
+      "type": "gear-1",
+      "name": "Gear - menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Menu title",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "main-menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "nav_menu",
+          "label": "Menu name",
+          "info": "For which menu to apply the product blocks. Max 2 blocks for one megamenu"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Heading",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "textarea",
+          "id": "product_description",
+          "label": "Product Description",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show product price",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Product link",
+          "info": "If the field is empty the value will be taken from the product."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

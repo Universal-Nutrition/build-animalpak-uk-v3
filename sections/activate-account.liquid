@@ -1,0 +1,137 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+
+<div class="flex bg-gray-900">
+  <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div>
+        <h2 class="mt-6 text-3xl font-extrabold text-white">Activate Account</h2>
+  
+      </div>
+
+      <div class="mt-8">
+       
+
+      <div>
+       
+
+  {%- form 'activate_customer_password' -%}
+    <div class="space-y-6">
+      {%- if form.errors -%}
+      <h2 class="text-error font-bold text-lg" tabindex="-1" autofocus>
+        {{ 'templates.contact.form.error_heading' | t }}
+      </h2>
+      <ul> 
+        {%- for field in form.errors -%}
+          <li class="text-white">
+            {%- if field == 'form' -%}
+              {{ form.errors.messages[field] }}
+            {%- else -%}
+              <a href="#{{ field }}" class="text-white">
+                {{ form.errors.translated_fields[field] | capitalize }}
+                {{ form.errors.messages[field] }}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    
+
+
+    <div>   
+      <label for="password" class="block text-sm font-medium text-gray-100">
+        {{ 'customer.activate_account.password' | t }}
+      </label>
+      <input
+        type="password"
+        name="customer[password]"
+        id="password"
+        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        autocomplete="new-password"
+        placeholder="{{ 'customer.activate_account.password' | t }}"
+        {% if form.errors contains 'password' %}
+          aria-invalid="true"
+          aria-describedby="password-error"
+        {% endif %}
+      >
+    </div>
+
+    <div>
+
+      <label for="password_confirmation" class="block text-sm font-medium text-gray-100">
+        {{ 'customer.activate_account.password_confirm' | t }}
+      </label>
+      <input
+        type="password"
+        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        name="customer[password_confirmation]"
+        id="password_confirmation"
+        autocomplete="new-password"
+        placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+        {% if form.errors contains 'password' %}
+          aria-invalid="true"
+          aria-describedby="password_confirmation-error"
+        {% endif %}
+      >
+       
+    </div>
+
+      
+    
+     
+    <div>
+      <button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-lightPrimaryBlue hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        {{ 'customer.activate_account.submit' | t }}
+      </button>
+    </div>
+    <div>
+      <button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" name="decline">
+        {{ 'customer.activate_account.cancel' | t }}
+      </button>
+    </div>
+   
+    </div>
+    {%- endform -%}
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hidden lg:block relative w-0 flex-1">
+
+  <img
+  srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+      {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+      {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+      {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+      {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+      {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+      {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+      {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+      {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image | img_url: '1500x' }}"
+      loading="lazy"
+      class="absolute inset-0 h-full w-full object-cover"
+      alt="{{ section.settings.image.alt | escape }}"
+      width="{{ section.settings.image.width }}"
+      height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}">
+
+
+  </div>
+</div>
+
+{% schema %}
+{
+ "name": "Register",
+ "settings": [
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+  }
+ ]
+}
+{% endschema %}

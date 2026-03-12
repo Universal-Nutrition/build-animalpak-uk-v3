@@ -1,0 +1,130 @@
+{{ 'search.css' | asset_url | stylesheet_tag }}
+<div class="search-wrapper !hidden fixed top-0 left-0 z-[10000] w-full h-full">
+  <div class="h-[58px] lg:h-[78px] w-full bg-white flex justify-between items-center px-6 lg:px-[58px]">
+    <div class="search-wrap"> <div class="predictive md:w-[650px] w-full"> {% render 'main-search' %}</div></div>
+    <div class="close-search cursor-pointer">
+      <svg
+              width="32"
+              height="32"
+              class="pointer-events-none"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="32" height="32" rx="16" fill="#F5F5F5"/><path d="M20 12L12 20" stroke="#111111" stroke-width="2" stroke-linecap="square"/><path d="M12 12L20 20" stroke="#111111" stroke-width="2" stroke-linecap="square"/>
+      </svg>
+    </div>
+  </div>
+
+  {% if settings.ss_enable == false %}
+    <div class="search-results pb-[100px] lg:pb-0 overflow-scroll lg:overflow-[unset] !hidden h-full lg:h-[unset] lg:mx-[58px] lg:flex bg-white border-0 lg:border-t border-solid border-black/[.2]">
+      <div class="py-8 pb-2 lg:pb-[48px] lg:py-[48px] px-6 w-full lg:w-[unset] lg:min-w-[350px] bg-[#212121]">
+        <ul>
+          <li>
+            <a
+                    href="#"
+                    class="block text-[24.33px] lg:text-[37px] leading-[19.46px] lg:leading-[29.61px] font-compacta uppercase mb-6 lg:mb-8 text-yellow transition duration-500 hover:text-yellow"
+            >Creatine strength powder</a
+            >
+          </li>
+          <li>
+            <a
+                    href="#"
+                    class="block text-[24.33px] lg:text-[37px] leading-[19.46px] lg:leading-[29.61px] font-compacta uppercase mb-6 lg:mb-8 text-white transition duration-500 hover:text-yellow"
+            >Creatine shirts animal</a
+            >
+          </li>
+          <li>
+            <a
+                    href="#"
+                    class="block text-[24.33px] lg:text-[37px] leading-[19.46px] lg:leading-[29.61px] font-compacta uppercase mb-6 lg:mb-8 text-white transition duration-500 hover:text-yellow"
+            >Creatine animal fury</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="relative lg:flex p-6 lg:p-[48px] lg:pb-[100px] w-full">
+        <div class="lg:max-w-[262px]">
+          <div class="text-[24.33px] lg:text-[37px] leading-[19.46px] lg:leading-[29.61px] font-compacta uppercase text-primary">
+            articles
+          </div>
+          <ul>
+            <li class="mt-4 text-[13.91px] lg:text-base font-sans font-light leading-[22.26px] lg:leading-[25.6px]">
+              <a href="#">Why you should be taking Animal Creatine Chews</a>
+            </li>
+            <li class="mt-4 text-[13.91px] lg:text-base font-sans font-light leading-[22.26px] lg:leading-[25.6px]">
+              <a href="#">Set the Stage for Your Best Hypertrophy Workout</a>
+            </li>
+          </ul>
+        </div>
+        <div class="lg:ml-[48px] mt-8 lg:mt-0 w-full">
+          <div class="text-[24.33px] lg:text-[37px] leading-[19.46px] lg:leading-[29.61px] font-compacta uppercase text-primary">
+            products
+          </div>
+          <div class="flex justify-between mt-4 flex-wrap lg:flex-nowrap">
+            {% for product in collections.apparel.products limit: 3 %}
+              <a href="{{product.url}}" class="block w-[48%] mb-4 lg:mb-0 lg:w-[30%] bg-[#F5F5F5] pb-4 px-2">
+                {% if product.featured_image != blank %}
+                  <img
+                    src="{{product.featured_image | image_url: width: 170 }}"
+                    height="170"
+                    width="170"
+                    alt="{{product.title}}"
+                    class="m-auto h-[170px] object-contain"
+                  >
+                {% endif %}
+                <div class="mt-1 lg:mt-2 font-compacta font-bold leading-[14.72px] lg:leading-[19.46px] text-[18.4px] lg:text-[24.33px] text-center uppercase">
+                  {{ product.title }}
+                </div>
+                <div class="mt-1 text-[12.1px] lg:text-[13.91px] font-sans leading-[19.36px] lg:leading-[22.26px] text-center font-semibold">
+                  Starting At: {{ product.price | money }}
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        <a
+                href="/search"
+                class="lg:absolute bottom-[48px] right-[40px] mt-[35px] text-right text-[13.9px] leading-[18.07px] font-sans font-bold uppercase flex items-center"
+        >
+          See 211 results for "Creatine"
+          <span class="ml-[13px]">
+            <svg width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 7L22 7" stroke="#111111" stroke-width="2"/>
+              <path d="M16.5 1.5L22 7L16.5 12.5" stroke="#111111" stroke-width="2" stroke-linecap="square"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  {% endif %}
+  {% if settings.trending_search != blank %}
+    <div class="trending-searches">
+      <div class="trend--search">
+        <div>TRENDING SEARCHES </div>
+        {% assign searchkeywords = settings.trending_search | split: ',' %}
+        <div>
+          <div class="keyword" style="display: flex;align-items: center;">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" style="height:30px;">
+              <path d="M7.93333 42L4.66667 38.7333L21.9333 21.35L31.2667 30.6833L43.4 18.6667H37.3333V14H51.3333V28H46.6667V21.9333L31.2667 37.3333L21.9333 28L7.93333 42Z" fill="black"/>
+            </svg>
+
+          </div>
+          {% for keyword in searchkeywords %}
+            <div class="keyword">
+              <a href="/search?q={{ keyword }}">{{ keyword }}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+
+
+
+
+
+<input name="q" type="text" style="display:none!important;" placeholder="Search..." class="search-input header-search-custom border-0 pl-10 !ring-offset-0 !ring-0 text-[18.4px] font-sans font-bold leading-[29.44px] text-primary placeholder-black lg:placeholder-transparent" autofocus>

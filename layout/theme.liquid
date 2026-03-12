@@ -1,0 +1,416 @@
+<!doctype html>
+<!-- cjt patdec27kgupdates -->
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+	<script src="{{ 'pandectes-rules.js' | file_url }}" defer></script>
+    {% render 'pandectes-rules' %}
+
+    {% render 'taginstall-head' %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    {% comment %} Conditional canonical tag for filtered collections {% endcomment %}
+    {% if template.name == 'collection' %}
+      {%- assign has_active_filters = false -%}
+      {%- for filter in collection.filters -%}
+        {%- if filter.active_values.size > 0 -%}
+          {%- assign has_active_filters = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if has_active_filters or collection.sort_by != collection.default_sort_by -%}
+        <link rel="canonical" href="{{ collection.url }}">
+      {%- else -%}
+        <link rel="canonical" href="{{ canonical_url }}">
+      {%- endif -%}
+    {% else %}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    <script src="{{ 'jquery.1.9.1.min.js' | asset_url }}" defer></script>
+
+    {% # Animate on scroll. %}
+    <script src="{{ 'aos.2.3.1.js' | asset_url }}" defer></script>
+    {{ 'aos.2.3.1.css' | asset_url | stylesheet_tag }}
+    {% # End Animate on scroll. %}
+
+    {% if template.suffix == 'no-index' %}
+      <meta name="robots" content="noindex,follow">
+    {% endif %}
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    {% assign custom_title = blank %}
+    {% assign custom_description = blank %}
+
+    {% if template.name == 'blog' %}
+      {% for i in (1..20) %}
+        {% assign link = 'link_' | append: i %}
+        {% assign title = 'title_' | append: i %}
+        {% assign descr = 'description_' | append: i %}
+
+        {% if canonical_url contains blog.metafields.custom[link] and blog.metafields.custom[title] != blank %}
+          {% assign custom_title = blog.metafields.custom[title] %}
+        {% endif %}
+
+        {% if canonical_url contains blog.metafields.custom[link] and blog.metafields.custom[descr] != blank %}
+          {% assign custom_description = blog.metafields.custom[descr] %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <title>
+      {% if custom_title != blank %}
+        {{ custom_title }}
+      {% else %}
+        {{ page_title }}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {% endif %}
+    </title>
+
+    {% if custom_description != blank %}
+      <meta name="description" content="{{ custom_description | escape }}">
+    {% else %}
+      {% if page_description %}
+        <meta name="description" content="{{ page_description | escape }}">
+      {% endif %}
+    {% endif %}
+
+    {% render 'meta-tags' %}
+    <link
+      href="{{ 'familjen-grotesk.css' | asset_url }}"
+      rel="stylesheet"
+    >
+
+    <link
+      href="{{ 'anton.css' | asset_url }}"
+      rel="stylesheet"
+    >
+
+    <script src="{{ 'global.js' | asset_url }}" defer></script>
+    {{ content_for_header }}
+
+    <!-- OrderLogic checkout restrictions ========================================= -->
+    {% include 'order-logic' %}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+      .video-with-text .btn-video-play .fa:before{display:none}
+            @font-face {
+              font-family: SF Pro Display;
+              src: url('https://cdn.shopify.com/s/files/1/0675/6882/8736/files/SFProDisplay-Regular.ttf?v=1691465753');
+              font-display: swap;
+            }
+            @font-face {
+              font-family: SF Pro Text;
+              src: url('https://cdn.shopify.com/s/files/1/0675/6882/8736/files/SF-Pro-Text-Regular.otf?v=1691466362');
+              font-weight:400;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: SF Pro Text;
+              src: url('https://cdn.shopify.com/s/files/1/0675/6882/8736/files/SF-Pro-Text-Bold.otf?v=1691466362');
+              font-weight:700;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: SF Pro Text;
+              src: url('https://cdn.shopify.com/s/files/1/0675/6882/8736/files/SF-Pro-Text-Medium.otf?v=1691466362');
+              font-weight:500;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: SF Pro Text;
+              src: url('https://cdn.shopify.com/s/files/1/0675/6882/8736/files/SF-Pro-Text-Light.otf?v=1691466362');
+              font-weight:300;
+              font-display: swap;
+            }
+            @font-face {
+              font-family: Brixton Wood;
+              src: url('https://cdn.shopify.com/s/files/1/0674/6164/4518/files/Brixton-Wood.otf?v=1743770284');
+              font-weight:300;
+              font-display: swap;
+            }
+            .hero-slider h1,
+            .hero-slider h1 span {
+                font-family: Brixton Wood,sans-serif;
+            }
+              {{ settings.type_body_font | font_face: font_display: 'swap' }}
+              {{ body_font_bold | font_face: font_display: 'swap' }}
+              {{ body_font_italic | font_face: font_display: 'swap' }}
+              {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+              {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+              :root {
+              --font-body-family: 'Familjen Grotesk', sans-serif;
+              --font-body-style: {{ settings.type_body_font.style }};
+              --font-body-weight: 400;
+
+              --font-heading-family: 'Anton', sans-serif;;
+              --font-heading-style: {{ settings.type_header_font.style }};
+              --font-heading-weight: 400;
+
+              --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+              --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+
+              --color-base-text: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+              --color-base-background-1: {{ settings.colors_background_1.red }}, {{ settings.colors_background_1.green }}, {{
+              settings.colors_background_1.blue }};
+              --color-base-background-2: {{ settings.colors_background_2.red }}, {{ settings.colors_background_2.green }}, {{
+              settings.colors_background_2.blue }};
+              --color-base-solid-button-labels: {{ settings.colors_solid_button_labels.red }}, {{
+              settings.colors_solid_button_labels.green }}, {{ settings.colors_solid_button_labels.blue }};
+              --color-base-outline-button-labels: {{ settings.colors_outline_button_labels.red }}, {{
+              settings.colors_outline_button_labels.green }}, {{ settings.colors_outline_button_labels.blue }};
+              --color-base-accent-1: {{ settings.colors_accent_1.red }}, {{ settings.colors_accent_1.green }}, {{
+              settings.colors_accent_1.blue }};
+              --color-base-accent-2: {{ settings.colors_accent_2.red }}, {{ settings.colors_accent_2.green }}, {{
+              settings.colors_accent_2.blue }};
+              --payment-terms-background-color: {{ settings.colors_background_1 }};
+
+              --gradient-base-background-1: {% if settings.gradient_background_1 != blank %}{{ settings.gradient_background_1 }}{%
+              else %}{{ settings.colors_background_1 }}{% endif %};
+              --gradient-base-background-2: {% if settings.gradient_background_2 != blank %}{{ settings.gradient_background_2 }}{%
+              else %}{{ settings.colors_background_2 }}{% endif %};
+              --gradient-base-accent-1: {% if settings.gradient_accent_1 != blank %}{{ settings.gradient_accent_1 }}{% else %}{{
+              settings.colors_accent_1 }}{% endif %};
+              --gradient-base-accent-2: {% if settings.gradient_accent_2 != blank %}{{ settings.gradient_accent_2 }}{% else %}{{
+              settings.colors_accent_2 }}{% endif %};
+
+              --page-width: {{ settings.page_width | divided_by: 10 }}rem;
+              --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
+              }
+
+              *,
+              *::before,
+              *::after {
+              box-sizing: inherit;
+              }
+
+              html {
+              box-sizing: border-box;
+              height: 100%;
+              }
+
+              body {
+                font-family: var(--font-body-family);
+                font-style: var(--font-body-style);
+                font-weight: var(--font-body-weight);
+              display: grid;
+              grid-template-rows: auto auto 1fr auto;
+              grid-template-columns: 100%;
+              min-height: 100%;
+              margin: 0;
+
+              }
+            .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+              font-family: var(--font-heading-family);
+                font-style: var(--font-heading-style);
+                font-weight: var(--font-heading-weight);
+            }
+    {% endstyle %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'merge.css' | asset_url | stylesheet_tag }}
+    {{ 'search.css' | asset_url | stylesheet_tag }}
+    {{ 'app.css' | asset_url | stylesheet_tag }}
+    {{ 'bundle.app.css' | asset_url | stylesheet_tag }}
+    {{ 'header-footer.css' | asset_url | stylesheet_tag }}
+    {{ 'home.css' | asset_url | stylesheet_tag }}
+
+    {%- unless settings.type_body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    <link
+      rel="stylesheet"
+      href="{{ 'component-predictive-search.css' | asset_url }}"
+      media="print"
+      onload="this.media='all'"
+    >
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    <meta name='google-site-verification' content='9glyry_YJ0CvpKtUMYPK6RINF8g6oUNGaJgqZYI7s4A'>
+    <meta name="google-site-verification" content="n2LGgMRf79DZqVycKEFE-wKfYPi5rg5RXosYD4-0UTw" />
+
+    {% include 'social-meta-tags' %}
+    {% # Note: depends on jQuery %}
+
+    <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
+
+<!-- hreflang_tags -->
+{% if template.name == "index" %}
+  <link rel="alternate" hreflang="x-default" href="https://www.animalpak.com" />
+  <link rel="alternate" hreflang="en-US" href="https://www.animalpak.com" />
+  <link rel="alternate" hreflang="en-GB" href="https://uk.animalpak.com" />
+  <link rel="alternate" hreflang="de" href="https://de.animalpak.com/de" />
+{% endif %}
+{%- assign pagetype = template | split: '.' | first -%}
+{%- if pagetype == 'page' -%}
+  <link rel="alternate" hreflang="x-default" href="https://www.animalpak.com{{ page.url }}" />
+  <link rel="alternate" hreflang="en-US" href="https://www.animalpak.com{{ page.url }}" />
+  <link rel="alternate" hreflang="en-GB" href="https://uk.animalpak.com{{ page.url }}" />
+  <link rel="alternate" hreflang="de" href="https://de.animalpak.com/de{{ page.url }}" />
+{%- endif -%}
+{%- if pagetype == 'collection' -%}
+  <link rel="alternate" hreflang="x-default" href="https://www.animalpak.com{{ collection.url }}" />
+  <link rel="alternate" hreflang="en-US" href="https://www.animalpak.com{{ collection.url }}" />
+  <link rel="alternate" hreflang="en-GB" href="https://uk.animalpak.com{{ collection.url }}" />
+  <link rel="alternate" hreflang="de" href="https://de.animalpak.com/de{{ collection.url }}" />
+{%- endif -%}
+{%- if pagetype == 'product' -%}
+  <link rel="alternate" hreflang="x-default" href="https://www.animalpak.com{{ product.url }}" />
+  <link rel="alternate" hreflang="en-US" href="https://www.animalpak.com{{ product.url }}" />
+  <link rel="alternate" hreflang="en-GB" href="https://uk.animalpak.com{{ product.url }}" />
+  <link rel="alternate" hreflang="de" href="https://de.animalpak.com/de{{ product.url }}" />
+{%- endif -%}
+<!-- /hreflang_tags -->
+
+<script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/3nvYLVfO5A3EVoemDlRBKm67CW6TSjDhJv8bw9Hu" async></script>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+  </head>
+
+  <body
+    class="{% if template == 'collection' %}{{ collection.handle }}-cls{% endif %} {% if template contains  'page' %}{{ page.handle }}{% endif %} {% if settings.ss_enable and collection.handle and collection.handle == settings.ss_collection_handle %} ss-shop{% endif %} {{ template.name }} {{ template.suffix }}"
+    x-data="{ modalOpen: false }"
+    :class="{ 'overflow-hidden': modalOpen }"
+  >
+    {% # Note that if the screen is resized while the modal is open, scrolling will be prevented. %}
+    <a class="skip-to-content-link button" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+    <div id="desktop-menu-overlay" class="fixed inset-0 z-10 hidden"></div>
+    {% render 'country-selector' %}
+    <div class="top-header-element sticky top-0 z-[999] w-full">
+      {% section 'countdown-bar' %}
+      {% section 'gift-products' %}
+      {% section 'announcement-bar' %}
+      {% section 'header-style-2' %}
+    </div>
+    <div class="cart-container">
+      {% section 'side-cart' %}
+    </div>
+
+    <input type="hidden" id="bfcm_prices" value="{% if settings.bfcm_cart %}true{% else %}false{% endif %}">
+    <input
+      type="hidden"
+      id="free_gift_price_bfcm"
+      value="{% if settings.free_gift_price_bfcm %}{{settings.free_gift_price_bfcm}}{% else %}125{% endif %}"
+    >
+    <input
+      type="hidden"
+      id="sub_pre_free_gift"
+      value="{% if settings.sub_pre_free_gift %}{{settings.sub_pre_free_gift}}{% else %}{% endif %}"
+    >
+    <input
+      type="hidden"
+      id="ot_pre_free_gift"
+      value="{% if settings.ot_pre_free_gift %}{{settings.ot_pre_free_gift}}{% else %}{% endif %}"
+    >
+    <input
+      type="hidden"
+      id="ot_pre_free_ship"
+      value="{% if settings.ot_pre_free_ship %}{{settings.ot_pre_free_ship}}{% else %}{% endif %}"
+    >
+    <input
+      type="hidden"
+      id="free_shipping_free_gift"
+      value="{% if settings.free_shipping_free_gift %}{{settings.free_shipping_free_gift}}{% else %}{% endif %}"
+    >
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'newsletter' %}
+    {% section 'footer' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+    <script src="{{ 'app.js' | asset_url }}" defer="defer"></script>
+    <script>
+      window.shopUrl = '{{ shop.url }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}',
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`,
+      };
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      };
+
+      window.accessibilityStrings = {
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+      };
+    </script>
+
+    <script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
+    <script src="{{ 'alpine.3.14.8.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'cart-interactions.js' | asset_url }}" defer></script>
+
+    {% render 'taginstall-body' %}
+
+    <style>
+      .ss__result:has([href*='navidium']) {
+        display: none !important;
+      }
+    </style>
+
+    <!-- Custom Script Trengo Customer Service -->
+    <script type="text/javascript">
+      window.Trengo = window.Trengo || {};
+      window.Trengo.key = 'I3yvbnuTeJ7IZ9wJox89';
+      (function(d, script, t) {
+          script = d.createElement('script');
+          script.type = 'text/javascript';
+          script.async = true;
+          script.src = 'https://static.widget.trengo.eu/embed.js';
+          d.getElementsByTagName('head')[0].appendChild(script);
+      }(document));
+    </script>
+
+    {% # Navidium Shipping Protection Shopify app %}
+    <script src="{{ 'navidium-widget-plus-checker.js' | asset_url }}" defer></script>
+   
+
+  </body>
+</html>

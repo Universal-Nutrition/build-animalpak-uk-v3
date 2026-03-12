@@ -1,0 +1,34 @@
+{% render 'yotpo-reviews-carousel',
+  title_first: section.settings.yotpo_title_first,
+  title_second: section.settings.yotpo_title_second
+  bg_image: section.settings.yotpo_bg_image
+%}
+
+{% schema %}
+{
+  "name": "Yotpo Reviews Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "yotpo_widget_id",
+      "label": "Yotpo Widget ID",
+      "info": "You can get this from https://reviews.yotpo.com/#/display-reviews/on-site-widgets - click on a widget and the ID is in the URL immediately after /widget/ e.g. 1050491"
+    },
+    {
+      "type": "text",
+      "id": "title_first",
+      "label": "Title (first part)"
+    },
+    {
+      "type": "text",
+      "id": "title_second",
+      "label": "Title (highlighted second part)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    }
+  ]
+}
+{% endschema %}

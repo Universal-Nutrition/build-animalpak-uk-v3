@@ -1,0 +1,20 @@
+<a href="{{ section.settings.button_link }}" target="_blank" class="relative text-[37.01px] block md:inline uppercase tracking-[-1px] leading-[80%] text-white hover:text-yellow md:after:content-[''] md:after:absolute md:after:left-0 md:after:bottom-[-20px] md:after:w-full md:after:h-1 md:after:bg-transparent md:hover:after:bg-yellow md:opacity-50 hover:opacity-100">{{ section.settings.button }}</a>
+
+{% schema %}
+{
+  "name": "Loop returns",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button",
+      "default": "Returns",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ]
+}
+{% endschema %}

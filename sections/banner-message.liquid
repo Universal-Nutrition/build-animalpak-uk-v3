@@ -1,0 +1,57 @@
+<section class='flex flex-col mx-auto text-center max-w-4xl py-16 px-[5vw] gap-10'>
+  <div class='font-anton text-[54px] md:text-[86px] leading-tight'>
+    <span>{{ section.settings.title }}</span>
+    <span class='text-black font-anton bg-goalYellow px-2 w-fit lg:w-min 3xl:w-fit [clip-path:polygon(0%_5%,100%_0%,100%_95%,0%_100%)]'>{{ section.settings.title_highlighted }}</span>
+  </div>
+  <div class='text-[15px] lg:text-[20px] space-y-4'>
+    {{ section.settings.content_text }}
+  </div>
+  <div>
+      <a href="{{ section.settings.button_link }}" class="inline-block font-anton text-bannerBlack bg-goalYellow rounded-md text-[21px] px-[60px] md:px-[90px] py-[20px]">{{ section.settings.button_text }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner Message",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (plain)"
+    },
+    {
+      "type": "text",
+      "id": "title_highlighted",
+      "label": "Title (highlighted)"
+    },
+    {
+      "type": "richtext",
+      "id": "content_text",
+      "label": "Content Text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Message",
+      "settings": {
+        "title": "TRUE EFFORT",
+        "title_highlighted": "COUNTS",
+        "content_text": "<p>Every lift, crunch, gain, PR you make is backed by over 40 years of effort, developing, evolving and perfecting everything we do.</p><p>Strong of will, you know what you need to succeed. It’s time to join like-minded people. People who share your desire, your grit. People who care, who will celebrate the effort, not only the result. <strong>Be ANIMAL.</strong></p>",
+        "button_text": "LEARN MORE",
+        "button_link": "#"
+      }
+    }
+  ]
+}
+{% endschema %}

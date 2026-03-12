@@ -1,0 +1,99 @@
+{% comment %}
+  Recent Articles Sidebar Component
+
+  Displays a list of recent blog articles in a vertical card layout.
+  Designed for use in article page sidebars.
+
+  Accepts:
+  - blog: {Object} Blog object (defaults to current blog)
+  - limit: {Number} Number of articles to show (default: 5)
+  - exclude_article: {Object} Article to exclude from the list (typically current article)
+  - title: {String} Section heading (default: 'Recent Articles')
+
+  Usage:
+  {% render 'recent-articles', blog: blog, limit: 5, exclude_article: article %}
+{% endcomment %}
+
+{% assign recent_limit = limit | default: 5 %}
+{% assign section_title = title | default: 'Recent Articles' %}
+{% assign articles_shown = 0 %}
+{% assign fetch_limit = recent_limit | plus: 1 %}
+
+{% comment %} Check total article count to decide whether to exclude current {% endcomment %}
+{% assign total_articles = blog.articles.size %}
+{% assign should_exclude = true %}
+{% if total_articles <= 1 %}
+  {% assign should_exclude = false %}
+{% endif %}
+
+<div class="recent-articles">
+  <h3 class="recent-articles__title font-anton text-primary uppercase mb-8" style="font-size: 32px; line-height: 90%;">
+    {{ section_title }}
+  </h3>
+
+  <div class="recent-articles__list flex flex-col gap-8">
+    {% for article in blog.articles limit: fetch_limit %}
+      {% if should_exclude and exclude_article and article.id == exclude_article.id %}
+        {% continue %}
+      {% endif %}
+
+      {% if articles_shown >= recent_limit %}
+        {% break %}
+      {% endif %}
+
+      <a href="{{ article.url }}" class="recent-articles__card group flex gap-8 pb-8">
+        {% if article.image %}
+          <div
+            class="recent-articles__image-wrapper overflow-hidden rounded-sm flex-shrink-0 aspect-[3/4]"
+            style="width: 35%;"
+          >
+            <img
+              srcset="
+                {% if article.image.width >= 200 %}{{ article.image | img_url: '200x' }} 200w,{% endif %}
+                {% if article.image.width >= 300 %}{{ article.image | img_url: '300x' }} 300w,{% endif %}
+                {% if article.image.width >= 400 %}{{ article.image | img_url: '400x' }} 400w,{% endif %}
+                {% if article.image.width >= 600 %}{{ article.image | img_url: '600x' }} 600w,{% endif %}
+                {{ article.image | img_url: 'master' }} {{ article.image.width }}w
+              "
+              sizes="(min-width: 1024px) 320px, (min-width: 768px) 280px, 100vw"
+              src="{{ article.image | img_url: '400x' }}"
+              alt="{{ article.image.alt | default: article.title | escape }}"
+              width="{{ article.image.width }}"
+              height="{{ article.image.height }}"
+              loading="lazy"
+              class="recent-articles__image w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            >
+          </div>
+        {% endif %}
+
+        <div class="recent-articles__content flex-1 border-b border-[#DBDBDB] pb-8">
+          {% comment %} Category tag - show first tag for debugging {% endcomment %}
+          {% if article.tags.size > 0 %}
+            <span
+              class="recent-articles__category inline-block font-semibold bg-primary text-yellow tracking-wide uppercase mb-3"
+              style="font-size: 12px; border-radius: 3px; padding: 4px 8px;"
+            >
+              {{ article.tags.first }}
+            </span>
+          {% endif %}
+
+          <h4
+            class="recent-articles__card-title font-anton font-normal text-primary leading-[110%] uppercase group-hover:text-[#444] transition-colors duration-200 mb-3"
+            style="font-size: 18px; letter-spacing: -0.01em;"
+          >
+            {{ article.title | escape }}
+          </h4>
+
+          <time
+            class="recent-articles__date block text-[14px] md:text-[15px] text-[#666] mt-3"
+            datetime="{{ article.published_at | date: '%Y-%m-%d' }}"
+          >
+            {{ article.published_at | date: '%B %d, %Y' }}
+          </time>
+        </div>
+      </a>
+
+      {% assign articles_shown = articles_shown | plus: 1 %}
+    {% endfor %}
+  </div>
+</div>

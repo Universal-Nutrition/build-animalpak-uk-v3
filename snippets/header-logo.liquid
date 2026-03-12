@@ -1,0 +1,21 @@
+<a href='{{shop.url}}'>
+  <span class='sr-only'>Workflow</span>
+  {%- if section.settings.logo_text == blank and section.settings.logo != blank -%}
+    {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+    {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+    {{
+      section.settings.logo
+      | image_url: width: section.settings.width
+      | image_tag:
+        class: 'h-8 w-auto lg-header:w-[105px] lg-header:h-[52px]',
+        widths: '50, 100, 150, 200, 250, 300, 400, 500',
+        height: logo_height,
+        width: section.settings.logo_width,
+        alt: logo_alt
+    }}
+  {%- elsif section.settings.logo_text != blank -%}
+    <span class='max-h-10.5 lg-header:max-h-full flex lg-header:inline lg-header:h-10 max-w-logomob lg-header:max-w-full w-auto logo-container'>
+      {{- section.settings.logo_text -}}
+    </span>
+  {% endif %}
+</a>

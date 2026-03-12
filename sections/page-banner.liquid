@@ -1,0 +1,111 @@
+<div class="pt-2 pb-0 lg:pt-10 lg:pb-16">
+  <div class="relative bg-black">
+    <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
+      <img
+        srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+          {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+        sizes="100vw"
+        src="{{ section.settings.image | img_url: '1500x' }}"
+        loading="lazy"
+        class="hidden md:block w-full h-full object-center object-cover"
+        alt="{{ section.settings.image.alt | escape }}"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+      >
+  
+      <img
+        srcset="{%- if section.settings.image_2.width >= 375 -%}{{ section.settings.image_2 | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 750 -%}{{ section.settings.image_2 | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 1100 -%}{{ section.settings.image_2 | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 1500 -%}{{ section.settings.image_2 | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 1780 -%}{{ section.settings.image_2 | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 2000 -%}{{ section.settings.image_2 | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 3000 -%}{{ section.settings.image_2 | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 3840 -%}{{ section.settings.image_2 | img_url: '3840x' }} 3840w,{%- endif -%}
+          {{ section.settings.image_2 | img_url: 'master' }} {{ section.settings.image_2.width }}w"
+        sizes="100vw"
+        src="{{ section.settings.image_2 | img_url: '1500x' }}"
+        loading="lazy"
+        class="block md:hidden w-full h-full object-center object-cover"
+        alt="{{ section.settings.image_2.alt | escape }}"
+        width="{{ section.settings.image_2.width }}"
+        height="{{ section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio }}"
+      >
+      
+    </div>
+    <div class="relative max-w-3xl mx-auto pt-[250px] pb-[40px] px-6 flex flex-col items-center text-center sm:pt-[476px] sm:pb-[60px] lg:px-0">
+      <h3 class="font-compacta text-[42px] md:text-[56px] lg:text-[85px] text-white leading-[80%] uppercase" style="color: {{ section.settings.color }};">{{ section.settings.heading }}</h3>
+      <p class="mt-2 text-white" style="color: {{ section.settings.color }};">{{ section.settings.subheading }}</p>
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="button block mt-4 lg:px-8 lg:py-[18px] font-bold">{{ section.settings.button_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .bg-black {
+    background-color: #000;
+  }
+
+  @media only screen and (max-width: 1110px){
+    .bg-black {
+      margin-bottom: 40px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Page banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Mobile"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Title Goes Here!",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "default": "Subtitle goes here!",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Button label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ]
+}
+{% endschema %}

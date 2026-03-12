@@ -1,0 +1,432 @@
+{% unless template.name == 'cart' %}
+<side-cart>
+  {% # Required by side-cart.js %}
+  <div class="hidden cart-count">
+    {{- cart.item_count -}}
+  </div>
+
+  <div class="side-cart-wrap !hidden bg-black/[.3] fixed top-0 left-0 w-full h-full z-[99999]">
+    <div
+      class="side-cart absolute top-0 right-0 bg-white w-full lg:w-[700px] h-full overflow-scroll transition duration-300">
+      <!-- <div class="h-[200px] close-side-cart w-full lg:hidden"></div> -->
+
+      <div class="side-cart-header relative">
+  
+        <div
+          class="cart-heading flex justify-between uppercase text-white font-compacta text-[42.56px] lg:text-[56.29px] leading-[34.05px] lg:leading-[45.03px] font-bold -tracking-[1px]">
+          <h2>Your Cart </h2>
+        </div>
+        <div class="absolute close-side-cart top-8 lg:top-[42px] right-8 lg:right-[42px] cursor-pointer">
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none"  width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M12.4444 0H1.55556C1.143 0 0.747335 0.163888 0.455612 0.455612C0.163888 0.747335 0 1.143 0 1.55556V12.4444C0 12.857 0.163888 13.2527 0.455612 13.5444C0.747335 13.8361 1.143 14 1.55556 14H12.4444C12.857 14 13.2527 13.8361 13.5444 13.5444C13.8361 13.2527 14 12.857 14 12.4444V1.55556C14 1.143 13.8361 0.747335 13.5444 0.455612C13.2527 0.163888 12.857 0 12.4444 0ZM9.8 10.8889L7 8.08889L4.2 10.8889L3.11111 9.8L5.91111 7L3.11111 4.2L4.2 3.11111L7 5.91111L9.8 3.11111L10.8889 4.2L8.08889 7L10.8889 9.8L9.8 10.8889Z" fill="black"/>
+            </svg>
+
+        </div>
+        <div
+          class="text-white mt-1 font-light text-right font-sans text-[13.91px] flex justify-end items-center !hidden">4
+          payments of <span class="side-cart__clearpay text-white mx-[5px]"> {{cart.total_price | divided_by: 4 |
+            money}} </span> with <span class="ml-[5px] mt-[2px]">{% render 'icon-clearpay' %}</span></div>
+        {% if settings.free_shipping and settings.shipping_amount != blank %}
+        {% assign free_shipping_price = settings.shipping_amount | times: 100 %}
+
+        <div class="progress-bar text-black text-[13.9px]  leading-[18.07px] tracking-[1px] mt-6">
+          <div class="cart__free-shipping text-black text-[13.9px] font-bold">
+            {% if cart.total_price >= free_shipping_price %}
+            You've Unlocked Free Shipping!
+            {% else %}
+            Spend {{free_shipping_price | minus: cart.total_price | money}} more for free shipping
+            {% endif %}
+          </div>
+          <div class="cart__subs-shipping hidden text-black text-[13.9px] font-bold">FREE SHIPPING WHEN YOU SUBSCRIBE
+            AND SAVE</div>
+
+          <div class="progress-wrap w-full h-[6px] bg-[#909090] mt-3 overflow-hidden">
+            <div class="progress h-[6px] bg-yellow transition-all duration-500" data-amount="{{free_shipping_price}}"
+              style="width: {{cart.total_price | times: 100 | divided_by: free_shipping_price }}%;"></div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if settings.side_cart_text != blank %}
+        <div class="mt-4 text-[12.1px] text-white font-sans font-light lg:leading-[19.36px]">
+          {{ settings.side_cart_text }}
+        </div>
+        {% endif %}
+
+      </div>
+      {% if section.settings.promo != blank %}
+      <div class="bg-yellow p-4 text-blck font-sans font-light text-base text-center">{{section.settings.promo}}</div>
+      {% endif %}
+<div class="cart-product-list">
+      <div class="side-cart-product pt-6 lg:pt-8 px-6 lg:px-[64px] bg-white">
+        <div
+          class="text-[12.1px] lg:text-[13.9px] font-sans font-bold uppercase text-primary leading-[18.07px] tracking-[1px]">
+          <span id="side-cart__amount">{{cart.item_count}}</span> items added
+        </div>
+        <div class="cart-items pt-6 bg-white relative">
+
+        </div>
+      </div>
+
+      {%- comment -%} recommended products {%- endcomment -%}
+    
+</div>
+      {%- comment -%} end of recommended products {%- endcomment -%}
+<div class="cart-footer">
+      <div class="flex justify-between block-bottom-cart">
+          <span class="text-subtotal">subtotal</span>
+          <span id="side-cart__total-price" >
+            {{cart.total_price | money}}
+          </span>
+        </div>
+      <div class="checkout-btn px-6 lg:px-[64px] bg-white pb-8">
+        <a href="/checkout"
+          class="block checkout-cta product-form__submit w-full border border-solid border-yellow hover:bg-white tracking-[1px] hover:border-[#DBDBDB] transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px]">checkout</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</side-cart>
+{% endunless %}
+
+{% capture discount %}
+{
+"bundle10": "{{settings.bundle10}}",
+"bundle20": "{{settings.bundle20}}",
+"bundle30": "{{settings.bundle30}}"
+}
+{% endcapture %}
+
+{% capture subs_discount %}
+{
+"bundle10": "{{settings.subs_bundle10}}",
+"bundle20": "{{settings.subs_bundle20}}",
+"bundle30": "{{settings.subs_bundle30}}"
+}
+{% endcapture %}
+
+<script>
+  let discountCodes = {{ discount }}
+  let subsDiscountCodes = {{ subs_discount }}
+</script>
+
+<style>
+  .cart-item__variants{
+    border: 1px solid #DBDBDB;
+    font-size: 13.91px;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  .cart-item__img {
+    background: #F5F5F5;
+    padding: 8px;
+    width: 220px;
+    min-width: 220px;
+    height: 220px;
+  }
+
+  .cart-item__title {
+    font-size: 37.01px;
+    line-height: 19.61px;
+  }
+
+  .cart-item__option {
+    margin-top: 8px;
+    margin-right: 12px;
+    font-size: 13.91px;
+    line-height: 22.26px;
+    font-weight: 600;
+    color: #C3C3C3;
+  }
+
+  .cart-item__subscription {
+    font-size: 13.91px;
+    line-height: 22.26px;
+  }
+
+  .cart-item__quantity,
+  .cart-item__remove,
+  .stack-item__remove {
+    width: 50%;
+    height: 40px;
+    border: 1px solid #DBDBDB;
+    margin-top: 12px;
+    font-size: 12.1px;
+    letter-spacing: 1px;
+    line-height: 15.73px;
+  }
+
+  .cart-item__quantity-btn {
+    font-size: 25px;
+    font-weight: 100;
+  }
+
+  .side-cart {
+    transform: translateX(100%);
+  }
+
+  .side-cart.active {
+    transform: translateX(0);
+  }
+
+  .side-cart::-webkit-scrollbar {
+    display: none;
+  }
+
+  .side-cart {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .bundle-tag {
+    position: absolute;
+    display: inline-block;
+    top: 8px;
+    left: 8px;
+    background: #fff;
+    color: #00AAAD;
+    text-transform: capitalize;
+    line-height: 19.36px;
+    font-size: 12.1px;
+    border: 1px solid #00AAAD;
+    padding: 3px 8px;
+  }
+
+  .bundle-discount-text {
+    display: block;
+    margin-left: 6px;
+    color: #00A886;
+    font-size: 13.91px;
+    font-weight: 400;
+  }
+
+  .ss__recommendation--target .pt-8.pb-6 {
+    display: none !important;
+  }
+
+  .recommended-product {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    transform: translateY(100%);
+  }
+
+  .recommended-product.active {
+    transform: translateY(0);
+  }
+
+  .recommended-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .recommended-wrap {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .cart-selected_product__drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 700px;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+    z-index: 99999;
+  }
+
+  .cart-selected_product__drawer .close-product__drawer {
+    top: 40px;
+    right: 40px;
+  }
+
+  .cart-selected_product__drawer .selected_product__drawer-inner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 700px;
+    height: max-content;
+    top: unset;
+    padding: 64px;
+    padding-top: 96px;
+    transform: translateY(100%);
+    transition: .3s;
+    border-radius: 24px 24px 0px 0px;
+  }
+
+  .cart-selected_product__drawer .selected_product__drawer-inner.active {
+    transform: translateY(0);
+  }
+
+  .cart-selected_product__drawer .selected_product__img {
+    background: #F5F5F5;
+    width: 250px;
+    height: 250px;
+    min-width: 250px;
+    margin-right: 32px;
+  }
+
+  .cart-selected_product__drawer .selected_product-bullet-points {
+    margin-top: 24px;
+    line-height: 22.26px;
+    font-size: 13.91px;
+  }
+
+  .cart-selected_product__drawer .selected_product-bullet-points li {
+    list-style-type: disc;
+    margin-left: 30px !important;
+    line-height: 22.26px;
+    font-size: 13.91px;
+  }
+
+  .cart-selected_product__drawer .selected_product__title {
+    font-size: 56.29px;
+    line-height: 45.03px;
+  }
+
+  .cart-selected_product__drawer .selected_product__type {
+    font-size: 18.4px;
+    line-height: 29.44px;
+  }
+
+  .cart-item_submit.disabled {
+    background: #DBDBDB;
+    border-color: #DBDBDB;
+    pointer-events: none;
+  }
+
+  .cart-purchase-type input+label:before {
+    width: 16px;
+    height: 16px;
+    border-radius: 15px;
+    top: -1px;
+    left: 0;
+    margin-right: 6px;
+    position: relative;
+    background-color: #fff;
+    content: '' !important;
+    box-shadow: 0 0 0 1px #212121;
+    display: inline-block;
+    visibility: visible;
+  }
+
+  .cart-purchase-type input:checked+label:before {
+    background-color: #212121;
+    border: 4px solid #F5F5F5;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .side-cart-header {
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .cart-item__wrap {
+      margin-bottom: 1rem;
+    }
+
+    .gift-item {
+      padding-bottom: 25px;
+    }
+
+    .cart-item__img {
+      width: 130px;
+      min-width: 130px;
+      height: 130px;
+    }
+
+    .cart-item__title {
+      font-size: 24.33px;
+      line-height: 19.46px;
+    }
+
+    .cart-item__option {
+      margin-top: 2px;
+      margin-right: 0;
+      font-size: 12.1px;
+      line-height: 19.36px;
+    }
+
+    .cart-item__subscription {
+      font-size: 12.1px;
+      line-height: 19.36px;
+    }
+
+    .cart-item__price {
+      font-size: 12.1px;
+    }
+
+    .side-cart {
+      transform: translateY(100%);
+    }
+
+    .side-cart.active {
+      transform: translateY(0);
+    }
+
+    .cart-selected_product__drawer {
+      width: 100%;
+    }
+
+    .cart-selected_product__drawer .selected_product__drawer-inner {
+      background: none;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      transform: translateY(100%);
+      overflow: scroll;
+    }
+
+    .cart-selected_product__drawer .selected_product__drawer-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cart-selected_product__drawer .selected_product__drawer-inner {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .cart-selected_product__drawer .selected_product__drawer-inner.active {
+      transform: translateY(0);
+    }
+
+    .cart-selected_product__drawer .selected_product__drawer .quantity {
+      margin-right: 8px;
+    }
+
+    .cart-selected_product__drawer .selected_product__drawer-mobile {
+      height: 200px;
+    }
+
+    .cart-selected_product__drawer .selected_product__drawer-mobile-inner {
+      position: relative;
+      padding: 24px;
+      height: 100%;
+      padding-top: 48px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+
+    .cart-selected_product__drawer .close-product__drawer {
+      top: 32px;
+      right: 32px;
+    }
+
+    .cart-selected_product__drawer .selected_product__img {
+      margin: auto;
+    }
+
+    .cart-selected_product__drawer .selected_product__title {
+      font-size: 42.56px;
+      line-height: 34.05px;
+      margin-top: 24px;
+    }
+
+    .cart-selected_product__drawer .selected_product__type {
+      font-size: 16px;
+    }
+
+
+  }
+</style>

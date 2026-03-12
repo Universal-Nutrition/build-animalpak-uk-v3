@@ -1,0 +1,162 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+<div class="px-6 sm:px-15 lg:px-[168px] pt-16 pb-0 lg:pt-32 lg:pb-16">
+  <div class="md:flex md:mx-[-20px] lg:mx-[-48px]">
+    <div class="md:w-1/2 md:px-5 lg:px-12 mb-10 md:mb-0">
+      <div class="md:mb-10 ">
+        {%- if section.settings.custom_heading != blank -%}
+          <h2 class="text-[48.944px] md:text-[60px] lg:text-[85.604px] leading-[80%] mb-[18px] uppercase text-primary">{{ section.settings.custom_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="leading-[160%] text-[13.913px] md:text-base mb-6 md:mb-0 text-primary">{{ section.settings.subheading }}</p>
+        {%- endif -%} 
+      </div>
+       
+    </div>
+    <div class="md:w-1/2 md:px-5 lg:px-12">
+    {% if section.settings.accolade != blank %}
+        <h3 class="text-[24.33px] md:text-[37.01px] leading-[80%] text-primary tracking-[-0.5px] md:tracking-[-1px] uppercase font-bold">{{ section.settings.accolade }}</h3>
+    {% endif %}
+
+        {%- for accolade in page.metafields.custom.acccolades.value -%}
+            <div class="font-sans font-normal text-base text-primary mb-2 list-disc leading-[25.6px]">{{ accolade }}</div>
+        {%- endfor -%} 
+
+    </div>
+  </div>
+
+  <div class="about-us-story__video-container max-w-full lg:max-w-[1000px] mx-auto mt-[64px] lg:mt-[128px]">
+    <noscript>
+      <div class="video-section__media about-us-story__media">
+        {% if section.settings.cover_image != blank %} style="padding-bottom: {{ 1 | divided_by: section.settings.cover_image.aspect_ratio | times: 100 }}%;"{% endif %}
+      >
+        <a href="{{ section.settings.video_url }}" class="video-section__poster about-us-story__poster media media--transparent media--landscape{% if section.settings.cover_image == blank %} video-section__placeholder{% endif %}">
+          {%- if section.settings.cover_image != blank -%}
+            <img
+              srcset="{%- if section.settings.cover_image.width >= 375 -%}{{ section.settings.cover_image | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if section.settings.cover_image.width >= 750 -%}{{ section.settings.cover_image | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if section.settings.cover_image.width >= 1100 -%}{{ section.settings.cover_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if section.settings.cover_image.width >= 1500 -%}{{ section.settings.cover_image | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if section.settings.cover_image.width >= 1780 -%}{{ section.settings.cover_image | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if section.settings.cover_image.width >= 2000 -%}{{ section.settings.cover_image | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if section.settings.cover_image.width >= 3000 -%}{{ section.settings.cover_image | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if section.settings.cover_image.width >= 3840 -%}{{ section.settings.cover_image | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ section.settings.cover_image | img_url: 'master' }} {{ section.settings.cover_image.width }}w"
+              src="{{ section.settings.cover_image | img_url: '1920x' }}"
+              sizes="{% if section.settings.full_width %}100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw{% endif %}"
+              alt="{{ 'sections.video.load_video' | t: description: section.settings.description | escape }}"
+              loading="lazy"
+              width="{{ section.settings.cover_image.width }}"
+              height="{{ section.settings.cover_image.height }}"
+            >
+          {%- else -%}
+            {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+          {%- endif -%}
+        </a>
+      </div>
+    </noscript>
+    {% if section.settings.cover_image != blank %}
+    <deferred-media class="video-section__media about-us-story__media deferred-media no-js-hidden" data-media-id="{{ section.settings.video_url.id }}"
+  {% if section.settings.cover_image != blank %} style="padding-bottom: {{ 1 | divided_by: section.settings.cover_image.aspect_ratio | times: 100 }}%;"{% endif %}
+>
+  <button
+    id="Deferred-Poster-Modal-{{ section.settings.video_url.id }}"
+    class="video-section__poster about-us-story__poster media deferred-media__poster media--landscape"
+    type="button"
+  >
+    {%- if section.settings.cover_image != blank -%}
+      <img
+        srcset="{%- if section.settings.cover_image.width >= 375 -%}{{ section.settings.cover_image | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.cover_image.width >= 750 -%}{{ section.settings.cover_image | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.cover_image.width >= 1100 -%}{{ section.settings.cover_image | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.cover_image.width >= 1500 -%}{{ section.settings.cover_image | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.cover_image.width >= 1780 -%}{{ section.settings.cover_image | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.cover_image.width >= 2000 -%}{{ section.settings.cover_image | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.cover_image.width >= 3000 -%}{{ section.settings.cover_image | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.cover_image.width >= 3840 -%}{{ section.settings.cover_image | img_url: '3840x' }} 3840w,{%- endif -%}
+          {{ section.settings.cover_image | img_url: 'master' }} {{ section.settings.cover_image.width }}w"
+        src="{{ section.settings.cover_image | img_url: '1920x' }}"
+        sizes="{% if section.settings.full_width %}100vw{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw{% endif %}"
+        alt="{{ 'sections.video.load_video' | t: description: section.settings.description | escape }}"
+        loading="lazy"
+        width="{{ section.settings.cover_image.width }}"
+        height="{{ section.settings.cover_image.height }}"
+      >
+    {%- else -%}
+      {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+    {%- endif -%}
+    <span class="deferred-media__poster-button motion-reduce !bg-transparent !border-none">
+    {%- if section.settings.video_url.type == 'youtube' -%}
+      <svg width="68" height="47" viewBox="0 0 68 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.428348 10.7584C0.76944 5.42321 5.05112 1.21249 10.3855 0.859386C27.7795 -0.291987 40.5398 -0.28068 57.6182 0.858651C62.9249 1.21267 67.1956 5.38669 67.5543 10.6931C68.1782 19.9244 68.1256 27.3719 67.5307 36.5412C67.1726 42.0598 62.6407 46.3629 57.1139 46.5577C38.8811 47.2002 29.5283 47.1064 10.929 46.5107C5.36007 46.3323 0.776568 42.0034 0.433331 36.4422C-0.12168 27.4497 -0.165038 20.0398 0.428348 10.7584Z" fill="#EA3323"/>
+        <path d="M45 24L27 34.3923L27 13.6077L45 24Z" fill="white"/>
+      </svg>
+
+    {% else %}
+      {%- render 'icon-play' -%}
+    {%- endif -%}
+    </span>
+  </button>
+  <template>
+    
+  <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url | split: "v=" | last }}" class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+
+    {% comment %} {%- if section.settings.video_url.type == 'youtube' -%}
+      <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1" class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+    {%- else -%}
+      <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}" class="js-vimeo" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+    {%- endif -%} {% endcomment %}
+  </template>
+</deferred-media>
+    {% else %}
+    <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url | split: "v=" | last }}" width="100%" class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+
+    {% endif %}
+  
+
+</div>
+
+<style>
+  .js-youtube {
+    aspect-ratio: 16/9;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Athlete information",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "custom_heading",
+      "label": "HTML Heading",
+      "default": "<p>EVAN CENTOPANI</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "default": "<p>Evan has been a staple figure in the bodybuilding and fitness world since earning his pro status in 2007. Evan went on to make his pro debut at the New York Pro in 2009 where he took first place. He has set the standard for the Animal Pak brand and what it means to be an Animal Athlete.</p>",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "accolade",
+      "default": "accolades",
+      "label": "Right colomn title"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "t:sections.video.settings.cover_image.label"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "t:sections.video.settings.video_url.label",
+      "info": "t:sections.video.settings.video_url.info"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,61 @@
+<predictive-search>
+    <form action="{{ routes.search_url }}" method="get" role="search">
+        <input
+                id="Search"
+                type="search"
+                name="q"
+                value="{{ search.terms | escape }}"
+                role="combobox"
+                aria-expanded="false"
+                aria-owns="predictive-search-results"
+                aria-controls="predictive-search-results"
+                aria-haspopup="listbox"
+                aria-autocomplete="list"
+                placeholder="Search protein.."
+                class="!w-full"
+        >
+        <input name="options[prefix]" type="hidden" value="last" class="w-full">
+
+        <div id="predictive-search" tabindex="-1"></div>
+    </form>
+</predictive-search>
+<style>
+    .predictive form input, .predictive input[type="search"]:focus  {
+        color:{{settings.predictive_color}}
+    }
+
+    @media (min-width:801px) {
+        #Search {
+            width: 600px;
+            max-width: 100%;
+        }
+        #predictive-search {
+            z-index: 1000;
+            width:600px;
+            max-width:100%;
+            position: absolute;
+            background: #fff
+        }
+    }
+    body header .mobile-search {
+        display:none
+    }
+    @media (max-width:800px) {
+        #Search {
+            max-width: 100%;
+        }
+        #predictive-search {
+            z-index: 1000;
+            width:80%;
+            max-width:80%;
+            position: absolute;
+            background: #fff
+        }
+    }
+    .search-wrap {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    /* update for mobile */
+</style>

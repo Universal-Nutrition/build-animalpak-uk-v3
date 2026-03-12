@@ -1,0 +1,61 @@
+<div class="flex w-full flex-wrap{% if is_featured_banner_reverse %} flex-row-reverse {% endif %}">
+  <div class="w-full md:w-1/2 flex xl:block">
+    {% if article.image != blank %}
+    <a href="{{article.url}}" class="w-full flex xl:block">
+      <div class="relative pt-[100%] md:pt-0 xl:pt-[97.23%] w-full xl:w-auto">
+        <img src="{{article.image | img_url: 'master'}}" alt="{{ article.image.alt | escape }}" class="w-full h-full object-cover aspect-1 absolute md:static xl:absolute left-0 top-0 right-0 bottom-0">
+      </div>
+    </a>
+    {% endif %}
+  </div>
+  <div class="article-full-width-item__text-container flex flex-col justify-between px-6 py-10 lg:p-24 bg-yellow w-full md:w-1/2">
+    <div>
+      <div class="mb-6 md:mb-10 flex flex-wrap items-center">
+        {% for tag in article.tags %}
+          {% unless tag contains 'read_time' or tag contains 'featured_banner' %}
+          {% if tag == 'News & events' or tag == 'Supplementation' or tag == 'Diet & Nutrition' or tag == 'Training' or tag == 'Lifestyle' or tag == 'news & events' or tag == 'supplementation' or tag == 'diet & nutrition' or tag == 'training' or tag == 'lifestyle' %}
+            {% if template contains 'blog' %}
+              <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="font-medium bg-primary text-yellow py-[2px] text-[12.1px] px-2 capitalize mr-2 mb-2">{{ tag | replace: '_', ' '}}</a>
+            {% else %}
+              <span class="font-medium bg-primary text-yellow py-[2px] text-[12.1px] px-2 capitalize mr-2 mb-2">{{ tag | replace: '_', ' '}}</span>
+            {% endif %}
+          {% endif %}
+          {% endunless %} 
+        {% endfor %}
+      </div>
+      <a href="{{article.url}}" class="block font-anton text-[48.944px] tracking-[-1px] lg:text-[85.604px] font-bold text-primary leading-[80%] uppercase">
+        {{article.title}}
+      </a>
+      <div class="text-[13px] text-primary mt-3">{{ article.published_at | date: '%B %d, %Y' }}</div>
+      <a href="{{article.url}}" class="text-[13px] text-primary mt-2 font-semibold inline-flex items-center hover:underline">
+        Read more
+        <svg class="ml-1" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="flex justify-between font-bold items-center mt-[28px] md:mt-1 text-[#5E5A59] font-sans text-[13.91px] leading-[19.36px] lg:leading-[22.26px]">
+      {% for tag in article.tags %}
+        {% if tag contains 'author:' %}
+            {% assign author_tag = true %}
+            {% assign author_tag_name = tag | handle %}
+            {% assign author_tag_name_for_render = tag %}
+            {% break %}
+        {% else %}
+            {% assign author_tag = false %}
+            {% assign author_tag_name_for_render = '' %}
+        {% endif %}
+      {% endfor %}
+      {% if author_tag and template contains 'blog' %}
+        <a href="{{ blog.url }}/tagged/{{ author_tag_name | remove: "author-" }}" class="text-primary font-semibold">{{ author_tag_name_for_render | remove: "author:" }}</a>
+      {% else %}
+        <div class="text-primary font-semibold">{{ author_tag_name_for_render | remove: "author:" }}</div>
+      {% endif %}
+      {% for tag in article.tags %}
+        {% if tag contains 'read_time' %}
+          <span class="font-normal text-primary">{{tag | remove: 'read_time: '}} read</span>
+        {% endif %} 
+      {% endfor %}
+    </div>
+  </div>
+</div>

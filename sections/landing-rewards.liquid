@@ -1,0 +1,150 @@
+{{ 'bundle.section-landing-rewards.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+<div class="landing-rewards px-6 sm:px-15 lg:px-[168px] py-16 lg:py-32">
+  <div class="md:flex md:mx-[-20px] lg:mx-[-48px]">
+    <div class="md:w-1/2 md:px-5 lg:px-12">
+      <div class="border-solid md:border-b border-{#DBDBDB} pb-10 md:mb-10 ">
+        {%- if section.settings.custom_heading != blank -%}
+          <h2 class="text-[48.944px] md:text-[60px] lg:text-[85.604px] leading-[80%] mb-[18px] text-primary uppercase">{{ section.settings.custom_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="leading-[160%] text-[13.913px] md:text-base text-primary">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+      <div class="hidden md:block">
+        {%- for block in section.blocks -%}
+          {% case block.type %}
+            {% when 'left_column_item' %}
+              <div class="landing-rewards__block mb-9">
+                {% if block.settings.item_heading != blank %}
+                  <h3 class="text-[24.33px] md:text-[37.01px] leading-[80%] mb-[22px] tracking-[-0.5px] md:tracking-[-1px] uppercase text-primary">{{ block.settings.item_heading }}</h3>
+                {% endif %}
+                {%- if block.settings.item_content != blank -%}
+                  <div class="text-[13.91px] md:text-base text-primary">
+                    {{ block.settings.item_content }}
+                  </div>
+                {%- endif -%}
+              </div>
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+      {% if section.settings.button_label != blank %}
+        <div class="mt-[-12px] hidden md:block">
+          <a href="{{ section.settings.button_link }}"
+              class="button inline-block lg:px-8 lg:py-[18px] font-bold">
+              {{ section.settings.button_label | upcase }}
+          </a> 
+        </div>
+      {% endif %}
+    </div>
+    <div class="md:w-1/2 md:px-5 lg:px-12 mb-[42px] md:mb-0">
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {% when 'right_column_item' %}
+            <div class="landing-rewards__block landing-rewards__block--alt bg-primary border-solid border-b-4 border-yellow mb-6 md:mb-10 last:mb-0">
+              {% if block.settings.item_heading != blank %}
+                <h3 class="text-[24.33px] md:text-[37.01px] leading-[80%] text-yellow tracking-[-0.5px] md:tracking-[-1px] uppercase px-4 py-6 md:p-8 bg-[#333232]">{{ block.settings.item_heading }}</h3>
+              {% endif %}
+              {%- if block.settings.item_content != blank -%}
+                <div class="text-white p-[14px] pb-[2px] md:p-8 md:pt-6 md:pb-[18px] text-[13.91px]">
+                  {{ block.settings.item_content }}
+                </div>
+            </div>
+          {% endif %}
+        {% endcase %}
+      {%- endfor -%}
+    </div>
+    <div class="block md:hidden">
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {% when 'left_column_item' %}
+            <div class="landing-rewards__block mb-9">
+              {% if block.settings.item_heading != blank %}
+                <h3 class="text-[24.33px] md:text-[37.01px] leading-[80%] mb-[22px] tracking-[-0.5px] md:tracking-[-1px] uppercase text-primary">{{ block.settings.item_heading }}</h3>
+              {% endif %}
+              {%- if block.settings.item_content != blank -%}
+                <div class="text-[13.91px] md:text-base">
+                  {{ block.settings.item_content }}
+                </div>
+              {%- endif -%}
+            </div>
+        {% endcase %}
+      {%- endfor -%}
+    </div>
+    {% if section.settings.button_label != blank %}
+      <div class="mt-[-12px] block md:hidden">
+        <a href="{{ section.settings.button_link }}"
+            class="button inline-block lg:px-8 lg:py-[18px] font-bold">
+            {{ section.settings.button_label | upcase }}
+        </a> 
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rewards information",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "custom_heading",
+      "label": "HTML Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "default": "Subtitle goes here!",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Apply now",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_column_item",
+      "name": "Left column item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_heading",
+          "label": "Item heading"
+        },
+        {
+          "type": "html",
+          "id": "item_content",
+          "label": "Item content",
+          "info": "Wrap each list items in a <li></li> tag. Wrap all <li></li> tags in the <ul></ul> tag to display the list. Example: <ul><li>Item 1</li><li>Item 2</li></ul>"
+        }
+      ]
+    },
+    {
+      "type": "right_column_item",
+      "name": "Right column item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_heading",
+          "label": "Item heading"
+        },
+        {
+          "type": "html",
+          "id": "item_content",
+          "label": "Item content",
+          "info": "Wrap each list items in a <li></li> tag. Wrap all <li></li> tags in the <ul></ul> tag to display the list. Example: <ul><li>Item 1</li><li>Item 2</li></ul>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

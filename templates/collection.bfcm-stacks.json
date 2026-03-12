@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "d4153a63-7096-48e6-b477-f663b275203f": {
+      "type": "block-tops",
+      "settings": {
+        "menu": "bfcm"
+      }
+    },
+    "banner": {
+      "type": "stacks-banner",
+      "disabled": true,
+      "settings": {}
+    },
+    "product-grid": {
+      "type": "stacks-grid",
+      "blocks": {
+        "ceb0b337-66e8-4035-a1b9-0a6fad410ddf": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_FatBurning_1.png",
+            "handle": "Fat Burning"
+          }
+        },
+        "7963f083-9b7d-43c8-9e17-a8d29294bf9f": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_EnergyBoost.png",
+            "handle": "Energy Boost"
+          }
+        },
+        "5203d8bb-5c45-4778-a431-17696195e634": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_PostWorkout_Recovery_1.png",
+            "handle": "Post-Workout"
+          }
+        },
+        "a5e71e6f-2f27-4ac4-b74a-093334e12d49": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/PreWorkout.png",
+            "handle": "Pre-Workout"
+          }
+        },
+        "1025b750-6174-46e2-a90f-139b5590efc7": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Health.png",
+            "handle": "Health"
+          }
+        },
+        "effabf21-e6be-4332-9dfa-94f2613a3363": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/LigamentSupport.png",
+            "handle": "Joint Health"
+          }
+        },
+        "b986264d-9fcb-46d9-91d0-e3705d4b5e4f": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/ImmuneSupport.png",
+            "handle": "Immune Support"
+          }
+        },
+        "2d5f9b79-a7cb-42c1-9732-7e29c78b4eef": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Focus.png",
+            "handle": "Brain & Focus"
+          }
+        },
+        "b1718f15-f30d-47ff-907a-dfa7e6e578b0": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/HeartHealth.png",
+            "handle": "Heart Health"
+          }
+        },
+        "8538f203-211e-4f5b-8d4d-3285d18fda67": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/DigestiveEnzymes.png",
+            "handle": "Digestion & Gut"
+          }
+        },
+        "d1c261ce-78c6-441f-a777-0f72775ea133": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/MuscleBuilding.png",
+            "handle": "Muscle Building"
+          }
+        },
+        "b2c21389-522b-4f56-8c45-6ca355d1fae8": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/TestosteroneBooster.png",
+            "handle": "Testosterone Boost"
+          }
+        },
+        "1d85facf-50a9-455e-956d-6aeb67ce83c5": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/PostWorkout_Recovery.png",
+            "handle": "Recovery"
+          }
+        },
+        "b0e3c263-e753-4844-b091-a81db5e119c2": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/SleepSupport.png",
+            "handle": "Sleep Support"
+          }
+        },
+        "ff12fd4f-e634-4d75-83e6-0570ce8c91f0": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_OverallHealth.png",
+            "handle": "Overall Health"
+          }
+        }
+      },
+      "block_order": [
+        "ceb0b337-66e8-4035-a1b9-0a6fad410ddf",
+        "7963f083-9b7d-43c8-9e17-a8d29294bf9f",
+        "5203d8bb-5c45-4778-a431-17696195e634",
+        "a5e71e6f-2f27-4ac4-b74a-093334e12d49",
+        "1025b750-6174-46e2-a90f-139b5590efc7",
+        "effabf21-e6be-4332-9dfa-94f2613a3363",
+        "b986264d-9fcb-46d9-91d0-e3705d4b5e4f",
+        "2d5f9b79-a7cb-42c1-9732-7e29c78b4eef",
+        "b1718f15-f30d-47ff-907a-dfa7e6e578b0",
+        "8538f203-211e-4f5b-8d4d-3285d18fda67",
+        "d1c261ce-78c6-441f-a777-0f72775ea133",
+        "b2c21389-522b-4f56-8c45-6ca355d1fae8",
+        "1d85facf-50a9-455e-956d-6aeb67ce83c5",
+        "b0e3c263-e753-4844-b091-a81db5e119c2",
+        "ff12fd4f-e634-4d75-83e6-0570ce8c91f0"
+      ],
+      "settings": {
+        "title": "What is a supplement stack?",
+        "subtitle": "A combination of nutritional supplement products strategically taken together to optimize your workout progress and help you reach your strength and physique goals. It is important to understand which supplements can and should be taken together, and which supplements you should avoid taking together.",
+        "link": "",
+        "bg": "#f5d500"
+      }
+    },
+    "ae803290-2731-465f-8b99-541462a83434": {
+      "type": "seo-section",
+      "settings": {
+        "title": "More about stacking supplements",
+        "subtitle": "<p>A combination of nutritional supplement products strategically taken together to optimize your workout progress and help you reach your strength and physique goals. It is important to understand which supplements can and should be taken together, and which supplements you should avoid taking together.</p>",
+        "bg": "#f5f5f5"
+      }
+    }
+  },
+  "order": [
+    "d4153a63-7096-48e6-b477-f663b275203f",
+    "banner",
+    "product-grid",
+    "ae803290-2731-465f-8b99-541462a83434"
+  ]
+}

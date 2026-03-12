@@ -1,0 +1,122 @@
+{% assign reverse_columns = block.settings.reverse_columns %}
+<div class="flex {% if reverse_columns %}flex-row-reverse{% else %}flex-row{% endif %} gap-10 pl-8 pr-10 py-10">
+    <div class="flex gap-10 w-1/2">
+        {% if block.settings.linklist_1 != blank %}
+            {% assign image_fit = block.settings.col_1_image_fit %}
+            <ul class="flex flex-col gap-2 w-1/2 h-full justify-between">
+                {% if block.settings.col_1_title != blank %}
+                    <li class="ml-2">
+                        <span class="font-bold text-lg text-black font-anton uppercase">{{ block.settings.col_1_title }}</span>
+                    </li>
+                {% endif %}
+                {% for link in block.settings.linklist_1.links %}
+                    {% assign link_image = '' %}
+                    {% assign col_title = block.settings.col_1_title %}
+                    {% assign is_blog = false %}
+                    {% if col_title == 'Blog' %}
+                        {% assign is_blog = true %}
+                        {% assign blog_tag = link.title | handleize %}
+                        {% assign blog_articles = blogs['fitness-bodybuilding'].articles | sort: 'published_at' %}
+                        {% for article in blog_articles %}
+                            {% for tag in article.tags %}
+                                {% assign tag_normalized = tag | handleize %}
+                                {% if tag_normalized == blog_tag %}
+                                    {% assign link_image = article.image | image_url: width: 300 %}
+                                    {% break %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                    {% assign link_description = '' %}
+                    {% for child in link.links %}
+                        {% assign link_description = child.title %}
+                        {% if is_blog == false %}
+                            {% assign link_image = child.url %}
+                        {% endif %}
+                    {% endfor %}
+                    <li>
+                        {% render 'megamenu-category-link', link: link, link_description: link_description, link_image: link_image, image_fit: image_fit, col_title: col_title, is_blog: is_blog %}
+                    </li>
+                {% endfor %}
+                {% if block.settings.col_1_link_url != blank %}
+                    <a href="{{ block.settings.col_1_link_url }}" class="mt-2 text-lg ml-2 font-anton uppercase text-black underline flex items-center">
+                        {{ block.settings.col_1_link_title }}
+                        {% render 'icon-chevron-right', classes: 'w-4 h-4 stroke-[#707070] ml-0.5' %}
+                    </a>
+                {% endif %}
+            </ul>
+        {% endif %}
+        {% if block.settings.linklist_2 != blank %}
+            {% assign image_fit = block.settings.col_2_image_fit %}
+            <ul class="flex flex-col gap-2 w-1/2 h-full justify-between">
+                {% if block.settings.col_2_title != blank %}
+                    <li class="ml-2">
+                        <span class="font-bold text-lg text-black font-anton uppercase">{{ block.settings.col_2_title }}</span>
+                    </li>
+                {% endif %}
+                {% for link in block.settings.linklist_2.links %}
+                    {% assign link_image = '' %}
+                    {% assign link_description = '' %}
+                    {% assign is_blog = false %}
+                    {% assign col_title = block.settings.col_2_title %}
+                    {% if col_title == 'Blog' %}
+                        {% assign is_blog = true %}
+                        {% assign blog_tag = link.title | handleize %}
+                        {% assign blog_articles = blogs['fitness-bodybuilding'].articles | sort: 'published_at' %}
+                        {% for article in blog_articles %}
+                            {% for tag in article.tags %}
+                                {% assign tag_normalized = tag | handleize %}
+                                {% if tag_normalized == blog_tag %}
+                                    {% assign link_image = article.image | image_url: width: 300 %}
+                                    {% break %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                    {% for child in link.links %}
+                        {% assign link_description = child.title %}
+                        {% if is_blog == false %}
+                            {% assign link_image = child.url %}
+                        {% endif %}
+                    {% endfor %}
+                    <li>
+                        {% render 'megamenu-category-link', link: link, link_description: link_description, link_image: link_image, image_fit: image_fit, is_blog: is_blog %}
+                    </li>
+                {% endfor %}
+                {% if block.settings.col_2_link_url != blank %}
+                    <a href="{{ block.settings.col_2_link_url }}" class="mt-2 text-lg ml-2 font-anton uppercase text-black underline flex items-center">
+                        {{ block.settings.col_2_link_title }}
+                        {% render 'icon-chevron-right', classes: 'w-4 h-4 stroke-[#707070] ml-0.5' %}
+                    </a>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="flex gap-10 w-1/2 max-w-full">
+     {% if parent_link.title == 'Learn' %}
+        {% assign all_articles = blogs['fitness-bodybuilding'].articles | sort: 'published_at' | reverse %}
+        {% comment %} {{ all_articles | json }} {% endcomment %}
+        {% for article in all_articles %}
+            {% assign link_description = article.excerpt %}
+            {% assign title = article.title %}
+            {% assign link = article.url %}
+            {% assign image = article.image | image_url: width: 300 %}
+            {% render 'image-block', block: block, image: image, title: title, link_description: link_description, link: link %}
+            {% break %}
+        {% endfor %}
+    {% else %}
+        {% if block.settings.product_1 != blank %}
+            {% assign product_description = block.settings.product_1_description | truncate: 100 %}
+            {% render 'product-card-new', product: block.settings.product_1, product_description: block.settings.product_1_description, parent_link: parent_link, loading: 'lazy' %}
+        {% elsif block.settings.image_1 != blank %}
+            {% render 'image-block', block: block, image: block.settings.image_1, title: block.settings.title_1, link_description: block.settings.link_description_1, link: block.settings.link_1 %}
+        {% endif %}
+        {% if block.settings.product_2 != blank %}
+            {% assign product_description = block.settings.product_2_description | truncate: 100 %}
+            {% render 'product-card-new', product: block.settings.product_2, product_description: product_description, parent_link: parent_link, loading: 'lazy' %}
+        {% elsif block.settings.image_2 != blank %}
+            {% render 'image-block', block: block, image: block.settings.image_2, title: block.settings.title_2, link_description: block.settings.link_description_2, link: block.settings.link_2 %}
+        {% endif %}
+    {% endif %}
+    </div>
+</div>

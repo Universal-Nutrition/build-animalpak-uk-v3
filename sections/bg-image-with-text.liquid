@@ -1,0 +1,126 @@
+ {{ 'bundle.section-bg-image-with-text.css' | asset_url | stylesheet_tag }}
+
+ <style>
+@media only screen and (max-width: 768px) {
+  .overlay-gradient {
+    background: {{ section.settings.mob_background }} !important; 
+  }
+
+}
+ </style>
+ <!-- Hero section -->
+ <div class="relative bg-gray-900 lg:px-26 lg:py-25 lg:mx-14">
+  <!-- Decorative image and overlay --> 
+  <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
+    <img
+      srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image | img_url: '1500x' }}"
+      loading="lazy"
+      class="hidden lg:block w-full h-auto object-center object-cover"
+      alt="{{ section.settings.image.alt | escape }}"
+      width="{{ section.settings.image.width }}"
+      height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+    >
+
+    <img
+      srcset="{%- if section.settings.image_2.width >= 375 -%}{{ section.settings.image_2 | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 750 -%}{{ section.settings.image_2 | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 1100 -%}{{ section.settings.image_2 | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 1500 -%}{{ section.settings.image_2 | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 1780 -%}{{ section.settings.image_2 | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 2000 -%}{{ section.settings.image_2 | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 3000 -%}{{ section.settings.image_2 | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 3840 -%}{{ section.settings.image_2 | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.image_2 | img_url: 'master' }} {{ section.settings.image_2.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image_2 | img_url: '1500x' }}"
+      loading="lazy"
+      class="block lg:hidden w-full h-auto object-center object-cover"
+      alt="{{ section.settings.image_2.alt | escape }}"
+      width="{{ section.settings.image_2.width }}"
+      height="{{ section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio }}"
+    >
+    
+  </div>
+  <div aria-hidden="true" class="absolute inset-0 overlay-gradient" style="background: {{ section.settings.background }};"></div>
+
+
+
+  <div class="relative py-15 pt-[235px] lg:pt-0 px-6 lg:px-0 lg:py-0 lg:max-w-[43.5%] mr-auto flex flex-col items-start lg:items-center justify-end lg:justify-center text-center ">
+    {% unless section.settings.icon == blank %}
+      {{ section.settings.icon | image_url: width: section.settings.icon.width | image_tag: class: 'bg-image-with-text__icon mb-8 lg:mb-10', alt: section.settings.icon.alt, loading: 'lazy' }}
+    {% endunless %}
+    <h2 class="heading-text text-white bg-image-with-text__title mb-3">{{ section.settings.heading }}</h2>
+    <div class="text-white bg-image-with-text__text">{{ section.settings.copy }}</div>
+  </div>
+</div>
+
+<style>
+    .heading-text p{
+        color: #fff;
+    }
+    .heading-text p strong{
+        color: var(--yellow);
+    }
+</style>
+
+{% schema %}
+{
+  "name": "BG Image With Text",
+  "tag": "section",
+  "class": "bg-image-with-text py-32 bg-primary",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Mobile"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background",
+      "default": "linear-gradient(#ffffff, #000000)"
+    },
+    {
+      "type": "color_background",
+      "id": "mob_background",
+      "label": "Mobile Background",
+      "default": "linear-gradient(0deg, #000000 0%, #000000 53.65%, rgba(0, 0, 0, 0) 100%)"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BG Image With Text"
+    }
+  ]
+}
+{% endschema %}

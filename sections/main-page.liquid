@@ -1,0 +1,51 @@
+{{ 'bundle.section-rte.css' | asset_url | stylesheet_tag }}
+<div class="relative m-auto pb-16 pt-10 px-6 md:px-15 md:pt-[18px] md:pb-24 bg-white overflow-hidden rte">
+  {% if section.settings.breadcrumbs %}
+    <div class="!my-4 !mt-0 hidden md:block">
+      {% include 'breadcrumbs' color: '#212121' %}
+    </div>
+  {% endif %}
+  <div class="md:pt-16 mx-auto text-[13.913px] md:text-base">
+    {{ page.content }}
+  </div>
+</div>
+
+<style>
+  h1{
+    font-size: 80px !important;
+  }
+  h2{
+    font-size: 40px !important;
+    margin-top: 60px;
+  }
+  table{
+    text-align: left;
+    margin-top: 40px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "breadcrumbs",
+      "label": "Breadcrumbs",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "t:sections.main-page.settings.subtitle.label",
+      "default": "<p>Page subtitle</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner",
+      "label": "t:sections.main-page.settings.banner.label"
+    }
+  ]
+}
+{% endschema %}

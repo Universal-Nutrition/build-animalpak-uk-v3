@@ -1,0 +1,122 @@
+<div class='bg-yellow flex-col w-full overflow-y-scroll h-screen fixed'>
+  {% for link in linklists['header-menu-left-side'].links %}
+    <div x-data='{ open: false }'>
+      <div
+        class='flex justify-between items-center px-6 py-4 cursor-pointer transition-colors'
+        {% if link.url == '#' %}
+          @click='open = !open'
+        {% endif %}
+      >
+        {% if link.url != '#' %}
+          <a
+            href='{{ link.url }}'
+            class='font-bold'
+          >
+            {{- link.title -}}
+          </a>
+        {% else %}
+          <button
+            type='button'
+            class='border-transparent transition-colors ease-out duration-200 font-bold'
+          >
+            {{ link.title }}
+          </button>
+        {% endif %}
+
+        {% if link.url == '#' %}
+          <div>
+            <template x-if='open'>
+              <!-- Chevron to open -->
+              <svg width='12' height='6' viewBox='0 0 12 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d="M0 6L12 6L6.31579 -4.96929e-07L0 6Z" fill="black"/>
+              </svg>
+            </template>
+
+            <template x-if='!open'>
+              <!-- Chevron to close -->
+              <svg width='12' height='6' viewBox='0 0 12 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d="M12 0H0L5.68421 6L12 0Z" fill="black"/>
+              </svg>
+            </template>
+          </div>
+        {% endif %}
+      </div>
+
+      {% # When open, show the collections. %}
+      <div x-show='open'>
+        {% for sublink in link.links %}
+          <div x-data='{ subOpen: false }'>
+            {% assign collection = sublink.object %}
+
+            <div
+              class='flex justify-between items-center px-6 py-4 cursor-pointer transition-colors bg-black text-white'
+              @click='subOpen = !subOpen'
+            >
+              <button
+                type='button'
+                class='border-transparent transition-colors ease-out duration-200 font-bold'
+              >
+                {{ sublink.title }}
+              </button>
+
+              <div>
+                <template x-if='subOpen'>
+                  {% # Up-pointing chevron to close %}
+                  <svg width='12' height='6' viewBox='0 0 12 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <path d="M0 6L12 6L6.31579 -4.96929e-07L0 6Z" fill="white"/>
+                  </svg>
+                </template>
+
+                <template x-if='subOpen === false'>
+                  {% # Down-pointing chevron to open %}
+                  <svg width='12' height='6' viewBox='0 0 12 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <path d="M12 0H0L5.68421 6L12 0Z" fill="white"/>
+                  </svg>
+                </template>
+              </div>
+            </div>
+
+            <div x-show='subOpen' class='min-w-[100px] flex flex-col sm:flex-row-reverse justify-start bg-white'>
+              {% # Collection image. %}
+              <div class='flex-1'>
+                {{ collection.image | image_url: width:600 | image_tag: class: 'object-cover w-full h-full' }}
+              </div>
+
+              {% # Collection products. %}
+              <div class='bg-white flex flex-col gap-3 flex-1'>
+                <div class="px-10 py-8">
+                {% for product in collection.products limit: 5 %}
+                  <div class="py-2">
+                    <a href='{{ product.url }}'>{{ product.title }}</a>
+                  </div>
+                {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  {% for link in linklists['header-menu-right-side'].links %}
+    {%# TODO: Factor out padding and style. %}
+    <div class="px-6 py-4 cursor-pointer">
+        {% if link.url != '#' %}
+          <a
+            href='{{ link.url }}'
+            class='font-bold'
+          >
+            {{- link.title -}}
+          </a>
+        {% else %}
+          <button
+            type='button'
+            class='border-transparent transition-colors ease-out duration-200 font-bold'
+          >
+            {{ link.title }}
+          </button>
+        {% endif %}
+    </div>
+  {% endfor %}
+
+</div>

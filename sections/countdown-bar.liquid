@@ -1,0 +1,59 @@
+{% if section.settings.show_countdown == true %}
+
+{{ 'bundle.section-countdown-bar.css' | asset_url | stylesheet_tag }}
+
+<div class='flex flex-col md:flex-row gap-3 md:gap-12 justify-center items-center bg-[#212121] pt-6 py-4'>
+  <countdown-bar class='block w-max' data-date='{{section.settings.countdown_date}}'> </countdown-bar>
+  <p class='text-white'>{{ section.settings.announcement | replace: '&lt;', '<' | replace: '&gt;', '>' }}</p>
+  
+  {% if section.settings.button_text != "" %}
+  <a
+    href='{{section.settings.button_url}}'
+    class='button py-2 px-6 sm:py-2 w-fit text-[13.9px] tracking-[1px] font-bold'
+  >
+    {{- section.settings.button_text -}}
+  </a>
+  {% endif %}
+</div>
+
+{% endif %}
+{% schema %}
+{
+  "name": "Countdown Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "countdown_date",
+      "label": "Countdown Date",
+      "default": "11/12/2023 13:30",
+      "info": "Enter the date and time to count down to. Example format 11/12/2023 13:30"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now",
+      "info": "Enter the text to display on the button."
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL",
+      "info": "Enter the URL to link the button to."
+    },
+    {
+      "type": "text",
+      "id": "announcement",
+      "label": "Announcement",
+      "default": "Hurry! Sale ends soon.",
+      "info": "Enter the announcement text to display above the countdown."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Show Countdown",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

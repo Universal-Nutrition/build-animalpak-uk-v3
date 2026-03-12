@@ -1,0 +1,34 @@
+{% for link in links %}
+  <!-- Place the chevron behind the text using relative positioning and z-index. -->
+  <div class='flex flex-col justify-center items-center relative z-10 py-3 text-center'>
+    {% if link.url != '#' %}
+      <a
+        href='{{ link.url }}'
+      >
+        {{ link.title | escape }}
+      </a>
+    {% else %}
+      <button
+        type='button'
+        class='flex items-center gap-2'
+        @mouseover.prevent="menuOpen = '{{ link.title | handleize }}'"
+      >
+        {{ link.title | escape }}
+
+        <template x-if='menuOpen === "{{ link.title | handleize }}"'>
+          {% render 'down-chevron' %}
+        </template>
+        <template x-if='menuOpen !== "{{ link.title | handleize }}"'>
+          {% render 'up-chevron' %}
+        </template>
+      </button>
+    {% endif %}
+
+    <template x-if='menuOpen === "{{ link.title | handleize }}"'>
+      {% # Chevron pointing to indicate dropdown is open. %}
+      <div class='absolute bottom-0 mb-[-1px] -z-10'>
+        {% render 'big-up-chevron' %}
+      </div>
+    </template>
+  </div>
+{% endfor %}

@@ -1,0 +1,58 @@
+.bg-image-with-text {
+  @media only screen and (max-width: 1110px) {
+    padding: 0 0 0 0 !important;
+  }
+  &__title {
+    /* Heading/Two */
+
+    font-family: 'Compacta Std';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 85.604px;
+    line-height: 80%;
+    /* or 68px */
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+
+    /* Primary/White */
+
+    color: #FFFFFF;
+
+    >strong {
+      color: #FEDD00;
+    }
+
+    @media only screen and (max-width: 1110px) {
+      /* Heading/Mobile Two */
+
+      font-size: 48.944px;
+      text-align: left;
+    }
+  }
+
+  &__text {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18.4px;
+    line-height: 160%;
+    /* or 29px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* Primary/White */
+
+    color: #FFFFFF;
+
+    @media only screen and (max-width: 1110px) {
+
+      font-size: 16px;
+      text-align: left;
+
+    }
+
+  }
+}

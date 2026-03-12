@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 485,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/Nadia_Athlete_Desktop.jpg",
+        "image_2": "shopify:\/\/shop_images\/Nadia_Athlete_Mobile.jpg",
+        "custom_heading": "<p>NADIA STOWERS<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>NADIA STOWERS<\/p>",
+        "subheading": "<p>I signed up for a Spartan run in my first year of lifting with some friends from the gym I was attending at the time. Once there, I was introduced to more racers who would be joining us where I met my, now coach, Jacob Finerty. He joked around asking me 'what I was strong for' and that question hit me harder than I thought because I didn't have an answer. I had only started working out to lose weight. I'd never played a sport and never lifted weights before so I didn't really have a direction or goals I was working on. I asked him what he did and he invited me to watch him compete in strongman. Seeing the grit, the drive, the competitiveness of it all - I knew then that I wanted to compete.<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "NADIA’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/the-chicago-pro-2020",
+            "page": "nadia-stowers"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/from-fan-to-fam",
+            "page": "nadia-stowers"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/chicago-pro-prep",
+            "page": "nadia-stowers"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles"
+  ]
+}

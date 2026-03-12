@@ -1,0 +1,38 @@
+<div class='hidden' style='display:none'>
+    <a href='{{ routes.root_url }}' class='hidden'>
+      <span class='sr-only'>Workflow</span>
+  
+      {%- if section.settings.logo_text == blank and section.settings.logo != blank -%}
+        {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+        {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+        {{
+          section.settings.logo
+          | image_url: width: section.settings.width
+          | image_tag:
+            class: 'h-10 w-auto',
+            widths: '50, 100, 150, 200, 250, 300, 400, 500',
+            height: logo_height,
+            width: section.settings.logo_width,
+            alt: logo_alt
+        }}
+      {%- elsif section.settings.logo_text != blank -%}
+        <span class='h-10 w-auto'>{{ section.settings.logo_text }}</span>
+      {%- else -%}
+        <span class='h2'>{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+    <a href='#' class='w-auto trigger-search h-max flex items-center justify-center !hidden'>
+      <span class='sr-only'>Search</span>
+      <!-- Heroicon name: outline/search -->
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        class='h-8 w-8'
+        viewBox='0 0 24 24'
+        class='icon icon-search'
+      >
+        <path stroke="#212121" stroke-width="2" d="m14.8394 15.1069 5.3031 5.8929M10.7141 16.7143c3.7871 0 6.8571-3.0701 6.8571-6.85716C17.5712 6.07005 14.5012 3 10.7141 3 6.92698 3 3.85693 6.07005 3.85693 9.85714c0 3.78706 3.07005 6.85716 6.85717 6.85716Z"/>
+      </svg>
+      <span class="ml-2 text-[18.4px] font-sans font-bold leading-[29.44px] text-primary">Search...</span>
+    </a>
+  </div>

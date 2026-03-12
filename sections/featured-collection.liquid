@@ -1,0 +1,253 @@
+<!--
+  This example requires Tailwind CSS v2.0+
+
+  This example requires some changes to your config:
+
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/aspect-ratio'),
+    ],
+  }
+  ```
+-->
+<div
+  class="featured-collection layout-{{ section.settings.StyleLayout }} section-{{ section.id }}"
+  style="background:{{ section.settings.bg_section }}"
+>
+  <div class="block-top">
+    <h2 class="text-primary collection-title">
+      {{ section.settings.title | replace: '.', '<span class="text-accessible">.</span>' }}
+    </h2>
+    <div class="text-primary tracking-[1px]">
+      {{ section.settings.sub_title }}
+    </div>
+    {% if section.settings.btn != blank %}
+      <a href="{{section.settings.url}}" class="btn-primary mt-12 !hidden lg:!inline-block">
+        {{- section.settings.btn -}}
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="m-auto">
+    <div class="min-h-full mx-auto slide-collection" id="section-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="relative flex group">
+          <a href="{{block.settings.url}}" class="">
+            <img
+              srcset="
+                {%- if block.settings.image.width >= 375 -%}{{ block.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w
+              "
+              sizes="100vw"
+              src="{{ block.settings.image | img_url: '1000x' }}"
+              {% if forloop.index == 1 %}fetchpriority="high" loading="eager"{% else %}loading="lazy"{% endif %}
+              class=""
+              alt="{{ block.settings.image.alt | escape }}"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio }}"
+            >
+            <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50"></div>
+
+            <div class="content-wapper">
+              <h2 class="mt-1 text-2xl font-extrabold text-white">
+                {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | img_url:'master' }}">
+                {%- endif -%}
+                <span>{{ block.settings.title }}</span>
+              </h2>
+              {% if block.settings.sub_title != blank %}
+                <p class="text-lg font-medium text-white pb-0">{{ block.settings.sub_title }}</p>
+              {% endif %}
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% if section.settings.btn != blank %}
+    <a href="{{section.settings.url}}" class="btn-primary lg:!hidden">{{ section.settings.btn }}</a>
+  {% endif %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.jQuery) {
+        console.warn('jQuery not loaded');
+        return;
+      }
+
+      $('#section-{{ section.id }}').slick({
+        dots: false,
+        infinite: false,arrows: true,
+        speed: 300,
+        slidesToShow: {{ section.settings.itemsOnRow }},
+        slidesToScroll: 1,
+      prevArrow: '<button class="slick-prev slick-arrow" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12L5 12M5 12L11 6M5 12L11 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+      nextArrow: '<button class="slick-next slick-arrow" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 18M19 12L13 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+        responsive: [
+          {
+            breakpoint: 1399,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 1199,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    });
+  </script>
+</div>
+<style>
+  @media screen and (min-width: 768px) {
+  .featured-collection.section-{{ section.id }} .content-wapper h2 span {font-size:{{section.settings.fontSize}}px }
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.featured-collection.name",
+  "tag": "section",
+  "class": "spaced-section--boxed",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_section",
+      "default": "#000",
+      "label": "Backgroud Color"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Featured collection",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "text",
+      "id": "btn",
+      "label": "Button text",
+      "default": "view all"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Url"
+    },
+    {
+      "type": "select",
+      "id": "itemsOnRow",
+      "options": [
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ],
+      "default": "4",
+      "label": "Items on Row Desktop"
+    },
+    {
+      "type": "select",
+      "id": "StyleLayout",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1",
+      "label": "Style Layout"
+    },
+    {
+      "type": "range",
+      "id": "fontSize",
+      "min": 20,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Font Size for title Items",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured-item",
+      "name": "Featured Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Featured Title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "default": "Featured Sub Title",
+          "label": "Title (Only applies to grid layout)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Featured Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image Icon"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-collection.presets.name"
+    }
+  ]
+}
+{% endschema %}

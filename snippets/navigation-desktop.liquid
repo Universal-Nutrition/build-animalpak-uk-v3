@@ -1,0 +1,20 @@
+{% assign block_index = index | minus: 1 %}
+{% assign current_block = section.blocks[block_index] %}
+
+{% if current_block %}
+  <div
+    class='mega-nav__dropdown fixed top-full inset-x-0 text-sm text-gray-500 bg-white'
+    meganav_index='{{ index }}'
+  >
+    {% case current_block.type %}
+      {% when 'category-megamenu' %}
+        {% render 'category-megamenu' with block: current_block, parent_link: parent_link %}
+      {% when 'product-slider-megamenu' %}
+        {% render 'product-slider-megamenu' with block: current_block, parent_link: parent_link %}
+      {% when 'product-megamenu' %}
+        {% render 'product-megamenu' with block: current_block, parent_link: parent_link %}
+      {% when 'category-card-megamenu' %}
+        {% render 'category-card-megamenu' with block: current_block, parent_link: parent_link  %}
+    {% endcase %}
+  </div>
+{% endif %}

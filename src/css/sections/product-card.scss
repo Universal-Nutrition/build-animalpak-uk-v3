@@ -1,0 +1,224 @@
+  .card--product {
+    margin-bottom: 0px;
+
+    @media only screen and (max-width: 767px) {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+  }
+
+  .card {
+    &__image--fill {
+      >img {
+        opacity: 0;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: opacity .4s cubic-bezier(.25, .46, .45, .9);
+      }
+
+      .card__image-caption {
+        opacity: 0;
+        transition: bottom .4s cubic-bezier(.25, .46, .45, .9), opacity .4s cubic-bezier(.25, .46, .45, .9);
+        font-family: 'Compacta Std';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 56.286px;
+        line-height: 80%;
+        /* or 45px */
+
+        display: flex;
+        align-items: flex-end;
+        text-align: center;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+
+        /* Primary/White */
+
+        color: #FFFFFF;
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 32px);
+      }
+    }
+
+    &:hover {
+      .card__image--fill {
+        >img {
+          opacity: 1;
+          transition: opacity var(--duration-long) ease;
+          z-index: 2;
+        }
+
+        .card__image-caption {
+          opacity: 1;
+          transition: bottom var(--duration-long) ease, opacity var(--duration-long) ease;
+          z-index: 3;
+          bottom: 40px;
+        }
+      }
+    }
+  }
+
+  .card-wrapper {
+    &:hover {
+      .card-information {
+        &__text {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .card-information {
+    &__text {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.875rem;
+      padding-right: 0px !important;
+
+      @media only screen and (max-width: 767px) {
+        margin-bottom: .5rem;
+      }
+
+      a {
+        /* Heading/Four */
+
+        font-family: 'Compacta Std';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 37.01px;
+        line-height: 80%;
+        /* identical to box height, or 30px */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+
+        /* Primary/Black */
+
+        color: #212121;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        @media only screen and (max-width: 767px) {
+          /* Heading/Mobile Four */
+
+          font-size: 24.33px;
+
+          letter-spacing: -0.5px;
+        }
+      }
+    }
+
+    &__description {
+      /* Body/Small Paragraph */
+
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13.913px;
+      line-height: 160%;
+      /* or 22px */
+
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      font-feature-settings: 'ss08'on, 'ss10'on;
+
+      /* Neutrals/Medium */
+
+      color: #5E5A59;
+      margin-top: 0px !important;
+      margin-bottom: 0.875rem !important;
+
+      @media only screen and (max-width: 767px) {
+        font-size: 12.098px;
+        margin-bottom: 0.25rem !important;
+      }
+    }
+
+    .price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0px !important;
+
+      &-item {
+        /* Body/Bold Small Paragraph */
+
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13.913px;
+        line-height: 160%;
+        /* or 22px */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: capitalize;
+        font-feature-settings: 'ss08'on, 'ss10'on;
+
+        /* Primary/Black */
+
+        color: #212121;
+      }
+    }
+
+  }
+
+  .card-information {
+
+    .yotpo {
+
+      .text-m {
+        color: #212121 !important;
+        font-size: 12.1px;
+      }
+
+      .standalone-bottomline {
+        display: flex;
+        justify-content: center;
+      }
+
+      .yotpo-bottomline {
+        margin-bottom: 4px;
+        @media only screen and (max-width: 767px){
+          align-items: center;
+        }
+
+        .yotpo-stars {
+          @media only screen and (max-width: 767px){
+            min-width: 66px;
+          }
+        }
+
+        .rating-star {
+          letter-spacing: 0;
+          @media only screen and (max-width: 767px){
+            font-size: 12.5px;
+
+            align-items: center;
+          }
+        }
+
+        .yotpo-icon-star {
+          color: #212121 !important;
+        }
+      }
+    }
+  }
+

@@ -1,0 +1,64 @@
+{% capture gift-products %}
+    [
+    {% for block in section.blocks %}
+        {% if block.settings.product != blank %}
+            {
+            "handle": "{{block.settings.product.handle}}",
+            "id": "{{block.settings.product.selected_or_first_available_variant.id}}",
+            "orderValue": {{block.settings.order_value}},
+            "available": {{block.settings.product.available}},
+            "subscription_only": {% if block.settings.subscription_only %}true{% else %}false{% endif %},
+            "variants": [
+              {% for variant in block.settings.product.variants %}
+                {% if variant.available %}
+                  {
+                    "title": "{{variant.title}}",
+                    "id": "{{variant.id}}"
+                  },
+                {% endif %}
+              {% endfor %}
+            ]
+            },
+        {% endif %}
+    {% endfor %}
+    ]
+{% endcapture %}
+
+<script>
+    window.giftProducts = {{gift-products}}
+</script>
+
+{% schema %}
+{
+  "name": "Gift products",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "Gift product",
+      "type": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "order_value",
+          "label": "Order total value for gift product",
+          "min": 0,
+          "max": 300,
+          "step": 5,
+          "default": 0
+        },
+        {
+          "type": "checkbox",
+          "id": "subscription_only",
+          "label": "Subscription Only"
+        }
+
+      ]
+    }
+  ]
+}
+{% endschema %}

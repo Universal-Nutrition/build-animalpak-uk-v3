@@ -1,0 +1,87 @@
+<div class="relative">
+  <div class="max-w-3xl px-5 mx-auto w-full">
+    <div class="aspect-w-16 aspect-h-9">
+      <iframe
+        src="https://www.youtube.com/embed/{{ section.settings.video_url | split: "v=" | last }}"
+        class="h-full rounded-6xl"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="{{ section.settings.video_title | escape }}"
+      ></iframe>
+    </div>
+  </div>
+
+  <div class="relative mt-[-30vw] md:mt-[-300px] -z-50 h-full w-full bg-black">
+    <div class="absolute h-full w-full">
+      {{
+        section.settings.yotpo_bg_image
+        | image_url: width: 1920
+        | image_tag: class: 'object-cover w-full h-full brightness-[0.4]'
+      }}
+    </div>
+    <div class="absolute top-0">
+      {{ section.settings.top_bg_image | image_url: width: 1920 | image_tag: class: 'object-cover w-full h-full' }}
+    </div>
+    <div class="pt-[30vw] md:pt-[300px]">
+      {% render 'yotpo-reviews-carousel',
+        title_first: section.settings.yotpo_title_first,
+        title_second: section.settings.yotpo_title_second,
+        yotpo_widget_id: section.settings.yotpo_widget_id
+      %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .yotpo-reviews-carousel-header {
+    color: #ffffff !important;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Video & Yotpo Carousel",
+  "settings": [
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "default": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+      "label": "t:sections.video.settings.video_url.label",
+      "placeholder": "t:sections.video.settings.video_url.placeholder",
+      "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+      "type": "text",
+      "id": "video_title",
+      "label": "Video Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_bg_image",
+      "label": "Top Background image"
+    },
+    {
+      "type": "text",
+      "id": "yotpo_widget_id",
+      "label": "Yotpo Widget ID",
+      "info": "You can get this from https://reviews.yotpo.com/#/display-reviews/on-site-widgets - click on a widget and the ID is in the URL immediately after /widget/ e.g. 1050491"
+    },
+    {
+      "type": "text",
+      "id": "yotpo_title_first",
+      "label": "Yotpo Reviews Title (first part)"
+    },
+    {
+      "type": "text",
+      "id": "yotpo_title_second",
+      "label": "Yotpo Reviews Title (highlighted second part)"
+    },
+    {
+      "type": "image_picker",
+      "id": "yotpo_bg_image",
+      "label": "Yotpo Background image"
+    }
+  ]
+}
+{% endschema %}

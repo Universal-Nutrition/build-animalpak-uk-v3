@@ -1,0 +1,20 @@
+<a
+    href="{{- link -}}"
+    class="flex flex-col flex-1 transition duration-300 hover:brightness-[0.95] relative"
+>
+    <div class="h-full">
+        {{- image | image_url: width: 1200 | image_tag: class: 'transition duration-300 w-full h-full object-cover overflow-hidden', loading: 'lazy' -}}
+    </div>
+
+    <div class="flex flex-col p-5 bg-[#F2F1F6] {% if link_description != blank %}min-h-[100px]{% endif %} absolute bottom-0 left-0 right-0 z-[2]">
+        <span class="font-anton uppercase text-2xl text-black">
+            {{- title -}}
+        </span>
+
+        {%- if link_description != blank -%}
+            <span class="text-black font-bebasNeue mt-3 block">
+                {{- link_description -}}
+            </span>
+        {%- endif -%}
+    </div>
+</a>

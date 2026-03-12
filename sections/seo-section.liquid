@@ -1,0 +1,53 @@
+{% if section.settings.subtitle != blank %}
+<div class="py-[64px] lg:py-[128px] px-6" style="background: {{section.settings.bg}}">
+    <div class="max-w-[880px] m-auto">
+        <h2 class="text-center text-[42.56px] lg:text-[56.29px] text-[#212121] tracking-[1px] font-compacta mb-4 leading-[45.03px] uppercase">
+            {{section.settings.title}}
+        </h2>
+        <div class="seo-content text-center text-base font-sans mt-3">
+            {% if collection.metafields.custom.seo_section_text != blank %}
+                {{collection.metafields.custom.seo_section_text}}
+            {% else %}
+                {{section.settings.subtitle }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<style>
+    .seo-content h3{
+        font-size: 43px;
+        margin-top: 30px;
+    }
+</style>
+{% schema %}
+    {
+        "name": "Seo",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "seo section"
+            },
+            {
+                "type": "richtext",
+                "id": "subtitle",
+                "label": "Subitle",
+                "default": "<p>A combination of nutritional supplement products strategically taken together to optimize your workout progress and help you reach your strength and physique goals. It is important to understand which supplements can and should be taken together, and which supplements you should avoid taking together.</p>"
+            },
+            {
+                "type": "color",
+                "id": "bg",
+                "label": "Background color",
+                "default": "#F5F5F5"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Seo"
+            }
+        ]
+    }
+{% endschema %}

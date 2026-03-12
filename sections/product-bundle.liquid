@@ -1,0 +1,238 @@
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    theme: {
+      extend: {
+        gridTemplateRows: {
+          '[auto,auto,1fr]': 'auto auto 1fr',
+        },
+      },
+    },
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+      require('@tailwindcss/aspect-ratio'),
+    ],
+  }
+  ```
+-->
+<div class="bg-white">
+
+  
+    <main class="pt-10 sm:pt-16">
+      <nav aria-label="Breadcrumb">
+        <ol role="list" class="mx-auto px-4 flex items-center space-x-2 sm:px-6 max-w-7xl lg:px-8">
+          <li>
+            <div class="flex items-center">
+              <a href="/" class="mr-2 text-xs font-medium text-gray-900">Home</a>
+              <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-5 text-gray-300">
+                <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+              </svg>
+            </div>
+          </li>
+
+          {% if product.collections[0].url != blank %}
+          <li class="hidden md:block">
+            <div class="flex items-center">
+              <a href="{{product.collections[0].url}}" class="mr-2 text-xs font-medium text-gray-900">{{product.collections[0].title}}</a>
+              <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-5 text-gray-300">
+                <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+              </svg>
+            </div>
+          </li>
+          {% endif %}
+  
+          <li class="text-sm">
+            <a href="{{product.url}}" aria-current="page" class="text-xs font-medium text-primaryRed hover:text-gray-600">{{ product.title }}</a>
+          </li>
+        </ol>
+      </nav>
+
+      <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl mx-auto px-4 flex items-center space-x-2 sm:px-6 max-w-7xl lg:px-8 pb-0">{{ product.title }}</h1>
+
+  
+      <!-- Image gallery -->
+      <div class="mt-6 mx-auto sm:px-6 max-w-7xl md:px-8 flex flex-col lg:flex-row">
+        <div class="flex-1 w-full">
+        {% render 'product-gallery-style-2' %}
+      </div>
+        <div class="mt-10 px-4 sm:px-0 sm:mt-8 lg:mt-0 w-full lg:max-w-[30%] lg:ml-[32px] break-words text-sm">
+          {{product.description}}
+        </div>
+      </div>
+  
+      <!-- Product info -->
+        <div class="px-4 sm:px-6 max-w-7xl pt-8 md:px-8 mx-auto">
+          <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Build Your Kit</h1>
+          <p>The essential items for your swap have been pre-selected. If you wish to add, change or remove any of the items in the available options feel free to do so below.</p>
+        </div>
+  
+        <!-- Options -->
+      <product-bundle class="mx-auto pt-10 px-4 sm:px-6 max-w-7xl md:pt-8 md:px-8 md:grid md:grid-cols-3 md:grid-rows-[auto,auto,1fr] md:gap-x-8">
+
+        <div class="py-4 mt-4 md:mt-0 md:row-span-3 col-start-3">
+
+          <!-- Reviews -->
+      
+          <div class="bg-gray-900 p-3 mb-4 rounded-md">
+            <h3 class="sr-only">Description</h3>
+            <h1 class="text-xl font-extrabold tracking-tight text-white sm:text-xl">Selected Kit Content</h1>
+
+              <h2 class="sr-only">Product information</h2>
+  
+            <div class="space-y-6">
+              <span id="foo"></span>
+              <p id="bundle-total" class="text-base font-medium py-2 text-white">Total: $0</p>
+
+              
+            </div>
+          <button id="add-to-bundle" class="w-full bg-primaryRed border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add Kit To Cart</button>
+        </div>
+
+        </div>
+  
+        <div class="py-4 md:pb-16 md:col-start-1 md:col-span-2 md:border-r md:border-gray-200">
+          <!-- Description and details -->
+  
+          <!-- Options -->
+          <div class="mt-0 lg:row-span-3">
+  
+            <h2 class="sr-only">Product information</h2>
+    
+            <!-- Reviews -->
+        
+
+       
+              <div>
+             
+    
+                <fieldset class="p-3 bg-gray-100 rounded-md">
+                  <legend class="sr-only">Choose a size</legend>
+                  <div class="grid gap-4 grid-cols-2 md:grid-cols-4 auto-rows-auto">
+
+                    
+                {% for block in section.blocks %} 
+
+                {% if block.type == "featured_heading" %}
+                  <div class="col-span-2 md:col-span-4">
+                    <span class="flex items-center justify-between">
+                        <h3 class="text-lg font-extrabold tracking-tight text-gray-900 pb-0">{{ block.settings.featured_heading }}</h3>
+                        <!-- <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a> -->
+                    </span>
+                    <hr class="w-full h-[2px] bg-gray-300 my-1"/>
+                  </div>
+                {% elsif block.type == "featured_product" %}
+                  <div id="product-bundle-{{forloop.index0}}" class="col-span-{{block.settings.column_span}} h-full flex flex-col">
+                    <!-- Active: "ring-2 ring-indigo-500" -->
+                    <img
+                    srcset="{%- if block.settings.bundle_product.featured_image.width >= 375 -%}{{ block.settings.bundle_product.featured_image | img_url: '375x' }} 375w,{%- endif -%}
+                      {%- if block.settings.bundle_product.featured_image.width >= 750 -%}{{ block.settings.bundle_product.featured_image | img_url: '750x' }} 750w,{%- endif -%}
+                      {%- if block.settings.bundle_product.featured_image.width >= 1100 -%}{{ block.settings.bundle_product.featured_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                      {{ block.settings.bundle_product.featured_image | img_url: 'master' }} {{ block.settings.bundle_product.featured_image.width }}w"
+                    sizes="100vw"
+                    src="{{ block.settings.bundle_product.featured_image | img_url: '500x' }}"
+                    loading="lazy"
+                    class="h-[200px] w-full object-cover rounded-md product-bundle-image"
+                    alt="{{ block.settings.bundle_product.featured_image.alt | escape }}"
+                    width="{{ block.settings.bundle_product.featured_image.width }}"
+                    height="{{ block.settings.bundle_product.featured_image.width | divided_by: block.settings.bundle_product.featured_image.aspect_ratio }}"
+                  >
+                
+                    
+                  <a href="{{block.settings.bundle_product.url}}" class="mb-auto"><p class="product-bundle-title text-xs text-gray-500 my-2">{{block.settings.bundle_product.title}}</p></a>
+                    {% if block.settings.bundle_product_collection != blank %}
+                    <button index="{{forloop.index0}}" class="product-bundle-options text-xs text-right my-1 font-medium text-indigo-600 hover:text-indigo-500">Change Selection</button>
+                  
+                  {% render 'product-bundle-options', forloop: forloop.index0, collection: block.settings.bundle_product_collection %}
+
+                  {% endif %}
+                    
+                    {% if block.settings.bundle_product.selected_or_first_available_variant.available == false %}
+                    <button class="mt-auto w-full bg-gray-400 border border-transparent rounded-md py-1 px-4 flex items-center justify-center text-sm tracking-tighter font-medium text-black" disabled>Sold Out - {{ block.settings.bundle_product.selected_or_first_available_variant.price | money }}</button>
+                    {% else %}
+                    <button index="{{forloop.index0}}" product-title="{{block.settings.bundle_product.title}}" product-price="{{ block.settings.bundle_product.selected_or_first_available_variant.price }}" product-id="{{ block.settings.bundle_product.selected_or_first_available_variant.id }}" class="add-to-bundle w-full bg-primaryRed border border-transparent rounded-md py-1 px-4 flex items-center justify-center text-sm tracking-tighter font-medium text-white">Add - {{ block.settings.bundle_product.selected_or_first_available_variant.price | money }}</button>
+                    {% endif %}  
+                  </div>
+                {% endif %}
+
+                {% endfor %}
+              
+                  </div>
+                </fieldset>
+              </div>
+    
+
+        </div>
+  
+        </div>
+      </product-bundle>
+ 
+    </main>
+ 
+  </div>
+
+
+  {% schema %}
+{
+  "name": "Product Bundle",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+      "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "featured_product",
+        "name": "Featured Product",
+        "settings": [
+            {
+                "type": "product",
+                "id": "bundle_product",
+                "label": "Bundle Product",
+                "info": "Select product that you want to appear under the bundle"
+            },
+            {
+              "type": "collection",
+              "id": "bundle_product_collection",
+              "label": "Product Options",
+              "info": "If the bundle option has multiple selections add the collection"
+            },
+            {
+                "type": "number",
+                "id": "column_span",
+                "label": "Column Width",
+                "info": "Based on the grid layout, specifiy if you want it to span 1 or both columns for full width",
+                "default": 1
+            }
+        ]
+    },
+    {
+        "type": "featured_heading",
+        "name": "Featured Heading",
+        "settings": [
+            {
+                "type": "text",
+                "id": "featured_heading",
+                "label": "Bundle Product",
+                "info": "Select product that you want to appear under the bundle"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Bundle"
+    }
+  ]
+}
+{% endschema %}

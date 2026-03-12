@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "743e7f49-14d5-4121-b8cf-f28d9f85125f": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify://shop_images/Service_Desktop.jpg",
+        "image_2": "shopify://shop_images/Service_Mobile.jpg",
+        "custom_heading": "<p>customer support</p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "main": {
+      "type": "customer-service",
+      "blocks": {
+        "8460f45c-7563-483f-badf-2257b330af1c": {
+          "type": "content",
+          "settings": {
+            "headline": "BASIC INFO",
+            "content": "<p><br/>For general information about Animal products, ingredients, how to use or related questions, our team is here for you with answers. Preferably drop your question in our <a href=\"/pages/contact\" title=\"Contact\">contact form</a> and we’ll get back to you right away.<br/><br/><strong>Contact Information</strong>:<br/><br/><strong>Universal Nutrition</strong> / <strong>Animal Europe</strong><br/>Manor Royal</p><p>Churchill Court 3</p><p>Crawley</p><p>West Sussex • RH10 9LU</p><p>United Kingdom</p><p><br/><strong>Customer Service:</strong> +44 (0)74 8888 9993<br/><strong>Whatsapp Service:</strong> +31850003193</p>",
+            "page": ""
+          }
+        },
+        "9da4bf44-0d7b-4695-b660-44a2e514c0b0": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "headline": "ORDERS AND RETURNS",
+            "content": "<p><strong>Buy on Amazon</strong><br/><br/>All products on our website are sold directly on Amazon, and are fulfilled by Amazon according to your purchase and delivery options selected there. Please refer to your Amazon account for all order information.<br/><br/>Product details may vary by country. Please refer to Amazon for exact product details, nutrition, and ingredient information.<br/><br/>Customer service requests for orders placed on Amazon must go to Amazon as they are the merchant of record.<br/><br/>For returns, exchanges, and refunds please refer to the Amazon Returns & Replacements Policy.<br/></p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "8460f45c-7563-483f-badf-2257b330af1c",
+        "9da4bf44-0d7b-4695-b660-44a2e514c0b0"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "cabbf72b-b00c-48c0-b4ff-c7ad4b0a5031": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n#shopify-section-template--17040103702758__main a {\n  text-decoration:underline;\n}\n@media screen and (min-width: 1110px) {\n  .lg\\:pt-16 {\n    padding-top: 0;\n  }\n}\n@media screen and (max-width: 600px) {\n  .object-center {\n    object-position: center top;\n  }\n  .py-16 {\n    padding-top: 0;\n  }\n}\n</style>\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js\"></script>\n<script type=\"text/javascript\">\n$('.btn-primary:contains(\"shipping & returns policy\")').click(function(e) {\n    e.preventDefault();\n    $('html, body').animate({\n        scrollTop: $('h2:contains(\"SHIPPING & RETURNS\")').offset().top - 120\n    }, 1000);\n});\n</script>"
+      }
+    }
+  },
+  "order": [
+    "743e7f49-14d5-4121-b8cf-f28d9f85125f",
+    "main",
+    "cabbf72b-b00c-48c0-b4ff-c7ad4b0a5031"
+  ]
+}

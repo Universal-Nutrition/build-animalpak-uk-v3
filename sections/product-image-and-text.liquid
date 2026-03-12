@@ -1,0 +1,208 @@
+ {% liquid 
+  assign mainImage = section.settings.main_image
+  assign mobImage = section.settings.mob_image
+  assign imageType = section.settings.image_type
+  assign textColor = section.settings.text_color
+%}
+
+{% if mainImage != blank or section.settings.headline != blank %}
+<pdp-text-image>
+  <section id="section-hero-medium" class="text-image overflow-hidden relative text-image-with-scrolling">
+    <div class="container px-0 md:px-0 lg:px-20 pt-20 lg:pt-[64px] lg:pb-[64px] flex flex-wrap md:flex-nowrap md:gap-x-0 lg:gap-x-20 items-center relative z-10}">
+      
+      <div class="w-full md:w-1/2 px-5 lg:px-0 relative">
+        <div class="image-wapper ">
+        {% if mainImage %}
+          {{ mainImage | image_url: width: 1400 | image_tag: widths: '200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400', sizes: '(min-width:1600px) 1400px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)', image_tag: alt, class: 'img object-cover object-center mx-auto relative max-w-[450px] md:max-w-full z-10 hidden lg:block', loading: 'lazy' }}
+        {% endif %}
+        {% if mobImage %}
+          {{ mobImage | image_url: width: 1400 | image_tag: widths: '200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400', sizes: '(min-width:1600px) 1400px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)', image_tag: alt, class: 'img object-cover object-center mx-auto relative max-w-[450px] md:max-w-full z-10 lg:hidden', loading: 'lazy' }}
+        {% endif %}
+
+        <!-- <div class="block md:hidden absolute z-0 w-full left-0 bottom-[-1px]">
+          {%- render 'pdp-section-dark-bg-mobile' -%}
+        </div> -->
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 relative z-10 text-wrapper bg-transparent pb-8 md:pb-0">
+        <div class="flex flex-col justify-center items-center sm:items-start max-w-full pl-5 pt-8 pb-0 pr-5 lg:pr-14 lg:p-0 max-w-[631px]">
+
+          {% if section.settings.headline %}
+            <h2 class="text-6xl tight-line-height uppercase mt-10 md:mt-0 mb-12" style="color: {{ textColor }};">
+              {{ section.settings.headline }}
+            </h2>
+          {% endif %}
+          <ul data-idx="0">
+            {% for block in section.blocks %}
+              {% if block.settings.feature_title != blank or block.settings.feature_text != blank %}
+                {% assign time = forloop.index | times: 150 %}
+                <li class="text-block border-solid border-0 border-l-[3px] border-yellow pl-4 mb-10 w-full lg:w-[unset]" data-aos="fade-up" data-aos-delay="{{ time }}" data-aos-easing="ease-out-cubic" data-aos-duration="800">
+                  <div>
+                    <p class="heading font-bold text-sm uppercase mb-3" style="color: {{ textColor }};">{{ block.settings.feature_title }}</p>
+                    <div class="font-base text-[13.9px] feature_text" style="color: {{ textColor }};">{{ block.settings.feature_text }}</div>
+                  </div>
+                </li>
+              {% endif %}
+            {% endfor %}
+            </ul>
+        </div> 
+      </div>
+    </div>
+    
+    <!-- <div class="hidden md:block w-full h-full absolute top-0 right-10 z-0">
+      <div class="container h-full">
+        {%- render 'pdp-section-dark-bg' -%}
+      </div>
+    </div> -->
+    
+  </section>
+</pdp-text-image>
+
+{% endif %}
+
+<style>
+.text-image p,
+.metafield-multi_line_text_field{
+  color: #000 !important;
+  background-color: transparent;
+}
+#section-hero-medium sup {
+  color: #FFF;
+}
+.text-image ul:before{display: none !important;}
+#section-hero-medium img {
+  width: 100%;
+}
+.text-image .text-block:after{
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  height: 97%;
+  width: 1px;
+  top: 15px;
+  background: #000;
+}
+.text-image .text-block:last-child:after{
+  height: 75%;
+}
+#section-hero-medium.bgImage img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+.text-image .text-block{
+  transition: all 0.3s ease-out;
+}
+.text-image .text-block{
+  opacity: 0;
+  position: relative;
+  padding-bottom: 60px;
+  margin-bottom: 0;
+}
+#section-hero-medium .bg-shape svg {
+  width: 100%;
+  height: 100%;
+}
+.feature_text p {
+  font-size: 13.9px;
+}
+@media screen and(max-width: 640px) {
+  #section-hero-medium.bgImage img {
+    height: 800px;
+  }
+}
+
+@media screen and(max-width: 550px) {
+  #section-hero-medium.bgImage img {
+    height: 650px;
+  }
+}
+</style>
+
+<script>
+  class pdpTextImage extends HTMLElement {
+    constructor() {
+      super();
+    }
+  
+    connectedCallback() {}
+  }
+  
+  customElements.define('pdp-text-image', pdpTextImage);
+
+  /*$(window).scroll(function() {
+    var windowTop = $(document).scrollTop();
+    var windowHeight = $(window).height();
+    $('.text-image-with-scrolling .text-block').each(function(idx, ele){
+      let heightIdx = Math.round(100 / (idx + 1) , 0);
+      
+      var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = windowTop + windowHeight;
+      
+      if( bottom_of_window > bottom_of_object ){
+        $(this).animate({'opacity':'1'},200);
+      } else{
+        $(this).animate({'opacity':'0'},50);
+      }
+    })
+ });*/
+  AOS.init();
+</script>
+
+{% schema %}
+{
+  "name": "Product Image & Text",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mob_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "richtext",
+      "id": "headline",
+      "label": "Headline"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Feature",
+      "type": "feature",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature title"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text",
+          "label": "Feature text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product - Image & Text section",
+      "category": "Sections"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

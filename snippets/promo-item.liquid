@@ -1,0 +1,18 @@
+{% liquid
+    assign color = section.settings.bg
+    assign img = section.settings.img
+    assign title = section.settings.promo_title
+    assign subtitle = section.settings.promo_subtitle
+%}
+
+<div class="w-full overflow-hidden flex min-h-[445px] lg:min-h-[unset] flex-col justify-center items-center" style="background: {{color}}">
+    {% if img != blank %}
+        <img src="{{img | img_url: "300x" }}" class="px-[33px]">
+    {% endif %}
+    <div class="block text-[#212121] text-center uppercase font-compacta mt-4 font-bold text-[37.01px] px-[33px] leading-[39.16px]">
+        {{title}}
+    </div>
+    <div class="text-[#5E5A59] text-center uppercase font-sans mt-4 text-[13.91px] px-[33px] capitalize leading-[25.6px]">
+        {{subtitle}}
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="stack-wrap w-full lg:flex items-center lg:space-x-6 mb-10 lg:mb-0 group">
+    <div class="relative ">
+        {% for tag in product.tags %}
+            {%- if tag contains '__label:' -%}
+                {% assign customBadge = tag | split: 'label:' | last %}
+                <div class="product-badge font-sans text-[13.91px] font-semibold">
+                    <span class="newlook">{{ customBadge }}</span>
+                </div>
+            {%- endif -%}
+        {% endfor %}
+        <a href="{{product.url}}" class="w-full">
+            <img 
+                srcset="{% if product.featured_image.width >= 288 %}{{ product.featured_image | img_url: '288x' }} 288w,{% endif %}
+            {% if product.featured_image.width >= 576 %}{{ product.featured_image | img_url: '576x' }} 576w,{% endif %}
+            {% if product.featured_image.width >= 550 %}{{ product.featured_image | img_url: '550x' }} 550w,{% endif %}
+            {% if product.featured_image.width >= 1100 %}{{ product.featured_image | img_url: '1100x' }} 1100w,{% endif %}
+            {{ product.featured_image | img_url: 'master' }} {{ product.featured_image.width }}w"
+                loading="lazy" 
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}" class="w-full aspect-1 object-contain {% if product.images[1] != blank %}group-hover:hidden{% endif %}">
+            </a> 
+       {% if product.images[1] != blank %}
+       <a href="{{product.url}}" class="w-full">
+        <img 
+            srcset="{% if product.images[1].width >= 288 %}{{ product.images[1] | img_url: '288x' }} 288w,{% endif %}
+                {% if product.images[1].width >= 576 %}{{ product.images[1] | img_url: '576x' }} 576w,{% endif %}
+                {% if product.images[1].width >= 550 %}{{ product.images[1] | img_url: '550x' }} 550w,{% endif %}
+                {% if product.images[1].width >= 1100 %}{{ product.images[1] | img_url: '1100x' }} 1100w,{% endif %}
+                {{ product.images[1] | img_url: 'master' }} {{ product.images[1].width }}w"
+            loading="lazy" 
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+            src="{{product.images[1] | img_url: 'master'}}" alt="{{product.title}}" class="hidden w-full aspect-1 object-contain group-hover:block">
+        </a> 
+       {% endif %}
+       <a href="{{product.url}}" class="hidden absolute opacity-0 left-[50%] translate-x-[-50%] group-hover:opacity-100 transition duration-500 mt-[18px] bg-yellow font-sans font-bold lg:block uppercase w-[90%] bottom-[20px] text-[13.9px] text-center py-[18px] transition duration-500 text-[#212121]">
+        shop now
+        </a>
+    </div>
+    <div class="stack-content">
+        <div class="yotpo bottomLine !mb-[13px]"
+            data-product-id="{{ product.id }}"> 
+          </div>
+        <a href="{{product.url}}" class="block text-[37.01px] font-compacta uppercase font-bold leading-[29.61px]">
+            {{product.title}}
+        </a>
+        <div class="mt-1 text-[#5E5A59] text-[13.91px] leading-[22.26px] font-normal">{{product.metafields.custom.subtitle}}</div>
+        {% assign lowest_price = 0 %}
+
+        {% for product in product.metafields.custom.stack_products.value  %}
+            {% assign price = product.selected_or_first_available_variant.price %}
+            {% for variant in product.variants %}
+                {% if variant.available %}
+                    {% if variant.price < price %}
+                    {% assign price = variant.price %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% assign lowest_price = lowest_price | plus: price %}
+            
+            {% assign size = forloop.length %}  
+            {% if size >= 3 %}
+                {% assign bundle_price = lowest_price | times: 0.85 %}
+            {% elsif size == 2 %}
+                {% assign bundle_price = lowest_price | times: 0.90 %}
+            {% endif %}
+        {% endfor %}
+
+        <div class="font-sans text-[13.91px] mt-1 text-primary leading-[22.26px] font-semibold">Starting At: <span class="original-price line-through text-[#5E5A59] mr-2">{{lowest_price | money}}</span>{{bundle_price | money}}</div>
+
+        <div class="mt-4 font-sans text-[13.91px] text-primary leading-[22.26px] font-normal">{{product.metafields.custom.stack_clp_description | default: product.metafields.custom.short_description_extra}}</div>
+    
+        <div class="inline-flex mt-1 stack-badges">
+            {% for badge in product.metafields.custom.badges.value %}
+               <div class="flex items-center mt-2">
+                {% for block in section.blocks %}
+                    {% if block.settings.handle == badge %}
+                        <span class="w-8 rounded-full bg-[#F5F5F5] flex justify-center items-center">
+                            <img src="{{block.settings.icon | img_url: "master"}}" alt="{{badge}}" class="w-full object-contain">
+                        </span>
+                    {% endif %}
+                {% endfor %}
+                <span class="ml-2 font-sans font-normal text-[12.1px] text-primary mr-2">{{badge}}</span>
+               </div> 
+            {% endfor %}
+        </div>
+
+        <a href="{{product.url}}" class="block mt-[18px] bg-yellow font-sans font-bold lg:hidden uppercase w-full text-[13.9px] text-center py-[18px] transition duration-500 text-[#212121]">
+            shop now
+        </a>
+    </div>
+</div> 
+
+<style>
+    .yotpo .yotpo-display-wrapper .yotpo-icon-star{
+        color: #212121 !important;
+    }
+    .yotpo .star-clickable a{
+        color: #212121 !important;
+    }
+</style>

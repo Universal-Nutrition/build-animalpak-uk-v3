@@ -1,0 +1,99 @@
+ {% liquid 
+  assign badge = section.settings.badge
+  assign guarantee = section.settings.guarantee
+  assign text = section.settings.text
+%}
+
+<pdp-text-and-badge id="product-text-and-badge">
+  <section id="section-hero-medium" class="overflow-hidden relative">
+    <div class="container lg:px-20 py-20 flex flex-wrap md:flex-nowrap flex-col-reverse md:flex-row md:gap-x-0 lg:gap-x-20 items-start relative z-10">
+
+      <div class="w-full md:w-4/5 relative z-10 text-wrapper pb-0">
+        <div class="flex flex-col justify-center items-start ml-auto mr-auto max-w-[796px]">
+
+          {% if section.settings.headline %}
+            <h2 class="text-6xl md:text-[86px] leading-[0.8em] uppercase mt-10 md:mt-0 mb-6 text-primary">
+              {{ section.settings.headline }}
+            </h2>
+          {% endif %}
+          
+          {% if guarantee != blank %}
+            <div class="guarantee-banner px-4 py-[10px] tight-line-height relative mb-6">
+              <p class="font-bold text-sm uppercase mb-0 relative z-10 text-primary">{{ guarantee }}</p>
+              <div class="absolute bg-yellow w-full h-full left-0 top-0 skew-x-0 xsm:-skew-x-12 z-0"></div>
+            </div>
+          {% endif %}
+
+          {% if text != blank %}
+            <div class="paragraph-text text-base lg:text-[18.4px]">
+              {{ text }}
+            </div>
+          {% endif %}
+          
+        </div>
+      </div>
+
+      {% if badge %}
+      <div class="w-full md:w-1/5 relative flex justify-start md:justify-end">
+        <img class="w-full max-w-[180px] rotate-0 md:rotate-12" src="{{ badge }}" alt="Quality badge">
+      </div>
+    {% endif %}
+
+    </div>  
+  </section>
+</pdp-text-and-badge>
+
+<style>
+#product-text-and-badge .paragraph-text p {
+  color: #212121;
+}
+</style>
+
+{% javascript %}
+class pdpTextAndBadge extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {}
+}
+
+customElements.define('pdp-text-and-badge', pdpTextAndBadge);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Product Text & Badge",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "headline",
+      "label": "Headline text"
+    },
+    {
+      "type": "text",
+      "id": "guarantee",
+      "label": "Guarantee text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Paragraph text"
+    },
+    {
+      "type": "url",
+      "id": "badge",
+      "label": "Badge",
+      "info": "Upload an image (minimum 900px x 900px) or full-width image (minimum 1800px x 600px)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product - Text & Badge Section",
+      "category": "Sections"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

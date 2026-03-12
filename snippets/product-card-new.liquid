@@ -1,0 +1,137 @@
+{%- liquid  
+    assign importance = importance
+    assign fetchpriority = fetchpriority
+    if loading == 'eager'
+        assign importance = 'high'
+        assign fetchpriority = 'high'
+    endif
+    assign sources = sources
+    assign link_preloads = link_preloads
+    unless image_widths
+        assign image_widths = '' | split: ','
+    endunless
+    unless image_medias
+        assign image_medias = '' | split: ','
+    endunless
+
+    if link
+        assign link = link
+    else
+        assign link = product.url
+    endif 
+
+    if product_description
+        assign product_description = product_description
+    endif
+-%}
+{% style %}
+    {% if dark_hover %}
+        .product-card--{{ section.id }}:hover .product-card__content {
+            background-color: {% if dark_hover %}#000{% else %}#F2F1F6CC{% endif %};
+            color: {% if dark_hover %}#fff{% else %}#000{% endif %};
+        }
+
+        .product-card--{{ section.id }}:hover .product-card__btn {
+            background-color: #f5d500;
+            color: #000;
+        }
+    {% endif %}
+{% endstyle %}
+
+
+<div class="product-card product-card--{{ section.id }} {% if transition_on_load %}animate-[animateIn_1000ms_ease-in-out]{% endif %} flex flex-col relative flex-1 min-w-0 h-full relative
+{% if transition %} 
+    opacity-0 translate-y-5 transition-all duration-[1000ms]
+{% endif %}
+"
+{% if transition and transition_on_load %} 
+    style="animation-delay: {{ index | times: 100 }}ms; animation-fill-mode: forwards;"
+{% elsif transition and transition_on_load == false %}
+    :class="`${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`"
+    style="transition-delay: {{ index | times: 100 }}ms;"
+{% endif %}>
+    <a
+        href="{{- product.url -}}"
+        class="absolute inset-0 z-[1]"
+        aria-label="{{ product.title }}"
+    ></a>
+
+    {%- render 'product-card-media',
+        media: product.media[0],
+        loading: loading
+        alt: product.title
+    -%}
+
+    <div class="product-card__content overflow-hidden h-full max-h-[320px] text-black flex flex-col justify-between gap-1 items-start py-4 md:py-6 px-4 md:px-6 bg-[#F2F1F6] relative absolute bottom-0 left-0 right-0 z-[2] transition">
+        <a
+            href="{{- product.url -}}"
+            class="absolute inset-0 z-[1]"
+            aria-label="{{ product.title }}"
+        ></a>
+
+        <div class="flex flex-col gap-1 max-w-full min-w-0">
+            {%- if parent_link -%}
+                <span class="font-anton tracking-widest text-xs text-left uppercase text-inherit">
+                    {{- parent_link.title -}}
+                </span>
+            {%- else -%}
+            {%- if product.metafields.category.type != blank -%}
+                    <span class="font-anton tracking-widest text-xs text-left uppercase text-inherit">
+                        {{- product.metafields.custom.product_subtype -}}
+                    </span>
+            {%- endif -%}
+            {%- endif -%}
+
+            <span class="font-anton text-lg md:text-2xl text-left text-inherit uppercase truncate line-clamp-1 max-w-full">
+                {{- product.title -}}
+            </span>
+       
+
+            <div class="flex items-center gap-2 w-full">
+                {%- render 'reivew-stars', rating: product.metafields.yotpo.reviews_average -%}
+
+                <span class="text-sm text-inherit underline font-bold font-bebasNeueExpanded">
+                    {{ product.metafields.yotpo.reviews_count }} reviews
+                </span>
+            </div>
+        </div>
+
+        {%- if product_description != blank -%}
+            <p class="hidden text-sm md:text-base text-inherit !line-clamp-4 font-bebasNeueExpanded">
+                {{- product_description -}}
+            </p>
+        {%- endif -%}
+
+        {%- if product_price != blank or buy_button == true -%}
+            <div class="flex items-center justify-between w-full mt-5 gap-2">
+                {%- if product.title contains 'Stack'%}
+                    {%- assign is_stack = true -%}
+                {%- endif -%}
+                {%- if is_stack -%}
+                    {%- assign stack_prices = '' -%}
+                    {%- assign total_price = 0 -%}
+                    {%- for stack_product in product.metafields.custom.stack_products.value -%}
+                        {%- assign stack_prices = stack_prices | append: stack_product.price | append: ',' -%}
+                        {%- assign total_price = total_price | plus: stack_product.price -%}
+                    {%- endfor -%}
+                   
+                    <span class="text-base md:text-xl font-bold font-bebasNeue">
+                        <span class="text-base">Starting At</span> {{ total_price | money }}
+                    </span>
+                {%- else -%}
+                    {%- if product_price != blank -%}
+                        <span class="text-base md:text-xl font-bold text-inherit font-bebasNeueExpanded">
+                            {{- product_price -}}
+                        </span>
+                    {%- endif -%}
+                {%- endif -%}
+
+                {%- if buy_button == true -%}
+                    <span class="product-card__btn px-2 py-1 md:px-4 md:py-2 uppercase text-base md:text-lg tracking-wide rounded-none bg-black text-white font-anton whitespace-nowrap">
+                        Shop Now
+                    </span>
+                {%- endif -%}
+            </div>
+        {%- endif -%}
+    </div>
+</div>

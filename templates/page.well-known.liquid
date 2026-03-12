@@ -1,0 +1,3 @@
+{% if request.path == '/.well-known/apple-developer-merchantid-domain-association' %}
+  {{ 'apple-developer-merchantid-domain-association.liquid' | asset_url | file_url }}
+{% endif %}

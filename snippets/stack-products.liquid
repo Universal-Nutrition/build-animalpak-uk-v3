@@ -1,0 +1,244 @@
+{% assign available = true %}
+{% for product in product.metafields.custom.stack_products.value  %}
+    {% unless product.available %}
+        {% assign available = false %}
+        {% break %}
+    {% endunless %}
+{% endfor %}
+
+<stack-products class="block mt-6" data-shell-id="{{product.selected_or_first_available_variant.id}}" data-products-quantity="{{product.metafields.custom.stack_products | split: ',' | size}}">
+    {% for product in product.metafields.custom.stack_products.value %}
+    <div class="flex justify-between items-center">
+            <div>            
+                <div class="stack-title font-semibold text-[13.9px] mb-[10px]">1 x {{product.title}}</div> 
+            </div>
+            <div class="w-[180px] min-w-[160px]"> 
+            
+            {% if product.variants.size == 1 and product.metafields.custom.related_products == blank %}
+               <div class="stack-single-variant font-semibold text-[12.1px] mb-[10px] text-right" data-product-id="{{product.id}}" data-id="{{product.selected_or_first_available_variant.id}}" data-price="{{product.selected_or_first_available_variant.price}}">{{product.title | split: '-' | first | split: '[' | first}}</div>
+            {% else %}
+                <div class="select-stack relative">
+                <select class="stack-product-select select__select lg:mt-1 block w-full pl-3 pr-10 py-2 text-base focus:outline-none text-primary text-[13.9px] font-normal focus:ring-0 border border-solid border-[#DBDBDB] {% if is_stack %} text-[12px] font-semibold h-[48px] {% endif %}">
+                    <option value="" selected disabled hidden>Choose selection</option>
+                    {% for variant in product.variants %}
+                        {% unless variant.metafields.custom.hide_variant == true %}
+
+                        {% if variant.available %}
+                    <option value="{{variant.id}}" data-price="{{variant.price}}" data-product-id="{{product.id}}">{% if variant.title contains 'efault' %}{{product.title}}{% else %}{{variant.title}}{% endif %}</option>
+                        {% endif %}
+                    {% endunless %}
+
+                    {% endfor %}
+                    {% if product.metafields.custom.related_products != blank %}
+                        {% for product in product.metafields.custom.related_products.value %}
+                            {% for variant in product.variants %}
+                                {% unless variant.metafields.custom.hide_variant == true %}
+                                {% if variant.available %}
+                                    <option value="{{variant.id}}" data-price="{{variant.price}}" data-product-id="{{product.id}}">{{product.title}} {{variant.title}}</option>
+                                {% endif %}
+                                {% endunless %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                </select>
+                </div>
+                
+            {% endif %}
+            
+            </div>
+        </div>    
+        <div class="product-short-list mt-2 text-[12px] text-primary leading-[22.26px] font-sans font-normal mb-[25px]">{{product.metafields.custom.short_description_extra}}</div>
+  
+    {% endfor %} 
+    <div class="border border-solid border-[#DBDBDB] mt-4">
+
+        <div class="subscription flex justify-between p-4 active">
+            <div>
+                <input type="radio" name="purchase" id="subscribe" class="cursor-pointer" checked value="subscribe">
+                <label for="subscribe"
+                    class="relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer">Subscribe
+                    & save</label>
+            </div>
+            <div class="flex">
+                <div class="original-price line-through text-[#5E5A59] mr-2 text-[13.91px]">{{0 | money}}</div>
+                <div class="subscribe-price text-[#FF0000] font-semibold text-[13.91px]">{{0 | money}}</div>
+            </div>
+
+        </div>
+        <div class="subscription-wrapper bg-[#F5F5F5] active">
+            <div class="subscribe-points bg-[#F5F5F5] px-4 pb-3 pl-10">
+                <div class="flex mb-2">{% render 'icon-checkmark' %} <span
+                        class="font-sans font-light text-[13.91px] ml-3 text-primary">Always Free Shipping</span></div>
+                <div class="flex mb-2">{% render 'icon-checkmark' %} <span
+                        class="font-sans font-light text-[13.91px] ml-3 text-primary">Cancel or Pause Your Subscription Anytime</span></div>
+                <div class="flex mb-2">{% render 'icon-checkmark' %} <span
+                        class="font-sans font-light text-[13.91px] ml-3 text-primary">90 Day Money Back Guarantee</span></div>
+            </div>
+            <div class="text-[14px] p-4 pt-0 bg-[#F5F5F5]">
+                {% for selling_plan_group in product.selling_plan_groups %}
+                    
+                <select
+                    class="subscription-select text-[13.91px] text-primary border border-solid border-[#DBDBDB] bg-[#F5F5F5] outline-0 cursor-pointer h-[56px] flex items-center pl-3 w-full">
+                    <option value="" selected disabled hidden>Delivery frequency</option>
+                    {% for selling_plan in selling_plan_group.selling_plans %}
+                    <option class="subscription-option" data-name="{{ selling_plan.name | handleize }}" data-id="{{selling_plan.id}}"
+                        data-discount="{{selling_plan.price_adjustments[0].value}}">
+                        {{ selling_plan.name }}
+                    </option>
+
+                    {% endfor %}
+                </select>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="subscription flex justify-between p-4 border-0 border-t border-solid border-[#DBDBDB]">
+            <div>
+                <input type="radio" name="purchase" id="one-time" class="cursor-pointer" value="one-time">
+                <label for="one-time"
+                    class="relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer">One-time
+                    purchase</label>
+            </div>
+            <div class="flex">
+                <div class="original-price line-through text-[#5E5A59] mr-2 text-[13.91px]">{{0 | money}}</div>
+                <div class="one-time-price font-semibold text-[13.91px]">{{0 | money}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 flex h-[60px]">
+        <quantity-input class="quantity border border-[#DBDBDB] h-full w-[100px] mr-2 lg:mr-4">
+            <button class="quantity__button w-[30px] no-js-hidden" name="minus" type="button">
+              <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title |
+                escape }}</span>
+              {% render 'icon-minus' %}
+            </button>
+            <input class="quantity__input p-0" type="number" name="quantity" id="Quantity-{{ section.id }}" min="1"
+              value="1" form="{{ product_form_id }}">
+            <button class="quantity__button w-[30px] no-js-hidden" name="plus" type="button">
+              <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title |
+                escape }}</span>
+              {% render 'icon-plus' %}
+            </button>
+        </quantity-input>
+            <button class="stack__submit cursor-pointer w-full border border-solid border-yellow hover:bg-white hover:border-[#DBDBDB] transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px] tracking-[1px] disabled {% unless available %}sold-out{% endunless %}" >
+            {% if available %}
+            {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+                sold out
+            {% endif %}
+            
+        </button>
+    </div>
+
+    {% capture products_json %}
+        [
+            {% for product in product.metafields.custom.stack_products.value %}
+               { 
+                "id": {{product.id}},
+                "subs": [
+                    {% for selling_plan_group in product.selling_plan_groups %}
+                        {% for selling_plan in selling_plan_group.selling_plans %}
+                            {
+                                "name": "{{selling_plan.name | handleize}}",
+                                "id": {{selling_plan.id}}
+                            },
+                        {% endfor %}
+                    {% endfor %}
+                ]
+               },
+               {% if product.metafields.custom.related_products != blank %}
+                {% for product in product.metafields.custom.related_products.value %}
+                    { 
+                        "id": {{product.id}},
+                        "subs": [
+                            {% for selling_plan_group in product.selling_plan_groups %}
+                                {% for selling_plan in selling_plan_group.selling_plans %}
+                                    {
+                                        "name": "{{selling_plan.name | handleize}}",
+                                        "id": {{selling_plan.id}}
+                                    },
+                                {% endfor %}
+                            {% endfor %}
+                        ]
+                    },
+                {% endfor %}
+            {% endif %}
+            {% endfor %}
+        ]
+    {% endcapture %}
+</stack-products>
+
+<script>
+    let productsJson = {{products_json}}
+</script>
+
+<style>
+    .stack__submit.disabled,
+    .stack__submit.sold-out{
+        background: rgb(172, 170, 170);
+        cursor: default;
+        pointer-events: none;
+        border-color: rgb(172, 170, 170);
+    }
+    .subscription.active {
+        background: #F5F5F5;
+    }
+
+    .subscription input {
+        display: none !important;
+    }
+
+    .subscribe-points svg {
+        width: 16px;
+    }
+
+    .subscription-wrapper {
+        overflow: hidden;
+        transition: .5s;
+        height: 0;
+    }
+
+    .subscription-wrapper.active {
+        height: auto;
+    }
+
+    .subscription input+label:before {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+        top: -1px;
+        left: 0;
+        margin-right: 6px;
+        position: relative;
+        background-color: #fff;
+        content: '' !important;
+        box-shadow: 0 0 0 1px #212121;
+        display: inline-block;
+        visibility: visible;
+    }
+
+    .subscription input:checked+label:before {
+        background-color: #212121;
+        border: 4px solid #F5F5F5;
+    }
+
+
+    .subscription-select {
+        position: relative;
+        -webkit-appearance: none;
+    }
+
+    .subscription-select:after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        width: 8px;
+        height: 8px;
+        display: block;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+        transform: rotate(45deg);
+    }
+
+</style>

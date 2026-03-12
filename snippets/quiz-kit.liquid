@@ -1,0 +1,352 @@
+<style>
+  #quiz-kit-app-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 700px;
+  }
+  @keyframes animation-loading-line {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+  .quiz-kit-app-boxes {
+    display: flex;
+    margin-top: 50px;
+  }
+  .quiz-kit-app-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 30px;
+  }
+  .quiz-kit-app-line {
+    position: relative;
+    width: 200px;
+    max-width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+  }
+  .quiz-kit-app-line-loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #f2f2f2;
+    background-image: linear-gradient(90deg, #f2f2f2, #f6f6f6, #f2f2f2);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    display: inline-block;
+    line-height: 1;
+    width: 100%;
+    animation: animation-loading-line 1.2s ease-in-out infinite;
+  }
+  .quiz-kit-app-line-loading--dark {
+    background-color: #d9d9d9;
+    background-image: linear-gradient(90deg, #d9d9d9, #e8e8e8, #d9d9d9);
+  }
+  .quiz-kit-app-line--long {
+    width: 400px;
+    background-color: #d9d9d9;
+  }
+  .quiz-kit-app-line--tall {
+    width: 256px;
+    height: 256px;
+    margin-bottom: 20px;
+  }
+  .quiz-kit-app-line--dark {
+    background-color: #d9d9d9;
+  }
+  .quiz-kit-app-line--small {
+    width: 100px;
+  }
+  @media screen and (max-width: 1300px) {
+    .quiz-kit-app-box:nth-child(3),
+    .quiz-kit-app-box:nth-child(4) {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    #quiz-kit-app-wrapper {
+      min-height: 350px;
+    }
+    .quiz-kit-app-box:nth-child(2) {
+      display: none;
+    }
+    .quiz-kit-app-line {
+      max-width: 335px;
+    }
+    .quiz-kit-app-line--tall {
+      height: 156px;
+    }
+    .quiz-kit-app-boxes {
+      margin-top: 30px;
+    }
+  }
+</style>
+<div id='quiz-kit-app-wrapper' data-quiz-kit-key='{{ quiz_key }}'>
+  <div class='quiz-kit-app-line quiz-kit-app-line--long'>
+    <span class='quiz-kit-app-line-loading quiz-kit-app-line-loading--dark'></span>
+  </div>
+  <div class='quiz-kit-app-line'><span class='quiz-kit-app-line-loading'></span></div>
+  <div class='quiz-kit-app-boxes'>
+    <div class='quiz-kit-app-box'>
+      <div class='quiz-kit-app-line quiz-kit-app-line--tall'><span class='quiz-kit-app-line-loading'></span></div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--dark'>
+        <span class='quiz-kit-app-line-loading quiz-kit-app-line-loading--dark'></span>
+      </div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--small'><span class='quiz-kit-app-line-loading'></span></div>
+    </div>
+    <div class='quiz-kit-app-box'>
+      <div class='quiz-kit-app-line quiz-kit-app-line--tall'><span class='quiz-kit-app-line-loading'></span></div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--dark'>
+        <span class='quiz-kit-app-line-loading quiz-kit-app-line-loading--dark'></span>
+      </div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--small'><span class='quiz-kit-app-line-loading'></span></div>
+    </div>
+    <div class='quiz-kit-app-box'>
+      <div class='quiz-kit-app-line quiz-kit-app-line--tall'><span class='quiz-kit-app-line-loading'></span></div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--dark'>
+        <span class='quiz-kit-app-line-loading quiz-kit-app-line-loading--dark'></span>
+      </div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--small'><span class='quiz-kit-app-line-loading'></span></div>
+    </div>
+    <div class='quiz-kit-app-box'>
+      <div class='quiz-kit-app-line quiz-kit-app-line--tall'><span class='quiz-kit-app-line-loading'></span></div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--dark'>
+        <span class='quiz-kit-app-line-loading quiz-kit-app-line-loading--dark'></span>
+      </div>
+      <div class='quiz-kit-app-line quiz-kit-app-line--small'><span class='quiz-kit-app-line-loading'></span></div>
+    </div>
+  </div>
+</div>
+<script>
+  if (!window.quizKitScriptLoaded) { window.quizKitScriptLoaded = true; const script = document.createElement('script'); script.defer = true; script.setAttribute('src', 'https://d38jc50suw8dg3.cloudfront.net/current/static/bundle.min.js'); document.head.appendChild(script); const appStyles = document.createElement('link'); appStyles.type = 'text/css'; appStyles.rel = 'stylesheet'; appStyles.href = 'https://d38jc50suw8dg3.cloudfront.net/current/static/main.min.css'; appStyles.media = 'print'; appStyles.onload = function() { this.media='all' }; document.head.appendChild(appStyles); } {% if customer %} localStorage.setItem('customerEmail', '{{ customer.email }}'); {% endif %}
+</script>
+
+<style>
+  #quiz-kit-container{
+      /* border: 8px solid #fedd00 !important; */
+      margin: 0;
+      /* margin-left: 16px;
+      margin-right: 16px; */
+  }
+
+  #quiz-kit-intro #quiz-kit-container{
+      position: relative;
+      max-width: unset !important;
+      width: unset;
+      padding-top: 80%;
+  }
+
+  #quiz-kit-intro #quiz-kit-container:after{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: url({{"quiz-img.webp" | asset_url}});
+      height: 50%;
+      width: 90%;
+      background-repeat: no-repeat;
+      background-size: contain;
+  }
+  #quiz-kit-intro-title{
+      font-size: 40px !important;
+      font-family: Anton !important;
+      line-height: 38px !important;
+  }
+  .sc-AxhCb.ZdEpG{
+      font-size: 43px !important;
+      font-family: Anton !important;
+      line-height: 40px !important;
+  }
+
+  #quiz-kit-intro-button{
+      position: relative;
+      min-width: unset !important;
+      max-width: 100px !important;
+      letter-spacing: 1px !important;
+      background: transparent !important;
+      border: none !important;
+      color: #fff !important;
+      overflow: hidden;
+  }
+
+  #quiz-kit-intro-button:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100px;
+      height: 100%;
+      background: #e4002b;
+      transition: .5s;
+      z-index: -1;
+  }
+  #quiz-kit-intro-button:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100px;
+      height: 100%;
+      background: #000;
+      z-index: -2;
+  }
+
+  .sc-AxheI {
+      min-height: 50px !important;
+      padding: 10px !important;
+      border-radius: 0;
+      border-color: #dcdcdcde;
+      font-size: 19px !important;
+      margin-bottom: 15px;
+  }
+  .sc-AxheI button:hover span{
+      background: #000 !important;
+  }
+
+  .sc-fzplgP button:not(:hover) span {
+      color: #FFF;
+  }
+
+  #quiz-kit-subscribe-aDE4ELpixEM-form{
+      margin-bottom: 0 !important;
+  }
+  #quiz-kit-subscribe-aDE4ELpixEM-form input{
+      border-radius: 0 !important;
+  }
+
+  #quiz-kit-subscribe-aDE4ELpixEM-button{
+      width: 338px !important;
+      height: 55px !important;
+  }
+
+  h3.sc-AxhCb.ZdElS{
+      font-size: 25px !important;
+      font-family: Anton !important;
+  }
+
+  #quiz-kit-progress-bar{
+      top: 130px !important;
+      width: 230px !important;
+  }
+
+  .sc-pZBmh.CixmV,
+  #quiz-kit-progress-bar-list-item {
+      height: 12px !important;
+      border: none !important;
+  }
+  #quiz-kit-progress-bar-list{
+      border-radius: 100px;
+      overflow: hidden;
+  }
+  .sc-pZBmh.CixmV h1,
+  #quiz-kit-progress-bar-list-item h1{
+      display: none;
+  }
+
+  #quiz-kit-success-popup{
+      display: none !important;
+  }
+
+  .fSjllM {
+    font-family: Familjen Grotesk, sans-serif !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+
+  .iETYIV {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px;
+  }
+
+  #quiz-kit-container h1 {
+    font-family: Anton !important;
+    text-transform: uppercase !important;
+    margin-top: 40px !important;
+    font-size: 60px !important;
+    line-height: 60px !important;
+  }
+
+  @media screen and (min-width: 1024px) {
+      #quiz-kit-intro #quiz-kit-container{
+          height: 600px;
+          margin-left: 3.75rem;
+          margin-right: 3.75rem;
+          padding-right: 50%;
+          text-align: left;
+          display: inline-flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-top: 0;
+      }
+      #quiz-kit-intro #quiz-kit-container:after{
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%);
+          background: url({{"quiz-img.webp" | asset_url}});
+          height: 90%;
+          width: 45%;
+          background-repeat: no-repeat;
+          background-size: contain;
+      }
+      #quiz-kit-intro-title{
+          font-size: 60px !important;
+          font-family: Anton !important;
+          line-height: 60px !important;
+      }
+      .sc-AxhCb.ZdEpG{
+          font-size: 60px !important;
+          font-family: Anton !important;
+          line-height: 60px !important;
+      }
+
+
+      #quiz-kit-intro-button:hover:before{
+          width: 0;
+      }
+      #quiz-kit-subscribe-aDE4ELpixEM-button{
+          width: 350px !important;
+          height: 55px !important;
+      }
+
+     #quiz-kit-progress-bar{
+          top: 150px !important;
+      }
+  }
+</style>
+
+<script>
+  let interval = setInterval(function () {
+    let btns = document.querySelectorAll('#quiz-kit-results-product-aDE4ELpixEM .sc-fznxsB.djJdtl')
+
+    if (btns.length) {
+      clearInterval(interval)
+      document.querySelectorAll('.sc-fznxsB.djJdtl').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setTimeout(function () {
+            let sidecart = document.querySelector('side-cart')
+            sidecart?.renderCart()
+            sidecart?.openCart()
+          }, 1000)
+        })
+      })
+    }
+  }, 1000)
+</script>

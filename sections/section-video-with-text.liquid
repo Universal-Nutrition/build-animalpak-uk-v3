@@ -1,0 +1,135 @@
+
+        <!-- {%- if section.settings.image != blank -%}
+          <img
+            srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+              {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+              {%- if section.settings.image.width >= 535 -%}{{ section.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+              {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+              {%- if section.settings.image.width >= 1070 -%}{{ section.settings.image | img_url: '1070x' }} 1070w,{%- endif -%}
+              {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+              {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+            src="{{ section.settings.image | img_url: '1500x' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+            alt="{{ section.settings.image.alt | escape }}"
+            loading="lazy"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+          >
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%} -->
+     
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="relative flex">
+
+      {% if section.settings.lead != blank %}<h2 class="text-base font-semibold uppercase tracking-wider text-gray-300">{{section.settings.lead}}</h2> {%- endif -%}
+      <p class="title col-left">{{section.settings.title}}</p>
+      <p class="text col-left">{{section.settings.text | replace: '&lt;', '<' | replace: '&gt;', '>' }}
+      </p>
+      {% if section.settings.button_label != blank %}
+      <div class="mt-8">
+        <div class="inline-flex rounded-md shadow">
+          <a href="{{section.settings.button_link}}" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-lightPrimaryBlue hover:bg-gray-900">
+            {{section.settings.button_label}}
+            <!-- Heroicon name: solid/external-link -->
+            <svg class="-mr-1 ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  <div class="col-right">
+    <div class="video-content">
+        <video id="video_player_id" controls poster="{{ section.settings.poster | img_url: '800x'}}">
+          <source class="mp4" type="video/mp4" src="{{ section.settings.video_mp4 }}">
+        </video>
+        <div class="btn-video-play button-section">
+            <i class="fa fa-play">
+              <span class="play-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88" fill="none"><path d="M43.8947 0.894531C35.3589 0.894531 27.0148 3.4257 19.9175 8.16795C12.8202 12.9102 7.28855 19.6505 4.02203 27.5366C0.755516 35.4227 -0.0991542 44.1003 1.5661 52.4721C3.23136 60.8439 7.34175 68.5339 13.3775 74.5697C19.4132 80.6054 27.1032 84.7158 35.475 86.381C43.8469 88.0463 52.5245 87.1916 60.4105 83.9251C68.2966 80.6586 75.0369 75.1269 79.7792 68.0297C84.5214 60.9324 87.0526 52.5882 87.0526 44.0524C87.0526 38.3848 85.9363 32.7728 83.7674 27.5366C81.5985 22.3005 78.4195 17.5428 74.412 13.5352C70.4044 9.5276 65.6467 6.34862 60.4105 4.17973C55.1744 2.01084 49.5623 0.894531 43.8947 0.894531ZM35.2631 63.4735V24.6314L61.1579 44.0524L35.2631 63.4735Z" fill="#666666"/></svg>
+              </span>  
+              <span class="pause-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" width="100px" height="100px" viewBox="0 0 45.812 45.812" xml:space="preserve"<g><g><g><path d="M39.104,6.708c-8.946-8.943-23.449-8.946-32.395,0c-8.946,8.944-8.946,23.447,0,32.394     c8.944,8.946,23.449,8.946,32.395,0C48.047,30.156,48.047,15.653,39.104,6.708z M20.051,31.704c0,1.459-1.183,2.64-2.641,2.64     s-2.64-1.181-2.64-2.64V14.108c0-1.457,1.182-2.64,2.64-2.64s2.641,1.183,2.641,2.64V31.704z M31.041,31.704     c0,1.459-1.183,2.64-2.64,2.64s-2.64-1.181-2.64-2.64V14.108c0-1.457,1.183-2.64,2.64-2.64s2.64,1.183,2.64,2.64V31.704z"/></g></g></g></svg>
+              </span>
+            </i>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    jQuery(document).ready(function(){
+      jQuery('.button-section').click(function(){   
+        if (jQuery(this).find('i').hasClass('fa-play')) {
+          jQuery('#video_player_id').get(0).play();
+          jQuery(this).find('i').removeClass('fa-play').addClass('fa-pause');
+          jQuery('.video-content').addClass('video-running');
+        } else {
+          jQuery('#video_player_id').get(0).pause();
+          jQuery(this).find('i').removeClass('fa-pause').addClass('fa-play');
+          jQuery('.video-content').removeClass('video-running');
+        }
+      })
+    })
+</script>
+{% schema %}
+{
+  "name": "Video With Text",
+  "class":"video-with-text spaced-section--boxed",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+      {
+        "type": "text",
+        "id": "video_mp4",
+        "label": "link video mp4"
+      },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "poster"
+    },
+    {
+      "type": "text",
+      "id": "lead",
+      "default": "Lead text here",
+      "label": "Lead text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Title Goes here!",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "default": "Text goes here!",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Button label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video With Text"
+    }
+  ]
+}
+{% endschema %}

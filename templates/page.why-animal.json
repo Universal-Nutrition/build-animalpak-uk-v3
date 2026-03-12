@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_eC9UXp": {
+      "type": "hero-banner-classic",
+      "blocks": {
+        "slide_qW6RxP": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/about-main-banner-tear-offblack.jpg",
+            "image_2": "shopify://shop_images/about-main-banner-mobile-tear-offblack.jpg",
+            "enable_lazy_loading": true,
+            "custom_heading": "",
+            "subheading": "",
+            "subheadingmob": "",
+            "subheading_size": 20,
+            "button_label": "",
+            "button_link": "",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "text_alignment": "center",
+            "CustomTextBottom": ""
+          }
+        }
+      },
+      "block_order": ["slide_qW6RxP"],
+      "custom_css": [
+        "h1 {font-size: 110px; color: #fedd00;}",
+        ".hero-slider .text-wrapper {left: 0; right: 0;}"
+      ],
+      "settings": {
+        "slide_delay": ""
+      }
+    },
+    "main": {
+      "type": "main-page-about",
+      "disabled": true,
+      "settings": {
+        "title": "FOR NEARLY <strong>FOUR DECADES</strong> animal has fueled people’s ambition to reach their full potential, EVOLVING FROM A SPORTS NUTRITION BRAND TO AN ETHOS FOR LIVING<strong>.</strong>",
+        "subtitle": "{{ page.metafields.my_fields.subtitle.value }}",
+        "banner": "shopify://shop_images/about-us-banner.png"
+      }
+    },
+    "content_section_xMPF6t": {
+      "type": "content-section",
+      "blocks": {
+        "content_block_4TfeDN": {
+          "type": "content_block",
+          "settings": {
+            "content": "Animal isn’t your typical performance nutrition brand. If you’re drawn to our products, you’re not just a customer; you’re part of a mindset. It's visceral. We understand your commitment because we share it. We see it, we feel it, we live it every day. That’s why we hold ourselves to the highest standards in product quality and innovation—to fuel your journey with everything you need.",
+            "size": "large"
+          }
+        }
+      },
+      "block_order": ["content_block_4TfeDN"],
+      "settings": {
+        "bottom_tear_image": "shopify://shop_images/tear-offblack-to-transparent.png",
+        "bg_color": "#121212"
+      }
+    },
+    "img_block_LrRtjD": {
+      "type": "img-block",
+      "settings": {
+        "desktop": "shopify://shop_images/mid-carousel-image-combined-dt.jpg",
+        "mobile": "shopify://shop_images/mid-carousel-image-combined-dt.jpg"
+      }
+    },
+    "dea7576f-9cda-4a23-a081-87c1515bf1ca": {
+      "type": "about-us-story",
+      "disabled": true,
+      "custom_css": [
+        ".about-us-story__title {margin-left: auto; margin-right: auto; display: block; font-family: Brixton Wood; font-size: 80px; line-height: 70px; padding-bottom: 20px;}",
+        ".about-us-story__copy {font-family: Familjen Grotesk, sans-serif !important; font-size: 20px; font-weight: 400; line-height: 30px; letter-spacing: 0em;}",
+        ".js-youtube {border-radius: 12px;}"
+      ],
+      "settings": {
+        "pretitle": "our story",
+        "text": "ANIMAL stands with those who strive for more, who refuse to be defined by limits. You’re not just following a routine—you’re chasing a vision of your best self. Every rep, every sprint, every challenge you face is a testament to your inner strength. We believe in fueling that strength with products that match your intensity and drive. When you choose ANIMAL, you’re choosing to push past mediocrity, to rise above challenges, and to demand the best from yourself and what you consume. Your journey is relentless, and we’re here to power it with uncompromising quality and innovation.",
+        "bg": "rgba(0,0,0,0)",
+        "bg_image": "shopify://shop_images/tear-background-twotone.png",
+        "video_url": "https://www.youtube.com/watch?v=T2R-YdvAFk4",
+        "description": "",
+        "full_width": false
+      }
+    },
+    "content_quiz_yotpo_xqfDGx": {
+      "type": "content-quiz-yotpo",
+      "settings": {
+        "content_title": "NO LABELS,",
+        "content_subtitle": "JUST HARD WORK.",
+        "content_text": "Animal stands with those who strive for more, and who refuse to be defined by limits. You’re not just following a routine—you’re chasing a vision of your best self. Every rep, every sprint, every challenge you face is a testament to your inner strength. We believe in fuelling that strength with products that match your intensity and drive. When you choose Animal, you’re choosing to push past mediocrity, rise above challenges, and demand the best from yourself and what you consume. Your journey is relentless, and we’re here to power it.",
+        "bg": "#fedd00",
+        "quizkit_key": "6n3OHjavz",
+        "top_bg_image": "shopify://shop_images/yellow-white-bg-why-animal.png",
+        "middle_bg_image": "shopify://shop_images/yellow-transparent-bottom-bg-why-animal.png",
+        "video_url": "https://www.youtube.com/watch?v=tblwnl9L1QM",
+        "description": "",
+        "yotpo_widget_id": "1059298",
+        "yotpo_title_first": "MORE THAN",
+        "yotpo_title_second": "1B PRODUCTS SOLD GLOBALLY"
+      }
+    },
+    "section_instafeed_abx124": {
+      "type": "instafeed",
+      "settings": {
+        "title": "FOLLOW US ON INSTAGRAM",
+        "subtitle": "#BEANIMAL",
+        "icon": "shopify://shop_images/instagram-icon.svg",
+        "bg_image": "shopify://shop_images/tear-transparent-to-black.png",
+        "bg_color": "#131313"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_eC9UXp",
+    "main",
+    "content_section_xMPF6t",
+    "img_block_LrRtjD",
+    "dea7576f-9cda-4a23-a081-87c1515bf1ca",
+    "content_quiz_yotpo_xqfDGx",
+    "section_instafeed_abx124"
+  ]
+}

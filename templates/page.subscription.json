@@ -1,0 +1,197 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/SubscribeandSave_Desktop.png",
+        "image_2": "shopify:\/\/shop_images\/SubscribeandSave_Mobile.png",
+        "custom_heading": "<p>SUBSCRIBE & SAVE PROGRAM<\/p>",
+        "subheading": "<p>This is not just another subscribe and save program. You train and feed your body like clockwork, without compromise, getting the most out of the work you put in. That makes you elite, so enjoy the perks.<\/p>",
+        "text_alignment": "left"
+      }
+    },
+    "subscription": {
+      "type": "landing-subscription",
+      "blocks": {
+        "9388ac81-4389-4226-9bdb-b003b5081e41": {
+          "type": "right_column_item",
+          "settings": {
+            "item_heading": "Easy to Join",
+            "item_content": "Subscribe to any Animal supplement product and you’re a member. That's it. Simple."
+          }
+        },
+        "fb16dc49-5097-4bea-9ad0-1d815419f5b9": {
+          "type": "right_column_item",
+          "settings": {
+            "item_heading": "Preferred Pricing",
+            "item_content": "Progressive discounts from 10%-25% on every order – the more products you subscribe to the bigger the savings."
+          }
+        },
+        "dc28e253-c5ec-42bf-b135-82e1c42cd108": {
+          "type": "right_column_item",
+          "settings": {
+            "item_heading": "Free Shipping",
+            "item_content": "Free shipping on “Elite” orders ALWAYS."
+          }
+        },
+        "70ac0b55-d6ba-44bb-b20a-4a01350571ae": {
+          "type": "right_column_item",
+          "settings": {
+            "item_heading": "Total Convenience",
+            "item_content": "Don’t sweat about running out, changing flavors or sizes, being able to cancel, or pausing to support your regimen or go on vacation. You’re in control."
+          }
+        },
+        "f43c87a2-fd4f-4ce3-9b56-0cd487f8f6f6": {
+          "type": "right_column_item",
+          "settings": {
+            "item_heading": "Certified Staff",
+            "item_content": "Our customer service team is PT certified, product certified, and live the lifestyle. We get you, and we're here for you."
+          }
+        },
+        "052fe4f6-c3b0-494e-82fc-6e5c74916ebf": {
+          "type": "right_column_item",
+          "settings": {
+            "item_heading": "Exclusive Access",
+            "item_content": "Invitation-only membership in our Animal Facebook Group plus early access to new products and promotions."
+          }
+        }
+      },
+      "block_order": [
+        "9388ac81-4389-4226-9bdb-b003b5081e41",
+        "fb16dc49-5097-4bea-9ad0-1d815419f5b9",
+        "dc28e253-c5ec-42bf-b135-82e1c42cd108",
+        "70ac0b55-d6ba-44bb-b20a-4a01350571ae",
+        "f43c87a2-fd4f-4ce3-9b56-0cd487f8f6f6",
+        "052fe4f6-c3b0-494e-82fc-6e5c74916ebf"
+      ],
+      "settings": {
+        "custom_heading": "<p><strong>Animal Elite<\/strong> Subscription Program <\/p>",
+        "subheading": "What Makes You Elite? Everyday you work hard to be the best version of yourself, both inside and outside of the gym, and Animal walks that path with you. Subscribe to auto-delivery for any supplement and you automatically become a member of the Animal Elite.",
+        "button_label": "Shop products",
+        "button_link": "shopify:\/\/collections",
+        "image": "shopify:\/\/shop_images\/subs-inset.jpg",
+        "mobile_image": true
+      }
+    },
+    "6f676a70-76f2-4050-b7a4-17e71162b271": {
+      "type": "featured-collections-carousel",
+      "blocks": {
+        "template--17129079439680__6f676a70-76f2-4050-b7a4-17e71162b271-16702364298748d773-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "image_ratio": "adapt",
+            "show_secondary_image": false,
+            "add_image_padding": false,
+            "show_image_outline": false,
+            "show_vendor": false,
+            "show_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17129079439680__6f676a70-76f2-4050-b7a4-17e71162b271-16702364298748d773-0"
+      ],
+      "settings": {
+        "title": "POPULAR PICKs",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": true,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "e9d710f6-6704-408c-9067-6d65a0819e78": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "How does the Animal Elite Subscription program work?",
+            "faq_content": "<p>Our Animal Elite Subscription program is more than a subscribe and save subscription program – it is that and much more. When you subscribe to any supplement product you are automatically enrolled in our program. Once in the program, you will get 10% off and free shipping on recurring orders, a set it and forget it convenience so you’ll never run out, and the flexibility to change frequency, delivery dates, pause or cancel at any time. We also give you the ability to change up flavors and sizes whenever you’d like.<\/p><p>Additionally, you receive preferred Animal Elite status which provides greater access to our certified staff and the Animal community, special offers and first look opportunities on new products.<\/p><p>Once you subscribe to a product, you will automatically receive your order on the delivery schedule you select. You can choose from 4-, 6-, and 8-week delivery frequency to begin, and further customize that schedule under “My Product Subscriptions” once your subscription is active.<\/p><p>You can change your delivery frequency, the size of the product, flavor, and quantity while keeping your discount. You can also skip a delivery, speed up a delivery and edit your shipping address and billing information.<\/p><p>You will regularly receive email notifications giving you a heads up on your next delivery date, followed by with order confirmation and shipping notification with tracking information once you order is processed and out the door.<\/p>"
+          }
+        },
+        "418c4ff9-bf44-4727-a2e2-b83124b15c12": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "What products are available for subscriptions?",
+            "faq_content": "<p>All our full-size sports nutrition supplements are included in our subscription program including our multi-product supplement stacks.<\/p>"
+          }
+        },
+        "13d8398b-7812-4c86-aba2-c0415358217f": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "How do I start a product subscription?",
+            "faq_content": "<p>Simply go to the product page and for each supplement there will be options for one-time purchase or regular delivery showing your discount. Select your size and flavor options, your delivery frequency, and then go to checkout. Sign into your account, or create an account, and complete the checkout process.<\/p>"
+          }
+        },
+        "a15fed50-3197-4bdf-99f5-ecc50e3f0791": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "Can I use a discount code?",
+            "faq_content": "<p>You can use a discount code when you first sign up for your subscription as a one-time only added discount. For each subsequent order you will be getting 10% off automatically and therefore no additional promos codes can be applied. If you try to game the system by subscribing and cancelling for every purchase you will be locked out of our program.<\/p>"
+          }
+        },
+        "cae582f1-1f39-4f6e-bef8-9cc8c29d2d7b": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "What is the Low-Price Guarantee?",
+            "faq_content": "<p>This means that if there is a sale or promotion on a product that you are subscribed to, on Animalpak.com, then you get the sale price. For example, if we have a 15% off sale on Animal Pak (on Animalpak.com) during the time of your scheduled delivery, you will get that discount rather than the usual 10%.<\/p><p>Note that this is only applicable to product prices and promotions on Animalpak.com and is not applicable to any third-party prices or promotions.<\/p>"
+          }
+        },
+        "28ad6e18-12c4-407d-a1bf-ea99fa6d4e0f": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "What type of frequency should I choose?",
+            "faq_content": "<p>To begin, you can select either a 4- or 6-week or 8-week delivery schedule. Once your subscription is active, you can customize that schedule based upon your product size selection and usage. Because your training cycles may vary, always align the products and frequency with your goals and routine.<\/p><p>For example, if you take one Animal Pak per day, then a 4-week frequency with one PAK 30 (30 count size) will cover you for each month. If you take two per day, then ordering two PAK 44’s on a 6-week frequency will do the trick.<\/p><p>Need help? Drop a note to trainer@animalpak.com.<\/p>"
+          }
+        },
+        "1374948d-949d-42ed-95cf-44bf56d624ba": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "How do I change the frequency of my delivery schedule?",
+            "faq_content": "<p>You can change the frequency of your delivery schedule by logging into your account. Under My Account on the left you will see My Product Subscriptions. On that page, you will have options to change delivery dates, frequency, product options, shipping address and billing information.<\/p>"
+          }
+        },
+        "db080c1d-03ed-4297-9740-5db41c1ab2a8": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "How do I pause or cancel my subscription?",
+            "faq_content": "<p>Let your subscriptions follow your training regimen – you can pause any product during your off times or routine changes. Also, you are never locked in and can cancel at any time. Simply go to your My Product Subscriptions page to Stop your subscription as a Pause or Cancel.<\/p>"
+          }
+        },
+        "866bc38b-803b-41fd-8d70-e915aab60a4f": {
+          "type": "FAQ",
+          "settings": {
+            "faq_title": "What is your policy on shipping costs for subscriptions?",
+            "faq_content": "<p>Free shipping is provided for all subscriptions. Note that you can manage your refill dates, and so if you have subscribed to more than one product, we recommend you synchronize your delivery dates to simplify your deliveries.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e9d710f6-6704-408c-9067-6d65a0819e78",
+        "418c4ff9-bf44-4727-a2e2-b83124b15c12",
+        "13d8398b-7812-4c86-aba2-c0415358217f",
+        "a15fed50-3197-4bdf-99f5-ecc50e3f0791",
+        "cae582f1-1f39-4f6e-bef8-9cc8c29d2d7b",
+        "28ad6e18-12c4-407d-a1bf-ea99fa6d4e0f",
+        "1374948d-949d-42ed-95cf-44bf56d624ba",
+        "db080c1d-03ed-4297-9740-5db41c1ab2a8",
+        "866bc38b-803b-41fd-8d70-e915aab60a4f"
+      ],
+      "settings": {
+        "heading": "Frequently asked questions",
+        "bg_color": "#f5f5f5"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "subscription",
+    "6f676a70-76f2-4050-b7a4-17e71162b271",
+    "faq"
+  ]
+}

@@ -1,0 +1,25 @@
+<div class="overflow-hidden relative py-16 lg:py-[96px] px-6 m-auto" style="background: {{section.settings.bg}};">
+    <h2 class="text-center uppercase text-[48.94px] lg:text-[56.29px] font-compacta uppercase font-bold leading-[45.03px]">
+        {{section.settings.title}}
+    </h2>
+    <div class="m-auto mt-4 text-[13.91px] font-sans lg:text-[18.4px] max-w-[880px] font-bold text-center leading-[22.26px] lg:leading-[29.44px] font-compacta text-primary">
+        {{section.settings.subtitle}}
+    </div>
+    {% if section.settings.link != blank %}
+        <div class="flex justify-center mt-[45px] lg:mt-6">
+            <a href="{{section.settings.link}}" class="bg-primary text-white uppercase font-sans font-bold text-[13.9px] leading-[18.07px] border border-solid border-primary px-8 py-[18px] transition duration-500 hover:bg-white hover:!text-primary">learn more</a>
+        </div>
+    {% endif %}
+    
+    {% if section.settings.img != blank %}
+        <img srcset="{% if section.settings.img.width >= 288 %}{{ section.settings.img | img_url: '288x' }} 288w,{% endif %}
+        {% if section.settings.img.width >= 576 %}{{ section.settings.img | img_url: '576x' }} 576w,{% endif %}
+        {% if section.settings.img.width >= 550 %}{{ section.settings.img | img_url: '550x' }} 550w,{% endif %}
+        {% if section.settings.img.width >= 1100 %}{{ section.settings.img | img_url: '1100x' }} 1100w,{% endif %}
+        {{ section.settings.img | img_url: 'master' }} {{ section.settings.img.width }}w"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+        src="{{section.settings.img | img_url: "600x"}}" 
+        loading="lazy" 
+        class="absolute hidden lg:block right-0 -bottom-[250px]">
+    {% endif %}
+</div> 

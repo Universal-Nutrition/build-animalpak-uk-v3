@@ -1,0 +1,39 @@
+.testimonial-slider {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(#fff, 0.05);
+    clip-path: polygon(0 44%,100% 4%,100% 100%,0 100%);
+    @media only screen and (min-width: 768px){
+      clip-path: polygon(100% 0,33% 100%,100% 100%);
+    }
+  }
+
+  .swiper-testimonials-prev,
+  .swiper-testimonials-next {
+
+    svg {
+
+      path {
+        stroke: currentColor;
+      }
+    }
+  }
+
+  blockquote {
+
+    p {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+

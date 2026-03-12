@@ -1,0 +1,172 @@
+<div class="block w-full hero-landing-page relative">
+ 
+    <div class="absolute top-4 z-10 mr-auto left-6 md:left-15 hidden md:block">
+      {% include 'breadcrumbs' color: '#fff' %}
+    </div>
+    <style>
+      .hero-landing-page {
+        background-color: #000;
+      }
+      .hero-landing-page .breadcrumbs a,
+      .hero-landing-page .breadcrumbs span {
+        color: #fff !important;
+      }
+      .hero-landing-page .breadcrumbs path {
+        stroke: #fff !important;
+      }
+    </style>
+
+  <div class="bg-gray-900">
+    <div aria-hidden="true" class="relative hero-landing-page__container w-full">
+      <img srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+      {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+      {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+      {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+      {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+      {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+      {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+      {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+      {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w" sizes="100vw"
+        src="{{ section.settings.image | img_url: '1500x' }}" fetchpriority="high" loading="eager"
+        class="hidden md:block w-full h-full object-center object-cover"
+        alt="{{ section.settings.image.alt | escape }}" width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}">
+
+      <img srcset="{%- if section.settings.image_2.width >= 375 -%}{{ section.settings.image_2 | img_url: '375x' }} 375w,{%- endif -%}
+      {%- if section.settings.image_2.width >= 750 -%}{{ section.settings.image_2 | img_url: '750x' }} 750w,{%- endif -%}
+      {%- if section.settings.image_2.width >= 1100 -%}{{ section.settings.image_2 | img_url: '1100x' }} 1100w,{%- endif -%}
+      {%- if section.settings.image_2.width >= 1500 -%}{{ section.settings.image_2 | img_url: '1500x' }} 1500w,{%- endif -%}
+      {%- if section.settings.image_2.width >= 1780 -%}{{ section.settings.image_2 | img_url: '1780x' }} 1780w,{%- endif -%}
+      {%- if section.settings.image_2.width >= 2000 -%}{{ section.settings.image_2 | img_url: '2000x' }} 2000w,{%- endif -%}
+      {%- if section.settings.image_2.width >= 3000 -%}{{ section.settings.image_2 | img_url: '3000x' }} 3000w,{%- endif -%}
+      {%- if section.settings.image_2.width >= 3840 -%}{{ section.settings.image_2 | img_url: '3840x' }} 3840w,{%- endif -%}
+      {{ section.settings.image_2 | img_url: 'master' }} {{ section.settings.image_2.width }}w" sizes="100vw"
+        src="{{ section.settings.image_2 | img_url: '1500x' }}" fetchpriority="high" loading="eager"
+        class="block md:hidden w-full h-full object-center object-cover"
+        alt="{{ section.settings.image_2.alt | escape }}" width="{{ section.settings.image_2.width }}"
+        height="{{ section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio }}">
+
+
+      <div class="text-wrapper absolute flex flex-col overflow-hidden py-10
+        {% if template.name == 'blog' %}
+            bottom-0
+            md:py-20
+        {% else %}
+            bottom-7
+        {% endif %}
+        {% if section.settings.text_alignment == 'left' %}
+            items-left text-left mr-auto left-0 md:left-15 w-full lg:max-w-[590px] md:max-w-lg px-6 md:px-0
+        {% elsif section.settings.text_alignment == 'right' %} 
+            items-right text-right right-0 md:right-15 ml-auto lg:max-w-2xl md:max-w-xl px-6 md:px-0
+        {% else %} 
+            mx-auto items-center text-center center-x w-[90%]
+        {% endif %}">
+          {% if section.settings.custom_heading != blank %}
+            <h1 class="animate font-anton {% if template.name == 'blog' %}text-[48.944px] lg:text-[85.604px]{% else %}text-[74.438px] md:text-[85.604px]{% if section.settings.subheading == blank %} !mb-[-20px] {% endif %}{% endif %} mb-2 md:mb-5 leading-[80%] font-bold tracking-[-1px] text-white uppercase">
+              {{ section.settings.custom_heading | newline_to_br }}
+            </h1>
+          {% endif %}
+            <div class="animate font-sans text-white {% if template.name == 'blog' %}text-[13.913px] md:text-[18.4px]{% else %}text-sm sm:text-base{% endif %}">
+              {{ section.settings.subheading }}
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .hero-landing-page .breadcrumbs {
+    position: static;
+  }
+
+  .hero-landing-page__container {
+    height: {{ section.settings.m_height }}px;
+  }
+
+  @media only screen and (min-width: 640px){
+    .hero-landing-page__container {
+      height: {{ section.settings.d_height }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Page Hero Banner",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+    "type": "checkbox",
+    "id": "breadcrumbs",
+    "label": "Breadcrumbs",
+    "default": true
+    },
+    {
+    "type": "range",
+    "id": "d_height",
+    "label": "Desktop image height",
+    "min": 200,
+    "max": 700,
+    "step": 5,
+    "default": 450
+    },
+    {
+    "type": "range",
+    "id": "m_height",
+    "label": "Mobile image height",
+    "min": 200,
+    "max": 700,
+    "step": 5,
+    "default": 500
+    },
+    {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Desktop"
+    },
+    {
+    "type": "image_picker",
+    "id": "image_2",
+    "label": "Mobile"
+    },
+    {
+    "type": "richtext",
+    "id": "custom_heading",
+    "label": "HTML Heading",
+    "info": "BRAND AMBASSADORS"
+    },
+    {
+    "type": "richtext",
+    "id": "subheading",
+    "default": "<p>Subtitle goes here!</p>",
+    "label": "Sub Heading"
+    },
+    {
+    "type": "select",
+    "id": "text_alignment",
+    "label": "Text alignment",
+    "options": [
+      {
+      "value": "left",
+      "label": "Left"
+      },
+      {
+      "value": "right",
+      "label": "Right"
+      },
+      {
+      "value": "center",
+      "label": "Center"
+      }
+    ],
+    "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Hero Banner",
+      "category": "section"
+    }
+  ]
+}
+{% endschema %}

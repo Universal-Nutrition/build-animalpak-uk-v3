@@ -1,0 +1,215 @@
+<div
+  class="relative featured-collection layout-2 section-{{ section.id }} bg-contain"
+  style="
+    background-color:{{ section.settings.bg_color }};
+    background-image: url({{ section.settings.bg_image | image_url: width: 1920 }});
+  "
+>
+  {% render 'tear-image', image: section.settings.top_tear_image, position: 'top', class: 'mt-[-36px]' %}
+
+  <div class="mx-15 mt-6 text-center">
+    <h2 class="text-white text-6xl collection-title">{{ section.settings.title }}</h2>
+    <div class="text-primary tracking-[1px]">
+      {{ section.settings.sub_title }}
+    </div>
+    {% if section.settings.btn != blank %}
+      <a href="{{section.settings.url}}" class="btn-primary mt-12 !hidden lg:!inline-block mx-auto">
+        {{- section.settings.btn -}}
+      </a>
+    {% endif %}
+    <div class="mt-2 pb-10 lg:pb-20">
+      <div class="slide-collection" id="section-{{ section.id }}">
+        {% for product in section.settings.collection.products limit: 5 %}
+          <div class="relative flex group">
+            {% include 'product-grid-item', shop_now: false %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.jQuery) {
+        console.warn('jQuery not loaded');
+        return;
+      }
+
+  $('#section-{{ section.id }}').slick({
+    dots: false,
+    infinite: false,arrows: true,
+    speed: 300,
+    slidesToShow: {{ section.settings.itemsOnRow }},
+    slidesToScroll: 1,
+  prevArrow: '<button class="slick-prev slick-arrow" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12L5 12M5 12L11 6M5 12L11 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+  nextArrow: '<button class="slick-next slick-arrow" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 18M19 12L13 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+    responsive: [
+      {
+        breakpoint: 1399,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 990,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+          centerPadding: '0px'
+        }
+      }
+    ]
+  });
+  });
+</script>
+
+<style>
+  @media screen and (min-width: 768px) {
+  .featured-collection.section-{{ section.id }} .content-wapper h2 span {font-size:{{section.settings.fontSize}}px }
+  }
+
+  .featured-collection.layout-2 {
+    border-radius: 0;
+  }
+
+  .section-featured-collection {
+    margin-top: -40px;
+  }
+
+  .featured-collection.layout-2 .slick-slide {
+    background: #000000;
+  }
+
+  .product-price {
+    color: #FEDD00 !important;
+  }
+
+  .section-featured-collection .product-grid-item {
+      padding-top: 0;
+  }
+
+  .spaced-section--boxed.section-featured-collection {
+    padding: 0;
+  }
+
+  /* Mobile: single slide and centered arrows above */
+  @media screen and (max-width: 989px) {
+    .section-featured-collection .collection-title {
+      margin-bottom: 10px !important;
+      padding-bottom: 10px !important;
+    }
+
+    .section-featured-collection .mx-15 {
+      margin-top: 0 !important;
+    }
+
+    .section-featured-collection .slick-slider {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .section-featured-collection .slick-list {
+      order: 2;
+      width: 100%;
+    }
+
+    .section-featured-collection .slick-prev,
+    .section-featured-collection .slick-next {
+      order: 1;
+      position: static !important;
+      display: inline-block !important;
+      transform: none !important;
+      margin: 0 8px 20px;
+    }
+
+    .section-featured-collection .product-title {
+      font-size: 24px !important;
+      line-height: 28px !important;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "Featured slider",
+  "tag": "section",
+  "class": "spaced-section--boxed section-featured-collection",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "default": "#212121",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "featured"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Sub Title"
+    },
+    {
+      "type": "text",
+      "id": "btn",
+      "label": "Button text",
+      "default": "view all"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Url"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "select",
+      "id": "itemsOnRow",
+      "options": [
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ],
+      "default": "4",
+      "label": "Items on Row Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_tear_image",
+      "label": "Top Tear Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection featured slider"
+    }
+  ]
+}
+{% endschema %}

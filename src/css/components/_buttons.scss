@@ -1,0 +1,20 @@
+.link-large--alt {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18.4px;
+  line-height: 160%;
+  /* or 29px */
+
+  text-transform: uppercase;
+
+  /* Primary/White */
+
+  color: #FFFFFF;
+
+  @media only screen and (max-width: 768px) {
+
+    font-size: 16px;
+
+  }
+}

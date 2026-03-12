@@ -1,0 +1,40 @@
+<div class='mega-nav__dropdown absolute top-full inset-x-0 text-sm text-gray-500 bg-white hidden mnd_marker'
+  meganav_index='{{forloop.index}}'>
+  <div class="tabswrap desk">
+    <div class="tabs">
+      <div id="tabs-content">
+        <div id="tab1" class="tab-content" style="display: block">
+          <div class="tab-inner">
+            <div class="tab-inner-1">
+              <div class="tab-inner-1-wrap">
+                {% for block in section.blocks %}
+                {%- case block.type -%}
+                {%- when 'learn-1' -%}
+                <div class="supp-1-inner">
+                  <span>{{ block.settings.header }}</span>
+                  {% for link in linklists[block.settings.menu].links %}
+                  <a href="{{link.url}}" class="supp-1-link {{ block.settings.menu.handl }}">{{link.title}}</a>
+                  {% endfor %}
+                </div>
+                {% endcase %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="tab-inner-2">
+                <div class="blog-outer-wrap">
+                {% for article in section.settings.meganav_blog_1.articles limit:3 %}
+                  <div class="blog-inner {% cycle 'one', 'two', 'three' %}">
+                    {% include 'article-grid-item-2' %}
+                  </div>
+                {% endfor %}
+                </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- END tabs-content -->
+    </div> <!-- END tabs -->
+  </div>
+
+  <!-- begin old menu stash -->
+  {% comment %}{% include 'menubackup' %}{% endcomment %}
+</div>

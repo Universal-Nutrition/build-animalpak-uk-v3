@@ -1,0 +1,36 @@
+<div class="flex">
+    <!-- Image selector -->
+    <thumbnail-slider-style-2 class="relative sm:mr-[16px] lg:mr-[32px] hidden w-max max-w-[80px] mx-auto sm:block overflow-hidden h-full max-h-[450px]">
+      <div class="swiper-wrapper" aria-orientation="horizontal" role="tablist">
+        {% for image in product.images %}
+           
+            <div class="swiper-slide relative bg-white h-24 w-[25%] rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50">
+                <img src="{{ image | image_url: width: 300 }}" alt="" class="w-full h-full object-center object-cover">
+              <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
+            </div>
+        {% endfor %}
+
+
+     
+
+        <!-- More images... -->
+      </div>
+    </thumbnail-slider-style-2>
+
+    <product-gallery-style-2 class="w-full swiper-product-gallery overflow-hidden">
+      <!-- Tab panel, show/hide based on tab state. -->
+      <div class="swiper-wrapper">
+        {% for image in product.images %}
+            <img src="{{ image | image_url: width: 1200 }}" alt="Angled front view with bag zipped and handles upright." class="swiper-slide w-full h-full object-center object-cover sm:rounded-lg">
+        {% endfor %}
+      </div>
+      <div style="bottom: auto" class="swiper-pagination sm:hidden"></div>
+
+      <!-- More images... -->
+    </product-gallery-style-2>
+
+
+    
+
+ 
+  </div>

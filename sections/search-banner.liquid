@@ -1,0 +1,36 @@
+<div class="px-6 pt-[64px] lg:pt-[118px] lg:px-14 relative bg-[#212121]">
+  <div class="absolute top-[17px] hidden lg:block">
+    {% include 'breadcrumbs' color: '#fff' %}
+  </div>
+  <h1 class="text-white text-[48.94px] lg:text-[85.6px] pb-[48px] lg:pb-[64px] font-compacta font-bold tracking-[1px] max-w-[600px] leading-[39.16px] lg:leading-[68.48px]">
+    Search results for <br><span class="text-white">'Creatine'</span> 
+  </h1>
+  <div class="flex search-tab">
+    <input type="radio" name="search" id="products" class="hidden" checked>
+    <label for="products" class="search-label uppercase font-compacta text-[37.01px] cursor-pointer leading-[29.61px] text-white/[.5] pb-[20px] relative">products</label>
+    <input type="radio" name="search" id="articles" class="hidden">
+    <label for="articles" class="search-label uppercase font-compacta text-[37.01px] cursor-pointer leading-[29.61px] ml-10 text-white/[.5] pb-[20px] relative">articles</label>
+  </div>
+</div>
+
+<style>
+    .search-label:before{
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 4px;
+        background: #fff;
+        opacity: .5;
+    }
+
+    input:checked + .search-label{
+        color: #FEDD00;
+    }
+    input:checked + .search-label:before{
+        background: #FEDD00;
+        opacity: 1;
+    }
+</style>

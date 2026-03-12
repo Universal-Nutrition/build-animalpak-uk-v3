@@ -1,0 +1,120 @@
+@import './components/buttons';
+
+#MainContent {
+  .h1, h1, .h2, h2, .h3, h3, .h4, h4 {
+    font-weight: 400;
+
+    strong {
+      font-weight: 400;
+    }
+  }
+}
+
+/** Shopify Overrides **/
+.shopify-challenge__button {
+  --tw-text-opacity: 1;
+  --tw-border-opacity: 1;
+  background-color: initial;
+  border-color: rgba(101, 28, 50, var(--tw-border-opacity));
+  border-width: 1px;
+  color: rgba(101, 28, 50, var(--tw-text-opacity));
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 12px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-duration: 0.15s;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    background-color: rgba(252, 245, 245, var(--tw-bg-opacity));
+    color: rgba(101, 28, 50, var(--tw-text-opacity));
+  }
+}
+
+.shopify-policy__container {
+  max-width: 1440px !important;
+}
+
+/* Header */
+#shopify-section-layout-header {
+  position: relative;
+  background-color: #fff;
+
+  &.shopify-section-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 49;
+  }
+
+  &.shopify-section-header-hidden {
+    transform: translateY(-100%);
+  }
+
+  &.animate {
+    transition: transform 0.15s ease-out;
+  }
+}
+
+button,
+select,
+fieldset {
+  border: 0;
+}
+
+.tight-line-height {
+  line-height: 0.8em;
+}
+
+
+/* Additional custom select styling */
+.cart-custom-select {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.selected-value {
+  padding: 15px 8px;
+  border: 1px solid #DBDBDB;
+  background-color: #FFFFFF;
+}
+
+.options-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #DBDBDB;
+  background-color: #FFFFFF;
+  z-index: 1;
+}
+
+.cart-custom-select.open .options-list {
+  display: block;
+}
+
+.color-circle{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 8px;
+
+}
+.selected-value {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+.options-list li {
+  padding: 8px 4px;
+}

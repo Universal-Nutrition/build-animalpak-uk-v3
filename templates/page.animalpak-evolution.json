@@ -1,0 +1,135 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-about",
+      "settings": {
+        "title": "FOR NEARLY <strong>FOUR DECADES<\/strong> ANIMAL HAS INSPIRED PEOPLE TO REACH THEIR FULL POTENTIAL, EVOLVING FROM A SPORTS NUTRITION BRAND TO AN ETHOS FOR LIVING<strong>.<\/strong>",
+        "subtitle": "{{ page.metafields.my_fields.subtitle.value }}",
+        "banner": "shopify:\/\/shop_images\/about-us-banner.png"
+      }
+    },
+    "dea7576f-9cda-4a23-a081-87c1515bf1ca": {
+      "type": "about-us-story",
+      "settings": {
+        "pretitle": "DEDICATED TO PUSHING THE BOUNDARIES OF SPORTS AND PERFORMANCE SUPPLEMENTS",
+        "text": "Your drive and determination are unparalleled, and we will always be pioneers in supplementing your journey to a better, stronger, self.",
+        "cover_image": "shopify:\/\/shop_images\/Rectangle_1469.png",
+        "bg": "rgba(0,0,0,0)",
+        "bg_image": "shopify:\/\/shop_images\/Frame_991413.png",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=m72ce9XOKyQ&ab_channel=Animal",
+        "description": "",
+        "full_width": false
+      }
+    },
+    "dc2f2962-c7ff-4b91-ba9e-e51e7166e9f2": {
+      "type": "image-text",
+      "settings": {
+        "title": "<p>BUILT, NOT BORN<\/p>",
+        "description": "We recognize that sometimes building a better you takes every last ounce of the old you. The journey itself is not a competition against those around you, but a personal challenge to be the best you can be.\n\nAnd this is why we’ve created the most effective products in the industry to supplement that hard work, determination, and drive. Like you, we believe that we are all built, not born.",
+        "img_right": false,
+        "img": "shopify:\/\/shop_images\/Rectangle_1435.png",
+        "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Frame_991481.svg?v=1670419831",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": ""
+      }
+    },
+    "d8f7871a-ddf2-4bdc-9dcf-ef9bd2e4fd5c": {
+      "type": "bg-image-with-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_1433.png",
+        "image_2": "shopify:\/\/shop_images\/Goal_links.png",
+        "background": "linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 100%)",
+        "mob_background": "linear-gradient(0deg, #000000 0%, #000000 53.65%, rgba(0, 0, 0, 0) 100%)",
+        "heading": "<p>TRUSTED FOR<br> 40 YEARS<\/p>",
+        "copy": "Since 1983 the Animal brand has been pushing sports nutrition forward, supplying athletes with the nutrition they need to fuel their goals.\n<br><br>\nToday we continue to help you reach your optimal health, body, and fitness goals. We aim to inform, to inspire, and to make your extraordinary goals attainable. Your passion and hard work are our fuel. Our goal is to make your passion and hard work, work harder for you.",
+        "icon": "shopify:\/\/shop_images\/Group_991113_9cfa1ff0-8c9b-408c-ac9e-0a66b681bf43.png"
+      }
+    },
+    "25fe13b7-c6bc-4101-a8b7-00689ab74fc0": {
+      "type": "about-rich-text",
+      "blocks": {
+        "0955bba9-fa89-4be9-8cac-75eba8e4cbbc": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "UL Certified",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Trust_indicators.svg?v=1671110403",
+            "text": "Our formulations are backed by science and proven by third-party lab testing in pharmaceutical grade facilities."
+          }
+        },
+        "e94de63b-68e8-434e-b6b4-4b323f6c752f": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "FDA Registered",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Trust_indicators_c4062bc5-65f5-404c-96ca-40dd74aa1766.svg?v=1671110414",
+            "text": "Highest quality production and safety standards right here in the US"
+          }
+        },
+        "0edef4fc-e320-4b2f-af69-fb38615919f4": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "Made in the USA",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Frame.svg?v=1671110423",
+            "text": "There’s a reason why athletes have trusted us for so long – we are committed to crafting pure and potent formulas that work in harmony, delivering consistent results every time."
+          }
+        },
+        "230f76d2-40b0-4010-99e3-ead30c6fbd56": {
+          "type": "icon-block",
+          "settings": {
+            "heading": "Good manufacturing practice",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Trust_indicators_8501871c-a93f-453d-a4b3-9b13a0a78952.svg?v=1671110437",
+            "text": "Animal products are produced in our GMP certified facility, right here in the USA, and held to the highest quality, safety, and potency standards."
+          }
+        }
+      },
+      "block_order": [
+        "0955bba9-fa89-4be9-8cac-75eba8e4cbbc",
+        "e94de63b-68e8-434e-b6b4-4b323f6c752f",
+        "0edef4fc-e320-4b2f-af69-fb38615919f4",
+        "230f76d2-40b0-4010-99e3-ead30c6fbd56"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "background_image": "shopify:\/\/shop_images\/Rcih_text.png",
+        "title": "GOLD-STANDARD QUALITY AND EFFECTIVENESS"
+      }
+    },
+    "2d9c46a1-b9e8-412b-bf0f-3efd0a72b964": {
+      "type": "image-text",
+      "settings": {
+        "title": "<p>FORMULATED WITH PURPOSE<\/p>",
+        "description": "We recognize that building a better you takes every last ounce of the old you, a personal challenge to be the best you can be. This is why we’ve created the most effective products in the industry to supplement that hard work, determination, and drive.\n\nComprehensive in our approach and consistent in our products, from foundation to performance and recovery, our commitment is to always curate leading edge ingredients and technology, delivering effectiveness, convenience, value, and confidence.",
+        "img_right": false,
+        "img": "shopify:\/\/shop_images\/Rectangle_1435_117846bc-63b1-4ab7-a2b7-60f8ba848d1e.png",
+        "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0675\/6882\/8736\/files\/Vector.svg?v=1670519022",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": ""
+      }
+    },
+    "f2de2123-daf1-4bdc-83f3-1d2e34201a44": {
+      "type": "bg-image-with-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_1433_16c541f6-5c02-4064-9315-a270b1307738.png",
+        "image_2": "shopify:\/\/shop_images\/Goal_links_bf359431-0acb-465b-ab1b-174c4a3aefad.png",
+        "background": "linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 100%)",
+        "mob_background": "linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 53.65%, rgba(0, 0, 0, 0) 100%)",
+        "heading": "<p>FAMILY OWNED<\/p>",
+        "copy": "Animal is first and foremost a family-owned brand, dedicated to educating, inspiring, and supplying our customers with the nutritional supplements they need. Our mission is to create the most effective sports nutrition products on the market to help you become the best version of yourself that you can be.\n<br><br>\nContinuing this mission for over forty years to bring the best, most trusted sports nutrition products to market, we value and are built upon honesty, integrity, and respect. From the beginning we’ve dedicated ourselves to pushing the limits of human performance, because before anything else, we are athletes ourselves.",
+        "icon": "shopify:\/\/shop_images\/Group_991112_3542f4f0-410c-4233-8b5b-d2bb1b1e877a.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "dea7576f-9cda-4a23-a081-87c1515bf1ca",
+    "dc2f2962-c7ff-4b91-ba9e-e51e7166e9f2",
+    "d8f7871a-ddf2-4bdc-9dcf-ef9bd2e4fd5c",
+    "25fe13b7-c6bc-4101-a8b7-00689ab74fc0",
+    "2d9c46a1-b9e8-412b-bf0f-3efd0a72b964",
+    "f2de2123-daf1-4bdc-83f3-1d2e34201a44"
+  ]
+}

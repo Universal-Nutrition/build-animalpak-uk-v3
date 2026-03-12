@@ -1,0 +1,100 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "5262257b-1aeb-487d-9a24-12c4982c615e": {
+          "type": "breadcrumbs",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        },
+        "button_3Ncfft": {
+          "type": "button",
+          "settings": {
+            "button_text": "SHOP NOW",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        },
+        "sidebar_recent_articles": {
+          "type": "sidebar_recent_articles",
+          "settings": {
+            "heading": "Recent Articles",
+            "articles_limit": 5
+          }
+        }
+      },
+      "block_order": [
+        "5262257b-1aeb-487d-9a24-12c4982c615e",
+        "title",
+        "content",
+        "button_3Ncfft",
+        "share",
+        "sidebar_recent_articles"
+      ],
+      "settings": {
+        "header_background_image": "shopify://shop_images/animal-lg-texture_13415b9e-f293-4942-8cff-d974f6471b40.jpg"
+      }
+    },
+    "related-article": {
+      "type": "related-blog-articlescarousel",
+      "disabled": true,
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "Related articles"
+      }
+    },
+    "065ba5fd-8623-4a5f-a569-525ab5151d28": {
+      "type": "featured-article-product-carousel",
+      "blocks": {
+        "template--17232072802624__065ba5fd-8623-4a5f-a569-525ab5151d28-1670938226a2237181-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pre-workout-pump-supplements",
+            "image_ratio": "adapt",
+            "show_secondary_image": true,
+            "add_image_padding": false,
+            "show_image_outline": false,
+            "show_vendor": false,
+            "show_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17232072802624__065ba5fd-8623-4a5f-a569-525ab5151d28-1670938226a2237181-0"
+      ],
+      "settings": {
+        "title": "Related Products",
+        "image_ratio": "adapt",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": true,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-article",
+    "065ba5fd-8623-4a5f-a569-525ab5151d28"
+  ]
+}

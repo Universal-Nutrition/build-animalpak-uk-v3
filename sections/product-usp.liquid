@@ -1,0 +1,102 @@
+
+<pdp-usp>
+  <section class="pt-8 pb-[64px] lg:pb-[128px] overflow-hidden">
+    <div class="container"> 
+      
+      {%- comment -%} Desktop - flex view {%- endcomment -%}
+      <div class="hidden: sm:flex justify-center items-start flex-wrap max-w-[1000px] mx-auto">
+      {%- for block in section.blocks -%}
+
+        {% liquid 
+          assign title = block.settings.feature_title
+          assign icon = block.settings.feature_icon
+        %}
+
+        <div class="hidden md:flex w-full xsm:w-1/2 md:w-1/4 flex-col text-center items-center justify-start mb-6 lg:mb-0"> 
+          <div> 
+            <img src="{{ icon }}" alt="{{ title }}" width="140" height="140" />
+          </div>
+          <p class="uppercase text-sm font-bold mt-4 max-w-[180px]">{{ title }}</p>
+        </div> 
+        {% endfor %}
+      </div>
+
+      {%- comment -%} Mobile - slider {%- endcomment -%}
+      <div class="badge-swiper block relative md:hidden">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+
+          {% liquid 
+            assign title = block.settings.feature_title
+            assign icon = block.settings.feature_icon
+          %}
+
+          <div class="swiper-slide"> 
+            <div> 
+              <img class="mx-auto max-w-[100px] h-auto" src="{{ icon }}" alt="{{ title }}" width="140" height="140" />
+            </div>
+            <p class="uppercase text-sm font-bold mt-4 text-center max-w-[200px] mx-auto">{{ title }}</p>
+          </div> 
+        {% endfor %}
+      </div>
+      <div class="swiper-pdp-badge-pagination"></div>
+      </div>
+
+
+    </div>
+  </section>
+</pdp-usp>
+
+{%- comment -%}
+  JS contained in scripts/sections/pdp-usp.js
+{%- endcomment -%}
+
+<style>
+.swiper-pdp-badge-pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.swiper-pdp-badge-pagination .swiper-pagination-bullet {
+  border: 1px solid #212121;
+  background: transparent;
+  opacity: 1;
+}
+
+.swiper-pdp-badge-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #212121;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Unique selling points",
+  "class": "Unique-selling-points__section",
+  "blocks": [
+    {
+      "name": "USP",
+      "type": "text",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "url",
+          "id": "feature_icon",
+          "label": "Feature icon",
+          "info": "Upload SVG icons in Settings > Files and paste the URL here."
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Unique selling points",
+      "category": "Sections"
+    }
+  ]
+}
+{% endschema %}

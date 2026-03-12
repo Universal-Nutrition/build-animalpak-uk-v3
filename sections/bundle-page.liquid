@@ -1,0 +1,328 @@
+<bundle-page>
+    <div class="px-6 lg:px-[56px] pt-6 lg:pt-[64px]">
+        <div class="hidden lg:flex justify-center space-x-4">
+            {% for block in section.blocks %}
+            <div class="collection-tab min-w-[208px] flex justify-center px-2 border border-solid border-primary py-3 cursor-pointer uppercase font-sans font-bold text-primary text-[12.1px] tracking-[1px] leading-[15.73px] {% if forloop.first %}active{% endif %}"
+                data-handle="{{block.settings.collection.handle}}">
+                {{block.settings.title | default: block.settings.collection.title}}
+            </div>
+            {% endfor %}
+        </div>
+        <select class="collection-select lg:hidden w-full h-[56px] border text-[13.9px] border-solid border-[#DBDBDB]">
+            {% for block in section.blocks %}
+            <option class="collection-tab" {% if forloop.first %}selected{% endif %}
+                data-handle="{{block.settings.collection.handle}}">
+                {{block.settings.title | default: block.settings.collection.title}}
+            </option>
+            {% endfor %}
+        </select>
+        <div class="lg:max-w-[1328px] m-auto pt-6 lg:pt-10">
+            <div class="flex justify-between">
+                <div id="products-grid" class="flex flex-wrap justify-between w-full lg:w-[832px] lg:min-w-[832px]">
+                </div>
+                <div
+                    class="fixed bundle-cart z-[9] lg:z-[unset] bottom-0 left-0 lg:pt-4 lg:p-0 bg-white lg:relative w-full lg:w-unset lg:min-w-[280px] shadow-[5px_0_60px_rgba(0,0,0,0.3)] lg:shadow-none">
+                    {% include 'bundle-cart' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</bundle-page>
+
+<style>
+
+    .collection-tab.active {
+        background: #212121;
+        color: #fff;
+    }
+
+    .bundle-product {
+        width: 400px;
+        background: #F5F5F5;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bundle-product__check {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        background: var(--yellow);
+        border-radius: 100px;
+        top: 12px;
+        right: 12px;
+        z-index: 9;
+    }
+
+    .bundle-product img {
+        width: 336px;
+        height: 336px;
+        margin: auto;
+        object-fit: contain;
+    }
+
+    .bundle-product__title {
+        font-size: 37.01px;
+        line-height: 29.61px;
+        letter-spacing: -1px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .bundle-product__type {
+        color: #5E5A59;
+        font-size: 13.91px;
+        line-height: 22.26px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .bundle-product__btn {
+        border: 1px solid #DBDBDB;
+        margin-top: auto;
+        height: 54px;
+        display: flex;
+        font-size: 13.9px;
+        letter-spacing: 1px;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        color: #212121;
+        transition: .5s;
+    }
+
+    .bundle-product .quantity {
+        height: 54px;
+        width: 100%;
+        background: #fff;
+        border: 1px solid #DBDBDB;
+    }
+
+    .bundle-product__btn:hover {
+        background: #212121;
+        color: #fff;
+        border-color: #212121;
+    }
+
+    #products-grid.loading {
+        opacity: .5;
+    }
+
+    .selected_product__drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .3);
+        z-index: 999999999999;
+    }
+
+    .selected_product__drawer-inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 700px;
+        height: 100%;
+        padding: 64px;
+        padding-top: 96px;
+        transform: translateX(100%);
+        transition: .3s;
+    }
+
+    .selected_product__drawer-inner.active {
+        transform: translateX(0);
+    }
+
+    .selected_product__img {
+        background: #F5F5F5;
+        width: 250px;
+        height: 250px;
+        min-width: 250px;
+        margin-right: 32px;
+    }
+    .selected_product-bullet-points{
+        margin-top: 24px;
+        line-height: 22.26px;
+        font-size: 13.91px;
+    }
+    .selected_product-bullet-points li{
+        list-style-type: disc;
+        margin-left: 30px !important;
+        line-height: 22.26px;
+        font-size: 13.91px;
+    }
+    .selected_product__title {
+        font-size: 56.29px;
+        line-height: 45.03px;
+    }
+
+    .selected_product__type {
+        font-size: 18.4px;
+        line-height: 29.44px;
+    }
+
+    .selected_product__drawer .quantity {
+        height: 54px;
+        margin-right: 16px;
+        width: 80px;
+        min-width: 80px;
+    }
+
+    .bundle-product .quantity__button {
+        font-size: 22px;
+    }
+    .selected_product__drawer .quantity__button {
+        width: 20px;
+        font-size: 20px;
+    }
+
+    .selected_product__drawer input {
+        padding: 0;
+    }
+
+    .bundle-form__submit.disabled,
+    .bundle-product__btn.disabled {
+        background: #DBDBDB;
+        border-color: #DBDBDB;
+        pointer-events: none;
+    }
+
+    .close-product__drawer {
+        top: 40px;
+        right: 40px;
+    }
+    .selected_product__drawer-mobile-inner{
+        position: unset;
+    }
+    @media screen and (max-width: 1024px) {
+        .bundle-cart{
+            height: 70%;
+            overflow: scroll;
+        }
+        .bundle-product {
+            width: 47%;
+            margin-bottom: 16px;
+            padding: 8px;
+        }
+
+        .bundle-product img {
+            width: 100%;
+            height: unset;
+            aspect-ratio: 1;
+        }
+
+        .bundle-product__title {
+            font-size: 18.4px;
+            line-height: 14.72px;
+            letter-spacing: 0;
+            margin-bottom: 10px;
+        }
+
+        .bundle-product__type {
+            font-size: 12.1px;
+            line-height: 19.36px;
+            margin-bottom: 8px;
+        }
+
+        .bundle-product__btn {
+            font-size: 13.9px;
+            height: 46px;
+        }
+
+        .bundle-product .quantity {
+            height: 46px;
+        }
+
+        .selected_product__drawer-inner {
+            background: none;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            transform: translateY(100%);
+            overflow: scroll;
+        }
+        .selected_product__drawer-inner::-webkit-scrollbar {
+            display: none;
+          }
+          
+        .selected_product__drawer-inner {
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+
+        .selected_product__drawer-inner.active {
+            transform: translateY(0);
+        }
+
+        .selected_product__drawer .quantity{
+            margin-right: 8px;
+        }
+        .selected_product__drawer-mobile {
+            height: 200px;
+        }
+
+        .selected_product__drawer-mobile-inner {
+            position: relative;
+            padding: 24px;
+            height: 100%;
+            padding-top: 48px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        .close-product__drawer {
+            top: 32px;
+            right: 32px;
+        }
+
+        .selected_product__img {
+            margin: auto;
+        }
+
+        .selected_product__title {
+            font-size: 42.56px;
+            line-height: 34.05px;
+            margin-top: 24px;
+        }
+
+        .selected_product__type {
+            font-size: 16px;
+        }
+
+        .bundle-product__check {
+            top: -4px;
+            right: -4px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+"name": "Bundle",
+"settings": [
+
+],
+"blocks": [
+{
+"name": "Collection",
+"type": "collection",
+"settings": [
+{
+"type": "collection",
+"id": "collection",
+"label": "Collection"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Custom title"
+}
+]
+}
+]
+}
+{% endschema %}

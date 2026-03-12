@@ -1,0 +1,107 @@
+{% style %}
+    .bg-color-mobile-{{ section.id }} {
+    background-color: {{ section.settings.mobile_menu_footer_bg }};
+    color: {{ section.settings.mobile_menu_footer_text_color }};
+    }
+
+    .text-color-mobile-{{ }} {
+    color: {{ section.settings.mobile_menu_footer_text_color }};
+    }
+{% endstyle %}
+
+<div class="flex flex-col gap-8 px-4 py-8 bg-color-mobile-{{ section.id }} w-full h-full">
+    <!-- Login/Signup -->
+    <div class="pb-8 border-b border-white/[.2]">
+        <span class="text-color-mobile-{{ section.id }} block text-xl font-bold font-anton uppercase mb-5">Login/Signup</span>
+        <div class="grid grid-cols-2 items-center w-full gap-4">
+            <a href="{{ routes.account_login_url }}"
+               class="text-black outline outline-animalYellow hover:outline-4 hover:outline-white bg-animalYellow hover:bg-white hover:text-black transition-all duration-300 uppercase px-6 py-4 text-lg font-bold w-full text-center">
+                <span>Login</span>
+            </a>
+            <a href="{{ routes.account_register_url }}"
+               class="text-animalYellow outline outline-animalYellow hover:outline-4 transition-all duration-300 uppercase px-6 py-4 text-lg font-bold w-full text-center">
+                <span>Signup</span>
+            </a>
+        </div>
+    </div>
+    <!-- /Login/Signup -->
+
+    <!-- Menus -->
+
+    {% for block in section.blocks %}
+        {% if block.type == 'mobile-footer-menu' %}
+            <div class="pb-8 border-b border-white/[.2]">
+                <span class="text-color-mobile-{{ section.id }} block text-xl font-bold font-anton uppercase mb-5">{{ block.settings.title }}</span>
+                <div class="grid grid-cols-2 items-center w-full gap-4">
+                    {% for link in linklists[block.settings.product_linklist].links %}
+                        <a href="{{ link.url }}"
+                           class="text-color-mobile-{{ section.id }} !ml-0 flex justify-between items-center gap-4 w-fit">{{ link.title }}
+                            {% render 'icon-chevron-right' with classes: 'flex w-8 h-8 mr-0' %}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <!-- /Menus -->
+
+    {% capture accordion_block %}
+        {% for link in linklists[section.settings.upper_nav_menu].links %}
+            {% if link.links != blank %}
+                {% liquid
+                    assign link_icon = ''
+                    if link.title == 'Services'
+                        capture link_icon
+                            render 'icon-customer-service' with classes: 'text-white w-6 h-6'
+                        endcapture
+                    elsif link.title == 'Orders'
+                        capture link_icon
+                            render 'icon-orders' with classes: 'text-white w-6 h-6'
+                        endcapture
+                    elsif link.title == 'About Animal'
+                        capture link_icon
+                            render 'icon-about' with classes: 'text-white w-6 h-6'
+                        endcapture
+                    elsif link.title == 'Blog'
+                        capture link_icon
+                            render 'icon-blog' with classes: 'text-white w-6 h-6'
+                        endcapture
+                    elsif link.title == 'Programs'
+                        capture link_icon
+                            render 'icon-programs' with classes: 'text-white w-6 h-6'
+                        endcapture
+                    endif
+                %}
+                <div class="cursor-pointer border-b border-white {% unless forloop.last %}{% endunless %}">
+                    <h3 class="text-color-mobile-{{ section.id }} text-familjenGrotesk font-bold py-3 relative text-xl uppercase flex justify-center items-center accordion-title">
+                        {% if link_icon != blank %}
+                            <span class="mr-2">{{ link_icon }}</span>
+                        {% endif %}
+                        <span style="color:{{ section.settings.mobile_menu_footer_text_color }}">{{ link.title }}</span>
+                        <span class="absolute right-0">{% render 'icon-chevron-bottom' with classes: 'chevron-icon' %}</span>
+                    </h3>
+                    <ul role="list" class="flex-col gap-1.5 my-6 space-y-3 hidden">
+                        {% for childlink in link.links %}
+                            <li class="flex justify-center">
+                                <a href="{{ childlink.url }}"
+                                   class="text-lg text-color-mobile-{{ section.id }} transition font-light font-sans duration-500 leading-[25.6px] text-center">{% if childlink.url contains "https://privacy.animalpak.com/opt-out" %}
+                                        <span class="inline-block h-[12px] mr-[4px]">{% render 'optout-icon-blue' %}</span>{% endif %}{{ childlink.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endcapture %}
+
+    {% comment %}Accordion JS loaded via header-style-2.js{% endcomment %}
+
+    <accordion-block class="justify-between footer-menu w-full pb-8 border-b border-white/[.2]">
+        {{ accordion_block }}
+    </accordion-block>
+    <div class="flex justify-center w-full pb-[130px]">
+        {% render 'social-links' %}
+    </div>
+</div>

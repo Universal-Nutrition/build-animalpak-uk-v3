@@ -1,0 +1,198 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/Untitled_design_93.png",
+        "image_2": "shopify:\/\/shop_images\/Untitled_1248_x_1440_px.png",
+        "custom_heading": "<p>Martyn Ford<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>Martyn Ford<\/p>",
+        "subheading": "<p>Martyn Ford's athletic journey showcases a remarkable transition from a professional cricket player to a prominent figure in the world of bodybuilding. Born on May 26, 1982, in Birmingham, England, Ford initially pursued cricket until an injury redirected him towards bodybuilding, where he quickly made a name for himself with his massive size and muscularity. Standing at an imposing 6 feet 8 inches and weighing over 300 lbs, he is affectionately known as \"The Nightmare.\" Beyond his bodybuilding achievements, Ford is also a social media influencer, inspiring a vast audience on platforms like Instagram with his fitness journey and motivational insights. His dedication to training and physique transformation has cemented his reputation in the fitness community, making him a true embodiment of strength and perseverance​​​​.<\/p>",
+        "accolade": "",
+        "video_url": ""
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "disabled": true,
+      "settings": {
+        "title": "MARTYN’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/creatine-benefits-what-it-is-what-it-does",
+            "page": "dan-green"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/animal-flex-joint-support-from-powerlifting-to-boxing",
+            "page": "dan-green"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/set-the-stage-for-your-best-hypertrophy-workout",
+            "page": "dan-green"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    },
+    "featured_collections_carousel_FCMMri": {
+      "type": "featured-collections-carousel",
+      "blocks": {
+        "featured_collection_Pa8UrF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "martyn-s-go-to-supps",
+            "image_ratio": "adapt",
+            "show_secondary_image": false,
+            "add_image_padding": false,
+            "show_image_outline": true,
+            "show_vendor": false,
+            "show_rating": false
+          }
+        },
+        "featured_collection_gx8L8q": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image_ratio": "adapt",
+            "show_secondary_image": false,
+            "add_image_padding": false,
+            "show_image_outline": true,
+            "show_vendor": false,
+            "show_rating": false
+          }
+        },
+        "featured_collection_WmTfVz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image_ratio": "adapt",
+            "show_secondary_image": false,
+            "add_image_padding": false,
+            "show_image_outline": true,
+            "show_vendor": false,
+            "show_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Pa8UrF",
+        "featured_collection_gx8L8q",
+        "featured_collection_WmTfVz"
+      ],
+      "settings": {
+        "title": "Martyn's Go-To Supplements",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "featured_collection_XgXYdM": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_item_JG9Xrm": {
+          "type": "featured-item",
+          "settings": {
+            "title": "Featured Title",
+            "sub_title": "Featured Sub Title",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_item_JG9Xrm"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_section": "#ffffff",
+        "title": "Featured collection",
+        "sub_title": "",
+        "btn": "view all",
+        "url": "",
+        "itemsOnRow": "4",
+        "StyleLayout": "1",
+        "fontSize": 30
+      }
+    },
+    "video_rtkg6k": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "heading": "Video",
+        "video_url": "",
+        "description": "",
+        "full_width": false
+      }
+    },
+    "section_video_image_cAcwPX": {
+      "type": "section-video-image",
+      "blocks": {
+        "video_ND8WmJ": {
+          "type": "video",
+          "settings": {
+            "video_mp4": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/c7fabde8da2646f28e29c768dadf577b.mp4",
+            "quote": "",
+            "btn": "view all",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_ND8WmJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "custom_heading": "Martin Ford",
+        "sub_title": "",
+        "quote": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles",
+    "featured_collections_carousel_FCMMri",
+    "featured_collection_XgXYdM",
+    "video_rtkg6k",
+    "section_video_image_cAcwPX"
+  ]
+}

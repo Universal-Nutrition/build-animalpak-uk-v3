@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.section-home.css","mappings":";;;AAAA,8BACE,4BACF,C","sources":["webpack://Animal/./src/css/sections/home.scss"],"sourcesContent":[".slick-slide .bg-\\[\\#ffffff\\] {\r\n  background-color: transparent;\r\n}\r\n"],"names":[],"sourceRoot":""}

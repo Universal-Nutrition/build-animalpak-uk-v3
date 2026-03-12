@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_eC9UXp": {
+      "type": "hero-banner-classic",
+      "blocks": {
+        "slide_qW6RxP": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Influencer_Sign_Up_Banner.jpg",
+            "image_2": "shopify://shop_images/Influencer_Sign_Up_Banner_Mobile.jpg",
+            "enable_lazy_loading": true,
+            "custom_heading": "Have you got what it takes\n<h1 id=\"yellow\">to be officially animal</h1>",
+            "subheading": "",
+            "subheadingmob": "",
+            "subheading_size": 20,
+            "button_label": "",
+            "button_link": "",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "text_alignment": "left",
+            "CustomTextBottom": ""
+          }
+        }
+      },
+      "block_order": ["slide_qW6RxP"],
+      "custom_css": [
+        ".hero-pagination {display: none !important;}",
+        ".swiper-wrapper .text-wrapper p {margin-top: 0;}",
+        ".swiper-wrapper .text-wrapper h1 {margin-bottom: 10px;}",
+        "h1 {font-size: 100px; line-height: 80px;}",
+        "@media only screen and (max-width: 1109px) {h1 {font-size: 60px !important; line-height: 50px !important; }}",
+        "#yellow {color: #FEDD00;}"
+      ],
+      "settings": {
+        "slide_delay": ""
+      }
+    },
+    "main": {
+      "type": "main-page-about",
+      "disabled": true,
+      "settings": {
+        "title": "FOR NEARLY <strong>FOUR DECADES</strong> animal has fueled people’s ambition to reach their full potential, EVOLVING FROM A SPORTS NUTRITION BRAND TO AN ETHOS FOR LIVING<strong>.</strong>",
+        "subtitle": "{{ page.metafields.my_fields.subtitle.value }}",
+        "banner": "shopify://shop_images/about-us-banner.png"
+      }
+    },
+    "page_6a9bBy": {
+      "type": "page",
+      "custom_css": ["h2 {display: none;}"],
+      "settings": {
+        "page": "influencer-signup"
+      }
+    }
+  },
+  "order": ["hero_banner_eC9UXp", "main", "page_6a9bBy"]
+}

@@ -1,0 +1,47 @@
+{% if section.settings.bottomtext != blank %}
+    <div class="py-[64px] lg:py-[64px] px-6" style="background: {{section.settings.bg}}">
+        <div class="max-w-[1000px] m-auto">
+            <div class="bottom-text text-center text-base font-sans mt-3">
+                {% if collection.metafields.custom.collection_bottom_text != blank %}
+                    {{collection.metafields.custom.collection_bottom_text}}
+                {% else %}
+                    {{section.settings.bottomtext }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <style>
+        .bottom-text p {
+            font-size: 20px;
+        }
+        .bottom-text p a {
+            font-weight: Bold;
+        }
+    </style>
+    {% schema %}
+        {
+            "name": "Collection Bottom Text",
+             "tag": "section",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "bottomtext",
+                    "label": "Bottom Text",
+                    "default": "<p>Collection Bottom Text Goes Here</p>"
+                },
+                {
+                    "type": "color",
+                    "id": "bg",
+                    "label": "Background color",
+                    "default": "#FEDD00"
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Collection Bottom Text"
+                }
+            ]
+        }
+    {% endschema %}

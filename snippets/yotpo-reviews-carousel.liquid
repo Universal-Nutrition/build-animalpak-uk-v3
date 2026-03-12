@@ -1,0 +1,21 @@
+<div class="relative font-anton px-0 text-[40px] md:text-[50px] lg:text-[60px] text-center w-full pt-12 lg:pt-16">
+  {% if bg_image != blank %}
+    <div class="absolute inset-0 -z-10 overflow-hidden brightness-50">
+      {{ bg_image | image_url: width: 1920 | image_tag }}
+    </div>
+  {% endif %}
+
+  <span class="text-white">{{ title_first }}</span>
+  <span class="bg-goalYellow px-2 w-fit lg:w-min 3xl:w-fit [clip-path:polygon(0%_5%,100%_0%,100%_95%,0%_100%)] leading-none">
+    {{ title_second }}
+  </span>
+
+  {% # Note that the pb-[22px] needs to match the Yotpo-hardcoded y padding of 22px. %}
+  <div class="yotpo-widget-instance pb-[22px]" data-yotpo-instance-id="{{ yotpo_widget_id }}"></div>
+</div>
+
+<style>
+  .yotpo-reviews-carousel-widget-container {
+    width: 100% !important;
+  }
+</style>

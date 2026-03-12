@@ -1,0 +1,67 @@
+<div class='px-6 pt-5 pb-5 submenu__header flex flex-row items-center justify-between w-full bg-black text-white'>
+  {% if first_level %}
+    <div class="flex items-center w-[45%]">
+      <a href="{{ routes.root_url }}" class="">
+        <span class="sr-only">Workflow</span>
+        {%- if section.settings.logo_text == blank and section.settings.logo != blank -%}
+            {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+            {{
+            section.settings.logo
+            | image_url: width: section.settings.width
+            | image_tag:
+                class: 'h-10 w-auto',
+                widths: '50, 100, 150, 200, 250, 300, 400, 500',
+                height: logo_height,
+                width: section.settings.logo_width,
+                alt: logo_alt
+        }}
+        {%- elsif section.settings.logo_text != blank -%}
+            <span class="h-10 w-auto">{{ section.settings.logo_text }}</span>
+        {%- else -%}
+            <span class="h2">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  {% else %}
+    <div class="flex items-center justify-start w-full min-w-max">
+      <div class='submenu__back' data-close-menu='{{ link.handle }}'>
+        {% render 'icon-chevron-right' with classes: 'flex w-8 h-8 mr-0 rotate-180 text-white' %}
+      </div>
+      <p class='font-anton text-white mobile-nav__item__header m-0 flex items-center justify-center leading-[42px]'>
+        {{ link.title }}
+      </p>
+    </div>
+  {% endif %}
+        <div class="w-full">
+          {% assign link_title = link.title | downcase %}
+          {% if link_title == 'merch' %}
+                {% for block in section.blocks %}
+                {%- case block.type -%}
+                {%- when 'gear-2' -%}
+                    <div
+                    class="gear-2-inner"
+                    style="background:url({{block.settings.image | img_url: '400x' }})"
+                    >
+                    <div class="supp-2-text">{{ block.settings.name }}</div>
+                    <div class="supp-2-link">
+                        <a href="{{ block.settings.link }}"
+                        ><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/tabler_arrow-right.svg" alt="arrow right" height="14" width="14">
+                        </a>
+                    </div>
+                    {% if block.settings.accent %}
+                        <div class="accent-yellow">
+                        <img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/yellow_accent_350.png" alt="tear effect beneath text">
+                        </div>
+                    {% endif %}
+                    </div>
+                {% endcase %}
+                {% endfor %}
+        {% endif %}
+    </div>
+    <button type="button" class="mm-close p-0 rounded-md inline-flex items-center justify-center text-black">
+        <span class="sr-only">Close menu</span>
+        <!-- Heroicon name: outline/x -->
+        {% render 'icon-close' with class: 'w-6 h-6 text-white' %}
+    </button>
+</div>

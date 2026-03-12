@@ -1,0 +1,250 @@
+{
+  "sections": {
+    "d04bd801-759d-4885-8483-4034c4959540": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/Untitled_design_87.png",
+        "image_2": "shopify:\/\/shop_images\/Untitled_design_88.png",
+        "custom_heading": "<p>Animal Athletes<\/p>",
+        "subheading": "<p>We are all inspired by those who put in the work and take their game to the highest levels. Animal athletes epitomize dedication, and use our tried and true products to get that extra edge.<\/p>",
+        "text_alignment": "left"
+      }
+    },
+    "d2552752-f041-4b8a-ab25-4fe47e39d4d8": {
+      "type": "about-us-story",
+      "settings": {
+        "pretitle": "",
+        "text": "",
+        "bg": "#f5d500",
+        "bg_image": "shopify:\/\/shop_images\/Frame_991413_a8e4c916-e249-4339-aa0c-4afb54f8cd3d.png",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=0nc3NQgFK9w",
+        "description": "",
+        "full_width": false
+      }
+    },
+    "0a0ec318-e5fa-4996-8494-461533c1432f": {
+      "type": "image-text",
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>MARTYN FORD<\/p>",
+        "description": "Martyn embodies the core values of the Animal brand, symbolizing the relentless pursuit of strength and excellence. His commitment to pushing the limits of physical capabilities aligns perfectly with the Animal ethos of being \"built, not born.\" Martyn's addition to the Animal Athlete team not only brings his unique expertise and personality to the forefront but also continues to elevate the standard of what it means to be part of this elite group.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": true,
+        "img": "shopify:\/\/shop_images\/Untitled_design_92.png",
+        "icon": "",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": "shopify:\/\/pages\/martyn-ford"
+      }
+    },
+    "d4df0a2b-dca8-4d09-827f-a7bea05e27ec": {
+      "type": "margin-section",
+      "settings": {
+        "color": "#212121",
+        "height": "128",
+        "mob_height": "0"
+      }
+    },
+    "daf4468a-2047-443a-a1af-ccbadf10c1ec": {
+      "type": "image-text",
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>EVAN CENTOPANI<\/p>",
+        "description": "Evan has been a staple figure in the bodybuilding and fitness world since earning his pro status in 2007. Evan went on to make his pro debut at the New York Pro in 2009 where he took first place. He has set the standard for the Animal Pak brand and what it means to be an Animal Athlete.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": false,
+        "img": "shopify:\/\/shop_images\/Rectangle_1435_ac84565a-94fe-4e5d-ac43-4cee2a247743.png",
+        "icon": "",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": "shopify:\/\/pages\/evan-centopani"
+      }
+    },
+    "0c64dbef-37f8-4157-93f1-213e6bf790fc": {
+      "type": "margin-section",
+      "settings": {
+        "color": "#212121",
+        "height": "128",
+        "mob_height": "0"
+      }
+    },
+    "efdbbed9-e2fd-4c9c-9cce-c2183f22ee7d": {
+      "type": "image-text",
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>JOHN JEWETT<\/p>",
+        "description": "Few people know that early in his career John was a world champion in powerlifting and broke 12 world records in the sport before transitioning to bodybuilding. He earned his pro card in 2016 and made his debut at the 2016 Europa in Phoenix, Arizona. John has a master’s degree in nutrition and a bachelor’s in exercise science. He is also a Registered Dietitian and Certified Strength and Conditioning Specialist.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": true,
+        "img": "shopify:\/\/shop_images\/Rectangle_1435_f4ea5e39-c0de-4f3a-b7a4-9f3e7eb0e63b.png",
+        "icon": "",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": "shopify:\/\/pages\/john-jewett"
+      }
+    },
+    "c956ea84-582b-42e6-a7a0-1c6a397e81f5": {
+      "type": "margin-section",
+      "settings": {
+        "color": "#212121",
+        "height": "128",
+        "mob_height": "0"
+      }
+    },
+    "fb906db9-5e50-486f-8df0-1e19caf5de44": {
+      "type": "image-text",
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>DAN GREEN<\/p>",
+        "description": "In the world of international powerlifting, there are few names as well known as the “Boss,\" Dan Green. Dan holds the world record for raw squat without wraps at 783lb in the 220lb weight class. Dan has combined years of training and knowledge in the sport of powerlifting in the running of his two successful businesses, Boss Barbell Club and Mountain View Fitness in Northern California.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": false,
+        "img": "shopify:\/\/shop_images\/Rectangle_1435_b65465ee-d94a-4301-9217-e3e1389fc484.png",
+        "icon": "",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": "shopify:\/\/pages\/dan-green"
+      }
+    },
+    "547b0f0e-d968-46f4-a4fe-4080c98f1fc5": {
+      "type": "margin-section",
+      "settings": {
+        "color": "#212121",
+        "height": "128",
+        "mob_height": "0"
+      }
+    },
+    "96ed3290-330c-47e3-9f1c-348aaa9971b8": {
+      "type": "image-text",
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>NADIA STOWERS<\/p>",
+        "description": "I signed up for a Spartan run in my first year of lifting with some friends from the gym I was attending at the time. Once there, I was introduced to more racers who would be joining us where I met my, now coach, Jacob Finerty.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": true,
+        "img": "shopify:\/\/shop_images\/athlete_landing_nadia.jpg",
+        "icon": "",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": "shopify:\/\/pages\/nadia-stowers"
+      }
+    },
+    "29994c5c-1d36-4cea-891d-f5b02b7fb763": {
+      "type": "margin-section",
+      "settings": {
+        "color": "#212121",
+        "height": "128",
+        "mob_height": "0"
+      }
+    },
+    "2e72e780-370f-4ae1-a28c-41463ad0da99": {
+      "type": "image-text",
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>RENEE JEWETT<\/p>",
+        "description": "Turning pro after having completed only two shows, Renee perfectly represents the IFBB Wellness division. Diligent, logical, and intense, Renee brings the heat not only to the gym floor but to the stage as well. Looking to capitalize on her success, she’s targeting her pro debut in 2021, and if the past is indicative of the future, she will be in the mix on the big stage.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": false,
+        "img": "shopify:\/\/shop_images\/Rectangle_1435_d7993778-d07c-47ee-9617-93b3351a3b46.png",
+        "icon": "",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": "shopify:\/\/pages\/renee-jewett"
+      }
+    },
+    "7d9a50df-8dd8-4477-a07a-0ea7fbc00437": {
+      "type": "margin-section",
+      "settings": {
+        "color": "#212121",
+        "height": "128",
+        "mob_height": "0"
+      }
+    },
+    "0f632b21-c43f-419f-90fc-b76f7ba295d9": {
+      "type": "image-text",
+      "settings": {
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "title": "<p>Gary Turner<\/p>",
+        "description": "When you look up “dedication” in the dictionary, you’ll see a picture of Gary “G-Six” Turner. An NPC National-level bodybuilder who has been in the game for over a decade, G-Six is always on point. Missed meals or training isn’t a part of his vocabulary, and that discipline results in steady progress year after year. Having placed top 10 nationally multiple times, Gary is on the hunt for the ever-coveted IFBB Pro card. He will not stop until it sits comfortably on his trophy mantle.",
+        "mobile_alignment": "text-left",
+        "desktop_alignment": "text-center",
+        "layout": "50",
+        "img_right": true,
+        "img": "shopify:\/\/shop_images\/garyturner.png",
+        "icon": "",
+        "bg": "#212121",
+        "text": "#ffffff",
+        "btn_text": "learn more",
+        "btn_link": "shopify:\/\/pages\/gary-turner"
+      }
+    },
+    "c82fbd7f-047a-4af3-bac4-027c138412fa": {
+      "type": "margin-section",
+      "settings": {
+        "color": "#212121",
+        "height": "128",
+        "mob_height": "64"
+      }
+    }
+  },
+  "order": [
+    "d04bd801-759d-4885-8483-4034c4959540",
+    "d2552752-f041-4b8a-ab25-4fe47e39d4d8",
+    "0a0ec318-e5fa-4996-8494-461533c1432f",
+    "d4df0a2b-dca8-4d09-827f-a7bea05e27ec",
+    "daf4468a-2047-443a-a1af-ccbadf10c1ec",
+    "0c64dbef-37f8-4157-93f1-213e6bf790fc",
+    "efdbbed9-e2fd-4c9c-9cce-c2183f22ee7d",
+    "c956ea84-582b-42e6-a7a0-1c6a397e81f5",
+    "fb906db9-5e50-486f-8df0-1e19caf5de44",
+    "547b0f0e-d968-46f4-a4fe-4080c98f1fc5",
+    "96ed3290-330c-47e3-9f1c-348aaa9971b8",
+    "29994c5c-1d36-4cea-891d-f5b02b7fb763",
+    "2e72e780-370f-4ae1-a28c-41463ad0da99",
+    "7d9a50df-8dd8-4477-a07a-0ea7fbc00437",
+    "0f632b21-c43f-419f-90fc-b76f7ba295d9",
+    "c82fbd7f-047a-4af3-bac4-027c138412fa"
+  ]
+}

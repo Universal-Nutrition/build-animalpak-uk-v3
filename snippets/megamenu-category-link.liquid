@@ -1,0 +1,42 @@
+<a
+    class="flex gap-4 p-2 hover:bg-[#F2F1F6] transition duration-300"
+    href="{{- link.url -}}"
+>
+    <div class="flex flex-col justify-start gap-2 order-2">
+        <span class="font-bold text-lg text-black font-anton uppercase">
+            {{- link.title -}}
+        </span>
+
+        {%- if link_description != blank -%}
+            <span class="hidden lg:block text-[#4C4C4C] font-bebasNeue">
+                {{- link_description | truncate: 100 -}}
+            </span>
+        {%- endif -%}
+    </div>
+
+    {%- if link_image contains 'https://cdn.shopify.com' -%}
+        <div class="order-1 min-w-10 w-10 h-10 xl:min-w-20 xl:w-20 xl:h-20">
+            <img
+                src="{{- link_image -}}"
+                alt="{{- link.title -}}"
+                width="100"
+                height="100"
+                class="h-full w-full"
+                loading="lazy"
+                style="object-fit: {{- image_fit -}};"
+            />
+        </div>
+    {%- elsif is_blog -%}
+        <div class="order-1 min-w-10 w-10 h-10 xl:min-w-20 xl:w-20 xl:h-20">
+            <img
+                src="{{- link_image -}}"
+                alt="{{- link.title -}}"
+                width="100"
+                height="100"
+                class="h-full w-full"
+                loading="lazy"
+                style="object-fit: {{- image_fit -}};"
+            />
+        </div>
+    {%- endif -%}
+</a>

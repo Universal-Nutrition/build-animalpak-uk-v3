@@ -1,0 +1,65 @@
+{% comment %}
+    Renders a set of links for paginated results. Must be used within paginate tags.
+
+    Usage:
+    {% paginate results by 2 %}
+      {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+    {% endpaginate %}
+
+    Accepts:
+    - paginate: {Object}
+    - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+{% endcomment %}
+
+<link rel="stylesheet" href="{{ 'component-pagination.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-pagination.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- if paginate.parts.size > 0 -%}
+  <div class="pagination-wrapper w-full !mt-0 !mb-10 md:!mt-5 md:!mb-16 order-5">
+    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="pagination__list list-unstyled !justify-between md:!justify-center w-full max-w-sm mx-auto" role="list">
+      {%- if paginate.previous -%}
+        <li class="!flex-none !mr-[10px]">
+          <a href="{{ paginate.previous.url }}{{ anchor }}" class="pagination__item pagination__item--next pagination__item-arrow !text-primary link motion-reduce !w-[50px] !h-[50px] mr-8 !border !border-solid !border-[#DBDBDB]" aria-label="{{ 'general.pagination.previous' | t }}">
+            {% render 'icon-caret-large' %}
+          </a>
+        </li>
+      {%- else -%}
+        <li class="!flex-none !mr-[10px]">
+          <div class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce !text-primary !border !border-solid !border-[#DBDBDB] !w-[50px] !h-[50px] mr-8">
+            {% render 'icon-caret-large' %}
+          </div>
+        </li>
+      {%- endif -%}
+
+      {%- for part in paginate.parts -%}
+        <li class="!flex-0-auto !flex items-center justify-center !mr-[20px]">
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}{{ anchor }}" class="pagination__item link !text-primary !h-auto hover:after:!hidden !border-transparent hover:!border-[#212121] !text-base font-bold tracking-[1px]" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <span class="pagination__item pagination__item--current !h-auto !text-primary after:!hidden border-b-2 border-solid border-[#212121] font-bold tracking-[1px]" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</span>
+            {%- else -%}
+              <span class="pagination__item !h-auto after:!hidden !text-primary font-bold tracking-[1px]">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+
+      {%- if paginate.next -%}
+        <li class="!flex-none">
+          <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce !text-primary !w-[50px] !h-[50px] ml-3  !border !border-solid !border-[#DBDBDB] rotate-180" aria-label="{{ 'general.pagination.next' | t }}" >
+            {%- render 'icon-caret-large' -%}
+          </a>
+        </li>
+      {%- else -%}
+        <li class="!flex-none">
+          <div class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce !text-primary !w-[50px] !h-[50px] ml-3 !border !border-solid !border-[#DBDBDB] rotate-180" >
+            {%- render 'icon-caret-large' -%}
+          </div>
+        </li>
+      {%- endif -%}
+      </ul>
+    </nav>
+  </div>
+{%- endif -%}

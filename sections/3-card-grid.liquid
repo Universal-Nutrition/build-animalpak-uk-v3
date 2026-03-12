@@ -1,0 +1,176 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-gray-900">
+    <!-- Header -->
+    <div class="relative pb-32 bg-gradient-to-r from-gray-900 via-primaryRed to-gray-900">
+      <!-- <div class="absolute inset-0">
+        <img
+        srcset="{%- if section.settings.background_image.width >= 375 -%}{{ section.settings.background_image | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.background_image.width >= 750 -%}{{ section.settings.background_image | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.background_image.width >= 1100 -%}{{ section.settings.background_image | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.background_image.width >= 1500 -%}{{ section.settings.background_image | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.background_image.width >= 1780 -%}{{ section.settings.background_image | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.background_image.width >= 2000 -%}{{ section.settings.background_image | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.background_image.width >= 3000 -%}{{ section.settings.background_image | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.background_image.width >= 3840 -%}{{ section.settings.background_image | img_url: '3840x' }} 3840w,{%- endif -%}
+          {{ section.settings.background_image | img_url: 'master' }} {{ section.settings.background_image.width }}w"
+        sizes="100vw"
+        src="{{ section.settings.background_image | img_url: '1500x' }}"
+        loading="lazy"
+        class="w-full h-full object-cover"
+        alt="{{ section.settings.background_image.alt | escape }}"
+        width="{{ section.settings.background_image.width }}"
+        height="{{ section.settings.background_image.width | divided_by: section.settings.background_image.aspect_ratio }}"
+      />
+
+
+        <div class="absolute inset-0 bg-gray-800 mix-blend-multiply" aria-hidden="true"></div>
+      </div> -->
+      <div class="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white pb-2"  style="text-shadow: 1px 2px black;">{{section.settings.title}}</h1>
+        <p class="max-w-3xl text-md text-gray-100">{{ section.settings.sub_title }}</p>
+      </div>
+    </div>
+  
+    <!-- Overlapping cards -->
+    <section class="-mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8" aria-labelledby="contact-heading">
+
+      <div class="grid grid-cols-1 gap-y-10 md:grid-cols-3 md:gap-y-0 md:gap-x-2">
+        {% for block in section.blocks %}
+
+        <a href="{{block.settings.url}}" class="flex flex-col shadow-2xl rounded-md hover:shadow-2xl transition duration-500" style="background-color: {{block.settings.card_color}}">
+          
+          <div class="flex-1 relative pt-16 px-6 pb-8 md:px-8">
+            {% if block.settings.logo_image != blank %}
+            <div class="absolute top-0 p-5 inline-block bg-transparent rounded-xl transform left-0 right-0 -translate-y-1/2">
+              <!-- Heroicon name: outline/phone -->
+              <img
+              srcset="{%- if block.settings.logo_image.width >= 375 -%}{{ block.settings.logo_image | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if block.settings.logo_image.width >= 750 -%}{{ block.settings.logo_image | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if block.settings.logo_image.width >= 1100 -%}{{ block.settings.logo_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if block.settings.logo_image.width >= 1500 -%}{{ block.settings.logo_image | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if block.settings.logo_image.width >= 1780 -%}{{ block.settings.logo_image | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if block.settings.logo_image.width >= 2000 -%}{{ block.settings.logo_image | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if block.settings.logo_image.width >= 3000 -%}{{ block.settings.logo_image | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if block.settings.logo_image.width >= 3840 -%}{{ block.settings.logo_image | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ block.settings.logo_image | img_url: 'master' }} {{ block.settings.logo_image.width }}w"
+              sizes="100vw"
+              src="{{ block.settings.logo_image | img_url: '500x' }}"
+              loading="lazy"
+              alt="{{ block.settings.logo_image.alt | escape }}"
+              width="{{ block.settings.logo_image.width }}"
+              height="{{ block.settings.logo_image.width | divided_by: block.settings.logo_image.aspect_ratio }}"
+            />
+
+            </div>
+            {% endif %}
+            <h3 class="text-4xl text-center font-extrabold tracking-tight" style="color: {{block.settings.card_text_color}}; text-shadow: 1px 2px black;">{{block.settings.title}}</h3>
+            <p class="mt-4 text-base text-center" style="color: {{block.settings.card_text_color}}">{{block.settings.sub_title}}</p>
+          </div>
+          <div class="p-6 h-[300px] bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8 relative">
+            <div class="absolute inset-0">
+              <img
+              srcset="{%- if block.settings.card_image.width >= 375 -%}{{ block.settings.card_image | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if block.settings.card_image.width >= 750 -%}{{ block.settings.card_image | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if block.settings.card_image.width >= 1100 -%}{{ block.settings.card_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if block.settings.card_image.width >= 1500 -%}{{ block.settings.card_image | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if block.settings.card_image.width >= 1780 -%}{{ block.settings.card_image | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if block.settings.card_image.width >= 2000 -%}{{ block.settings.card_image | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if block.settings.card_image.width >= 3000 -%}{{ block.settings.card_image | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if block.settings.card_image.width >= 3840 -%}{{ block.settings.card_image | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ block.settings.card_image | img_url: 'master' }} {{ block.settings.card_image.width }}w"
+              sizes="100vw"
+              src="{{ block.settings.card_image | img_url: '500x' }}"
+              loading="lazy"
+              class="w-full h-full object-cover rounded-br-2xl rounded-bl-2xl "
+              alt="{{ block.settings.card_image.alt | escape }}"
+              width="{{ block.settings.card_image.width }}"
+              height="{{ block.settings.card_image.width | divided_by: block.settings.card_image.aspect_ratio }}"
+            />
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+
+
+
+      </div>
+    </section>
+  </div>
+
+  {% schema %}
+  {
+    "name": "3 Card Grid",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "t:sections.image-with-text.settings.image.label"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Featured collection",
+        "label": "t:sections.featured-collection.settings.title.label"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "default": "Featured collection Sub Title",
+        "label": "Sub Title"
+      }
+    ],
+    "blocks": [
+    { 
+      "type": "featured-item",
+      "name": "Featured Item",
+      "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Featured Title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "default": "Featured Sub Title",
+        "label": "Title (Only applies to grid layout)"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Card Logo Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "card_image",
+        "label": "Image For Card"
+      },
+      {
+        "type": "color",
+        "id": "card_color",
+        "label": "Color of Card",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "card_text_color",
+        "label": "Text Color of Card",
+        "default": "#000000"
+      }
+      ]  
+    }
+  ],
+    "presets": [
+      {
+        "name": "3 Card Grid"
+      }
+    ]
+  }
+  {% endschema %}
+  

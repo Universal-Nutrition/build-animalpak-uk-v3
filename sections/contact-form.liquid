@@ -1,0 +1,205 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'bundle.section-contact-form.css' | asset_url | stylesheet_tag }}
+ 
+
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<div class="bg-gray-100">
+  <div class="lg:max-w-[76.666%] mx-auto py-0 md:py-24">
+    <div class="relative bg-white shadow-xl">
+      <h2 class="sr-only">Contact us</h2>
+
+      <div class="flex !ml-0 flex-wrap"> 
+        <!-- Contact information -->
+        <div class="relative overflow-hidden py-10 px-6 bg-white sm:px-10 xl:p-12 lg:max-w-[39%] w-full contact-form__aside">
+    
+          <h1 class="text-primary mb-4">{{ 'sections.contact-form.title' | t }}</h1>
+          <p class=" text-base text-primary max-w-3xl">{{section.settings.text}}</p>
+          <hr class="bg-mediumBorder border-mediumBorder border-solid border-b-[0.5px] border-t-[0.5px]" />
+          <dl class="mt-8 space-y-6">
+            <dt class="!m-0"><span class="sr-only">{{ 'sections.contact-form.phone_label' | t }}</span></dt>
+            <dd class="flex items-center">
+              {% if section.settings.whatsapp != blank %}
+              <p>
+                {{section.settings.whatsapp}}
+              </p>
+              {% else %}
+              <!-- Heroicon name: outline/phone -->
+              <div class="icon-phone-bg w-[36px] h-[36px] flex items-center bg-card rounded-[50%] justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="icon" viewBox="7.998 7.999 20 20" width="20" height="20">
+                <mask id="a" width="24" height="24" x="2" y="2" fill="black" maskUnits="userSpaceOnUse">
+                  <path fill="white" d="M5.467 2h20.002v20H5.467V2Z" paint-order="stroke"/>
+                  <path fill="none" d="M25.969 1.5v21H4.967v-21h21.002Zm-20.002 20h19.002v-19H5.967v19Z" paint-order="stroke"/>
+                </mask>
+                <path fill="#212121" d="m20.248 14.95.354.354.353.353h.001l-.354-.354-.354-.353Zm-1.854 1.175.2-.458.202-.457-.001-.001h-.001l-.2.458-.2.458Zm-7.043-7.033.457-.201.458-.202-.001-.001v-.001l-.457.203-.457.202Zm.176-.882.354.354.353.354-.353-.354-.354-.354Zm.897-.898-.353-.354-.354-.353.354.353.353.354Zm.093-2.399-.354.353-.353.354.353-.354.354-.353Zm-1.276-1.276.354-.353.353-.354-.353.354-.354.353Zm-3.076 0 .354.354.353.354v-.001l-.353-.353-.354-.354Zm-.709.708-.353-.354-.353-.354-.001.001.354.354.353.353Zm-.924 3.121-.492.093-.491.093.491-.093.492-.093Zm13.471 13.469-.093.492-.093.491.093-.491.093-.492Zm4.535-5.416-.638-.638-.638-.638-.707.707-.707.707.639.638.638.638.707-.707.706-.707Zm-1.276-1.276c-.513-.514-1.187-.771-1.861-.771-.673 0-1.347.257-1.86.772l.707.706.708.707c.123-.123.284-.185.445-.185.162 0 .323.062.447.185l.707-.707.707-.707Zm-3.721 0-.501.502-.501.501.707.707.708.707.501-.501.501-.502-.708-.707-.707-.707Zm-1.002 1.003c.022-.023.058-.045.102-.055.044-.009.097-.007.155.019l-.402.915-.403.915c.347.153.714.181 1.057.11.342-.072.659-.243.906-.49l-.708-.707-.707-.707Zm.255-.037c-.668-.293-1.335-.662-1.984-1.108-.65-.445-1.282-.967-1.879-1.564l-.707.707-.707.707c.683.683 1.409 1.283 2.161 1.799.753.516 1.53.947 2.315 1.291l.401-.916.4-.916Zm-3.863-2.672c-.594-.595-1.114-1.224-1.558-1.87-.445-.647-.814-1.312-1.107-1.978l-.915.403-.915.403c.344.782.774 1.556 1.288 2.304.515.749 1.113 1.472 1.793 2.152l.707-.707.707-.707Zm-2.666-3.85c.023.053.026.101.017.14-.009.04-.028.071-.048.09l-.707-.707-.708-.707c-.251.251-.424.574-.496.922-.072.348-.043.721.114 1.073l.914-.406.914-.405Zm-.031.231.449-.45.449-.449-.708-.707-.707-.707-.449.449-.449.449.708.707.707.708Zm.898-.899c.541-.542.83-1.229.851-1.914.02-.685-.227-1.368-.759-1.899l-.707.707-.707.707c.105.106.176.258.174.431-.003.173-.079.366-.267.554l.707.707.708.707Zm.092-3.813-.638-.638-.638-.638-.707.707-.707.707.638.638.638.638.707-.707.707-.707ZM11.948 2.93c-.62-.62-1.432-.93-2.245-.93-.812 0-1.625.31-2.245.93l.707.707.707.707c.23-.229.531-.344.831-.344.301 0 .601.115.831.344l.707-.707.707-.707Zm-4.489-.001-.355.354-.354.354.706.708.707.708.354-.354.355-.354-.707-.708-.706-.708Zm-.71.709c-.527.527-.895 1.166-1.098 1.855-.203.69-.239 1.43-.102 2.159l.983-.186.982-.185c-.08-.424-.057-.842.056-1.223.112-.381.314-.727.593-1.006l-.707-.707-.707-.707Zm-1.2 4.014c.291 1.533.877 3.122 1.738 4.675s1.998 3.071 3.391 4.464l.708-.707.706-.708c-1.271-1.271-2.292-2.64-3.056-4.019-.765-1.379-1.273-2.767-1.522-4.076l-.982.185-.983.186Zm5.129 9.139c1.393 1.392 2.911 2.529 4.464 3.39 1.553.862 3.142 1.447 4.675 1.737l.186-.983.185-.982c-1.309-.248-2.697-.756-4.076-1.521-1.379-.764-2.748-1.785-4.02-3.056l-.706.708-.708.707Zm9.139 5.127c.729.137 1.469.101 2.159-.102.689-.203 1.328-.571 1.855-1.098l-.707-.707-.707-.707c-.279.279-.625.481-1.006.593-.381.113-.799.136-1.223.056l-.186.982-.185.983Zm4.014-1.2.354-.354.354-.354-.707-.707-.707-.707-.354.354-.354.354.707.707.707.707Zm.708-.708c.62-.62.93-1.433.93-2.245 0-.813-.31-1.625-.93-2.246l-.707.707-.708.707c.23.23.345.531.345.832 0 .301-.115.601-.344.831l.707.707.707.707Z" mask="url(#a)" paint-order="stroke" pointer-events="none" transform="translate(2.532978 5.998095)"/>
+              </svg>
+            </div>  
+              <span class="ml-2"><a href="tel:{{section.settings.phone}}" class="contact-form__aside-label">{{section.settings.phone}}</a></span>
+              {% endif %}
+            </dd>
+            {% if section.settings.email != blank %}
+            <dt class="!m-0"><span class="sr-only">Email</span></dt>
+            <dd class="flex items-center">
+              <!-- Heroicon name: outline/mail -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 36 36" class="icon w-[36px] h-[36px]">
+                <rect width="36" height="36" fill="#F5F5F5" rx="18"/>
+                <path stroke="#111111" stroke-linecap="round" stroke-width="1.5" d="M8 12c0-1.1046.89543-2 2-2h16c1.1046 0 2 .8954 2 2v12c0 1.1046-.8954 2-2 2H10c-1.10457 0-2-.8954-2-2V12Z"/>
+                <path stroke="#111111" stroke-linecap="square" stroke-width="1.5" d="m12 15 6 4 6-4"/>
+              </svg>
+              <span class="ml-2"><a href="mailto:{{section.settings.email}}" class="contact-form__aside-label">{{section.settings.email}}</a></span>
+            </dd>
+            {% endif %}
+            <div class="mt-7 flex space-x-4 items-center">
+              <a target="_blank" href="{{settings.social_facebook_link}}">{% include 'icon-facebook' %}</a>
+              <a target="_blank" href="{{settings.social_instagram_link}}">{% include 'icon-instagram' %}</a>
+              <a target="_blank" href="{{settings.social_tiktok_link}}">{% include 'icon-tiktok' %}</a>
+              <a target="_blank" href="{{settings.social_twitter_link}}">{% include 'icon-twitter' %}</a>
+            </div>
+          </div>
+
+        <!-- Contact form -->
+        <div class="py-10 px-6 sm:px-10 lg:max-w-[61%] xl:p-16 bg-card w-full contact-form__form">
+          <h4 class="text-primary mb-6">{{ 'sections.contact-form.card.title' | t }}</h4>
+         
+          {%- form 'contact', id: 'ContactForm' -%}
+          {%- if form.posted_successfully? -%}
+          <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+        {%- elsif form.errors -%}
+          <div class="form__message">
+            <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+          </div>
+          <ul class="form-status-list caption-large" role="list">
+            <li>
+              <a href="#ContactForm-email" class="link">
+                {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+              </a>
+            </li>
+          </ul>
+        {%- endif -%}
+        {%- unless form.posted_successfully? -%}
+          <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6 !ml-0 mb-0">
+           
+            <div>
+              <label for="first-name" class="block contact-form__label mb-2">{{ 'sections.contact-form.form.first_name' | t }}</label>
+              <div class="">
+                <input type="text" name="contact[first-name]" id="first-name" autocomplete="given-name" class="block w-full contact-form__input" required>
+              </div>
+            </div>
+            <div>
+              <label for="last-name" class="block contact-form__label mb-2">{{ 'sections.contact-form.form.last_name' | t }}</label>
+              <div class="">
+                <input type="text" name="contact[last-name]" required id="last-name" autocomplete="family-name" class="py-3 px-4 block w-full contact-form__input">
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block contact-form__label mb-2">{{ 'sections.contact-form.form.email' | t }}</label>
+              {%- if form.errors contains 'email' -%}
+              <small class="contact__field-error" id="ContactForm-email-error">
+                <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+              </small>
+            {%- endif -%}
+              <div class="">
+                <input id="email" name="contact[email]" type="email" autocomplete="email" class="py-3 px-4 block w-full contact-form__input"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+                required
+                placeholder="{{ 'templates.contact.form.email' | t }}"
+                >
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center">
+                <label for="phone" class="block contact-form__label mb-2">{{ 'sections.contact-form.form.phone' | t }}</label>
+                <span id="phone-optional" class="contact-form__caption mb-2">Optional</span>
+              </div>
+              <div class="">
+                <input type="text" name="contact[phone]" id="phone" autocomplete="tel" class="py-3 px-4 block w-full contact-form__input" aria-describedby="phone-optional">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="subject" class="block contact-form__label mb-2">{{ 'sections.contact-form.form.subject' | t }}</label>
+              <div class="">
+                <input type="text" name="contact[subject]" required id="subject" class="py-3 px-4 block w-full contact-form__input">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <div class="flex justify-between items-center">
+                <label for="message" class="block contact-form__label mb-2">{{ 'sections.contact-form.form.message' | t }}</label>
+                <span id="message-max" class="contact-form__caption mb-2">{{ 'sections.contact-form.form.max_characters' | t }}</span>
+              </div>
+              <div class="">
+                <textarea id="message" required name="contact[body]" rows="4" class="block w-full contact-form__textarea" aria-describedby="message-max"></textarea>
+              </div>
+            </div>
+            <div class="sm:col-span-2 sm:flex sm:justify-end">
+              <button type="submit" class="button contact-form__button">{{ 'sections.contact-form.form.submit' | t }}</button>
+            </div>
+            </div>
+            {%- endunless -%}
+          {%- endform -%}
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "contact-form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "default": "Welcome text",
+      "label": "Form Description"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "default": "+1 234 567",
+      "label": "Phone"
+    },
+    {
+      "type": "richtext",
+      "id": "whatsapp",
+      "label": "Whatsapp"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "default": "test@test.com",
+      "label": "Email"
+    },
+    {
+      "type": "url",
+      "id": "fb_link",
+      "label": "Facebook Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

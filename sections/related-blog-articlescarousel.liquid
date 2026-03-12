@@ -1,0 +1,54 @@
+<div class="py-[64px] lg:py-[96px] pl-6 lg:px-[56px]" style="background: {{section.settings.bg}};">
+    {%- if section.settings.title != blank -%}
+      <h2 class="md:mb-10 font-bold text-primary leading-[80%] tracking-[-1px] text-[48.944px] md:text-[85.604px] uppercase md:text-center">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="lg:flex">
+        <related-articles class="relative block w-full mt-6 lg:mt-0">
+          <div class="overflow-hidden related-article-js">
+              <div class="swiper-wrapper w-full">
+  
+                  
+                  {% for tag in article.tags %}
+  
+                  {% assign counter = 0 %}
+                  {% assign skip_articles = article.handle | split: '.....' %}
+                  {% for related_article in blog.articles %}
+                    {% if related_article.tags contains tag and counter < 6 %}
+                      {% unless skip_articles contains related_article.handle %}
+                        {% assign counter = counter | plus: 1 %}
+                        {% assign temp = related_article.handle | split: '.....' %}
+                        {% assign skip_articles = skip_articles | concat: temp %}
+                        <div class="swiper-slide">
+                          {% include 'article-grid-item', article: related_article %}
+                        </div>
+                      {% endunless %}
+                    {% endif %}
+                  {% endfor %}
+              
+                {% endfor %}
+              </div>
+          </div>
+            <span class="absolute cursor-pointer swiper-article-next hidden md:inline-flex right-[20px] lg:right-[-20px] z-[99] -translate-y-[50%] top-[50%] w-[50px] h-[50px] flex justify-center items-center border border-solid border-[#DBDBDB] bg-white">{% render 'icon-arrow' %}</span>
+        </related-articles>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Related Articles",
+        "settings": [
+            {
+                "type": "color",
+                "id": "bg",
+                "label": "Background color",
+                "default": "#F5F5F5"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Related articles"
+            }
+        ]
+    }
+{% endschema %}

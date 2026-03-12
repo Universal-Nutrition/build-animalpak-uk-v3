@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/BrandAmbassador_Desktop-1.png",
+        "image_2": "shopify:\/\/shop_images\/BrandAmbassador_Mobile.png",
+        "custom_heading": "<p>survey form<\/p>",
+        "subheading": "<p>You’re hardcore. You live for pushing your body and mind, everyday, always thinking about the next workout, the next level, to always be at your best. And you use Animal products to make your hard work, work harder for you. Join the club.<\/p>",
+        "text_alignment": "left"
+      }
+    },
+    "bdaca4b4-03a4-471a-8328-9263982aefef": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"klaviyo-form-UzzAp7\"><\/div>"
+      }
+    },
+    "66bbd56a-076e-47d6-99b1-5ea6926c1c01": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": ""
+      }
+    },
+    "revards": {
+      "type": "landing-rewards",
+      "disabled": true,
+      "settings": {
+        "custom_heading": "<p>HOW TO BECOME AN ANIMAL <strong>BRAND AMBASSADOR<\/strong><\/p>",
+        "subheading": "We all start somewhere, and then it’s a journey. If your journey has taken you to this web page, then maybe it’s time to take it up a notch. We are looking for serious men and women who are dedicated to the Animal lifestyle and love the brand. We have open enrollment four times per year, taking applications the first week of February, May, August, and October.",
+        "button_label": "Apply now",
+        "button_link": "https:\/\/e2sag.app.link\/DEzoDfkLi2?$name=animal&$og_title=Animal%20Ambassador%20Application&$og_description=Thank%20you%20for%20being%20interested%20in%20applying%20to%20become%20an%20Animal%20Ambassador.%20Please%20download%20the%20Brandbassador%20app%20below%20to%20apply.%20We%20look%20forward%20to%20reviewing%20your%20application.%20If%20you%20have%20any%20questions%20you%20can%20email%20us%20at%20info%40animalpak.com.&$og_brand_name=Animal&$og_image_url=https%3A%2F%2Fstorage.googleapis.com%2Fbb-media-prd%2Fapi.brandbassador.com%2Fimages%2Fee5fd1ad-0268-4f27-a189-c6c955a5e755.jpg&$og_desktop_url=https%3A%2F%2Fstorage.googleapis.com%2Fbb-media-prd%2Fapi.brandbassador.com%2Fimages%2F23634a43-a842-4702-852a-956bdf5c8d1e.jpg&$og_logo_url=https%3A%2F%2Fapi.brandbassador.com%2Fimages%2F1b84a0b7-1149-4b1a-8c2b-c5a36599e04c.png&$s=1c320123-f9a5-46b3-993c-6b2fa18e11ee&$shortId=ydusio&$sig=impGoUhtXkxv7kZgd4iHwK4ZusNU5mYEjIIVpsS8NNw&_p=c61c29c39c067af6e00388fe"
+      }
+    },
+    "testimonials": {
+      "type": "landing-testimonials",
+      "disabled": true,
+      "settings": {
+        "custom_heading": "<p><strong>FEATURED<\/strong> AMBASSADORs <\/p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "bdaca4b4-03a4-471a-8328-9263982aefef",
+    "66bbd56a-076e-47d6-99b1-5ea6926c1c01",
+    "revards",
+    "testimonials"
+  ]
+}

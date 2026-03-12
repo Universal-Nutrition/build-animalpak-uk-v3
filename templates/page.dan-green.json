@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/dan.png",
+        "image_2": "shopify:\/\/shop_images\/Rectangle_1435_b65465ee-d94a-4301-9217-e3e1389fc484.png",
+        "custom_heading": "<p>DAN GREEN<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>DAN GREEN<\/p>",
+        "subheading": "<p>Dan Green is a 10x World Record Setting powerlifter and the owner of Boss Barbell Club in Mountain View, California. In addition to competitions, he has lifted as an ANIMAL athlete since 2012 and performed at the Animal Cage at the Arnold Sports Festival several times including most notably performing a 900 lb conventional deadlift without wearing a supportive lifting belt.<br\/>Dan has coached hundreds of powerlifters and other athletes in his capacity as a strength coach and conducted more than 100 coaching seminars around the world. Powerlifting is a huge passion for Dan but he is also a devout Christian, loving husband and the proud father of four children!<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "DAN’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/creatine-benefits-what-it-is-what-it-does",
+            "page": "dan-green"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/animal-flex-joint-support-from-powerlifting-to-boxing",
+            "page": "dan-green"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/set-the-stage-for-your-best-hypertrophy-workout",
+            "page": "dan-green"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles"
+  ]
+}

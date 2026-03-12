@@ -1,0 +1,257 @@
+<style>
+  #shopify-section-{{section.id}} {
+    padding-top:{{section.settings.desktop_padding_top}}px;
+    padding-bottom: {{section.settings.desktop_padding_bottom}}px;
+    background: {{section.settings.bg}};
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{section.id}} {
+
+    padding-top:{{section.settings.mobile_padding_top}}px;
+    padding-bottom: {{section.settings.mobile_padding_bottom}}px
+  }
+  }
+</style>
+
+<div
+  class='lg:flex pt-[64px] lg:py-0 px-6 lg:px-0 -mt-[1px] {% if section.settings.img_right %} flex-row-reverse {% endif %}'
+>
+  <div class='{% if section.settings.layout == "50" %}lg:w-6/12{% elsif section.settings.layout == "30" %}lg:w-4/12{% endif %} overflow-hidden'>
+    <div class='image-wrap'>
+      <img
+        srcset='
+          {%- if section.settings.img.width >= 375 -%}{{ section.settings.img | img_url: '375x' }} 375w,{%- endif -%}
+          {%- if section.settings.img.width >= 750 -%}{{ section.settings.img | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.img.width >= 1100 -%}{{ section.settings.img | img_url: '1100x' }} 1100w,{%- endif -%}
+          {%- if section.settings.img.width >= 1500 -%}{{ section.settings.img | img_url: '1500x' }} 1500w,{%- endif -%}
+          {%- if section.settings.img.width >= 1780 -%}{{ section.settings.img | img_url: '1780x' }} 1780w,{%- endif -%}
+          {%- if section.settings.img.width >= 2000 -%}{{ section.settings.img | img_url: '2000x' }} 2000w,{%- endif -%}
+          {%- if section.settings.img.width >= 3000 -%}{{ section.settings.img | img_url: '3000x' }} 3000w,{%- endif -%}
+          {%- if section.settings.img.width >= 3840 -%}{{ section.settings.img | img_url: '3840x' }} 3840w,{%- endif -%}
+          {{ section.settings.img | img_url: 'master' }} {{ section.settings.img.width }}w
+        '
+        sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)'
+        loading='lazy'
+        width='{{ section.settings.img.width }}'
+        height='{{ section.settings.img.height }}'
+        src='{{section.settings.img | img_url: "master"}}'
+        alt='{{section.settings.img.alt}}'
+        class='w-full'
+      >
+    </div>
+  </div>
+  <div class='{% if section.settings.layout == "50" %}lg:w-6/12{% elsif section.settings.layout == "30" %}lg:w-8/12{% endif %} flex justify-center items-center flex-col mt-10 lg:mt-0'>
+    <div class='lg:max-w-[488px]'>
+      <div class='flex lg:justify-center'>
+        {% if section.settings.icon != blank %}
+          {{section.settings.icon}}
+        {% endif %}
+      </div>
+      <div
+        class='{{section.settings.mobile_alignment}} heading-text lg:{{section.settings.desktop_alignment}} lg:mt-10 uppercase font-compacta font-bold tracking-[-1px] text-[48.94px] lg:text-[85.6px] leading-[39.16px] lg:leading-[68.48px]'
+        style='color: {{section.settings.text}}'
+      >
+        {{ section.settings.title }}
+      </div>
+      <div
+        class='{{section.settings.mobile_alignment}} lg:{{section.settings.desktop_alignment}} mt-3 font-sans lg:text-[18.4px] text-base leading-[25.6px] lg:leading-[29.44px]'
+        style='color: {{section.settings.text}}'
+      >
+        {{ section.settings.description | newline_to_br }}
+      </div>
+      {% if section.settings.btn_link != blank %}
+        <div class='mt-6 lg:mt-10 flex lg:justify-center'>
+          <a
+            href='{{ section.settings.btn_link }}'
+            class='button block lg:px-8 lg:py-[18px] font-bold'
+          >
+            {{ section.settings.btn_text | upcase }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .heading-text p {
+    color: #fff;
+  }
+  .heading-text p strong {
+    color: #f5d500;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .image-wrap {
+      transform: skew(-5deg) translateX(-5%);
+      overflow: hidden;
+    }
+    .image-wrap img {
+      transform: skew(5deg) translateX(5%);
+    }
+
+    .flex-row-reverse .image-wrap {
+      transform: skew(-5deg) translateX(5%);
+      overflow: hidden;
+    }
+
+    .flex-row-reverse .image-wrap img {
+      transform: skew(5deg) translateX(-5%);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About page image w/ text",
+  "class": "overflow-hidden",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Global Section Settings"
+    },
+    {
+      "type": "number",
+      "default": 0,
+      "label": "Desktop Section Top Padding",
+      "id": "desktop_padding_top"
+    },
+    {
+      "type": "number",
+      "default": 0,
+      "label": "Desktop Section Bottom Padding",
+      "id": "desktop_padding_bottom"
+    },
+    {
+      "type": "number",
+      "default": 0,
+      "label": "Mobile Section Top Padding",
+      "id": "mobile_padding_top"
+    },
+    {
+      "type": "number",
+      "default": 0,
+      "label": "Mobile Section Bottom Padding",
+      "id": "mobile_padding_bottom"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "<p>BUILT, NOT BORN.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Mobile Alignment",
+      "options": [
+        {
+          "value": "text-center",
+          "label": "Text Center"
+        },
+        {
+          "value": "text-right",
+          "label": "Text Right"
+        },
+        {
+          "value": "text-left",
+          "label": "Text Left"
+        }
+      ],
+      "default": "text-left",
+      "label": "Mobile Alignment"
+    },
+    {
+      "type": "select",
+      "id": "desktop_alignment",
+      "label": "Desktop Alignment",
+      "options": [
+        {
+          "value": "text-center",
+          "label": "Text Center"
+        },
+        {
+          "value": "text-right",
+          "label": "Text Right"
+        },
+        {
+          "value": "text-left",
+          "label": "Text Left"
+        }
+      ],
+      "default": "text-center",
+      "label": "Desktop Alignment"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "50",
+          "label": "1/2 Layout Desktop"
+        },
+        {
+          "value": "30",
+          "label": "1/3 Layout Desktop"
+        }
+      ],
+      "default": "50",
+      "label": "1/2 Layout Desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "img_right",
+      "label": "Image on right side",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image"
+    },
+    {
+      "type": "html",
+      "id": "icon",
+      "label": "SVG icon"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#212121"
+    },
+    {
+      "type": "color",
+      "id": "text",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text",
+      "default": "learn more"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About us image - text"
+    }
+  ]
+}
+{% endschema %}

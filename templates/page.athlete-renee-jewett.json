@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 520,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/renee.png",
+        "image_2": "shopify:\/\/shop_images\/Rectangle_1435_d7993778-d07c-47ee-9617-93b3351a3b46.png",
+        "custom_heading": "<p>RENEE JEWETT<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>RENEE JEWETT<\/p>",
+        "subheading": "<p>Renee was born and raised on the Big Island of Hawai’i, but she currently resides in San Antonio, Texas. Three years ago she took the leap and left her 9-5 job in the animal health care field to work alongside her husband, John Jewett, running their business, J3SportsRD. Renee recently won her IFBB Wellness Pro status this year at NPC North Americans. Competing was not something she was interested in until the Wellness division was announced in early 2019. As soon as this division was announced, she set her goal on not only competing but becoming a pro.<\/p><p>Now as IFBB pro, Renee has a new goal, to work her way up the ranks. She is pouring everything she has into it. She is excited to share her experience and invite you to follow along on this new chapter, it will be an exciting journey. You will see first-hand the passion, intensity, and dedication that this sport takes.<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "RENEE’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/the-body-fat-sweet-spot",
+            "page": "renee-jewett"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/my-fitness-journey",
+            "page": "renee-jewett"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/eat-toward-your-goals",
+            "page": "renee-jewett"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles"
+  ]
+}

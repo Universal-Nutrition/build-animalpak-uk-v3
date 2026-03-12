@@ -1,0 +1,62 @@
+{% style %}
+.megamenu-slider swiper-slider {
+    display: block;
+    width: 100%;
+    --swiper-navigation-size: 40px;
+    --swiper-navigation-color: #000;
+}
+
+.megamenu-slider .swiper {
+    width: 100%;
+}
+
+.megamenu-slider .swiper-wrapper {
+    display: flex !important;
+}
+
+.megamenu-slider .swiper-slide {
+    background: #eee;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 2rem;
+
+}
+
+.product-card:hover .product-card__image {
+    transform: scale(1.05);
+}
+{% endstyle %}
+
+{% capture swiper_options %}
+    {
+        "slidesPerView": 4,
+        "spaceBetween": 10
+    }
+{% endcapture %}
+<div class="p-10 megamenu-slider">
+    <swiper-slider data-swiper-options='{{ swiper_options }}'>
+    <div class="swiper !max-w-full overflow-auto" >
+    {% if block.settings.product_linklist.links.size > 4 %}
+        <div class="swiper-button-prev">
+            {% render 'icon-triangle-left', classes: '!-left-4' %}
+        </div>
+    {% endif %}
+        <div class="swiper-wrapper !max-w-full">
+            {% for link in block.settings.product_linklist.links %}
+                {% assign product_handle = link.url | split: '/' | last %}
+                {% assign product = all_products[product_handle] %}
+                <div class="swiper-slide !border-none items-stretch flex flex-col">
+                    {% render 'product-card-new', product: product, parent_link: parent_link, link: link, loading: 'lazy' %}
+                </div>
+            {% endfor %}
+        </div>
+        {% if block.settings.product_linklist.links.size > 4 %}
+            <div class="swiper-button-next">
+                {% render 'icon-triangle-right', classes: '!-right-4' %}
+            </div>
+        {% endif %}
+        </div>
+    </swiper-slider>
+</div>
+
+{% comment %}swiper-slider.js loaded via app.js{% endcomment %}

@@ -1,0 +1,7 @@
+<svg
+    {% if style %}
+        style="{{ style }}"
+    {% endif %}
+        xmlns="http://www.w3.org/2000/svg" {% if dataAttributeVal %}{{ dataAttributeName }}="{{ dataAttributeVal }}"{% endif %} class="icon icon-caret h-4 w-4" fill="none" viewBox="0 0 16 17">
+<path {% if stroke %}stroke="{{ stroke }}" {% else %}stroke="#111111"{% endif %} stroke-linecap="square"
+      stroke-width="2" d="m3.3335 6.50016 4.66666 4.33334 4.66664-4.33334"/></svg>

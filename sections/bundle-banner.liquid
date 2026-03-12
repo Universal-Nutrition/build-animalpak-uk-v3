@@ -1,0 +1,159 @@
+<div class="collection-banner px-6 pt-10 lg:pt-[120px] pb-[40px] lg:pb-[64px] lg:px-14 relative" style="background: {{section.settings.bg}};">
+    {% if section.settings.img != blank %}
+        <div class="gradient-overlay hidden lg:block"></div>    
+    {% endif %}  
+    {% if section.settings.img_mob != blank %}
+        <div class="gradient-overlay lg:hidden"></div>    
+    {% endif %}  
+
+    <div class="absolute top-[17px] hidden lg:block">
+        {% include 'breadcrumbs' color: section.settings.text_color %}  
+    </div>
+
+    <div class="z-2 relative">
+    <div>
+        <h1 class="text-primary text-[85.6px] font-compacta font-bold tracking-[1px] uppercase leading-[68.48px] lg:leading-[68.48px]" style="color: {{section.settings.text_color}};">
+            {{section.settings.title}}<span class="dot text-yellow text-[85.6px] font-compacta font-bold">.</span>
+        </h1>
+        <div class="pt-2 lg:pt-4 text-primary text-base lg:text-[18.4px] font-normal font-sans leading-[25.6px]" style="color: {{section.settings.text_color}};">
+            {{section.settings.subtitle}}
+        </div>
+        <div class="mt-4 flex">
+            {% for block in section.blocks %}
+                <div class="px-4 lg:px-8 {% if forloop.first %} pl-0 lg:pl-0 {% endif %} border-0 {% unless forloop.last %} border-r border-solid border-[#F9E547] {% endunless %}">
+                    <div class="text-[12px] lg:text-[13.91px] font-sans font-semibold text-white leading-[22.26px]">{{block.settings.pretitle}}</div>
+                    <div class="text-[32px] lg:text-[37.01px] -tracking-[1px] mt-1 font-compacta font-bold text-white uppercase leading-[29.61px]">{{block.settings.title}}</div>
+                </div>
+            {% endfor %} 
+        </div>
+        <div class="mt-2 text-[10px] font-semibold text-white">{{section.settings.discount}}</div>
+    </div>
+    <a href="{{section.settings.link}}" class="flex justify-center items-center mt-6 lg:mt-8 relative w-full lg:w-[365px] h-[100px] px-6 lg:px-8 py-2 border border-solid border-[#333232] bg-[#333232]">
+        <div class="flex justify-between w-full">
+            <div>
+                <div class="text-[13.91px] lg:text-base font-sans font-bold leading-[25.6px] text-yellow">{{section.settings.box_title}}</div>
+                <div class="lg:mt-1 text-primary text-[12px] lg:text-[13.91px] font-sans font-light leading-[22.26px]" style="color: {{section.settings.text_color}};">{{section.settings.box_subtitle}}</div>
+            </div>
+            <span class="cursor-pointer inline-flex h-[50px] flex justify-center items-center">{% render 'icon-arrow' %}</span>
+        </div>
+    </a>
+  </div>
+   
+</div>
+
+<style>
+    .collection-banner path{
+        stroke: var(--yellow);
+    }
+
+    body .collection-banner {
+        background-color: #000 !important;
+    }
+
+    span.dot{
+        color: var(--yellow) !important;
+    }
+    {% if section.settings.img != blank %}
+        @media screen and (min-width: 1025px) {
+            .collection-banner {
+                background: url({{section.settings.img | image_url: width: 1920}}) !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+            }
+        }
+    {% endif %}
+
+    {% if section.settings.img_mob != blank %}
+        @media screen and (max-width: 1024px) {
+        .collection-banner {
+            background: url({{section.settings.img_mob | image_url: width: 750}}) !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+        }
+  {% endif %}
+</style>
+
+{% schema %}
+    {
+        "name": "Bundle banner",
+        "settings": [
+            {
+                "type": "color",
+                "id": "bg",
+                "label": "Background color",
+                "default": "#FEDD00"
+            },
+            {
+                "type": "color",
+                "id": "text_color",
+                "label": "Text color",
+                "default": "#000"
+            },
+            {
+                "type": "image_picker",
+                "id": "img",
+                "label": "Background image for desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "img_mob",
+                "label": "Background image for mobile"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Build your own bundle"
+            },
+            {
+                "type": "textarea",
+                "id": "subtitle",
+                "label": "Subitle",
+                "default": "Mix & match to build your own configuration of up to 4 products"
+            },
+            {
+                "type": "text",
+                "id": "box_title",
+                "label": "Box Title",
+                "default": "Not sure where to start?"
+            },
+            {
+                "type": "textarea",
+                "id": "box_subtitle",
+                "label": "Box Subitle",
+                "default": "Why not see our curated stacks here"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Box link"
+            },
+            {
+                "type": "text",
+                "id": "discount",
+                "label": "Discount text",
+                "default": "* Save an additional 5% when you subscribe to a bundle."
+            }
+        ],
+        "blocks": [
+            {
+                "name": "discount block",
+                "type": "block",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "pretitle",
+                        "label": "Pre-title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    }
+                ]
+            }
+        ]   
+
+    }
+{% endschema %}

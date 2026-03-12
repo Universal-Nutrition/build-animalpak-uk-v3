@@ -1,0 +1,218 @@
+.announcement-bar {
+	&__slide {
+	  font-family: 'Open Sans';
+	  font-style: normal;
+	  font-weight: 400;
+	  font-size: 13.913px;
+	  line-height: 160%;
+	  text-align: center;
+	  text-transform: capitalize;
+	  font-feature-settings: 'ss08'on, 'ss10'on;
+	  color: inherit;
+	  max-width: max-content !important;
+	  transition-timing-function: linear !important;
+	  padding-left: .5rem;
+	  padding-right: .5rem;
+  
+	  &[data-original-position="pl0"] {
+		padding-left: 0 !important;
+	  }
+  
+	  &[data-original-position="pr0"] {
+		padding-right: 0 !important;
+	  }
+  
+	  &[data-original-position="pr"] {
+		padding-left: 0px !important;
+		padding-right: 2.5rem !important;
+	  }
+  
+	  &[data-original-position="pl"] {
+		padding-left: 2.5rem !important;
+		padding-right: 0px !important;
+	  }
+  
+	  @media only screen and (max-width: 768px) {
+		font-size: 12.098px;
+	  }
+  
+  
+	}
+  
+	.swiper-wrapper {
+	  transition-timing-function: linear !important;
+	  width: max-content !important;
+	}
+  }
+  
+  .custom-orbe-arrow{
+	&.active{
+	  transform: scaleY(-1);
+	}
+	path{
+	  @media only screen and (max-width: 1024px) {
+		fill: #000;
+	  }
+	}
+   
+  }
+  #md-form__select__country--footer{
+	  display: none !important; 
+  }
+  #custom__md-footer-selector-block {
+	  .md-footer-selector__container {
+		  padding: 0;
+	  }
+	  #md-footer-selector__form__id {
+		  background: #000;
+		  padding: 0 !important;
+	  }
+	  .md-modal__formContent__select {
+		  margin-right: 0 !important;
+		  background: #000;
+  
+	  @media only screen and (max-width: 1024px) {
+		background: #fff;
+		margin-top: 0 !important;
+	  }
+	  }
+	  .md-footer-selector__content {
+		  .md-form__select {
+			  height: 27px;
+			  filter: invert(1);
+			  background-size: 15px;
+			  padding-top: 3px;
+			  span {
+				  font-family: "Open Sans" !important;
+				  font-size: 13.913px !important;
+				  font-weight: 400 !important;
+				  text-transform: capitalize !important;
+			  }
+  
+		@media only screen and (max-width: 1024px) {
+		  filter: none;
+		  height: unset;
+		  background-color: #fff !important;
+		}
+		  }
+	  }
+	  #orbeFooterCountryList {
+		  margin: 0;
+		  margin-top: 30px;
+		  bottom: unset;
+		  top: 0;
+		  border: none !important;
+		  padding: 8px;
+		  background: #fff !important;
+		  box-shadow: 1px 0px 10px 0px #34343436;
+		  left: -200px;
+	  width: unset !important;
+		  a {
+			  border-radius: 4px;
+			  &:hover {
+				  background: #000 !important;
+				  span {
+					  color: #fff !important;
+				  }
+			  }
+		  }
+	  @media only screen and (max-width: 1024px) {
+		left: -75px;
+	  }
+	  }
+	  #orbeFooterLanguageList {
+		  margin: 0;
+		  margin-top: 30px;
+		  bottom: unset;
+		  top: 0;
+		  border: none !important;
+		  padding: 8px;
+		  background: #fff !important;
+		  box-shadow: 1px 0px 10px 0px #34343436;
+	  width: unset !important;
+		  a {
+			  border-radius: 4px;
+			  &:hover {
+				  background: #000 !important;
+				  span {
+					  color: #fff !important;
+				  }
+			  }
+		  }
+	  }
+  }
+  #md-footer-selector__form__id {
+	  padding-top: 0;
+	  padding-bottom: 0;
+  }
+  #orbeFooterLanguageList {
+	  right: 0;
+  }
+  @media only screen and (max-width: 1024px) {
+	  .custom-orbe-arrow {
+		  path {
+			  fill: #fff !important;
+		  }
+	  }
+	  .mobile-menu_header-wrap {
+		  background-color: #000 !important;
+		  .custom-orbe {
+			  color: #fff;
+		  }
+		  .md-footer-selector__content {
+			  .md-form__select {
+				  z-index: -1;
+			  }
+		  }
+	  }
+	  #orbeFooterCountryList {
+		  .md-form__select__country__list-link {
+			  .md-form__select__span {
+				  color: #000 !important;
+			  }
+		  }
+	  }
+	  #custom__md-footer-selector-block {
+		  #orbeFooterLanguageList {
+			  .md-form__select__span {
+				  color: #000 !important;
+			  }
+		  }
+	  }
+	  #custom__md-footer-selector-block {
+		  #orbeFooterCountryList {
+			  margin-left: -30px;
+		  }
+	  }
+	  #custom__md-footer-selector-block {
+		  #orbeFooterLanguageList {
+			  .md-form__select__span {
+				  color: white !important;
+			  }
+		  }
+	  }
+	  #md-form__select__language--footer {
+		  filter: invert(1) !important;
+	  }
+  
+	  #custom__md-footer-selector-block .md-modal__formContent__select {
+		  background: none;
+	  }
+  }
+  #md-form__select__language__ {
+	  background-color: #000;
+	  border-radius: 6px;
+	  .md-form__select__span {
+		  color: white !important;
+	  }
+  }
+  #md-form__select__country__US {
+	  background-color: #000;
+	  border-radius: 6px;
+	  .md-form__select__country__list-link {
+		  .md-form__select__span {
+			  color: #fff !important;
+		  }
+	  }
+  }
+  

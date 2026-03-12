@@ -1,0 +1,81 @@
+{% assign color = color | default: '#212121' %}
+{% assign arrow_color = arrow_color | default: color %}
+
+<div class="breadcrumbs flex items-center font-sans text-[13.91px]">
+    <a href="/" class="font-sans text-[13.91px] text-primary font-semibold">Home</a>
+    <span class="px-4">
+        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.99967 11.6665L6.33301 6.99984C4.64074 5.17739 3.69195 4.15562 1.99967 2.33317" stroke="white" stroke-width="2" stroke-linecap="square"/>
+        </svg>        
+    </span>
+    {% case template.name %}
+        {% when 'page' %}
+            {% if template.suffix == 'athlete' or template.suffix contains 'athlete' %}
+            <a href="/pages/animal-athletes" class="font-sans text-[13.91px] text-primary font-semibold">animal athletes</a>
+            <span class="px-4">
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.99967 11.6665L6.33301 6.99984C4.64074 5.17739 3.69195 4.15562 1.99967 2.33317" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                </svg>        
+            </span>
+            {% endif %}   
+            <span class="font-sans text-[13.91px] text-primary font-semibold">{{page.title | downcase | downcase}}</span>
+        {% when 'collection' %}
+            <span class="font-sans text-[13.91px] text-primary font-semibold">{{collection.title | downcase | downcase}}</span>
+        {% when 'search' %}
+            <span class="font-sans text-[13.91px] text-primary font-semibold">Search Results</span>
+        {% when 'product' %}
+            {% if product.collections[0].url != blank %}
+                {% assign product_collection = product.collections[0] %}
+                {% for tag in product.tags %}
+                    {% if tag contains "Category:" %}
+                        {% assign category = tag | replace: 'Category:', '' | strip | handleize %}
+                        {% for collection in product.collections %}
+                            {% assign handle = collection.title | handleize %}
+                            {% if product.handle contains 'stack' %}
+                                {% if collection.handle contains 'stack' %}
+                                    {% assign product_collection = collection %}
+                                    {% break %}
+                                {% endif %}
+                            {% else %}
+                            {% if handle == category  %}
+                                {% assign product_collection = collection %}
+                                {% break %}
+                            {% endif %}
+                            {% endif %}
+                           
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+               
+                <a href="{{product_collection.url}}" class="font-sans text-[13.91px] text-primary font-semibold" style="color: {{color}}">{{product_collection.title | downcase}}</a>
+                <span class="px-4">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.99967 11.6665L6.33301 6.99984C4.64074 5.17739 3.69195 4.15562 1.99967 2.33317" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                    </svg>        
+                </span>
+            {% endif %}
+        
+            <span class="font-sans text-[13.91px] text-primary font-semibold flex" style="color: {{color}}">{{product.title | downcase}}</span>
+        {% when 'blog' %}
+            <span class="font-sans text-[13.91px] text-primary font-semibold">{{ blog.title | escape }}</span>
+        {% when 'article' %}
+            <a href="{{ blog.url }}" class="font-sans text-[13.91px] text-primary font-semibold mr-4" style="color: {{color}}">{{ blog.title | escape | downcase }}</a>
+            <span class="mr-4 flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" class="icon icon-chevron-right w-4 h-4">
+                    <path stroke="white" stroke-linecap="square" stroke-width="2" d="m5.9987 12.6665 4.3333-4.66666C8.63976 6.17739 7.69097 5.15562 5.9987 3.33317"/>
+                </svg>
+            </span>
+            <span class="font-sans text-[13.91px] text-primary font-semibold">{{ article.title | escape | downcase }}</span>
+    {% endcase %}
+</div>
+
+<style>
+    .breadcrumbs path{
+        stroke: {{arrow_color}}
+    }
+    .breadcrumbs span,
+    .breadcrumbs a{
+        text-transform: capitalize !important;
+        color: {{color}} !important;
+    }
+</style>

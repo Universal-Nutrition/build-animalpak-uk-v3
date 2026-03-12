@@ -1,0 +1,161 @@
+{% # Newsletter signup using Klavio %}
+
+{% # TODO: We may wish to expose this in the theme editor. %}
+{% if template contains 'product' %}
+  {% assign bg_class = 'bg-yellow' %}
+{% else %}
+  {% assign bg_class = 'bg-white' %}
+{% endif %}
+
+{% # ID used for anchoring from "Join the PAK" button %}
+<div
+  id="newsletter"
+  class="relative py-20 px-10 lg:px-6 text-black bg-no-repeat flex flex-col-reverse lg:flex-row text-center justify-center items-center {{ bg_class }}"
+  style="
+    background-image: url({{ section.settings.bg_image | image_url: width: 680 }});
+    background-position: calc(100% + 10rem) center;
+  "
+>
+    {% render 'tear-image': image: section.settings.bottom_tear_image, position: 'bottom' %}
+
+    {% # Social icons %}
+    <div class="flex-1 flex gap-8 lg:gap-4 items-center justify-center mt-6 lg:mt-0">
+      {% if settings.social_facebook_link != blank %}
+      <a target="_blank" href="{{settings.social_facebook_link}}" aria-label="icon-facebook">
+        {%- render 'icon-facebook': class: "w-[30px] h-[30px] lg:w-auto lg:h-auto" -%}
+      </a>
+      {% endif %}
+
+      {% if settings.social_instagram_link != blank %}
+      <a target="_blank" href="{{settings.social_instagram_link}}" aria-label="icon-instagram">
+        {%- render 'icon-instagram' class: "w-[30px] h-[30px] lg:w-auto lg:h-auto" -%}
+      </a>
+      {% endif %}
+
+      {% if settings.social_youtube_link != blank %}
+      <a target="_blank" href="{{settings.social_youtube_link}}" aria-label="icon-youtube">
+        {%- render 'icon-youtube' class: "w-[30px] h-[30px] lg:w-auto lg:h-auto" -%}
+      </a>
+      {% endif %}
+
+
+      {% if settings.social_tiktok_link != blank %}
+      <a target="_blank" href="{{settings.social_tiktok_link}}" aria-label="icon-tiktok">
+        {%- render 'icon-tiktok' class: "w-[30px] h-[30px] lg:w-auto lg:h-auto" -%}
+      </a>
+      {% endif %}
+
+      {% if settings.social_twitter_link != blank %}
+      <a target="_blank" href="{{settings.social_twitter_link}}" aria-label="icon-twitter">
+        {%- render 'icon-twitter' class: "w-[30px] h-[30px] lg:w-auto lg:h-auto" -%}
+      </a>
+      {% endif %}
+    </div>
+
+    <div class="flex flex-col items-center flex-1">
+      <div><h3 class="text-black text-[60px]">{{ section.settings.title }}</h3></div>
+
+      {% # The form %}
+      {% form 'customer', class: 'newsletter-form' %}
+      <div class="flex flex-col items-center">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+
+          <div>
+            <div class="flex gap-2">
+              <label class="sr-only" for="NewsletterForm--{{ section.id }}">
+                {{ 'newsletter.label' | t }}
+              </label>
+
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="h-18 w-[250px] xs:w-[22rem] md:w-[28rem] bg-inputGrey text-black placeholder-black text-[1.3rem] rounded-md"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus
+                  aria-invalid="true"
+                  aria-describedby="Newsletter-error--{{ section.id }}"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="Newsletter-success--{{ section.id }}"
+                {% endif %}
+                placeholder="{{ 'newsletter.label' | t }}"
+                required
+              >
+
+              <button
+                type="submit"
+                class="w-[72px] bg-black flex items-center justify-center rounded-md"
+                name="commit"
+                id="Subscribe"
+                aria-label="{{ 'newsletter.button_label' | t }}"
+              >
+                <svg width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25.9448 13.7617C27.2927 14.5286 27.2927 16.4714 25.9448 17.2383L3.78709 29.8453C2.3007 30.691 0.507346 29.402 0.835122 27.7236L3.14736 15.8834C3.1968 15.6302 3.1968 15.3699 3.14736 15.1167L0.835117 3.27638C0.507343 1.59795 2.3007 0.309016 3.78709 1.15472L25.9448 13.7617Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+            {%- if form.errors -%}
+              <small id="Newsletter-error--{{ section.id }}">
+                {%- render 'icon-error' -%}
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email -}}
+              </small>
+            {%- endif -%}
+          </div>
+
+          {%- if form.posted_successfully? -%}
+            <div class="mx-auto flex gap-4 newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>
+              <div>{{ 'newsletter.success' | t }}</div>
+              <div>{% render 'icon-success' %}</div>
+            </div>
+          {% else %}
+            <div class="text-[1.3rem] text-balance py-3 max-w-[30rem]">{{ section.settings.text }}</div>
+          {%- endif -%}
+      </div>
+      {% endform %}
+    </div>
+
+    {% # For equal three column layout %}
+    <div class="flex-1"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Email signup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "form_id",
+      "label": "Klaviyo ID",
+      "default": "X3ZS9L"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Form Title",
+      "default": "JOIN THE PAK"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Join the Animal community for deals, advice from pro athletes, news, events and more."
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_tear_image",
+      "label": "Bottom tear image"
+    }
+  ]
+}
+{% endschema %}

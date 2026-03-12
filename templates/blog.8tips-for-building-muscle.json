@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "5c60d69a-ff11-4ddd-a518-9d816919a220": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 385,
+        "m_height": 240,
+        "image": "shopify:\/\/shop_images\/BlogArticles_Desktop.png",
+        "image_2": "shopify:\/\/shop_images\/BlogArticles_Mobile.png",
+        "custom_heading": "<p>BLOG ARTICLES<\/p>",
+        "subheading": "<p>Fitness, nutrition, bodybuilding and strength training articles including stories, news, tools, training plans, nutrition and more.<\/p>",
+        "text_alignment": "left"
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "5c60d69a-ff11-4ddd-a518-9d816919a220",
+    "main"
+  ]
+}

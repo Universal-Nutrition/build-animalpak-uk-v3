@@ -1,0 +1,33 @@
+<div class="relative">
+  {% render 'tear-image', image: section.settings.top_tear_image, position: 'top', overlap: true %}
+
+  <div
+    class="yotpo-widget-instance"
+    data-yotpo-instance-id="{{ section.settings.yotpo_widget_id }}"
+    data-yotpo-product-id="{{ product.id }}"
+    data-yotpo-name="{{ product.title }}"
+    data-yotpo-price="{{ product.price | money_without_currency }}"
+    data-yotpo-url="{{ product.url }}"
+    data-yotpo-currency="{{ shop.currency }}"
+    data-yotpo-image-url="{{ product.featured_image | image_url: width: 1280 }}"
+    data-yotpo-description="{{ product.description | strip_html | escape }}"
+  ></div>
+</div>
+{% schema %}
+{
+  "name": "Yotpo Product Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "yotpo_widget_id",
+      "label": "Yotpo Widget ID",
+      "info": "You can get this from https://reviews.yotpo.com/#/display-reviews/on-site-widgets - click on a widget and the ID is in the URL immediately after /widget/ e.g. 1050491"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_tear_image",
+      "label": "Top Tear Image",
+    }
+  ]
+}
+{% endschema %}

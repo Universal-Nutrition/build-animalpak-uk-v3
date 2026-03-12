@@ -1,0 +1,62 @@
+<script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" defer></script>
+<div class="section-animation">
+  <div class="section-wapper">
+    <div class="items items-1"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-1.png" /></div>
+    <div class="items items-2"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-2.png" /></div>
+    <div class="items items-3"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-3.png" /></div>
+    <div class="items items-4"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-4.png" /></div>
+    <div class="items items-5"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-5.png" /></div>
+    <div class="items items-6"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-6.png" /></div>
+    <div class="items items-7"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-7.png" /></div>
+    <div class="items items-8"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/image-8.png" /></div>
+  </div>
+</div>
+<style>
+  .items{min-height:50px;}
+  .section-wapper{position:relative;background:#000;max-width:800px;min-height:800px;margin:auto;}
+.items{position:absolute;}
+.items-1{top:20%;left:0%}
+.items-2{top:10%;right:8%;}
+.items-3{top:30%;right:00%;}
+.items-4{top:45%;left:0%;}
+.items-5{top:70%;left:5%;}
+.items-6{top:48%;right:50%;}
+.items-7{top:55%;right:38%;}
+.items-8{bottom:10%;right:0%;}
+</style>
+   <script>
+      //common reveal options to create reveal animations
+     ScrollReveal().reveal('.items', {
+        reset: true,
+        distance: '160px',
+        duration: 2500,
+    useDelay: 'onload',
+        delay: 500
+      });
+
+      ScrollReveal().reveal('.items-1', { delay: 500, origin: 'bottom', interval: 200 });
+      ScrollReveal().reveal('.items-2', { delay: 500, origin: 'bottom', interval: 200 });
+      ScrollReveal().reveal('.items-3', { delay: 600, origin: 'bottom', interval: 200 });
+      ScrollReveal().reveal('.items-4', { delay: 700, origin: 'bottom', interval: 200 });
+      ScrollReveal().reveal('.items-5', { delay: 800, origin: 'bottom', interval: 200 });
+      ScrollReveal().reveal('.items-6', { delay: 500, origin: 'bottom', interval: 200 });
+      ScrollReveal().reveal('.items-7', { delay: 500, origin: 'bottom', interval: 200 });
+      ScrollReveal().reveal('.items-8', { delay: 500, origin: 'bottom', interval: 200 });
+    </script>
+{% schema %}
+  {
+    "name": "Section animation",
+    "settings": [],
+  "presets": [
+    {
+      "name": "Section animation"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

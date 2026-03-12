@@ -1,0 +1,79 @@
+<mobile-menu id="mobile-navigation-menu" class="fixed inset-0 -mt-[30px]">
+  <!--
+    Off-canvas menu, show/hide based on off-canvas menu state.
+    Entering: "transition ease-in-out duration-300 transform"
+      From: "-translate-x-full"
+      To: "translate-x-0"
+    Leaving: "transition ease-in-out duration-300 transform"
+      From: "translate-x-0"
+      To: "-translate-x-full"
+  -->
+  <div class="relative max-w-full bg-white-900 shadow-xl pb-12 flex flex-col w-full sm:!w-[80%] lg:w-full">
+    <!-- start tabs -->
+    <div class="tabswrap mob bg-white md:w-[80%]">
+      <div class="tabs bg-white absolute overflow-hidden w-full cursor-pointer h-[100dvh] overflow-y-auto max-h-[100vh] top-0">
+        <!-- END tabs-nav -->
+        <div id="tabs-content">
+          <div id="mobtab1" class="block tab-content !px-0 !pt-0">
+            <div class="tab-inner">
+              <!-- mobile view -->
+              <div id='tabs-1-panel-1' class="max-h-[100dvh] min-h-[100dvh] overflow-y-auto">
+                
+                <div class='grid grid-cols-1 items-start overflow-y-auto'>
+                {% render 'mobile-menu-header', section: section, link: link, first_level: true %}
+                  {% for link in linklists[section.settings.menu].links %}
+                    {% if link.links != blank %}
+                      {% render 'mobile-menu-links', link: link, section: section %}
+                    {% else %}
+                      <div class='flex'>
+                        <div class='w-full py-6 border-b border-solid border-t-0 border-l-0 border-r-0 border-mediumBorder'>
+                          <a href='{{ link.url }}' class='font-bebasNeueExpanded text-black mobile-nav__item'>{{ link.title }}</a>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="supplements-2-wrap">
+                  {% for block in section.blocks %}
+                    {%- case block.type -%}
+                      {%- when 'supplements-2' -%}
+                        {% assign placeholder = block.settings.image %}
+                        {% if block.settings.mobile_image != blank %}
+                          {% assign placeholder = block.settings.mobile_image %}
+                        {% endif %}
+                        <div
+                          class="supp-2-inner {% cycle 'show', 'hide', 'hide' %}"
+                          style="background:url({{ placeholder | img_url: '400x' }})"
+                        >
+                          <div class="supp-2-text">{{ block.settings.name }}</div>
+                          <div class="supp-2-link">
+                            <a href="{{ block.settings.link }}">
+                              <img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/tabler_arrow-right.svg" alt="arrow right" height="14" width="14">
+                            </a>
+                          </div>
+                          {% if block.settings.accent %}
+                            <div class="accent-yellow">
+                              <img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/yellow_accent_350.png" alt="tear effect beneath text">
+                            </div>
+                          {% endif %}
+                        </div>
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+                <!-- Mobile Menu Footer -->
+                {% render 'mobile-menu-footer', section: section %}
+                <!-- /Mobile Menu Footer -->
+              </div>
+              <!-- /mobile view -->
+            </div>
+          </div>
+        </div>
+        <!-- END tabs-content -->
+      </div>
+    </div>
+    <!-- start tabs -->
+    <!-- End mobile -->
+    <!-- start footer -->
+    <!-- end footer -->
+  </div>
+</mobile-menu>

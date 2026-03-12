@@ -1,0 +1,212 @@
+
+
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+{{ 'bundle.section-account.css' | asset_url | stylesheet_tag }}
+<style>
+  .account-section-bg {
+    background: {{ section.settings.background}};
+  }
+</style>
+<div class="flex justify-center account-section account-section-bg">
+  <div class="w-full py-16 md:py-24 px-6 lg:px-20 xl:px-20">
+    <div class="mx-auto w-full max-w-[432px]">
+      <div>
+        <h1 class="mb-4 md:mb-[18px] text-[42.56px] md:text-[56.29px]  tracking-[-1px] font-bold text-primary uppercase">Create Account</h1>
+        <p class="mt-2 text-[13.913px] md:text-base text-primary leading-[160%]">
+          Creating an account has many benefits: check out faster, keep more than one address, track orders and more.
+        </p>
+      </div>
+      <div class="mt-6">
+        {%- form 'create_customer' -%}
+          <div class="space-y-6">
+            {%- if form.errors -%}
+              <h2 class="text-[#ff0000] font-bold text-sm font-sans tracking-normal" tabindex="-1" autofocus>
+                {{ 'templates.contact.form.error_heading' | t }}
+              </h2>
+              <ul class="!mt-1"> 
+                {%- for field in form.errors -%}
+                  <li class="text-primary text-sm">
+                    {%- if field == 'form' -%}
+                      {{ form.errors.messages[field] }}
+                    {%- else -%}
+                      <a href="#RegisterForm-{{ field }}" class="text-primary text-sm">
+                        {{ form.errors.translated_fields[field] | capitalize }}
+                        {{ form.errors.messages[field] }}
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+            <div>
+              <label for="RegisterForm-FirstName" class="block text-base font-bold text-primary mb-[10px]">
+                {{ 'customer.register.first_name' | t }} *
+              </label>
+              <input
+                type="text"
+                name="customer[first_name]"
+                id="RegisterForm-FirstName"
+                class="appearance-none block w-full h-12 px-3 py-2 border border-primary placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+                autocomplete="given-name"
+                required
+              >
+              
+            </div>
+            <div>
+              <label for="RegisterForm-LastName" class="block text-base font-bold text-primary mb-[10px]">
+                {{ 'customer.register.last_name' | t }} *
+              </label>
+              <input
+                type="text"
+                name="customer[last_name]"
+                id="RegisterForm-LastName"
+                {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+                autocomplete="family-name"
+                required
+                class="appearance-none block w-full h-12 px-3 py-2 border border-primary placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              >
+              
+            </div>
+            <div>
+              <label for="RegisterForm-email" class="block text-base font-bold text-primary mb-[10px]">
+                {{ 'customer.register.email' | t }} *
+              </label>
+              <input
+                class="appearance-none block w-full h-12 px-3 py-2 border border-primary placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                required
+                type="email"
+                name="customer[email]"
+                id="RegisterForm-email"
+                {% if form.email %} value="{{ form.email }}"{% endif %}
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="email"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-email-error"
+                {% endif %}
+              >
+              
+            </div>
+            {%- if form.errors contains 'email' -%}
+              <span id="RegisterForm-email-error" class="text-[#ff0000] font-bold text-sm font-sans">
+                {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+              </span>
+            {%- endif -%}
+            <div>
+              <label for="RegisterForm-password" class="block text-base font-bold text-primary mb-[10px]">
+                {{ 'customer.register.password' | t }} *
+              </label>  
+              <input
+                class="appearance-none block w-full h-12 px-3 py-2 border border-primary placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                type="password"
+                required
+                name="customer[password]"
+                id="RegisterForm-password"
+                aria-required="true"
+                {% if form.errors contains 'password' %}
+                  aria-invalid="true"
+                  aria-describedby="RegisterForm-password-error"
+                {% endif %}
+              >
+              
+            </div>
+            <input type='hidden' name='return_to' value='/account'>
+            {%- if form.errors contains 'password' -%}
+              <span id="RegisterForm-password-error" class="text-[#ff0000] font-bold text-sm">
+                {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
+              </span>
+            {%- endif -%}
+             <div id="accepts_marketing_checkbox" class="custom-input !mt-[20px]">
+              <input type="checkbox" name="customer[accepts_marketing]" value="true" id="marketing">
+              <label for="marketing" class="custom-label font-semibold">Sign up for our newsletter</label>
+            </div>
+            <div>
+              <button type="submit" class="w-full button inline-block lg:px-8 py-[14px] h-[54px] font-bold border border-solid border-yellow hover:!border-solid hover:!border-primary">create account</button>
+            </div>
+            <div class="account-section__devider uppercase !m-0 text-[13.9px] font-bold">
+              or
+            </div>
+            <a href="/account/login" class="text-white !m-0 !tracking-[1px]  text-center button button--secondary w-full block lg:px-8 py-[14px] h-[54px] border border-solid border-primary hover:!border-solid hover:!border-primary"> Sign In </a>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>  
+  document.addEventListener("DOMContentLoaded", function() { 
+    $(":submit").click(function(e) {
+      if ($("#marketing").is(':checked')) { 
+        e.preventDefault(); 
+        // grab fields;         
+        var email = $('input#RegisterForm-email').val(); 
+        var firstname = $('input#RegisterForm-FirstName').val(); 
+        var lastname = $('input#RegisterForm-LastName').val(); 
+        var settings = { 
+          "async": true, 
+          "crossDomain": true, 
+          "url": "https://manage.kmail-lists.com/ajax/subscriptions/subscribe",
+          "method": "POST", 
+          "headers": { 
+            "content-type": "application/x-www-form-urlencoded", 
+            "cache-control": "no-cache" 
+          }, 
+         "data": {
+           "g": "UAmWtQ", 
+           "email": email, 
+            // pass in additional fields 
+           "$fields": "$source, $first_name, $last_name",
+           "$source": "Account Creation", 
+           "$first_name": firstname,
+           "$last_name": lastname 
+          }
+      }; 
+      $.ajax(settings).done(function(response) { 
+        // select and submit form after subscribing 
+        $("#create_customer").submit(); 
+      })
+    }  
+  })
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Register",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background",
+        "default": "#F5F5F5"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,285 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_rprHUW": {
+          "type": "price",
+          "settings": {}
+        },
+        "6a8c8864-2370-4cd3-873f-4a3d617696be": {
+          "type": "listIconText",
+          "settings": {}
+        },
+        "62ab6ba1-0cfa-480d-9b4a-4c04000190cb": {
+          "type": "customTabs",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown"
+          }
+        },
+        "4a6a1f42-966a-4cf5-ae72-5e9c7c853a5c": {
+          "type": "blockqty",
+          "settings": {}
+        },
+        "subscriptions_app_block_wxcant": {
+          "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+          "disabled": true,
+          "settings": {
+            "color_text_body": "#000000",
+            "dividers_color": "#dadada",
+            "bacgkround_color": "#f3f3f3",
+            "border_thickness": 1,
+            "border_radius": 0,
+            "subscription_policy_url": "",
+            "product": "{{product}}"
+          }
+        },
+        "firmhouse_subscription_options_3g6GYE": {
+          "type": "shopify://apps/firmhouse/blocks/subscription_options/c05a962b-cac2-4640-98c5-5e2e025abc3a",
+          "disabled": true,
+          "settings": {
+            "title": "Buy Now",
+            "display_type": "pills",
+            "default_to_subscription": false,
+            "subscribe_and_save_text": "Subscribe & Save",
+            "one_time_purchase_text": "One-time purchase",
+            "each_text": "each",
+            "savings_text_format": "",
+            "show_description": true,
+            "sync_frequency_selection": false,
+            "primary_color": "#ffdd04",
+            "primary_text_color": "#ffffff",
+            "font_size": 14,
+            "padding_vertical": 8,
+            "padding_horizontal": 8,
+            "margin": 8,
+            "border_radius": 16,
+            "product": "{{product}}",
+            "selling_plan_metadata": [],
+            "card_layout_subscription_selector_label": "",
+            "variant_id_selector": "",
+            "add_to_cart_form_selector": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price_rprHUW",
+        "6a8c8864-2370-4cd3-873f-4a3d617696be",
+        "62ab6ba1-0cfa-480d-9b4a-4c04000190cb",
+        "variant_picker",
+        "4a6a1f42-966a-4cf5-ae72-5e9c7c853a5c",
+        "subscriptions_app_block_wxcant",
+        "firmhouse_subscription_options_3g6GYE",
+        "buy_buttons"
+      ],
+      "custom_css": [
+        "h1 {font-family: Anton; font-size: 50px; line-height: 50px;}"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "hide_variants": true,
+        "enable_video_looping": false
+      }
+    },
+    "458c6b0c-bb1e-4f86-982c-29e5a93529a8": {
+      "type": "Section-animation",
+      "disabled": true,
+      "settings": {}
+    },
+    "img_block_WM7TPf": {
+      "type": "img-block",
+      "custom_css": [
+        "img {transform: rotate(0.5turn);}"
+      ],
+      "settings": {
+        "desktop": "shopify://shop_images/tear_image.png",
+        "mobile": "shopify://shop_images/tear_image.png"
+      }
+    },
+    "product_highlights_afB9ta": {
+      "type": "product-highlights",
+      "blocks": {
+        "highlight_rAgVVD": {
+          "type": "highlight",
+          "settings": {
+            "highlight_image": "{{ product.metafields.custom.product_highlights_image_1.value }}",
+            "highlight_text": "{{ product.metafields.custom.product_highlights_description_1 | metafield_tag }}"
+          }
+        },
+        "highlight_JFzJzV": {
+          "type": "highlight",
+          "settings": {
+            "highlight_image": "{{ product.metafields.custom.product_highlights_image_2.value }}",
+            "highlight_text": "{{ product.metafields.custom.product_highlights_description_2 | metafield_tag }}"
+          }
+        },
+        "highlight_qUbgJL": {
+          "type": "highlight",
+          "settings": {
+            "highlight_image": "{{ product.metafields.custom.product_highlights_image_3.value }}",
+            "highlight_text": "{{ product.metafields.custom.product_highlights_description_3 | metafield_tag }}"
+          }
+        },
+        "highlight_VAAnVa": {
+          "type": "highlight",
+          "settings": {
+            "highlight_image": "{{ product.metafields.custom.product_highlights_image_4.value }}",
+            "highlight_text": "{{ product.metafields.custom.product_highlights_description_4 | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "highlight_rAgVVD",
+        "highlight_JFzJzV",
+        "highlight_qUbgJL",
+        "highlight_VAAnVa"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/animal_logo_860.png",
+        "text_color": "#000000",
+        "headline": "<p>{{ product.metafields.custom.product_highlights_headline.value }}</p>",
+        "tear_image": "shopify://shop_images/tear_image.png"
+      }
+    },
+    "product-image-and-text": {
+      "type": "product-image-and-text",
+      "blocks": {
+        "4422f646-3f15-41a6-8736-3c846a84d679": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "{{ product.metafields.custom.advance_science_title_1.value }}",
+            "feature_text": "<p>{{ product.metafields.custom.advance_science_subtitle_1.value }}</p>"
+          }
+        },
+        "5bda2311-5fd7-4494-9c2c-82ecb7e74335": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "{{ product.metafields.custom.advance_science_title_2.value }}",
+            "feature_text": "<p>{{ product.metafields.custom.advance_science_subtitle_2.value }}</p>"
+          }
+        },
+        "46f39edd-990c-4cca-bce7-ae8c6291ade7": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "{{ product.metafields.custom.advance_science_title_3.value }}",
+            "feature_text": "<p>{{ product.metafields.custom.advance_science_subtitle_3.value }}</p>"
+          }
+        },
+        "5a492d7b-bf7f-438b-8b82-134e950c2974": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "{{ product.metafields.custom.advance_science_title_4.value }}",
+            "feature_text": "<p>{{ product.metafields.custom.advance_science_subtitle_4.value }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "4422f646-3f15-41a6-8736-3c846a84d679",
+        "5bda2311-5fd7-4494-9c2c-82ecb7e74335",
+        "46f39edd-990c-4cca-bce7-ae8c6291ade7",
+        "5a492d7b-bf7f-438b-8b82-134e950c2974"
+      ],
+      "settings": {
+        "main_image": "{{ product.metafields.custom.advance_science_img.value }}",
+        "mob_image": "{{ product.metafields.custom._advance_science_mobile_img.value }}",
+        "text_color": "#ffffff",
+        "headline": "<p>{{ product.metafields.custom.advance_science_headline.value }}</p>"
+      }
+    },
+    "product-faq": {
+      "type": "product-faq",
+      "settings": {
+        "heading": "FREQUENTLY ASKED QUESTIONS",
+        "bg_color": "#212121"
+      }
+    },
+    "product-text-and-badge": {
+      "type": "product-text-and-badge",
+      "disabled": true,
+      "settings": {
+        "headline": "<p><strong>IRONCLAD QUALITY & GUARANTEE. </strong>ANIMAL IS DEDICATED TO BEING THE VERY BEST. </p>",
+        "guarantee": "we offer a \"no-questions-asked\" 90-day 100% guarantee",
+        "text": "<p>Made from premium ingredients sourced from around the world, our products are rigorously tested to meet the highest standards of quality.<br/><br/>That's why we stand behind every single pill, every powder, and every single Animal \"pack\" we make. If you bought a product directly from our website and it hasn't met your tough requirements for any reason, we offer a \"no-questions-asked\" 90-day 100% guarantee.</p>",
+        "badge": "https://cdn.shopify.com/s/files/1/0675/6882/8736/files/quality.svg?v=1669305737"
+      }
+    },
+    "product-full-width-image": {
+      "type": "product-full-width-image",
+      "disabled": true,
+      "settings": {
+        "text": "<p><strong>High potency</strong> multivitamin pack with digestion support and natural energy.</p>",
+        "bg_img": "shopify://shop_images/Image_one.jpg",
+        "mobile_bg_img": "shopify://shop_images/mobile-fw-image-_3x_34a86014-4405-42d6-a269-41776209841b.jpg"
+      }
+    },
+    "product-recommend": {
+      "type": "product-recommendations",
+      "custom_css": [
+        "product-recommendations {padding-bottom: var(--tear-height);}"
+      ],
+      "settings": {
+        "heading": "PAIRS WELL WITH",
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": false,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    },
+    "yotpo-product-reviews-cl140325": {
+      "type": "yotpo-product-reviews",
+      "settings": {
+        "yotpo_widget_id": "893580",
+        "top_tear_image": "shopify://shop_images/transparent-to-white-tear.png"
+      }
+    },
+    "section_instafeed_abx123": {
+      "type": "instafeed",
+      "settings": {
+        "title": "FOLLOW US ON INSTAGRAM",
+        "subtitle": "#BEANIMAL",
+        "icon": "shopify://shop_images/instagram-icon.svg",
+        "bg_image": "shopify://shop_images/tear-transparent-to-black.png",
+        "bg_color": "#131313"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "458c6b0c-bb1e-4f86-982c-29e5a93529a8",
+    "img_block_WM7TPf",
+    "product_highlights_afB9ta",
+    "product-image-and-text",
+    "product-faq",
+    "product-text-and-badge",
+    "product-full-width-image",
+    "product-recommend",
+    "yotpo-product-reviews-cl140325",
+    "section_instafeed_abx123"
+  ]
+}

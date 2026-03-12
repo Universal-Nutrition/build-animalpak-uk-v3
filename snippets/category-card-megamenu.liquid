@@ -1,0 +1,16 @@
+<div class="flex gap-10 pl-8 pr-10 py-10">
+    <div class="flex gap-10 max-w-full">
+        {% if block.settings.image_1 != blank %}
+            {% render 'image-block', block: block, image: block.settings.image_1, title: block.settings.title_1, link_description: block.settings.link_description_1, link: block.settings.link_1 %}
+        {% endif %}
+        {% if block.settings.image_2 != blank %}
+            {% render 'image-block', block: block, image: block.settings.image_2, title: block.settings.title_2, link_description: block.settings.link_description_2, link: block.settings.link_2 %}
+        {% endif %}
+        {% if block.settings.image_3 != blank %}
+            {% render 'image-block', block: block, image: block.settings.image_3, title: block.settings.title_3, link_description: block.settings.link_description_3, link: block.settings.link_3 %}
+        {% endif %}
+        {% if block.settings.image_4 != blank %}
+            {% render 'image-block', block: block, image: block.settings.image_4, title: block.settings.title_4, link_description: block.settings.link_description_4, link: block.settings.link_4 %}
+        {% endif %}
+    </div>
+</div>

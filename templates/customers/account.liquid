@@ -1,0 +1,143 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div class="min-h-[278px] bg-primary text-white">
+  <div class="m-auto w-full max-w-[928px] px-6 pt-16 md:pt-15 lg:pt-24">
+    <div class="flex justify-between mb-10 md:mb-[65px]">
+      <h2 class="text-white leading-[80%] text-[48.944px] md:text-[60px] lg:text-[85.604px] tracking-[-1px] uppercase font-bold">Welcome, {{ customer.first_name }}</h2>
+      <a class="text-[13.9px] shrink-0 uppercase tracking-[1px] font-bold text-white flex items-center" href="{{ routes.account_logout_url }}">
+        {{ 'customer.log_out' | t }}
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-arrow ml-[10px]" fill="none" viewBox="0 0 27 26">
+          <path stroke="#fff" stroke-width="2" d="M1.0835 13h23.8333"/>
+          <path stroke="#fff" stroke-linecap="square" stroke-width="2" d="m18.9587 7.04175 5.9583 5.95835-5.9583 5.9583"/>
+        </svg>
+      </a>
+    </div>
+    <div>
+      <ul class="md:flex font-compacta !mb-0 lg:pb-[18px]">
+        <li class="md:mr-10 mb-[34px] md:mb-0">
+          <a href="{{ routes.account_url }}" 
+              class="relative text-[37.01px] block md:inline uppercase tracking-[-1px] leading-[80%] text-yellow :after:content-[''] after:absolute after:left-0 after:bottom-[-16px] md:after:bottom-[-20px] after:w-full after:h-[1px] md:after:h-1 after:bg-[#333232] md:after:bg-yellow">
+            Orders
+          </a>
+        </li>
+        <li class="md:mr-10 mb-[34px] md:mb-0">
+          <p id="rc_link_container">
+            <a href="/tools/recurring/login" class="relative text-[37.01px] block md:inline uppercase tracking-[-1px] leading-[80%] text-white hover:text-yellow after:content-[''] after:absolute after:left-0 after:bottom-[-16px] md:after:bottom-[-20px] after:w-full after:h-[1px] md:after:h-1 after:bg-[#333232] md:after:bg-transparent md:hover:after:bg-yellow md:opacity-50 hover:opacity-100">Subscriptions</a>
+          </p>
+        </li>
+        <li class="md:mr-10 mb-[34px] md:mb-0 last:m-0 last:pb-[38px] md:last:pb-0">
+          <a href="{{ routes.account_addresses_url }}" class="relative text-[37.01px] block md:inline uppercase tracking-[-1px] leading-[80%] text-white hover:text-yellow after:content-[''] after:absolute after:left-0 after:bottom-[-16px] md:after:bottom-[-20px] after:w-full after:h-[1px] md:after:h-1 after:bg-[#333232] md:after:bg-transparent md:hover:after:bg-yellow md:opacity-50 hover:opacity-100">Address book</a>
+        </li>
+        <li class="pb-[38px] md:pb-0">
+          {% section 'loop-returns' %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="customer account max-w-[928px] m-auto py-[42px] md:py-24 px-6">
+  <h1 class="tracking-[-1px] uppercase text-[42.56px] md:text-[56.29px] leading-[80%] font-bold text-primary mb-6 md:mb-[34px]">Your orders</h1>
+  
+  {%- comment -%} <div>
+      <!-- Begin ReCharge code -->
+      <p id="rc_link_container">
+          <a href="/tools/recurring/login">Manage Subscriptions</a>
+      </p>
+      <!-- End ReCharge code -->
+  </div> {%- endcomment -%}
+
+  <div class="">
+    <div class="block w-full">
+
+      {% paginate customer.orders by 20 %}
+        {%- if customer.orders.size > 0 -%}
+
+          {%- for order in customer.orders -%}
+            <div class="block lg:flex relative bg-[#F5F5F5] mb-6 p-6 md:py-8 md:pb-3 md:px-6">
+              <dl class="block lg:flex w-full">
+                <div class="w-fit pb-[18px] lg:pr-8 lg:whitespace-nowrap">
+                  <dt class="font-bold text-[13.9px] uppercase leading-[150%] text-primary">Order number</dt>
+                  <dd class="mt-[2px] capitalize text-[13.913px] leading-[160%] text-primary">
+                    <a href="{{ order.customer_url }}" class="underline leading-[160%]">
+                      {{ order.name }}
+                    </a>
+                  </dd>
+                </div>
+                <div class="w-fit pb-[18px] lg:pr-8 lg:whitespace-nowrap">
+                  <dt class="font-bold text-[13.9px] uppercase leading-[150%] text-primary">Date placed</dt>
+                  <dd class="mt-[2px] capitalize text-[13.913px] leading-[160%] text-primary">
+                    <time datetime="2021-07-06">{{ order.created_at | date: "%b %d, %Y" }}</time>
+                  </dd>
+                </div>
+                <div class="w-fit pb-[18px] lg:pr-8 lg:whitespace-nowrap">
+                  <dt class="font-bold text-[13.9px] uppercase leading-[150%] text-primary">Payment Status</dt>
+                  <dd class="mt-[2px] capitalize text-[13.913px] leading-[160%] text-primary">{{ order.financial_status }}</dd>
+                </div>
+                <div class="w-fit pb-[18px] lg:pr-8 lg:whitespace-nowrap">
+                  <dt class="font-bold text-[13.9px] uppercase leading-[150%] text-primary">Fulfullment Status</dt>
+                  <dd class="mt-[2px] capitalize text-[13.913px] leading-[160%] text-primary">{{ order.fulfillment_status }}</dd>
+                </div>
+                <div class="w-fit pr-[29px] lg:whitespace-nowrap">
+                  <dt class="font-bold text-[13.9px] uppercase leading-[150%] text-primary">Total amount</dt>
+                  <dd class="mt-[2px] capitalize text-[13.913px] leading-[160%] text-primary">{{ order.total_price | money }}</dd>
+                </div>
+              </dl>
+              <div class="w-fit shrink-0 md:mt-2 absolute lg:static right-[24px] bottom-[36px]">
+                <a href="{{ order.customer_url }}" class="underline text-[13.9px] leading-[160%] font-bold">
+                  View Order
+                </a>
+              </div>
+            </div>
+          {%- endfor -%}
+
+        {%- else -%}
+          <div class="bg-[#F5F5F5] mt-[34px] p-2 sm:p-8">
+            <p class="text-primary">{{ 'customer.orders.none' | t }}</p>
+          </div>
+        {%- endif -%}
+
+        {%- if paginate.pages > 1 -%}
+          {%- if paginate.parts.size > 0 -%}
+              <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                <ul role="list">
+                {%- if paginate.previous -%}
+                  <li>
+                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+
+                {%- for part in paginate.parts -%}
+                  <li>
+                    {%- if part.is_link -%}
+                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+                    {%- else -%}
+                      {%- if part.title == paginate.current_page -%}
+                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</span>
+                      {%- else -%}
+                        <span>{{ part.title }}</span>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+
+                {%- if paginate.next -%}
+                  <li>
+                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}" >
+                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+                </ul>
+              </nav>
+          {%- endif -%}
+        {%- endif -%}
+      {% endpaginate %}
+    </div>
+  </div>
+</div>

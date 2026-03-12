@@ -1,0 +1,140 @@
+{% # 2025-02-19 Phase 2 UK Announcement section. %}
+
+<div class='w-full bg-yellow flex flex-col items-center'>
+  <section class='py-3 md:py-5 px-[5vw] lg:px-[10vw] w-full'>
+    {% # TODO: Figure out breakpoint. %}
+    <ul class='grid grid-cols-2 md:flex md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-10'>
+      {% for block in section.blocks %}
+        {% if block.type == 'content' %}
+          <li class='flex items-center justify-center'>
+            <div class='mr-3 h-7 min-h-fit min-w-fit'>
+              {{
+                block.settings.icon_image
+                | image_url: width: 36, height: 36
+                | image_tag: class: 'h-[26px] md:h-[36px] w-[26px] md:w-[36px]'
+              }}
+            </div>
+            <div class='text-[22px] md:text-[18px] lg:text-[22px]'>{{ block.settings.content_text }}</div>
+          </li>
+        {% elsif block.type == 'button' %}
+          <li class='w-full md:w-fit justify-centerd justify-self-center col-span-2 flex flex-col md:flex-row items-center text-center md:text-left border-white border-dashed border-2 px-5 py-5 rounded-7xl gap-3 md:gap-8 lg:gap-16'>
+            <div>
+              <div class='font-anton text-[47px] md:text-[50px]'>{{ block.settings.title }}</div>
+              <div class='mt-1 text-sm'>{{ block.settings.subtitle }}</div>
+            </div>
+            <a
+              href='{{ block.settings.button_link }}'
+              class='w-full md:w-fit font-anton bg-black text-yellow rounded-xl px-10 md:px-15 py-4 md:py-6 whitespace-nowrap text-[21px]'
+            >
+              {{ block.settings.button_text }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% # Used to tear image etc. %}
+  {% if section.settings.background_image != blank %}
+    {{ section.settings.background_image | image_url: width: 3840 | image_tag }}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Section (v2)",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Text with icon",
+      "type": "content",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "richtext",
+          "id": "content_text",
+          "label": "Content Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "name": "Button",
+      "type": "button",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Section",
+      "settings": {
+        "background_image": "shopify://shop_images/tear_white.png"
+      },
+      "blocks": [
+        {
+          "type": "content",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icon_awesome-tag_fcb2b46c-5d2d-46cd-b761-d670848e8ae9.png",
+            "content_text": "<p><strong>GET 10% OFF</strong> YOUR FIRST ORDER</p>",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "content",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icon_awesome-shipping-fast_63c12739-4d8c-4c3b-bf8f-ca0b990f379f.png",
+            "content_text": "<p><strong>FREE DELIVERY</strong> ON ALL ORDERS OVER <strong>£50</strong></p>",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "title": "NEW TO ANIMAL?",
+            "subtitle": "<p>Join our online community for discounts and tips!</p>",
+            "button_text": "LEARN MORE",
+            "button_link": "#"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

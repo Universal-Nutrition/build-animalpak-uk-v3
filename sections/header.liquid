@@ -1,0 +1,1136 @@
+<!-- All Pages Script -->
+            <!-- Start Tradedoubler All Pages Tag Insert on all pages to handle first party cookie-->
+            <script type="text/javascript">
+            (function(c,w,v){function getUrlParameter(e){var t=new RegExp("[\?&]"+e+"=([^&#]*)").exec(location.search);return null===t?"":decodeURIComponent(t[1].replace(/\+/g," "))}function setCookie(e,t){var r,n=w.location.host,a=n.substring(n.indexOf("."));(a.match(/\./g).length<2||".co"===a.substring(0,a.indexOf(".",1)))&&(a="."+n),r='domain='+a;var i=new Date,o=i.getTime()+31536e6;i.setTime(o);var c="expires="+i.toUTCString();v.cookie='e'+'='+'t'+';'+'c'+';'+'r'+';path=/;sameSite=none;Secure=true'}var tdclid_sn=getUrlParameter("tdclid_sn");tdclid_sn&&setCookie("tdclid_sn",tdclid_sn);var q='?org='+c.organization+'&prog='+c.programId;w.tdfallback=function(e){var t,r=v.getElementsByTagName("script")[0];(t=v.createElement("script")).src=e+q,r.parentNode.insertBefore(t,r)};
+            (function(i,s,o,g,r,a,m){i.TDConversionObject=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script', 'https://sdk.tradedoubler.com/trsdk'+q, 'tdconv'); tdconv('init',c);
+            })({organization: '2424256', programId: '376170', program: false, element: 'iframe'}, window, document);
+            tdconv('cookie-consent', '[COOKIE_CONSENT]');
+            
+          
+            </script>
+            
+            <script src="https://swrap.tradedoubler.com/wrap?id=31958" async></script>
+{% assign is_transparent = false %}
+{% if section.settings.homepage and template.name == 'index' %}
+  {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.plp and template.name == 'collection' %}
+  {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.pdp and template.name == 'product' %}
+  {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.blog and template.name == 'blog' %}
+  {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.article and template.name == 'article' %}
+  {% assign is_transparent = true %}
+{% endif %}
+{% if section.settings.page and template.name == 'page' %}
+  {% assign is_transparent = true %}
+{% endif %}
+
+{% for block in section.blocks %}
+  {% if block.type == 'transparent' %}
+    {% if canonical_url contains block.settings.page %}
+      {% assign is_transparent = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<link
+  rel='stylesheet'
+  href='{{ 'component-cart-notification.css' | asset_url }}'
+  media='print'
+  onload="this.media='all'"
+>
+{{ 'bundle.section-header.css' | asset_url | stylesheet_tag }}
+{{ 'recently-viewed.js' | asset_url | script_tag }}
+
+<script src='{{ 'sticky-header.js' | asset_url }}' defer='defer'></script>
+
+<!--
+  Mobile menu
+
+  Off-canvas menu for mobile, show/hide based on off-canvas menu state.
+-->
+<div class='mega-menu-wrapper relative z-40 lg:hidden' role='dialog' aria-modal='true'>
+  <!--
+    Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+
+    Entering: "transition-opacity ease-linear duration-300"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "transition-opacity ease-linear duration-300"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+
+  <mobile-menu class='inset-0 hidden mm-hidden'>
+    <!--
+      Off-canvas menu, show/hide based on off-canvas menu state.
+
+      Entering: "transition ease-in-out duration-300 transform"
+        From: "-translate-x-full"
+        To: "translate-x-0"
+      Leaving: "transition ease-in-out duration-300 transform"
+        From: "translate-x-0"
+        To: "-translate-x-full"
+    -->
+    <div class='relative max-w-full w-full bg-white-900 shadow-xl pb-12 flex flex-col'>
+      <div class='search-wrapper mobile-search-wrapper w-full h-full'>
+        <div class='h-[58px] lg:h-[78px] w-full bg-white flex justify-between items-center px-6 lg:px-[58px]'>
+          <form action='{{ collections[settings.ss_collection_handle].url }}' method='get'>
+            <div class='flex items-center relative'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                class='absolute h-8 w-8 lg:h-6 lgd:w-6'
+                viewBox='0 0 24 24'
+                class='icon icon-search'
+              >
+                <path stroke="#212121" stroke-width="2" d="m14.8394 15.1069 5.3031 5.8929M10.7141 16.7143c3.7871 0 6.8571-3.0701 6.8571-6.85716C17.5712 6.07005 14.5012 3 10.7141 3 6.92698 3 3.85693 6.07005 3.85693 9.85714c0 3.78706 3.07005 6.85716 6.85717 6.85716Z"/>
+              </svg>
+              <label for='siteSearch' class='sr-only'>Search</label>
+              <input
+                name='q'
+                type='text'
+                placeholder='Search...'
+                class='search-input w-full header-search-custom border-0 pl-10 !ring-offset-0 !ring-0 text-[18.4px] font-sans font-bold leading-[29.44px] text-primary placeholder-black lg:placeholder-transparent'
+                autofocus
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <button
+        type='button'
+        class='mm-close p-0 rounded-md inline-flex items-center justify-center text-black'
+        style='border: 0 none !important;'
+      >
+        <span class='sr-only'>Close menu</span>
+        <!-- Heroicon name: outline/x -->
+        <svg
+          id='mobile-menu-button-close'
+          class='pointer-events-none'
+          xmlns='http://www.w3.org/2000/svg'
+          width='14'
+          height='14'
+          viewBox='0 0 14 14'
+          fill='none'
+        >
+          <path d="M12.4444 0H1.55556C1.143 0 0.747335 0.163888 0.455612 0.455612C0.163888 0.747335 0 1.143 0 1.55556V12.4444C0 12.857 0.163888 13.2527 0.455612 13.5444C0.747335 13.8361 1.143 14 1.55556 14H12.4444C12.857 14 13.2527 13.8361 13.5444 13.5444C13.8361 13.2527 14 12.857 14 12.4444V1.55556C14 1.143 13.8361 0.747335 13.5444 0.455612C13.2527 0.163888 12.857 0 12.4444 0ZM9.8 10.8889L7 8.08889L4.2 10.8889L3.11111 9.8L5.91111 7L3.11111 4.2L4.2 3.11111L7 5.91111L9.8 3.11111L10.8889 4.2L8.08889 7L10.8889 9.8L9.8 10.8889Z" fill="black"/>
+        </svg>
+      </button>
+      <!-- start tabs -->
+
+      <div class='tabswrap mob bg-white'>
+        <div class='tabs bg-white'>
+          <ul id='tabs-nav-mob'>
+            <li><a href='#mobtab1' class='active'>Supplements</a></li>
+            <li><a href='#mobtab2'>Gear</a></li>
+            <li><a href='#mobtab3'>Learn</a></li>
+          </ul>
+          <!-- END tabs-nav -->
+          <div id='tabs-content'>
+            <div id='mobtab1' class='tab-content' style='display: block'>
+              <div class='tab-inner'>
+                <div class='tab-inner-1'>
+                  <div class='tab-inner-1-wrap accordion-faq'>
+                    {% for block in section.blocks %}
+                      {%- case block.type -%}
+                        {%- when 'supplements-1' -%}
+                          <div class='supp-1-inner faq-wrap'>
+                            <span class='label accordion-header'>{{ block.settings.header }}</span>
+                            <div class='accordion-content' style='height:auto;'>
+                              {% for link in linklists[block.settings.menu].links %}
+                                <a href='{{link.url}}' class='supp-1-link'>{{ link.title }}</a>
+                              {% endfor %}
+                            </div>
+                          </div>
+                      {% endcase %}
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <script>
+                  $('.accordion-faq').on('click', '.accordion-header', function () {
+                    $(this).toggleClass('active').next().slideToggle()
+
+                    $('.tabswrap.mob').addClass('hidefooternav')
+                    var activeElements = $('.accordion-header.active')
+
+                    if (activeElements.length === 0) {
+                      $('.tabswrap.mob').removeClass('hidefooternav')
+                    }
+                  })
+                </script>
+
+                <div class='tab-inner-2'>
+                  <div class='supplements-2-wrap'>
+                    {% for block in section.blocks %}
+                      {%- case block.type -%}
+                        {%- when 'supplements-2' -%}
+                          <div
+                            class='supp-2-inner {% cycle 'show', 'hide', 'hide' %}'
+                            style='background:url({{block.settings.image | img_url: '400x' }})'
+                          >
+                            <div class='supp-2-text'>{{ block.settings.name }}</div>
+                            <div class='supp-2-link'>
+                              <a href='{{ block.settings.link }}'
+                                ><img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/tabler_arrow-right.svg'
+                              ></a>
+                            </div>
+                            {% if block.settings.accent %}
+                              <div class='accent-yellow'>
+                                <img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/yellow_accent_350.png'>
+                              </div>
+                            {% endif %}
+                          </div>
+                      {% endcase %}
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class='tab-inner-3'>
+                  <div class='custom_recently_viewed'>
+                    <div class='custom_recently_viewed_container'>
+                      <div class='custom_recently_heading'>
+                        <label class='recently_heading'>Recently viewed</label>
+                      </div>
+                      <div class='custom_recently_container'>
+                        {% render 'recently-viewed' %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id='mobtab2' class='tab-content'>
+              <div class='tab-inner'>
+                <div class='tab-inner-1'>
+                  <div class='tab-inner-1-wrap accordion-faq2'>
+                    {% for block in section.blocks %}
+                      {%- case block.type -%}
+                        {%- when 'gear-1' -%}
+                          <div class='supp-1-inner faq-wrap'>
+                            <span class='label accordion-header2'>{{ block.settings.name }}</span>
+                            <div class='accordion-content' style='height:auto;'>
+                              {% for link in linklists[block.settings.menu].links %}
+                                <a href='{{link.url}}' class='supp-1-link'>{{ link.title }}</a>
+                              {% endfor %}
+                            </div>
+                          </div>
+                      {% endcase %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <script>
+                  $('.accordion-faq2').on('click', '.accordion-header2', function () {
+                    $(this).toggleClass('active').next().slideToggle()
+                    $('.tabswrap.mob').addClass('hidefooternav')
+                    var activeElements = $('.accordion-header2.active')
+
+                    if (activeElements.length === 0) {
+                      $('.tabswrap.mob').removeClass('hidefooternav')
+                    }
+                  })
+                </script>
+                <div class='tab-inner-2'>
+                  <div class='supplements-2-wrap'>
+                    {% for block in section.blocks %}
+                      {%- case block.type -%}
+                        {%- when 'gear-2' -%}
+                          <div class='supp-2-inner' style='background:url({{block.settings.image | img_url: '400x' }})'>
+                            <div class='supp-2-text'>{{ block.settings.name }}</div>
+                            <div class='supp-2-link'>
+                              <a href='{{ block.settings.link }}'
+                                ><img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/tabler_arrow-right.svg'
+                              ></a>
+                            </div>
+                            {% if block.settings.accent %}
+                              <div class='accent-yellow'>
+                                <img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/Asset_1_1.png'>
+                              </div>
+                            {% endif %}
+                          </div>
+                      {% endcase %}
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <div class='tab-inner-3'>
+                  <div class='custom_recently_viewed'>
+                    <div class='custom_recently_viewed_container'>
+                      <div class='custom_recently_heading'>
+                        <label class='recently_heading'>Recently viewed</label>
+                      </div>
+                      <div class='custom_recently_container'>
+                        {% render 'recently-viewed' %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id='mobtab3' class='tab-content'>
+              <div class='tab-inner'>
+                <div class='tab-inner-4'>
+                  <div class='tab-inner-1-wrap accordion-faq3'>
+                    {% for block in section.blocks %}
+                      {%- case block.type -%}
+                        {%- when 'learn-1' -%}
+                          <div class='supp-1-inner  faq-wrap'>
+                            <span class='label accordion-header3'>{{ block.settings.header }}</span>
+                            <div class='accordion-content' style='height:auto;'>
+                              {% for link in linklists[block.settings.menu].links %}
+                                <a href='{{link.url}}' class='supp-1-link'>{{ link.title }}</a>
+                              {% endfor %}
+                            </div>
+                          </div>
+                      {% endcase %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <script>
+                  $('.accordion-faq3').on('click', '.accordion-header3', function () {
+                    $(this).toggleClass('active').next().slideToggle()
+
+                    $('.tabswrap.mob').addClass('hidefooternav')
+                    var activeElements = $('.accordion-header3.active')
+
+                    if (activeElements.length === 0) {
+                      $('.tabswrap.mob').removeClass('hidefooternav')
+                    }
+                  })
+                </script>
+                <div class='tab-inner-5'>
+                  <div class='blog-outer-wrap'>
+                    {% for article in section.settings.meganav_blog_1.articles limit: 3 %}
+                      <div class='blog-inner {% cycle 'one', 'two', 'three' %}'>
+                        {% include 'article-grid-item-2' %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END tabs-content -->
+        </div>
+      </div>
+      <!-- start tabs -->
+      <!-- End mobile -->
+      <!-- start footer -->
+      <div
+        class='mobile-nav__footer mnav-footer px-8 pb-6 pt-6 fixed bottom-0 w-full'
+        style='background-color: {{ section.settings.mobile_menu_footer_bg }};'
+      >
+        <div class='mnav-footer__social-container'>
+          {% unless section.settings.mobile_menu_footer_title == blank -%}
+            <h6 class='mnav-footer__social-heading mb-4'>{{ section.settings.mobile_menu_footer_title }}</h6>
+          {%- endunless %}
+          <ul class='mnav-footer__social-icons flex flex-nowrap items-center justify-start w-full mb-0'>
+            {%- if settings.social_facebook_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_facebook_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-facebook' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.facebook' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_instagram_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_instagram_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-instagram' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.instagram' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_youtube_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_youtube_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-youtube' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.youtube' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_tiktok_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_tiktok_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-tiktok' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.tiktok' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_twitter_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_twitter_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-twitter' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.twitter' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_pinterest_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_pinterest_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-pinterest' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.pinterest' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_tumblr_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_tumblr_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-tumblr' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.tumblr' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_snapchat_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_snapchat_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-snapchat' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.snapchat' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_vimeo_link != blank -%}
+              <li class='list-social__item mr-4'>
+                <a href='{{ settings.social_vimeo_link }}' class='list-social__link block w-6 h-6'>
+                  {%- render 'icon-vimeo' -%}
+                  <span class='visually-hidden'>{{ 'general.social.links.vimeo' | t }}</span>
+                </a>
+              </li>
+            {%- endif -%}
+          </ul>
+        </div>
+      </div>
+      <!-- end footer -->
+    </div>
+  </mobile-menu>
+</div>
+
+<sticky-header class='header-s2 block group {% if is_transparent %}transparent-header absolute w-full{% else %}blurred{% endif %} transition duration-300 z-10'>
+  <header class='relative pb-2 pt-2 lg:pb-0 lg:pt-3.5'>
+    <nav aria-label='Top'>
+      <!-- Top navigation -->
+
+      <!-- Secondary navigation -->
+      <main-header>
+        <div class='mx-8 lg:mx-15 main-header__recharge-styles'>
+          <div class=''>
+            <div class='max-w-100 w-full mx-auto h-10.5 lg:h-16 flex items-center lg:justify-between'>
+              <div class='flex items-center lg:hidden 121'>
+                <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
+                <button
+                  id='mobile-menu-button'
+                  js-trigger='mobile-menu-button'
+                  type='button'
+                  class=' bg-white-900 p-0 rounded-md text-black'
+                >
+                  <span class='sr-only'>Open menu</span>
+                  <!-- Heroicon name: outline/menu -->
+                  <svg xmlns='http://www.w3.org/2000/svg' width='22' height='17' viewBox='0 0 22 17' fill='none'>
+                    <path d="M1 1H21M1 8.38387H21M1 15.7677H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class='mobile-search lg:flex'>
+                  <a href='#' class='trigger-search mobile-trigger-search'>
+                    <span class='sr-only'>Search</span>
+                    <!-- Heroicon name: outline/search -->
+                    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5003 1.96903C9.14485 1.96914 7.80912 2.28837 6.60451 2.90008C5.3999 3.51179 4.36135 4.39824 3.57549 5.48548C2.78963 6.57272 2.27926 7.82921 2.08696 9.15013C1.89466 10.4711 2.026 11.8181 2.47003 13.0789C2.91406 14.3397 3.6579 15.4776 4.63949 16.3978C5.62108 17.318 6.81196 17.9938 8.11277 18.3687C9.41358 18.7436 10.7866 18.8069 12.1173 18.5531C13.448 18.2994 14.6977 17.736 15.7623 16.91L19.4143 20.5055C19.6029 20.6848 19.8555 20.7841 20.1177 20.7818C20.3799 20.7796 20.6307 20.676 20.8161 20.4935C21.0015 20.311 21.1066 20.064 21.1089 19.8059C21.1112 19.5478 21.0104 19.2991 20.8283 19.1134L17.1763 15.5179C18.1642 14.284 18.7794 12.8011 18.9514 11.239C19.1233 9.67686 18.8451 8.09865 18.1485 6.68495C17.4519 5.27126 16.3651 4.0792 15.0126 3.24519C13.66 2.41118 12.0962 1.96893 10.5003 1.96903ZM4.00025 10.3374C4.00025 8.6402 4.68507 7.0125 5.90406 5.81239C7.12305 4.61228 8.77635 3.93806 10.5003 3.93806C12.2242 3.93806 13.8775 4.61228 15.0964 5.81239C16.3154 7.0125 17.0003 8.6402 17.0003 10.3374C17.0003 12.0346 16.3154 13.6623 15.0964 14.8624C13.8775 16.0626 12.2242 16.7368 10.5003 16.7368C8.77635 16.7368 7.12305 16.0626 5.90406 14.8624C4.68507 13.6623 4.00025 12.0346 4.00025 10.3374Z" fill="black"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class='header-s2__icons flex lg:hidden'></div>
+
+              <div class='hidden h-full lg:flex lg:flex-0-auto xl:flex-1/3'>
+                <!-- Mega menus -->
+                      BOOP
+                <div class='mega-nav'>
+                  <div class='h-full flex justify-center space-x-8'>
+                    {% for link in linklists[section.settings.menu].links %}
+                      {% if link.links != blank %}
+                        <div class='flex' data-item-index='{{ forloop.index }}'>
+                          <div class='relative flex item-1'>
+                            <!--
+                              Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800"
+                            -->
+                            <button
+                              id='meganav-heading--{{ forloop.index }}'
+                              type='button'
+                              class='mega-nav__item border-transparent uppercase text-black relative z-10 flex items-center transition-colors ease-out duration-200 text-sm border-b-1 pb-3.5'
+                              aria-expanded='false'
+                              meganav_heading_index='{{forloop.index}}'
+                            >
+                              {{ link.title -}}
+                              {%- render 'icon-caret', with dataAttributeVal: forloop.index, dataAttributeName: 'meganav_heading_index' %}
+                            </button>
+                          </div>
+
+                          <!--
+                            'Women' mega menu, show/hide based on flyout menu state.
+
+                            Entering: "transition ease-out duration-200"
+                              From: "opacity-0"
+                              To: "opacity-100"
+                            Leaving: "transition ease-in duration-150"
+                              From: "opacity-100"
+                              To: "opacity-0"
+                          -->
+                          <div
+                            class='mega-nav__dropdown absolute top-full inset-x-0 text-sm text-gray-500 bg-white hidden mnd_marker -mt-[1px] border-t border-[#E8E8E8] border-solid border-b-0 border-r-0 border-l-0'
+                            meganav_index='{{forloop.index}}'
+                          >
+                            <div class='pl-10 shop-label'>SHOP</div>
+                            <div
+                              class='tabswrap desk'
+                              style='-webkit-transform: translateZ(0); transform: translateZ(0);'
+                            >
+                              <div class='tabs !mx-10'>
+                                <ul id='tabs-nav' class='!pl-0'>
+                                  <li><a href='#tab1' class='active !pl-0'>Supplements</a></li>
+                                  <li><a href='#tab2'>Gear</a></li>
+                                  <li><a href='#tab3'>Learn</a></li>
+                                </ul>
+                                <!-- END tabs-nav -->
+                                <div id='tabs-content'>
+                                  <div id='tab1' class='tab-content !pl-0' style='display: block'>
+                                    <div class='tab-inner'>
+                                      <div class='tab-inner-1'>
+                                        <div class='tab-inner-1-wrap'>
+                                          {% for block in section.blocks %}
+                                            {%- case block.type -%}
+                                              {%- when 'supplements-1' -%}
+                                                <div class='supp-1-inner'>
+                                                  <span>{{ block.settings.header }}</span>
+                                                  {% for link in linklists[block.settings.menu].links %}
+                                                    <a
+                                                      href='{{link.url}}'
+                                                      class='supp-1-link {{ block.settings.menu.handl }}'
+                                                    >
+                                                      {{- link.title -}}
+                                                    </a>
+                                                  {% endfor %}
+                                                </div>
+                                            {% endcase %}
+                                          {% endfor %}
+                                        </div>
+                                      </div>
+                                      <div class='tab-inner-2'>
+                                        <div class='supplements-2-wrap'>
+                                          {% for block in section.blocks %}
+                                            {%- case block.type -%}
+                                              {%- when 'supplements-2' -%}
+                                                <div
+                                                  class='supp-2-inner mt-0'
+                                                  style='background:url({{block.settings.image | img_url: '400x' }})'
+                                                >
+                                                  <div class='supp-2-text'>{{ block.settings.name }}</div>
+                                                  <div class='supp-2-link'>
+                                                    <a href='{{ block.settings.link }}'
+                                                      ><img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/tabler_arrow-right.svg'
+                                                    ></a>
+                                                  </div>
+                                                  {% if block.settings.accent %}
+                                                    <div class='accent-yellow'>
+                                                      <img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/Asset_1_1.png'>
+                                                    </div>
+                                                  {% endif %}
+                                                </div>
+                                            {% endcase %}
+                                          {% endfor %}
+                                        </div>
+                                      </div>
+                                      <div class='tab-inner-3'>
+                                        <div class='custom_recently_viewed'>
+                                          <div class='custom_recently_viewed_container'>
+                                            <div class='custom_recently_heading'>
+                                              <label class='recently_heading'>Recently viewed</label>
+                                            </div>
+                                            <div class='custom_recently_container'>
+                                              {% render 'recently-viewed' %}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id='tab2' class='tab-content'>
+                                    <div class='tab-inner'>
+                                      <div class='tab-inner-1'>
+                                        <div class='tab-inner-1-wrap'>
+                                          {% for block in section.blocks %}
+                                            {%- case block.type -%}
+                                              {%- when 'gear-1' -%}
+                                                <div class='supp-1-inner'>
+                                                  <span>{{ block.settings.name }}</span>
+                                                  {% for link in linklists[block.settings.menu].links %}
+                                                    <a href='{{link.url}}' class='supp-1-link'>{{ link.title }}</a>
+                                                  {% endfor %}
+                                                </div>
+                                            {% endcase %}
+                                          {% endfor %}
+                                        </div>
+                                      </div>
+                                      <div class='tab-inner-2'>
+                                        <div class='supplements-2-wrap'>
+                                          {% for block in section.blocks %}
+                                            {%- case block.type -%}
+                                              {%- when 'gear-2' -%}
+                                                <div
+                                                  class='supp-2-inner'
+                                                  style='background:url({{block.settings.image | img_url: '400x' }})'
+                                                >
+                                                  <div class='supp-2-text'>{{ block.settings.name }}</div>
+                                                  <div class='supp-2-link'>
+                                                    <a href='{{ block.settings.link }}'
+                                                      ><img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/tabler_arrow-right.svg'
+                                                    ></a>
+                                                  </div>
+                                                  {% if block.settings.accent %}
+                                                    <div class='accent-yellow'>
+                                                      <img src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/Asset_1_1.png'>
+                                                    </div>
+                                                  {% endif %}
+                                                </div>
+                                            {% endcase %}
+                                          {% endfor %}
+                                        </div>
+                                      </div>
+                                      <div class='tab-inner-3'>
+                                        <div class='custom_recently_viewed'>
+                                          <div class='custom_recently_viewed_container'>
+                                            <div class='custom_recently_heading'>
+                                              <label class='recently_heading'>Recently viewed</label>
+                                            </div>
+                                            <div class='custom_recently_container'>
+                                              {% render 'recently-viewed' %}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id='tab3' class='tab-content'>
+                                    <div class='tab-inner'>
+                                      <div class='tab-inner-4'>
+                                        <div class='tab-inner-1-wrap'>
+                                          {% for block in section.blocks %}
+                                            {%- case block.type -%}
+                                              {%- when 'learn-1' -%}
+                                                <div class='supp-1-inner'>
+                                                  <span>{{ block.settings.header }}</span>
+                                                  {% for link in linklists[block.settings.menu].links %}
+                                                    <a href='{{link.url}}' class='supp-1-link'>{{ link.title }}</a>
+                                                  {% endfor %}
+                                                </div>
+                                            {% endcase %}
+                                          {% endfor %}
+                                        </div>
+                                      </div>
+                                      <div class='tab-inner-5'>
+                                        <div class='blog-outer-wrap'>
+                                          {% for article in section.settings.meganav_blog_1.articles limit: 3 %}
+                                            <div class='blog-inner'>
+                                              {% include 'article-grid-item-2' %}
+                                            </div>
+                                          {% endfor %}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- END tabs-content -->
+                              </div>
+                              <!-- END tabs -->
+                              <script>
+                                // Show the first tab and hide the rest
+                                $('#tabs-nav li:first-child, #tabs-nav-mob li:first-child').addClass('active')
+                                // $('.tab-content').hide();
+                                // $('.tab-content:first').show();
+
+                                // Click function
+                                $('#tabs-nav li').click(function () {
+                                  $('#tabs-nav li').removeClass('active')
+                                  $(this).addClass('active')
+                                  $('.desk .tab-content').hide()
+
+                                  var activeTab = $(this).find('a').attr('href')
+                                  $(activeTab).fadeIn()
+                                  return false
+                                })
+
+                                $('#tabs-nav-mob li').click(function () {
+                                  $('#tabs-nav-mob li').removeClass('active')
+                                  $(this).addClass('active')
+                                  $('.mob .tab-content').hide()
+
+                                  var activeTab = $(this).find('a').attr('href')
+                                  $(activeTab).fadeIn()
+                                  return false
+                                })
+                              </script>
+                            </div>
+
+                            <!-- begin old menu stash -->
+                            {% comment %}{% include 'menubackup' %}{% endcomment %}
+                          </div>
+                        </div>
+                        <!-- end meganavdropdown -->
+
+                      {% else %}
+                        <a
+                          href='{{ link.url }}'
+                          data-item-index='{{ forloop.index }}'
+                          class='{%  cycle 'quiz-n','bundle-n','learn-n','shopw-n'  %} mega-nav__item flex items-center uppercase text-black pb-3.5'
+                        >
+                          {{- link.title -}}
+                        </a>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+
+              <div class='flex ml-0 xl:flex-1/3 items-center justify-center pb-0 lg:pb-3.5 w-full lg:w-auto'>
+                <a href='{{shop.url}}'>
+                  <span class='sr-only'>Workflow</span>
+                  {%- if section.settings.logo_text == blank and section.settings.logo != blank -%}
+                    {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
+                    {%- assign logo_height = section.settings.logo_width
+                      | divided_by: section.settings.logo.aspect_ratio
+                    -%}
+                    {{
+                      section.settings.logo
+                      | image_url: width: section.settings.width
+                      | image_tag:
+                        class: 'h-8 w-auto lg:w-[105px] lg:h-[52px] header-s2__logo',
+                        widths: '50, 100, 150, 200, 250, 300, 400, 500',
+                        height: logo_height,
+                        width: section.settings.logo_width,
+                        alt: logo_alt
+                    }}
+                  {%- elsif section.settings.logo_text != blank -%}
+                    <span class='max-h-10.5 lg:max-h-full flex lg:inline lg:h-10 max-w-logomob lg:max-w-full w-auto logo-container'>
+                      {{- section.settings.logo_text -}}
+                    </span>
+                  {% endif %}
+                </a>
+              </div>
+
+              <div class='header-s2__icons flex items-center justify-end  xl:flex-1/3 h-full'>
+                <div class='flex items-center h-full'>
+                  <!-- Search -->
+                  <div class='hidden lg:flex mr-6 header_icon pb-0 lg:pb-3.5 h-full justify-center items-center'>
+                    <a href='#' class='trigger-search'>
+                      <span class='sr-only'>Search</span>
+                      <!-- Heroicon name: outline/search -->
+                      <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5003 1.96903C9.14485 1.96914 7.80912 2.28837 6.60451 2.90008C5.3999 3.51179 4.36135 4.39824 3.57549 5.48548C2.78963 6.57272 2.27926 7.82921 2.08696 9.15013C1.89466 10.4711 2.026 11.8181 2.47003 13.0789C2.91406 14.3397 3.6579 15.4776 4.63949 16.3978C5.62108 17.318 6.81196 17.9938 8.11277 18.3687C9.41358 18.7436 10.7866 18.8069 12.1173 18.5531C13.448 18.2994 14.6977 17.736 15.7623 16.91L19.4143 20.5055C19.6029 20.6848 19.8555 20.7841 20.1177 20.7818C20.3799 20.7796 20.6307 20.676 20.8161 20.4935C21.0015 20.311 21.1066 20.064 21.1089 19.8059C21.1112 19.5478 21.0104 19.2991 20.8283 19.1134L17.1763 15.5179C18.1642 14.284 18.7794 12.8011 18.9514 11.239C19.1233 9.67686 18.8451 8.09865 18.1485 6.68495C17.4519 5.27126 16.3651 4.0792 15.0126 3.24519C13.66 2.41118 12.0962 1.96893 10.5003 1.96903ZM4.00025 10.3374C4.00025 8.6402 4.68507 7.0125 5.90406 5.81239C7.12305 4.61228 8.77635 3.93806 10.5003 3.93806C12.2242 3.93806 13.8775 4.61228 15.0964 5.81239C16.3154 7.0125 17.0003 8.6402 17.0003 10.3374C17.0003 12.0346 16.3154 13.6623 15.0964 14.8624C13.8775 16.0626 12.2242 16.7368 10.5003 16.7368C8.77635 16.7368 7.12305 16.0626 5.90406 14.8624C4.68507 13.6623 4.00025 12.0346 4.00025 10.3374Z" fill="black"/>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <div class='flex mr-4 lg:mr-6 header_icon pb-0 lg:pb-3.5 h-full justify-center items-center'>
+                    <a
+                      href='{% if customer %}/a/account/orders{% else %}/a/account/login{% endif %}'
+                      class='w-6 h-6'
+                      aria-label='icon-account'
+                    >
+                      {%- render 'icon-account' -%}
+                    </a>
+                  </div>
+
+                  <div class='flex mr-0 lg:mr-6 main-header__recharge-styles-cart-icon header_icon pb-0 lg:pb-3.5 h-full justify-center items-center'>
+                    <a href='javascript:void(0)' class='group flex items-center w-6 h-6 relative' id='cart-icon-bubble'>
+                      <!-- Heroicon name: outline/shopping-cart -->
+                      <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
+                        <path d="M11.9999 1.96903C13.0607 1.96903 14.0782 2.38393 14.8283 3.12246C15.5785 3.86099 15.9999 4.86266 15.9999 5.90709H18.0349C18.5531 5.90703 19.0511 6.10497 19.4239 6.45922C19.7968 6.81348 20.0155 7.29639 20.0339 7.80623L20.4619 19.6204C20.4714 19.8847 20.4268 20.1481 20.3307 20.395C20.2346 20.6418 20.089 20.8672 19.9025 21.0574C19.716 21.2477 19.4926 21.3991 19.2454 21.5025C18.9982 21.6059 18.7324 21.6593 18.4639 21.6593H5.53588C5.26732 21.6593 5.00154 21.6059 4.75437 21.5025C4.50721 21.3991 4.28373 21.2477 4.09727 21.0574C3.91081 20.8672 3.76518 20.6418 3.66907 20.395C3.57296 20.1481 3.52835 19.8847 3.53788 19.6204L3.96588 7.80623C3.98428 7.29639 4.20295 6.81348 4.57583 6.45922C4.94871 6.10497 5.4467 5.90703 5.96488 5.90709H7.99988C7.99988 4.86266 8.42131 3.86099 9.17145 3.12246C9.9216 2.38393 10.939 1.96903 11.9999 1.96903ZM7.99988 7.87613H5.96488L5.53588 19.6903H18.4639L18.0349 7.87613H15.9999V8.86064C15.9996 9.11158 15.902 9.35293 15.727 9.5354C15.5521 9.71786 15.3129 9.82767 15.0585 9.84237C14.804 9.85708 14.5535 9.77558 14.358 9.61452C14.1626 9.45346 14.037 9.22501 14.0069 8.97583L13.9999 8.86064V7.87613H9.99988V8.86064C9.9996 9.11158 9.902 9.35293 9.72703 9.5354C9.55206 9.71786 9.31293 9.82767 9.05849 9.84237C8.80405 9.85708 8.5535 9.77558 8.35805 9.61452C8.1626 9.45346 8.03699 9.22501 8.00688 8.97583L7.99988 8.86064V7.87613ZM11.9999 3.93806C11.4953 3.93791 11.0093 4.12552 10.6393 4.4633C10.2694 4.80108 10.0427 5.26405 10.0049 5.75942L9.99988 5.90709H13.9999C13.9999 5.38488 13.7892 4.88404 13.4141 4.51478C13.039 4.14551 12.5303 3.93806 11.9999 3.93806Z" fill="black"/>
+                      </svg>
+                      <span class='ml-2 text-sm font-medium text-black absolute left-5 cart-count'>
+                        {{- cart.item_count -}}
+                      </span>
+                      <span class='sr-only'>items in cart, view bag</span>
+                    </a>
+                  </div>
+                  {% if section.settings.info_icon_link != blank %}
+                    <div class='hidden lg:flex header_icon pb-0 lg:pb-3.5 h-full justify-center items-center'>
+                      <a href='{{ section.settings.info_icon_link }}' class='' aria-label='icon-info'>
+                        {%- render 'icon-info' -%}
+                      </a>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% include 'search' %}
+      </main-header>
+    </nav>
+  </header>
+</sticky-header>
+
+<script>
+  // aa-DetachedSearchButtonPlaceholder
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "w-full",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "liquid",
+      "id": "logo_text",
+      "label": "Logo text label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 100,
+      "unit": "t:sections.header.settings.logo_width.unit",
+      "label": "t:sections.header.settings.logo_width.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "blog",
+      "id": "meganav_blog_1",
+      "label": "Choose a blog for the megamenu"
+    },
+    {
+      "type": "color",
+      "id": "meganav_bg",
+      "label": "Background color for the megamenu",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "meganav_bg_style2",
+      "label": "Add an image for the megamenu rhs",
+      "info": "This will override the background color."
+    },
+    {
+      "type": "url",
+      "id": "info_icon_link",
+      "label": "Link for the info icon"
+    },
+    {
+      "type": "header",
+      "content": "Mobile menu"
+    },
+    {
+      "type": "color",
+      "id": "mobile_menu_footer_bg",
+      "label": "Mobile menu footer backrgound color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "mobile_menu_footer_title",
+      "label": "Mobile menu footer title"
+    },
+    {
+      "type": "header",
+      "content": "Select pages with transparent background nav"
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage",
+      "label": "Homepage"
+    },
+    {
+      "type": "checkbox",
+      "id": "pdp",
+      "label": "PDP"
+    },
+    {
+      "type": "checkbox",
+      "id": "plp",
+      "label": "PLP"
+    },
+    {
+      "type": "checkbox",
+      "id": "page",
+      "label": "Custom pages"
+    },
+    {
+      "type": "checkbox",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "article",
+      "label": "Article"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "transparent header",
+      "type": "transparent",
+      "settings": [
+        {
+          "type": "url",
+          "id": "page",
+          "label": "Select page",
+          "info": "Select page where header nav should be with transparent background"
+        }
+      ]
+    },
+    {
+      "type": "supplements-2",
+      "name": "Supplements - Block 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Card name",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Card Image pref 260px by 150px; "
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Show yellow accent",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link",
+          "info": "Link to product or collection"
+        }
+      ]
+    },
+    {
+      "type": "supplements-1",
+      "name": "Supplements - menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Menu title",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "main-menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "learn-1",
+      "name": "Learn - menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Menu title",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "main-menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "gear-2",
+      "name": "Gear - Block 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Card name",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Card Image pref 260px by 150px; "
+        },
+        {
+          "type": "checkbox",
+          "id": "accent",
+          "label": "Show yellow accent",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link",
+          "info": "Link to product or collection"
+        }
+      ]
+    },
+    {
+      "type": "gear-1",
+      "name": "Gear - menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Menu title",
+          "info": "Best Sellers"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "main-menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "nav_menu",
+          "label": "Menu name",
+          "info": "For which menu to apply the product blocks. Max 2 blocks for one megamenu"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Heading",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "textarea",
+          "id": "product_description",
+          "label": "Product Description",
+          "info": "If the field is empty the value will be taken from the product."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show product price",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Product link",
+          "info": "If the field is empty the value will be taken from the product."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  function setRecentlyViewedProducts() {
+    const productData = {
+      productTitle: '{{ product.title }}',
+      productImg: "{{ product.featured_media | img_url: 'master' }}",
+      productPrice: '{{ product.price | money }}',
+      productUrl: '{{ product.url }}',
+      productImageAltText: '{{product.featured_media.alt | escape }}',
+    }
+    const productList = []
+    let jsonResp, jsonRespArr, jsonRespArrStr
+    const numberOfProducts = 3
+    productList.push(productData)
+    const currProductPageTitle = productData.productTitle
+    const productDataString = JSON.stringify(productList)
+    const localData = localStorage.getItem('recentlyViewedProduct')
+
+    if (localData === null) {
+      localStorage.setItem('recentlyViewedProduct', productDataString)
+    } else if (localData) {
+      const oldProductData = localStorage.getItem('recentlyViewedProduct')
+      const countProductData = (oldProductData.match(/productTitle/g) || []).length
+      const sameProduct = oldProductData.includes(currProductPageTitle)
+      if (countProductData < numberOfProducts && sameProduct == false) {
+        jsonResp = JSON.parse(oldProductData)
+        jsonRespArr = jsonResp.concat(productList)
+        jsonRespArrStr = JSON.stringify(jsonRespArr)
+        localStorage.setItem('recentlyViewedProduct', jsonRespArrStr)
+      } else if (countProductData >= numberOfProducts && sameProduct == false) {
+        jsonResp = JSON.parse(oldProductData)
+        jsonResp.shift()
+        jsonRespArr = jsonResp.concat(productList)
+        jsonRespArr = JSON.stringify(jsonRespArr)
+        localStorage.setItem('recentlyViewedProduct', jsonRespArr)
+      }
+    }
+  }
+
+  setRecentlyViewedProducts()
+  const localViewed = localStorage.recentlyViewedProduct
+  function getRecentlyViewedProducts() {
+    const productData = JSON.parse(localStorage.getItem('recentlyViewedProduct'))
+    const recentlyViewedHtml = []
+    productData.map((item) => {
+      recentlyViewedHtml.unshift(`
+    <li class="recently-viewed-grid-item">
+      <a href="${item.productUrl}"> 
+		<img class="recently-viewed-img" src='${item.productImg}' loading="lazy" alt="${item.productImageAltText}"/>
+      </a>
+      <h3><a class="recently-viewed-a" href="${item.productUrl}">${item.productTitle}</a></h3>
+       <p>${item.productPrice}</p>
+    </li>
+   `)
+    })
+    const newProductData = `${recentlyViewedHtml.join('')}`
+    const fullContent = document.getElementsByClassName('recently-viewed-grid')
+    for (var i = 0; i < fullContent.length; i++) {
+      fullContent[i].innerHTML = newProductData
+    }
+
+    $('.recently-viewed-grid-item').each(function () {
+      var emptytext = $(this).find('.recently-viewed-a').text()
+      if (emptytext === '') {
+        $(this).css({ display: 'none' })
+      }
+    })
+  }
+
+  document.addEventListener('DOMContentLoaded', function (event) {
+    getRecentlyViewedProducts()
+  })
+</script>

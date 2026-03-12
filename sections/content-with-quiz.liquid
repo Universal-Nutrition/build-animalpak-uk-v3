@@ -1,0 +1,80 @@
+{% render 'content-with-quiz' %}
+
+{% schema %}
+{
+  "name": "Content With Quiz",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "First line of title",
+      "default": "NO LABELS,"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Second line of title (highligted)",
+      "default": "JUST HARD WORK."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "For more than three decades Animal has evolved from just bodybuilding supplement brand, to an ethos for living."
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "t:sections.video.settings.cover_image.label"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#FEDD00"
+    },
+    {
+      "type": "text",
+      "id": "key",
+      "label": "Quiz key"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_bg_image",
+      "label": "Bottom Background image"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "default": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+      "label": "t:sections.video.settings.video_url.label",
+      "placeholder": "t:sections.video.settings.video_url.placeholder",
+      "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "t:sections.video.settings.description.label",
+      "info": "t:sections.video.settings.description.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.video.settings.full_width.label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content With Quiz"
+    }
+  ]
+}
+{% endschema %}

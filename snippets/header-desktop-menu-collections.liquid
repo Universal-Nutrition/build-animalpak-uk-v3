@@ -1,0 +1,23 @@
+<div class='flex gap-4 justify-center'>
+  {% for link in links %}
+    {% assign collection = link.object %}
+    <div class='min-w-[100px] flex-1'>
+      <div class='font-bold mb-2'>
+        <a href='{{ collection.url }}'>{{ link.title }}</a>
+      </div>
+
+      <a href='{{ collection.url }}'>
+        {{ collection.image | image_url: width:300 | image_tag: class: 'my-3' }}
+      </a>
+
+      {% for product in collection.products limit: 3 %}
+        <div class='mb-2 leading-4'>
+          <a class="hover:underline" href='{{ product.url }}'>{{ product.title }}</a>
+        </div>
+      {% endfor %}
+
+      <a href='{{ collection.url }}' class='font-bold'>More &gt;</a>
+    </div>
+  {% endfor %}
+</div>
+

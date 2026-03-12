@@ -1,0 +1,118 @@
+<div class="block-tops collection-banner">
+  {% include 'breadcrumbs' %}
+  <div>
+    {% if section.settings.title != blank %}
+      <h1 class="inline-block text-[85.6px] font-compacta font-bold leading-[68.48px] lg:leading-[68.48px]">{{ section.settings.title }}</h1>
+    {% else %}
+      <h1 class="inline-block text-[85.6px] font-compacta font-bold leading-[68.48px] lg:leading-[68.48px]">{{ collection.title }}</h1>
+    {% endif %}
+    {% if section.settings.banner_text != blank %}
+      <span>{{ section.settings.banner_text }}</span>
+    {% else %}
+      <div class="col-desc" style="margin-top:0;">{{ collection.description }}</div>
+    {% endif %}
+  </div>
+</div>
+
+{% if section.settings.bgimage != blank %}
+  <style>
+    .collection-banner {
+      background-repeat: no-repeat;
+      background-size: cover;
+    }    
+    @media only screen and (max-width: 576px) {
+      .collection-banner {
+        background-image: url('{{section.settings.bgimage_mobile | image_url: width: 750}}');
+        background-position: center top;
+        min-height: 580px;
+      }
+
+      h1 {
+        text-shadow: 0 0 8px rgba(0,0,0,1);
+      }
+    }
+    @media only screen and (min-width: 577px) {
+      .collection-banner {
+        background-image: url('{{section.settings.bgimage | image_url: width: 1920}}');
+        background-position: center;
+        min-height: 640px;
+      }
+      h1 {
+        text-shadow: 0 0 8px rgba(0,0,0,.5);
+      }
+    }
+  </style>
+{% else %}
+  <style>
+    .collection-banner {
+      background-color: #FFF;
+    }
+    .collection-banner h1 {
+      line-height: 1;
+    }
+    .block-tops:after {
+      display:none;
+    }
+  </style>
+{% endif %}
+
+{% if section.settings.subtext_color.alpha == 0.0 or section.settings.subtext_color == blank %}
+  <style>
+    .collection-banner span,
+    .collection-banner span * {
+      color: #000;
+    }
+  </style>
+  {% else %}
+  <style>
+    .collection-banner span,
+    .collection-banner span * {
+      color: {{ section.settings.subtext_color }};
+    }
+  </style>
+{% endif %}
+  
+{% schema %}
+{
+  "name": "Stacks banner",
+  "tag": "section",
+  "class": "stacks-hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bgimage",
+      "label": "Background Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "bgimage_mobile",
+      "label": "Background Image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_text",
+      "label": "Banner Text"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header Text Color"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Text Color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stacks banner"
+    }
+  ]
+}
+{% endschema %}

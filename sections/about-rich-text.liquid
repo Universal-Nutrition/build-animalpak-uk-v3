@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
+ {{ 'bundle.section-about-rich-text.css' | asset_url | stylesheet_tag }}
+
+<div class="{% unless section.settings.full_width %}page-width{% endunless %} about-rich-text__container"{% unless section.settings.background_image == empty %} style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"{% endunless %}>
+  <div class="rich-text about-rich-text {% if section.settings.full_width %} rich-text--full-width{% endif %}">
+  <div class="about-rich-text__header mb-12">
+  <h2 class="about-rich-text__title">{{ section.settings.title }}</h2>
+  </div>
+    <div class="rich-text__blocks flex items-center flex-wrap justify-start !w-full !max-w-full">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'icon-block' -%}
+          <div class="about-rich-text__block !my-0 w-full lg:w-3/6 flex items-center flex-wrap lg:flex-nowrap justify-start {% unless forloop.last %} !mb-10 {% endunless %} {% cycle 'lg:pr-16', 'lg:pr-0' %} {% cycle 'lg:!mb-12', 'lg:!mb-12', 'lg:!mb-0', 'lg:!mb-0' %}">
+            <div class="about-rich-text__icon w-full flex lg:initial lg:w-auto mr-6 mb-3 lg:mb-initial">
+              <img src="{{ block.settings.image }}" alt="{{ block.settings.heading }} icon" class="about-rich-text__image w-100 max-w-[100px] lg:max-w-[130px] mr-6 lg:!mr-0">
+              <h3 class="about-rich-text__block-title mb-2 flex lg:hidden w-full text-left lg:text-center">{{ block.settings.heading }}</h3>
+            </div>
+            <div class="about-rich-text__content hidden lg:block">
+              <h3 class="about-rich-text__block-title mb-2 hidden lg:flex">{{ block.settings.heading }}</h3>
+              <p class="about-rich-text__block-text hidden lg:flex">{{ block.settings.text }}</p>
+            </div>
+            <div class="about-rich-text__content about-rich-text__content--mobile lg:hidden w-full">
+              <p class="about-rich-text__block-text lg:hidden flex">{{ block.settings.text }}</p>
+            </div>
+          </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+.rich-text__blocks .h0,
+.rich-text__blocks .h1,
+.rich-text__blocks .h2 {
+  line-height: 1em !important;
+  text-transform: uppercase !important;
+  color: #212121 !important;
+}
+
+.rich-text__blocks .h0 {
+  font-size: 86px !important;
+}
+
+.rich-text__blocks .h1 {
+  font-size: 70px !important;
+}
+
+.rich-text__blocks .h2 {
+  font-size: 62px !important;
+}
+
+@media screen and (max-width: 768px) {
+ .rich-text__blocks .h0 {
+  font-size: 48px !important;
+}
+
+.rich-text__blocks .h1 {
+  font-size: 42px !important;
+}
+
+.rich-text__blocks .h2 {
+  font-size: 38px !important;
+} 
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Rich Text",
+  "tag": "section",
+  "class": "about-rich-text",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.rich-text.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.rich-text.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.rich-text.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.rich-text.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.rich-text.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.rich-text.settings.color_scheme.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type":  "image_picker",
+      "id":  "background_image",
+      "label": "About Rich Text Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "About Rich Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon-block",
+      "name": "Icon Block",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "text",
+          "id": "image",
+          "label": "Icon link"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, nisl eget ultricies tincidunt, nunc est aliquam nisl, eget aliquam nunc nisl sit amet lorem. Sed auctor, nisl eget ultricies tincidunt, nunc est aliquam nisl, eget aliquam nunc nisl sit amet lorem.",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Rich Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,116 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/BrandAmbassador_Desktop-1.png",
+        "image_2": "shopify:\/\/shop_images\/BrandAmbassador_Mobile.png",
+        "custom_heading": "<p>BRAND AMBASSADORS<\/p>",
+        "subheading": "<p>You’re hardcore. You live for pushing your body and mind, everyday, always thinking about the next workout, the next level, to always be at your best. And you use Animal products to make your hard work, work harder for you. Join the club.<\/p>",
+        "text_alignment": "left"
+      }
+    },
+    "revards": {
+      "type": "landing-rewards",
+      "blocks": {
+        "cd5a4a9b-0497-4447-a792-08c300e2b722": {
+          "type": "right_column_item",
+          "settings": {
+            "item_heading": "Program Benefits",
+            "item_content": "<ul>\n<li>Official Association with the Animal Brand<\/li>\n<li>Earn commissions on sales<\/li>\n<li>Earn free product<\/li>\n<li>Special Exclusive Gear<\/li>\n<li>New Product Pre-Releases<\/li>\n<li>Invites to Virtual Events<\/li>\n<li>Invites to In-person Events<\/li>\n<li>Chance to be featured on our social pages<\/li>\n<\/ul>"
+          }
+        }
+      },
+      "block_order": [
+        "cd5a4a9b-0497-4447-a792-08c300e2b722"
+      ],
+      "settings": {
+        "custom_heading": "<p>HOW TO BECOME AN ANIMAL <strong>BRAND AMBASSADOR<\/strong><\/p>",
+        "subheading": "We all start somewhere, and then it’s a journey. If your journey has taken you to this web page, then maybe it’s time to take it up a notch. We are looking for serious men and women who are dedicated to the Animal lifestyle and love the brand.",
+        "button_label": "Apply Here",
+        "button_link": "https:\/\/animalpak.taggermedia.com"
+      }
+    },
+    "testimonials": {
+      "type": "landing-testimonials",
+      "blocks": {
+        "92e8c098-f797-40f7-b9c1-046eab23341a": {
+          "type": "slide",
+          "settings": {
+            "quote": "\"I remember when I was 10, I used to have issues to gain weight and my dad bought me Gain Fast 3100 from Universal and I kept using it for 10 years more. That was the beginning of my journey in the BB world, and now 18 years after, I’m not just using Animal products, I’m part of the team!!\"",
+            "quote_author": "Carlos Grullon, @eighthwond3r",
+            "image": "shopify:\/\/shop_images\/Carlos_Photo_Desktop.png",
+            "image_2": "shopify:\/\/shop_images\/Carlos_Photo_Mobile.png"
+          }
+        },
+        "a7591b3d-188a-40c8-a3ee-ee6a88559e02": {
+          "type": "slide",
+          "settings": {
+            "quote": "\"My first experience with Animal supplements was with Cuts. It was my first contest prep and a friend of mine in the gym recommended Animal Cuts as being the only fat loss support worth its salt. I've since used Cuts during every contest prep I have done, as well as most other products in the Animal range. I had been buying lots of joint aid supplements individually, but when I discovered how much easier it was to just buy Flex it was a game changer. Since becoming involved with the brand I have been given the opportunity to grow alongside the brand. The community I have and the support I get from the athletes, ambassadors and everyone in the Animal family has been amazing.\"",
+            "quote_author": "Kai McGrath, @justtrynnagetswelt",
+            "image": "shopify:\/\/shop_images\/Kai_Photo_Desktop.png",
+            "image_2": "shopify:\/\/shop_images\/Kai_Photo_Mobile.png"
+          }
+        },
+        "f867343e-fe7a-4831-b168-470f1d378f91": {
+          "type": "slide",
+          "settings": {
+            "quote": "\"After discovering powerlifting and Animal in 2015, I had a new found love for my size, strength and what my body could do. My whole life up until that point I was made to feel like I was too much...too big for a female, too competitive, too hardcore...So when I started spending time in powerlifting gyms around monsters constantly repping Animal, I learned more about the brand, tried out the supplements and knew right away that I HAD to be a part of this lifestyle. Powerlifting changed my life and Animal drastically improved my health and wellness for my sport. It's an honor and a privilege to represent Animal.\"",
+            "quote_author": "Karrie Macknair, @k__mack",
+            "image": "shopify:\/\/shop_images\/Karrie_Photo_Desktop.png",
+            "image_2": "shopify:\/\/shop_images\/Karrie_Photo_Mobile.png"
+          }
+        },
+        "82893b34-fcba-41a2-afe4-f8ec2fae2f7c": {
+          "type": "slide",
+          "settings": {
+            "quote": "\"In 2012, I was an out of place teen looking for a place to fin in and I found a community with Animal. They represent the hardcore training lifestyle and mentality I related to. So, I started taking their supps and repping their gear and haven't stopped since. I was able to take my involvement to the next level with the Animal Ambassador program. I represent them and they help support me in return.\"",
+            "quote_author": "Conner Young, @conneryoung28",
+            "image": "shopify:\/\/shop_images\/Conner_Photo_Desktop2.jpg",
+            "image_2": "shopify:\/\/shop_images\/Conner_Photo_Mobile2.jpg"
+          }
+        },
+        "27e91a64-d291-47aa-a289-6dc47062df97": {
+          "type": "slide",
+          "settings": {
+            "quote": "\"The more I got into my sport of powerlifting, the more I felt aligned with the type of energy Animal represented. It was the hard working, relentless type. The silent killers… the lone wolves kind of energy. When I joined Animal in early 2020 as an ambassador I was very welcomed by the staff. The opportunity to represent a company that carries themselves in such a prestigious manner is honorable.\"",
+            "quote_author": "Kheycie Romero, @kheycie",
+            "image": "shopify:\/\/shop_images\/Kheycie_Photo_Desktop2.jpg",
+            "image_2": "shopify:\/\/shop_images\/Kheycie_Photo_Mobile2.jpg"
+          }
+        },
+        "9d89354a-6a83-4be9-a696-9089517042f0": {
+          "type": "slide",
+          "settings": {
+            "quote": "\"After sustaining life threatening injuries from an IED explosion in Iraq in 2007, bodybuilding became a way of coping with my injuries. I later met Frank McGrath when he came down to visit the Marines in Camp Lejeune, NC. We both realized we have been through similar situations and bodybuilding gave us hope, and Animal gave us a family to be part of.\"",
+            "quote_author": "Dennis Ndaanee, @dnize0331",
+            "image": "shopify:\/\/shop_images\/Dennis_Photo_Desktop2.jpg",
+            "image_2": "shopify:\/\/shop_images\/Dennis_Photo_Mobile.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "92e8c098-f797-40f7-b9c1-046eab23341a",
+        "a7591b3d-188a-40c8-a3ee-ee6a88559e02",
+        "f867343e-fe7a-4831-b168-470f1d378f91",
+        "82893b34-fcba-41a2-afe4-f8ec2fae2f7c",
+        "27e91a64-d291-47aa-a289-6dc47062df97",
+        "9d89354a-6a83-4be9-a696-9089517042f0"
+      ],
+      "custom_css": [
+        "{margin-bottom:50px}"
+      ],
+      "settings": {
+        "custom_heading": "<p><strong>FEATURED<\/strong> AMBASSADORs <\/p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "revards",
+    "testimonials"
+  ]
+}

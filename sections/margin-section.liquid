@@ -1,0 +1,44 @@
+<div id="{{section.id}}" class="w-full -mt-[1px]" style="background: {{section.settings.color}}"></div>
+
+<style>
+    #{{section.id}} {
+        height: {{section.settings.height}}px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        #{{section.id}} {
+            height: {{section.settings.mob_height}}px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Margin",
+    "settings": [
+        {
+            "type": "color",
+            "id": "color",
+            "label": "Background color",
+            "default": "#212121"
+        },
+        {
+            "type": "text",
+            "id": "height",
+            "label": "Height",
+            "default": "128"
+        },
+        {
+            "type": "text",
+            "id": "mob_height",
+            "label": "Mobile height",
+            "default": "64"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Margin"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/garyturnerbanner.png",
+        "image_2": "shopify:\/\/shop_images\/garyturner.png",
+        "custom_heading": "<p>GARY TURNER<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>GARY TURNER<\/p>",
+        "subheading": "<p>Gary Turner or as he’s known by his alias “G-Six,” is an NPC National level bodybuilder. Known for his passion, unwavering work ethic and “no excuses” mindset, Gary was added to the Animal roster in 2018 after many years of internal employment. Nothing has come easy for him and that includes bodybuilding. Every ounce of progress in the last decade was forged by blood, sweat and tears. To put it in simple terms: G-Six lives and breathes this shit.<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "GARY’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/the-dos-and-donts-for-the-gym",
+            "page": "gary-turner"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/holiday-gift-guide-for-bodybuilders",
+            "page": "gary-turner"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/how-the-gym-environment-affects-the-lifters-mentality",
+            "page": "gary-turner"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    },
+    "1674587792cf93d53d": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true,
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles",
+    "1674587792cf93d53d"
+  ]
+}

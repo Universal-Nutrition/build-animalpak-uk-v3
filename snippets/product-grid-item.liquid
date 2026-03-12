@@ -1,0 +1,72 @@
+{% assign shop_now = shop_now | default: true %}
+{% unless product.handle contains 'navidium' %}
+<div class="product-grid-item w-full relative group overflow-hidden flex flex-col lg:mb-0 justify-center items-center bg-[#ffffff]   {% if  product.media[1] != blank %}hover-change-image1{% endif %}">
+    {% for tag in product.tags %}
+        {%- if tag contains '__label:' -%}
+            {% assign customBadge = tag | split: 'label:' | last %}
+            <div class="product-badge font-sans text-[13.91px] font-semibold">
+                <span class="newlook">{{ customBadge }}</span>
+            </div>
+        {%- endif -%}
+    {% endfor %}
+    {% if product.featured_image != blank %}
+        <a href="{{product.url}}" class="w-full">
+            {% if product.media[0] != blank %}
+            {% assign image_product = product.media[0] %}
+            {% else %}
+            {% assign image_product = product.media[1] %}
+            {% endif %}
+            <img src="{{ image_product | img_url: "500x" }}" alt="{{product.title}}" class="px-3 w-full aspect-1 object-contain {% cycle 'black', 'red', 'yellow', 'blue'  %} coll-img" {% if forloop.index <= 2 %}fetchpriority="high" loading="eager"{% else %}loading="lazy"{% endif %}>
+        </a>
+    {% endif %}
+ 
+    <a href="{{product.url}}" class="product-title block text-[#212121] text-center uppercase font-compacta mt-4 font-bold text-[37.01px] leading-[29.61px] px-3 -tracking-[1px]">
+        {{product.title}}
+    </a>
+     <div class="ypm yotpo bottomLine h-[18px]" data-product-id="{{ product.id }}"> </div>
+    <div class="product-des text-[#5E5A59] text-center uppercase font-sans mt-3 text-[13.91px] px-3 capitalize">
+        {{product.metafields.custom.subtitle}}
+    </div>
+    <div class="product-price text-[#212121] text-center uppercase font-sans my-3 mb-4 text-[20px] font-semibold capitalize">
+        {% if product.price < 1 %}{% else %}{{product.price | money}} {% endif %}
+    </div>
+    {% if shop_now %}
+        <a href="{{product.url}}" class="coll-shopnow block bg-yellow lg:hidden uppercase w-full text-center py-[18px] transition duration-500 text-[#212121]">
+            shop now
+        </a>
+    {% endif %}
+    {% if  product.media[1] != blank %}
+        <a href="{{product.url}}" class="pgi_hover absolute hidden lg:block top-[5%] left-0 w-full h-[55%] opacity-0 group-hover:opacity-100 transition duration-500">
+            <img src="{{product.media[1] | img_url: "500x"}}" alt="{{product.title}}" class="w-full h-full object-cover">
+            {%- if product.metafields.custom.subtitle != blank -%}
+                <div class="pgi_hover_txt absolute bottom-10 text-center text-white px-4 font-compacta uppercase text-[56.29px] leading-[45.03px]">{{ product.metafields.custom.subtitle }}</div>
+            {%- endif -%}
+        </a>
+
+    {% endif %}
+  
+</div>
+
+  {% endunless %}
+
+<style>
+      .product-grid-item .yotpo.bottomLine .yotpo-icon-star{
+        color: #212121 !important;
+    }
+    .product-grid-item .absolute.hidden{
+        height: 55%;
+        top: 5%;
+        
+    }
+    .product-grid-item .absolute.hidden img{
+        object-fit: contain !important;
+    }
+    img.px-3{
+        transition: .5s;
+    }
+  @media (min-width:769px) {
+    .hover-change-image:hover img.px-3{
+        opacity: 0;
+    }
+  }
+</style>

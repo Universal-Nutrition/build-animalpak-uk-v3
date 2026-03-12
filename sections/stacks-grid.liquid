@@ -1,0 +1,72 @@
+<div class="stack-grid-wrap px-6 lg:px-[56px] m-auto my-10 lg:my-[64px]"> 
+    <div class="grid lg:grid-cols-3 lg:gap-8 ml-0">
+        {% for product in collection.products limit: 3 %}
+            {% include 'stack-grid-item' %}
+        {% endfor %}
+    </div>
+    <div class="m-auto">
+        {% include 'stacks-banner' %}
+    </div>
+    <div class="pt-8 grid lg:grid-cols-3 lg:gap-8 ml-0">
+        {% for product in collection.products %}
+            {% if forloop.index > 3 %}
+                {% include 'stack-grid-item' %}
+            {% endif %} 
+        {% endfor %}
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Collection Stacks",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Banner title",
+            "default": "What is a supplement stack?"
+        },
+        {
+            "type": "textarea",
+            "id": "subtitle",
+            "label": "Banner subtitle",
+            "default": "A combination of nutritional supplement products strategically taken together to optimize your workout progress and help you reach your strength and physique goals. It is important to understand which supplements can and should be taken together, and which supplements you should avoid taking together."
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Button link" 
+        },
+        {
+            "type": "color",
+            "id": "bg",
+            "label": "Background color",
+            "default": "#FEDD00"
+        },
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Desktop image"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "icon",
+            "type": "icon",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon image"
+                },
+                {
+                    "type": "text",
+                    "id": "handle",
+                    "label": "Handle related to icon"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

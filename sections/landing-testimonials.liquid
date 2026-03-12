@@ -1,0 +1,105 @@
+{{ 'bundle.section-landing-testimonials.css' | asset_url | stylesheet_tag }}
+<div>
+  <testimonial-slider>
+    <div class="testimonial-slider overflow-hidden bg-primary text-white py-16 lg:py-32">
+      {% if section.settings.custom_heading %}
+        <h2 class="text-white uppercase text-[74.438px] md:text-[85.604px] leading-[80%] tracking-[-1px] mb-6 px-6 block md:hidden">{{ section.settings.custom_heading }}</h2>
+      {% endif %}
+      <div class="swiper-wrapper px-6 md:px-0">
+        {%- for block in section.blocks -%}
+          <div aria-hidden="true" class="{% if section.blocks.size > 1 %}swiper-slide {% endif %} relative flex flex-col-reverse md:flex-row md:px-6 lg:px-14 justify-center">
+            <div class="md:w-[45%] md:pr-5 lg:pr-16 relative">
+              {% if section.settings.custom_heading %}
+                <h2 class="text-white uppercase text-[74.438px] md:text-[85.604px] leading-[80%] tracking-[-1px] mb-6 md:pt-10 hidden md:block">{{ section.settings.custom_heading }}</h2>
+              {% endif %}
+              {% if block.settings.quote != blank %}
+                <blockquote class="border-0 p-0 pb-0 md:pb-20">
+                  <p class="text-white text-[13.913px] md:text-[18.4px] leading-[160%] not-italic pb-4 md:pb-6">{{ block.settings.quote }}</p>
+                  <cite class="text-white text-[13.913px] md:text-base leading-[160%] font-bold">{{ block.settings.quote_author }}</cite>
+                </blockquote>
+              {% endif %}
+              <div class="absolute bottom-4 left-0">
+                <span class="cursor-pointer !hidden rotate-180 mr-5 border border-solid text-white border-[#fff] swiper-testimonials-prev hidden md:inline-flex right-[20px] z-[99] -translate-y-[50%] top-[50%] w-[50px] h-[50px] justify-center items-center">{% render 'icon-arrow' %}</span>
+                <span class="cursor-pointer !hidden border border-solid text-white border-[#fff] swiper-testimonials-next hidden md:inline-flex right-[20px] z-[99] -translate-y-[50%] top-[50%] w-[50px] h-[50px] justify-center items-center">{% render 'icon-arrow' %}</span>
+              </div>
+            </div>
+            <div class="md:w-[55%] md:pl-5 lg:pl-16 max-h-[664px] mb-6 md:mb-0 max-w-max">
+              {% if block.settings.image.width != blank %}
+                <img srcset="{%- if block.settings.image.width >= 375 -%}{{ block.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+                  {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+                  {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+                  {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+                  {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+                  {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w" sizes="100vw"
+                      src="{{ block.settings.image | img_url: '1500x' }}" loading="lazy"
+                      class="{% if block.settings.image_2 != blank %}hidden md:block{% endif %} w-full max-w-[664px] max-h-[664px] object-center object-cover"
+                      alt="{{ block.settings.image.alt | escape }}" width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio }}">
+                {% if block.settings.image_2 != blank %}
+                  <img srcset="{%- if block.settings.image_2.width >= 375 -%}{{ block.settings.image_2 | img_url: '375x' }} 375w,{%- endif -%}
+                    {%- if block.settings.image_2.width >= 750 -%}{{ block.settings.image_2 | img_url: '750x' }} 750w,{%- endif -%}
+                    {%- if block.settings.image_2.width >= 1100 -%}{{ block.settings.image_2 | img_url: '1100x' }} 1100w,{%- endif -%}
+                    {%- if block.settings.image_2.width >= 1500 -%}{{ block.settings.image_2 | img_url: '1500x' }} 1500w,{%- endif -%}
+                    {%- if block.settings.image_2.width >= 1780 -%}{{ block.settings.image_2 | img_url: '1780x' }} 1780w,{%- endif -%}
+                    {%- if block.settings.image_2.width >= 2000 -%}{{ block.settings.image_2 | img_url: '2000x' }} 2000w,{%- endif -%}
+                    {%- if block.settings.image_2.width >= 3000 -%}{{ block.settings.image_2 | img_url: '3000x' }} 3000w,{%- endif -%}
+                    {%- if block.settings.image_2.width >= 3840 -%}{{ block.settings.image_2 | img_url: '3840x' }} 3840w,{%- endif -%}
+                    {{ block.settings.image_2 | img_url: 'master' }} {{ block.settings.image_2.width }}w" sizes="100vw"
+                        src="{{ block.settings.image_2 | img_url: '1500x' }}" loading="lazy"
+                        class="block md:hidden w-full object-center object-cover"
+                        alt="{{ block.settings.image_2.alt | escape }}" width="{{ block.settings.image_2.width }}"
+                        height="{{ block.settings.image_2.width | divided_by: block.settings.image_2.aspect_ratio }}">
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </testimonial-slider>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "custom_heading",
+      "label": "HTML Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "textarea",
+          "id": "quote_author",
+          "label": "Quote author"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image mobile"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

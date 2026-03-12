@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 580,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/stef.png",
+        "image_2": "shopify:\/\/shop_images\/stefi.png",
+        "custom_heading": "<p>stefi cohan<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>stefi cohen<\/p>",
+        "subheading": "<p>Dr. Stefi Cohen is a 25x world record breaking powerlifter and doctor in Physical Therapy. She is the co-founder and co-owner of Hybrid Performance Method, a company dedicated to making elite level training plans and nutrition coaching affordable and accessible to everyone. She is also an author, creative content creator and a fashion designer for her apparel business Hybrid Legacy Brand.<\/p>",
+        "accolade": "accolades",
+        "cover_image": "shopify:\/\/shop_images\/Rectangle_1469.png",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "STEFI’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/common-mistakes-women-make-in-the-gym",
+            "page": "stefi-cohen"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/skill-passion-and-talent",
+            "page": "stefi-cohen"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/overcoming-injuries",
+            "page": "stefi-cohen"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles"
+  ]
+}

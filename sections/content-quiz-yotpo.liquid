@@ -1,0 +1,114 @@
+<div class="relative">
+  {% render 'content-with-quiz',
+    bg_image: section.settings.top_bg_image,
+    bottom_bg_image: section.settings.middle_bg_image,
+    title: section.settings.content_title,
+    subtitle: section.settings.content_subtitle,
+    text: section.settings.content_text,
+    quizkit_key: section.settings.quizkit_key,
+    cover_media: section.settings.cover_image,
+    video_url: section.settings.video_url,
+    description: section.settings.description
+  %}
+
+  <div class="relative mt-[-600px] -z-50 h-full w-full bg-black">
+    <div class="absolute h-full w-full brightness-[0.4]">
+      {{ section.settings.bottom_bg_image | image_url: width: 1920 | image_tag: class: "object-cover w-full h-full brightness-50" }}
+    </div>
+    <div class="pt-[600px]">
+      {% render 'yotpo-reviews-carousel',
+        title_first: section.settings.yotpo_title_first,
+        title_second: section.settings.yotpo_title_second,
+        yotpo_widget_id: section.settings.yotpo_widget_id
+      %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Content - Quiz - Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "content_title",
+      "label": "First line of title",
+      "default": "NO LABELS,"
+    },
+    {
+      "type": "text",
+      "id": "content_subtitle",
+      "label": "Second line of title (highligted)",
+      "default": "JUST HARD WORK."
+    },
+    {
+      "type": "textarea",
+      "id": "content_text",
+      "label": "Content text",
+      "default": "For more than three decades Animal has evolved from just bodybuilding supplement brand, to an ethos for living."
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "t:sections.video.settings.cover_image.label"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#FEDD00"
+    },
+    {
+      "type": "text",
+      "id": "quizkit_key",
+      "label": "Quizkit key"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_bg_image",
+      "label": "Top Repeating Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "middle_bg_image",
+      "label": "Middle Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_bg_image",
+      "label": "Bottom Background image"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "default": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+      "label": "t:sections.video.settings.video_url.label",
+      "placeholder": "t:sections.video.settings.video_url.placeholder",
+      "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "t:sections.video.settings.description.label",
+      "info": "t:sections.video.settings.description.info"
+    },
+    {
+      "type": "text",
+      "id": "yotpo_widget_id",
+      "label": "Yotpo Widget ID",
+      "info": "You can get this from https://reviews.yotpo.com/#/display-reviews/on-site-widgets - click on a widget and the ID is in the URL immediately after /widget/ e.g. 1050491"
+    },
+    {
+      "type": "text",
+      "id": "yotpo_title_first",
+      "label": "Review Title (first part)"
+    },
+    {
+      "type": "text",
+      "id": "yotpo_title_second",
+      "label": "Review Title (highlighted second part)"
+    }
+  ]
+}
+{% endschema %}

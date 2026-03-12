@@ -1,0 +1,59 @@
+{% assign mobile_img = collection.metafields.custom.banner_mobile_image %}
+{% assign desktop_img = collection.metafields.custom.banner_desktop_image %}
+
+{% comment %} Preload banner images for better performance {% endcomment %}
+{% if desktop_img != blank %}
+  <link rel="preload" as="image" href="{{desktop_img | img_url: 'master'}}" fetchpriority="high">
+{% endif %}
+{% if mobile_img != blank %}
+  <link rel="preload" as="image" href="{{mobile_img | img_url: 'master'}}" fetchpriority="high" media="(max-width: 1024px)">
+{% endif %}
+
+{% if settings.ss_enable and collection.handle == settings.ss_collection_handle %}
+  <div class="px-6 pt-[64px] lg:pt-[118px] lg:px-14 relative bg-[#212121]">
+    <div class="absolute top-[17px] hidden lg:block">
+      {% include 'breadcrumbs' color: '#fff' %}
+    </div>
+    <div id="searchspring-header"></div>
+  </div>
+{% else %}
+  <div class="collection-banner px-6 pt-[252px] lg:pt-[233px] pb-[32px] lg:pb-[96px] lg:px-14 relative lg:h-[500px]">
+    <div class="gradient-overlay"></div>
+    <div class="absolute top-[17px] hidden lg:block">
+      {% include 'breadcrumbs' color: '#fff' %}
+    </div>
+    <h1 class="relative text-white text-[74.44px] lg:text-[85.6px] font-compacta font-bold uppercase max-w-[610px] leading-[59.55px] lg:leading-[68.48px] z-10">
+      {{collection.title}}<span class="dot text-yellow text-[85.6px] font-compacta font-bold">.</span>
+    </h1>
+    <div class="relative pt-2 lg:pt-4 text-white text-[13.91px] lg:text-[18.4px] max-w-[600px] font-normal font-sans">
+      {{collection.description}}
+    </div>
+  </div>
+{% endif %}
+
+<style>
+  .text-white span{
+    color: #fff !important;
+  } 
+  span.dot{
+    color: var(--yellow) !important;
+  }
+  {% if desktop_img != blank %}
+    .collection-banner {
+      background: url({{desktop_img | img_url: "master"}});
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #000;
+    }
+  {% endif %}
+  {% if mobile_img != blank %}
+    @media screen and (max-width: 1024px) {
+      .collection-banner {
+        background: url({{mobile_img | img_url: "master"}});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #000;
+      }
+    }
+  {% endif %}
+</style>

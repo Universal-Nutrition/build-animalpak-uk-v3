@@ -1,0 +1,86 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 615,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/john_3bca86d6-17da-456d-ba30-58378b1c2581.png",
+        "image_2": "shopify:\/\/shop_images\/Rectangle_1435_f4ea5e39-c0de-4f3a-b7a4-9f3e7eb0e63b.png",
+        "custom_heading": "<p>john jewett<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>john jewett<\/p>",
+        "subheading": "<p>John first started lifting in middle school. His parents had a two-story workshop and he had a bench and dumbbells on the second story, which also had no lighting. It was dark and John was alone and doing something he loved. He would see all those old black and white Animal Ads and just thrive on living out the hardcore journey. In school he couldn’t satisfy his knowledge on training or nutrition. He had to read everything and know how the body worked; John is a bit of a muscle nerd. This led John to get his Bachelors in Exercise Science and Masters in Nutrition, becoming a Registered Dietitian.<\/p><p>Now as an IFBB pro he has worked his way up the ranks now being a top 5 Olympia competitor. When he first started, he set his goal too low and didn’t see the potential in himself. So, set that goal high and make sure everyone thinks you are crazy, then you know your goal is right.<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "JOHN’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/how-to-find-the-right-pre-workout-for-you",
+            "page": "john-jewett"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/how-to-lose-weight-without-doing-cardio",
+            "page": "john-jewett"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/creatine-muscle-pumps-brain-gains-and-pooping-your-pants",
+            "page": "john-jewett"
+          }
+        },
+        "cdf843ab-a73b-48c5-b90a-8b546ebdaf78": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/dont-make-this-training-mistake-in-your-fat-loss-phase",
+            "page": "john-jewett"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa",
+        "cdf843ab-a73b-48c5-b90a-8b546ebdaf78"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles"
+  ]
+}

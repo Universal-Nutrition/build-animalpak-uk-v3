@@ -1,0 +1,70 @@
+{%comment%}
+<div class='absolute inset-0 top-1/2 bg-white  right-[58.55%]' aria-hidden='true'></div>
+                            <div class='relative bg-white !bg-transparent'>
+                              <div class='mx-auto'>
+                                <div class='mega-nav-wrap mega-nav__row grid grid-cols-meganav gap-y-10 gap-x-0 '>
+                                  {% assign link_title = link.title | downcase %}
+                                  {% assign product_blocks = false %}
+                                  {% for block in section.blocks %}
+                                    {% assign nav_menu_name = block.settings.nav_menu | downcase %}
+                                    {% if link_title == nav_menu_name %}
+                                      {% assign product_blocks = true %}
+                                    {% endif %}
+                                  {% endfor %}
+                                  <div
+                                    class='mega-nav__blog-container col-start-2 {% if section.settings.meganav_bg_style2 != blank %}mega-nav__blog-container--bg2{% endif %}'
+                                    style='{% if section.settings.meganav_bg_style2 == blank and section.settings.meganav_bg != blank %}background-color: {{ section.settings.meganav_bg }};{% endif %} {% if section.settings.meganav_bg_style2 != blank %}background-image: url('{{ section.settings.meganav_bg_style2 | img_url: 'master' }}');{% endif %}'
+                                  >
+                                    <div class='mega-nav__blog-row group relative grid grid-cols-2 gap-x-8'>
+                                      {% if section.settings.meganav_blog_1 and product_blocks == false %}
+                                        {%- for article in section.settings.meganav_blog_1.articles limit: 2 -%}
+                                          <div class='blog__post article'>
+                                            {% render 'menu-article-card' with blog: section.settings.meganav_blog_1, article: article, show_image: true, show_author: true, show_excerpt: false %}
+                                          </div>
+                                        {%- endfor -%}
+                                      {% endif %}
+                                      {% if product_blocks == true %}
+                                        {% for block in section.blocks %}
+                                          {% render 'product-card-menu',
+                                            product_card_product: block.settings.product,
+                                            media_size: 'adapt',
+                                            custom_image: block.settings.image,
+                                            custom_title: block.settings.product_title,
+                                            custom_description: block.settings.product_description,
+                                            show_price: block.settings.show_price,
+                                            product_link: block.settings.product_link
+                                          %}
+                                        {% endfor %}
+                                      {% endif %}
+                                    </div>
+                                  </div>
+
+                                  <div class='row-start-1 flex grid-cols-3 gap-y-10 gap-x-8 pt-12.5 pl-10 bg-white'>
+                                    {% for childlink in link.links %}
+                                      <div id='Clothing-heading'>
+                                        <span class='mega-nav__subitem cursor-default'>{{ childlink.title }}</span>
+                                        {% if childlink.links != blank %}
+                                          <ul
+                                            role='list'
+                                            aria-labelledby='Clothing-heading'
+                                            class='mt-0 space-y-6 sm:mt-4 sm:space-y-4 !mb-0'
+                                          >
+                                            {% for grandchildlink in childlink.links %}
+                                              <li class='flex !m-0'>
+                                                <a
+                                                  href='{{ grandchildlink.url }}'
+                                                  class='font-medium text-black mega-nav__childitem hover:opacity-50 transition duration-500'
+                                                >
+                                                  {{- grandchildlink.title -}}
+                                                </a>
+                                              </li>
+                                            {% endfor %}
+                                          </ul>
+                                        {% endif %}
+                                      </div>
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>{%endcomment%}

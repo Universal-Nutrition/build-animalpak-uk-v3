@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "5c60d69a-ff11-4ddd-a518-9d816919a220": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 385,
+        "m_height": 240,
+        "image": "shopify://shop_images/animal-lg-texture_13415b9e-f293-4942-8cff-d974f6471b40.jpg",
+        "image_2": "shopify://shop_images/animal-lg-texture_13415b9e-f293-4942-8cff-d974f6471b40.jpg",
+        "custom_heading": "<p>BLOG ARTICLES</p>",
+        "subheading": "<p>Learn training, nutrition and supplement strategies from Animal UK. Bodybuilding guides, workout advice, stack breakdowns and performance support.</p>",
+        "text_alignment": "left"
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "featured_positions": ""
+      }
+    }
+  },
+  "order": [
+    "5c60d69a-ff11-4ddd-a518-9d816919a220",
+    "main"
+  ]
+}

@@ -1,0 +1,38 @@
+<div class="block-tops">
+    {% include 'breadcrumbs' %}
+    <h1 id="vv">{{ collection.title }}</h1>
+    <ul class="stack-bt-menu" style="display:flex">
+        {% for link in linklists[section.settings.menu].links %}
+            <a href="{{ link.url }}" class="{% if link.active %}active{% endif %} {{ section.settings.menu.handle }}">{{ link.title }}</a>
+        {% endfor %}
+    </ul>
+</div>
+<div class="px-6 lg:px-[58px] coll_nudge">
+    {% if collection.description != blank %}
+        <div class="col-desc">{{ collection.description }}</div>
+    {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Block Tops",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu List"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Block Top"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

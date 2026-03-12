@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.modal-title {
+  font-family: "Anton", serif;
+  text-transform: uppercase;
+  font-size: 31px;
+}
+.btn-success {
+  font-family: "Anton", serif;
+  text-transform: uppercase;
+  font-size: 21px;
+}

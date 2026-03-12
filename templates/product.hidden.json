@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "blocks": {
+        "888ae3f5-925a-49b0-a5cf-314b12605fdc": {
+          "type": "link",
+          "settings": {
+            "button_label": "Shop All Products",
+            "button_link": "shopify:\/\/collections\/all"
+          }
+        },
+        "99607345-9710-44f7-9819-3ea16e892c5d": {
+          "type": "link",
+          "settings": {
+            "button_label": "Go To Homepage",
+            "button_link": "\/"
+          }
+        }
+      },
+      "block_order": [
+        "888ae3f5-925a-49b0-a5cf-314b12605fdc",
+        "99607345-9710-44f7-9819-3ea16e892c5d"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_1433_ab7dd15c-770c-4c98-93b6-0f50b284b58d.png",
+        "bg_color": "#212121",
+        "title": "<strong>Oops,<\/strong> That page doesn’t exist",
+        "text": "That page doesn’t exist or is currently under maintenance."
+      }
+    },
+    "ss-recommendations-404": {
+      "type": "ss-recommendations",
+      "settings": {
+        "profileId": "404-session"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ss-recommendations-404"
+  ]
+}

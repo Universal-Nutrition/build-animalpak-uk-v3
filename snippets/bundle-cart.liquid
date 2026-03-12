@@ -1,0 +1,208 @@
+{% assign product = section.blocks[0].settings.collection.products[0] %}
+
+<div class="flex bundle-cart__header justify-between items-center bg-yellow lg:hidden px-6 py-4">
+    <div>
+        <div class="text-base font-sans font-bold capitalize">view your bundle</div>
+        <div class="bundle-cart__amount font-sans font-light text-[13.91px] mt-1">0 products added</div>
+    </div>
+    <div class="flex">
+        <div class="bundle-cart__price text-base font-sans font-bold mr-3">{{0 | money}}</div>
+        <span class="flex items-center">{% include 'icon-chevron-bottom' %}</span> 
+    </div>
+</div>
+<div class="pt-6 lg:pt-0 w-full pb-6 px-6 lg:px-0 lg:w-[432px] lg:ml-[64px] sticky top-[130px]">
+    <div class="flex justify-between">
+        <div
+            class="bundle-cart__amount font-compacta uppercase text-primary font-bold text-[24.33px] lg:text-[37.01px] leading-[19.46px] lg:leading-[29.61px] tracking-[-1px]">
+            0 products added</div>
+        <div
+            class="bundle-cart__price font-compacta uppercase text-primary font-bold text-[24.33px] lg:text-[37.01px] leading-[29.61px]">
+            {{0 | money}}</div>
+    </div>
+    <div class="discount-applied mt-1 text-primary font-sans text-base"></div>
+    <div class="mt-4 flex justify-between relative">
+        <div class="absolute w-full h-[1px] bg-primary top-[37%] lg:top-[40%] left-0"></div>
+        {% for i in (0 .. 3) %}
+        <div class="w-[22%] lg:w-[unset]">
+            <div class="relative w-full aspect-1 lg:w-[88px] lg:h-[88px] bg-[#F5F5F5]">
+                <img src="{{" placeholder.png" | asset_url}}"
+                    class="absolute top-0 left-0 w-full h-full bundle-item__placeholder" data-index="{{i}}" alt="bundle-item__placeholder">
+                <img src="" class="absolute top-0 left-0 w-full object-contain p-1 h-full bundle-item__selected !hidden" alt="bundle-item__selected"
+                    data-index="{{i}}">
+                <div class="absolute bundle-cart__remove -top-[5px] right-[-5px] p-[10px] cursor-pointer !hidden"
+                    data-index="{{i}}">
+                    <svg class="pointer-events-none" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 2L2 10" stroke="#111111" stroke-width="1.5" stroke-linecap="square" />
+                        <path d="M2 2L10 10" stroke="#111111" stroke-width="1.5" stroke-linecap="square" />
+                    </svg>
+                </div>
+            </div>
+            <div
+                class="one-time-discount !hidden w-full lg:w-[88px] text-center mt-1 text-[12.1px] leading-[19.36px] font-sans font-semibold text-primary">
+                {% if forloop.first %}
+                First <br> Product
+                {% else %}
+                Buy {{i | plus: 1}} <br> Save {{i | times: 5 | plus: 5}}%
+                {% endif %}
+            </div>
+            <div
+                class="subs-discount w-full lg:w-[88px] text-center mt-1 text-[12.1px] leading-[19.36px] font-sans font-semibold text-primary">
+                {% if forloop.first %}
+                1 Sub <br> Save 10%
+                {% else %}
+                {{i | plus: 1}} Subs <br> Save {{i | times: 5 | plus: 10}}%
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="border border-solid border-[#DBDBDB] mt-4">
+
+        <div class="subscription flex justify-between p-4 active">
+            <div>
+                <input type="radio" name="purchase" id="subscribe" class="cursor-pointer" checked value="subscribe">
+                <label for="subscribe"
+                    class="relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer">Subscribe
+                    & save</label>
+            </div>
+            <div class="flex">
+                <div class="original-price line-through text-[#5E5A59] mr-2 text-[13.91px]">{{0 | money}}</div>
+                <div class="subscribe-price text-[#E00029] font-semibold text-[13.91px]">{{0 | money}}</div>
+            </div>
+
+        </div>
+        <div class="subscription-wrapper bg-[#F5F5F5] active">
+            <div class="subscribe-points bg-[#F5F5F5] px-4 pb-3 pl-10">
+                <div class="flex mb-2">{% render 'icon-checkmark' %} <span
+                        class="font-sans font-light text-[13.91px] ml-3 text-primary">Always Free Shipping</span></div>
+                <div class="flex mb-2">{% render 'icon-checkmark' %} <span
+                        class="font-sans font-light text-[13.91px] ml-3 text-primary">Cancel or Pause Your Subscription Anytime</span></div>
+                <div class="flex mb-2">{% render 'icon-checkmark' %} <span
+                        class="font-sans font-light text-[13.91px] ml-3 text-primary">90 Day Money Back Guarantee</span></div>
+            </div>
+            <div class="text-[14px] p-4 pt-0 bg-[#F5F5F5]">
+                {% for selling_plan_group in product.selling_plan_groups %}
+                    
+                <select
+                    class="subscription-select text-[13.91px] text-primary border border-solid border-[#DBDBDB] bg-[#F5F5F5] outline-0 cursor-pointer h-[56px] flex items-center pl-3 w-full">
+                    <option value="" selected disabled hidden>Delivery frequency</option>
+                    {% for selling_plan in selling_plan_group.selling_plans %}
+                    <option class="subscription-option" data-name="{{ selling_plan.name }}"
+                        data-discount="{{selling_plan.price_adjustments[0].value}}">
+                        {{ selling_plan.name }}
+                    </option>
+
+                    {% endfor %}
+                </select>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="subscription flex justify-between p-4 border-0 border-t border-solid border-[#DBDBDB]">
+            <div>
+                <input type="radio" name="purchase" id="one-time" class="cursor-pointer" value="one-time">
+                <label for="one-time"
+                    class="relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer">One-time
+                    purchase</label>
+            </div>
+            <div class="flex">
+                <div class="original-price line-through text-[#5E5A59] mr-2 text-[13.91px]">{{0 | money}}</div>
+                <div class="one-time-price font-semibold text-[13.91px]">{{0 | money}}</div> 
+            </div>
+        </div>
+    </div>
+    <button
+        class="bundle__submit mt-4 w-full border border-solid border-yellow hover:bg-white tracking-[1px] hover:border-primary transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px] disabled">add
+        products</button>
+</div>
+
+<style>
+    .subscription.active {
+        background: #F5F5F5;
+    }
+
+    .bundle__submit.disabled {
+        background: #DBDBDB;
+        border-color: #DBDBDB;
+        pointer-events: none;
+    }
+
+    .subscription input {
+        display: none !important;
+    }
+
+    .subscribe-points svg {
+        width: 16px;
+    }
+
+    .subscription-wrapper {
+        overflow: hidden;
+        transition: .5s;
+        height: 0;
+    }
+
+    .subscription-wrapper.active {
+        height: auto;
+    }
+
+    .subscription input+label:before {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+        top: -1px;
+        left: 0;
+        margin-right: 6px;
+        position: relative;
+        background-color: #fff;
+        content: '' !important;
+        box-shadow: 0 0 0 1px #212121;
+        display: inline-block;
+        visibility: visible;
+    }
+
+    .subscription input:checked+label:before {
+        background-color: #212121;
+        border: 4px solid #F5F5F5;
+    }
+
+    .bundle-cart__header path {
+        stroke: #212121;
+    }
+
+    .subscription-select {
+        position: relative;
+        -webkit-appearance: none;
+    }
+
+    .subscription-select:after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        width: 8px;
+        height: 8px;
+        display: block;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+        transform: rotate(45deg);
+    }
+
+    @media screen and (max-width: 1024px) {
+        .bundle-cart {
+            transform: translateY(calc(100% - 80px));
+            transition: 1s;
+        }
+        iframe{
+            display: none !important;
+        }
+        .bundle-cart.active {
+            transform: translateY(0);
+        }
+
+        .bundle-cart__header.active svg {
+            transform: rotate(180deg);
+        }
+    }
+</style>

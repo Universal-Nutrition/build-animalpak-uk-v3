@@ -1,0 +1,137 @@
+<div class='flex'>
+    <div class='flex flex-nowrap justify-between items-center w-full py-6 {% if forloop.first %}pt-0{% endif %} border-b border-solid border-t-0 border-l-0 border-r-0 border-mediumBorder'>
+        <div
+        class='mobile-nav__header flex w-full justify-between items-center'
+        data-trigger-menu='{{ link.handle }}'
+        >
+          <p id='mobile-featured-heading-0' class='text-white mobile-nav__item m-0'>{{ link.title }}</p>
+          {% render 'icon-chevron-right' with classes: 'flex w-8 h-8 mr-0' %}
+        </div>
+        <div
+        class='submenu bg-[#000000] w-full h-screen flex justify-start items-start flex-col flex-nowrap absolute top-0 left-0 overflow-x-hidden  z-10  overflow-y-auto duration-150 translate-x-full'
+        data-menu='{{ link.handle }}'
+        >
+        {% render 'mobile-menu-header', section: section, link: link, first_level: false %}
+        <ul
+            role='list'
+            aria-labelledby='mobile-featured-heading-0'
+            class='space-y-6 w-full pb-0 bg-white'
+        >
+          {% for childlink in link.links %}
+            {% if childlink.links != blank %}
+              <div class='flex !mt-0'>
+                <div class=' flex flex-nowrap justify-between items-center w-full py-6 border-b border-solid border-t-0 border-l-0 border-r-0 border-mediumBorder'>
+                  <div
+                    class='mobile-nav__header flex w-full justify-between items-center'
+                    data-trigger-menu='{{ childlink.handle }}'
+                  >
+                    <p id='mobile-featured-heading-0' class='text-black mobile-nav__item m-0 font-bebasNeueExpanded'>{{ childlink.title }}</p>
+                    {% render 'icon-chevron-right' with classes: 'flex w-8 h-8 mr-0' %}
+                  </div>
+                  <div
+                    class='submenu bg-[#000000] w-full h-screen flex justify-start items-start flex-col flex-nowrap absolute top-0 left-0 overflow-x-hidden z-10  overflow-y-auto duration-150 translate-x-full'
+                    data-menu='{{ childlink.handle }}'
+                  >
+                    {% render 'mobile-menu-header', section: section, link: childlink, first_level: false %}
+                    <ul
+                      role='list'
+                      aria-labelledby='mobile-featured-heading-0'
+                      class='space-y-6 w-full pb-0 bg-white'
+                    >
+                      {% for grandchildlink in childlink.links %}
+                          <a href='{{ grandchildlink.url }}' class='!mt-0 flex flex-nowrap justify-between items-center w-full py-6 border-b border-solid border-t-0 border-l-0 border-r-0 border-mediumBorder'>
+                            <div
+                              class='mobile-nav__header h-8 flex w-full justify-between items-center'>
+                              <p id='mobile-featured-heading-0' class='text-black mobile-nav__item m-0 font-bebasNeueExpanded'>{{ grandchildlink.title }}</p>
+                            </div>
+                          </a>
+                        {% endfor %}
+                    </ul>
+                    {% render 'mobile-menu-footer', section: section %}
+
+                    {% comment %} <div
+                        class='mobile-nav__blog-container w-full mt-10'
+                        style='{% if section.settings.meganav_bg != blank %}background-color: {{ section.settings.meganav_bg }};{% endif %}'
+                    >
+                        {% assign link_title = link.title | downcase %}
+                        {% assign product_blocks = false %}
+                        {% for block in section.blocks %}
+                        {% assign nav_menu_name = block.settings.nav_menu | downcase %}
+                        {% if link_title == nav_menu_name %}
+                            {% assign product_blocks = true %}
+                        {% endif %}
+                        {% endfor %}
+                        {% if link_title == 'learn' %}
+                        <div class='mobile-nav__blog-row group relative flex items-center justify-center'>
+                            {%- for article in section.settings.meganav_blog_1.articles limit: 2 -%}
+                            <div class='blog__post article w-full {% if forloop.first %}mb-3{% endif %}'>
+                                {% render 'menu-article-card' with blog: section.settings.meganav_blog_1, article: article, show_image: true, show_author: false, show_excerpt: false %}
+                            </div>
+                            {%- endfor -%}
+                        </div>
+                        {% else %}
+                        {% comment %} <div class="custom_recently_viewed">
+                        <div class="custom_recently_viewed_container">
+                            <div class="custom_recently_heading">
+                            <span class="recently_heading">Recently viewed</span>
+                            </div>
+                            <div class="custom_recently_container">
+                            {% render 'recently-viewed' %}
+                            </div>
+                        </div>
+                        </div> {% endcomment %}
+                        {% endif %}
+                    </div> {% endcomment %}
+                    </div>
+                </div>
+              </div>
+            {% else %}
+              <a href='{{ childlink.url }}' class=' !mt-0 flex flex-nowrap justify-between items-center w-full py-6 border-b border-solid border-t-0 border-l-0 border-r-0 border-mediumBorder'>
+                <div
+                  class='mobile-nav__header h-8 flex w-full justify-between items-center'>
+                  <p id='mobile-featured-heading-0' class='text-black mobile-nav__item m-0 font-bebasNeueExpanded'>{{ childlink.title }}</p>
+                </div>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        {% comment %} <div
+            class='mobile-nav__blog-container w-full mt-10'
+            style='{% if section.settings.meganav_bg != blank %}background-color: {{ section.settings.meganav_bg }};{% endif %}'
+        >
+            {% assign link_title = link.title | downcase %}
+            {% assign product_blocks = false %}
+            {% for block in section.blocks %}
+            {% assign nav_menu_name = block.settings.nav_menu | downcase %}
+            {% if link_title == nav_menu_name %}
+                {% assign product_blocks = true %}
+            {% endif %}
+            {% endfor %}
+            {% if link_title == 'learn' %}
+            <div class='mobile-nav__blog-row group relative flex items-center justify-center'>
+                {%- for article in section.settings.meganav_blog_1.articles limit: 2 -%}
+                <div class='blog__post article w-full {% if forloop.first %}mb-3{% endif %}'>
+                    {% render 'menu-article-card' with blog: section.settings.meganav_blog_1, article: article, show_image: true, show_author: false, show_excerpt: false %}
+                </div>
+                {%- endfor -%}
+            </div>
+            {% else %}
+            <div class="custom_recently_viewed">
+            <div class="custom_recently_viewed_container">
+                <div class="custom_recently_heading">
+                <span class="recently_heading">Recently viewed</span>
+                </div>
+                <div class="custom_recently_container">
+                {% render 'recently-viewed' %}
+                </div>
+            </div>
+            </div>
+            {% endif %}
+        </div> {% endcomment %}
+          <!-- Mobile Menu Footer -->
+          {% render 'mobile-menu-footer', section: section %}
+          <!-- /Mobile Menu Footer -->
+        </div>
+    </div>
+</div>

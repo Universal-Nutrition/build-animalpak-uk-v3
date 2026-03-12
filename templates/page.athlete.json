@@ -1,0 +1,86 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/Image23.jpg",
+        "image_2": "shopify:\/\/shop_images\/Image33.jpg",
+        "custom_heading": "<p>EVAN CENTOPANI<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>EVAN CENTOPANI<\/p>",
+        "subheading": "<p>Evan Centopani has been part of the ANIMAL team since 2006. Earning his IFBB professional status in 2007 at 25 years old, Evan is a 3x IFBB champion who has competed several times in the Arnold Classic and Mr. Olympia. Although Evan has enjoyed a good deal of competitive success on the stage, he is perhaps best known for his nutrition expertise and is arguably most at home in the kitchen. Evan has always maintained a strong rapport with fans; from the seasoned veteran to the beginning weightlifter and everyone in between.<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "EVAN’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/ways-to-improve-mental-health",
+            "page": "evan-centopani"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/the-build-guidelines-for-the-rack",
+            "page": "evan-centopani"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/adaptation-the-key-to-success",
+            "page": "evan-centopani"
+          }
+        },
+        "798e29e9-7a51-4bc9-aef8-d3bb8eb65968": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/animal-meal-questions-answers-with-evan-centopani",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa",
+        "798e29e9-7a51-4bc9-aef8-d3bb8eb65968"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles"
+  ]
+}

@@ -1,0 +1,82 @@
+ {% liquid 
+  assign bgImg = section.settings.bg_img
+  assign mobileBgImg = section.settings.mobile_bg_img
+  assign text = section.settings.text
+%}
+
+<pdp-full-width-img id="product-full-width-image">
+  <section id="section-hero-medium" class="relative h-[700px] sm:h-[800px]">
+    <div class="gradient-overlay z-10"></div>
+    <div class="container h-full px-5 flex items-end relative z-20">
+      <div class="flex flex-col justify-start items-start">
+        
+        {% if text != blank %}
+          <h2 class="text-6xl sm:text-7xl xl:text-x2 text-white tight-line-height uppercase lg:ml-20 mb-20 max-w-[1050px]">
+            {{ text }}
+          </h2>
+        {% endif %}
+
+      </div>
+    </div>  
+
+    <div class="hidden sm:block absolute w-full h-full top-0 left-0">
+     {{ bgImg | image_url: width: 2000 | image_tag: widths: '200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1800, 2000', sizes: '100vh', alt: mainImage.alt, class: 'img w-full h-full object-cover object-center mx-auto relative', loading: 'lazy' }}
+     </div>
+
+    <div class="block sm:hidden absolute w-full h-full top-0 left-0">
+     {{ mobileBgImg | image_url: width: 1000 | image_tag: widths: '400, 500, 600, 700, 800, 900, 1000', alt: mainImage.alt, class: 'img w-full h-full object-cover object-center mx-auto relative', loading: 'lazy' }}
+     </div>
+    
+  </section>
+</pdp-full-width-img>
+
+<style>
+#product-text-and-badge .paragraph-text p {
+  color: #212121;
+}
+</style>
+
+{% javascript %}
+class pdpFullWidthImg extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {}
+}
+
+customElements.define('pdp-full-width-img', pdpFullWidthImg);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Product Full Width Image",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Headline text"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_img",
+      "label": "Background image",
+      "info": "Minimum 2000px x 800px"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg_img",
+      "label": "Mobile background image",
+      "info": "Minimum 600px x 1000px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product - Full Width Image Section",
+      "category": "Sections"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

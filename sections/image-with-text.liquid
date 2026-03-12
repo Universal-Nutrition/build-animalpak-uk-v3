@@ -1,0 +1,153 @@
+
+        <!-- {%- if section.settings.image != blank -%}
+          <img
+            srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+              {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+              {%- if section.settings.image.width >= 535 -%}{{ section.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+              {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+              {%- if section.settings.image.width >= 1070 -%}{{ section.settings.image | img_url: '1070x' }} 1070w,{%- endif -%}
+              {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+              {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+            src="{{ section.settings.image | img_url: '1500x' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+            alt="{{ section.settings.image.alt | escape }}"
+            loading="lazy"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+          >
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%} -->
+     
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class=" md:flex relative bg-black-800 ">
+  <div class="h-56 bg-black-800 sm:h-72  md:left-0 md:h-full md:w-1/2 image-wrapper">
+    <img
+      srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image | img_url: '1500x' }}"
+      loading="lazy"
+      class="w-full desktops"
+      alt="{{ section.settings.image.alt | escape }}"
+      width="{{ section.settings.image.width }}"
+      height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+    >
+    {% if section.settings.image2 != blank %}
+     <img
+      srcset="{%- if section.settings.image2.width >= 375 -%}{{ section.settings.image2 | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.image2.width >= 750 -%}{{ section.settings.image2 | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.image2.width >= 1100 -%}{{ section.settings.image2 | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.image2.width >= 1500 -%}{{ section.settings.image2 | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.image2.width >= 1780 -%}{{ section.settings.image2 | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.image2.width >= 2000 -%}{{ section.settings.image2 | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.image2.width >= 3000 -%}{{ section.settings.image2 | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.image2.width >= 3840 -%}{{ section.settings.image2 | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.image2 | img_url: 'master' }} {{ section.settings.image2.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image2 | img_url: '1500x' }}"
+      loading="lazy"
+      class="w-full mobiles"
+      alt="{{ section.settings.image2.alt | escape }}"
+      width="{{ section.settings.image2.width }}"
+      height="{{ section.settings.image2.width | divided_by: section.settings.image2.aspect_ratio }}"
+    >
+    {% else %}
+      <img
+      srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image | img_url: '1500x' }}"
+      loading="lazy"
+      class="w-full mobiles"
+      alt="{{ section.settings.image.alt | escape }}"
+      width="{{ section.settings.image.width }}"
+      height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+    >
+{% endif %} 
+  </div>
+  <div class="relative text-content">
+    <div class="md:ml-auto">
+      <h2 class="text-base font-semibold uppercase tracking-wider text-gray-300">{{section.settings.lead}}</h2>
+      <p class="title text-white">{{section.settings.title}}</p>
+      <p class="text text-white">{{section.settings.text | replace: '&lt;', '<' | replace: '&gt;', '>' }}
+      </p>
+      <div class="mt-0">
+        <div class="inline-flex rounded-md shadow">
+          <a href="{{section.settings.button_link}}" class=" btn-primary inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-black bg-lightPrimaryBlue hover:bg-gray-900">
+            {{section.settings.button_label}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.image-with-text.name",
+  "class":"image-with-text spaced-section--boxed",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "lead",
+      "default": "Lead text here",
+      "label": "Lead text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Title Goes here!",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "default": "Text goes here!",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Button label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image-with-text.presets.name"
+    }
+  ]
+}
+{% endschema %}

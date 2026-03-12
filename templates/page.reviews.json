@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "9eda50a4-3f49-40af-ab25-39ea1be05301": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify://shop_images/5StarReviews_Desktop.png",
+        "image_2": "shopify://shop_images/5StarReviews_Mobile.png",
+        "custom_heading": "<p>FIVE STAR RATINGS and REVIEWS<strong>.</strong></p>",
+        "subheading": "<p>Trust is earned, we are only as strong as the faith you have in us. See what our customers are saying about our sports nutrition supplement products and the Animal brand.</p>",
+        "text_alignment": "left"
+      }
+    },
+    "f3bfa050-4913-40ac-ad99-74d5a761b21d": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1248937\"/>"
+      }
+    },
+    "914b13c4-56c7-453f-9ccd-691894e67596": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n.yotpo-verified-buyer .yotpo-icon-circle-checkmark {\n  position: relative !important;\n  top: 0 !important;\n}\n\n.yotpo .yotpo-nav ul .yotpo-nav-tab.yotpo-active .yotpo-nav-wrapper {\n  border-color: #f5d500 !important\n}\n</style>"
+      }
+    }
+  },
+  "order": [
+    "9eda50a4-3f49-40af-ab25-39ea1be05301",
+    "f3bfa050-4913-40ac-ad99-74d5a761b21d",
+    "914b13c4-56c7-453f-9ccd-691894e67596"
+  ]
+}

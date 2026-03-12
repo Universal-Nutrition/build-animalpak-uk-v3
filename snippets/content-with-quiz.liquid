@@ -1,0 +1,169 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+<div class="relative sm:px-6">
+  {% comment %}
+    {% # Another approach to the background overlay. %}
+    <div
+      class="absolute inset-0 -z-10 w-full h-full"
+      style="background: url('{{ bg_image | image_url }}') top repeat; background-size: contain;"
+    >
+      <!-- Bottom Image (Overlaying) -->
+      <img
+        width="1920"
+        height="1080"
+        src="{{ bottom_bg_image | image_url: width: 3851 }}"
+        class="absolute bottom-0 left-0 w-full h-[300px]"
+        alt="Bottom Overlay Image"
+      >
+    </div>
+  {% endcomment %}
+
+  {% comment %}
+      {% # Another approach to the background overlay. %}
+    <div
+      class="absolute inset-0 -z-10 h-full"
+      style="
+            background: url('{{ bottom_bg_image | image_url }}') bottom center/100% auto no-repeat,
+        url('{{ bg_image | image_url }}') top/100% auto repeat;
+      "
+    ></div>
+  {% endcomment %}
+  <div
+    class="absolute inset-0 -z-10 h-full"
+  >
+    <div class="flex flex-col h-full">
+      <div
+        class="flex-1"
+        style="background: url('{{ bg_image | image_url }}') top repeat; background-size: contain;"
+      ></div>
+      <div class="flex-none">{{ bottom_bg_image | image_url: width: 1920 | image_tag: class: 'w-full' }}</div>
+    </div>
+  </div>
+
+  <div class="flex flex-col lg:flex-row mx-auto pt-10 px-6 sm:px-16 xl:px-32 lg:gap-24 xl:gap-32 items-center">
+    <div class="text-[60px] text-center lg:text-left md:text-[80px] xl:text-[100px] font-anton flex-1 flex flex-col pb-16">
+      <div class="lg:ml-10">{{ title }}</div>
+      <div class="[clip-path:polygon(0%_5%,100%_0%,100%_95%,0%_100%)] text-white bg-black px-10 leading-none py-6">
+        {{ subtitle }}
+      </div>
+    </div>
+    <div class="flex-1 text-[15px] md:text-[18px] lg:text-[20px]">
+      {{ text }}
+    </div>
+  </div>
+
+  <div class="py-10">
+    {% render 'quiz-kit', quiz_key: quizkit_key %}
+  </div>
+
+  <div class="about-us-story__video-container max-w-full lg:max-w-[1000px] mx-auto">
+    <noscript>
+      <div class="video-section__media about-us-story__media">
+        {% if cover_image != blank %}
+          style="padding-bottom: {{ 1 | divided_by: cover_image.aspect_ratio | times: 100 }}%;"
+        {%- endif %}
+        >
+        <a
+          href="{{ video_url }}"
+          class="video-section__poster about-us-story__poster media media--transparent media--landscape{% if cover_image == blank %} video-section__placeholder{% endif %}"
+        >
+          {%- if cover_image != blank -%}
+            <img
+              srcset="
+                {%- if cover_image.width >= 375 -%}{{ cover_image | image_url: width: '375x' }} 375w,{%- endif -%}
+                {%- if cover_image.width >= 750 -%}{{ cover_image | image_url: width: '750x' }} 750w,{%- endif -%}
+                {%- if cover_image.width >= 1100 -%}{{ cover_image | image_url: width: '1100x' }} 1100w,{%- endif -%}
+                {%- if cover_image.width >= 1500 -%}{{ cover_image | image_url: width: '1500x' }} 1500w,{%- endif -%}
+                {%- if cover_image.width >= 1780 -%}{{ cover_image | image_url: width: '1780x' }} 1780w,{%- endif -%}
+                {%- if cover_image.width >= 2000 -%}{{ cover_image | image_url: width: '2000x' }} 2000w,{%- endif -%}
+                {%- if cover_image.width >= 3000 -%}{{ cover_image | image_url: width: '3000x' }} 3000w,{%- endif -%}
+                {%- if cover_image.width >= 3840 -%}{{ cover_image | image_url: width: '3840x' }} 3840w,{%- endif -%}
+                {{ cover_image | image_url }} {{ cover_image.width }}w
+              "
+              src="{{ cover_image | image_url: width: '1920x' }}"
+              sizes="100vw"
+              alt="{{ 'sections.video.load_video' | t: description: description | escape }}"
+              loading="lazy"
+              width="{{ cover_image.width }}"
+              height="{{ cover_image.height }}"
+            >
+          {%- else -%}
+            {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+          {%- endif -%}
+        </a>
+      </div>
+    </noscript>
+    {% if cover_image != blank %}
+      <deferred-media
+        class="video-section__media about-us-story__media deferred-media no-js-hidden"
+        data-media-id="{{ video_url.id }}"
+        {% if cover_image != blank %}
+          style="padding-bottom: {{ 1 | divided_by: cover_image.aspect_ratio | times: 100 }}%;"
+        {% endif %}
+      >
+        <button
+          id="Deferred-Poster-Modal-{{ video_url.id }}"
+          class="video-section__poster about-us-story__poster media deferred-media__poster media--landscape"
+          type="button"
+        >
+          {%- if cover_image != blank -%}
+            <img
+              srcset="
+                {%- if cover_image.width >= 375 -%}{{ cover_image | image_url: width: '375x' }} 375w,{%- endif -%}
+                {%- if cover_image.width >= 750 -%}{{ cover_image | image_url: width: '750x' }} 750w,{%- endif -%}
+                {%- if cover_image.width >= 1100 -%}{{ cover_image | image_url: width: '1100x' }} 1100w,{%- endif -%}
+                {%- if cover_image.width >= 1500 -%}{{ cover_image | image_url: width: '1500x' }} 1500w,{%- endif -%}
+                {%- if cover_image.width >= 1780 -%}{{ cover_image | image_url: width: '1780x' }} 1780w,{%- endif -%}
+                {%- if cover_image.width >= 2000 -%}{{ cover_image | image_url: width: '2000x' }} 2000w,{%- endif -%}
+                {%- if cover_image.width >= 3000 -%}{{ cover_image | image_url: width: '3000x' }} 3000w,{%- endif -%}
+                {%- if cover_image.width >= 3840 -%}{{ cover_image | image_url: width: '3840x' }} 3840w,{%- endif -%}
+                {{ cover_image | image_url: width: 'master' }} {{ cover_image.width }}w
+              "
+              src="{{ cover_image | image_url: width: '1920x' }}"
+              sizes="100vw"
+              alt="{{ 'sections.video.load_video' | t: description: description | escape }}"
+              loading="lazy"
+              width="{{ cover_image.width }}"
+              height="{{ cover_image.height }}"
+            >
+          {%- else -%}
+            {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+          {%- endif -%}
+          <span class="deferred-media__poster-button motion-reduce !bg-transparent !border-none">
+            {%- if video_url.type == 'youtube' -%}
+              <svg width="68" height="47" viewBox="0 0 68 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.428348 10.7584C0.76944 5.42321 5.05112 1.21249 10.3855 0.859386C27.7795 -0.291987 40.5398 -0.28068 57.6182 0.858651C62.9249 1.21267 67.1956 5.38669 67.5543 10.6931C68.1782 19.9244 68.1256 27.3719 67.5307 36.5412C67.1726 42.0598 62.6407 46.3629 57.1139 46.5577C38.8811 47.2002 29.5283 47.1064 10.929 46.5107C5.36007 46.3323 0.776568 42.0034 0.433331 36.4422C-0.12168 27.4497 -0.165038 20.0398 0.428348 10.7584Z" fill="#EA3323"/>
+                <path d="M45 24L27 34.3923L27 13.6077L45 24Z" fill="white"/>
+              </svg>
+
+            {% else %}
+              {%- render 'icon-play' -%}
+            {%- endif -%}
+          </span>
+        </button>
+        <template>
+          <iframe
+            src="https://www.youtube.com/embed/{{ video_url | split: "v=" | last }}"
+            width="100%"
+            class="rounded-6xl"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            title="{{ description | escape }}"
+          ></iframe>
+        </template>
+      </deferred-media>
+    {% else %}
+      <div class="aspect-w-16 aspect-h-9">
+        <iframe
+          src="https://www.youtube.com/embed/{{ video_url | split: "v=" | last }}"
+          width="100%"
+          class="rounded-6xl"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="{{ description | escape }}"
+        ></iframe>
+      </div>
+    {% endif %}
+  </div>
+</div>

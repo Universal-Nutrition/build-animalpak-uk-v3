@@ -1,0 +1,34 @@
+{% if section.settings.desktop != blank %}
+  <div class="hidden lg:block">
+    {{ section.settings.desktop | image_url: width: 1920 | image_tag: class: 'w-full' }}
+  </div>
+{% endif %}
+
+{% if section.settings.mobile != blank %}
+  <div class="lg:hidden">
+    {{ section.settings.mobile | image_url: width: 1920 | image_tag: class: 'w-full' }}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Image block",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile",
+      "label": "Mobile image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image block"
+    }
+  ]
+}
+{% endschema %}

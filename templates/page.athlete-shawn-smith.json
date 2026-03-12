@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 485,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/Shawn_Smith_Athlete_Desktop.png",
+        "image_2": "shopify:\/\/shop_images\/Shawn_Smith_Athlete_Mobile.png",
+        "custom_heading": "<p>SHAWN SMITH<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>SHAWN SMITH<\/p>",
+        "subheading": "<p>Shawn began bodybuilding when he was 16 years old to get bigger and stronger. He was small, weak, and very introverted as a kid. Shawn ended up winning his very first show and continued to place 2nd at his first national show. From that moment, Shawn knew he had a talent and devoted most of my energy towards turning pro. In 2018 he turned pro and now he is focused on being one of the best bodybuilders in the world.<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "SHAWN’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/the-chicago-pro-2020",
+            "page": "nadia-stowers"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/from-fan-to-fam",
+            "page": "nadia-stowers"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/chicago-pro-prep",
+            "page": "nadia-stowers"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles"
+  ]
+}

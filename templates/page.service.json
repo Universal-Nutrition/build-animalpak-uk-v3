@@ -1,0 +1,138 @@
+{
+  "sections": {
+    "e6ce3220-8a7a-49be-901e-3cfac7298964": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/Service_Desktop.jpg",
+        "image_2": "shopify:\/\/shop_images\/Service_Mobile.jpg",
+        "custom_heading": "<p>customer support<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "main": {
+      "type": "customer-service",
+      "blocks": {
+        "00ab9826-b3a8-438d-ac66-baafa8908377": {
+          "type": "btn",
+          "settings": {
+            "text": "product returns",
+            "link": ""
+          }
+        },
+        "873de316-a0a2-428e-8e56-208a63ebb249": {
+          "type": "btn",
+          "settings": {
+            "text": "help center",
+            "link": ""
+          }
+        },
+        "42ac42e2-d06c-4e0c-925d-9145220a0903": {
+          "type": "btn",
+          "settings": {
+            "text": "contact us",
+            "link": ""
+          }
+        },
+        "8c2493e9-2a3d-4d35-a470-95f437e8a69d": {
+          "type": "btn",
+          "settings": {
+            "text": "shipping & returns policy",
+            "link": "#"
+          }
+        },
+        "5eca0924-e4ce-490a-b598-1a40bb72da56": {
+          "type": "btn",
+          "settings": {
+            "text": "order issues FAQ's",
+            "link": ""
+          }
+        },
+        "67576f46-b268-409d-8259-8e61aceb05b8": {
+          "type": "btn",
+          "settings": {
+            "text": "where to buy",
+            "link": ""
+          }
+        },
+        "8460f45c-7563-483f-badf-2257b330af1c": {
+          "type": "content",
+          "settings": {
+            "headline": "BASIC INFO",
+            "content": "<p>Need something? We got you. For questions about orders, products, ingredients, training, pricing or anything else, our team is here for you with answers.<\/p><p>Our Customer Service team is available Monday-Friday 9am–5:30pm ET.<\/p><p>You can use online Chat, complete an <a href=\"https:\/\/www.animalpak.com\/contact\">online form here<\/a>, call us at 800-872-0101 or email us at <a href=\"mailto:info@animalpak.com\">info@animalpak.com<\/a>.<\/p><p>For any questions regarding training, diet, and supplementation email us at <a href=\"mailto:trainer@animalpak.com\">trainer@animalpak.com<\/a>.<\/p><p>Emails and chats sent during non-business hours will be read on the next business day and responded to in order of receipt. Your patience is appreciated.<\/p><p><strong>Mailing Address<\/strong><\/p><p>Customer Service Department<br\/>3 Terminal Road<br\/>New Brunswick, NJ 08901<\/p>",
+            "page": ""
+          }
+        },
+        "a23bfc99-5afa-4056-be2d-82ab54ccc3d7": {
+          "type": "content",
+          "settings": {
+            "headline": "PAYMENT OPTIONS",
+            "content": "",
+            "page": "payment-options"
+          }
+        },
+        "9da4bf44-0d7b-4695-b660-44a2e514c0b0": {
+          "type": "content",
+          "settings": {
+            "headline": "SHIPPING & RETURNS",
+            "content": "<p><strong>Where We Ship<\/strong><br\/>We currently ship supplements (\"The Goods\") only to addresses within the 50 states of the U.S. and to all military FPO\/APO addresses only.<\/p><p><strong>United States<\/strong><br\/>For all products (supplement and clothing), we offer standard shipping. For all orders under $75, the shipping charge is a flat $8.95. All orders over $75 come with free shipping. We do not offer overnight shipping.<\/p><p><strong>Military Shipping (APO\/FPO)<\/strong><br\/>Military mail is transported to remote and war-zone locations, you should allow a minimum of two weeks for normal overseas delivery and up to 30 days even after USPS states \"Delivered to Agent for Final Delivery\".<\/p>",
+            "page": ""
+          }
+        },
+        "a3d469b6-0ab1-4411-96e4-584c432444fb": {
+          "type": "content",
+          "settings": {
+            "headline": "RETURN POLICY",
+            "content": "<p><strong>Our IronClad Guarantee: <\/strong>Animal is dedicated to being the very best. That's why we stand behind every single pill, every powder, and every single Animal \"pack\" we make. If you bought a product directly from our website and it hasn't met your tough requirements for any reason, we offer a \"no-questions-asked\" 90-day 100% guarantee. Just complete a <a href=\"https:\/\/www.animalpak.com\/returns\/guest\/new\">return\/exchange form<\/a> and supply us the information requested. If you have purchased our product through one of our <a href=\"https:\/\/www.animalpak.com\/where-to-buy\">key retailer partners listed<\/a>, they will also honor our IronClad Guarantee Policy.<\/p><p>Learn more about how we can offer such a comprehensive <a href=\"https:\/\/www.animalpak.com\/high-quality-guarantee\">Ironclad Quality & Guarantee<\/a>. Animal products are manufactured in the USA, made from premium ingredients sourced from around the world, and rigorously tested to meet the highest standards of quality.<\/p><p><strong>Website Purchases:<\/strong> Returns, exchanges, and refunds will be accepted within 90 days of receiving the item that is purchased on our website. A return request form must be completed for all returns and\/or exchanges including the Animalpak.com order ID for proof of purchase.<\/p><p><strong>Retail Purchases:<\/strong> Returns for exchange will be accepted for all items purchased through any of our third-party retailers within 30 days of the purchase date. An email must be sent to info@animalpak.com to complete the proper steps to process. No refunds will be issued from third-party purchases. This excludes all international orders through 3rd party sellers.<\/p><p><strong>International Purchases:<\/strong> For returns or exchanges for products purchased outside of the USA, please contact the original seller who will honor our Iron Clad Guarantee. If you need further assistance, please contact our customer service team with the following information.<\/p><ul><li>Name and location of seller<\/li><li>Proof of purchase in the form of a receipt and\/or invoice<\/li><li>A picture of the product lot number<\/li><\/ul><p><strong>Damaged or Missing Items:<\/strong> For any damaged and\/or missing items, customers must notify us within 30 days of receipt of shipment. Please complete the return form and we will gladly replace those items free of charge.<\/p><p>All Supplements bought on animalpak.com must meet the following criteria for a return, exchange, or refund:<\/p><ul><li>Completed return request form<\/li><li>Must be returned in original packaging<\/li><li>Must provide a receipt for proof of purchase<\/li><li>Must be at least half full<\/li><\/ul><p>All Gear purchased on animalpak.com must meet the following criteria for a return, exchange, or refund:<\/p><ul><li>Completed return request form<\/li><li>Must be returned in original packaging<\/li><li>Must provide a receipt for proof of purchase<\/li><li>Cannot be damaged<\/li><li>Cannot be washed<\/li><li>Cannot be used<\/li><\/ul><p><strong>Refunds:<\/strong> All items purchased on Animalpak.com have a 100% money back guarantee. If you are not satisfied with our products and would like a refund please complete a return form within 90 days of receiving the item and we will gladly issue a refund, excluding free items. You will need to abide by the guidelines listed above depending on the item purchased.<\/p><p><strong>Sales and Promotions:<\/strong> For any items purchased during a sale or promotion, discounted items are only eligible for returns and exchanges up to the value that was paid for that item. Free items do not qualify for a refund or exchange. The only exception is if a free item is damaged or missing, and is reported to us as such within 30 of the purchase date, to qualify for a replacement of the same item.<\/p><p><strong>Exchanges:<\/strong> All Animal products come with our 100% IronClad Guarantee. If you are not satisfied with our products you may exchange them for the same or comparable product. Please complete a return form within 90 days of receiving the item and we will gladly issue a refund. You will need to abide by the guidelines listed above depending on the item purchased. International exchanges will be honored at the customer’s expense for paying shipping returns. You will need to abide by the guidelines listed above depending on the item purchased.<\/p><p>If you have an account with us please log in to your <a href=\"https:\/\/www.animalpak.com\/customer\/account\/login\">account<\/a> to request a return\/exchange. If you checked out as a guest please <a href=\"https:\/\/www.animalpak.com\/returns\/guest\/new\/\">click here<\/a>.<\/p>",
+            "page": ""
+          }
+        },
+        "f024ba3f-b597-4523-9bfe-bb3b8db5a2e2": {
+          "type": "content",
+          "settings": {
+            "headline": "MILITARY SHIPPING INFORMATION",
+            "content": "<p><strong>Military Shipping time frame:<\/strong><br\/>Government regulations require that packages be mailed through USPS (2-3 Day to the departure city here in the U.S.) and are then sent to the Military Postal Service Agency for delivery. Most orders arrive within 6-10 days of order placement. However, because Military mail is transported to remote and war-zone locations, you should allow a minimum of two weeks for normal overseas delivery and up to 30 days.<\/p><p><strong>Overseas Locations<\/strong><br\/>Overseas military addresses must contain the APO or FPO designation along with a two–character “state” abbreviation of AE, AP, or AA and the ZIP Code or ZIP+4 Code<\/p><ul><li>\"Armed Forces Americas\", AA, includes CENTRAL AND SOUTH AMERICA \/ CARIBBEAN<\/li><li>\"Armed Forces Europe\", AE, includes EUROPE \/ ATLANTIC and IRAQ \/ AFGHANISTAN \/ MIDDLE EAST<\/li><li>\"Armed Forces Pacific\", AP, includes JAPAN, KOREA, PACIFIC ISLANDS FAR EAST<\/li><\/ul><p>Ex:<br\/>APO AE 09001-5275<br\/>FPO AP 96606-2783<br\/>APO AA 34035-4198<\/p><p><strong>Domestic Military Bases<\/strong><br\/>Use only the approved city name as listed in the City State file, along with the two–character state abbreviation and the ZIP Code or ZIP+4 Code.<br\/>Ex:<br\/>MINOT AFB ND 58705-1253<\/p><p><strong>Example of a Military (APO\/FPO) Address<\/strong><br\/>The Department of Defense (DoD) has requested that those who send mail use the service member’s full name (with or without grade, rank, etc.), or a specific title (e.g., Commanding Officer, Supply Officer, etc.). Also required is the unit designation and APO\/FPO (Air\/Army Post Office™ or Fleet Post Office location) information with the nine-digit ZIP Code™ number (if one is assigned) and a return street name\/number, city, state, and ZIP Code.<\/p><p><strong>CORRECT<\/strong><br\/>SGT. JOHN SMITH<br\/>UNIT 2340 BOX 132<br\/>APO AE 09350<br\/><strong>Note:<\/strong> Do not include the country or the base camp’s city, as it might be routed through the host country’s mail system.<\/p><p><strong>INCORRECT<\/strong><br\/>SGT. SMITH<br\/>23RD BATTALION<br\/>UNIT 2340, BOX 132<br\/>APO AE 09350<br\/>BAGHDAD IRAQ<\/p><p><strong>Military Shipping FAQs:<\/strong><br\/><strong>What is the estimated delivery timeframe for APO address?<\/strong><br\/>We have no way of estimating when this will be delivered because the US Military is delivering the package and that information is not provided to us. A range of timeframes, depending on region are detailed on the <a href=\"http:\/\/about.usps.com\/publications\/pub640\/pub640_v02_revision_122015_tech.htm\" target=\"_blank\">MPSA's Military Mail: FAQ<\/a> page.<\/p><p><strong>My package is showing “Delivered to Agent for Final Delivery”, what does that mean?<\/strong><br\/>This means USPS has delivered your package to your Military Process Center and is awaiting final delivery. The mail is then handled by Military Postal Service representatives and transported to the Military Post Office for distribution to the service member's unit for delivery to the recipient.<\/p><p><strong>Can I track my order to an APO address?<\/strong><br\/>No, unfortunately APO\/FPO shipments are not tracked once they are delivered to the military processing center. Packages are delivered by the US Military and there is no tracking and timeframes for delivery and they vary once they take possession of the shipment.<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "00ab9826-b3a8-438d-ac66-baafa8908377",
+        "873de316-a0a2-428e-8e56-208a63ebb249",
+        "42ac42e2-d06c-4e0c-925d-9145220a0903",
+        "8c2493e9-2a3d-4d35-a470-95f437e8a69d",
+        "5eca0924-e4ce-490a-b598-1a40bb72da56",
+        "67576f46-b268-409d-8259-8e61aceb05b8",
+        "8460f45c-7563-483f-badf-2257b330af1c",
+        "a23bfc99-5afa-4056-be2d-82ab54ccc3d7",
+        "9da4bf44-0d7b-4695-b660-44a2e514c0b0",
+        "a3d469b6-0ab1-4411-96e4-584c432444fb",
+        "f024ba3f-b597-4523-9bfe-bb3b8db5a2e2"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "91d8c3d8-996a-4cd9-8531-bc31e738e39e": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n@media screen and (min-width: 1110px) {\n  .lg\\:pt-16 {\n    padding-top: 0;\n  }\n}\n<\/style>"
+      }
+    },
+    "2537a943-2046-4c3b-82e3-2f2c49a97e9d": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<script src=\"https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.9.1\/jquery.min.js\"><\/script>\n<script type=\"text\/javascript\">\n$('.btn-primary:contains(\"shipping & returns policy\")').click(function(e) {\n    e.preventDefault();\n    $('html, body').animate({\n        scrollTop: $('h2:contains(\"SHIPPING & RETURNS\")').offset().top - 120\n    }, 1000);\n});\n<\/script>"
+      }
+    }
+  },
+  "order": [
+    "e6ce3220-8a7a-49be-901e-3cfac7298964",
+    "main",
+    "91d8c3d8-996a-4cd9-8531-bc31e738e39e",
+    "2537a943-2046-4c3b-82e3-2f2c49a97e9d"
+  ]
+}

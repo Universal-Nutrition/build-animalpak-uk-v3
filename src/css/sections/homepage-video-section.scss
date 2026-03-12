@@ -1,0 +1,73 @@
+.homepage-video-section {
+  &__title {
+    /* Heading/Three */
+
+    font-family: 'Compacta Std';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56.29px;
+    line-height: 80%;
+    /* or 45px */
+
+    display: grid;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+
+    /* Primary/Black */
+
+    color: #212121;
+
+    @media only screen and (max-width: 1110px) {
+      /* Heading/Mobile Three */
+
+      font-family: 'Compacta Std';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 42.56px;
+      line-height: 80%;
+      /* or 34px */
+
+
+      text-align: center;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__copy {
+    /* Heading/Six */
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18.4px;
+    line-height: 160%;
+    /* or 29px */
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: capitalize;
+
+    /* Primary/Black */
+
+    color: #212121;
+
+    @media only screen and (max-width: 1110px) {
+      /* Heading/Mobile Six */
+
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 160%;
+      /* or 26px */
+
+
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+ <!-- Hero section -->
+ <div class="relative bg-gray-900">
+  <!-- Decorative image and overlay -->
+  <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
+    <img
+      srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image | img_url: '1500x' }}"
+      fetchpriority="high" loading="eager"
+      class="hidden md:block w-full h-full object-center object-cover"
+      alt="{{ section.settings.image.alt | escape }}"
+      width="{{ section.settings.image.width }}"
+      height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+    >
+
+    <img
+      srcset="{%- if section.settings.image_2.width >= 375 -%}{{ section.settings.image_2 | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 750 -%}{{ section.settings.image_2 | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 1100 -%}{{ section.settings.image_2 | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 1500 -%}{{ section.settings.image_2 | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 1780 -%}{{ section.settings.image_2 | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 2000 -%}{{ section.settings.image_2 | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 3000 -%}{{ section.settings.image_2 | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 3840 -%}{{ section.settings.image_2 | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.image_2 | img_url: 'master' }} {{ section.settings.image_2.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image_2 | img_url: '1500x' }}"
+      fetchpriority="high" loading="eager"
+      class="block md:hidden w-full h-full object-center object-cover"
+      alt="{{ section.settings.image_2.alt | escape }}"
+      width="{{ section.settings.image_2.width }}"
+      height="{{ section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio }}"
+    >
+    
+  </div>
+  <div aria-hidden="true" class="absolute inset-0 bg-gray-900 opacity-50"></div>
+
+
+
+  <div class="relative max-w-3xl mx-auto py-32 px-6 flex flex-col items-center text-center sm:py-64 lg:px-0">
+    <h1 class="text-4xl font-extrabold tracking-tight text-white lg:text-6xl" style="text-shadow: 1px 5px black;">{{ section.settings.heading }}</h1>
+    <p class="mt-4 text-xl font-semibold text-white">{{ section.settings.subheading }}</p>
+    {% if section.settings.button_label != blank %}
+    <a href="{{ section.settings.button_link }}" class="mt-8 inline-block bg-lightPrimaryBlue border border-transparent rounded-md py-3 px-8 text-base font-medium text-white hover:bg-gray-800">{{ section.settings.button_label }}</a>
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.image-banner.name",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Mobile"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Title Goes Here!",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "default": "Subtitle goes here!",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Button label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "menu": "shop-by-category",
+        "promo_title": "Save 25% on your first order",
+        "promo_subtitle": "Subscribe & save 25% on your first order plus free shipping, 10% off and free shipping on subsequent orders.",
+        "bg": "#f5d500"
+      }
+    },
+    "collection_bottom_text_NXWbB6": {
+      "type": "collection-bottom-text",
+      "settings": {
+        "bottomtext": "<p>{{ collection.metafields.custom.collection_bottom_text | metafield_tag }}</p>",
+        "bg": "#ffffff"
+      }
+    },
+    "collection_faq_M8NHap": {
+      "type": "collection-faq",
+      "settings": {
+        "heading": "FAQs",
+        "bg_color": "#1c1c1c"
+      }
+    },
+    "6b3dee8a-4908-43e3-ae59-243dd05b742b": {
+      "type": "collection-featured-slider",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#000000",
+        "title": "featured",
+        "sub_title": "",
+        "btn": "view all",
+        "url": "",
+        "collection": "frontpage",
+        "itemsOnRow": "4"
+      }
+    },
+    "eec4e693-f8cb-407d-9152-d58327480eea": {
+      "type": "seo-section",
+      "disabled": true,
+      "settings": {
+        "title": "seo section",
+        "subtitle": "<p>A combination of nutritional supplement products strategically taken together to optimize your workout progress and help you reach your strength and physique goals. It is important to understand which supplements can and should be taken together, and which supplements you should avoid taking together.</p>",
+        "bg": "#f5f5f5"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collection_bottom_text_NXWbB6",
+    "collection_faq_M8NHap",
+    "6b3dee8a-4908-43e3-ae59-243dd05b742b",
+    "eec4e693-f8cb-407d-9152-d58327480eea"
+  ]
+}

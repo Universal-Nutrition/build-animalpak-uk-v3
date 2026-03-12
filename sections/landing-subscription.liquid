@@ -1,0 +1,116 @@
+{{ 'bundle.section-landing-subscription.css' | asset_url | stylesheet_tag }}
+<div class="landing-subscription px-6 sm:px-15 lg:px-[168px] pt-16 pb-0 lg:pt-32 lg:pb-16">
+  <div class="md:flex md:mx-[-20px] lg:mx-[-48px]">
+    <div class="md:w-1/2 md:px-5 lg:px-12 mb-10 md:mb-0">
+      <div class="md:mb-10 ">
+        {%- if section.settings.custom_heading != blank -%}
+          <h2 class="subscription-line-height text-[48.944px] md:text-[60px] lg:text-[85.604px] leading-[80%] mb-[18px] uppercase text-primary">{{ section.settings.custom_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="leading-[160%] text-[13.913px] md:text-base mb-6 md:mb-0 text-primary">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+      {% if section.settings.button_label != blank %}
+        <div class="md:mt-[-12px]">
+          <a href="{{ section.settings.button_link }}"
+              class="button inline-block lg:px-8 lg:py-[18px] font-bold">
+              {{ section.settings.button_label | upcase }}
+          </a> 
+        </div>
+      {% endif %}
+      {%- if section.settings.image != blank -%}
+        <div class="pt-8 lg:pt-16 {% if section.settings.mobile_image %}hidden md:block{% endif %}">
+          <img srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+            {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+            {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+            {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+            {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+            {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+            {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+            {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+            {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w" sizes="100vw"
+                src="{{ section.settings.image | img_url: '1500x' }}" loading="lazy"
+                class=" w-full h-full object-center object-cover"
+                alt="{{ section.settings.image.alt | escape }}" width="{{ section.settings.image.width }}"
+                height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}">
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="md:w-1/2 md:px-5 lg:px-12 mb-[42px] md:mb-0 lg:flex lg:flex-wrap lg:items-stretch">
+      {%- for block in section.blocks -%}
+        <div class="landing-subscription__block lg:w-1/2 mb-6 last:mb-0 lg:flex">
+          <div class="bg-primary border-solid border-b-4 border-yellow w-full">
+            {% if block.settings.item_heading != blank %}
+              <h3 class="text-[24.33px] md:text-[37.01px] leading-[80%] text-yellow tracking-[-0.5px] md:tracking-[-1px] uppercase pt-6 px-4 pb-2 md:p-8 md:pb-3">{{ block.settings.item_heading }}</h3>
+            {% endif %}
+            {%- if block.settings.item_content != blank -%}
+              <div class="text-white px-[14px] pb-5 md:px-8 pt-0 md:pb-[28px] text-[13.91px] leading-[160%]">
+                {{ block.settings.item_content }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Subscription information",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "custom_heading",
+      "label": "HTML Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "default": "Subtitle goes here!",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Shop products",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_image",
+      "label": "Hide image on mobile",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "right_column_item",
+      "name": "Right column item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_heading",
+          "label": "Item heading"
+        },
+        {
+          "type": "textarea",
+          "id": "item_content",
+          "label": "Item content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

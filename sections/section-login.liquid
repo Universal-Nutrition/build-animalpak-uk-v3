@@ -1,0 +1,235 @@
+
+
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+{{ 'bundle.section-account.css' | asset_url | stylesheet_tag }}
+<style>
+  .account-section-bg {
+    background: {{ section.settings.background}};
+  }
+</style>
+<div class="relative">
+  <div class="flex justify-center account-section account-section-bg account-sign-in-container-js">
+    <div class="w-full py-16 md:py-24 px-6 lg:px-20 xl:px-20">
+      <div class="mx-auto w-full max-w-[432px]">
+        <div>
+          <h1 class="mb-4 md:mb-[18px] text-[42.56px] md:text-[56.29px]  tracking-[-1px] font-bold text-primary uppercase">Returning Customers</h1>
+          <p class="mt-2 text-[13.913px] md:text-base text-primary leading-[160%]">
+            Hey, we have a new website, and we hope to provide you with a better experience!
+            <div class="mt-3">
+              <b>IMPORTANT:</b> If this is the first time logging into your account on our new site, which launched on 3/2/2023, you will need to CREATE AN ACCOUNT with your current account email address.
+            </div>
+            <div class="mt-3">
+              Once you have created an account, you will be able to see all of your past orders. 
+            </div>
+          </p>
+        </div>
+        <div class="mt-6">
+          {%- form 'customer_login' -%}
+          <div class="space-y-6">
+            {%- if form.errors -%}
+              <h2 class="text-[#ff0000] font-bold text-sm font-sans tracking-normal" tabindex="-1">
+                {{ 'templates.contact.form.error_heading' | t }}
+              </h2>
+              <span class="text-primary text-sm">
+                {{ form.errors | default_errors }}
+              </span>
+            {%- endif -%}
+      
+            <div> 
+              <label class="block text-base font-bold text-primary mb-[10px]" for="CustomerEmail">
+                Email *
+              </label>
+              <div class="mt-1">
+                <input
+                  type="email"
+                  name="customer[email]"
+                  id="CustomerEmail"
+                  autocomplete="email"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  required
+                  class="appearance-none block w-full h-12 px-3 py-2 border border-primary placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  {% if form.errors contains 'form' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >
+              </div>
+              
+            </div>
+      
+            {%- if form.password_needed -%}
+              <div class="space-y-1">
+                <div class="flex justify-between mb-[10px] items-center">
+                  <label class="block text-base font-bold text-primary" for="CustomerPassword">
+                    Password *
+                  </label> 
+                  <div class="text-[13.9px]">
+                    <a id="forgot-password" href="#recover" class="text-primary underline"> Forgot password? </a>
+                  </div>
+                </div>
+                <div class="mt-1">
+                <input
+                  type="password"
+                  value=""
+                  name="customer[password]"
+                  id="CustomerPassword"
+                  class="appearance-none block w-full h-12 px-3 py-2 border border-primary placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  autocomplete="current-password"
+                  required
+                  {% if form.errors contains 'form' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >
+                </div>
+              </div>
+      
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input id="remember-me" name="remember-me" type="checkbox" class="hidden h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                  <label for="remember-me" class="ml-2 text-sm text-gray-900 hidden"></label>
+                </div>
+              </div>
+      
+            {%- endif -%}
+            <div class="!m-0">
+              <button type="submit" class="w-full button inline-block lg:px-8 py-[14px] h-[54px] font-bold border border-solid border-yellow hover:!border-solid hover:!border-primary">Sign in</button>
+            </div>
+            <div class="account-section__devider uppercase !m-0 text-[13.9px] font-bold">
+              or
+            </div>
+            <a href="{{ routes.account_register_url }}" class="text-white !m-0 !tracking-[1px] text-center button button--secondary w-full block lg:px-8 py-[14px] h-[54px] border border-solid border-primary hover:!border-solid hover:!border-primary">Create an account</a>
+          </div>
+          {%- endform -%}
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <!-- This example requires Tailwind CSS v2.0+ -->
+  <recover-modal class="account-section-bg hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <!--
+      Background backdrop, show/hide based on modal state.
+  
+      Entering: "ease-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+    {%- comment -%} <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div> {%- endcomment -%}
+  
+    <div class="flex justify-center account-section account-section-bg">
+      <div class="w-full py-16 md:py-24 px-6 lg:px-20 xl:px-20">
+        <div class="mx-auto w-full max-w-[432px]">
+          {%- form 'recover_customer_password' -%}
+            <div>
+              <h2 class="mb-4 md:mb-[18px] text-[42.56px] md:text-[56.29px] leading-[80%] tracking-[-1px] font-bold text-primary uppercase">Reset your password</h2>
+              <p class="mt-2 text-[13.913px] md:text-base text-primary leading-[160%]">
+                Please enter your email address below to receive a password reset link.
+              </p>
+            </div>
+            <div class="my-6">
+              {%- if form.errors -%}
+                <h2 class="text-[#ff0000] font-bold text-sm font-sans tracking-normal" tabindex="-1">
+                  {{ 'templates.contact.form.error_heading' | t }}
+                </h2>
+                <span class="text-primary text-sm">
+                  {{ form.errors | default_errors }}
+                </span>
+              {%- endif -%}
+        
+            <div>
+              <label for="RecoverEmail" class="block text-base font-bold text-primary mb-[10px]">
+                  {{ 'customer.login_page.email' | t }} *
+                </label>
+                <input type="email"
+                  value=""
+                  name="email"
+                  id="RecoverEmail"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  class="appearance-none block w-full h-12 px-3 py-2 border border-primary placeholder-transparent placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                  autocomplete="email"
+                  {% if form.errors %}
+                    aria-invalid="true"
+                    aria-describedby="RecoverEmail-email-error"
+                    autofocus
+                  {% endif %}
+                >
+                
+              </div>
+            </div>
+            <button type="submit" class="!mt-0 mb-8 !tracking-[1px] w-auto !font-bold text-center button button--secondary w-full block lg:px-8 py-[14px] h-[54px] border border-solid border-primary hover:!border-solid hover:!border-primary">Reset My Password</button>
+            <button id="cancel" type="button" class="underline font-bold">Back</button>
+          {%- endform -%}
+        </div>
+
+      </div>
+    </div>
+  </recover-modal>
+</div>
+  
+<script>
+class RecoverModal extends HTMLElement {
+    constructor() {
+    super();
+    }
+
+    connectedCallback() {
+    document.querySelector('#forgot-password').addEventListener('click', () => {
+        this.classList.add('block');
+        this.classList.remove('hidden');
+        document.querySelector('.account-sign-in-container-js').classList.add('hidden');
+        document.querySelector('.account-sign-in-container-js').classList.remove('flex');
+    })
+    document.querySelector('#cancel').addEventListener('click', () => {
+        this.classList.add('hidden');
+        this.classList.remove('block');
+        document.querySelector('.account-sign-in-container-js').classList.remove('hidden');
+        document.querySelector('.account-sign-in-container-js').classList.add('flex');
+    })
+    }
+
+    
+}
+
+customElements.define('recover-modal', RecoverModal);
+</script>
+
+{% schema %}
+  {
+    "name": "Login",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background",
+        "default": "#F5F5F5"
+      }
+    ]
+  }
+{% endschema %}

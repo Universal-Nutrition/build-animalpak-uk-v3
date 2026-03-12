@@ -1,0 +1,123 @@
+{
+  "sections": {
+    "9eda50a4-3f49-40af-ab25-39ea1be05301": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": true,
+        "d_height": 450,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/WheretoBuy_Desktop.png",
+        "image_2": "shopify:\/\/shop_images\/WheretoBuy_Mobile.png",
+        "custom_heading": "<p>where to buy<\/p>",
+        "subheading": "<p>You’re hardcore. You live for pushing your body and mind, everyday, always thinking about the next workout, the next level, to always be at your best. And you use Animal products to make your hard work, work harder for you. Join the club.<\/p>",
+        "text_alignment": "left"
+      }
+    },
+    "7a07204a-ec99-4dac-a7aa-7686fc3d0b78": {
+      "type": "featured-vendor",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rectangle_1433.webp",
+        "image_mob": "shopify:\/\/shop_images\/Screenshot_2022-11-28_at_13.41.45.jpg",
+        "heading": "<p>AVAILABLE AT <strong>WALMART<\/strong><\/p>",
+        "subheading": "<p>Animal Pak Now Available In-Store<br\/>The All-in-One Training Pack<br\/>Same Comprehensive Formula<\/p><p><strong>Shop Animal Pak at <\/strong><a href=\"https:\/\/www.walmart.com\/ip\/Animal-Pak-Multivitamin-Stimulant-Free-All-In-One-Comprehensive-Pack-44-Packs\/21642214\" target=\"_blank\">Walmart<\/a><\/p>",
+        "menu": "",
+        "button_label": "shopify:\/\/shop_images\/walmart-logo_1.webp",
+        "button_link": "https:\/\/www.walmart.com\/store-directory"
+      }
+    },
+    "a24bc5cf-5f45-40f2-b6b1-ca9293b307a9": {
+      "type": "services-list",
+      "blocks": {
+        "5f9cca5e-1558-4a96-91a7-18383bc909b6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a1-supplements-logo300x200.webp",
+            "link": "https:\/\/www.a1supplements.com\/brands\/animal"
+          }
+        },
+        "cf87649c-8661-4d2a-9aca-d22de1600566": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/amazon-logo300x200.webp",
+            "link": "#"
+          }
+        },
+        "4067a26d-f4c0-4683-b987-797833aa3ba9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bb-com300x200.webp",
+            "link": "#"
+          }
+        },
+        "005f4956-2e9b-4fa0-817b-7845a36760bb": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/dps_nutrition-logo300x200.webp",
+            "link": "#"
+          }
+        },
+        "9348bbc1-ed31-4d7e-9d6b-da7b9be96a99": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gnc-logo300x200.webp",
+            "link": "#"
+          }
+        },
+        "ff64f153-1d8c-4a12-8ab0-5c5fe5900772": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/iherb-logo-update300x200.webp",
+            "link": "#"
+          }
+        },
+        "bc1ab49a-7f3e-406e-9111-94722cfa0fe4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lucky-vitamin-logo300x200.webp",
+            "link": "#"
+          }
+        },
+        "ec2b78db-4e3f-4a40-aefc-31d94933d234": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/best-price-nutrition-logo300x200.webp",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "5f9cca5e-1558-4a96-91a7-18383bc909b6",
+        "cf87649c-8661-4d2a-9aca-d22de1600566",
+        "4067a26d-f4c0-4683-b987-797833aa3ba9",
+        "005f4956-2e9b-4fa0-817b-7845a36760bb",
+        "9348bbc1-ed31-4d7e-9d6b-da7b9be96a99",
+        "ff64f153-1d8c-4a12-8ab0-5c5fe5900772",
+        "bc1ab49a-7f3e-406e-9111-94722cfa0fe4",
+        "ec2b78db-4e3f-4a40-aefc-31d94933d234"
+      ],
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "f41f5146-0b3d-4dfe-9081-e35e42915285": {
+      "type": "where-to-buy",
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#212121",
+        "border_color": "#dbdbdb",
+        "search": true,
+        "heading": "INTERNATIONAL VENDORS",
+        "subheading": "<p><br\/>If you have any questions about distributing Animal products internationally, feel free to contact our <a href=\"mailto:claudia@universalnutrition.com\">Global Sales<\/a> team.<\/p>",
+        "table_full_height": false,
+        "table_height": 420
+      }
+    }
+  },
+  "order": [
+    "9eda50a4-3f49-40af-ab25-39ea1be05301",
+    "7a07204a-ec99-4dac-a7aa-7686fc3d0b78",
+    "a24bc5cf-5f45-40f2-b6b1-ca9293b307a9",
+    "f41f5146-0b3d-4dfe-9081-e35e42915285"
+  ]
+}

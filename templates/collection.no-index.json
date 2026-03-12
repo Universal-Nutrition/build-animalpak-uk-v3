@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "promo_title": "Save 25% on your first order",
+        "promo_subtitle": "Subscribe & save 25% on your first order plus free shipping, 10% off and free shipping on subsequent orders.",
+        "bg": "#F5D500"
+      }
+    },
+    "6b3dee8a-4908-43e3-ae59-243dd05b742b": {
+      "type": "collection-featured-slider",
+      "settings": {
+        "title": "featured",
+        "collection": "frontpage"
+      }
+    },
+    "eec4e693-f8cb-407d-9152-d58327480eea": {
+      "type": "seo-section",
+      "settings": {
+        "title": "seo section",
+        "subtitle": "<p>A combination of nutritional supplement products strategically taken together to optimize your workout progress and help you reach your strength and physique goals. It is important to understand which supplements can and should be taken together, and which supplements you should avoid taking together.<\/p>",
+        "bg": "#F5F5F5"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "6b3dee8a-4908-43e3-ae59-243dd05b742b",
+    "eec4e693-f8cb-407d-9152-d58327480eea"
+  ]
+}

@@ -1,0 +1,450 @@
+{% # Mobile breakpoint is `lg`. %}
+
+{% assign section_id = section.id | replace: '-', '_' | replace: '--', '_' | replace: '__', '_' %}
+
+<script
+  src="{{ 'typed.umd.js' | asset_url }}"
+  defer
+></script>
+
+<div
+  class="relative flex h-[40rem] lg:h-auto w-full"
+  x-data="heroBanner_{{ section_id }}"
+  data-hero-banner
+>
+  <div
+    class="min-w-full flex h-full overflow-y-hidden smooth-scroll overflow-x-scroll snap-x snap-mandatory no-scrollbar"
+    @scroll.debounce="updateActiveIndex"
+    x-ref="carousel"
+  >
+    {%- for block in section.blocks -%}
+      {% # For performance, lazy load non-first images. %}
+      {% if forloop.first %}
+        {% assign image_loading = 'eager' %}
+      {% else %}
+        {% assign image_loading = 'lazy' %}
+      {% endif %}
+
+      <div class="relative inline-block shrink-0 w-full snap-center">
+        <div class="w-full h-full lg:hidden">
+          {% # Width should correspond to Tailwid's lg class %}
+          {{
+            block.settings.mobile_image
+            | image_url: width: 1110, format: 'webp'
+            | image_tag:
+              class: 'h-full w-full object-cover',
+              loading: image_loading,
+              fetchpriority: 'high',
+              preload: forloop.first,
+              widths: '352,590,1110',
+              sizes: '100vw'
+          }}
+        </div>
+        <div class="w-full h-full hidden lg:block">
+          {{
+            block.settings.desktop_image
+            | image_url: width: 1920, format: 'webp'
+            | image_tag:
+              class: 'h-full w-full object-cover',
+              loading: image_loading,
+              fetchpriority: 'high',
+              preload: forloop.first,
+              widths: '352,590,1110,1440,1920',
+              sizes: '100vw'
+          }}
+        </div>
+        <div
+          class="
+            absolute top-0 px-[10%] w-full h-full flex flex-col justify-end
+            lg:justify-center pb-[6rem] lg:pb-0 items-start text-left hero-banner-text-overlay
+          "
+        >
+          {% if block.settings.logo_graphic != blank %}
+            <div class="hero-banner-logo-wrapper flex flex-col items-center">
+              <div class="hero-banner-logo">
+                {{
+                  block.settings.logo_graphic
+                  | image_url: width: 450, format: 'webp'
+                  | image_tag:
+                    class: 'w-full h-auto object-contain',
+                    loading: image_loading
+                }}
+              </div>
+              <a
+                class="
+                  hero-banner-logo-cta
+                  flex justify-center items-center
+                  font-anton
+                  text-black bg-yellow
+                  rounded-[7px] h-[3.125rem] w-[10rem] md:w-[12.5rem]
+                  sm:text-lg mt-4
+                "
+                href="{{ block.settings.button_left_link }}"
+              >
+                {{ block.settings.button_left_text }}
+              </a>
+            </div>
+          {% else %}
+            {% case block.type %}
+              {% when 'typed-slide' %}
+                {% # min-height is necessary to prevent the block disappearing. %}
+                {% if block.settings.typed_strings != blank %}
+                  <div class="min-h-[4rem] md:min-h-[7rem]">
+                    <div
+                      id="typed-{{ block.id }}"
+                      class="
+                        align-middle
+                        text-[4rem] md:text-[5rem]
+                        font-brixton text-black bg-goalYellow pt-4 pb-2 px-4 w-fit
+                        leading-none [clip-path:polygon(0%_10%,100%_0%,100%_85%,0%_95%)]
+                      "
+                    ></div>
+                  </div>
+                {% endif %}
+                <div
+                  class="
+                    flex items-center justify-center
+                    text-[8rem] md:text-[10rem] text-white
+                    font-brixton leading-none
+                  "
+                >
+                  {{ block.settings.subtitle }}
+                </div>
+
+                <!-- prettier-ignore -->
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    const target = document.querySelector('#typed-{{ block.id }}');
+                    if (!target) {
+                      console.error('Typed target not found');
+                      return;
+                    }
+
+                    var typed = new Typed('#typed-{{ block.id }}', {
+                      // This looks odd, but Shopify doesn't support escape sequences so you
+                      // have to insert a literal newline to split on newline.
+                      strings: {{ block.settings.typed_strings | split: '
+' | json }},
+                      showCursor: false,
+                      loop: true,
+                      fadeOut: true,
+                      fadeOutClass: 'typed-fade-out',
+                      fadeOutDelay: 500,
+                      typeSpeed: 100,
+                      shuffle: false,
+
+                    });
+                  });
+                </script>
+                <!-- prettier-ignore-end -->
+              {% when 'static-slide' %}
+                <div
+                  class="
+                    flex items-center justify-center
+                    text-[4rem] md:text-[7rem] text-white
+                    font-brixton leading-[0.8]
+                    max-w-[33rem]
+                  "
+                >
+                  {{ block.settings.title }}
+                </div>
+                <div
+                  class="
+                    align-middle
+                    text-[3rem] md:text-[4rem]
+                    font-brixton text-black bg-goalYellow pt-4 pb-2 px-4 w-fit
+                    leading-none [clip-path:polygon(0%_10%,100%_0%,100%_85%,0%_95%)]
+                  "
+                >
+                  {{ block.settings.subtitle }}
+                </div>
+            {% endcase %}
+
+            <div class="w-full flex flex-row gap-[5%] justify-center lg:justify-start">
+              <a
+                class="
+                  flex justify-center items-center
+                  font-anton
+                  text-black bg-yellow
+                  rounded-[7px] h-[3.125rem] w-[10rem] md:w-[12.5rem]
+                  sm:text-lg
+                "
+                href="{{ block.settings.button_left_link }}"
+              >
+                {{ block.settings.button_left_text }}
+              </a>
+              <a
+                class="
+                  flex justify-center items-center
+                  font-anton
+                  text-black bg-yellow
+                  rounded-[7px] h-[3.125rem] w-[10rem] md:w-[12.5rem]
+                  sm:text-lg
+                "
+                href="{{ block.settings.button_right_link }}"
+              >
+                {{ block.settings.button_right_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {% # Carousel controls %}
+  {% # Reduce the height to raise the position of the controls on mobile. %}
+  <div class="absolute w-full h-[80%] md:h-full flex items-center justify-between pointer-events-none">
+    <div
+      class="cursor-pointer mx-2 md:mx-4 transition-opacity duration-300"
+      @click="scrollPrevious()"
+      :class="
+        {
+            'opacity-100 pointer-events-auto': hasPrevious,
+            'opacity-0 pointer-events-none': !hasPrevious,
+        }
+      "
+    >
+      <svg
+        class="w-[2.5rem] md:w-[3rem] 2xl:w-[3.5rem]"
+        width="55"
+        height="55"
+        viewBox="0 0 55 55"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="55" height="55" rx="5" fill="#FFDD00"/>
+        <path d="M38.1021 27.5657H16.7661" stroke="black" stroke-width="2" stroke-linecap="round"/>
+        <path d="M24.5337 19.9075L16.7661 27.6751L24.5337 35.4427" stroke="black" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div
+      class="cursor-pointer mx-2 md:mx-4 transition-opacity duration-300"
+      @click="scrollNext()"
+      :class="
+        {
+            'opacity-100 pointer-events-auto': hasNext,
+            'opacity-0 pointer-events-none': !hasNext,
+        }
+      "
+    >
+      {% # right %}
+      <svg
+        class="w-[2.5rem] md:w-[3rem] 2xl:w-[3.5rem]"
+        width="54"
+        height="55"
+        viewBox="0 0 54 55"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect x="54" y="55" width="54" height="55" rx="5" transform="rotate(180 54 55)" fill="#FFDD00"/>
+        <path d="M16.3394 27.5662H37.6753" stroke="black" stroke-width="2" stroke-linecap="round"/>
+        <path d="M29.9058 35.2245L37.6733 27.4569L29.9058 19.6893" stroke="black" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    Alpine.data("heroBanner_{{ section_id }}", heroBanner_{{ section_id }});
+  });
+
+  function heroBanner_{{ section_id }}() {
+    return {
+      activeIndex: 0,
+
+      updateActiveIndex() {
+        const carousel = this.$refs.carousel;
+        if (!carousel) return;
+        const scrollLeft = carousel.scrollLeft;
+        const activeIndexWidth = carousel.children[0].offsetWidth + 16;
+        this.activeIndex = Math.round(scrollLeft / activeIndexWidth);
+      },
+
+      scrollToActiveIndex() {
+        const carousel = this.$refs.carousel;
+        if (!carousel) return;
+        const activeIndexWidth = carousel.children[0].offsetWidth + 16;
+        carousel.scrollTo({ left: this.activeIndex * activeIndexWidth, behavior: "smooth" });
+      },
+
+      get hasNext() {
+        return this.activeIndex < this.$refs.carousel.children.length - 1;
+      },
+
+      get hasPrevious() {
+        return this.activeIndex > 0;
+      },
+
+      scrollNext() {
+        const carousel = this.$refs.carousel;
+        if (!carousel) return;
+        if (this.hasNext) {
+          this.activeIndex += 1;
+          this.scrollToActiveIndex();
+        }
+      },
+
+      scrollPrevious() {
+        const carousel = this.$refs.carousel;
+        if (!carousel) return;
+        if (this.hasPrevious) {
+          this.activeIndex -= 1;
+          this.scrollToActiveIndex();
+        }
+      }
+    };
+  }
+</script>
+
+<style>
+  .hero-banner-logo {
+    width: 13rem;
+  }
+  @media (min-width: 1024px) {
+    .hero-banner-logo { width: 22rem; }
+  }
+
+  .hero-banner-logo-cta {
+    display: flex;
+  }
+
+  @media (max-width: 1109px) {
+    .hero-banner-text-overlay {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 1109px) {
+    .hero-banner-logo-wrapper {
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Hide scrollbar for hero banner carousel */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Banner v2",
+  "blocks": [
+    {
+      "name": "Slide with typed effect",
+      "type": "typed-slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_graphic",
+          "label": "Logo / Graphic (replaces text)"
+        },
+        {
+          "type": "textarea",
+          "id": "typed_strings",
+          "label": "Title (typing, enter one title per line)"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "button_left_text",
+          "label": "Left button text"
+        },
+        {
+          "type": "url",
+          "id": "button_left_link",
+          "label": "Left button link"
+        },
+        {
+          "type": "text",
+          "id": "button_right_text",
+          "label": "Right button text"
+        },
+        {
+          "type": "url",
+          "id": "button_right_link",
+          "label": "Right button link"
+        }
+      ]
+    },
+
+    {
+      "name": "Static slide",
+      "type": "static-slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_graphic",
+          "label": "Logo / Graphic (replaces text)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "button_left_text",
+          "label": "Left button text"
+        },
+        {
+          "type": "url",
+          "id": "button_left_link",
+          "label": "Left button link"
+        },
+        {
+          "type": "text",
+          "id": "button_right_text",
+          "label": "Right button text"
+        },
+        {
+          "type": "url",
+          "id": "button_right_link",
+          "label": "Right button link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

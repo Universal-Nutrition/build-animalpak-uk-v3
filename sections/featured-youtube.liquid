@@ -1,0 +1,165 @@
+<style>
+    #shopify-section-{{section.id}} {
+        background-color: {{section.settings.background_color}};
+        position: relative;
+      }
+
+  #shopify-section-{{section.id}} {
+    padding-top:{{section.settings.desktop_padding_top}}px;
+    padding-bottom: {{section.settings.desktop_padding_bottom}}px
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{section.id}} {
+
+    padding-top:{{section.settings.mobile_padding_top}}px;
+    padding-bottom: {{section.settings.mobile_padding_bottom}}px
+  }
+  }
+</style>
+
+<div class='absolute top-0 left-0 w-full'>
+  <svg xmlns='http://www.w3.org/2000/svg' class='w-full h-auto' viewBox='0 0 1440 453' fill='none'>
+    <path d="M0 0H1440V418.991L0 453V0Z" fill="white"/>
+  </svg>
+</div>
+<youtube-embed
+  class='max-w-full lg:max-w-[1000px] mx-auto relative block z-20'
+>
+  <img
+    srcset='
+      {%- if section.settings.cover_image.width >= 375 -%}{{ section.settings.cover_image | img_url: '375x' }} 375w,{%- endif -%}
+      {%- if section.settings.cover_image.width >= 750 -%}{{ section.settings.cover_image | img_url: '750x' }} 750w,{%- endif -%}
+      {%- if section.settings.cover_image.width >= 1100 -%}{{ section.settings.cover_image | img_url: '1100x' }} 1100w,{%- endif -%}
+      {%- if section.settings.cover_image.width >= 1500 -%}{{ section.settings.cover_image | img_url: '1500x' }} 1500w,{%- endif -%}
+      {%- if section.settings.cover_image.width >= 1780 -%}{{ section.settings.cover_image | img_url: '1780x' }} 1780w,{%- endif -%}
+      {%- if section.settings.cover_image.width >= 2000 -%}{{ section.settings.cover_image | img_url: '2000x' }} 2000w,{%- endif -%}
+      {%- if section.settings.cover_image.width >= 3000 -%}{{ section.settings.cover_image | img_url: '3000x' }} 3000w,{%- endif -%}
+      {%- if section.settings.cover_image.width >= 3840 -%}{{ section.settings.cover_image | img_url: '3840x' }} 3840w,{%- endif -%}
+      {{ section.settings.cover_image | img_url: 'master' }} {{ section.settings.cover_image.width }}w
+    '
+    sizes='100vw'
+    src='{{ section.settings.cover_image | img_url: '1500x' }}'
+    loading='lazy'
+    class='block w-full youtube-cover'
+    alt='{{ section.settings.cover_image.alt | escape }}'
+    width='{{ section.settings.cover_image.width }}'
+    height='{{ section.settings.cover_image.width | divided_by: section.settings.cover_image.aspect_ratio }}'
+  >
+  {% unless section.settings.enable_modal %}
+    <div class='youtube-container hidden aspect-w-16 aspect-h-9'>
+      <div
+        class='z-40'
+        id='youtube-player'
+        youtube-id='{{section.settings.video_id}}'
+      ></div>
+    </div>
+  {% endunless %}
+  <div class='absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white px-6 md:px-16 z-10'>
+    <button class='play-button border-0' aria-role='Play'>
+      <img
+        class='h-auto w-15'
+        src='https://cdn.shopify.com/s/files/1/0675/6882/8736/files/Group_991104.png?v=1683646878'
+      >
+    </button>
+  </div>
+  <div aria-hidden='true' class='absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black opacity-50'></div>
+
+  {% if section.settings.enable_modal %}
+    <div class='youtube-modal relative z-10 hidden' aria-labelledby='modal-title' role='dialog' aria-modal='true'>
+      <div class='youtube-background fixed inset-0 bg-black bg-opacity-75 transition-opacity'></div>
+
+      <div class='fixed inset-0 z-10 overflow-y-auto'>
+        <div class='flex min-h-full justify-center p-4 text-center items-center sm:p-0'>
+          <div class='video-container relative transform overflow-hidden text-left shadow-xl transition-all w-full max-w-medium'>
+            <div>
+              <div>
+                <div class='aspect-w-16 aspect-h-9 mx-auto'>
+                  <div id='youtube-player' youtube-id='{{section.settings.video_id}}'>
+                    {% comment %}
+                      <iframe
+                        class='top-0 absolute left-0 w-full h-full border-0 z-50'
+                        frameBorder='0'
+                        allowfullscreen
+                        id='youtube-player'
+                        src='https://www.youtube.com/embed/{{section.settings.video_id}}?enablejsapi=1'
+                      ></iframe>
+                    {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</youtube-embed>
+
+{% schema %}
+{
+  "name": "Featured Youtube",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Global Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color of section",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "number",
+      "default": 96,
+      "label": "Desktop Section Top Padding",
+      "id": "desktop_padding_top"
+    },
+    {
+      "type": "number",
+      "default": 96,
+      "label": "Desktop Section Bottom Padding",
+      "id": "desktop_padding_bottom"
+    },
+    {
+      "type": "number",
+      "default": 64,
+      "label": "Mobile Section Top Padding",
+      "id": "mobile_padding_top"
+    },
+    {
+      "type": "number",
+      "default": 64,
+      "label": "Mobile Section Bottom Padding",
+      "id": "mobile_padding_bottom"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "text",
+      "id": "video_id",
+      "label": "Youtube Video ID"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Cover Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_modal",
+      "label": "Enable Popup Modal",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Youtube"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,85 @@
+ <div class="take-quiz-section relative bg-black min-h-[288px] sm:min-h-140 flex">
+    <div class="text-wrapper flex flex-col mx-auto  text-left absolute-center w-[80%]">
+      
+    </div>
+    <div class="take-quiz-content flex items-center h-full w-[100%] py-6 text-left mx-auto">
+      <div class="text-wrapper-content">
+        {% if section.settings.heading_main != blank %}
+        <h2 class="heading_main font-bold text-white mb-4">
+          {{ section.settings.heading_main }} 
+        </h2>
+        {% endif %}
+        {% if section.settings.heading_secondary != blank %}<p class="heading_secondary">
+              {{ section.settings.heading_secondary }}
+          </p>
+        {% endif %}
+        {% if section.settings.subheading != blank %}<p class="text-white subheading">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </div>
+      <div class="button-wapper">
+        {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="button py-[14px] lg:py-3 px-8 lg:px-7 sm:py-4 sm:px-8 lg:h-[54px] mb-8 tracking-[1px] inline-flex justify-center items-center font-bold">
+          {{ section.settings.button_label }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="17" viewBox="0 0 21 17" fill="none"><path d="M15.1654 8.51729H1.09277M9.13426 1L15.1654 8.51229L9.13426 16.0246M19.1861 1V16.0246" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.take-quiz-section {
+  background-image: url({{ section.settings.image | image_url: width: 1920 }});
+}
+</style>
+
+
+{% schema %}
+{
+  "name": "take-quiz",
+  "tag": "section",
+  "class": "spaced-section--boxed",
+  "settings": [
+    
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      },
+    {
+      "type": "text",
+      "id": "heading_main",
+      "default": "NOT SURE WHERE TO START?",
+      "label": "Heading Main"
+    },
+    {
+      "type": "text",
+      "id": "heading_secondary",
+      "default": "TAKE THE QUIZ",
+      "label": "Heading Secondary"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "default": "Every body is different, so we make sure you can choose a plan that works best for you.",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Start quiz",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Take Quiz"
+    }
+  ]
+}
+{% endschema %}

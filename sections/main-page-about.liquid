@@ -1,0 +1,80 @@
+
+{{ 'bundle.section-main-page-about.css' | asset_url | stylesheet_tag }}
+
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="about-us__banner relative min-h-full">
+{% render 'breadcrumbs' with color: '#ffffff' %}
+  <div class="absolute inset-0">
+    <img
+      srcset="{%- if section.settings.banner.width >= 375 -%}{{ section.settings.banner | img_url: '375x' }} 375w,{%- endif -%}
+        {%- if section.settings.banner.width >= 750 -%}{{ section.settings.banner | img_url: '750x' }} 750w,{%- endif -%}
+        {%- if section.settings.banner.width >= 1100 -%}{{ section.settings.banner | img_url: '1100x' }} 1100w,{%- endif -%}
+        {%- if section.settings.banner.width >= 1500 -%}{{ section.settings.banner | img_url: '1500x' }} 1500w,{%- endif -%}
+        {%- if section.settings.banner.width >= 1780 -%}{{ section.settings.banner | img_url: '1780x' }} 1780w,{%- endif -%}
+        {%- if section.settings.banner.width >= 2000 -%}{{ section.settings.banner | img_url: '2000x' }} 2000w,{%- endif -%}
+        {%- if section.settings.banner.width >= 3000 -%}{{ section.settings.banner | img_url: '3000x' }} 3000w,{%- endif -%}
+        {%- if section.settings.banner.width >= 3840 -%}{{ section.settings.banner | img_url: '3840x' }} 3840w,{%- endif -%}
+        {{ section.settings.banner | img_url: 'master' }} {{ section.settings.banner.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.banner | img_url: '1500x' }}"
+      loading="lazy"
+      class="w-full h-full object-cover"
+      alt="{{ section.settings.banner.alt | escape }}"
+      width="{{ section.settings.banner.width }}"
+      height="{{ section.settings.banner.width | divided_by: section.settings.banner.aspect_ratio }}"
+    >
+  </div>
+  <div class="relative max-w-7xl mx-auto py-16 sm:py-24 px-6 md:px-4 md:py-40 sm:px-6 lg:px-8 flex items-center justify-center flex-col">
+  <h4 class="about-us__subtitle text-3xl text-white mb-6">{{ section.settings.subtitle | strip_html }}</h4>
+    <h1 class="about-us__title text-4xl text-center h2 text-white max-w-screen-lg">{{ section.settings.title }}</h1>
+  </div>
+</div>
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/typography'),
+    ],
+  }
+  ```
+-->
+{% comment %} <div class="relative max-w-7xl m-auto py-4 px-4 md:px-16 md:py-12 bg-white overflow-hidden">
+
+  <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+    {{page.content}}
+  </div>
+</div> {% endcomment %}
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "main-page-about about-us",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "t:sections.main-page.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:sections.main-page.settings.subtitle.label",
+      "default": "Page subtitle"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner",
+      "label": "t:sections.main-page.settings.banner.label"
+    }
+  ]
+}
+{% endschema %}

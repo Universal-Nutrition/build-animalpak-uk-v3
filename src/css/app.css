@@ -1,0 +1,94 @@
+.link-large--alt {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18.4px;
+  line-height: 160%;
+  /* or 29px */
+  text-transform: uppercase;
+  /* Primary/White */
+  color: #FFFFFF;
+}
+
+@media only screen and (max-width: 768px) {
+  .link-large--alt {
+    font-size: 16px;
+  }
+}
+
+#MainContent .h1, #MainContent h1, #MainContent .h2, #MainContent h2, #MainContent .h3, #MainContent h3, #MainContent .h4, #MainContent h4 {
+  font-weight: 400;
+}
+
+#MainContent .h1 strong, #MainContent h1 strong, #MainContent .h2 strong, #MainContent h2 strong, #MainContent .h3 strong, #MainContent h3 strong, #MainContent .h4 strong, #MainContent h4 strong {
+  font-weight: 400;
+}
+
+/** Shopify Overrides **/
+.shopify-challenge__button {
+  --tw-text-opacity: 1;
+  --tw-border-opacity: 1;
+  background-color: initial;
+  border-color: rgba(101, 28, 50, var(--tw-border-opacity));
+  border-width: 1px;
+  color: rgba(101, 28, 50, var(--tw-text-opacity));
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 12px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.15s;
+          transition-duration: 0.15s;
+  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-property: background-color, border-color, color, fill, stroke;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shopify-challenge__button:hover, .shopify-challenge__button:focus {
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  background-color: rgba(252, 245, 245, var(--tw-bg-opacity));
+  color: rgba(101, 28, 50, var(--tw-text-opacity));
+}
+
+.shopify-policy__container {
+  max-width: 1440px !important;
+}
+
+/* Header */
+#shopify-section-layout-header {
+  position: relative;
+  background-color: #fff;
+}
+
+#shopify-section-layout-header.shopify-section-header-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 49;
+}
+
+#shopify-section-layout-header.shopify-section-header-hidden {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+#shopify-section-layout-header.animate {
+  -webkit-transition: -webkit-transform 0.15s ease-out;
+  transition: -webkit-transform 0.15s ease-out;
+  transition: transform 0.15s ease-out;
+  transition: transform 0.15s ease-out, -webkit-transform 0.15s ease-out;
+}
+
+button,
+select,
+fieldset {
+  border: 0;
+}
+
+.tight-line-height {
+  line-height: 0.8em;
+}
+/*# sourceMappingURL=app.css.map */

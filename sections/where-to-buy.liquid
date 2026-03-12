@@ -1,0 +1,188 @@
+{{ 'bundle.section-rte.css' | asset_url | stylesheet_tag }}
+<div class="where-to-buy rte">
+  {% if section.settings.subheading != blank %}
+    <div class="mb-4 md:mb-9 where-to-buy__subheading !text-primary max-w-[1440px] mx-auto px-6 lg:px-14">{{ section.settings.subheading }}</div>
+  {% endif %}
+  <div class="where-to-buy__wrapper max-w-[1440px] mx-auto px-6 lg:px-14 pb-14">
+    <div class="md:flex justify-between pt-6 mb-6">
+      {% if section.settings.heading != blank %}
+        <h3 class="mb-4 md:!m-0">{{ section.settings.heading }}</h3>
+      {% endif %}
+      {% if section.settings.search %}
+        <label for="where-to-buy-search" class="sr-only">Where To Buy</label>
+        <input type="search" name="filter" id="where-to-buy-search" class="appearance-none block w-full max-w-[420px] h-12 px-3 py-2 border border-primary placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" value="" placeholder="Search Vendors By Country...">
+      {% endif %}
+    </div>
+    <div class="where-to-buy__content mx-[-24px] md:mx-0">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+{% if section.settings.search %}
+  <script>
+    const input = document.getElementById("where-to-buy-search");
+    const list = document.querySelectorAll(".where-to-buy__content table tr td:first-child");
+    const tableRows = document.querySelectorAll(".where-to-buy__content table tr")
+
+    function searchVendors (){
+      for(let i = 0; i < list.length; i += 1){
+        if(list[i].innerText.toLowerCase().includes(input.value.toLowerCase())){
+          if (window.innerWidth >= 768) {
+            tableRows[i].style.display = "table-row";
+          } else {
+            tableRows[i].style.display = "block";
+          }
+        }else{
+          tableRows[i].style.display = "none";
+        }
+      }
+    }
+
+    input.addEventListener('input', searchVendors);
+  </script>
+{% endif %}
+<style>
+  .where-to-buy__wrapper {
+    background: {{ section.settings.bg_color }};
+  }
+
+  .where-to-buy * {
+    color: {{ section.settings.text_color }};
+  }
+
+  .where-to-buy__subheading a {
+    color: #212121;
+  }
+
+  {% if section.settings.table_full_height == false %}
+    .where-to-buy__content {
+      max-height: {{ section.settings.table_height }}px;
+      overflow-y: auto;
+    }
+  {% endif %}
+
+  .where-to-buy p a {
+    word-break: keep-all;
+  }
+
+  .where-to-buy__content table {
+    width: 100% !important;
+    box-shadow: none;
+    font-size: 16px;
+    border-bottom: 1px solid {{ section.settings.border_color }} !important;
+  }
+
+  .where-to-buy__content td {
+    width: 33.33% !important;
+    border: none !important;
+    border-bottom: 1px solid {{ section.settings.border_color }} !important;
+  }
+
+  .where-to-buy__content td * {
+    word-break: break-all;
+  }
+
+  .where-to-buy__content tr td {
+    font-weight: 700;
+  }
+
+  .where-to-buy__content tr td a {
+    text-decoration: underline;
+    word-break: break-all;
+  }
+
+  .where-to-buy__content tr td:first-child {
+    text-transform: uppercase;
+  }
+
+  @media only screen and (max-width: 767px){
+    .where-to-buy__content table {
+      font-size: 14px;
+    }
+
+    .where-to-buy__content tr {
+      border-bottom: 1px solid #dbdbdb;
+      padding-bottom: 10px;
+      padding-top: 14px;
+      display: block;
+      height: 100% !important;
+    }
+
+    .where-to-buy__content tr td {
+      display: block;
+      width: 100% !important;
+      border: none !important;
+      height: 100% !important;
+      padding: 0 24px 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Where to buy",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#212121"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Table border color",
+      "default": "#dbdbdb"
+    },
+    {
+      "type": "checkbox",
+      "id": "search",
+      "label": "Search enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "header",
+      "content": "Edit the vendor table in the Shopify page editor"
+    },
+    {
+      "type": "checkbox",
+      "id": "table_full_height",
+      "label": "Table full height",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "table_height",
+      "min": 400,
+      "max": 1500,
+      "step": 20,
+      "default": 600,
+      "label": "Table height"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Where to buy",
+      "category": "section"
+    }
+  ]
+}
+{% endschema %}

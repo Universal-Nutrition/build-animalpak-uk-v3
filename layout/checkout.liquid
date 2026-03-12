@@ -1,0 +1,407 @@
+<!doctype html>
+  <html lang='{{ locale }}' dir='{{ direction }}' class='{{ checkout_html_classes }}'>
+    <head>
+      {% include 'pandectes-rules' %}
+  
+      <meta charset='utf-8'>
+      <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+      <meta
+        name='viewport'
+        content='width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0'
+      >
+      <meta name='referrer' content='origin'>
+      {%- if settings.favicon != blank -%}
+        <link rel='icon' type='image/png' href='{{ settings.favicon | img_url: '32x32' }}'>
+      {%- endif -%}
+      <title>{{ page_title }}</title>
+  
+      {{ content_for_header }}
+  
+      {{ checkout_stylesheets }}
+      {{ 'bundle.section-checkout.css' | asset_url | stylesheet_tag }}
+      {{ checkout_scripts }}
+  </head>
+    <body>
+      <template id='content_for_order_summary'>
+        <div class='line_items'>
+          {% for line_item in checkout.line_items %}
+            {% unless line_item.properties.isStackParent %}
+              {% assign title = line_item.title %}
+              <div class='line_item'>
+                <div class='row'>
+                  <a href='{{line_item.product.url}}' class='line_item__image'>
+                    {{ line_item.image | img_url: '100x' | img_tag }}
+                    <div class='quantity'>
+                      {{ line_item.quantity }}
+                    </div>
+                  </a>
+                  <div class='line_item__text'>
+                    {% if line_item.properties.isStackProduct %}
+                      {% assign stack_item = line_item %}
+                      {% for line_item in checkout.line_items %}
+                        {% if stack_item.properties.bundleId == line_item.properties.bundleId
+                          and line_item.properties.isStackParent
+                        %}
+                          <div class='stack-title'>
+                            {{ line_item.title }}
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                    <a href='{{line_item.product.url}}' class='line_item__title'>
+                      {{ line_item.product.title }}
+                    </a>
+                    {% unless line_item.variant.title contains 'Default' %}
+                      <div class='line_item__variant-title'>
+                        {{ line_item.variant.title }}
+                      </div>
+                    {% endunless %}
+                    <div class='line_item__subscription'>
+                      {{ line_item.selling_plan_allocation.selling_plan.name }}
+                    </div>
+                    <div class='line_item__sku'>SKU: {{ line_item.variant.sku }}</div>
+                    <ul>
+                      {% for discount in line_item.discount_allocations %}
+                        {% if discount.discount_application.type == 'script' %}
+                          <li class='reduction-code line_item__discount'>
+                            <svg
+                              class='icon-svg icon-svg--color-adaptive-light icon-svg--size-16 reduction-code__icon remove-while-loading'
+                              aria-hidden='true'
+                              focusable='false'
+                            >
+                              <use xlink:href="#tags-filled"></use>
+                            </svg>
+                            <span class='reduction-code__text skeleton-while-loading--left'>
+                              {{ discount.discount_application.title }} (-${{ discount.discount_application.value }})
+                            </span>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+  
+                <div class='line_item__price'>
+                  <div class='price'>
+                    {% if line_item.final_line_price < 1 %}
+                      FREE
+                    {% else %}
+                      {% if line_item.variant.price != line_item.final_line_price %}
+                        <div class='price price--discount'>
+                          {{ line_item.variant.price | money }}
+                        </div>
+                      {% endif %}
+                      <span>
+                        {{ line_item.final_line_price | money }}
+                      </span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </template>
+      {{ skip_to_content_link }}
+  
+      <header class='banner' data-header role='banner'>
+        <div class='wrap'>
+          {{ content_for_logo }}
+        </div>
+      </header>
+  
+      {{ order_summary_toggle }}
+      <div class='content' data-content>
+        <div class='wrap'>
+          <div class='main'>
+            <header class='main__header' role='banner'>
+              {{ content_for_logo }}
+              {{ breadcrumb }}
+              {{ alternative_payment_methods }}
+            </header>
+            <main class='main__content' role='main'>
+              {{ content_for_layout }}
+            </main>
+            <footer class='main__footer' role='contentinfo'>
+              {{ content_for_footer }}
+              <p class='main__footer-copyright'>
+                Copyright &copy; {{ 'now' | date: '%Y' }} Universal Nutrition. All rights reserved.
+              </p>
+            </footer>
+          </div>
+          <aside class='sidebar' role='complementary'>
+            <div class='sidebar__header'>
+              {{ content_for_logo }}
+            </div>
+            <div class='sidebar__content'>
+              {{ content_for_order_summary }}
+            </div>
+          </aside>
+        </div>
+      </div>
+  
+      {{ tracking_code }}
+      <!-- Google Tag Manager -->
+  
+      <script>
+        ;(function ($) {
+          $(document).on(`page:load page:change`, function (e) {
+            document.querySelector('.order-summary__section--discount').addEventListener('click', (e) => {
+              // Check if the clicked element is the SVG or the <use> element inside it
+              if (
+                e.target.classList.contains('icon-svg') ||
+                (e.target.closest('svg') && e.target.getAttribute('xlink:href') === '#remove')
+              ) {
+                setTimeout(() => window.location.reload(), 1000)
+              } else if (e.target.classList.contains('tag__button')) {
+                setTimeout(() => window.location.reload(), 1000)
+              }
+            })
+          })
+        })(jQuery || Checkout.jQuery)
+      </script>
+  
+      <!-- End Google Tag Manager -->
+      {% comment %}
+        <script>
+  
+  
+  
+  
+            (function ($) {
+              $(document).on(`page:load`, function (e) {
+                if ('content' in document.createElement('template')) {
+                  const orderSummary = document.querySelector('#content_for_order_summary'),
+                    table = document.querySelector('table.product-table'),
+                    clone = document.importNode(orderSummary.content, true);
+  
+                  table.parentNode.appendChild(clone);
+                  table.parentNode.removeChild(table);
+                }
+                let code = document.querySelector('.reduction-code__text')
+                $('body').on('click', '.order-summary-toggle', ()=>{
+                  if(!document.querySelector('.order-summary-toggle').classList.contains('order-summary-toggle--hide')) {
+  
+                    setTimeout(()=>{
+                      if(code?.innerText.includes('BUNDLE')) {
+                        const reductionCodeInput = document.getElementById('checkout_reduction_code');
+                        reductionCodeInput.readOnly = true;
+                        document.getElementById('checkout_reduction_code')?.addEventListener('focus', function() {
+                          if(!document.querySelector('.discount-error-message')) {
+                            const newDiv = document.createElement("div");
+                            newDiv?.classList.add('discount-error-message')
+                            const newContent = document.createTextNode("You can not combine a discount code with the bundle & save discount.");
+                            newDiv?.appendChild(newContent);
+                            this.closest('.field').append(newDiv)
+                            document.querySelector('.order-summary__section--discount #checkout_submit')?.classList.add('disabled')
+                            document.addEventListener("keydown", function(event) {
+                              if (event.keyCode === 13) {
+                                event.preventDefault();
+                                return false;
+                              }
+                            });
+                          }
+                        })
+                      }
+                    },100)
+                  }
+                })
+  
+                if(code?.innerText.includes('BUNDLE')) {
+                  document.getElementById('checkout_reduction_code')?.addEventListener('focus', function() {
+                    if(!document.querySelector('.discount-error-message')) {
+                      const newDiv = document.createElement("div");
+                      newDiv?.classList.add('discount-error-message')
+                      const newContent = document.createTextNode("You can not combine a discount code with the bundle & save discount.");
+                      newDiv?.appendChild(newContent);
+                      this.closest('.field').append(newDiv)
+                      document.querySelector('.order-summary__section--discount #checkout_submit')?.classList.add('disabled')
+                      document.addEventListener("keydown", function(event) {
+                        if (event.keyCode === 13) {
+                          event.preventDefault();
+                          return false;
+                        }
+                      });
+                    }
+                  })
+                }
+              });
+  
+            })(jQuery || Checkout.jQuery);
+  
+  
+  
+        </script>
+      {% endcomment %}
+  
+      <!-- navidium script starts -->
+      <script>
+        let nvdShop = 'animalpak-uk.myshopify.com'
+        let nvdShopCurrency = '{{ shop.money_format | strip_html }}'
+      </script>
+      <script
+        src='https://navidium-static-assets.s3.amazonaws.com/navidium-widgets/plus/navidium-checkout.js'
+        defer
+      ></script>
+      <!-- navidium script ends -->
+    </body>
+  </html>
+
+  <script>
+    let discountBtn = document.getElementById('checkout_submit')
+    discountBtn.addEventListener('click', function() {
+      let currentURL = window.location.href;
+      if (currentURL.includes('&discount')) {
+        
+        let newURL = currentURL.split('&discount')[0] + currentURL.split('Bundle+Discount')[1]
+
+        window.history.replaceState({}, '', newURL);
+      }
+      
+    })
+
+    let discounts = document.querySelector('.tags-list')
+
+    if(!window.location.href.includes('Bundle+Discount') && localStorage.getItem('discount') && !discounts) {
+      window.location.href = localStorage.getItem('discount')
+    }
+  </script>
+  
+  <style>
+    [data-product-type="bundle"] .product__price {
+      display: none;
+    }
+    #checkout_submit.disabled {
+      pointer-events: none;
+      background: gray;
+    }
+    .stack-title {
+      color: #fff;
+      font-size: 10px;
+    }
+    .line_item__discount {
+      align-items: center;
+      background: #ebebeb;
+      border-radius: 4px;
+      display: inline-flex;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 6px 8px;
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
+    .discount-error-message {
+      color: #000;
+      background-color: #ffdada;
+      border: 1px solid #ff9598;
+      margin-top: 10px;
+      font-size: 12px;
+      padding: 7px;
+    }
+  
+    .line_items {
+      margin-bottom: 15px;
+    }
+    .items-title {
+      color: #163da5;
+      text-transform: capitalize;
+      margin: 20px 0 10px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .line_item {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+  
+    .line_item .row {
+      display: flex;
+      align-items: center;
+    }
+  
+    .line_item__image {
+      position: relative;
+      width: 65px;
+      height: 65px;
+      border-radius: 8px;
+      border: 1px solid #dddddd;
+      background: #fff;
+    }
+  
+    .line_item__image img {
+      height: 100%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      object-fit: cover;
+    }
+  
+    .line_item__image .quantity {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: rgb(245 213 1);
+      color: #000000;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+    }
+    .price--discount {
+      font-size: 12px;
+      text-decoration: line-through;
+      text-align: right;
+    }
+    .line_item__text {
+      padding-left: 25px;
+      max-width: 70%;
+    }
+  
+    .line_item__text .line_item__title {
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex-col-reverse {
+      flex-direction: column-reverse;
+    }
+    .list-disc {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+    .line_item__text .line_item__variant-title,
+    .line_item__subscription,
+    .line_item__sku {
+      font-size: 12px;
+    }
+  
+    .line_item__text .line_item__properties {
+      color: #323232;
+      font-weight: 300;
+      font-size: 11px;
+    }
+  
+    .line_item__text .line_item__properties div:before {
+      content: '\2022';
+      color: #323232;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+    }
+  
+    .line_item__price {
+      align-self: center;
+    }
+  
+    .line_item__price span {
+      white-space: nowrap;
+    }
+  </style>
+  

@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "banner": {
+      "type": "bundle-banner",
+      "blocks": {
+        "05c39b7d-6df1-407c-91bd-e4059d27314a": {
+          "type": "block",
+          "settings": {
+            "pretitle": "Buy 2 Get",
+            "title": "10% off"
+          }
+        },
+        "b952f6a0-065a-4ef9-b7cd-e2d02152536b": {
+          "type": "block",
+          "settings": {
+            "pretitle": "Buy 3 Get",
+            "title": "15% off"
+          }
+        },
+        "505c6319-dde1-492b-8a83-5f616f317dad": {
+          "type": "block",
+          "settings": {
+            "pretitle": "Buy 4+ Get",
+            "title": "20% off"
+          }
+        }
+      },
+      "block_order": [
+        "05c39b7d-6df1-407c-91bd-e4059d27314a",
+        "b952f6a0-065a-4ef9-b7cd-e2d02152536b",
+        "505c6319-dde1-492b-8a83-5f616f317dad"
+      ],
+      "settings": {
+        "bg": "#212121",
+        "text_color": "#ffffff",
+        "img": "shopify:\/\/shop_images\/SubscribeandSave_Desktop_Version2.png",
+        "title": "Build your own bundle",
+        "subtitle": "Mix & Match to Build Your Own Stack - Subscribe and Save More.",
+        "box_title": "Not sure where to start?",
+        "box_subtitle": "Why not see our curated stacks here.",
+        "link": "shopify:\/\/collections\/supplement-stacks",
+        "discount": "* Save an additional 5% when you subscribe to a bundle."
+      }
+    },
+    "main-page": {
+      "type": "bundle-page",
+      "blocks": {
+        "44f0eade-c661-43bf-9632-b497cc29d049": {
+          "type": "collection",
+          "settings": {
+            "collection": "fat-burning-cutting-supplements",
+            "title": ""
+          }
+        },
+        "f8ed46d1-102e-48c2-9182-e6ad67786f84": {
+          "type": "collection",
+          "settings": {
+            "collection": "pre-workout-pump-supplements",
+            "title": ""
+          }
+        },
+        "b23f6d6f-f037-403c-a086-d7c470de6ce2": {
+          "type": "collection",
+          "settings": {
+            "collection": "post-workout-recovery-supplements",
+            "title": ""
+          }
+        },
+        "24b62669-cca1-4e3a-98bb-e670823256a8": {
+          "type": "collection",
+          "settings": {
+            "collection": "wellness-workout-supplements",
+            "title": ""
+          }
+        },
+        "04d48d1e-c9b3-4231-9e6b-ad1046ccf27c": {
+          "type": "collection",
+          "settings": {
+            "collection": "protein-powder-supplements",
+            "title": ""
+          }
+        },
+        "66a8389b-ad5c-47a4-89b8-c00f1ad04efd": {
+          "type": "collection",
+          "settings": {
+            "collection": "muscle-building-supplements",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "44f0eade-c661-43bf-9632-b497cc29d049",
+        "f8ed46d1-102e-48c2-9182-e6ad67786f84",
+        "b23f6d6f-f037-403c-a086-d7c470de6ce2",
+        "24b62669-cca1-4e3a-98bb-e670823256a8",
+        "04d48d1e-c9b3-4231-9e6b-ad1046ccf27c",
+        "66a8389b-ad5c-47a4-89b8-c00f1ad04efd"
+      ],
+      "settings": {
+        "gift_enabled": true,
+        "gift_product": "animal-cuts-powder-strawberry-sample"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main-page"
+  ]
+}

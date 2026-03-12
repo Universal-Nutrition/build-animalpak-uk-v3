@@ -1,0 +1,89 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero-banner",
+      "settings": {
+        "breadcrumbs": false,
+        "d_height": 490,
+        "m_height": 500,
+        "image": "shopify:\/\/shop_images\/andrew.png",
+        "image_2": "shopify:\/\/shop_images\/Rectangle_1435_3cf1ee10-8ee3-4191-9e16-c0a83c4084eb.png",
+        "custom_heading": "<p>ANDREW HERBERT<\/p>",
+        "subheading": "",
+        "text_alignment": "left"
+      }
+    },
+    "info": {
+      "type": "athlete-info",
+      "settings": {
+        "custom_heading": "<p>ANDREW HERBERT<\/p>",
+        "subheading": "<p>Andrew is a former Division 1 wrestler at Bucknell and Duke Universities (Duke graduate). Former Brazilian Jiu-Jitsu competitor under Ralph Gracie. Current Firefighter\/EMT\/LEO. Working as a first responder since 2007.<\/p>",
+        "accolade": "accolades",
+        "video_url": "{{ page.metafields.custom.video_link.value }}"
+      }
+    },
+    "products": {
+      "type": "athlete-products",
+      "settings": {
+        "title": "ANDREW’S GO-TO SUPPS",
+        "image_ratio": "square",
+        "color_scheme": "background-1",
+        "swipe_on_mobile": false,
+        "image_padding": false,
+        "show_view_all": false
+      }
+    },
+    "articles": {
+      "type": "athlete-articles",
+      "blocks": {
+        "b47589bd-c958-4775-93b9-39c702046bfb": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/how-to-grow-massive-traps",
+            "page": "andrew-herbert"
+          }
+        },
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/the-king-of-the-lifts",
+            "page": "andrew-herbert"
+          }
+        },
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa": {
+          "type": "article",
+          "settings": {
+            "article": "fitness-bodybuilding\/from-the-powerlifting-platform-to-the-bodybuilding-stage",
+            "page": "andrew-herbert"
+          }
+        }
+      },
+      "block_order": [
+        "b47589bd-c958-4775-93b9-39c702046bfb",
+        "54f0a4e5-9e01-47ef-ae02-e91de1e76f89",
+        "2011dda1-8ba9-4fd2-b4b7-0bd5389a97aa"
+      ],
+      "settings": {
+        "bg": "#f5f5f5",
+        "title": "featured articles"
+      }
+    },
+    "7a73a294-894a-4adb-9724-68a11c28c2ed": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "heading": "Video",
+        "video_url": "https:\/\/youtu.be\/QNFqT1c_y_8",
+        "description": "",
+        "full_width": false
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "products",
+    "articles",
+    "7a73a294-894a-4adb-9724-68a11c28c2ed"
+  ]
+}
