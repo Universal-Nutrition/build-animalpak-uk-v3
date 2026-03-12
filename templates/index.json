@@ -88,7 +88,9 @@
       ],
       "name": "Homepage Carousel",
       "settings": {
-        "slide_delay": ""
+        "slide_delay": "",
+        "tear_image": "shopify://shop_images/black-tear.png",
+        "tear_image_mobile": "shopify://shop_images/mobile-black-tear.png"
       }
     },
     "2025-04-03-hero-banner": {
@@ -197,17 +199,15 @@
         "content_nn4HVK": {
           "type": "content",
           "settings": {
-            "icon_image": "shopify://shop_images/Icon_awesome-tag_fcb2b46c-5d2d-46cd-b761-d670848e8ae9.png",
-            "content_text": "<p><strong>GET 10% OFF</strong> YOUR FIRST ORDER</p>",
-            "button_link": "#"
+            "icon": "tag",
+            "content_text": "<p><strong>GET 10% OFF</strong> YOUR FIRST ORDER</p>"
           }
         },
         "content_Lnnwwz": {
           "type": "content",
           "settings": {
-            "icon_image": "shopify://shop_images/Icon_awesome-shipping-fast_63c12739-4d8c-4c3b-bf8f-ca0b990f379f.png",
-            "content_text": "<p><strong>FREE DELIVERY</strong> ON ALL ORDERS OVER <strong>£50</strong></p>",
-            "button_link": "#"
+            "icon": "tag",
+            "content_text": "<p><strong>FREE DELIVERY</strong> ON ALL ORDERS OVER <strong>£50</strong></p>"
           }
         },
         "button_rREFpK": {
@@ -225,7 +225,12 @@
         "content_Lnnwwz",
         "button_rREFpK"
       ],
-      "settings": {}
+      "settings": {
+        "heading_text": "Shop by Goal",
+        "newsletter_text": "GET UPDATES & DISCOUNTS SENT TO YOUR INBOX",
+        "newsletter_button_text": "JOIN THE PAK",
+        "newsletter_button_link": ""
+      }
     },
     "shop_by_goal_JjBRdg": {
       "type": "shop-by-goal",
