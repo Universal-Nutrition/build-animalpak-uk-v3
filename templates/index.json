@@ -9,6 +9,88 @@
  */
 {
   "sections": {
+    "homepage_carousel_DYbNV8": {
+      "type": "homepage-carousel",
+      "blocks": {
+        "slide_37apxw": {
+          "type": "slide",
+          "settings": {
+            "start_date": "",
+            "end_date": "",
+            "video": "",
+            "video_mob": "",
+            "image": "shopify://shop_images/powerstack-desktop.jpg",
+            "image_2": "shopify://shop_images/powerstack-mobile.jpg",
+            "foreground_image": "shopify://shop_images/power-stack-logo.png",
+            "foreground_image_mobile": "shopify://shop_images/power-stack-logo.png",
+            "foreground_image_max_width": 350,
+            "foreground_image_max_width_mobile": 280,
+            "enable_lazy_loading": true,
+            "image_position_desktop": "top",
+            "image_position_mobile": "top",
+            "custom_heading": "",
+            "subheading": "",
+            "button_label": "Shop now",
+            "button_link": "shopify://products/small-core-stack",
+            "button_font_size": 21,
+            "primary_text_color": "#212121",
+            "primary_bg_color": "#f5d500",
+            "primary_text_color_hover": "#212121",
+            "primary_bg_color_hover": "#ffffff",
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "secondary_text_color": "#212121",
+            "secondary_bg_color": "#ffffff",
+            "secondary_text_color_hover": "#ffffff",
+            "secondary_bg_color_hover": "#212121",
+            "button__alignment_desktop": "center",
+            "x_align": "",
+            "y_align": "is-middle",
+            "x_align_mobile": "is-center-mobile",
+            "y_align_mobile": "is-top-mobile",
+            "heading_self_align": "left",
+            "heading_font_size": 120,
+            "heading_color": "#ffffff",
+            "heading_strong_color": "#f5d500",
+            "heading_maxwidth": 60,
+            "heading_font_size_tablet": 100,
+            "heading_tablet_maxwidth": 60,
+            "heading_self_align_mobile": "center",
+            "heading_font_size_mobile": 74,
+            "heading_color_mobile": "#ffffff",
+            "heading_strong_color_mobile": "#f5d500",
+            "subheading_self_align": "left",
+            "subheading_font_size": 24,
+            "subheading_maxwidth": 50,
+            "subheading_color": "#ffffff",
+            "subheading_font_size_tablet": 18,
+            "subheading_maxwidth_tablet": 50,
+            "subheading_self_align_mobile": "center",
+            "subheading_font_size_mobile": 18,
+            "subheading_color_mobile": "#ffffff",
+            "slider_padding_right": 4,
+            "slider_padding_left": 8,
+            "slider_padding_top": 0,
+            "slider_padding_bottom": 0,
+            "slider_padding_right_tablet": 4,
+            "slider_padding_left_tablet": 4,
+            "slider_padding_top_tablet": 0,
+            "slider_padding_bottom_tablet": 0,
+            "slider_padding_right_mobile": 4,
+            "slider_padding_left_mobile": 4,
+            "slider_padding_top_mobile": 6,
+            "slider_padding_bottom_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "slide_37apxw"
+      ],
+      "name": "Homepage Carousel",
+      "settings": {
+        "slide_delay": ""
+      }
+    },
     "2025-04-03-hero-banner": {
       "type": "hero-banner",
       "blocks": {
@@ -29,6 +111,7 @@
         },
         "static_slide_RHP49K": {
           "type": "static-slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/118_ANIMAL_Creatine_Chew_Sample_Website_Banner_Desktop_V2_UK-tinified.jpg",
             "mobile_image": "shopify://shop_images/118_ANIMAL_Creatine_Chew_Sample_Website_Banner_Mobile_UK.jpg",
@@ -105,6 +188,7 @@
         "typed_slide_9jNfEn",
         "static_slide_aWrzRH"
       ],
+      "disabled": true,
       "settings": {}
     },
     "announcement_section_Nhp6dg": {
@@ -734,6 +818,7 @@
     }
   },
   "order": [
+    "homepage_carousel_DYbNV8",
     "2025-04-03-hero-banner",
     "announcement_section_Nhp6dg",
     "shop_by_goal_JjBRdg",

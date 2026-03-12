@@ -130,3 +130,24 @@
     display: none !important;
   }
 }
+
+.homepage-carousel__tear {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  pointer-events: none;
+  line-height: 0;
+
+  picture {
+    display: block;
+    width: 100%;
+  }
+}
+
+.homepage-carousel__tear-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

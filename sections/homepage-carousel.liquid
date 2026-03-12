@@ -476,6 +476,39 @@
                 {{- homepage_carousel_pagination -}}
             </div>
         {%- endif -%}
+
+        {%- if section.settings.tear_image != blank or section.settings.tear_image_mobile != blank -%}
+            {%- assign tear_desktop = section.settings.tear_image -%}
+            {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
+            {%- assign tear_fallback = tear_desktop | default: section.settings.tear_image_mobile -%}
+            <div class="homepage-carousel__tear">
+                <picture>
+                    {%- if tear_mobile != blank -%}
+                        <source
+                            srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w"
+                            sizes="100vw"
+                            media="(max-width: 767px)"
+                            type="image/webp"
+                        />
+                    {%- endif -%}
+                    {%- if tear_desktop != blank -%}
+                        <source
+                            srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 1600, format: 'webp' }} 1600w, {{ tear_desktop | image_url: width: 2000, format: 'webp' }} 2000w, {{ tear_desktop | image_url: width: 2400, format: 'webp' }} 2400w, {{ tear_desktop | image_url: width: tear_desktop.width, format: 'webp' }} {{ tear_desktop.width }}w"
+                            sizes="100vw"
+                            media="(min-width: 768px)"
+                            type="image/webp"
+                        />
+                    {%- endif -%}
+                    <img
+                        src="{{ tear_fallback | image_url: width: tear_fallback.width, format: 'webp' }}"
+                        class="homepage-carousel__tear-img"
+                        loading="eager"
+                        fetchpriority="high"
+                        alt=""
+                    />
+                </picture>
+            </div>
+        {%- endif -%}
     </homepage-carousel>
 
     <script>
@@ -503,6 +536,18 @@
       "type": "text",
       "id": "slide_delay",
       "label": "Delay (milliseconds)"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_image",
+      "label": "Bottom Tear Image - Desktop",
+      "info": "Overlays the bottom of the carousel, full width. Use a PNG with transparency."
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_image_mobile",
+      "label": "Bottom Tear Image - Mobile",
+      "info": "Shown on screens below 768px. Falls back to the desktop image if left blank."
     }
   ],
   "blocks": [

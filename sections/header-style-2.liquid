@@ -373,7 +373,7 @@
                             <div class="header-s2__icons flex xl:hidden"></div>
 
                             <div class="h-full flex xl:flex-0-auto relative z-[2] w-full xl:!w-fit justify-center xl:justify-start">
-                                <a href="{{ shop.url }}" class="flex items-center">
+                                <a href="{{ routes.root_url }}" class="flex items-center">
                                     <span class="sr-only">Workflow</span>
                                     {%- if section.settings.logo_text == blank and section.settings.logo != blank -%}
                                         {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}
