@@ -1,0 +1,87 @@
+{%- comment -%}
+  Renders a Lucide icon for use in the announcement section.
+  Usage: {% render 'icon-announcement', icon: 'truck', class: 'w-6 h-6' %}
+  Icons: tag, truck, star, shield, package, gift, zap, heart, award, check-circle, percent, mail, globe, clock, thumbs-up, leaf, flame, dumbbell
+{%- endcomment -%}
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="{{ class }}"
+  aria-hidden="true"
+>
+  {%- case icon -%}
+    {%- when 'tag' -%}
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+      <line x1="7" y1="7" x2="7.01" y2="7"/>
+    {%- when 'truck' -%}
+      <rect x="1" y="3" width="15" height="13"/>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+      <circle cx="5.5" cy="18.5" r="2.5"/>
+      <circle cx="18.5" cy="18.5" r="2.5"/>
+    {%- when 'star' -%}
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    {%- when 'shield' -%}
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    {%- when 'package' -%}
+      <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+      <line x1="12" y1="22.08" x2="12" y2="12"/>
+    {%- when 'gift' -%}
+      <polyline points="20 12 20 22 4 22 4 12"/>
+      <rect x="2" y="7" width="20" height="5"/>
+      <line x1="12" y1="22" x2="12" y2="7"/>
+      <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+      <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+    {%- when 'zap' -%}
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    {%- when 'heart' -%}
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    {%- when 'award' -%}
+      <circle cx="12" cy="8" r="6"/>
+      <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+    {%- when 'check-circle' -%}
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+      <polyline points="22 4 12 14.01 9 11.01"/>
+    {%- when 'percent' -%}
+      <line x1="19" y1="5" x2="5" y2="19"/>
+      <circle cx="6.5" cy="6.5" r="2.5"/>
+      <circle cx="17.5" cy="17.5" r="2.5"/>
+    {%- when 'mail' -%}
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    {%- when 'globe' -%}
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    {%- when 'clock' -%}
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12 6 12 12 16 14"/>
+    {%- when 'thumbs-up' -%}
+      <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>
+      <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+    {%- when 'leaf' -%}
+      <path d="M2 22c1.25-1.25 2.5-2.5 3.75-3.75"/>
+      <path d="M17.5 2C9.5 2 4 7.5 4 15.5L7 21c0-6 3.5-11.5 10.5-11.5S22 15.5 22 9c0-2.5-1-5-4.5-7z"/>
+    {%- when 'flame' -%}
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+    {%- when 'dumbbell' -%}
+      <path d="M14.4 14.4 9.6 9.6"/>
+      <path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/>
+      <path d="m21.5 21.5-1.4-1.4"/>
+      <path d="M3.9 3.9 2.5 2.5"/>
+      <path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/>
+    {%- else -%}
+      {%- comment -%} Fallback: tag icon {%- endcomment -%}
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+      <line x1="7" y1="7" x2="7.01" y2="7"/>
+  {%- endcase -%}
+</svg>

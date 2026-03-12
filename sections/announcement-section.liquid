@@ -1,102 +1,145 @@
-{% # 2025-02-19 Phase 2 UK Announcement section. %}
+{% # 2026-03-13 Phase 2 UK Announcement section — revamped layout. %}
 
-<div class='w-full bg-yellow flex flex-col items-center'>
-  <section class='py-3 md:py-5 px-[5vw] lg:px-[10vw] w-full'>
-    {% # TODO: Figure out breakpoint. %}
-    <ul class='grid grid-cols-2 md:flex md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-10'>
-      {% for block in section.blocks %}
-        {% if block.type == 'content' %}
-          <li class='flex items-center justify-center'>
-            <div class='mr-3 h-7 min-h-fit min-w-fit'>
-              {{
-                block.settings.icon_image
-                | image_url: width: 36, height: 36
-                | image_tag: class: 'h-[26px] md:h-[36px] w-[26px] md:w-[36px]'
-              }}
-            </div>
-            <div class='text-[22px] md:text-[18px] lg:text-[22px]'>{{ block.settings.content_text }}</div>
-          </li>
-        {% elsif block.type == 'button' %}
-          <li class='w-full md:w-fit justify-centerd justify-self-center col-span-2 flex flex-col md:flex-row items-center text-center md:text-left border-white border-dashed border-2 px-5 py-5 rounded-7xl gap-3 md:gap-8 lg:gap-16'>
-            <div>
-              <div class='font-anton text-[47px] md:text-[50px]'>{{ block.settings.title }}</div>
-              <div class='mt-1 text-sm'>{{ block.settings.subtitle }}</div>
-            </div>
-            <a
-              href='{{ block.settings.button_link }}'
-              class='w-full md:w-fit font-anton bg-black text-yellow rounded-xl px-10 md:px-15 py-4 md:py-6 whitespace-nowrap text-[21px]'
-            >
-              {{ block.settings.button_text }}
-            </a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+<div class='w-full bg-black text-white font-bebasNeue'>
+  <section class='py-4 md:py-5 w-full'>
+    <div class='flex flex-col md:flex-row md:items-center gap-5 md:gap-0'>
+
+      {%- comment -%} Left: Shop by Goal heading — 100px from screen edge {%- endcomment -%}
+      {%- if section.settings.heading_text != blank -%}
+        <div class='font-anton pl-8 lg:pl-15 pr-8 md:pr-12 text-white text-[22px] md:text-[24px] lg:text-[30px] uppercase whitespace-nowrap shrink-0'>
+          {{ section.settings.heading_text }}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Right group: benefits + divider + newsletter, all in one line {%- endcomment -%}
+      <div class='flex flex-row items-center gap-6 md:gap-10 lg:gap-14 ml-auto pr-8 lg:pr-15'>
+
+        {%- comment -%} Benefits {%- endcomment -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class='flex flex-row items-center gap-6 md:gap-8 lg:gap-12'>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'content' -%}
+                <li class='flex items-center gap-3' {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon != blank -%}
+                    <div class='shrink-0 text-yellow'>
+                      {%- render 'icon-announcement', icon: block.settings.icon, class: 'w-[26px] h-[26px] md:w-[30px] md:h-[30px]' -%}
+                    </div>
+                  {%- endif -%}
+                  <div class='text-white text-sm md:text-[15px] lg:text-[17px] leading-tight uppercase font-bold'>
+                    {{ block.settings.content_text }}
+                  </div>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- comment -%} Divider {%- endcomment -%}
+        <div class='self-stretch w-px bg-white/30 shrink-0'></div>
+
+        {%- comment -%} Newsletter CTA: text left of button, one line {%- endcomment -%}
+        {%- if section.settings.newsletter_text != blank or section.settings.newsletter_button_text != blank -%}
+          <div class='flex flex-row items-center gap-4 md:gap-6 shrink-0'>
+            {%- if section.settings.newsletter_text != blank -%}
+              <div class='font-bebasNeueExpanded text-white text-sm md:text-[13px] lg:text-[15px] uppercase leading-tight max-w-[140px] md:max-w-[160px] lg:max-w-[200px]'>
+                {{ section.settings.newsletter_text }}
+              </div>
+            {%- endif -%}
+            {%- if section.settings.newsletter_button_text != blank -%}
+              <a
+                href='{{ section.settings.newsletter_button_link | default: "#" }}'
+                class='font-anton text-white border-2 border-yellow px-6 py-3 md:px-8 md:py-4 uppercase text-[18px] md:text-[20px] whitespace-nowrap hover:bg-yellow hover:text-black transition-colors shrink-0'
+              >
+                {{ section.settings.newsletter_button_text }}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+
+    </div>
   </section>
-
-  {% # Used to tear image etc. %}
-  {% if section.settings.background_image != blank %}
-    {{ section.settings.background_image | image_url: width: 3840 | image_tag }}
-  {% endif %}
 </div>
 
 {% schema %}
 {
-  "name": "Announcement Section (v2)",
+  "name": "Announcement Section (v3)",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background Image"
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Shop by Goal"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter CTA"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_text",
+      "label": "Newsletter Text",
+      "default": "GET UPDATES & DISCOUNTS SENT TO YOUR INBOX"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_text",
+      "label": "Button Text",
+      "default": "JOIN THE PAK"
+    },
+    {
+      "type": "url",
+      "id": "newsletter_button_link",
+      "label": "Button Link"
     }
   ],
   "blocks": [
     {
-      "name": "Text with icon",
+      "name": "Button (legacy)",
+      "type": "button",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "subtitle", "label": "Subtitle" },
+        { "type": "text", "id": "button_text", "label": "Button Text" },
+        { "type": "url", "id": "button_link", "label": "Button Link" }
+      ]
+    },
+    {
+      "name": "Benefit",
       "type": "content",
-      "limit": 3,
+      "limit": 4,
       "settings": [
         {
-          "type": "image_picker",
-          "id": "icon_image",
-          "label": "Icon Image"
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "tag",
+          "options": [
+            { "value": "tag",         "label": "Tag (Discount)" },
+            { "value": "truck",       "label": "Truck (Delivery)" },
+            { "value": "star",        "label": "Star (Quality)" },
+            { "value": "shield",      "label": "Shield (Guarantee)" },
+            { "value": "package",     "label": "Package (Orders)" },
+            { "value": "gift",        "label": "Gift (Rewards)" },
+            { "value": "zap",         "label": "Zap (Fast / Energy)" },
+            { "value": "heart",       "label": "Heart (Care)" },
+            { "value": "award",       "label": "Award (Achievement)" },
+            { "value": "check-circle","label": "Check Circle (Verified)" },
+            { "value": "percent",     "label": "Percent (Discount %)" },
+            { "value": "mail",        "label": "Mail (Newsletter)" },
+            { "value": "globe",       "label": "Globe (Worldwide)" },
+            { "value": "clock",       "label": "Clock (Fast Dispatch)" },
+            { "value": "thumbs-up",   "label": "Thumbs Up (Satisfaction)" },
+            { "value": "leaf",        "label": "Leaf (Natural)" },
+            { "value": "flame",       "label": "Flame (Trending)" },
+            { "value": "dumbbell",    "label": "Dumbbell (Fitness)" }
+          ]
         },
         {
           "type": "richtext",
           "id": "content_text",
-          "label": "Content Text"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Link"
-        }
-      ]
-    },
-    {
-      "name": "Button",
-      "type": "button",
-      "limit": 3,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title"
-        },
-        {
-          "type": "richtext",
-          "id": "subtitle",
-          "label": "Subtitle"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Link"
+          "label": "Text"
         }
       ]
     }
@@ -105,32 +148,24 @@
     {
       "name": "Announcement Section",
       "settings": {
-        "background_image": "shopify://shop_images/tear_white.png"
+        "heading_text": "Shop by Goal",
+        "newsletter_text": "GET UPDATES & DISCOUNTS SENT TO YOUR INBOX",
+        "newsletter_button_text": "JOIN THE PAK",
+        "newsletter_button_link": "#"
       },
       "blocks": [
         {
           "type": "content",
           "settings": {
-            "icon_image": "shopify://shop_images/Icon_awesome-tag_fcb2b46c-5d2d-46cd-b761-d670848e8ae9.png",
-            "content_text": "<p><strong>GET 10% OFF</strong> YOUR FIRST ORDER</p>",
-            "button_link": "#"
+            "icon": "tag",
+            "content_text": "<p><strong>GET 10% OFF</strong> YOUR FIRST ORDER</p>"
           }
         },
         {
           "type": "content",
           "settings": {
-            "icon_image": "shopify://shop_images/Icon_awesome-shipping-fast_63c12739-4d8c-4c3b-bf8f-ca0b990f379f.png",
-            "content_text": "<p><strong>FREE DELIVERY</strong> ON ALL ORDERS OVER <strong>£50</strong></p>",
-            "button_link": "#"
-          }
-        },
-        {
-          "type": "button",
-          "settings": {
-            "title": "NEW TO ANIMAL?",
-            "subtitle": "<p>Join our online community for discounts and tips!</p>",
-            "button_text": "LEARN MORE",
-            "button_link": "#"
+            "icon": "truck",
+            "content_text": "<p><strong>FREE DELIVERY</strong> ON ALL ORDERS OVER <strong>£50</strong></p>"
           }
         }
       ]
