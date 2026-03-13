@@ -15,7 +15,7 @@
   </div>
 
   {% # Desktop version — 4 full-width columns %}
-  <div class='hidden lg:flex flex-row h-[550px] '>
+  <div class='hidden lg:flex flex-row h-[550px]'>
     {% for block in section.blocks %}
       <a href="{{ block.settings.link }}" class='relative flex-1 overflow-hidden'>
         <div class='absolute inset-0'>
@@ -37,7 +37,7 @@
 
   {% # Mobile version — carousel %}
   <div
-    class='flex relative lg:hidden h-[550px] w-full '
+    class='flex relative lg:hidden h-[550px] w-full'
     x-data='shopByGoalCarousel_{{ section_id }}()'
   >
     <div
