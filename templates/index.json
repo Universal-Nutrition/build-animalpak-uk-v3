@@ -33,9 +33,9 @@
             "button_label": "Shop now",
             "button_link": "shopify://products/small-core-stack",
             "button_font_size": 21,
-            "primary_text_color": "#212121",
+            "primary_text_color": "#000000",
             "primary_bg_color": "#f5d500",
-            "primary_text_color_hover": "#212121",
+            "primary_text_color_hover": "#000000",
             "primary_bg_color_hover": "#ffffff",
             "secondary_button_label": "",
             "secondary_button_link": "",
@@ -238,40 +238,32 @@
         "goal_E8BbA9": {
           "type": "goal",
           "settings": {
-            "title": "POWER HEALTH & IMMUNE SYSTEM",
-            "influencer_image": "shopify://shop_images/maintain-my-health-and-energy-influencer.png",
-            "packshot_image": "shopify://shop_images/maintain-my-health-and-energy-packshot.png",
-            "background_color": "#ffdd04",
+            "headline_top": "POWER HEALTH &",
+            "headline_bottom": "IMMUNITY",
             "link": "shopify://collections/supplements-to-stay-healthy"
           }
         },
         "goal_n7CqdC": {
           "type": "goal",
           "settings": {
-            "title": "BOOST ENERGY & RECOVERY",
-            "influencer_image": "shopify://shop_images/increaase-my-performance-influencer.png",
-            "packshot_image": "shopify://shop_images/boost-energy-recovery-packshot_2174fa9b-0694-4a52-8815-0714bf136a10.webp",
-            "background_color": "#f26322",
+            "headline_top": "BOOST ENERGY &",
+            "headline_bottom": "RECOVERY",
             "link": "shopify://collections/supplements-for-better-workouts"
           }
         },
         "goal_8rhtaY": {
           "type": "goal",
           "settings": {
-            "title": "FAT LOSS & DEFINITION",
-            "influencer_image": "shopify://shop_images/manage-my-weight-influencer.png",
-            "packshot_image": "shopify://shop_images/manage-my-weight-packshot.png",
-            "background_color": "#ff2636",
+            "headline_top": "FAT LOSS &",
+            "headline_bottom": "DEFINITION",
             "link": "shopify://collections/supplements-to-lose-body-fat"
           }
         },
         "goal_HcDE7b": {
           "type": "goal",
           "settings": {
-            "title": "BUILD STRENGTH & MUSCLE",
-            "influencer_image": "shopify://shop_images/build-strength-and-muscle-influencer.png",
-            "packshot_image": "shopify://shop_images/build-strength-and-muscle-packshot.png",
-            "background_color": "#fddaa5",
+            "headline_top": "BUILD MUSCLE &",
+            "headline_bottom": "STRENGTH",
             "link": "shopify://collections/supplements-to-gain-muscle"
           }
         }
@@ -283,10 +275,7 @@
         "goal_HcDE7b"
       ],
       "settings": {
-        "title": "EVERY GOAL IS PERSONAL...",
-        "subtitle": "WHAT'S YOURS?",
-        "content_text": "",
-        "top_divider_image": "shopify://shop_images/yellow-to-transparent-tear.png",
+        "top_divider_image": "shopify://shop_images/black-tear.png",
         "bottom_divider_image": "shopify://shop_images/transparent-to-white-tear.png"
       }
     },

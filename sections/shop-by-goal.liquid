@@ -1,30 +1,34 @@
 {% assign section_id = section.id | replace: '-', '_' | replace: '--', '_' | replace: '__', '_' %}
 
+<style>
+  @font-face {
+    font-family: 'Hyperwave';
+    src: url('{{ 'Hyperwave.woff' | asset_url }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+</style>
+
 <section id="shop-by-goal" class='bg-black relative'>
   <div class='w-full absolute z-10' style='transform: scale(-1); top: -1px;'>
     {{ section.settings.top_divider_image | image_url: width: 1920, height: 68 | image_tag: class: 'w-full', loading: 'lazy' }}
   </div>
 
   {% # Desktop version — 4 full-width columns %}
-  <div class='hidden lg:flex flex-row h-[550px]'>
+  <div class='hidden lg:flex flex-row h-[550px] '>
     {% for block in section.blocks %}
       <a href="{{ block.settings.link }}" class='relative flex-1 overflow-hidden'>
         <div class='absolute inset-0'>
-          {{ block.settings.image | image_url: width: 894, height: 1386 | image_tag: class: 'object-cover h-full w-full', loading: 'lazy' }}
+          {{ block.settings.image | image_url: width: 894, height: 1386 | image_tag: class: 'object-cover object-top h-full w-full', loading: 'lazy' }}
         </div>
-
-        {% # Left gradient on first image %}
-        {% if forloop.index0 == 0 %}
-          <div class='h-full w-full absolute inset-0 [background:linear-gradient(to_right,rgba(0,0,0,1)_0%,rgba(0,0,0,0)_20%)]'></div>
-        {% endif %}
 
         {% # Dark overlay for text legibility %}
         <div class='h-full w-full absolute inset-0 bg-black/30'></div>
 
         <div class='absolute inset-0 flex justify-center items-center'>
           <div class='text-center px-6 lg:px-4 2xl:px-6'>
-            <div class='font-anton text-white text-[30px] leading-tight'>{{ block.settings.headline_top }}</div>
-            <div class='font-anton text-yellow text-[30px] leading-tight'>{{ block.settings.headline_bottom }}</div>
+            <div class='font-anton text-white text-[30px] leading-none mb-[-6px]'>{{ block.settings.headline_top }}</div>
+            <div class='font-hyperwave text-yellow text-[75px] leading-none'>{{ block.settings.headline_bottom }}</div>
           </div>
         </div>
       </a>
@@ -33,7 +37,7 @@
 
   {% # Mobile version — carousel %}
   <div
-    class='flex relative lg:hidden h-[550px] w-full'
+    class='flex relative lg:hidden h-[550px] w-full '
     x-data='shopByGoalCarousel_{{ section_id }}()'
   >
     <div
@@ -55,8 +59,8 @@
 
           <div class='absolute inset-0 flex justify-center items-center'>
             <div class='text-center px-14'>
-              <div class='font-anton text-white text-[30px] leading-tight'>{{ block.settings.headline_top }}</div>
-              <div class='font-anton text-yellow text-[30px] leading-tight'>{{ block.settings.headline_bottom }}</div>
+              <div class='font-anton text-white text-[30px] leading-none mb-[-6px]'>{{ block.settings.headline_top }}</div>
+              <div class='font-hyperwave text-yellow text-[75px] leading-none'>{{ block.settings.headline_bottom }}</div>
             </div>
           </div>
         </a>

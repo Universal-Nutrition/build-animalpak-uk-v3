@@ -144,6 +144,7 @@ module.exports = {
       anton: ["Anton", "sans-serif"],
       bebasNeue: ["BebasNeuePro-ExpandedRegular", "sans-serif"],
       bebasNeueExpanded: ["BebasNeuePro-ExpandedRegular", "sans-serif"],
+      hyperwave: ["Hyperwave", "sans-serif"],
       brixton: ["Brixton Wood", "sans-serif"],
     },
     fontSize: {
