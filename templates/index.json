@@ -238,6 +238,7 @@
         "goal_E8BbA9": {
           "type": "goal",
           "settings": {
+            "image": "shopify://shop_images/maintain-my-health-and-energy-influencer.png",
             "headline_top": "POWER HEALTH &",
             "headline_bottom": "IMMUNITY",
             "link": "shopify://collections/supplements-to-stay-healthy"
@@ -246,6 +247,7 @@
         "goal_n7CqdC": {
           "type": "goal",
           "settings": {
+            "image": "shopify://shop_images/increaase-my-performance-influencer.png",
             "headline_top": "BOOST ENERGY &",
             "headline_bottom": "RECOVERY",
             "link": "shopify://collections/supplements-for-better-workouts"
@@ -254,6 +256,7 @@
         "goal_8rhtaY": {
           "type": "goal",
           "settings": {
+            "image": "shopify://shop_images/manage-my-weight-influencer.png",
             "headline_top": "FAT LOSS &",
             "headline_bottom": "DEFINITION",
             "link": "shopify://collections/supplements-to-lose-body-fat"
@@ -262,6 +265,7 @@
         "goal_HcDE7b": {
           "type": "goal",
           "settings": {
+            "image": "shopify://shop_images/build-strength-and-muscle-influencer.png",
             "headline_top": "BUILD MUSCLE &",
             "headline_bottom": "STRENGTH",
             "link": "shopify://collections/supplements-to-gain-muscle"
