@@ -1,0 +1,209 @@
+{{- 'bundle.section-multi-collection-slider.css' | asset_url | stylesheet_tag -}}
+
+{%- assign title = section.settings.title -%}
+
+{%- assign tab_index = 0 -%}
+{%- assign tabs_html = "" -%}
+{%- assign slider_collection = null -%}
+
+{%- for block in section.blocks -%}
+    {%- assign collection = block.settings.collection -%}
+    {%- unless collection -%}
+        {%- continue -%}
+    {%- endunless -%}
+
+    {%- assign products = collection.products -%}
+    {%- unless products -%}
+        {%- continue -%}
+    {%- endunless -%}
+
+    {%- if products.size == 0 -%}
+        {%- continue -%}
+    {%- endif -%}
+
+    {%- capture tab_html -%}
+        <div
+            data-tab-trigger
+            data-collection-handle="{{- collection.handle | handleize -}}"
+            class="flex justify-center items-center py-1 px-2 md:px-4 cursor-pointer hover:bg-gray-100 transition font-bebasNeue text-base md:text-lg whitespace-nowrap uppercase {% if forloop.first %} active {% endif %}"
+        >
+            {{- block.settings.collection.title -}}
+        </div>
+    {%- endcapture -%}
+    {%- assign tabs_html = tabs_html | append: tab_html -%}
+
+    {%- if tab_index == 0 -%}
+        {%- assign slider_collection = collection -%}
+    {%- endif -%}
+
+    {%- assign tab_index = tab_index | plus: 1 -%}
+{%- endfor -%}
+
+{%- assign slides_html = "" -%}
+{%- assign pagination_html = "" -%}
+{%- assign slides_count = 0 -%}
+{%- for product in slider_collection.products limit: 8 -%}
+    {%- assign index = forloop.index -%}
+    {%- assign product_description = product.metafields.custom.custom_icon_text -%}
+    {%- assign product_price = product.price | money -%}
+
+    {%- assign loading = 'lazy' -%}
+    {%- if index < 2 -%}
+        {%- assign loading = 'eager' -%}
+    {%- endif -%}
+
+    {%- capture slide_html -%}
+        <div class="swiper-slide {% if index == 0 %}swiper-slide-active{% endif %}">
+            {%- render 'product-card-new',
+                product: product,
+                product_description: product_description,
+                product_price: product_price,
+                buy_button: true,
+                dark_hover: true,
+                loading: loading,
+                index: forloop.index,
+                alt: product.title
+            -%}
+        </div>
+    {%- endcapture -%}
+    {%- assign slides_html = slides_html | append: slide_html -%}
+
+    {%- capture pagination_dot_html -%}
+        <span class="swiper-pagination-bullet {% if index == 0 %}swiper-pagination-bullet-active{% endif %}"></span>
+    {%- endcapture -%}
+    {%- assign pagination_html = pagination_html | append: pagination_dot_html -%}
+
+    {%- assign slides_count = slides_count | plus: 1 -%}
+{%- endfor -%}
+
+{%- capture swiper_options -%}
+    {
+        "slidesPerView": 1.25,
+        "spaceBetween": 10,
+        "breakpoints": {
+            "768": {
+                "slidesPerView": 2,
+                "spaceBetween": 20
+            },
+            "1024": {
+                "slidesPerView": 3,
+                "spaceBetween": 35
+            },
+            "1200": {
+                "slidesPerView": {{ section.settings.slides_per_view_desktop }},
+                "spaceBetween": 35
+            }
+        }
+    }
+{%- endcapture -%}
+
+{%- if slides_html -%}
+    <section class="container mx-auto overflow-x-hidden max-w-full">
+        <multi-collection-slider data-swiper-options='{{- swiper_options -}}'>
+            <div class="flex justify-between flex-col gap-5 xl:flex-row items-center py-8">
+                {%- if title -%}
+                    <div class="flex justify-center items-center py-8 w-full">
+                        <h2 class="font-anton text-2xl md:text-4xl uppercase w-full text-center md:text-left leading-[1]">
+                            {{- title -}}
+                        </h2>
+                    </div>
+                {%- endif -%}
+
+                <div class="flex w-full items-center gap-2">
+                    <button
+                        type="button"
+                        class="h-3 w-3 flex items-center justify-center bg-white z-20 text-[#f2f2f2]"
+                        data-tab-scroll-button-prev
+                        aria-label="Scroll tabs left"
+                    >
+                        {%- render 'icon-triangle-left', classes: 'w-4 h-4 min-w-4' -%}
+                    </button>
+
+                    <div
+                        class="w-full h-10 flex gap-4 justify-end max-w-full relative overflow-hidden z-[1]"
+                        data-tab-trigger-container
+                    >
+                        <div
+                            class="flex justify-start xl:justify-end gap-2 overflow-x-auto h-10 bg-white z-10 w-full no-scrollbar"
+                            data-tab-trigger-container-scrollable
+                        >
+                            {{- tabs_html -}}
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="h-3 w-3 flex items-center justify-center bg-white z-20 text-[#f2f2f2]"
+                        data-tab-scroll-button-next
+                        aria-label="Scroll tabs right"
+                    >
+                        {%- render 'icon-triangle-right', classes: 'w-4 h-4 min-w-4' -%}
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex relative">
+                <div class="swiper !pb-10">
+                    <div
+                        class="swiper-wrapper"
+                        data-swiper-wrapper
+                    >
+                        {{- slides_html -}}
+                    </div>
+
+                    <div class="dot-pagination swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                        {{- pagination_html -}}
+                    </div>
+                </div>
+
+                <div class="swiper-button-next">
+                    {%- render 'icon-triangle-right' -%}
+                </div>
+
+                <div class="swiper-button-prev">
+                    {%- render 'icon-triangle-left' -%}
+                </div>
+            </div>
+        </multi-collection-slider>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Multi Collection Slider",
+  "tag": "section",
+  "class": "multi-collection-slider relative z-1 bg-white",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Explore the Supplements"
+    },
+    {
+      "type": "number",
+      "id": "slides_per_view_desktop",
+      "label": "Slides Per View Desktop",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multi Collection Slider"
+    }
+  ]
+}
+{% endschema %}

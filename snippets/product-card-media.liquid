@@ -1,0 +1,160 @@
+{%- comment -%}
+    Accepts:
+        media: media object
+{%- endcomment -%}
+
+{%- assign loading = loading | default: 'lazy' -%}
+{%- assign importance = importance | default: 'low' -%}
+{%- assign fetchpriority = 'low' -%}
+{%- if loading == 'eager' -%}
+    {%- assign importance = 'high' -%}
+    {%- assign fetchpriority = 'high' -%}
+{%- endif -%}
+{%- assign sources = sources | default: '' -%}
+{%- assign link_preloads = link_preloads | default: '' -%}
+{%- unless image_widths -%}
+    {%- assign image_widths = '' | split: ',' -%}
+{%- endunless -%}
+{%- unless image_medias -%}
+    {%- assign image_medias = '' | split: ',' -%}
+{%- endunless -%}
+{%- case media.media_type -%}
+    {%- when 'image' -%}
+        {%- if media.alt contains 'iframe' -%}
+            {{- media.alt -}}
+        {%- else -%}
+            {%- assign image_alt = alt | default: media.alt -%}
+            {%- assign image_src = media | image_url: width: 310 -%}
+            {%- capture srcset -%}
+                {{ image_src }} 1x, {{ media | image_url: width: 620 }} 2x
+            {%- endcapture -%}
+            {%- assign previous_image_width = null -%}
+            {%- assign previous_image_media = null -%}
+            {%- assign previous_image_srcset = null -%}
+            {%- for image_width in image_widths -%}
+                {%- assign image_width = image_width | plus: 0 -%}
+                {%- assign image_width_index = forloop.index0 -%}
+                {%- assign max_image_media = image_medias[image_width_index] -%}
+                {%- unless max_image_media -%}
+                    {%- continue -%}
+                {%- endunless -%}
+                {%- assign image_url = media | image_url: width: image_width -%}
+                {%- assign image_srcset = '' -%}
+                {%- for scale in (1..1) -%}
+                    {%- assign scale_width = image_width | times: scale -%}
+                    {%- capture image_scale_srcset -%}
+                        {{ media | image_url: width: scale_width }} {{ scale }}x
+                    {%- endcapture -%}
+                    {%- if image_srcset != '' -%}
+                        {%- assign image_srcset = image_srcset | append: ', ' -%}
+                    {%- endif -%}
+                    {%- assign image_srcset = image_srcset | append: image_scale_srcset -%}
+                {%- endfor -%}
+                {%- capture image_source -%}
+                    <source srcset="{{- image_srcset -}}" media="{{- max_image_media -}}" />
+                {%- endcapture -%}
+                {%- assign sources = sources | append: image_source -%}
+                {%- unless previous_image_width -%}
+                    {%- assign previous_image_width = image_width -%}
+                    {%- assign previous_image_media = max_image_media
+                        | replace: 'max-width', 'min-width'
+                        | replace: 'px)', '.1px)'
+                    -%}
+                    {%- assign previous_image_srcset = image_srcset -%}
+                    {%- capture image_link_preload -%}
+                        <link
+                            rel="preload"
+                            href="{{- image_url -}}"
+                            as="image"
+                            imagesrcset="{{- image_srcset -}}"
+                            media="{{- max_image_media -}}"
+                            fetchpriority="{{- fetchpriority -}}"
+                        />
+                    {%- endcapture -%}
+                    {%- assign link_preloads = link_preloads | append: image_link_preload -%}
+                    {%- continue -%}
+                {%- endunless -%}
+                {%- assign image_media = previous_image_media | append: ' and ' | append: max_image_media -%}
+                {%- capture image_link_preload -%}
+                    <link
+                        rel="preload"
+                        href="{{- image_url -}}"
+                        as="image"
+                        imagesrcset="{{- image_srcset -}}"
+                        media="{{- image_media -}}"
+                        fetchpriority="{{- fetchpriority -}}"
+                    />
+                {%- endcapture -%}
+                {%- assign link_preloads = link_preloads | append: image_link_preload -%}
+                {%- assign previous_image_width = image_width -%}
+                {%- assign previous_image_media = max_image_media
+                    | replace: 'max-width', 'min-width'
+                    | replace: 'px)', '.1px)'
+                -%}
+                {%- assign previous_image_srcset = image_srcset -%}
+            {%- endfor -%}
+            {%- if previous_image_srcset -%}
+                {%- capture image_source -%}
+                    <source srcset="{{- previous_image_srcset -}}" media="{{- previous_image_media -}}" />
+                {%- endcapture -%}
+                {%- assign sources = sources | append: image_source -%}
+                {%- capture image_link_preload -%}
+                    <link
+                        rel="preload"
+                        href="{{- media | image_url: width: previous_image_width -}}"
+                        as="image"
+                        imagesrcset="{{- image_srcset -}}"
+                        media="{{- previous_image_media -}}"
+                        fetchpriority="{{- fetchpriority -}}"
+                    />
+                {%- endcapture -%}
+                {%- assign link_preloads = link_preloads | append: image_link_preload -%}
+            {%- endif -%}
+            {%- if sources == '' -%}
+                {%- capture image_source -%}
+                    <source srcset="{{- srcset -}}" />
+                {%- endcapture -%}
+                {%- assign sources = sources | append: image_source -%}
+            {%- endif -%}
+            {%- if link_preloads == '' -%}
+                {%- capture link_preloads -%}
+                    <link
+                        rel="preload"
+                        href="{{- media | image_url: width: 310 -}}"
+                        as="image"
+                        imagesrcset="{{- srcset -}}"
+                        fetchpriority="{{- fetchpriority -}}"
+                    />
+                {%- endcapture -%}
+            {%- endif -%}
+            {%-
+                render 'media' with
+                src: image_src,
+                alt: image_alt,
+                width: image.width,
+                height: image.height,
+                image_class: 'absolute-img contain',
+                loading: loading,
+                sources: sources,
+                link_preloads: link_preloads,
+                fetchpriority: fetchpriority,
+            -%}
+        {%- endif -%}
+    {%- when 'video' -%}
+        {%- capture poster -%}
+            {{- media.preview_image | image_url: width: 620 -}}
+        {%- endcapture -%}
+        {%- capture video_sources -%}
+            {{- media.sources | map: 'url' | join: ',' -}}
+        {%- endcapture -%}
+        {%-
+            render 'video' with
+            loop: 1,
+            muted: 1,
+            playsinline: 1,
+            autoplay: 1,
+            lazy: 1,
+            sources: video_sources,
+            poster: poster
+        -%}
+{%- endcase -%}

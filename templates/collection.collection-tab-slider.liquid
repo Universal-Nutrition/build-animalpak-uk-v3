@@ -1,0 +1,16 @@
+{%- layout none -%}
+{%- for product in collection.products -%}
+    {%- assign product_description = product.metafields.custom.custom_icon_text -%}
+    {%- assign product_price = product.price | money -%}
+
+    <div class="swiper-slide">
+        {%- render 'product-card-new',
+            product: product,
+            product_description: product_description,
+            product_price: product_price,
+            buy_button: true,
+            section_id: section.id,
+            dark_hover: true
+        -%}
+    </div>
+{%- endfor -%}
