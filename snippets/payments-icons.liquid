@@ -1,6 +1,6 @@
 <div class="payment-icons flex space-x-2 items-center">
     {%- for type in shop.enabled_payment_types -%}
-        <span class="bg-white rounded px-1 py-0.5 flex items-center">
+        <span>
           {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
         </span>
       {%- endfor -%}
