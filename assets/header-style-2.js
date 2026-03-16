@@ -224,11 +224,11 @@ class Header extends HTMLElement {
                 ) {
                     document
                         .getElementById('desktop-menu-overlay')
-                        .classList.remove('hidden')
+                        .classList.add('is-active')
                 } else if (e.target.getAttribute('data-item-index')) {
                     document
                         .getElementById('desktop-menu-overlay')
-                        .classList.add('hidden')
+                        .classList.remove('is-active')
                 }
 
                 if (
@@ -244,12 +244,12 @@ class Header extends HTMLElement {
                     parentItem.classList.add('active')
                     console.log('parnt item', parentItem)
                 }
-            }, 200)
+            }, 0)
         )
 
         this.addEventListener(
             'mouseleave',
-            debounce(this.mouseLeaveEvent.bind(this), 300)
+            debounce(this.mouseLeaveEvent.bind(this), 50)
         )
     }
 
@@ -258,7 +258,7 @@ class Header extends HTMLElement {
             element.classList.remove('active')
         )
         this.querySelectorAll('[meganav_index]').forEach((element) => {
-            document.getElementById('desktop-menu-overlay').classList.add('hidden')
+            document.getElementById('desktop-menu-overlay').classList.remove('is-active')
         })
     }
 
