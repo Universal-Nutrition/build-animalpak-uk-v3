@@ -7,6 +7,17 @@
   text-align: center;
 }
 
+.header-s2__icons div,
+.header-s2__icons a,
+.header-s2__icons span {
+  color: white;
+}
+
+.header-s2__icons .header_icon::after,
+.header-s2__icons .header_icon:hover::after {
+  display: none !important;
+}
+
 .mega-nav .mega-nav__item {
   font-family: "Familjen Grotesk", sans-serif;
   font-size: 18px;

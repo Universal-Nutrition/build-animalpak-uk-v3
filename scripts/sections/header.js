@@ -6,75 +6,64 @@ class Header extends HTMLElement {
   }
 
   connectedCallback() {
+    this.toggleExpanded();
     this.search();
     this.countrySelector();
 
     this.addEventListener(
-      "mouseover",
-      debounce(function(e) {
-        var targetName = e.target.id;
-        var indexValue = e.target.getAttribute("meganav_heading_index");
-
-        [...document.querySelectorAll(".mega-nav__item")].forEach((element) =>
-          element.classList.remove("active")
-        );
-
-        if (
-          (targetName && targetName.includes("meganav")) ||
-          indexValue !== null
-        ) {
-          document
-            .getElementById("desktop-menu-overlay")
-            .classList.remove("hidden");
-          this.querySelectorAll("[meganav_index]").forEach((element) => {
-            if (element.getAttribute("meganav_index") != indexValue) {
-              element.style.display = "none";
-            } else {
-              element.style.display = "block";
-              e.target.classList.add("active");
-            }
-          });
-        } else if (e.target.getAttribute("data-item-index")) {
-          [...document.querySelectorAll("[meganav_index]")].forEach(
-            (element) => {
-              element.style.display = "none";
-            }
-          );
-          document
-            .getElementById("desktop-menu-overlay")
-            .classList.add("hidden");
-        }
-
-        if (
-          e.target.closest(".mega-nav__dropdown") !== null &&
-          e.target.closest(".mega-nav__dropdown").style.display === "block"
-        ) {
-          const parentItemIndex = e.target
-            .closest(".mega-nav__dropdown")
-            .getAttribute("meganav_index");
-          const parentItem = document.querySelector(
-            `[meganav_heading_index="${parentItemIndex}"]`
-          );
-          parentItem.classList.add("active");
-        }
-      }, 200)
-    );
-
-    this.addEventListener(
       "mouseleave",
-      debounce(this.mouseLeaveEvent.bind(this), 200)
+      debounce(this.mouseLeaveEvent.bind(this), 50)
     );
+  }
+
+  toggleExpanded() {
+    const overlay = document.getElementById("desktop-menu-overlay");
+    const elements = document.querySelectorAll("[data-item-index]");
+
+    elements.forEach((element) => {
+      const dropdown = element.querySelector(".mega-nav__dropdown");
+      if (!dropdown) return;
+
+      element.addEventListener("mouseover", () => {
+        [...document.querySelectorAll(".mega-nav__item")].forEach((el) =>
+          el.classList.remove("active")
+        );
+        const btn = element.querySelector("[meganav_heading_index]");
+        if (btn) btn.classList.add("active");
+
+        document.querySelectorAll(".mega-nav__dropdown").forEach((el) =>
+          el.classList.add("hidden")
+        );
+        dropdown.classList.remove("hidden");
+
+        if (overlay) {
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+        }
+      });
+
+      element.addEventListener("mouseout", (e) => {
+        if (!element.contains(e.relatedTarget)) {
+          dropdown.classList.add("hidden");
+          element.querySelector("[meganav_heading_index]")?.classList.remove("active");
+        }
+      });
+    });
   }
 
   mouseLeaveEvent() {
     [...document.querySelectorAll(".mega-nav__item")].forEach((element) =>
       element.classList.remove("active")
     );
-    this.querySelectorAll("[meganav_index]").forEach((element) => {
-      element.style.display = "none";
-
-      document.getElementById("desktop-menu-overlay").classList.add("hidden");
+    document.querySelectorAll(".mega-nav__dropdown").forEach((element) => {
+      element.classList.add("hidden");
     });
+
+    const overlay = document.getElementById("desktop-menu-overlay");
+    if (overlay) {
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+    }
   }
 
   search() {
@@ -83,14 +72,16 @@ class Header extends HTMLElement {
       searchInput = this.querySelector(".search-input"),
       searchResults = this.querySelector(".search-results");
 
-    let mobile_trending_search = document
-      .querySelector(".trending-searches")
-      .cloneNode(true);
-    mobile_trending_search.classList.add("trending-searches-mobile");
-    document.body.appendChild(mobile_trending_search);
+    const trendingEl = document.querySelector(".trending-searches");
+    let mobile_trending_search = null;
+    if (trendingEl) {
+      mobile_trending_search = trendingEl.cloneNode(true);
+      mobile_trending_search.classList.add("trending-searches-mobile");
+      document.body.appendChild(mobile_trending_search);
+    }
 
     document.addEventListener("input", function(e) {
-      if (e.target.classList.contains("aa-Input")) {
+      if (e.target.classList.contains("aa-Input") && mobile_trending_search) {
         e.target.value.trim()
           ? mobile_trending_search.classList.add("hide")
           : mobile_trending_search.classList.remove("hide");
@@ -98,7 +89,7 @@ class Header extends HTMLElement {
     });
 
     document.addEventListener("click", function(e) {
-      if (e.target.closest(".aa-ClearButton")) {
+      if (e.target.closest(".aa-ClearButton") && mobile_trending_search) {
         mobile_trending_search.classList.remove("hide");
       }
     });
@@ -108,17 +99,17 @@ class Header extends HTMLElement {
         if (searchWrapper && searchInput) {
           searchWrapper.classList.remove("!hidden");
           searchInput.focus();
-        } else {
-          console.error("Search wrapper or input not found");
         }
       });
     });
 
-    searchInput.addEventListener("keyup", function(e) {
-      e.target.value.length
-        ? searchResults.classList.remove("!hidden")
-        : searchResults.classList.add("!hidden");
-    });
+    if (searchInput) {
+      searchInput.addEventListener("keyup", function(e) {
+        e.target.value.length
+          ? searchResults.classList.remove("!hidden")
+          : searchResults.classList.add("!hidden");
+      });
+    }
 
     // close search
     document.addEventListener("click", function(e) {
@@ -126,9 +117,9 @@ class Header extends HTMLElement {
         e.target.classList.contains("close-search") ||
         e.target.classList.contains("search-wrapper")
       ) {
-        searchWrapper.classList.add("!hidden");
-        searchResults.classList.add("!hidden");
-        searchInput.value = "";
+        if (searchWrapper) searchWrapper.classList.add("!hidden");
+        if (searchResults) searchResults.classList.add("!hidden");
+        if (searchInput) searchInput.value = "";
       }
     });
   }

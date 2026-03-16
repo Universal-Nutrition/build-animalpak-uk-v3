@@ -308,7 +308,7 @@
     <a class="skip-to-content-link button" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
-    <div id="desktop-menu-overlay" class="fixed inset-0 z-10 hidden"></div>
+    <div id="desktop-menu-overlay" style="position:fixed;inset:0;z-index:998;background:rgba(0,0,0,0.4);opacity:0;pointer-events:none;transition:opacity 0.2s ease;"></div>
     {% render 'country-selector' %}
     <div class="top-header-element sticky top-0 z-[999] w-full">
       {% section 'countdown-bar' %}
