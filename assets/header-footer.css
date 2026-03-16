@@ -55,13 +55,13 @@
 }
 
 .footer h3.footer-link-title {
-  font-family: "Familjen Grotesk", sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 21px;
   letter-spacing: 0em;
   text-align: left;
-  color: #fcd92c !important;
+  color: #ffffff !important;
 }
 
 .footer .footer-menu a {
@@ -219,7 +219,7 @@
   .footer h3.footer-link-title {
     text-align: center;
     display: block;
-    border-bottom: 1px solid #fcd92c;
+    border-bottom: 1px solid #ffffff;
     padding-bottom: 8px;
   }
 
