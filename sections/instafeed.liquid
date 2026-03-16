@@ -1,9 +1,16 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    z-index: 10;
+  }
+{% endstyle %}
+
 <div
   class="relative flex flex-col justify-center items-center pb-6 md:pb-12"
   style="background-color: {{ section.settings.bg_color }};"
 >
   {% render 'tear-image': image: section.settings.bg_image position: 'top' overlap: true %}
-  <div class="absolute w-full bottom-0 z-10" style="transform: scaleY(-1) scaleX(-1);">
+  <div class="absolute w-full z-10" style="bottom: -36px; transform: scaleY(-1) scaleX(-1);">
     {{ section.settings.bg_image | image_url: height: 36 | image_tag: class: 'w-full h-[36px]' }}
   </div>
 

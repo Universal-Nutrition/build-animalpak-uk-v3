@@ -366,21 +366,49 @@
         "button_url": "shopify://products/animal-creatine-chews"
       }
     },
-    "54586e84-3067-426f-a75a-d7ae7e030820": {
-      "type": "collection-featured-slider",
-      "custom_css": [
-        "h2 {padding-bottom: 20px; font-family: Anton; font-size: 60px; line-height: 60px;}"
+    "swiper_slider_expanding_8mUFbN": {
+      "type": "swiper-slider-expanding",
+      "blocks": {
+        "slide_Dfxnq8": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/jenny-tong.jpg",
+            "title": "Jenny Tong",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel odio eros. Sed tempor luctus ipsum, sed feugiat risus pellentesque et. Vestibulum ultricies gravida lacus nec efficitur. Proin vitae tortor nec odio dictum interdum. Maecenas risus nisl, rutrum a bibendum ut, mollis vitae libero. </p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "slide_Pm6jz6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/ryan-mackins.jpg",
+            "title": "Ryan Mackins",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel odio eros. Sed tempor luctus ipsum, sed feugiat risus pellentesque et. Vestibulum ultricies gravida lacus nec efficitur. Proin vitae tortor nec odio dictum interdum. Maecenas risus nisl, rutrum a bibendum ut, mollis vitae libero. </p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "slide_rw9fqE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/tim-de-groot.jpg",
+            "title": "Tim De Groot",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel odio eros. Sed tempor luctus ipsum, sed feugiat risus pellentesque et. Vestibulum ultricies gravida lacus nec efficitur. Proin vitae tortor nec odio dictum interdum. Maecenas risus nisl, rutrum a bibendum ut, mollis vitae libero. </p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Dfxnq8",
+        "slide_Pm6jz6",
+        "slide_rw9fqE"
       ],
+      "name": "Content Slider Expanding",
       "settings": {
-        "bg_color": "#212121",
-        "title": "BEST SELLERS",
-        "sub_title": "",
-        "btn": "SHOP NOW",
-        "url": "shopify://collections/trending",
-        "collection": "trending",
-        "itemsOnRow": "5",
-        "top_tear_image": "shopify://shop_images/featured-collection-tear-transparent-to-offblack2.png",
-        "bg_image": "shopify://shop_images/featured-slider-background.png"
+        "title": "Meet the UK Animal Pak",
+        "lazy_load": true
       }
     },
     "section_instafeed_abx123": {
@@ -402,7 +430,7 @@
     "multi_collection_slider_aTE9DY",
     "banner_message_nkNkC4",
     "product_highlight_T7jeJc",
-    "54586e84-3067-426f-a75a-d7ae7e030820",
+    "swiper_slider_expanding_8mUFbN",
     "section_instafeed_abx123"
   ]
 }
