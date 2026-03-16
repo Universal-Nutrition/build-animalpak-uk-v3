@@ -1,14 +1,18 @@
 .announcement-bar {
 	&__slide {
-	  font-family: 'Open Sans';
+	  font-family: 'BebasNeuePro-ExpandedRegular', sans-serif !important;
 	  font-style: normal;
 	  font-weight: 400;
-	  font-size: 13.913px;
+	  font-size: 15px;
 	  line-height: 160%;
 	  text-align: center;
-	  text-transform: capitalize;
+	  text-transform: uppercase;
 	  font-feature-settings: 'ss08'on, 'ss10'on;
 	  color: inherit;
+
+	  p {
+		font-family: 'BebasNeuePro-ExpandedRegular', sans-serif !important;
+	  }
 	  max-width: max-content !important;
 	  transition-timing-function: linear !important;
 	  padding-left: .5rem;
