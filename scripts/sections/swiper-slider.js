@@ -1,11 +1,10 @@
 import Swiper, { Navigation, Pagination, Scrollbar } from 'swiper';
+import 'swiper/css/bundle';
 
 class SwiperSlider extends HTMLElement {
-    constructor() {
-        super();
-        this.swiper = this.querySelector('.swiper');
-        this.expandedSlider = this.querySelector('.expanding-slider');
-        this.swiperInstance = null;
+    connectedCallback() {
+        const swiperEl = this.querySelector('.swiper');
+        const expandedSlider = this.querySelector('.expanding-slider');
 
         const raw = this.getAttribute('data-swiper-options') || '{}';
         const userOptions = JSON.parse(raw);
@@ -14,7 +13,7 @@ class SwiperSlider extends HTMLElement {
         const prevButton = this.querySelector('.swiper-button-prev');
         const scrollbar = this.querySelector('.swiper-scrollbar');
 
-        this.swiperOptions = {
+        const swiperOptions = {
             modules: [Navigation, Pagination, Scrollbar],
             ...userOptions,
             pagination: {
@@ -31,46 +30,28 @@ class SwiperSlider extends HTMLElement {
         };
 
         if (scrollbar) {
-            this.swiperOptions.scrollbar = {
-                el: scrollbar,
-            };
+            swiperOptions.scrollbar = { el: scrollbar };
         }
 
-        this.initSwiper();
-    }
+        const swiperInstance = new Swiper(swiperEl, swiperOptions);
 
-    initSwiper() {
-        this.swiperInstance = new Swiper(this.swiper, this.swiperOptions);
-
-        if (this.expandedSlider) {
-            this.setupExpandedSlider();
-        }
-    }
-
-    connectedCallback() {}
-
-    setupExpandedSlider() {
-        const slides = this.expandedSlider.querySelectorAll('.swiper-slide');
-
-        slides.forEach(slide => {
-            slide.addEventListener('click', (e) => {
-                if (slide.classList.contains('swiper-slide-active')) {
-                    return;
-                }
+        if (expandedSlider) {
+            expandedSlider.addEventListener('click', (e) => {
+                const slide = e.target.closest('.swiper-slide');
+                if (!slide) return;
+                if (slide.classList.contains('swiper-slide-active')) return;
 
                 if (slide.classList.contains('swiper-slide-next')) {
                     e.preventDefault();
                     e.stopPropagation();
-                    this.swiperInstance.slideNext();
-                }
-
-                if (slide.classList.contains('swiper-slide-prev')) {
+                    swiperInstance.slideNext();
+                } else if (slide.classList.contains('swiper-slide-prev')) {
                     e.preventDefault();
                     e.stopPropagation();
-                    this.swiperInstance.slidePrev();
+                    swiperInstance.slidePrev();
                 }
             });
-        });
+        }
     }
 }
 

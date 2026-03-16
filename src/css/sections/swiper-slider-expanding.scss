@@ -4,6 +4,11 @@
 }
 
 swiper-slider {
+    display: block;
+    width: 100%;
+}
+
+swiper-slider {
     .dot-pagination.swiper-pagination {
         position: relative;
         bottom: -20px !important;
