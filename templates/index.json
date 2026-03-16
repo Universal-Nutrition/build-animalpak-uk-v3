@@ -340,6 +340,9 @@
     "banner_message_nkNkC4": {
       "type": "banner-message",
       "settings": {
+        "tear_image": "shopify://shop_images/black-tear.png",
+        "tear_image_mobile": "shopify://shop_images/mobile-black-tear.png",
+        "video_url": "https://youtu.be/tblwnl9L1QM",
         "title": "TRUE EFFORT",
         "title_highlighted": "COUNTS",
         "content_text": "<p>Every lift, crunch, gain, PB you make is backed by over 40 years of effort, developing, evolving and perfecting everything we do.</p><p>Strong of will, you know what you need to succeed. It’s time to join like-minded people. People who share your desire, your grit. People who care, who will celebrate the effort, not only the result. <strong>Be ANIMAL.</strong></p>",

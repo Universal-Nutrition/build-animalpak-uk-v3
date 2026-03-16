@@ -34,26 +34,36 @@
             {%- if section.settings.video_url != blank -%}
                 <div class="w-full lg:w-1/2 flex-shrink-0">
                     <div class="banner-message__video" style="padding-bottom: 56.25%;">
-                        <iframe
-                            src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}"
-                            allow="autoplay; encrypted-media"
-                            allowfullscreen
-                            title="{{ section.settings.title }} {{ section.settings.title_highlighted }}"
-                        ></iframe>
+                        <button
+                            class="banner-message__poster"
+                            aria-label="Play video"
+                            data-video-id="{{ section.settings.video_url.id }}"
+                        >
+                            <img
+                                src="https://img.youtube.com/vi/{{ section.settings.video_url.id }}/maxresdefault.jpg"
+                                alt="{{ section.settings.title }} {{ section.settings.title_highlighted }}"
+                                loading="lazy"
+                            />
+                            <span class="banner-message__play">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="6,3 25,12 6,21" fill="white"/>
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             {%- endif -%}
 
-            <div class="w-full {% if section.settings.video_url != blank %}lg:w-1/2{% endif %} flex flex-col gap-8 text-center">
+            <div class="w-full {% if section.settings.video_url != blank %}lg:w-1/2{% endif %} flex flex-col gap-4 text-center">
                 <div class="leading-tight">
-                    <div class="font-anton text-white text-[40px] md:text-[60px] lg:text-[54px] xl:text-[62px]">{{ section.settings.title }}</div>
-                    <div class="font-hyperwave text-goalYellow text-[40px] md:text-[60px] lg:text-[54px] xl:text-[92px]">{{ section.settings.title_highlighted }}</div>
+                    <div class="font-anton text-white text-[40px] md:text-[45px] lg:text-[45px] xl:text-[45px]">{{ section.settings.title }}</div>
+                    <div class="font-hyperwave text-goalYellow text-[95px] md:text-[95px] lg:text-[120px] xl:text-[120px] mt-[1.72rem]" style="line-height: 1rem">{{ section.settings.title_highlighted }}</div>
                 </div>
-                <div class="font-bebasNeue text-[15px] lg:text-[18px] space-y-4 text-white">
+                <div class="banner-message__content font-bebasNeue text-[15px] lg:text-[18px] space-y-4 pb-4 text-white">
                     {{ section.settings.content_text }}
                 </div>
                 <div>
-                    <a href="{{ section.settings.button_link }}" class="inline-block font-anton text-black bg-goalYellow rounded-md text-[21px] px-[60px] md:px-[90px] py-[20px]">{{ section.settings.button_text }}</a>
+                    <a href="{{ section.settings.button_link }}" class="inline-block font-anton text-black bg-goalYellow text-[21px] px-[50px] md:px-[50px] py-[10px]">{{ section.settings.button_text }}</a>
                 </div>
             </div>
 
@@ -61,6 +71,16 @@
     </div>
 
 </section>
+
+<script>
+    document.querySelectorAll('.banner-message__poster').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var id = btn.dataset.videoId;
+            var wrapper = btn.parentElement;
+            wrapper.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        });
+    });
+</script>
 
 {% schema %}
 {
