@@ -1,0 +1,178 @@
+{{- 'bundle.section-product-highlight.css' | asset_url | stylesheet_tag -}}
+
+{% style %}
+    .description-{{ section.id }} p {
+    margin-bottom: 24px;
+    }
+
+    .description-{{ section.id }} ul {
+    list-style-type: disc;
+    }
+    .description-{{ section.id }} ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 1em;
+    }
+
+    .description-{{ section.id }} ul li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    color: inherit;
+    font-weight: bold;
+    }
+{% endstyle %}
+
+<section x-data="{ inView: true }" class="product-highlight bg-white md:bg-transparent flex flex-col relative md:pt-6 lg:pt-20">
+
+    {%- if section.settings.tear_image != blank or section.settings.tear_image_mobile != blank -%}
+        {%- assign tear_desktop = section.settings.tear_image -%}
+        {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
+        {%- assign tear_fallback = tear_desktop | default: section.settings.tear_image_mobile -%}
+        <div class="product-highlight__tear">
+            <picture>
+                {%- if tear_mobile != blank -%}
+                    <source media="(max-width: 767px)"
+                        srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w"
+                    />
+                {%- endif -%}
+                {%- if tear_desktop != blank -%}
+                    <source media="(min-width: 768px)"
+                        srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 1600, format: 'webp' }} 1600w, {{ tear_desktop | image_url: width: 2400, format: 'webp' }} 2400w"
+                    />
+                {%- endif -%}
+                <img
+                    src="{{ tear_fallback | image_url: width: 1600, format: 'webp' }}"
+                    alt=""
+                    loading="lazy"
+                    class="block w-full"
+                />
+            </picture>
+        </div>
+    {%- endif -%}
+
+    <div class="flex-col-reverse max-w-full md:max-w-none md:flex-col mx-auto px-4 md:px-20 flex md:grid md:grid-cols-2 gap-20 pt-10 bg-white relative justify-center items-center lg:items-end md:w-full">
+        <div class="h-full flex justify-end items-end">
+          {% if section.settings.image != blank %}
+            <div x-data="{ inViewImage: true }" class="max-w-[300px] md:max-w-none md:w-[400px] relative z-[30] inline-block">
+              <div class="relative">
+              {% capture sources %}
+                <source data-srcset="{{ section.settings.image | image_url: width: 1920 }}" media="(min-width: 1920px)">
+                <source data-srcset="{{ section.settings.image | image_url: width: 1440 }}" media="(min-width: 1440px)">
+                <source data-srcset="{{ section.settings.image | image_url: width: 1024 }}" media="(min-width: 1024px)">
+                <source data-srcset="{{ section.settings.image | image_url: width: 768 }}" media="(min-width: 768px)">
+                <source data-srcset="{{ section.settings.image | image_url: width: 480 }}" media="(max-width: 767px)">
+              {% endcapture %}
+              {% render 'media',
+                sources: sources,
+                src: section.settings.image,
+                alt: section.settings.title,
+                loading: 'lazy',
+                classes: 'transition-all duration-[1000ms] md:absolute md:-bottom-[5px]',
+                transition_product: true
+              %}
+              </div>
+            </div>
+        {% endif %}
+        </div>
+        <div class="flex flex-col items-start relative z-[2] col-start-2 col-end-2 max-w-[400px] relative z-[0] md:mb-[60px]">
+            {% if section.settings.subtitle != blank %}
+                <span class="block mb-2 font-bebasNeue text-sm uppercase tracking-widest">{{ section.settings.subtitle }}</span>
+            {% endif %}
+            <h2 class="font-anton text-2xl md:text-4xl uppercase text-left mb-6 leading-[1.2]">
+              {{ section.settings.title | replace: '\n', '<br>' }}
+            </h2>
+            {% if section.settings.description != blank %}
+                <div class="description-{{ section.id }} font-bebasNeueExpanded mb-6">{{ section.settings.description }}</div>
+            {% endif %}
+            <a href="{{ section.settings.button_url }}" class="btn btn-primary !border-none !rounded-none hover:!bg-black hover:!text-white transition-all !duration-200">Shop Now</a>
+        </div>
+    </div>
+    {% if section.settings.platform_image != blank %}
+      <div class="w-full h-auto relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 absolute gap-20 mx-auto w-full h-full">
+          <div class="flex justify-center lg:justify-end md:pl-20 lg:pl-0">
+          {{ section.settings.radial_shadow | image_url: width: 1000 | image_tag: class: 'object-[0 20%] absolute top-0 bottom-0 max-h-full w-[50%] md:w-[300px] md:max-w-none md:w-[400px]' }}
+          </div>
+          <div></div>
+        </div>
+        {{ section.settings.platform_image | image_url: width: 1000 | image_tag: class: 'w-full h-full object-cover' }}
+      </div>
+    {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Product Highlight",
+  "tag": "section",
+  "class": "relative",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "tear_image",
+      "label": "Tear Image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_image_mobile",
+      "label": "Tear Image (mobile, optional)"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_overlay",
+      "label": "Image overlay"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "platform_image",
+      "label": "Platform Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "radial_shadow",
+      "label": "Radial Shadow"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "Add '\\n' to add a line break"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Highlight"
+    }
+  ]
+}
+{% endschema %}

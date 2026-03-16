@@ -1,0 +1,210 @@
+{{- 'bundle.section-swiper-slider-expanding.css' | asset_url | stylesheet_tag -}}
+
+{% style %}
+
+    {% assign space_between = section.settings.slides_per_view_desktop | minus: 1 | times: 35 %}
+
+    h2 sup {
+      font-size: 20px;
+      top: -1rem;
+    }
+
+    .section-{{ section.id }} swiper-slider .dot-pagination.swiper-pagination{
+      bottom: 0px !important;
+    }
+
+    .section-{{ section.id }} swiper-slider .swiper-slide {
+        width: calc(calc(100% - {{ space_between }}px) / {{ section.settings.slides_per_view_desktop }});
+        transition: transform 0.3s ease-in-out;
+        will-change: transform;
+    }
+
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide {
+       overflow: hidden;
+       width: 35% !important;
+    }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide-active {
+        width: 45% !important;
+    }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide img {
+        max-height: 375px;
+        transition: all 0.5s ease-in-out;
+        will-change: max-height;
+        object-position: top;
+    }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide-active img {
+        max-height: 500px;
+        transition: all 0.5s ease-in-out;
+        will-change: max-height;
+        aspect-ratio: 1/1 !important;
+        object-position: center !important;
+    }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide-active .content-card__content {
+        max-height: 100%;
+        visibility: visible;
+        transition: max-height 0.5s ease-in-out;
+        will-change: max-height;
+    }
+
+  @media (max-width: 768px) {
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide {
+       overflow: hidden;
+       width: 100% !important;
+    }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide-active img {
+        width: 100% !important;
+        aspect-ratio: auto !important;
+    }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide-active {
+        width: 100% !important;
+    }
+  }
+
+{% endstyle %}
+
+{% capture swiper_options %}
+    {
+        "loop": true,
+        "slidesPerView": "auto",
+        "autoHeight": true,
+        "spaceBetween": 40,
+        "centeredSlides": true
+    }
+{% endcapture %}
+
+<section x-data="{ inView: true }" class="section-{{ section.id }} swiper-slider-expanding xl:-mt-20 pb-10">
+    <swiper-slider data-expanding-slider data-swiper-options='{{ swiper_options }}'>
+        <div :class="`${inView ? '!opacity-100 !translate-y-0' : 'opacity-0 translate-y-5'}`" class="flex opacity-0 translate-y-5 justify-center items-center py-8 transition-all duration-[1000ms] w-full">
+            <h2 class="font-anton text-2xl md:text-4xl uppercase text-center leading-[1]">
+                {{ section.settings.title }}<sup>®</sup>
+            </h2>
+        </div>
+
+        <div class="flex relative">
+            <div class="swiper expanding-slider">
+                <div class="swiper-wrapper !h-fit relative">
+                    {% for block in section.blocks %}
+                        {%  liquid
+                            assign image = block.settings.image
+                            assign url = block.settings.link_url
+                            assign title = block.settings.title
+                            assign description = block.settings.content
+                            assign link_text = block.settings.link_text
+                            if forloop.last
+                              assign index = 1
+                            else
+                              assign index = forloop.index | plus: 1
+                            endif
+                        %}
+                        <div class="swiper-slide max-w-full flex flex-col">
+                          <div class="flex flex-col w-full h-[-webkit-fill-available] justify-between flex-1">
+
+                          <a class="content-card--{{ section.id }} flex flex-col justify-between h-full opacity-0 translate-y-5 transition-all duration-[1000ms]" :class="`${inView ? '!opacity-100 !translate-y-0' : 'opacity-0 translate-y-5'}`" style="transition-delay: {{ index | plus: 1 | times: 100 }}ms;" href="{{ url }}">
+                                  <div class="relative h-full w-full lg:min-[500px] min-h-[500px]">
+                                    {% capture sources %}
+                                      <source data-srcset="{{ image | image_url: width: 1920 }}" media="(min-width: 1920px)">
+                                      <source data-srcset="{{ image | image_url: width: 1440 }}" media="(min-width: 1440px)">
+                                      <source data-srcset="{{ image | image_url: width: 1024 }}" media="(min-width: 1024px)">
+                                      <source data-srcset="{{ image | image_url: width: 768 }}" media="(min-width: 768px)">
+                                      <source data-srcset="{{ image | image_url: width: 767 }}" media="(max-width: 767px)">
+                                    {% endcapture %}
+                                    {% render 'media',
+                                      sources: sources,
+                                      src: image,
+                                      alt: block.settings.title,
+                                      classes: 'h-full w-full object-cover absolute inset-0',
+                                      picture_classes: 'h-full w-full',
+                                    -%}
+                                    </div>
+                                </a>
+                                <div class="p-5 md:py-5 md:px-0 content-card__content text-black transition-all duration-200 invisible">
+                                  <h3 class="leading-[1.2] font-anton text-xl uppercase mb-2 transition duration-200">{{ title }}</h3>
+                                  <div class="font-bebasNeue transition duration-200 mb-3 line-clamp-5">{{ description }}</div>
+                                    {% if url != blank %}
+                                        <a href="{{ url }}" class="font-bebasNeue transition duration-200 font-bold uppercase underline">{{ link_text }}</a>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-next text-black !right-5 md:!right-10 !top-auto !bottom-[60%] md:!bottom-[40%] 2xl:!bottom-[30%]">
+                  {% render 'icon-triangle-right', classes: '!w-6 !h-6 text-white md:text-black' %}
+                </div>
+
+                <div class="swiper-button-prev text-black !left-5 md:!left-10 !top-auto !bottom-[60%] md:!bottom-[40%] 2xl:!bottom-[30%]">
+                    {% render 'icon-triangle-left', classes: '!w-6 !h-6 text-white md:text-black' %}
+                </div>
+                <div class="hidden dot-pagination swiper-pagination"></div>
+            </div>
+        </div>
+    </swiper-slider>
+</section>
+
+{% schema %}
+{
+  "name": "Content Slider Expanding",
+  "tag": "section",
+  "class": "relative z-1 bg-white",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Explore the Supplements"
+    },
+    {
+      "type": "checkbox",
+      "id": "lazy_load",
+      "label": "Lazy Load Images",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Slider Expanding"
+    }
+  ]
+}
+{% endschema %}

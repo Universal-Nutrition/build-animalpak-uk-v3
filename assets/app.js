@@ -3901,6 +3901,114 @@ if (!customElements.get('stack-products')) customElements.define('stack-products
 
 /***/ }),
 
+/***/ "./scripts/sections/swiper-slider.js":
+/*!*******************************************!*\
+  !*** ./scripts/sections/swiper-slider.js ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var SwiperSlider = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(SwiperSlider, _HTMLElement);
+  var _super = _createSuper(SwiperSlider);
+  function SwiperSlider() {
+    var _this;
+    _classCallCheck(this, SwiperSlider);
+    _this = _super.call(this);
+    _this.swiper = _this.querySelector('.swiper');
+    _this.expandedSlider = _this.querySelector('.expanding-slider');
+    _this.swiperInstance = null;
+    var raw = _this.getAttribute('data-swiper-options') || '{}';
+    var userOptions = JSON.parse(raw);
+    var nextButton = _this.querySelector('.swiper-button-next');
+    var prevButton = _this.querySelector('.swiper-button-prev');
+    var scrollbar = _this.querySelector('.swiper-scrollbar');
+    _this.swiperOptions = _objectSpread(_objectSpread({
+      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Scrollbar]
+    }, userOptions), {}, {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: nextButton,
+        prevEl: prevButton
+      },
+      observeChildren: true,
+      observer: true,
+      resize: true
+    });
+    if (scrollbar) {
+      _this.swiperOptions.scrollbar = {
+        el: scrollbar
+      };
+    }
+    _this.initSwiper();
+    return _this;
+  }
+  _createClass(SwiperSlider, [{
+    key: "initSwiper",
+    value: function initSwiper() {
+      this.swiperInstance = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](this.swiper, this.swiperOptions);
+      if (this.expandedSlider) {
+        this.setupExpandedSlider();
+      }
+    }
+  }, {
+    key: "connectedCallback",
+    value: function connectedCallback() {}
+  }, {
+    key: "setupExpandedSlider",
+    value: function setupExpandedSlider() {
+      var _this2 = this;
+      var slides = this.expandedSlider.querySelectorAll('.swiper-slide');
+      slides.forEach(function (slide) {
+        slide.addEventListener('click', function (e) {
+          if (slide.classList.contains('swiper-slide-active')) {
+            return;
+          }
+          if (slide.classList.contains('swiper-slide-next')) {
+            e.preventDefault();
+            e.stopPropagation();
+            _this2.swiperInstance.slideNext();
+          }
+          if (slide.classList.contains('swiper-slide-prev')) {
+            e.preventDefault();
+            e.stopPropagation();
+            _this2.swiperInstance.slidePrev();
+          }
+        });
+      });
+    }
+  }]);
+  return SwiperSlider;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
+if (!customElements.get('swiper-slider')) customElements.define('swiper-slider', SwiperSlider);
+
+/***/ }),
+
 /***/ "./scripts/sections/testimonial-slider.js":
 /*!************************************************!*\
   !*** ./scripts/sections/testimonial-slider.js ***!
@@ -29249,6 +29357,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_sections_search_facets_js__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_scripts_sections_search_facets_js__WEBPACK_IMPORTED_MODULE_28__);
 /* harmony import */ var _scripts_sections_homepage_carousel_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../scripts/sections/homepage-carousel.js */ "./scripts/sections/homepage-carousel.js");
 /* harmony import */ var _scripts_sections_multi_collection_slider_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../scripts/sections/multi-collection-slider.js */ "./scripts/sections/multi-collection-slider.js");
+/* harmony import */ var _scripts_sections_swiper_slider_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../../scripts/sections/swiper-slider.js */ "./scripts/sections/swiper-slider.js");
+
 
 
 

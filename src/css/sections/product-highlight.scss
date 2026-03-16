@@ -1,0 +1,26 @@
+.product-highlight {
+    position: relative;
+    overflow: visible;
+}
+
+.product-highlight__tear {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    pointer-events: none;
+    line-height: 0;
+
+    picture {
+        display: block;
+        width: 100%;
+        transform: scaleY(-1) scaleX(-1);
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}

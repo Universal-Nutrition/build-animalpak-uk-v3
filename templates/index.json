@@ -200,14 +200,14 @@
           "type": "content",
           "settings": {
             "icon": "tag",
-            "content_text": "<p><strong>GET 10% OFF</strong> YOUR FIRST ORDER</p>"
+            "content_text": "<p>GET 10% OFF YOUR FIRST ORDER</p>"
           }
         },
         "content_Lnnwwz": {
           "type": "content",
           "settings": {
             "icon": "tag",
-            "content_text": "<p><strong>FREE DELIVERY</strong> ON ALL ORDERS OVER <strong>£50</strong></p>"
+            "content_text": "<p>FREE DELIVERY ON ALL ORDERS OVER £50</p>"
           }
         },
         "button_rREFpK": {
