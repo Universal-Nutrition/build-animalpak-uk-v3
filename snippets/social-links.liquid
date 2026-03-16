@@ -1,0 +1,10 @@
+<style>
+  .social-links svg path { fill: white; }
+</style>
+<div class="social-links flex items-center text-white {{classes}}">
+  <a target="_blank" href="{{settings.social_facebook_link}}" aria-label="icon-facebook" class="px-4 md:px-8 md:border-r border-white border-dashed hover:text-[#fcd92c] transition-all duration-300">{% render 'icon-facebook' with classes: 'h-6 w-6' %}</a>
+  <a target="_blank" href="{{settings.social_instagram_link}}" aria-label="icon-instagram" class="px-4 md:px-8 md:border-r border-white border-dashed hover:text-[#fcd92c] transition-all duration-300">{% render 'icon-instagram' with classes: 'h-6 w-6' %}</a>
+  <a target="_blank" href="{{settings.social_youtube_link}}" aria-label="icon-youtube" class="px-4 md:px-8 md:border-r border-white border-dashed hover:text-[#fcd92c] transition-all duration-300">{% render 'icon-youtube' with classes: 'h-6 w-6' %}</a>
+  <a target="_blank" href="{{settings.social_tiktok_link}}" aria-label="icon-tiktok" class="px-4 md:px-8 md:border-r border-white border-dashed hover:text-[#fcd92c] transition-all duration-300">{% render 'icon-tiktok' with classes: 'h-6 w-6' %}</a>
+  <a target="_blank" href="{{settings.social_twitter_link}}" aria-label="icon-twitter" class="px-4 md:px-8 hover:text-[#fcd92c] transition-all duration-300">{% render 'icon-twitter' with classes: 'h-6 w-6' %}</a>
+</div>

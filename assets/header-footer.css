@@ -65,7 +65,7 @@
 }
 
 .footer .footer-menu a {
-  font-family: "Familjen Grotesk", sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 17px;
@@ -74,10 +74,14 @@
   color: #ffffff;
 }
 
+.footer .footer-menu h3 {
+  font-family: "Anton", sans-serif;
+}
+
 .footer .footer-menu {
   padding: 39px 0 8px;
-  width: 68%;
-  margin-left: auto;
+  width: 100%;
+  margin-left: 0;
 }
 
 .footer .footer-menu .lg\:ml-16:not(:first-child) {

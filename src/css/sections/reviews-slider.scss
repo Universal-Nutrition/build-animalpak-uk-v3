@@ -1,0 +1,19 @@
+swiper-slider {
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #000;
+        width: 10px;
+        height: 10px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        content: none;
+        font-size: 0px;
+        opacity: 0;
+    }
+}
+
+.swiper-button-lock {
+    display: flex !important;
+}

@@ -1,0 +1,203 @@
+{{- 'bundle.section-reviews-slider.css' | asset_url | stylesheet_tag -}}
+
+{% style %}
+    {% assign space_between = section.settings.slides_per_view_desktop | minus: 1 | times: 35 %}
+
+    .section-{{ section.id }} swiper-slider .swiper-slide {
+        width: calc(calc(100% - {{ space_between }}px) / {{ section.settings.slides_per_view_desktop }});
+        margin-right: 35px;
+    }
+
+    .swiper-button-lock {
+      display: flex !important;
+    }
+
+    .section-{{ section.id }} swiper-slider .swiper-button-next {
+        right: -60px;
+    }
+
+    .section-{{ section.id }} swiper-slider .swiper-button-prev {
+        left: -60px;
+    }
+
+    @media (max-width: 1199px) {
+        .section-{{ section.id }} swiper-slider .swiper-button-next {
+            right: -40px;
+        }
+
+        .section-{{ section.id }} swiper-slider .swiper-button-prev {
+            left: -40px;
+        }
+    }
+{% endstyle %}
+
+{% capture swiper_options %}
+    {
+        "slidesPerView": 1.25,
+        "spaceBetween": 10,
+        "loop": true,
+        "breakpoints": {
+            "768": {
+                "slidesPerView": 2,
+                "spaceBetween": 20
+            },
+            "1024": {
+                "slidesPerView": {{ section.settings.slides_per_view_desktop }},
+                "spaceBetween": 35
+            }
+        }
+    }
+{% endcapture %}
+
+<section x-data="{ inView: true }" class="section-{{ section.id }} container mx-auto pb-12 md:pb-16">
+    <swiper-slider data-swiper-options='{{ swiper_options }}'>
+
+        <div class="flex flex-col justify-center items-center pb-8">
+          {% if section.settings.stars_image != blank %}
+            {{ section.settings.stars_image | image_url: width: 120 | image_tag: class: 'mb-5' }}
+          {% endif %}
+            <h2 class="font-anton text-2xl md:text-4xl uppercase text-center leading-[1]">
+                {{ section.settings.title }}
+            </h2>
+        </div>
+
+        <div class="flex relative">
+            <div class="swiper !pb-10">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {%  liquid
+                            assign url = block.settings.product.url
+                            if block.settings.product_image != blank
+                              assign image = block.settings.product_image
+                            else
+                              assign image = block.settings.product.featured_image
+                            endif
+                            assign product_title = block.settings.product.title
+                            assign name = block.settings.review_name
+                            assign title = block.settings.review_title
+                            assign description = block.settings.review_description
+                        %}
+
+                        <div class="swiper-slide h-full max-w-full">
+                            <div class="content-card--{{ section.id }} h-full bg-[#f9f9f9] flex flex-col justify-between px-4 py-6 opacity-0 translate-y-5 transition-all duration-[1000ms]" :class="`${inView ? '!opacity-100 !translate-y-0' : 'opacity-0 translate-y-5'}`" style="transition-delay: {{ forloop.index | times: 100 }}ms;">
+                                <div class="flex flex-col gap-4 h-full justify-start">
+                                    <div class="flex flex-col gap-4">
+                                    <div class="flex gap-2 font-bebasNeue text-base items-center">
+                                      {% if section.settings.logo != blank %}
+                                        {{ section.settings.logo | image_url: width: 40 | image_tag }}
+                                      {% else %}
+                                        <div class="uppercase font-bold font-anton text-xl text-white w-10 h-10 flex items-center justify-center rounded-full bg-black">
+                                          {{ name | slice: 0, 1 }}
+                                        </div>
+                                      {% endif %}
+                                      <span>
+                                        {{ name }}
+                                      </span>
+                                    </div>
+                                    </div>
+                                      <span class="font-anton text-xl">{{ title }}</span>
+                                      <div class="font-bebasNeue">{{ description }}</div>
+                                      </div>
+                                      <div class="flex flex-col gap-2 mt-4">
+
+                                      <div class="flex gap-2">
+                                        <a href="{{ url }}">
+                                        {{ image | image_url: width: 100 | image_tag }}
+                                        </a>
+                                        <div class="flex flex-col justify-end font-bebasNeue">
+                                        <span class="uppercase font-bold">{{ product_title }}</span>
+                                        <a class="underline uppercase font-bold" href="{{ url }}">Shop Product</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="dot-pagination swiper-pagination block md:hidden"></div>
+            </div>
+            <div class="swiper-button-next !text-black">
+                {% render 'icon-triangle-right', classes: '!text-black' %}
+            </div>
+            <div class="swiper-button-prev !text-black">
+                {% render 'icon-triangle-left', classes: '!text-black' %}
+            </div>
+        </div>
+    </swiper-slider>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews Slider",
+  "tag": "section",
+  "class": "spaced-section--boxed relative z-1 bg-white",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Explore the Supplements"
+    },
+    {
+      "type": "text",
+      "id": "slides_per_view_desktop",
+      "label": "Slides Per View Desktop",
+      "default": "4"
+    },
+    {
+      "type": "checkbox",
+      "id": "lazy_load",
+      "label": "Lazy Load Images",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "stars_image",
+      "label": "Stars Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "review_name",
+          "label": "Review Name"
+        },
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Review Title"
+        },
+        {
+          "type": "richtext",
+          "id": "review_description",
+          "label": "Review Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews Slider"
+    }
+  ]
+}
+{% endschema %}

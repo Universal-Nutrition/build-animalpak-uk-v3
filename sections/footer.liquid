@@ -1,51 +1,102 @@
-<script src="{{ 'header-footer.js' | asset_url }}" defer="defer"></script>
+{% style %}
+    footer-block.footer {
+    {% if section.settings.bg_image_desktop != blank %}
+        background-image: url('{{ section.settings.bg_image_desktop | img_url: "master" }}');
+    {% endif %}
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    {% if section.settings.bg_color != blank %}background-color: {{ section.settings.bg_color }};{% endif %}
+    }
 
-<!-- footer -->
-<footer-block class="footer block relative bg-[#1C1C1C] pt-10 lg:pt-[66px] px-6 lg:px-[56px] overflow-hidden">
-  <div class="lg:flex justify-between items-start footer-top">
-    <div class="footer-wrapper lg:flex footer-wrapper">
-      {% if section.settings.logo != blank %}
-        <img src="{{section.settings.logo | img_url: "master"}}" alt="{{section.settings.logo.alt}}">
-      {% endif %}
-      <div class="lg:flex mt-10 lg:mt-0 footer-menu">
-        {% for link in linklists[section.settings.menu].links %}
-          {% if link.links != blank %}
-              <div class="{% unless forloop.last %} mb-6 {% endunless %} pb-6 lg:ml-16 border-0 {% unless forloop.last %}{% endunless %} lg:border-0">
-                <h3 class="text-base footer-link-title font-bold text-white font-sans uppercase flex justify-between items-center">{{ link.title }} <span class="lg:hidden">{% include 'icon-chevron-bottom' %}</span></h3>
-                <ul role="list" class="mt-6 lg:mt-4 mb-0 space-y-3 hidden lg:block">
-                  {% for childlink in link.links %}
-                  <li>
-                    <a href="{{ childlink.url }}" class="text-base text-white transition font-light font-sans duration-500 hover:!text-gray-300 leading-[25.6px] lg:leading-[160%]"> {{ childlink.title }} </a>
-                  </li>
-      
-                  {% endfor %}
-                </ul>
-              
-              </div>
-          {% endif %}
-          {% endfor %}
-      </div>
+    @media (max-width: 768px) {
+        footer-block.footer {
+            background-image: none;
+        }
+    }
+{% endstyle %}
+
+<footer-block class="footer block relative bg-[#1C1C1C] !py-10 lg:!py-[66px] px-6 lg:px-[56px] overflow-hidden">
+    <div class="flex justify-between items-start footer-top w-full">
+        <div class="footer-wrapper lg:flex footer-wrapper flex-col w-full">
+            <div class="flex justify-center md:justify-between items-center w-full">
+                {% if section.settings.logo != blank %}
+                    <a href="/"
+                       class="w-[160px] {% if section.settings.logo_mobile != blank %}hidden md:block{% endif %}">
+                        <img
+                            src="{{ section.settings.logo | img_url: "master" }}"
+                            alt="{{ section.settings.logo.alt }}"
+                            loading="lazy"
+                            fetchpriority="low"
+                            decoding="async"
+                        />
+                    </a>
+
+                    {% if section.settings.logo_mobile != blank %}
+                        <a href="/" class="md:hidden">
+                            <img
+                                src="{{ section.settings.logo_mobile | img_url: "master" }}"
+                                alt="{{ section.settings.logo_mobile.alt }}"
+                                loading="lazy"
+                                fetchpriority="low"
+                                decoding="async"
+                            />
+                        </a>
+                    {% endif %}
+                {% endif %}
+                <div class="hidden md:block">
+                    {% render 'social-links' %}
+                </div>
+            </div>
+            <div class="hidden md:block h-[1px] my-12 bg-white w-full"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:!flex mt-10 lg:mt-0 justify-between footer-menu w-full">
+                {% for link in linklists[section.settings.menu].links %}
+                    {% if link.links != blank %}
+                        <div class="border-0 {% unless forloop.last %}{% endunless %} lg:border-0">
+                            <h3 class="footer-link-title text-center md:pointer-events-none md:cursor-text lg:text-left lg:!flex font-anton border-b border-white lg:border-0 md:border-white md:mx-10 lg:mx-0 pb-3 relative text-xl text-white uppercase flex justify-center lg:justify-between items-center">{{ link.title }}
+                                <span class="absolute right-0 md:hidden">{% render 'icon-chevron-bottom' %}</span></h3>
+                            <ul role="list" class="lg:!flex flex-col gap-1.5 mt-6 lg:mt-4 mb-0 space-y-3 hidden">
+                                {% for childlink in link.links %}
+                                    <li class="md:text-center lg:text-left">
+                                        <a href="{{ childlink.url }}"
+                                           class="cursor-pointer text-md text-white transition font-anton duration-500 hover:!text-gray-300 leading-[25.6px] lg:leading-[200%]">{% if childlink.url contains "https://privacy.animalpak.com/opt-out" %}
+                                                <span class="inline-block h-[12px] mr-[4px]">{% render 'optout-icon-blue' %}</span>{% endif %}{{ childlink.title }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="hidden md:block h-[1px] my-12 bg-white w-full"></div>
+            <div class="w-full flex flex-col gap-5 md:grid grid-cols-1 grid-rows-1 md:grid-cols-2 justify-between">
+
+                <div class="flex order-[3] justify-center md:justify-end col-start-2">
+                    {% render 'payments-icons' %}
+                </div>
+                <div class="flex order-[2] justify-center md:justify-start col-start-1 flex justify-center md:justify-between items-center w-full">
+                    <span class="text-sm text-white font-bebasNeueExpanded">{{ section.settings.copyright | newline_to_br }}</span>
+                </div>
+                <div class="flex order-[1] justify-center md:justify-end col-start-2 flex mb-3 lg:mb-0">
+                    {% for link in linklists[section.settings.menu_secondary].links %}
+                        <a href="{{ link.url }}"
+                           class="text-[13.91px] text-white leading-[22.26px] mr-6 z-[9]">{{ link.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="footer-bottom lg:flex justify-between pb-10 lg:pb-6 lg:py-6 border-0 lg:border-t border-solid border-white/[.2]">
-    <div class="footer-wrapper">
-    <div class="copyright-wrapper flex flex-col-reverse lg:flex-row mb-3 lg:mb-0">
-      <span class="copyright text-white">{{section.settings.copyright | newline_to_br}}</span>
-      <div class="flex mb-3 lg:mb-0">
-        {% for link in linklists[section.settings.menu_secondary].links %}
-          <a href="{{link.url}}" class="text-[13.91px] text-white leading-[22.26px] mr-6 z-[9]">{{link.title}}</a>
-        {% endfor %}
-      </div>
-    </div>
-    {% include 'payments-icons' %}
-    </div>
-  </div>
 </footer-block>
 
 <style>
-  .footer-link-title.active span{
-    transform: rotate(180deg);
-  }
+    .footer-link-title.active span {
+        transform: rotate(180deg);
+    }
+    footer-block .footer-menu h3,
+    footer-block .footer-menu a {
+        font-family: 'Anton', sans-serif;
+    }
 </style>
 
 {% schema %}
@@ -70,12 +121,26 @@
       "label": "Logo"
     },
     {
+      "type": "image_picker",
+      "id": "logo_mobile",
+      "label": "Logo mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Background image desktop"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
       "type": "richtext",
       "id": "copyright",
       "label": "Copyright text",
       "default": "<p>Copyright © 2022 Universal Nutrition. All rights reserved.</p>"
     }
-    
   ]
 }
 {% endschema %}
