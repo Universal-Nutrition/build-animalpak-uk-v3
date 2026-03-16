@@ -33,6 +33,37 @@ class SwiperSlider extends HTMLElement {
             swiperOptions.scrollbar = { el: scrollbar };
         }
 
+        if (expandedSlider) {
+            swiperOptions.on = {
+                slideChange() {
+                    const swiper = this;
+                    requestAnimationFrame(() => {
+                        const wrapper = swiper.wrapperEl;
+                        const duration = parseInt(wrapper.style.transitionDuration) || 0;
+                        if (!duration) return;
+
+                        // Force reflow so offsetWidth reflects the new active class (45% width)
+                        void wrapper.offsetWidth;
+
+                        const containerWidth = swiper.width;
+                        const slides = swiper.slides;
+                        const activeIdx = swiper.activeIndex;
+
+                        let offset = 0;
+                        for (let j = 0; j < activeIdx; j++) {
+                            offset += (slides[j] ? slides[j].offsetWidth : 0) + swiper.params.spaceBetween;
+                        }
+
+                        const activeWidth = slides[activeIdx] ? slides[activeIdx].offsetWidth : 0;
+                        const correctTranslate = -offset + (containerWidth - activeWidth) / 2;
+
+                        // Apply correct translate while keeping Swiper's transition duration
+                        swiper.setTranslate(correctTranslate);
+                    });
+                },
+            };
+        }
+
         const swiperInstance = new Swiper(swiperEl, swiperOptions);
 
         if (expandedSlider) {

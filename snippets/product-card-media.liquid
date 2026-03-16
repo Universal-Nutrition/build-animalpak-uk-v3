@@ -24,9 +24,9 @@
             {{- media.alt -}}
         {%- else -%}
             {%- assign image_alt = alt | default: media.alt -%}
-            {%- assign image_src = media | image_url: width: 310 -%}
+            {%- assign image_src = media | image_url: width: 600 -%}
             {%- capture srcset -%}
-                {{ image_src }} 1x, {{ media | image_url: width: 620 }} 2x
+                {{ image_src }} 1x, {{ media | image_url: width: 1200 }} 2x
             {%- endcapture -%}
             {%- assign previous_image_width = null -%}
             {%- assign previous_image_media = null -%}
@@ -120,7 +120,7 @@
                 {%- capture link_preloads -%}
                     <link
                         rel="preload"
-                        href="{{- media | image_url: width: 310 -}}"
+                        href="{{- media | image_url: width: 600 -}}"
                         as="image"
                         imagesrcset="{{- srcset -}}"
                         fetchpriority="{{- fetchpriority -}}"
