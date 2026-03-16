@@ -1,32 +1,32 @@
-/******/ (() => { // webpackBootstrap
+/******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./scripts/helpers/utils.js":
 /*!**********************************!*\
   !*** ./scripts/helpers/utils.js ***!
   \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   debounce: () => (/* binding */ debounce)
+/* harmony export */   debounce: function() { return /* binding */ debounce; }
 /* harmony export */ });
 /*
 // Vanilla es6 debounce function
 
 */
 
-const debounce = (func, wait, immediate) => {
-  let timeout;
+var debounce = function debounce(func, wait, immediate) {
+  var timeout;
   return function () {
-    const context = this,
+    var context = this,
       args = arguments;
-    const later = function () {
+    var later = function later() {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
-    const callNow = immediate && !timeout;
+    var callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
@@ -39,27 +39,47 @@ const debounce = (func, wait, immediate) => {
 /*!**********************************************!*\
   !*** ./scripts/sections/announcement-bar.js ***!
   \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.min.css");
 /* harmony import */ var swiper_css_autoplay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper/css/autoplay */ "./node_modules/swiper/modules/autoplay/autoplay.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-class AnnouncementBar extends HTMLElement {
-  constructor() {
-    super();
-    this.autoplayValue = this.getAttribute('data-autoplay');
-    if (this.autoplayValue !== 0) {
-      this.autoplayValue = this.autoplayValue * 1000;
+var AnnouncementBar = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(AnnouncementBar, _HTMLElement);
+  var _super = _createSuper(AnnouncementBar);
+  function AnnouncementBar() {
+    var _this;
+    _classCallCheck(this, AnnouncementBar);
+    _this = _super.call(this);
+    _this.autoplayValue = _this.getAttribute('data-autoplay');
+    if (_this.autoplayValue !== 0) {
+      _this.autoplayValue = _this.autoplayValue * 1000;
     }
-    this.swiperOptions = {
+    _this.swiperOptions = {
       modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Autoplay],
       slidesPerView: 'auto',
-      speed: this.autoplayValue,
+      speed: _this.autoplayValue,
       initialSlide: 0,
       maxBackfaceHiddenSlides: 0,
       loop: true,
@@ -73,15 +93,22 @@ class AnnouncementBar extends HTMLElement {
         waitForTransition: true
       }
     };
-    document.addEventListener('DOMContentLoaded', () => {
-      this.initSwiper();
+    document.addEventListener('DOMContentLoaded', function () {
+      _this.initSwiper();
     });
+    return _this;
   }
-  initSwiper() {
-    const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](this, this.swiperOptions);
-  }
-  connectedCallback() {}
-}
+  _createClass(AnnouncementBar, [{
+    key: "initSwiper",
+    value: function initSwiper() {
+      var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](this, this.swiperOptions);
+    }
+  }, {
+    key: "connectedCallback",
+    value: function connectedCallback() {}
+  }]);
+  return AnnouncementBar;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('announcement-bar')) customElements.define('announcement-bar', AnnouncementBar);
 
 /***/ }),
@@ -90,122 +117,185 @@ if (!customElements.get('announcement-bar')) customElements.define('announcement
 /*!******************************************!*\
   !*** ./scripts/sections/blog-filters.js ***!
   \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vanilla-lazyload */ "./node_modules/vanilla-lazyload/dist/lazyload.min.js");
 /* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-const lazyInstance = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default())();
-class BlogFilters extends HTMLElement {
-  constructor() {
-    super();
-    this.filterData = [];
-    this.triggerFilter();
-    this.resetFilter();
-    this.triggerMore();
+var lazyInstance = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default())();
+var BlogFilters = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(BlogFilters, _HTMLElement);
+  var _super = _createSuper(BlogFilters);
+  function BlogFilters() {
+    var _this2;
+    _classCallCheck(this, BlogFilters);
+    _this2 = _super.call(this);
+    _this2.filterData = [];
+    _this2.triggerFilter();
+    _this2.resetFilter();
+    _this2.triggerMore();
+    return _this2;
   }
-  setActiveState(event) {
-    document.querySelectorAll('.js-blog-filter-tag').forEach(element => {
-      element.classList.remove('text-secondary', 'border-b-2', 'border-secondary');
-      element.classList.add('hover:underline');
-    });
-    document.querySelectorAll('.js-blog-filter-tag-reset').forEach(element => {
-      element.classList.remove('text-secondary', 'border-b-2', 'border-secondary');
-      element.classList.add('hover:underline');
-    });
-    event.target.classList.add('text-secondary', 'border-b-2', 'border-secondary');
-    event.target.classList.remove('hover:underline');
-  }
-  triggerFilter() {
-    const _this = this;
-    document.addEventListener('click', function (e) {
-      if (e.target && e.target.classList.contains('js-blog-filter-tag')) {
-        e.preventDefault();
-        _this.renderPage(e.target.href);
-        _this.setActiveState(e);
-      }
-    });
-  }
-  resetFilter() {
-    const _this = this;
-    document.addEventListener('click', function (e) {
-      if (e.target && e.target.classList.contains('js-blog-filter-tag-reset')) {
-        e.preventDefault();
-        _this.renderAll();
-        _this.setActiveState(e);
-      }
-    });
-  }
-  triggerMore() {
-    const _this = this;
-    document.addEventListener('click', function (e) {
-      if (e.target && e.target.classList.contains('js-blog-listing-more')) {
-        e.preventDefault();
-        _this.renderMore(e.target.href);
-      }
-    });
-  }
-  renderMore(searchParams) {
-    const sections = this.getSections();
-    document.querySelector('.js-blog-paginate-loading').classList.remove('hidden');
-    sections.forEach(section => {
-      const url = `${searchParams}`;
-      const filterDataUrl = element => element.url === url;
-      this.filterData.some(filterDataUrl) ? this.renderSectionFromCache(filterDataUrl) : this.renderSectionFromFetch(url);
-    });
-  }
-  renderAll() {
-    const sections = this.getSections();
-    document.querySelector('.js-blog-loading').classList.remove('hidden');
-    sections.forEach(section => {
-      const url = `${window.location.pathname}`;
-      const filterDataUrl = element => element.url === url;
-      this.filterData.some(filterDataUrl) ? this.renderSectionFromCache(filterDataUrl) : this.renderSectionFromFetch(url);
-    });
-  }
-  renderPage(searchParams) {
-    const sections = this.getSections();
-    document.querySelector('.js-blog-loading').classList.remove('hidden');
-    sections.forEach(section => {
-      const url = `${searchParams}`;
-      const filterDataUrl = element => element.url === url;
-      this.filterData.some(filterDataUrl) ? this.renderSectionFromCache(filterDataUrl) : this.renderSectionFromFetch(url);
-    });
-  }
-  renderSectionFromFetch(url, event) {
-    fetch(url).then(response => response.text()).then(responseText => {
-      const html = responseText;
-      this.filterData = [...this.filterData, {
-        html,
-        url
-      }];
-      this.renderArticleGrid(html);
-    }).then(() => {
-      lazyInstance.update();
-      document.querySelector('.js-blog-listing-top').scrollIntoView({
-        behavior: 'smooth'
+  _createClass(BlogFilters, [{
+    key: "setActiveState",
+    value: function setActiveState(event) {
+      document.querySelectorAll('.js-blog-filter-tag').forEach(function (element) {
+        element.classList.remove('text-secondary', 'border-b-2', 'border-secondary');
+        element.classList.add('hover:underline');
       });
-    });
-  }
-  renderSectionFromCache(filterDataUrl, event) {
-    const html = this.filterData.find(filterDataUrl).html;
-    this.renderArticleGrid(html);
-    lazyInstance.update();
-  }
-  renderArticleGrid(html) {
-    const innerHTML = new DOMParser().parseFromString(html, 'text/html').getElementById('BlogArticleGrid').innerHTML;
-    document.getElementById('BlogArticleGrid').innerHTML = innerHTML;
-    document.querySelector('.js-blog-loading').classList.add('hidden');
-  }
-  getSections() {
-    return [{
-      id: 'main-blog-article-grid',
-      section: document.getElementById('main-blog-article-grid').dataset.id
-    }];
-  }
-}
+      document.querySelectorAll('.js-blog-filter-tag-reset').forEach(function (element) {
+        element.classList.remove('text-secondary', 'border-b-2', 'border-secondary');
+        element.classList.add('hover:underline');
+      });
+      event.target.classList.add('text-secondary', 'border-b-2', 'border-secondary');
+      event.target.classList.remove('hover:underline');
+    }
+  }, {
+    key: "triggerFilter",
+    value: function triggerFilter() {
+      var _this = this;
+      document.addEventListener('click', function (e) {
+        if (e.target && e.target.classList.contains('js-blog-filter-tag')) {
+          e.preventDefault();
+          _this.renderPage(e.target.href);
+          _this.setActiveState(e);
+        }
+      });
+    }
+  }, {
+    key: "resetFilter",
+    value: function resetFilter() {
+      var _this = this;
+      document.addEventListener('click', function (e) {
+        if (e.target && e.target.classList.contains('js-blog-filter-tag-reset')) {
+          e.preventDefault();
+          _this.renderAll();
+          _this.setActiveState(e);
+        }
+      });
+    }
+  }, {
+    key: "triggerMore",
+    value: function triggerMore() {
+      var _this = this;
+      document.addEventListener('click', function (e) {
+        if (e.target && e.target.classList.contains('js-blog-listing-more')) {
+          e.preventDefault();
+          _this.renderMore(e.target.href);
+        }
+      });
+    }
+  }, {
+    key: "renderMore",
+    value: function renderMore(searchParams) {
+      var _this3 = this;
+      var sections = this.getSections();
+      document.querySelector('.js-blog-paginate-loading').classList.remove('hidden');
+      sections.forEach(function (section) {
+        var url = "".concat(searchParams);
+        var filterDataUrl = function filterDataUrl(element) {
+          return element.url === url;
+        };
+        _this3.filterData.some(filterDataUrl) ? _this3.renderSectionFromCache(filterDataUrl) : _this3.renderSectionFromFetch(url);
+      });
+    }
+  }, {
+    key: "renderAll",
+    value: function renderAll() {
+      var _this4 = this;
+      var sections = this.getSections();
+      document.querySelector('.js-blog-loading').classList.remove('hidden');
+      sections.forEach(function (section) {
+        var url = "".concat(window.location.pathname);
+        var filterDataUrl = function filterDataUrl(element) {
+          return element.url === url;
+        };
+        _this4.filterData.some(filterDataUrl) ? _this4.renderSectionFromCache(filterDataUrl) : _this4.renderSectionFromFetch(url);
+      });
+    }
+  }, {
+    key: "renderPage",
+    value: function renderPage(searchParams) {
+      var _this5 = this;
+      var sections = this.getSections();
+      document.querySelector('.js-blog-loading').classList.remove('hidden');
+      sections.forEach(function (section) {
+        var url = "".concat(searchParams);
+        var filterDataUrl = function filterDataUrl(element) {
+          return element.url === url;
+        };
+        _this5.filterData.some(filterDataUrl) ? _this5.renderSectionFromCache(filterDataUrl) : _this5.renderSectionFromFetch(url);
+      });
+    }
+  }, {
+    key: "renderSectionFromFetch",
+    value: function renderSectionFromFetch(url, event) {
+      var _this6 = this;
+      fetch(url).then(function (response) {
+        return response.text();
+      }).then(function (responseText) {
+        var html = responseText;
+        _this6.filterData = [].concat(_toConsumableArray(_this6.filterData), [{
+          html: html,
+          url: url
+        }]);
+        _this6.renderArticleGrid(html);
+      }).then(function () {
+        lazyInstance.update();
+        document.querySelector('.js-blog-listing-top').scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    }
+  }, {
+    key: "renderSectionFromCache",
+    value: function renderSectionFromCache(filterDataUrl, event) {
+      var html = this.filterData.find(filterDataUrl).html;
+      this.renderArticleGrid(html);
+      lazyInstance.update();
+    }
+  }, {
+    key: "renderArticleGrid",
+    value: function renderArticleGrid(html) {
+      var innerHTML = new DOMParser().parseFromString(html, 'text/html').getElementById('BlogArticleGrid').innerHTML;
+      document.getElementById('BlogArticleGrid').innerHTML = innerHTML;
+      document.querySelector('.js-blog-loading').classList.add('hidden');
+    }
+  }, {
+    key: "getSections",
+    value: function getSections() {
+      return [{
+        id: 'main-blog-article-grid',
+        section: document.getElementById('main-blog-article-grid').dataset.id
+      }];
+    }
+  }]);
+  return BlogFilters;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('blog-filters')) customElements.define('blog-filters', BlogFilters);
 
 /***/ }),
@@ -214,642 +304,602 @@ if (!customElements.get('blog-filters')) customElements.define('blog-filters', B
 /*!************************************!*\
   !*** ./scripts/sections/bundle.js ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-class BundlePage extends HTMLElement {
-  constructor() {
-    super();
-    this.accessToken = 'e4285229c9b8efd6e170205fb5472019';
-    this.graphUrl = 'https://animalpak-uk.myshopify.com/api/2022-10/graphql.json';
-    this.numProducts = 10;
-    this.cursor = null;
-    this.hasNextPage = false;
-    this.collection = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('.collection-tab.active').data('handle');
-    this.grid = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('#products-grid');
-    this.selectedProducts = [];
-    this.selectedProductsQty = 0;
-    this.bundleKeys = [];
-    this.subscription = true;
-    this.originalPrice = '$0.00';
-    this.subscriptionPrice = '$0.00';
+var BundlePage = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(BundlePage, _HTMLElement);
+  var _super = _createSuper(BundlePage);
+  function BundlePage() {
+    var _this;
+    _classCallCheck(this, BundlePage);
+    _this = _super.call(this);
+    _this.accessToken = 'e4285229c9b8efd6e170205fb5472019';
+    _this.graphUrl = 'https://animalpak-uk.myshopify.com/api/2022-10/graphql.json';
+    _this.numProducts = 10;
+    _this.cursor = null;
+    _this.hasNextPage = false;
+    _this.collection = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_assertThisInitialized(_this)).find('.collection-tab.active').data('handle');
+    _this.grid = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_assertThisInitialized(_this)).find('#products-grid');
+    _this.selectedProducts = [];
+    _this.selectedProductsQty = 0;
+    _this.bundleKeys = [];
+    _this.subscription = true;
+    _this.originalPrice = '$0.00';
+    _this.subscriptionPrice = '$0.00';
+    return _this;
   }
-  connectedCallback() {
-    this.fetchProducts();
-    this.pagination();
-    this.changeCollection();
-    this.selectProduct();
-    this.adjustQauntity();
-    this.changePurchaseOption();
-    this.submitBundle();
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__header').on('click', function () {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).toggleClass('active');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart').toggleClass('active');
-    });
+  _createClass(BundlePage, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.fetchProducts();
+      this.pagination();
+      this.changeCollection();
+      this.selectProduct();
+      this.adjustQauntity();
+      this.changePurchaseOption();
+      this.submitBundle();
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__header').on('click', function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).toggleClass('active');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart').toggleClass('active');
+      });
 
-    // check bundle items in cart
-    let self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
-      type: 'GET',
-      url: '/cart.js',
-      dataType: 'json',
-      success: function (cart) {
-        let items = cart.items.filter(item => item.properties?.bundleData);
-        // items = items.sort((a,b) => a.properties.bundleIndex - b.properties.bundleIndex)
-        if (items.length) {
-          self.bundleKeys = [];
-          self.selectedProducts = [];
-          self.selectedProductsQty = 0;
-          items.forEach(function (item) {
-            self.bundleKeys.push(item.key);
-            if (self.selectedProductsQty < 4) {
-              self.selectedProductsQty += item.quantity;
-            } else {
-              self.selectedProductsQty = 4;
-            }
-            let itemObj = JSON.parse(item.properties.bundleData);
-            self.selectedProducts.push(itemObj);
+      // check bundle items in cart
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+        type: 'GET',
+        url: '/cart.js',
+        dataType: 'json',
+        success: function success(cart) {
+          var items = cart.items.filter(function (item) {
+            var _item$properties;
+            return (_item$properties = item.properties) === null || _item$properties === void 0 ? void 0 : _item$properties.bundleData;
           });
-          self.fetchProducts();
-          return;
-        }
-
-        // // get state from session storage
-        // let bundleStorage = JSON.parse(sessionStorage.getItem('bundle'))
-        // if(bundleStorage?.length) {
-        //     self.selectedProducts = bundleStorage
-        //     self.fetchProducts()
-        // }
-      }
-    });
-  }
-
-  productQuery() {
-    let arg = this.cursor ? `first: ${this.numProducts} after: "${this.cursor}"` : `first: ${this.numProducts}`;
-    return `query {
-                collectionByHandle(handle: "${this.collection}") {
-                    products(${arg}) {
-                        edges {
-                            cursor
-                            node{
-                                handle
-                                title
-                                id
-                                metafield(key:"subtitle" namespace:"custom") {
-                                    value
-                                }
-                                featuredImage {
-                                    url
-                                }
-                            }
-                        }
-                        pageInfo {
-                            hasNextPage
-                        }
-                    }
-                }
-            }`;
-  }
-  renderGrid(products) {
-    const self = this;
-    this.cursor = `${products[products.length - 1]?.cursor}`;
-    products.forEach(function (product) {
-      if (!product.node.handle.includes('stack')) {
-        self.grid.append(self.renderTemplate(product));
-      }
-    });
-  }
-  renderTemplate(product) {
-    let self = this;
-    let item = product.node;
-    let btnText = jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).width() > 1024 ? 'add to bundle' : 'add';
-    jquery__WEBPACK_IMPORTED_MODULE_0___default().get(`https://api-cdn.yotpo.com/v1/widget/N5IazRa6pWNEh0w8i5y8s9cPJ1TKxVu9yoaZ5uyT/products/${self.decodeId(item.id)}/reviews.json`, function (data, status) {
-      let score = data.response.bottomline.average_score;
-      let totalReview = data.response.bottomline.total_review;
-      let html = `<div class="yotpo flex items-center"><div class="yotpo-bottomline">`;
-      let stars = score > 4.8 ? 5 : 4;
-      for (let i = 0; i < stars; i++) {
-        html += `<span class="yotpo-icon yotpo-icon-star rating-star pull-left"></span>`;
-      }
-      if (stars == 4) {
-        html += `<span class="yotpo-icon yotpo-icon-half-star rating-star pull-left"></span>`;
-      }
-      html += `</div><span class="hidden lg:block">${totalReview} Reviews</span></div>`;
-      if (+totalReview > 0) {
-        setTimeout(function () {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(`.bundle-product__reviews[data-handle="${item.handle}"]`).append(html);
-        });
-      }
-    });
-    return `<div class="bundle-product relative mb-8" data-handle="${item.handle}">
-                <span class="absolute bundle-product__check !hidden">
-                    <svg class="pointer-events-none" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.3337 2L5.00033 9.33333L1.66699 6" stroke="#212121" stroke-width="2" stroke-linecap="square"/>
-                    </svg>
-                </span>
-                <img src="${item.featuredImage?.url}" class="bundle-product__trigger" alt="${item.title}" />
-                <div class="block bundle-product__title bundle-product__trigger font-compacta uppercase text-primary font-bold mt-2">${item.title}</div>
-                <div class="bundle-product__reviews flex justify-center text-[14px]" data-handle="${item.handle}"></div>
-                <div class="bundle-product__type font-sans font-light">${item.metafield?.value}</div>
-                <button class="bundle-product__btn bundle-product__trigger w-full bg-white font-sans font-bold" data-handle="${item.handle}">${btnText}</button>
-                <div class="quantity !hidden">
-                    <button class="quantity__button bundle-product__quantity bundle-product__quantity-remove no-js-hidden" name="minus" type="button">-</button>
-                    <label for="quantity-${item.handle}" class="sr-only">Qty</label>
-                    <input class="quantity__input" disabled type="number" name="quantity" id="quantity-${item.handle}" min="1" value="1">
-                    <button class="quantity__button bundle-product__quantity bundle-product__trigger no-js-hidden" name="plus" type="button">+</button>
-                </div>
-            </div>`;
-  }
-  fetchProducts() {
-    fetch(this.graphUrl, {
-      'async': true,
-      'crossDomain': true,
-      'method': 'POST',
-      'headers': {
-        'X-Shopify-Storefront-Access-Token': this.accessToken,
-        'Content-Type': 'application/graphql'
-      },
-      'body': this.productQuery()
-    }).then(res => res.json()).then(res => {
-      let response = res.data.collectionByHandle.products;
-      this.renderGrid(response.edges);
-      this.hasNextPage = response.pageInfo.hasNextPage;
-      this.grid.removeClass('loading');
-      this.renderBundleCart();
-    });
-  }
-  changeCollection() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-tab').on('click', function () {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-tab').removeClass('active');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).addClass('active');
-      self.collection = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('handle');
-      self.cursor = null;
-      self.hasNextPage = false;
-      self.grid.empty();
-      self.fetchProducts();
-    });
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-select').on('change', function () {
-      self.collection = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-select .collection-tab:selected').data('handle');
-      self.cursor = null;
-      self.hasNextPage = false;
-      self.grid.empty();
-      self.fetchProducts();
-    });
-  }
-  pagination() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('scroll', function () {
-      if (self.hasNextPage) {
-        let pos = self.grid.offset().top + self.grid.height() - jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop();
-        if (pos <= 1150) {
-          self.hasNextPage = false;
-          self.grid.addClass('loading');
-          self.fetchProducts();
-        }
-      }
-    });
-  }
-  selectedProductQuery(handle) {
-    return `query {
-                product(handle: "${handle}") {
-                    handle
-                    title
-                    productType
-                    id
-                    metafield_0: metafield(key:"short_description_extra" namespace:"custom") {
-                        value
-                    }
-                    metafield_1: metafield(key:"subtitle" namespace:"custom") {
-                        value
-                    }
-                    featuredImage {
-                        url
-                    }
-                    sellingPlanGroups(first: 10) {
-                        edges {
-                            node {
-                                sellingPlans(first: 10) {
-                                    edges {
-                                        node {
-                                            id
-                                            name
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    variants(first: 100) {
-                        edges {
-                            node {
-                                id
-                                price{
-                                    amount
-                                }
-                                title
-                                availableForSale
-                                quantityAvailable
-                            }
-                        }
-                    }
-                    options {
-                        name
-                        values
-                    }
-                }
-            }`;
-  }
-  selectedProductDrawer(product) {
-    let html = `<div class="selected_product__drawer">
-                <div class="selected_product__drawer-inner bg-white relative">
-                <div class="close-product__drawer selected_product__drawer-mobile"></div>
-                <div class="bg-white relative selected_product__drawer-mobile-inner">
-                <div class="absolute close-product__drawer cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none" aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" fill="none" viewBox="0 0 18 17" style="width: 20px;">
-                        <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="black"></path>
-                    </svg>
-                </div>
-                <div class="lg:flex items-center">
-                    <a href="/products/${product.handle}">
-                        <img src="${product.featuredImage?.url}" class="selected_product__img object-contain" /> 
-                    </a>
-                    <div>
-                        <a href="/products/${product.handle}" class="block selected_product__title font-compacta upperase text-primary font-bold">${product.title}</a>
-                        <div class="selected_product__type mt-1 font-sans text-primary">${product.metafield_1?.value}</div>
-                        <div class="selected_product__reviews mt-1 font-sans text-primary"></div>
-                    </div>
-                </div>
-                <div class="selected_product-bullet-points">
-                ${product.metafield_0?.value}
-                </div>
-                <div class="lg:flex lg:space-x-4 mt-6 mb-[18px]">`;
-    product.options.forEach(function (option) {
-      if (option.name !== 'Title') {
-        html += `<div class="product-form__input product-form__input--dropdown w-full lg:w-6/12">
-                            <div class="product-select">
-                                <select name="options-${option.name}"
-                                    class="select__select text-[13.9px] mt-2 lg:mt-1 block w-full pl-3 pr-10 py-2 text-base focus:outline-none focus:ring-0  h-[56px] border border-solid border-[#DBDBDB]">`;
-        if (option.values.length > 1) {
-          html += `<option value="" selected disabled hidden>Choose ${option.name}</option>`;
-        }
-        option.values.forEach(function (value) {
-          html += `<option value="${value}">${value}</option>`;
-        });
-        html += `</select>
-                            </div>
-                            
-                        </div>`;
-      }
-    });
-    html += `</div>
-                <div class="flex mt-4">
-                    <quantity-input class="quantity">
-                        <button class="quantity__button drawer-quantity__button no-js-hidden" name="minus" type="button">-</button>
-                        <input class="quantity__input drawer-quantity__input" disabled type="number" name="quantity" id="quantity-${product.handle}" min="1" value="1">
-                        <button class="quantity__button drawer-quantity__button no-js-hidden" name="plus" type="button">+</button>
-                    </quantity-input>
-                    <button class="block bundle-form__submit tracking-[1px] w-full border border-solid border-yellow hover:bg-white hover:border-primary transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px] ${product.variants.edges.length > 1 && 'disabled'}">${product.variants.edges.length > 1 ? 'make selection' : 'add to bundle'}</button>
-                </div>
-                </div>
-                </div>
-            </div>`;
-    return html;
-  }
-  decodeId(id) {
-    // const decoded = atob(id)
-    const shopifyId = id.split("/").pop();
-    return parseInt(shopifyId);
-  }
-  selectProduct() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', function (e) {
-      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass('bundle-product__trigger') && self.selectedProductsQty < 4) {
-        let handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest('.bundle-product').data('handle');
-        fetch(self.graphUrl, {
-          'async': true,
-          'crossDomain': true,
-          'method': 'POST',
-          'headers': {
-            'X-Shopify-Storefront-Access-Token': self.accessToken,
-            'Content-Type': 'application/graphql'
-          },
-          'body': self.selectedProductQuery(handle)
-        }).then(res => res.json()).then(res => {
-          let product = res.data.product;
-          let variants = product.variants.edges;
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').append(self.selectedProductDrawer(product));
-          setTimeout(() => {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__drawer-inner').addClass('active');
-          });
-          jquery__WEBPACK_IMPORTED_MODULE_0___default().get(`https://api-cdn.yotpo.com/v1/widget/N5IazRa6pWNEh0w8i5y8s9cPJ1TKxVu9yoaZ5uyT/products/${self.decodeId(product.id)}/reviews.json`, function (data, status) {
-            let score = data.response.bottomline.average_score;
-            let totalReview = data.response.bottomline.total_review;
-            let html = `<div class="yotpo flex items-center"><div class="yotpo-bottomline">`;
-            let stars = score > 4.8 ? 5 : 4;
-            for (let i = 0; i < stars; i++) {
-              html += `<span class="yotpo-icon yotpo-icon-star rating-star pull-left"></span>`;
-            }
-            if (stars == 4) {
-              html += `<span class="yotpo-icon yotpo-icon-half-star rating-star pull-left"></span>`;
-            }
-            html += `</div><span class="hidden lg:block">${totalReview} Reviews</span></div>`;
-            if (+totalReview > 0) {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__reviews').append(html);
-            }
-          });
-          let selectedvariant = variants.filter(variant => variant.node.availableForSale)[0]?.node;
-          if (!selectedvariant) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').text('sold out');
-          }
-          let maxValue = 4 - self.selectedProductsQty;
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.drawer-quantity__input').prop('max', maxValue);
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.drawer-quantity__input').on('change', function () {
-            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() > maxValue) {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val(maxValue);
-            }
-          });
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select select').on('change', function () {
-            let options = variants;
-            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select option[value=""]:selected').length) {
-              return;
-            }
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select select').each(function (i) {
-              let option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val();
-              options = options.filter(variant => variant.node.title.split('/')[i].trim() == option);
-              selectedvariant = options[0]?.node;
+          // items = items.sort((a,b) => a.properties.bundleIndex - b.properties.bundleIndex)
+          if (items.length) {
+            self.bundleKeys = [];
+            self.selectedProducts = [];
+            self.selectedProductsQty = 0;
+            items.forEach(function (item) {
+              self.bundleKeys.push(item.key);
+              if (self.selectedProductsQty < 4) {
+                self.selectedProductsQty += item.quantity;
+              } else {
+                self.selectedProductsQty = 4;
+              }
+              var itemObj = JSON.parse(item.properties.bundleData);
+              self.selectedProducts.push(itemObj);
             });
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').removeClass('disabled');
-            if (!selectedvariant?.availableForSale) {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').addClass('disabled');
+            self.fetchProducts();
+            return;
+          }
+
+          // // get state from session storage
+          // let bundleStorage = JSON.parse(sessionStorage.getItem('bundle'))
+          // if(bundleStorage?.length) {
+          //     self.selectedProducts = bundleStorage
+          //     self.fetchProducts()
+          // }
+        }
+      });
+    }
+  }, {
+    key: "productQuery",
+    value: function productQuery() {
+      var arg = this.cursor ? "first: ".concat(this.numProducts, " after: \"").concat(this.cursor, "\"") : "first: ".concat(this.numProducts);
+      return "query {\n                collectionByHandle(handle: \"".concat(this.collection, "\") {\n                    products(").concat(arg, ") {\n                        edges {\n                            cursor\n                            node{\n                                handle\n                                title\n                                id\n                                metafield(key:\"subtitle\" namespace:\"custom\") {\n                                    value\n                                }\n                                featuredImage {\n                                    url\n                                }\n                            }\n                        }\n                        pageInfo {\n                            hasNextPage\n                        }\n                    }\n                }\n            }");
+    }
+  }, {
+    key: "renderGrid",
+    value: function renderGrid(products) {
+      var _products;
+      var self = this;
+      this.cursor = "".concat((_products = products[products.length - 1]) === null || _products === void 0 ? void 0 : _products.cursor);
+      products.forEach(function (product) {
+        if (!product.node.handle.includes('stack')) {
+          self.grid.append(self.renderTemplate(product));
+        }
+      });
+    }
+  }, {
+    key: "renderTemplate",
+    value: function renderTemplate(product) {
+      var _item$featuredImage, _item$metafield;
+      var self = this;
+      var item = product.node;
+      var btnText = jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).width() > 1024 ? 'add to bundle' : 'add';
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().get("https://api-cdn.yotpo.com/v1/widget/N5IazRa6pWNEh0w8i5y8s9cPJ1TKxVu9yoaZ5uyT/products/".concat(self.decodeId(item.id), "/reviews.json"), function (data, status) {
+        var score = data.response.bottomline.average_score;
+        var totalReview = data.response.bottomline.total_review;
+        var html = "<div class=\"yotpo flex items-center\"><div class=\"yotpo-bottomline\">";
+        var stars = score > 4.8 ? 5 : 4;
+        for (var i = 0; i < stars; i++) {
+          html += "<span class=\"yotpo-icon yotpo-icon-star rating-star pull-left\"></span>";
+        }
+        if (stars == 4) {
+          html += "<span class=\"yotpo-icon yotpo-icon-half-star rating-star pull-left\"></span>";
+        }
+        html += "</div><span class=\"hidden lg:block\">".concat(totalReview, " Reviews</span></div>");
+        if (+totalReview > 0) {
+          setTimeout(function () {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".bundle-product__reviews[data-handle=\"".concat(item.handle, "\"]")).append(html);
+          });
+        }
+      });
+      return "<div class=\"bundle-product relative mb-8\" data-handle=\"".concat(item.handle, "\">\n                <span class=\"absolute bundle-product__check !hidden\">\n                    <svg class=\"pointer-events-none\" width=\"14\" height=\"11\" viewBox=\"0 0 14 11\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M12.3337 2L5.00033 9.33333L1.66699 6\" stroke=\"#212121\" stroke-width=\"2\" stroke-linecap=\"square\"/>\n                    </svg>\n                </span>\n                <img src=\"").concat((_item$featuredImage = item.featuredImage) === null || _item$featuredImage === void 0 ? void 0 : _item$featuredImage.url, "\" class=\"bundle-product__trigger\" alt=\"").concat(item.title, "\" />\n                <div class=\"block bundle-product__title bundle-product__trigger font-compacta uppercase text-primary font-bold mt-2\">").concat(item.title, "</div>\n                <div class=\"bundle-product__reviews flex justify-center text-[14px]\" data-handle=\"").concat(item.handle, "\"></div>\n                <div class=\"bundle-product__type font-sans font-light\">").concat((_item$metafield = item.metafield) === null || _item$metafield === void 0 ? void 0 : _item$metafield.value, "</div>\n                <button class=\"bundle-product__btn bundle-product__trigger w-full bg-white font-sans font-bold\" data-handle=\"").concat(item.handle, "\">").concat(btnText, "</button>\n                <div class=\"quantity !hidden\">\n                    <button class=\"quantity__button bundle-product__quantity bundle-product__quantity-remove no-js-hidden\" name=\"minus\" type=\"button\">-</button>\n                    <label for=\"quantity-").concat(item.handle, "\" class=\"sr-only\">Qty</label>\n                    <input class=\"quantity__input\" disabled type=\"number\" name=\"quantity\" id=\"quantity-").concat(item.handle, "\" min=\"1\" value=\"1\">\n                    <button class=\"quantity__button bundle-product__quantity bundle-product__trigger no-js-hidden\" name=\"plus\" type=\"button\">+</button>\n                </div>\n            </div>");
+    }
+  }, {
+    key: "fetchProducts",
+    value: function fetchProducts() {
+      var _this2 = this;
+      fetch(this.graphUrl, {
+        'async': true,
+        'crossDomain': true,
+        'method': 'POST',
+        'headers': {
+          'X-Shopify-Storefront-Access-Token': this.accessToken,
+          'Content-Type': 'application/graphql'
+        },
+        'body': this.productQuery()
+      }).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        var response = res.data.collectionByHandle.products;
+        _this2.renderGrid(response.edges);
+        _this2.hasNextPage = response.pageInfo.hasNextPage;
+        _this2.grid.removeClass('loading');
+        _this2.renderBundleCart();
+      });
+    }
+  }, {
+    key: "changeCollection",
+    value: function changeCollection() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-tab').on('click', function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-tab').removeClass('active');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).addClass('active');
+        self.collection = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('handle');
+        self.cursor = null;
+        self.hasNextPage = false;
+        self.grid.empty();
+        self.fetchProducts();
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-select').on('change', function () {
+        self.collection = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.collection-select .collection-tab:selected').data('handle');
+        self.cursor = null;
+        self.hasNextPage = false;
+        self.grid.empty();
+        self.fetchProducts();
+      });
+    }
+  }, {
+    key: "pagination",
+    value: function pagination() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on('scroll', function () {
+        if (self.hasNextPage) {
+          var pos = self.grid.offset().top + self.grid.height() - jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).scrollTop();
+          if (pos <= 1150) {
+            self.hasNextPage = false;
+            self.grid.addClass('loading');
+            self.fetchProducts();
+          }
+        }
+      });
+    }
+  }, {
+    key: "selectedProductQuery",
+    value: function selectedProductQuery(handle) {
+      return "query {\n                product(handle: \"".concat(handle, "\") {\n                    handle\n                    title\n                    productType\n                    id\n                    metafield_0: metafield(key:\"short_description_extra\" namespace:\"custom\") {\n                        value\n                    }\n                    metafield_1: metafield(key:\"subtitle\" namespace:\"custom\") {\n                        value\n                    }\n                    featuredImage {\n                        url\n                    }\n                    sellingPlanGroups(first: 10) {\n                        edges {\n                            node {\n                                sellingPlans(first: 10) {\n                                    edges {\n                                        node {\n                                            id\n                                            name\n                                        }\n                                    }\n                                }\n                            }\n                        }\n                    }\n                    variants(first: 100) {\n                        edges {\n                            node {\n                                id\n                                price{\n                                    amount\n                                }\n                                title\n                                availableForSale\n                                quantityAvailable\n                            }\n                        }\n                    }\n                    options {\n                        name\n                        values\n                    }\n                }\n            }");
+    }
+  }, {
+    key: "selectedProductDrawer",
+    value: function selectedProductDrawer(product) {
+      var _product$featuredImag, _product$metafield_, _product$metafield_2;
+      var html = "<div class=\"selected_product__drawer\">\n                <div class=\"selected_product__drawer-inner bg-white relative\">\n                <div class=\"close-product__drawer selected_product__drawer-mobile\"></div>\n                <div class=\"bg-white relative selected_product__drawer-mobile-inner\">\n                <div class=\"absolute close-product__drawer cursor-pointer\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"pointer-events-none\" aria-hidden=\"true\" focusable=\"false\" role=\"presentation\" class=\"icon icon-close\" fill=\"none\" viewBox=\"0 0 18 17\" style=\"width: 20px;\">\n                        <path d=\"M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z\" fill=\"black\"></path>\n                    </svg>\n                </div>\n                <div class=\"lg:flex items-center\">\n                    <a href=\"/products/".concat(product.handle, "\">\n                        <img src=\"").concat((_product$featuredImag = product.featuredImage) === null || _product$featuredImag === void 0 ? void 0 : _product$featuredImag.url, "\" class=\"selected_product__img object-contain\" /> \n                    </a>\n                    <div>\n                        <a href=\"/products/").concat(product.handle, "\" class=\"block selected_product__title font-compacta upperase text-primary font-bold\">").concat(product.title, "</a>\n                        <div class=\"selected_product__type mt-1 font-sans text-primary\">").concat((_product$metafield_ = product.metafield_1) === null || _product$metafield_ === void 0 ? void 0 : _product$metafield_.value, "</div>\n                        <div class=\"selected_product__reviews mt-1 font-sans text-primary\"></div>\n                    </div>\n                </div>\n                <div class=\"selected_product-bullet-points\">\n                ").concat((_product$metafield_2 = product.metafield_0) === null || _product$metafield_2 === void 0 ? void 0 : _product$metafield_2.value, "\n                </div>\n                <div class=\"lg:flex lg:space-x-4 mt-6 mb-[18px]\">");
+      product.options.forEach(function (option) {
+        if (option.name !== 'Title') {
+          html += "<div class=\"product-form__input product-form__input--dropdown w-full lg:w-6/12\">\n                            <div class=\"product-select\">\n                                <select name=\"options-".concat(option.name, "\"\n                                    class=\"select__select text-[13.9px] mt-2 lg:mt-1 block w-full pl-3 pr-10 py-2 text-base focus:outline-none focus:ring-0  h-[56px] border border-solid border-[#DBDBDB]\">");
+          if (option.values.length > 1) {
+            html += "<option value=\"\" selected disabled hidden>Choose ".concat(option.name, "</option>");
+          }
+          option.values.forEach(function (value) {
+            html += "<option value=\"".concat(value, "\">").concat(value, "</option>");
+          });
+          html += "</select>\n                            </div>\n                            \n                        </div>";
+        }
+      });
+      html += "</div>\n                <div class=\"flex mt-4\">\n                    <quantity-input class=\"quantity\">\n                        <button class=\"quantity__button drawer-quantity__button no-js-hidden\" name=\"minus\" type=\"button\">-</button>\n                        <input class=\"quantity__input drawer-quantity__input\" disabled type=\"number\" name=\"quantity\" id=\"quantity-".concat(product.handle, "\" min=\"1\" value=\"1\">\n                        <button class=\"quantity__button drawer-quantity__button no-js-hidden\" name=\"plus\" type=\"button\">+</button>\n                    </quantity-input>\n                    <button class=\"block bundle-form__submit tracking-[1px] w-full border border-solid border-yellow hover:bg-white hover:border-primary transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px] ").concat(product.variants.edges.length > 1 && 'disabled', "\">").concat(product.variants.edges.length > 1 ? 'make selection' : 'add to bundle', "</button>\n                </div>\n                </div>\n                </div>\n            </div>");
+      return html;
+    }
+  }, {
+    key: "decodeId",
+    value: function decodeId(id) {
+      // const decoded = atob(id)
+      var shopifyId = id.split("/").pop();
+      return parseInt(shopifyId);
+    }
+  }, {
+    key: "selectProduct",
+    value: function selectProduct() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', function (e) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass('bundle-product__trigger') && self.selectedProductsQty < 4) {
+          var handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest('.bundle-product').data('handle');
+          fetch(self.graphUrl, {
+            'async': true,
+            'crossDomain': true,
+            'method': 'POST',
+            'headers': {
+              'X-Shopify-Storefront-Access-Token': self.accessToken,
+              'Content-Type': 'application/graphql'
+            },
+            'body': self.selectedProductQuery(handle)
+          }).then(function (res) {
+            return res.json();
+          }).then(function (res) {
+            var _variants$filter$;
+            var product = res.data.product;
+            var variants = product.variants.edges;
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').append(self.selectedProductDrawer(product));
+            setTimeout(function () {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__drawer-inner').addClass('active');
+            });
+            jquery__WEBPACK_IMPORTED_MODULE_0___default().get("https://api-cdn.yotpo.com/v1/widget/N5IazRa6pWNEh0w8i5y8s9cPJ1TKxVu9yoaZ5uyT/products/".concat(self.decodeId(product.id), "/reviews.json"), function (data, status) {
+              var score = data.response.bottomline.average_score;
+              var totalReview = data.response.bottomline.total_review;
+              var html = "<div class=\"yotpo flex items-center\"><div class=\"yotpo-bottomline\">";
+              var stars = score > 4.8 ? 5 : 4;
+              for (var i = 0; i < stars; i++) {
+                html += "<span class=\"yotpo-icon yotpo-icon-star rating-star pull-left\"></span>";
+              }
+              if (stars == 4) {
+                html += "<span class=\"yotpo-icon yotpo-icon-half-star rating-star pull-left\"></span>";
+              }
+              html += "</div><span class=\"hidden lg:block\">".concat(totalReview, " Reviews</span></div>");
+              if (+totalReview > 0) {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__reviews').append(html);
+              }
+            });
+            var selectedvariant = (_variants$filter$ = variants.filter(function (variant) {
+              return variant.node.availableForSale;
+            })[0]) === null || _variants$filter$ === void 0 ? void 0 : _variants$filter$.node;
+            if (!selectedvariant) {
               jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').text('sold out');
-              return;
             }
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').removeClass('disabled');
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').text('add to bundle');
+            var maxValue = 4 - self.selectedProductsQty;
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('.drawer-quantity__input').prop('max', maxValue);
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('.drawer-quantity__input').on('change', function () {
               if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() > maxValue) {
                 jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val(maxValue);
               }
             });
-          });
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').on('click', function () {
-            selectedvariant.handle = product.handle;
-            selectedvariant.id = self.decodeId(selectedvariant.id);
-            selectedvariant.sellingPlans = product.sellingPlanGroups?.edges[0]?.node?.sellingPlans?.edges || null;
-            selectedvariant.img = product.featuredImage?.url || null;
-            selectedvariant.selectedQuantity = +jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).closest('.selected_product__drawer').find('.quantity__input').val();
-            if (self.selectedProductsQty < 4) {
-              if (self.selectedProducts.filter(item => item.id == selectedvariant.id).length) {
-                let index = self.selectedProducts.findIndex(obj => obj.id == selectedvariant.id);
-                self.selectedProducts[index].selectedQuantity += selectedvariant.selectedQuantity;
-              } else {
-                self.selectedProducts.push(selectedvariant);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select select').on('change', function () {
+              var _selectedvariant;
+              var options = variants;
+              if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select option[value=""]:selected').length) {
+                return;
               }
-            }
-            self.selectedProductsQty += selectedvariant.selectedQuantity;
-            self.renderBundleCart();
-            removeDrawer();
-          });
-
-          // remove drawer
-          function removeDrawer() {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__drawer-inner').removeClass('active');
-            setTimeout(() => {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__drawer').remove();
-            }, 300);
-          }
-          document.addEventListener('click', function (e) {
-            if (e.target.classList.contains('selected_product__drawer') || e.target.classList.contains('close-product__drawer')) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select select').each(function (i) {
+                var _options$;
+                var option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val();
+                options = options.filter(function (variant) {
+                  return variant.node.title.split('/')[i].trim() == option;
+                });
+                selectedvariant = (_options$ = options[0]) === null || _options$ === void 0 ? void 0 : _options$.node;
+              });
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').removeClass('disabled');
+              if (!((_selectedvariant = selectedvariant) !== null && _selectedvariant !== void 0 && _selectedvariant.availableForSale)) {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').addClass('disabled');
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').text('sold out');
+                return;
+              }
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').removeClass('disabled');
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').text('add to bundle');
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.drawer-quantity__input').prop('max', maxValue);
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.drawer-quantity__input').on('change', function () {
+                if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() > maxValue) {
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val(maxValue);
+                }
+              });
+            });
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-form__submit').on('click', function () {
+              var _product$sellingPlanG, _product$featuredImag2;
+              selectedvariant.handle = product.handle;
+              selectedvariant.id = self.decodeId(selectedvariant.id);
+              selectedvariant.sellingPlans = ((_product$sellingPlanG = product.sellingPlanGroups) === null || _product$sellingPlanG === void 0 || (_product$sellingPlanG = _product$sellingPlanG.edges[0]) === null || _product$sellingPlanG === void 0 || (_product$sellingPlanG = _product$sellingPlanG.node) === null || _product$sellingPlanG === void 0 || (_product$sellingPlanG = _product$sellingPlanG.sellingPlans) === null || _product$sellingPlanG === void 0 ? void 0 : _product$sellingPlanG.edges) || null;
+              selectedvariant.img = ((_product$featuredImag2 = product.featuredImage) === null || _product$featuredImag2 === void 0 ? void 0 : _product$featuredImag2.url) || null;
+              selectedvariant.selectedQuantity = +jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).closest('.selected_product__drawer').find('.quantity__input').val();
+              if (self.selectedProductsQty < 4) {
+                if (self.selectedProducts.filter(function (item) {
+                  return item.id == selectedvariant.id;
+                }).length) {
+                  var index = self.selectedProducts.findIndex(function (obj) {
+                    return obj.id == selectedvariant.id;
+                  });
+                  self.selectedProducts[index].selectedQuantity += selectedvariant.selectedQuantity;
+                } else {
+                  self.selectedProducts.push(selectedvariant);
+                }
+              }
+              self.selectedProductsQty += selectedvariant.selectedQuantity;
+              self.renderBundleCart();
               removeDrawer();
+            });
+
+            // remove drawer
+            function removeDrawer() {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__drawer-inner').removeClass('active');
+              setTimeout(function () {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()('.selected_product__drawer').remove();
+              }, 300);
+            }
+            document.addEventListener('click', function (e) {
+              if (e.target.classList.contains('selected_product__drawer') || e.target.classList.contains('close-product__drawer')) {
+                removeDrawer();
+              }
+            });
+          });
+        }
+      });
+    }
+  }, {
+    key: "adjustQauntity",
+    value: function adjustQauntity() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', function (e) {
+        // change quantity
+        // if($(e.target).hasClass('bundle-product__quantity')) {
+        //     let parent = $(e.target).closest('.bundle-product')
+        //     let handle = parent.data('handle')
+        //     let quantity = parent.find('.quantity__input').val()
+        //     let item = self.selectedProducts.findIndex((obj => obj.handle == handle))
+        //     self.selectedProducts[item].selectedQuantity = +quantity
+        //     self.renderBundleCart()
+        // }
+
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass('bundle-product__quantity-remove')) {
+          var parent = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest('.bundle-product');
+          var handle = parent.data('handle');
+          self.selectedProducts.forEach(function (item) {
+            if (item.handle == handle) {
+              self.selectedProductsQty -= item.selectedQuantity;
             }
           });
-        });
-      }
-    });
-  }
-  adjustQauntity() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', function (e) {
-      // change quantity
-      // if($(e.target).hasClass('bundle-product__quantity')) {
-      //     let parent = $(e.target).closest('.bundle-product')
-      //     let handle = parent.data('handle')
-      //     let quantity = parent.find('.quantity__input').val()
-      //     let item = self.selectedProducts.findIndex((obj => obj.handle == handle))
-      //     self.selectedProducts[item].selectedQuantity = +quantity
-      //     self.renderBundleCart()
-      // }
-
-      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass('bundle-product__quantity-remove')) {
-        let parent = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest('.bundle-product');
-        let handle = parent.data('handle');
-        self.selectedProducts.forEach(function (item) {
-          if (item.handle == handle) {
-            self.selectedProductsQty -= item.selectedQuantity;
-          }
-        });
-        let updateSelectedProducts = self.selectedProducts.filter(item => item.handle !== handle);
-        self.selectedProducts = updateSelectedProducts;
-        self.renderBundleCart();
-      }
-
-      // remove item
-      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass('bundle-cart__remove')) {
-        let handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).data('handle');
-        let index = self.selectedProducts.findIndex(obj => obj.handle + obj.id == handle);
-        self.selectedProducts[index].selectedQuantity -= 1;
-        self.selectedProductsQty -= 1;
-        if (self.selectedProducts[index].selectedQuantity <= 0) {
-          let updateSelectedProducts = self.selectedProducts.filter(item => item.handle + item.id !== handle);
+          var updateSelectedProducts = self.selectedProducts.filter(function (item) {
+            return item.handle !== handle;
+          });
           self.selectedProducts = updateSelectedProducts;
+          self.renderBundleCart();
         }
+
+        // remove item
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass('bundle-cart__remove')) {
+          var _handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).data('handle');
+          var index = self.selectedProducts.findIndex(function (obj) {
+            return obj.handle + obj.id == _handle;
+          });
+          self.selectedProducts[index].selectedQuantity -= 1;
+          self.selectedProductsQty -= 1;
+          if (self.selectedProducts[index].selectedQuantity <= 0) {
+            var _updateSelectedProducts = self.selectedProducts.filter(function (item) {
+              return item.handle + item.id !== _handle;
+            });
+            self.selectedProducts = _updateSelectedProducts;
+          }
+          self.renderBundleCart();
+        }
+      });
+    }
+  }, {
+    key: "changePurchaseOption",
+    value: function changePurchaseOption() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').on('change', function () {
+        self.subscription = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() == 'subscribe';
         self.renderBundleCart();
-      }
-    });
-  }
-  changePurchaseOption() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').on('change', function () {
-      self.subscription = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() == 'subscribe';
-      self.renderBundleCart();
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').closest('.subscription').toggleClass('active');
-      if (self.subscription) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').addClass('active');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').addClass('!hidden');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').removeClass('!hidden');
-      } else {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').removeClass('active');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').removeClass('!hidden');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').addClass('!hidden');
-      }
-    });
-  }
-  renderBundleCart() {
-    this.clear();
-    let self = this;
-    let products = this.selectedProducts;
-    let originalPrice = 0;
-    let totalPrice = 0;
-    let subsPrice = 0;
-    let counter = 0;
-    products.forEach(function (product, i) {
-      let price = product.price.amount * product.selectedQuantity;
-      let subsDiscountedPrice = +(price - price * 0.10);
-      subsDiscountedPrice = Math.ceil(subsDiscountedPrice * 100) / 100;
-      originalPrice += price;
-      if (self.selectedProductsQty == 1) {
-        totalPrice = +price;
-        subsPrice = subsDiscountedPrice;
-      }
-      if (self.selectedProductsQty == 2) {
-        totalPrice += +(price - price * 0.1);
-        subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.05);
-      }
-      if (self.selectedProductsQty == 3) {
-        totalPrice += +(price - price * 0.15);
-        subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.10);
-      }
-      if (self.selectedProductsQty >= 4) {
-        totalPrice += +(price - price * 0.2);
-        subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.15);
-      }
-
-      // totalPrice += i == 0 ? +(price) : +(price - (price * (i * 0.1)))
-
-      let parent = jquery__WEBPACK_IMPORTED_MODULE_0___default()(`.bundle-product[data-handle="${product.handle}"]`);
-      parent.find('.bundle-product__btn').addClass('!hidden');
-      parent.find('.quantity').removeClass('!hidden');
-      let productQty = 0;
-      products.forEach(function (item) {
-        if (item.handle == product.handle) {
-          parent.find('.quantity__input').val(productQty += item.selectedQuantity);
-        }
-      });
-      parent.find('.quantity__input').prop('max', product.quantityAvailable);
-      parent.find('.bundle-product__check').removeClass('!hidden');
-
-      // bundle cart
-      for (let i = counter; i < counter + product.selectedQuantity; i++) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(`.bundle-item__placeholder[data-index="${i}"]`).addClass('!hidden');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(`.bundle-item__selected[data-index="${i}"]`).attr("src", product.img);
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(`.bundle-item__selected[data-index="${i}"]`).removeClass('!hidden');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(`.bundle-cart__remove[data-index="${i}"]`).removeClass('!hidden');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(`.bundle-cart__remove[data-index="${i}"]`).attr('data-handle', product.handle + product.id);
-      }
-      counter += product.selectedQuantity;
-    });
-    this.selectedProductsQty >= 4 && jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__btn').addClass('disabled');
-
-    // products amount
-    this.selectedProductsQty == 1 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__amount').text(this.selectedProductsQty + ' product added') : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__amount').text(this.selectedProductsQty + ' products added');
-    if (this.selectedProductsQty <= 0) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__amount').text('0 products added');
-    }
-    // cart price
-    this.originalPrice = totalPrice.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD"
-    });
-    subsPrice = Math.ceil(subsPrice * 100) / 100;
-    this.subscriptionPrice = subsPrice.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD"
-    });
-    this.subscription ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__price').text(this.subscriptionPrice) : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__price').text(this.originalPrice);
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-price').text(this.originalPrice);
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscribe-price').text(this.subscriptionPrice);
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.original-price').text(originalPrice.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD"
-    }));
-
-    // submit bundle button
-    this.selectedProductsQty == 0 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').text('add products') : this.selectedProductsQty == 1 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').text('add 1 more product') : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').text('add bundle to cart');
-    this.selectedProductsQty >= 2 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').removeClass('disabled') : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').addClass('disabled');
-
-    // discount applied text
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.discount-applied').text(this.selectedProductsQty == 2 ? '10% discount applied' : this.selectedProductsQty == 3 ? '15% discount applied' : this.selectedProductsQty >= 4 ? '20% discount applied' : '');
-    if (this.subscription) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.discount-applied').text(this.selectedProductsQty == 0 ? '' : this.selectedProductsQty == 1 ? '10% discount applied' : this.selectedProductsQty == 2 ? '15% discount applied' : this.selectedProductsQty == 3 ? '20% discount applied' : '25% discount applied');
-    }
-
-    // save to sessionStorage
-    sessionStorage.setItem('bundle', JSON.stringify(this.selectedProducts));
-  }
-  clear() {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-item__placeholder').removeClass('!hidden');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-item__selected').addClass('!hidden');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__check').addClass('!hidden');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('.quantity').addClass('!hidden');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__btn').removeClass('!hidden');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__remove').addClass('!hidden');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__remove').removeData("handle");
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__btn').removeClass('disabled');
-  }
-  submitBundle() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').on('click', function () {
-      let time = new Date().getTime();
-      let data = [];
-      let subscriptionName = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option:selected').data('name') || jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('name');
-      self.selectedProducts.forEach(function (item, i) {
-        let obj = {
-          id: item.id,
-          quantity: item.selectedQuantity,
-          properties: {
-            isBundleProduct: true,
-            bundleId: time,
-            bundleIndex: i,
-            bundleData: JSON.stringify(item)
-          }
-        };
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').closest('.subscription').toggleClass('active');
         if (self.subscription) {
-          obj.selling_plan = self.decodeId(item.sellingPlans.filter(item => item.node.name == subscriptionName)[0].node.id);
-          obj.properties.subscription = true;
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').addClass('active');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').addClass('!hidden');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').removeClass('!hidden');
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').removeClass('active');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').removeClass('!hidden');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').addClass('!hidden');
         }
-        data.push(obj);
       });
-      let formData = {
-        'items': data
-      };
-      function cartAdd() {
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        }).then(response => {
-          let sidecart = document.querySelector('side-cart');
-          sidecart?.renderCart();
-          sidecart?.openCart();
-        }).catch(error => {
-          console.error('Error:', error);
-        });
-      }
-      if (self.bundleKeys.length) {
-        self.bundleKeys.forEach(function (key, i) {
-          if (i == 0) {
-            data = `updates[${key}]=0`;
-          } else {
-            data += `&updates[${key}]=0`;
+    }
+  }, {
+    key: "renderBundleCart",
+    value: function renderBundleCart() {
+      this.clear();
+      var self = this;
+      var products = this.selectedProducts;
+      var originalPrice = 0;
+      var totalPrice = 0;
+      var subsPrice = 0;
+      var counter = 0;
+      products.forEach(function (product, i) {
+        var price = product.price.amount * product.selectedQuantity;
+        var subsDiscountedPrice = +(price - price * 0.10);
+        subsDiscountedPrice = Math.ceil(subsDiscountedPrice * 100) / 100;
+        originalPrice += price;
+        if (self.selectedProductsQty == 1) {
+          totalPrice = +price;
+          subsPrice = subsDiscountedPrice;
+        }
+        if (self.selectedProductsQty == 2) {
+          totalPrice += +(price - price * 0.1);
+          subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.05);
+        }
+        if (self.selectedProductsQty == 3) {
+          totalPrice += +(price - price * 0.15);
+          subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.10);
+        }
+        if (self.selectedProductsQty >= 4) {
+          totalPrice += +(price - price * 0.2);
+          subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.15);
+        }
+
+        // totalPrice += i == 0 ? +(price) : +(price - (price * (i * 0.1)))
+
+        var parent = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".bundle-product[data-handle=\"".concat(product.handle, "\"]"));
+        parent.find('.bundle-product__btn').addClass('!hidden');
+        parent.find('.quantity').removeClass('!hidden');
+        var productQty = 0;
+        products.forEach(function (item) {
+          if (item.handle == product.handle) {
+            parent.find('.quantity__input').val(productQty += item.selectedQuantity);
           }
         });
-        jquery__WEBPACK_IMPORTED_MODULE_0___default().post('/cart/update.js', data).done(function () {
-          cartAdd();
-        });
-        return;
+        parent.find('.quantity__input').prop('max', product.quantityAvailable);
+        parent.find('.bundle-product__check').removeClass('!hidden');
+
+        // bundle cart
+        for (var _i = counter; _i < counter + product.selectedQuantity; _i++) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".bundle-item__placeholder[data-index=\"".concat(_i, "\"]")).addClass('!hidden');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".bundle-item__selected[data-index=\"".concat(_i, "\"]")).attr("src", product.img);
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".bundle-item__selected[data-index=\"".concat(_i, "\"]")).removeClass('!hidden');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".bundle-cart__remove[data-index=\"".concat(_i, "\"]")).removeClass('!hidden');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".bundle-cart__remove[data-index=\"".concat(_i, "\"]")).attr('data-handle', product.handle + product.id);
+        }
+        counter += product.selectedQuantity;
+      });
+      this.selectedProductsQty >= 4 && jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__btn').addClass('disabled');
+
+      // products amount
+      this.selectedProductsQty == 1 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__amount').text(this.selectedProductsQty + ' product added') : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__amount').text(this.selectedProductsQty + ' products added');
+      if (this.selectedProductsQty <= 0) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__amount').text('0 products added');
       }
-      cartAdd();
-    });
-  }
-}
+      // cart price
+      this.originalPrice = totalPrice.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+      });
+      subsPrice = Math.ceil(subsPrice * 100) / 100;
+      this.subscriptionPrice = subsPrice.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+      });
+      this.subscription ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__price').text(this.subscriptionPrice) : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__price').text(this.originalPrice);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-price').text(this.originalPrice);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscribe-price').text(this.subscriptionPrice);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.original-price').text(originalPrice.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+      }));
+
+      // submit bundle button
+      this.selectedProductsQty == 0 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').text('add products') : this.selectedProductsQty == 1 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').text('add 1 more product') : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').text('add bundle to cart');
+      this.selectedProductsQty >= 2 ? jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').removeClass('disabled') : jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').addClass('disabled');
+
+      // discount applied text
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.discount-applied').text(this.selectedProductsQty == 2 ? '10% discount applied' : this.selectedProductsQty == 3 ? '15% discount applied' : this.selectedProductsQty >= 4 ? '20% discount applied' : '');
+      if (this.subscription) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.discount-applied').text(this.selectedProductsQty == 0 ? '' : this.selectedProductsQty == 1 ? '10% discount applied' : this.selectedProductsQty == 2 ? '15% discount applied' : this.selectedProductsQty == 3 ? '20% discount applied' : '25% discount applied');
+      }
+
+      // save to sessionStorage
+      sessionStorage.setItem('bundle', JSON.stringify(this.selectedProducts));
+    }
+  }, {
+    key: "clear",
+    value: function clear() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-item__placeholder').removeClass('!hidden');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-item__selected').addClass('!hidden');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__check').addClass('!hidden');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('.quantity').addClass('!hidden');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__btn').removeClass('!hidden');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__remove').addClass('!hidden');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-cart__remove').removeData("handle");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle-product__btn').removeClass('disabled');
+    }
+  }, {
+    key: "submitBundle",
+    value: function submitBundle() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.bundle__submit').on('click', function () {
+        var time = new Date().getTime();
+        var data = [];
+        var subscriptionName = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option:selected').data('name') || jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('name');
+        self.selectedProducts.forEach(function (item, i) {
+          var obj = {
+            id: item.id,
+            quantity: item.selectedQuantity,
+            properties: {
+              isBundleProduct: true,
+              bundleId: time,
+              bundleIndex: i,
+              bundleData: JSON.stringify(item)
+            }
+          };
+          if (self.subscription) {
+            obj.selling_plan = self.decodeId(item.sellingPlans.filter(function (item) {
+              return item.node.name == subscriptionName;
+            })[0].node.id);
+            obj.properties.subscription = true;
+          }
+          data.push(obj);
+        });
+        var formData = {
+          'items': data
+        };
+        function cartAdd() {
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          }).then(function (response) {
+            var sidecart = document.querySelector('side-cart');
+            sidecart === null || sidecart === void 0 || sidecart.renderCart();
+            sidecart === null || sidecart === void 0 || sidecart.openCart();
+          })["catch"](function (error) {
+            console.error('Error:', error);
+          });
+        }
+        if (self.bundleKeys.length) {
+          self.bundleKeys.forEach(function (key, i) {
+            if (i == 0) {
+              data = "updates[".concat(key, "]=0");
+            } else {
+              data += "&updates[".concat(key, "]=0");
+            }
+          });
+          jquery__WEBPACK_IMPORTED_MODULE_0___default().post('/cart/update.js', data).done(function () {
+            cartAdd();
+          });
+          return;
+        }
+        cartAdd();
+      });
+    }
+  }]);
+  return BundlePage;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('bundle-page')) customElements.define('bundle-page', BundlePage);
 
 /***/ }),
@@ -858,129 +908,200 @@ if (!customElements.get('bundle-page')) customElements.define('bundle-page', Bun
 /*!*****************************************************!*\
   !*** ./scripts/sections/collection-filters-form.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vanilla-lazyload */ "./node_modules/vanilla-lazyload/dist/lazyload.min.js");
 /* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-const lazyInstance = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default())();
-class CollectionFiltersForm extends HTMLElement {
-  constructor() {
-    super();
-    this.filterData = [];
-    this.onActiveFilterClick = this.onActiveFilterClick.bind(this);
-    this.debouncedOnSubmit = debounce(event => {
-      this.onSubmitHandler(event);
+var lazyInstance = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default())();
+var CollectionFiltersForm = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(CollectionFiltersForm, _HTMLElement);
+  var _super = _createSuper(CollectionFiltersForm);
+  function CollectionFiltersForm() {
+    var _this;
+    _classCallCheck(this, CollectionFiltersForm);
+    _this = _super.call(this);
+    _this.filterData = [];
+    _this.onActiveFilterClick = _this.onActiveFilterClick.bind(_assertThisInitialized(_this));
+    _this.debouncedOnSubmit = debounce(function (event) {
+      _this.onSubmitHandler(event);
     }, 500);
-    this.querySelector('form').addEventListener('input', this.debouncedOnSubmit.bind(this));
-    window.addEventListener('popstate', this.onHistoryChange.bind(this));
+    _this.querySelector('form').addEventListener('input', _this.debouncedOnSubmit.bind(_assertThisInitialized(_this)));
+    window.addEventListener('popstate', _this.onHistoryChange.bind(_assertThisInitialized(_this)));
+    return _this;
   }
-  onSubmitHandler(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target.closest('form'));
-    const searchParams = new URLSearchParams(formData).toString();
-    this.renderPage(searchParams, event);
-  }
-  onActiveFilterClick(event) {
-    event.preventDefault();
-    this.toggleActiveFacets();
-    this.renderPage(new URL(event.currentTarget.href).searchParams.toString());
-  }
-  onHistoryChange(event) {
-    const searchParams = event.state?.searchParams || '';
-    this.renderPage(searchParams, null, false);
-  }
-  toggleActiveFacets(disable = true) {
-    document.querySelectorAll('.js-facet-remove').forEach(element => {
-      element.classList.toggle('disabled', disable);
-    });
-  }
-  renderPage(searchParams, event, updateURLHash = true) {
-    const sections = this.getSections();
-    document.querySelector('.js-collection-loading').classList.remove('hidden');
-    sections.forEach(section => {
-      const url = `${window.location.pathname}?section_id=${section.section}&${searchParams}`;
-      const filterDataUrl = element => element.url === url;
-      this.filterData.some(filterDataUrl) ? this.renderSectionFromCache(filterDataUrl, event) : this.renderSectionFromFetch(url, event);
-    });
-    if (updateURLHash) this.updateURLHash(searchParams);
-  }
-  renderSectionFromFetch(url, event) {
-    fetch(url).then(response => response.text()).then(responseText => {
-      const html = responseText;
-      this.filterData = [...this.filterData, {
-        html,
-        url
-      }];
+  _createClass(CollectionFiltersForm, [{
+    key: "onSubmitHandler",
+    value: function onSubmitHandler(event) {
+      event.preventDefault();
+      var formData = new FormData(event.target.closest('form'));
+      var searchParams = new URLSearchParams(formData).toString();
+      this.renderPage(searchParams, event);
+    }
+  }, {
+    key: "onActiveFilterClick",
+    value: function onActiveFilterClick(event) {
+      event.preventDefault();
+      this.toggleActiveFacets();
+      this.renderPage(new URL(event.currentTarget.href).searchParams.toString());
+    }
+  }, {
+    key: "onHistoryChange",
+    value: function onHistoryChange(event) {
+      var _event$state;
+      var searchParams = ((_event$state = event.state) === null || _event$state === void 0 ? void 0 : _event$state.searchParams) || '';
+      this.renderPage(searchParams, null, false);
+    }
+  }, {
+    key: "toggleActiveFacets",
+    value: function toggleActiveFacets() {
+      var disable = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      document.querySelectorAll('.js-facet-remove').forEach(function (element) {
+        element.classList.toggle('disabled', disable);
+      });
+    }
+  }, {
+    key: "renderPage",
+    value: function renderPage(searchParams, event) {
+      var _this2 = this;
+      var updateURLHash = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+      var sections = this.getSections();
+      document.querySelector('.js-collection-loading').classList.remove('hidden');
+      sections.forEach(function (section) {
+        var url = "".concat(window.location.pathname, "?section_id=").concat(section.section, "&").concat(searchParams);
+        var filterDataUrl = function filterDataUrl(element) {
+          return element.url === url;
+        };
+        _this2.filterData.some(filterDataUrl) ? _this2.renderSectionFromCache(filterDataUrl, event) : _this2.renderSectionFromFetch(url, event);
+      });
+      if (updateURLHash) this.updateURLHash(searchParams);
+    }
+  }, {
+    key: "renderSectionFromFetch",
+    value: function renderSectionFromFetch(url, event) {
+      var _this3 = this;
+      fetch(url).then(function (response) {
+        return response.text();
+      }).then(function (responseText) {
+        var html = responseText;
+        _this3.filterData = [].concat(_toConsumableArray(_this3.filterData), [{
+          html: html,
+          url: url
+        }]);
+        _this3.renderFilters(html, event);
+        _this3.renderProductGrid(html);
+      }).then(function () {
+        lazyInstance.update();
+      });
+    }
+  }, {
+    key: "renderSectionFromCache",
+    value: function renderSectionFromCache(filterDataUrl, event) {
+      var html = this.filterData.find(filterDataUrl).html;
       this.renderFilters(html, event);
       this.renderProductGrid(html);
-    }).then(() => {
       lazyInstance.update();
-    });
-  }
-  renderSectionFromCache(filterDataUrl, event) {
-    const html = this.filterData.find(filterDataUrl).html;
-    this.renderFilters(html, event);
-    this.renderProductGrid(html);
-    lazyInstance.update();
-  }
-  renderProductGrid(html) {
-    const innerHTML = new DOMParser().parseFromString(html, 'text/html').getElementById('CollectionProductGrid').innerHTML;
-    document.getElementById('CollectionProductGrid').innerHTML = innerHTML;
-    document.querySelector('.js-collection-loading').classList.add('hidden');
-  }
-  renderFilters(html, event) {
-    const parsedHTML = new DOMParser().parseFromString(html, 'text/html');
-    const facetDetailsElements = parsedHTML.querySelectorAll('#CollectionFiltersForm .js-filter, #CollectionFiltersFormMobile .js-filter');
-    const matchesIndex = element => element.dataset.index === event?.target.closest('.js-filter')?.dataset.index;
-    const facetsToRender = Array.from(facetDetailsElements).filter(element => !matchesIndex(element));
-    const countsToRender = Array.from(facetDetailsElements).find(matchesIndex);
-    facetsToRender.forEach(element => {
-      document.querySelector(`.js-filter[data-index="${element.dataset.index}"]`).innerHTML = element.innerHTML;
-    });
-    this.renderActiveFacets(parsedHTML);
-    if (countsToRender) this.renderCounts(countsToRender, event.target.closest('.js-filter'));
-  }
-  renderActiveFacets(html) {
-    const activeFacetElementSelectors = ['.active-facets-mobile', '.active-facets-desktop'];
-    activeFacetElementSelectors.forEach(selector => {
-      const activeFacetsElement = html.querySelector(selector);
-      if (!activeFacetsElement) return;
-      document.querySelector(selector).innerHTML = activeFacetsElement.innerHTML;
-    });
-    this.toggleActiveFacets(false);
-  }
-  renderAdditionalElements(html) {
-    const mobileElementSelectors = ['.mobile-facets__open', '.mobile-facets__count', '.sorting'];
-    mobileElementSelectors.forEach(selector => {
-      document.querySelector(selector).innerHTML = html.querySelector(selector).innerHTML;
-    });
-    document.getElementById('CollectionFiltersFormMobile').closest('menu-drawer').bindEvents();
-  }
-  renderCounts(source, target) {
-    const countElementSelectors = ['.count-bubble', '.facets__selected'];
-    countElementSelectors.forEach(selector => {
-      const targetElement = target.querySelector(selector);
-      const sourceElement = source.querySelector(selector);
-      if (sourceElement && targetElement) {
-        target.querySelector(selector).outerHTML = source.querySelector(selector).outerHTML;
-      }
-    });
-  }
-  updateURLHash(searchParams) {
-    history.pushState({
-      searchParams
-    }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
-  }
-  getSections() {
-    return [{
-      id: 'main-collection-product-grid',
-      section: document.getElementById('main-collection-product-grid').dataset.id
-    }];
-  }
-}
+    }
+  }, {
+    key: "renderProductGrid",
+    value: function renderProductGrid(html) {
+      var innerHTML = new DOMParser().parseFromString(html, 'text/html').getElementById('CollectionProductGrid').innerHTML;
+      document.getElementById('CollectionProductGrid').innerHTML = innerHTML;
+      document.querySelector('.js-collection-loading').classList.add('hidden');
+    }
+  }, {
+    key: "renderFilters",
+    value: function renderFilters(html, event) {
+      var parsedHTML = new DOMParser().parseFromString(html, 'text/html');
+      var facetDetailsElements = parsedHTML.querySelectorAll('#CollectionFiltersForm .js-filter, #CollectionFiltersFormMobile .js-filter');
+      var matchesIndex = function matchesIndex(element) {
+        var _event$target$closest;
+        return element.dataset.index === (event === null || event === void 0 || (_event$target$closest = event.target.closest('.js-filter')) === null || _event$target$closest === void 0 ? void 0 : _event$target$closest.dataset.index);
+      };
+      var facetsToRender = Array.from(facetDetailsElements).filter(function (element) {
+        return !matchesIndex(element);
+      });
+      var countsToRender = Array.from(facetDetailsElements).find(matchesIndex);
+      facetsToRender.forEach(function (element) {
+        document.querySelector(".js-filter[data-index=\"".concat(element.dataset.index, "\"]")).innerHTML = element.innerHTML;
+      });
+      this.renderActiveFacets(parsedHTML);
+      if (countsToRender) this.renderCounts(countsToRender, event.target.closest('.js-filter'));
+    }
+  }, {
+    key: "renderActiveFacets",
+    value: function renderActiveFacets(html) {
+      var activeFacetElementSelectors = ['.active-facets-mobile', '.active-facets-desktop'];
+      activeFacetElementSelectors.forEach(function (selector) {
+        var activeFacetsElement = html.querySelector(selector);
+        if (!activeFacetsElement) return;
+        document.querySelector(selector).innerHTML = activeFacetsElement.innerHTML;
+      });
+      this.toggleActiveFacets(false);
+    }
+  }, {
+    key: "renderAdditionalElements",
+    value: function renderAdditionalElements(html) {
+      var mobileElementSelectors = ['.mobile-facets__open', '.mobile-facets__count', '.sorting'];
+      mobileElementSelectors.forEach(function (selector) {
+        document.querySelector(selector).innerHTML = html.querySelector(selector).innerHTML;
+      });
+      document.getElementById('CollectionFiltersFormMobile').closest('menu-drawer').bindEvents();
+    }
+  }, {
+    key: "renderCounts",
+    value: function renderCounts(source, target) {
+      var countElementSelectors = ['.count-bubble', '.facets__selected'];
+      countElementSelectors.forEach(function (selector) {
+        var targetElement = target.querySelector(selector);
+        var sourceElement = source.querySelector(selector);
+        if (sourceElement && targetElement) {
+          target.querySelector(selector).outerHTML = source.querySelector(selector).outerHTML;
+        }
+      });
+    }
+  }, {
+    key: "updateURLHash",
+    value: function updateURLHash(searchParams) {
+      history.pushState({
+        searchParams: searchParams
+      }, '', "".concat(window.location.pathname).concat(searchParams && '?'.concat(searchParams)));
+    }
+  }, {
+    key: "getSections",
+    value: function getSections() {
+      return [{
+        id: 'main-collection-product-grid',
+        section: document.getElementById('main-collection-product-grid').dataset.id
+      }];
+    }
+  }]);
+  return CollectionFiltersForm;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('collection-filters-form')) customElements.define('collection-filters-form', CollectionFiltersForm);
 
 /***/ }),
@@ -989,23 +1110,46 @@ if (!customElements.get('collection-filters-form')) customElements.define('colle
 /*!*******************************************!*\
   !*** ./scripts/sections/countdown-bar.js ***!
   \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var dynamic_countdown__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dynamic-countdown */ "./node_modules/dynamic-countdown/index.min.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class CountdownBar extends HTMLElement {
-  constructor() {
-    super();
+var CountdownBar = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(CountdownBar, _HTMLElement);
+  var _super = _createSuper(CountdownBar);
+  function CountdownBar() {
+    _classCallCheck(this, CountdownBar);
+    return _super.call(this);
   }
-  connectedCallback() {
-    const myCountdown = (0,dynamic_countdown__WEBPACK_IMPORTED_MODULE_0__.mountCounter)(this.getAttribute('data-date'), 'DHMS', '2', 'en', 'primary-light-inverted');
-    this.appendChild(myCountdown);
-    (0,dynamic_countdown__WEBPACK_IMPORTED_MODULE_0__.counter)();
-  }
-}
+  _createClass(CountdownBar, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var myCountdown = (0,dynamic_countdown__WEBPACK_IMPORTED_MODULE_0__.mountCounter)(this.getAttribute('data-date'), 'DHMS', '2', 'en', 'primary-light-inverted');
+      this.appendChild(myCountdown);
+      (0,dynamic_countdown__WEBPACK_IMPORTED_MODULE_0__.counter)();
+    }
+  }]);
+  return CountdownBar;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('countdown-bar')) customElements.define('countdown-bar', CountdownBar);
 
 /***/ }),
@@ -1014,39 +1158,62 @@ if (!customElements.get('countdown-bar')) customElements.define('countdown-bar',
 /*!*******************************************!*\
   !*** ./scripts/sections/featured-blog.js ***!
   \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class FeaturedBlog extends HTMLElement {
-  constructor() {
-    super();
+var FeaturedBlog = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(FeaturedBlog, _HTMLElement);
+  var _super = _createSuper(FeaturedBlog);
+  function FeaturedBlog() {
+    _classCallCheck(this, FeaturedBlog);
+    return _super.call(this);
   }
-  connectedCallback() {
-    const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
-      // Optional parameters
-      slidesPerView: 1.2,
-      freeMode: true,
-      spaceBetween: 16,
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-article-next',
-        prevEl: '.swiper-article-prev'
-      },
-      breakpoints: {
-        1024: {
-          slidesPerView: 2.2,
-          spaceBetween: 32
+  _createClass(FeaturedBlog, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
+        // Optional parameters
+        slidesPerView: 1.2,
+        freeMode: true,
+        spaceBetween: 16,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-article-next',
+          prevEl: '.swiper-article-prev'
+        },
+        breakpoints: {
+          1024: {
+            slidesPerView: 2.2,
+            spaceBetween: 32
+          }
         }
-      }
-    });
-  }
-}
+      });
+    }
+  }]);
+  return FeaturedBlog;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('featured-blog')) customElements.define('featured-blog', FeaturedBlog);
 
 /***/ }),
@@ -1055,41 +1222,77 @@ if (!customElements.get('featured-blog')) customElements.define('featured-blog',
 /*!***********************************************************!*\
   !*** ./scripts/sections/featured-collections-carousel.js ***!
   \***********************************************************/
-/***/ (() => {
+/***/ (function() {
 
-class FeaturedCollectionsCarousel extends HTMLElement {
-  constructor() {
-    super();
-    this.init();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var FeaturedCollectionsCarousel = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(FeaturedCollectionsCarousel, _HTMLElement);
+  var _super = _createSuper(FeaturedCollectionsCarousel);
+  function FeaturedCollectionsCarousel() {
+    var _this;
+    _classCallCheck(this, FeaturedCollectionsCarousel);
+    _this = _super.call(this);
+    _this.init();
+    return _this;
   }
-  tabClick() {
-    [...this.querySelectorAll('[data-tab]')].forEach(tab => {
-      tab.addEventListener('click', event => {
-        event.preventDefault();
-        this.tabToggle(event.currentTarget);
+  _createClass(FeaturedCollectionsCarousel, [{
+    key: "tabClick",
+    value: function tabClick() {
+      var _this2 = this;
+      _toConsumableArray(this.querySelectorAll('[data-tab]')).forEach(function (tab) {
+        tab.addEventListener('click', function (event) {
+          event.preventDefault();
+          _this2.tabToggle(event.currentTarget);
+        });
       });
-    });
-  }
-  tabToggle(tab) {
-    const tabId = tab.dataset.tab;
-    const tabContent = this.querySelector(`[data-tab-content="${tabId}"]`);
-    const tabContentActive = this.querySelector('[data-tab-content].active');
-    const tabActive = this.querySelector('[data-tab].active');
-    if (tabContentActive) {
-      tabContentActive.classList.remove('active');
     }
-    if (tabActive) {
-      tabActive.classList.remove('active');
-      tabActive.querySelector('div').classList.remove('active');
+  }, {
+    key: "tabToggle",
+    value: function tabToggle(tab) {
+      var tabId = tab.dataset.tab;
+      var tabContent = this.querySelector("[data-tab-content=\"".concat(tabId, "\"]"));
+      var tabContentActive = this.querySelector('[data-tab-content].active');
+      var tabActive = this.querySelector('[data-tab].active');
+      if (tabContentActive) {
+        tabContentActive.classList.remove('active');
+      }
+      if (tabActive) {
+        tabActive.classList.remove('active');
+        tabActive.querySelector('div').classList.remove('active');
+      }
+      tabContent.classList.add('active');
+      tab.classList.add('active');
+      tab.querySelector('div').classList.add('active');
     }
-    tabContent.classList.add('active');
-    tab.classList.add('active');
-    tab.querySelector('div').classList.add('active');
-  }
-  init() {
-    this.tabClick();
-  }
-}
+  }, {
+    key: "init",
+    value: function init() {
+      this.tabClick();
+    }
+  }]);
+  return FeaturedCollectionsCarousel;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('featured-collections-carousel')) customElements.define('featured-collections-carousel', FeaturedCollectionsCarousel);
 
 /***/ }),
@@ -1098,45 +1301,69 @@ if (!customElements.get('featured-collections-carousel')) customElements.define(
 /*!**********************************************!*\
   !*** ./scripts/sections/featured-youtube.js ***!
   \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var youtube_player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! youtube-player */ "./node_modules/youtube-player/dist/index.js");
 /* harmony import */ var youtube_player__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(youtube_player__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-class YoutubeEmbed extends HTMLElement {
-  constructor() {
-    super();
+var YoutubeEmbed = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(YoutubeEmbed, _HTMLElement);
+  var _super = _createSuper(YoutubeEmbed);
+  function YoutubeEmbed() {
+    _classCallCheck(this, YoutubeEmbed);
+    return _super.call(this);
   }
-  connectedCallback() {
-    let player = youtube_player__WEBPACK_IMPORTED_MODULE_0___default()(this.querySelector("#youtube-player"));
-    player.loadVideoById(this.querySelector("#youtube-player").getAttribute("youtube-id"));
-    player.stopVideo().then(() => {});
-    if (this.querySelector(".play-button")) {
-      this.querySelector(".play-button").addEventListener("click", () => {
-        if (this.querySelector(".youtube-modal")) {
-          this.querySelector(".youtube-modal").classList.remove("hidden");
-        } else {
-          this.querySelector(".youtube-cover").classList.add("hidden");
-          this.querySelector(".youtube-container").classList.remove("hidden");
-          this.querySelector(".play-button").classList.add("hidden");
-        }
-        player.playVideo();
-      });
-    }
-    if (this.querySelector(".youtube-modal")) {
-      this.querySelector(".youtube-modal").addEventListener("click", e => {
-        if (!e.target.classList.contains("video-container")) {
-          if (this.querySelector(".youtube-modal")) {
-            this.querySelector(".youtube-modal").classList.add("hidden");
+  _createClass(YoutubeEmbed, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _this = this;
+      var player = youtube_player__WEBPACK_IMPORTED_MODULE_0___default()(this.querySelector("#youtube-player"));
+      player.loadVideoById(this.querySelector("#youtube-player").getAttribute("youtube-id"));
+      player.stopVideo().then(function () {});
+      if (this.querySelector(".play-button")) {
+        this.querySelector(".play-button").addEventListener("click", function () {
+          if (_this.querySelector(".youtube-modal")) {
+            _this.querySelector(".youtube-modal").classList.remove("hidden");
+          } else {
+            _this.querySelector(".youtube-cover").classList.add("hidden");
+            _this.querySelector(".youtube-container").classList.remove("hidden");
+            _this.querySelector(".play-button").classList.add("hidden");
           }
-          player.stopVideo().then(() => {});
-        }
-      });
+          player.playVideo();
+        });
+      }
+      if (this.querySelector(".youtube-modal")) {
+        this.querySelector(".youtube-modal").addEventListener("click", function (e) {
+          if (!e.target.classList.contains("video-container")) {
+            if (_this.querySelector(".youtube-modal")) {
+              _this.querySelector(".youtube-modal").classList.add("hidden");
+            }
+            player.stopVideo().then(function () {});
+          }
+        });
+      }
     }
-  }
-}
+  }]);
+  return YoutubeEmbed;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get("youtube-embed")) customElements.define("youtube-embed", YoutubeEmbed);
 
 /***/ }),
@@ -1145,22 +1372,45 @@ if (!customElements.get("youtube-embed")) customElements.define("youtube-embed",
 /*!************************************!*\
   !*** ./scripts/sections/footer.js ***!
   \************************************/
-/***/ (() => {
+/***/ (function() {
 
-class Footer extends HTMLElement {
-  constructor() {
-    super();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var Footer = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(Footer, _HTMLElement);
+  var _super = _createSuper(Footer);
+  function Footer() {
+    _classCallCheck(this, Footer);
+    return _super.call(this);
   }
-  connectedCallback() {
-    let links = document.querySelectorAll('.footer-link-title');
-    links.forEach(function (link) {
-      link.addEventListener('click', function () {
-        link.classList.toggle('active');
-        link.closest('div').querySelector('ul').classList.toggle('hidden');
+  _createClass(Footer, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var links = document.querySelectorAll('.footer-link-title');
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          link.classList.toggle('active');
+          link.closest('div').querySelector('ul').classList.toggle('hidden');
+        });
       });
-    });
-  }
-}
+    }
+  }]);
+  return Footer;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('footer-block')) customElements.define('footer-block', Footer);
 
 /***/ }),
@@ -1169,113 +1419,152 @@ if (!customElements.get('footer-block')) customElements.define('footer-block', F
 /*!************************************!*\
   !*** ./scripts/sections/header.js ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/utils.js */ "./scripts/helpers/utils.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-class Header extends HTMLElement {
-  constructor() {
-    super();
+var Header = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(Header, _HTMLElement);
+  var _super = _createSuper(Header);
+  function Header() {
+    _classCallCheck(this, Header);
+    return _super.call(this);
   }
-  connectedCallback() {
-    this.search();
-    this.countrySelector();
-    this.addEventListener("mouseover", (0,_helpers_utils_js__WEBPACK_IMPORTED_MODULE_0__.debounce)(function (e) {
-      var targetName = e.target.id;
-      var indexValue = e.target.getAttribute("meganav_heading_index");
-      [...document.querySelectorAll(".mega-nav__item")].forEach(element => element.classList.remove("active"));
-      if (targetName && targetName.includes("meganav") || indexValue !== null) {
-        document.getElementById("desktop-menu-overlay").classList.remove("hidden");
-        this.querySelectorAll("[meganav_index]").forEach(element => {
-          if (element.getAttribute("meganav_index") != indexValue) {
+  _createClass(Header, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.search();
+      this.countrySelector();
+      this.addEventListener("mouseover", (0,_helpers_utils_js__WEBPACK_IMPORTED_MODULE_0__.debounce)(function (e) {
+        var targetName = e.target.id;
+        var indexValue = e.target.getAttribute("meganav_heading_index");
+        _toConsumableArray(document.querySelectorAll(".mega-nav__item")).forEach(function (element) {
+          return element.classList.remove("active");
+        });
+        if (targetName && targetName.includes("meganav") || indexValue !== null) {
+          document.getElementById("desktop-menu-overlay").classList.remove("hidden");
+          this.querySelectorAll("[meganav_index]").forEach(function (element) {
+            if (element.getAttribute("meganav_index") != indexValue) {
+              element.style.display = "none";
+            } else {
+              element.style.display = "block";
+              e.target.classList.add("active");
+            }
+          });
+        } else if (e.target.getAttribute("data-item-index")) {
+          _toConsumableArray(document.querySelectorAll("[meganav_index]")).forEach(function (element) {
             element.style.display = "none";
-          } else {
-            element.style.display = "block";
-            e.target.classList.add("active");
-          }
-        });
-      } else if (e.target.getAttribute("data-item-index")) {
-        [...document.querySelectorAll("[meganav_index]")].forEach(element => {
-          element.style.display = "none";
-        });
+          });
+          document.getElementById("desktop-menu-overlay").classList.add("hidden");
+        }
+        if (e.target.closest(".mega-nav__dropdown") !== null && e.target.closest(".mega-nav__dropdown").style.display === "block") {
+          var parentItemIndex = e.target.closest(".mega-nav__dropdown").getAttribute("meganav_index");
+          var parentItem = document.querySelector("[meganav_heading_index=\"".concat(parentItemIndex, "\"]"));
+          parentItem.classList.add("active");
+        }
+      }, 200));
+      this.addEventListener("mouseleave", (0,_helpers_utils_js__WEBPACK_IMPORTED_MODULE_0__.debounce)(this.mouseLeaveEvent.bind(this), 200));
+    }
+  }, {
+    key: "mouseLeaveEvent",
+    value: function mouseLeaveEvent() {
+      _toConsumableArray(document.querySelectorAll(".mega-nav__item")).forEach(function (element) {
+        return element.classList.remove("active");
+      });
+      this.querySelectorAll("[meganav_index]").forEach(function (element) {
+        element.style.display = "none";
         document.getElementById("desktop-menu-overlay").classList.add("hidden");
-      }
-      if (e.target.closest(".mega-nav__dropdown") !== null && e.target.closest(".mega-nav__dropdown").style.display === "block") {
-        const parentItemIndex = e.target.closest(".mega-nav__dropdown").getAttribute("meganav_index");
-        const parentItem = document.querySelector(`[meganav_heading_index="${parentItemIndex}"]`);
-        parentItem.classList.add("active");
-      }
-    }, 200));
-    this.addEventListener("mouseleave", (0,_helpers_utils_js__WEBPACK_IMPORTED_MODULE_0__.debounce)(this.mouseLeaveEvent.bind(this), 200));
-  }
-  mouseLeaveEvent() {
-    [...document.querySelectorAll(".mega-nav__item")].forEach(element => element.classList.remove("active"));
-    this.querySelectorAll("[meganav_index]").forEach(element => {
-      element.style.display = "none";
-      document.getElementById("desktop-menu-overlay").classList.add("hidden");
-    });
-  }
-  search() {
-    let searchTrigger = document.querySelectorAll(".trigger-search"),
-      searchWrapper = this.querySelector(".search-wrapper"),
-      searchInput = this.querySelector(".search-input"),
-      searchResults = this.querySelector(".search-results");
-    let mobile_trending_search = document.querySelector(".trending-searches").cloneNode(true);
-    mobile_trending_search.classList.add("trending-searches-mobile");
-    document.body.appendChild(mobile_trending_search);
-    document.addEventListener("input", function (e) {
-      if (e.target.classList.contains("aa-Input")) {
-        e.target.value.trim() ? mobile_trending_search.classList.add("hide") : mobile_trending_search.classList.remove("hide");
-      }
-    });
-    document.addEventListener("click", function (e) {
-      if (e.target.closest(".aa-ClearButton")) {
-        mobile_trending_search.classList.remove("hide");
-      }
-    });
-    searchTrigger.forEach(function (trigger) {
-      trigger.addEventListener("click", function (e) {
-        if (searchWrapper && searchInput) {
-          searchWrapper.classList.remove("!hidden");
-          searchInput.focus();
-        } else {
-          console.error("Search wrapper or input not found");
+      });
+    }
+  }, {
+    key: "search",
+    value: function search() {
+      var searchTrigger = document.querySelectorAll(".trigger-search"),
+        searchWrapper = this.querySelector(".search-wrapper"),
+        searchInput = this.querySelector(".search-input"),
+        searchResults = this.querySelector(".search-results");
+      var mobile_trending_search = document.querySelector(".trending-searches").cloneNode(true);
+      mobile_trending_search.classList.add("trending-searches-mobile");
+      document.body.appendChild(mobile_trending_search);
+      document.addEventListener("input", function (e) {
+        if (e.target.classList.contains("aa-Input")) {
+          e.target.value.trim() ? mobile_trending_search.classList.add("hide") : mobile_trending_search.classList.remove("hide");
         }
       });
-    });
-    searchInput.addEventListener("keyup", function (e) {
-      e.target.value.length ? searchResults.classList.remove("!hidden") : searchResults.classList.add("!hidden");
-    });
-
-    // close search
-    document.addEventListener("click", function (e) {
-      if (e.target.classList.contains("close-search") || e.target.classList.contains("search-wrapper")) {
-        searchWrapper.classList.add("!hidden");
-        searchResults.classList.add("!hidden");
-        searchInput.value = "";
-      }
-    });
-  }
-  countrySelector() {
-    setTimeout(() => {
-      if (document.getElementById("md-footer-selector__form__id")) {
-        document.querySelector(".custom-orbe").addEventListener("click", function () {
-          document.getElementById("md-form__select__country--footer").click();
-        });
-        document.querySelector(".custom-orbe-wrap").addEventListener("click", function () {
-          if (document.getElementById("md-form__select__country--footer").getAttribute("aria-expanded") === "true") {
-            document.querySelector(".custom-orbe-arrow").classList.add("active");
+      document.addEventListener("click", function (e) {
+        if (e.target.closest(".aa-ClearButton")) {
+          mobile_trending_search.classList.remove("hide");
+        }
+      });
+      searchTrigger.forEach(function (trigger) {
+        trigger.addEventListener("click", function (e) {
+          if (searchWrapper && searchInput) {
+            searchWrapper.classList.remove("!hidden");
+            searchInput.focus();
           } else {
-            document.querySelector(".custom-orbe-arrow").classList.remove("active");
+            console.error("Search wrapper or input not found");
           }
         });
-        document.querySelector(".custom-orbe-wrap").classList.remove("hidden");
-      }
-    }, 1000);
-  }
-}
+      });
+      searchInput.addEventListener("keyup", function (e) {
+        e.target.value.length ? searchResults.classList.remove("!hidden") : searchResults.classList.add("!hidden");
+      });
+
+      // close search
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("close-search") || e.target.classList.contains("search-wrapper")) {
+          searchWrapper.classList.add("!hidden");
+          searchResults.classList.add("!hidden");
+          searchInput.value = "";
+        }
+      });
+    }
+  }, {
+    key: "countrySelector",
+    value: function countrySelector() {
+      setTimeout(function () {
+        if (document.getElementById("md-footer-selector__form__id")) {
+          document.querySelector(".custom-orbe").addEventListener("click", function () {
+            document.getElementById("md-form__select__country--footer").click();
+          });
+          document.querySelector(".custom-orbe-wrap").addEventListener("click", function () {
+            if (document.getElementById("md-form__select__country--footer").getAttribute("aria-expanded") === "true") {
+              document.querySelector(".custom-orbe-arrow").classList.add("active");
+            } else {
+              document.querySelector(".custom-orbe-arrow").classList.remove("active");
+            }
+          });
+          document.querySelector(".custom-orbe-wrap").classList.remove("hidden");
+        }
+      }, 1000);
+    }
+  }]);
+  return Header;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get("main-header")) customElements.define("main-header", Header);
 
 /***/ }),
@@ -1284,7 +1573,7 @@ if (!customElements.get("main-header")) customElements.define("main-header", Hea
 /*!*****************************************!*\
   !*** ./scripts/sections/hero-slider.js ***!
   \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1292,40 +1581,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-class HeroSlider extends HTMLElement {
-  constructor() {
-    super();
+var HeroSlider = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(HeroSlider, _HTMLElement);
+  var _super = _createSuper(HeroSlider);
+  function HeroSlider() {
+    _classCallCheck(this, HeroSlider);
+    return _super.call(this);
   }
-  connectedCallback() {
-    const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
-      slidesPerView: 1,
-      loop: true,
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Autoplay, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade],
-      pagination: true,
-      pagination: {
+  _createClass(HeroSlider, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _Swiper;
+      var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, (_Swiper = {
+        slidesPerView: 1,
+        loop: true,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Autoplay, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade],
+        pagination: true
+      }, _defineProperty(_Swiper, "pagination", {
         el: ".hero-pagination",
         clickable: true
-      },
-      autoplay: {
+      }), _defineProperty(_Swiper, "autoplay", {
         delay: slide_delay,
         disableOnInteraction: false
-      },
-      effect: "fade",
-      fadeEffect: {
+      }), _defineProperty(_Swiper, "effect", "fade"), _defineProperty(_Swiper, "fadeEffect", {
         crossFade: true
-      }
-    });
-    swiper.on("slideChange", function (e) {
-      jquery__WEBPACK_IMPORTED_MODULE_2___default()(".swiper-pagination-bullet-active").prevAll().addClass("prev");
-      setTimeout(() => {
-        jquery__WEBPACK_IMPORTED_MODULE_2___default()(".swiper-pagination-bullet").removeClass("prev");
-      }, 5300);
-    });
-  }
-}
+      }), _Swiper));
+      swiper.on("slideChange", function (e) {
+        jquery__WEBPACK_IMPORTED_MODULE_2___default()(".swiper-pagination-bullet-active").prevAll().addClass("prev");
+        setTimeout(function () {
+          jquery__WEBPACK_IMPORTED_MODULE_2___default()(".swiper-pagination-bullet").removeClass("prev");
+        }, 5300);
+      });
+    }
+  }]);
+  return HeroSlider;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get("hero-slider")) customElements.define("hero-slider", HeroSlider);
 
 /***/ }),
@@ -1334,76 +1644,106 @@ if (!customElements.get("hero-slider")) customElements.define("hero-slider", Her
 /*!***********************************************!*\
   !*** ./scripts/sections/homepage-carousel.js ***!
   \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-class HomepageCarousel extends HTMLElement {
-  constructor() {
-    super();
+var HomepageCarousel = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(HomepageCarousel, _HTMLElement);
+  var _super = _createSuper(HomepageCarousel);
+  function HomepageCarousel() {
+    _classCallCheck(this, HomepageCarousel);
+    return _super.call(this);
   }
-  connectedCallback() {
-    this.init();
-  }
-  init() {
-    const slideDelay = this.dataset.slideDelay || 0;
-    const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](this, {
-      slidesPerView: 1,
-      loop: true,
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Autoplay, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade, swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
-      pagination: {
-        el: '.hero-pagination',
-        clickable: true
-      },
-      ...(slideDelay ? {
+  _createClass(HomepageCarousel, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.init();
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var slideDelay = this.dataset.slideDelay || 0;
+      var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](this, _objectSpread(_objectSpread({
+        slidesPerView: 1,
+        loop: true,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Autoplay, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade, swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+        pagination: {
+          el: '.hero-pagination',
+          clickable: true
+        }
+      }, slideDelay ? {
         autoplay: {
           delay: slideDelay || 0,
           disableOnInteraction: false
         }
-      } : {}),
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      on: {
-        slideChange() {
-          const bullets = document.querySelectorAll('.swiper-bullets');
-          if (!bullets) {
-            return;
-          }
-          if (!bullets?.length) {
-            return;
-          }
-          setTimeout(() => {
-            bullets?.forEach(bullet => {
-              bullet?.classList?.remove('prev');
-            });
-          }, 5300);
-          const activeBullets = document.querySelectorAll('.swiper-pagination-bullet-active');
-          if (!activeBullets) {
-            return;
-          }
-          if (!activeBullets?.length) {
-            return;
-          }
-          activeBullets?.forEach(bullet => {
-            let prev = bullet?.previousElementSibling;
-            while (prev) {
-              prev?.classList?.add('prev');
-              prev = prev.previousElementSibling;
+      } : {}), {}, {
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        on: {
+          slideChange: function slideChange() {
+            var bullets = document.querySelectorAll('.swiper-bullets');
+            if (!bullets) {
+              return;
             }
-          });
+            if (!(bullets !== null && bullets !== void 0 && bullets.length)) {
+              return;
+            }
+            setTimeout(function () {
+              bullets === null || bullets === void 0 || bullets.forEach(function (bullet) {
+                var _bullet$classList;
+                bullet === null || bullet === void 0 || (_bullet$classList = bullet.classList) === null || _bullet$classList === void 0 || _bullet$classList.remove('prev');
+              });
+            }, 5300);
+            var activeBullets = document.querySelectorAll('.swiper-pagination-bullet-active');
+            if (!activeBullets) {
+              return;
+            }
+            if (!(activeBullets !== null && activeBullets !== void 0 && activeBullets.length)) {
+              return;
+            }
+            activeBullets === null || activeBullets === void 0 || activeBullets.forEach(function (bullet) {
+              var prev = bullet === null || bullet === void 0 ? void 0 : bullet.previousElementSibling;
+              while (prev) {
+                var _prev;
+                (_prev = prev) === null || _prev === void 0 || (_prev = _prev.classList) === null || _prev === void 0 || _prev.add('prev');
+                prev = prev.previousElementSibling;
+              }
+            });
+          }
         }
-      }
-    });
-  }
-}
+      }));
+    }
+  }]);
+  return HomepageCarousel;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('homepage-carousel')) customElements.define('homepage-carousel', HomepageCarousel);
 
 /***/ }),
@@ -1412,14 +1752,14 @@ if (!customElements.get('homepage-carousel')) customElements.define('homepage-ca
 /*!*****************************************!*\
   !*** ./scripts/sections/lazyloading.js ***!
   \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vanilla-lazyload */ "./node_modules/vanilla-lazyload/dist/lazyload.min.js");
 /* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__);
 
-const lazyContent = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default())();
+var lazyContent = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default())();
 
 /***/ }),
 
@@ -1427,31 +1767,55 @@ const lazyContent = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default()
 /*!********************************************!*\
   !*** ./scripts/sections/mobile-filters.js ***!
   \********************************************/
-/***/ (() => {
+/***/ (function() {
 
-class MobileFilters extends HTMLElement {
-  constructor() {
-    super();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var MobileFilters = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(MobileFilters, _HTMLElement);
+  var _super = _createSuper(MobileFilters);
+  function MobileFilters() {
+    _classCallCheck(this, MobileFilters);
+    return _super.call(this);
   }
-  connectedCallback() {
-    if (document.querySelector('#mobile-filter-open')) {
-      document.querySelector('#mobile-filter-open').addEventListener('click', () => {
-        this.classList.add('flex');
-        this.classList.remove('hidden');
-        document.querySelector('#mobile-filter-overlay').classList.add('flex');
-        document.querySelector('#mobile-filter-overlay').classList.remove('hidden');
+  _createClass(MobileFilters, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _this = this;
+      if (document.querySelector('#mobile-filter-open')) {
+        document.querySelector('#mobile-filter-open').addEventListener('click', function () {
+          _this.classList.add('flex');
+          _this.classList.remove('hidden');
+          document.querySelector('#mobile-filter-overlay').classList.add('flex');
+          document.querySelector('#mobile-filter-overlay').classList.remove('hidden');
+        });
+      }
+      this.addEventListener('click', function (e) {
+        if (e.target.classList == _this.classList || e.target.id == "mobile-filter-close") {
+          _this.classList.remove('flex');
+          _this.classList.add('hidden');
+          document.querySelector('#mobile-filter-overlay').classList.remove('flex');
+          document.querySelector('#mobile-filter-overlay').classList.add('hidden');
+        }
       });
     }
-    this.addEventListener('click', e => {
-      if (e.target.classList == this.classList || e.target.id == "mobile-filter-close") {
-        this.classList.remove('flex');
-        this.classList.add('hidden');
-        document.querySelector('#mobile-filter-overlay').classList.remove('flex');
-        document.querySelector('#mobile-filter-overlay').classList.add('hidden');
-      }
-    });
-  }
-}
+  }]);
+  return MobileFilters;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('mobile-filters')) customElements.define('mobile-filters', MobileFilters);
 
 /***/ }),
@@ -1460,109 +1824,167 @@ if (!customElements.get('mobile-filters')) customElements.define('mobile-filters
 /*!*****************************************!*\
   !*** ./scripts/sections/mobile-menu.js ***!
   \*****************************************/
-/***/ (() => {
+/***/ (function() {
 
-class MobileMenu extends HTMLElement {
-  constructor() {
-    super();
-    this.eventListeners();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var MobileMenu = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(MobileMenu, _HTMLElement);
+  var _super = _createSuper(MobileMenu);
+  function MobileMenu() {
+    var _this;
+    _classCallCheck(this, MobileMenu);
+    _this = _super.call(this);
+    _this.eventListeners();
+    return _this;
   }
-  connectedCallback() {
-    document.querySelector('[js-trigger="mobile-menu-button"]').addEventListener('click', () => {
-      this.openMenu();
-    });
-    this.addEventListener('click', e => {
-      if (e.target.classList == this.classList || e.target.id == "mobile-menu-button-close") {
+  _createClass(MobileMenu, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _this2 = this;
+      document.querySelector('[js-trigger="mobile-menu-button"]').addEventListener('click', function () {
+        _this2.openMenu();
+      });
+      this.addEventListener('click', function (e) {
+        if (e.target.classList == _this2.classList || e.target.id == "mobile-menu-button-close") {
+          _this2.closeMenu();
+        }
+      });
+      var childItems = document.querySelectorAll('.mobile-nav__child-item');
+      childItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var grandchildContainers = document.querySelectorAll('.mobile-nav__grandchild-container');
+          var grandchildContainer = this.nextElementSibling;
+          grandchildContainers.forEach(function (container) {
+            if (container !== grandchildContainer) {
+              container.classList.add('hidden');
+              container.style.maxHeight = '0';
+            }
+          });
+          grandchildContainer.classList.toggle('hidden');
+          if (grandchildContainer.classList.contains('hidden')) {
+            grandchildContainer.style.maxHeight = '0';
+          } else {
+            grandchildContainer.style.maxHeight = grandchildContainer.scrollHeight + 'px';
+          }
+          childItems.forEach(function (otherItem) {
+            if (otherItem !== item) {
+              otherItem.classList.remove('opened');
+            }
+          });
+          this.classList.toggle('opened');
+        });
+      });
+      this.debouncedResize = this.debounce(this.handleResize.bind(this));
+      window.addEventListener('resize', this.debouncedResize);
+    }
+  }, {
+    key: "handleResize",
+    value: function handleResize() {
+      var isDesktop = window.innerWidth > 1024;
+      if (isDesktop && this.classList.contains('mm-open')) {
         this.closeMenu();
       }
-    });
-    const childItems = document.querySelectorAll('.mobile-nav__child-item');
-    childItems.forEach(function (item) {
-      item.addEventListener('click', function () {
-        const grandchildContainers = document.querySelectorAll('.mobile-nav__grandchild-container');
-        const grandchildContainer = this.nextElementSibling;
-        grandchildContainers.forEach(function (container) {
-          if (container !== grandchildContainer) {
-            container.classList.add('hidden');
-            container.style.maxHeight = '0';
-          }
-        });
-        grandchildContainer.classList.toggle('hidden');
-        if (grandchildContainer.classList.contains('hidden')) {
-          grandchildContainer.style.maxHeight = '0';
-        } else {
-          grandchildContainer.style.maxHeight = grandchildContainer.scrollHeight + 'px';
-        }
-        childItems.forEach(function (otherItem) {
-          if (otherItem !== item) {
-            otherItem.classList.remove('opened');
-          }
-        });
-        this.classList.toggle('opened');
-      });
-    });
-    this.debouncedResize = this.debounce(this.handleResize.bind(this));
-    window.addEventListener('resize', this.debouncedResize);
-  }
-  handleResize() {
-    const isDesktop = window.innerWidth > 1024;
-    if (isDesktop && this.classList.contains('mm-open')) {
-      this.closeMenu();
     }
-  }
-  subMenuOpen(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const subMenu = e.target.closest('[data-trigger-menu]').getAttribute('data-trigger-menu');
-    const subMenuElement = document.querySelector(`[data-menu="${subMenu}"]`);
-    subMenuElement.classList.remove('translate-x-full');
-    subMenuElement.classList.add('translate-x-0');
-  }
-  subMenuClose(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const subMenu = e.target.closest('[data-close-menu]').getAttribute('data-close-menu');
-    const subMenuElement = document.querySelector(`[data-menu="${subMenu}"]`);
-    subMenuElement.classList.add('translate-x-full');
-    subMenuElement.classList.remove('translate-x-0');
-  }
-  eventListeners() {
-    [...document.querySelectorAll('[data-trigger-menu]')].forEach(element => {
-      element.addEventListener('click', this.subMenuOpen);
-    });
-    [...document.querySelectorAll('[data-close-menu]')].forEach(element => {
-      element.addEventListener('click', this.subMenuClose);
-    });
-  }
-  debounce(fn, delay = 150) {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => fn.apply(this, args), delay);
-    };
-  }
-  closeMenu() {
-    this.classList.add('mm-closing');
-    this.classList.remove('mm-open');
-    document.querySelector('body').classList.remove('overflow-hidden');
-    setTimeout(() => {
-      this.style.display = 'none';
-      this.classList.remove('mm-closing');
-    }, 300);
-  }
-  openMenu() {
-    this.style.display = 'flex';
-    this.classList.add('will-animate');
-    setTimeout(() => {
-      this.classList.remove('will-animate');
-      this.classList.add('mm-open');
-      document.body.classList.add('overflow-hidden');
-    }, 0);
-  }
-  disconnectedCallback() {
-    window.removeEventListener('resize', this.debouncedResize);
-  }
-}
+  }, {
+    key: "subMenuOpen",
+    value: function subMenuOpen(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var subMenu = e.target.closest('[data-trigger-menu]').getAttribute('data-trigger-menu');
+      var subMenuElement = document.querySelector("[data-menu=\"".concat(subMenu, "\"]"));
+      subMenuElement.classList.remove('translate-x-full');
+      subMenuElement.classList.add('translate-x-0');
+    }
+  }, {
+    key: "subMenuClose",
+    value: function subMenuClose(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var subMenu = e.target.closest('[data-close-menu]').getAttribute('data-close-menu');
+      var subMenuElement = document.querySelector("[data-menu=\"".concat(subMenu, "\"]"));
+      subMenuElement.classList.add('translate-x-full');
+      subMenuElement.classList.remove('translate-x-0');
+    }
+  }, {
+    key: "eventListeners",
+    value: function eventListeners() {
+      var _this3 = this;
+      _toConsumableArray(document.querySelectorAll('[data-trigger-menu]')).forEach(function (element) {
+        element.addEventListener('click', _this3.subMenuOpen);
+      });
+      _toConsumableArray(document.querySelectorAll('[data-close-menu]')).forEach(function (element) {
+        element.addEventListener('click', _this3.subMenuClose);
+      });
+    }
+  }, {
+    key: "debounce",
+    value: function debounce(fn) {
+      var _this4 = this;
+      var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 150;
+      var timeout;
+      return function () {
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+          return fn.apply(_this4, args);
+        }, delay);
+      };
+    }
+  }, {
+    key: "closeMenu",
+    value: function closeMenu() {
+      var _this5 = this;
+      this.classList.add('mm-closing');
+      this.classList.remove('mm-open');
+      document.querySelector('body').classList.remove('overflow-hidden');
+      setTimeout(function () {
+        _this5.style.display = 'none';
+        _this5.classList.remove('mm-closing');
+      }, 300);
+    }
+  }, {
+    key: "openMenu",
+    value: function openMenu() {
+      var _this6 = this;
+      this.style.display = 'flex';
+      this.classList.add('will-animate');
+      setTimeout(function () {
+        _this6.classList.remove('will-animate');
+        _this6.classList.add('mm-open');
+        document.body.classList.add('overflow-hidden');
+      }, 0);
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      window.removeEventListener('resize', this.debouncedResize);
+    }
+  }]);
+  return MobileMenu;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('mobile-menu')) customElements.define('mobile-menu', MobileMenu);
 
 /***/ }),
@@ -1571,106 +1993,171 @@ if (!customElements.get('mobile-menu')) customElements.define('mobile-menu', Mob
 /*!*****************************************************!*\
   !*** ./scripts/sections/multi-collection-slider.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class MultiCollectionSlider extends HTMLElement {
-  connectedCallback() {
-    this.init();
+var MultiCollectionSlider = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(MultiCollectionSlider, _HTMLElement);
+  var _super = _createSuper(MultiCollectionSlider);
+  function MultiCollectionSlider() {
+    _classCallCheck(this, MultiCollectionSlider);
+    return _super.apply(this, arguments);
   }
-  init() {
-    const swiperEl = this.querySelector('.swiper');
-    const nextButton = this.querySelector('.swiper-button-next');
-    const prevButton = this.querySelector('.swiper-button-prev');
-    const raw = this.getAttribute('data-swiper-options') || '{}';
-    let userOptions = {};
-    try {
-      userOptions = JSON.parse(raw);
-    } catch (e) {
-      console.error('multi-collection-slider: invalid swiper options', e);
+  _createClass(MultiCollectionSlider, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.init();
     }
-    this.swiperInstance = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](swiperEl, {
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination],
-      ...userOptions,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: nextButton,
-        prevEl: prevButton
-      },
-      observer: true,
-      observeChildren: true
-    });
-    this.initTabs();
-    this.initTabScroll();
-  }
-  initTabs() {
-    if (!this.querySelector('[data-tab-trigger-container]')) return;
-    this.querySelectorAll('[data-tab-trigger]').forEach(trigger => {
-      trigger.addEventListener('click', e => {
-        const handle = e.currentTarget.dataset.collectionHandle;
-        this.querySelectorAll('[data-tab-trigger]').forEach(el => {
-          el.classList.remove('active');
+  }, {
+    key: "init",
+    value: function init() {
+      var swiperEl = this.querySelector('.swiper');
+      var nextButton = this.querySelector('.swiper-button-next');
+      var prevButton = this.querySelector('.swiper-button-prev');
+      var raw = this.getAttribute('data-swiper-options') || '{}';
+      var userOptions = {};
+      try {
+        userOptions = JSON.parse(raw);
+      } catch (e) {
+        console.error('multi-collection-slider: invalid swiper options', e);
+      }
+      this.swiperInstance = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](swiperEl, _objectSpread(_objectSpread({
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination]
+      }, userOptions), {}, {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: nextButton,
+          prevEl: prevButton
+        },
+        observer: true,
+        observeChildren: true
+      }));
+      this.initTabs();
+      this.initTabScroll();
+    }
+  }, {
+    key: "initTabs",
+    value: function initTabs() {
+      var _this = this;
+      if (!this.querySelector('[data-tab-trigger-container]')) return;
+      this.querySelectorAll('[data-tab-trigger]').forEach(function (trigger) {
+        trigger.addEventListener('click', function (e) {
+          var handle = e.currentTarget.dataset.collectionHandle;
+          _this.querySelectorAll('[data-tab-trigger]').forEach(function (el) {
+            el.classList.remove('active');
+          });
+          trigger.classList.add('active');
+          _this.fetchCollection(handle);
         });
-        trigger.classList.add('active');
-        this.fetchCollection(handle);
       });
-    });
-  }
-  initTabScroll() {
-    const container = this.querySelector('[data-tab-trigger-container-scrollable]');
-    const nextBtn = this.querySelector('[data-tab-scroll-button-next]');
-    const prevBtn = this.querySelector('[data-tab-scroll-button-prev]');
-    if (!container || !nextBtn || !prevBtn) return;
-    const scroll_amount = 100;
-    const checkOverflow = () => {
-      const scrollLeft = container.scrollLeft;
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-      prevBtn.style.display = scrollLeft > 0 ? 'flex' : 'none';
-      nextBtn.style.display = scrollLeft < maxScrollLeft ? 'flex' : 'none';
-    };
-    nextBtn.addEventListener('click', e => {
-      e.preventDefault();
-      container.scrollBy({
-        left: scroll_amount,
-        behavior: 'smooth'
-      });
-    });
-    prevBtn.addEventListener('click', e => {
-      e.preventDefault();
-      container.scrollBy({
-        left: -scroll_amount,
-        behavior: 'smooth'
-      });
-    });
-    container.addEventListener('scroll', checkOverflow, {
-      passive: true
-    });
-    window.addEventListener('resize', checkOverflow, {
-      passive: true
-    });
-    checkOverflow();
-  }
-  async fetchCollection(handle) {
-    try {
-      const res = await fetch(`/collections/${handle}?view=collection-tab-slider&limit=24`);
-      const html = await res.text();
-      const wrapper = this.querySelector('[data-swiper-wrapper]');
-      wrapper.innerHTML = html;
-      this.swiperInstance.slideTo(0, false);
-      this.swiperInstance.update();
-    } catch (err) {
-      console.error('Failed to fetch collection:', err);
     }
-  }
-}
+  }, {
+    key: "initTabScroll",
+    value: function initTabScroll() {
+      var container = this.querySelector('[data-tab-trigger-container-scrollable]');
+      var nextBtn = this.querySelector('[data-tab-scroll-button-next]');
+      var prevBtn = this.querySelector('[data-tab-scroll-button-prev]');
+      if (!container || !nextBtn || !prevBtn) return;
+      var scroll_amount = 100;
+      var checkOverflow = function checkOverflow() {
+        var scrollLeft = container.scrollLeft;
+        var maxScrollLeft = container.scrollWidth - container.clientWidth;
+        prevBtn.style.display = scrollLeft > 0 ? 'flex' : 'none';
+        nextBtn.style.display = scrollLeft < maxScrollLeft ? 'flex' : 'none';
+      };
+      nextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        container.scrollBy({
+          left: scroll_amount,
+          behavior: 'smooth'
+        });
+      });
+      prevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        container.scrollBy({
+          left: -scroll_amount,
+          behavior: 'smooth'
+        });
+      });
+      container.addEventListener('scroll', checkOverflow, {
+        passive: true
+      });
+      window.addEventListener('resize', checkOverflow, {
+        passive: true
+      });
+      checkOverflow();
+    }
+  }, {
+    key: "fetchCollection",
+    value: function () {
+      var _fetchCollection = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(handle) {
+        var res, html, wrapper;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return fetch("/collections/".concat(handle, "?view=collection-tab-slider&limit=24"));
+            case 3:
+              res = _context.sent;
+              _context.next = 6;
+              return res.text();
+            case 6:
+              html = _context.sent;
+              wrapper = this.querySelector('[data-swiper-wrapper]');
+              wrapper.innerHTML = html;
+              this.swiperInstance.slideTo(0, false);
+              this.swiperInstance.update();
+              _context.next = 16;
+              break;
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context["catch"](0);
+              console.error('Failed to fetch collection:', _context.t0);
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, this, [[0, 13]]);
+      }));
+      function fetchCollection(_x) {
+        return _fetchCollection.apply(this, arguments);
+      }
+      return fetchCollection;
+    }()
+  }]);
+  return MultiCollectionSlider;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('multi-collection-slider')) customElements.define('multi-collection-slider', MultiCollectionSlider);
 
 /***/ }),
@@ -1679,31 +2166,54 @@ if (!customElements.get('multi-collection-slider')) customElements.define('multi
 /*!********************************************!*\
   !*** ./scripts/sections/pdp-usp-slider.js ***!
   \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class pdpUsp extends HTMLElement {
-  constructor() {
-    super();
+var pdpUsp = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(pdpUsp, _HTMLElement);
+  var _super = _createSuper(pdpUsp);
+  function pdpUsp() {
+    _classCallCheck(this, pdpUsp);
+    return _super.call(this);
   }
-  connectedCallback() {
-    const uspSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('.badge-swiper'), {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination],
-      pagination: {
-        el: '.swiper-pdp-badge-pagination',
-        clickable: true
-      }
-    });
-  }
-}
+  _createClass(pdpUsp, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var uspSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('.badge-swiper'), {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination],
+        pagination: {
+          el: '.swiper-pdp-badge-pagination',
+          clickable: true
+        }
+      });
+    }
+  }]);
+  return pdpUsp;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('pdp-usp')) customElements.define('pdp-usp', pdpUsp);
 
 /***/ }),
@@ -1712,42 +2222,68 @@ if (!customElements.get('pdp-usp')) customElements.define('pdp-usp', pdpUsp);
 /*!****************************************************!*\
   !*** ./scripts/sections/product-bundle-options.js ***!
   \****************************************************/
-/***/ (() => {
+/***/ (function() {
 
-class ProductBundleOptions extends HTMLElement {
-  constructor() {
-    super();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var ProductBundleOptions = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(ProductBundleOptions, _HTMLElement);
+  var _super = _createSuper(ProductBundleOptions);
+  function ProductBundleOptions() {
+    _classCallCheck(this, ProductBundleOptions);
+    return _super.call(this);
   }
-  connectedCallback() {
-    this.addEventListener("click", e => {
-      if (e.target.classList.contains("overlay") || e.target.classList.contains("close")) {
-        this.classList.add("hidden");
-      }
-      if (e.target.classList.contains("option-update")) {
-        let productBundle = document.querySelector("#product-bundle-" + this.getAttribute("index"));
-        productBundle.querySelector(".add-to-bundle").innerHTML = "Add - " + this.querySelector(".price").innerHTML;
-        productBundle.querySelector(".add-to-bundle").setAttribute("product-price", this.querySelector(".price").getAttribute("product-price"));
-        productBundle.querySelector(".add-to-bundle").setAttribute("product-id", this.querySelector(".price").getAttribute("product-id"));
-        productBundle.querySelector(".add-to-bundle").setAttribute("product-title", this.querySelector(".price").getAttribute("product-title"));
-        productBundle.querySelector(".product-bundle-image").src = this.querySelector(".option-image").src;
-        productBundle.querySelector(".product-bundle-image").srcset = this.querySelector(".option-image").srcset;
-        productBundle.querySelector(".product-bundle-title").innerHTML = this.querySelector(".option-title").innerHTML;
-        this.classList.add("hidden");
-      }
-    });
-    this.querySelector("select").addEventListener("change", e => {
-      fetch("/products/" + e.target.value + ".js").then(response => response.json()).then(data => {
-        this.querySelector(".option-image").src = data.featured_image;
-        this.querySelector(".option-image").srcset = data.featured_image;
-        this.querySelector(".option-title").innerHTML = data.title;
-        this.querySelector(".price").innerHTML = "$" + data.variants[0].price / 100.0;
-        this.querySelector(".price").setAttribute("product-price", data.variants[0].price);
-        this.querySelector(".price").setAttribute("product-id", data.variants[0].id);
-        this.querySelector(".price").setAttribute("product-title", data.title);
+  _createClass(ProductBundleOptions, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _this = this;
+      this.addEventListener("click", function (e) {
+        if (e.target.classList.contains("overlay") || e.target.classList.contains("close")) {
+          _this.classList.add("hidden");
+        }
+        if (e.target.classList.contains("option-update")) {
+          var productBundle = document.querySelector("#product-bundle-" + _this.getAttribute("index"));
+          productBundle.querySelector(".add-to-bundle").innerHTML = "Add - " + _this.querySelector(".price").innerHTML;
+          productBundle.querySelector(".add-to-bundle").setAttribute("product-price", _this.querySelector(".price").getAttribute("product-price"));
+          productBundle.querySelector(".add-to-bundle").setAttribute("product-id", _this.querySelector(".price").getAttribute("product-id"));
+          productBundle.querySelector(".add-to-bundle").setAttribute("product-title", _this.querySelector(".price").getAttribute("product-title"));
+          productBundle.querySelector(".product-bundle-image").src = _this.querySelector(".option-image").src;
+          productBundle.querySelector(".product-bundle-image").srcset = _this.querySelector(".option-image").srcset;
+          productBundle.querySelector(".product-bundle-title").innerHTML = _this.querySelector(".option-title").innerHTML;
+          _this.classList.add("hidden");
+        }
       });
-    });
-  }
-}
+      this.querySelector("select").addEventListener("change", function (e) {
+        fetch("/products/" + e.target.value + ".js").then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          _this.querySelector(".option-image").src = data.featured_image;
+          _this.querySelector(".option-image").srcset = data.featured_image;
+          _this.querySelector(".option-title").innerHTML = data.title;
+          _this.querySelector(".price").innerHTML = "$" + data.variants[0].price / 100.0;
+          _this.querySelector(".price").setAttribute("product-price", data.variants[0].price);
+          _this.querySelector(".price").setAttribute("product-id", data.variants[0].id);
+          _this.querySelector(".price").setAttribute("product-title", data.title);
+        });
+      });
+    }
+  }]);
+  return ProductBundleOptions;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get("product-bundle-options")) customElements.define("product-bundle-options", ProductBundleOptions);
 
 /***/ }),
@@ -1756,106 +2292,137 @@ if (!customElements.get("product-bundle-options")) customElements.define("produc
 /*!********************************************!*\
   !*** ./scripts/sections/product-bundle.js ***!
   \********************************************/
-/***/ (() => {
+/***/ (function() {
 
-class ProductBundle extends HTMLElement {
-  constructor() {
-    super();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var ProductBundle = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(ProductBundle, _HTMLElement);
+  var _super = _createSuper(ProductBundle);
+  function ProductBundle() {
+    _classCallCheck(this, ProductBundle);
+    return _super.call(this);
   }
-  connectedCallback() {
-    let selectedItems = [];
-    let totalPrice = 0;
-    let selectedProductNames = [];
-    function makeUL(array) {
-      // Create the list element:
-      var list = document.createElement('ul');
-      for (var i = 0; i < array.length; i++) {
-        // Create the list item:
-        var item = document.createElement('li');
+  _createClass(ProductBundle, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var selectedItems = [];
+      var totalPrice = 0;
+      var selectedProductNames = [];
+      function makeUL(array) {
+        // Create the list element:
+        var list = document.createElement('ul');
+        for (var i = 0; i < array.length; i++) {
+          // Create the list item:
+          var item = document.createElement('li');
 
-        // Set its contents:
-        item.appendChild(document.createTextNode(array[i]));
-        item.classList.add('py-2', 'text-sm', 'font-light', 'italic', 'text-gray-100');
+          // Set its contents:
+          item.appendChild(document.createTextNode(array[i]));
+          item.classList.add('py-2', 'text-sm', 'font-light', 'italic', 'text-gray-100');
 
-        // Add it to the list:
-        list.appendChild(item);
+          // Add it to the list:
+          list.appendChild(item);
+        }
+
+        // Finally, return the constructed list:
+        return list;
       }
-
-      // Finally, return the constructed list:
-      return list;
-    }
-    const selectAdd = e => {
-      let index = e.target.getAttribute('index');
-      let productId = e.target.getAttribute('product-id');
-      let productPrice = Number(e.target.getAttribute('product-price'));
-      let productName = e.target.getAttribute('product-title');
-      let arrayIndex = selectedItems.findIndex(selectedItems => selectedItems.id === Number(productId));
-      if (arrayIndex == -1) {
-        selectedItems.push({
-          'id': Number(productId),
-          'quantity': 1
+      var selectAdd = function selectAdd(e) {
+        var index = e.target.getAttribute('index');
+        var productId = e.target.getAttribute('product-id');
+        var productPrice = Number(e.target.getAttribute('product-price'));
+        var productName = e.target.getAttribute('product-title');
+        var arrayIndex = selectedItems.findIndex(function (selectedItems) {
+          return selectedItems.id === Number(productId);
         });
-        selectedProductNames.push("- " + productName);
-        totalPrice += productPrice;
-        e.target.innerHTML = "Remove - $" + Number(e.target.getAttribute('product-price') / 100.00);
-        e.target.classList.add('bg-gray-800');
-        e.target.classList.remove('bg-primaryRed');
-        document.getElementById('foo').innerHTML = "";
-      } else {
-        selectedItems.splice(arrayIndex, 1);
-        selectedProductNames.splice(arrayIndex, 1);
-        totalPrice -= productPrice;
-        e.target.innerHTML = "Add - $" + Number(e.target.getAttribute('product-price') / 100.00);
-        e.target.classList.remove('bg-gray-800');
-        e.target.classList.add('bg-primaryRed');
-        document.getElementById('foo').innerHTML = "";
-      }
-      document.getElementById('foo').appendChild(makeUL(selectedProductNames));
-      document.getElementById('bundle-total').innerHTML = "Total: $" + totalPrice / 100;
-
-      //clear empty values
-    };
-
-    const addToCart = selectedItems => {
-      fetch('/cart/add.js', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          items: selectedItems
-        })
-      }).then(res => res.json()).then(res => location.href = "/cart");
-    };
-    this.addEventListener('click', function (e) {
-      if (e.target.classList.contains('add-to-bundle')) {
-        selectAdd(e);
-      }
-      if (e.target.id == "add-to-bundle") {
-        addToCart(selectedItems);
-      }
-      if (e.target.classList.contains('product-bundle-options')) {
-        //toggle modal on click.
-        //check if product is added to cart already
-        let item = document.querySelector(`.add-to-bundle[index="${e.target.getAttribute('index')}"]`);
-        let arrayIndex = selectedItems.findIndex(selectedItems => selectedItems.id === Number(item.getAttribute('product-id')));
-        if (arrayIndex != -1) {
+        if (arrayIndex == -1) {
+          selectedItems.push({
+            'id': Number(productId),
+            'quantity': 1
+          });
+          selectedProductNames.push("- " + productName);
+          totalPrice += productPrice;
+          e.target.innerHTML = "Remove - $" + Number(e.target.getAttribute('product-price') / 100.00);
+          e.target.classList.add('bg-gray-800');
+          e.target.classList.remove('bg-primaryRed');
+          document.getElementById('foo').innerHTML = "";
+        } else {
           selectedItems.splice(arrayIndex, 1);
           selectedProductNames.splice(arrayIndex, 1);
-          totalPrice -= Number(item.getAttribute('product-price'));
-          item.innerHTML = "Add - $" + Number(item.getAttribute('product-price') / 100.00);
-          item.classList.remove('bg-gray-800');
-          item.classList.add('bg-primaryRed');
+          totalPrice -= productPrice;
+          e.target.innerHTML = "Add - $" + Number(e.target.getAttribute('product-price') / 100.00);
+          e.target.classList.remove('bg-gray-800');
+          e.target.classList.add('bg-primaryRed');
           document.getElementById('foo').innerHTML = "";
-          document.getElementById('foo').appendChild(makeUL(selectedProductNames));
-          document.getElementById('bundle-total').innerHTML = "Total: $" + totalPrice / 100;
         }
-        this.querySelector('#product-bundle-options-' + e.target.getAttribute('index')).classList.remove('hidden');
-      }
-    });
-  }
-}
+        document.getElementById('foo').appendChild(makeUL(selectedProductNames));
+        document.getElementById('bundle-total').innerHTML = "Total: $" + totalPrice / 100;
+
+        //clear empty values
+      };
+
+      var addToCart = function addToCart(selectedItems) {
+        fetch('/cart/add.js', {
+          method: 'post',
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            items: selectedItems
+          })
+        }).then(function (res) {
+          return res.json();
+        }).then(function (res) {
+          return location.href = "/cart";
+        });
+      };
+      this.addEventListener('click', function (e) {
+        if (e.target.classList.contains('add-to-bundle')) {
+          selectAdd(e);
+        }
+        if (e.target.id == "add-to-bundle") {
+          addToCart(selectedItems);
+        }
+        if (e.target.classList.contains('product-bundle-options')) {
+          //toggle modal on click.
+          //check if product is added to cart already
+          var item = document.querySelector(".add-to-bundle[index=\"".concat(e.target.getAttribute('index'), "\"]"));
+          var arrayIndex = selectedItems.findIndex(function (selectedItems) {
+            return selectedItems.id === Number(item.getAttribute('product-id'));
+          });
+          if (arrayIndex != -1) {
+            selectedItems.splice(arrayIndex, 1);
+            selectedProductNames.splice(arrayIndex, 1);
+            totalPrice -= Number(item.getAttribute('product-price'));
+            item.innerHTML = "Add - $" + Number(item.getAttribute('product-price') / 100.00);
+            item.classList.remove('bg-gray-800');
+            item.classList.add('bg-primaryRed');
+            document.getElementById('foo').innerHTML = "";
+            document.getElementById('foo').appendChild(makeUL(selectedProductNames));
+            document.getElementById('bundle-total').innerHTML = "Total: $" + totalPrice / 100;
+          }
+          this.querySelector('#product-bundle-options-' + e.target.getAttribute('index')).classList.remove('hidden');
+        }
+      });
+    }
+  }]);
+  return ProductBundle;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('product-bundle')) customElements.define('product-bundle', ProductBundle);
 
 /***/ }),
@@ -1864,41 +2431,64 @@ if (!customElements.get('product-bundle')) customElements.define('product-bundle
 /*!*****************************************************!*\
   !*** ./scripts/sections/product-gallery-style-2.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class ProductGallery2 extends HTMLElement {
-  constructor() {
-    super();
+var ProductGallery2 = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(ProductGallery2, _HTMLElement);
+  var _super = _createSuper(ProductGallery2);
+  function ProductGallery2() {
+    _classCallCheck(this, ProductGallery2);
+    return _super.call(this);
   }
-  connectedCallback() {
-    var ThumbnailSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('thumbnail-slider-style-2'), {
-      loop: false,
-      spaceBetween: 10,
-      slidesPerView: 6,
-      freeMode: true,
-      direction: 'vertical'
-    });
-    var ProductGallery = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
-      loop: false,
-      autoHeight: true,
-      spaceBetween: 10,
-      slidesPerView: 1,
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Thumbs, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination],
-      thumbs: {
-        swiper: ThumbnailSlider
-      },
-      pagination: {
-        el: ".swiper-pagination"
-      }
-    });
-  }
-}
+  _createClass(ProductGallery2, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var ThumbnailSlider = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('thumbnail-slider-style-2'), {
+        loop: false,
+        spaceBetween: 10,
+        slidesPerView: 6,
+        freeMode: true,
+        direction: 'vertical'
+      });
+      var ProductGallery = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
+        loop: false,
+        autoHeight: true,
+        spaceBetween: 10,
+        slidesPerView: 1,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Thumbs, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination],
+        thumbs: {
+          swiper: ThumbnailSlider
+        },
+        pagination: {
+          el: ".swiper-pagination"
+        }
+      });
+    }
+  }]);
+  return ProductGallery2;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('product-gallery-style-2')) customElements.define('product-gallery-style-2', ProductGallery2);
 
 /***/ }),
@@ -1907,44 +2497,67 @@ if (!customElements.get('product-gallery-style-2')) customElements.define('produ
 /*!*********************************************!*\
   !*** ./scripts/sections/product-gallery.js ***!
   \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class ProductGallery extends HTMLElement {
-  constructor() {
-    super();
+var ProductGallery = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(ProductGallery, _HTMLElement);
+  var _super = _createSuper(ProductGallery);
+  function ProductGallery() {
+    _classCallCheck(this, ProductGallery);
+    return _super.call(this);
   }
-  connectedCallback() {
-    let progress = this.querySelector('.inner-progress');
-    let size = +this.dataset.size;
-    let self = this;
-    var ProductGallery = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
-      loop: true,
-      autoHeight: true,
-      spaceBetween: 10,
-      slidesPerView: 1,
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
-      navigation: {
-        nextEl: '.swiper-product-next',
-        prevEl: '.swiper-product-prev'
-      }
-    });
-    window.gallery = ProductGallery;
-    ProductGallery.on('slideChange', function (e) {
-      setTimeout(() => {
-        let index = +self.querySelector('.swiper-slide-active').dataset.index;
-        let width = self.querySelector('.progress').offsetWidth;
-        let percent = 100 / size * index / 100;
-        progress.style.width = width * percent + 'px';
+  _createClass(ProductGallery, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var progress = this.querySelector('.inner-progress');
+      var size = +this.dataset.size;
+      var self = this;
+      var _ProductGallery = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
+        loop: true,
+        autoHeight: true,
+        spaceBetween: 10,
+        slidesPerView: 1,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+        navigation: {
+          nextEl: '.swiper-product-next',
+          prevEl: '.swiper-product-prev'
+        }
       });
-    });
-  }
-}
+      window.gallery = _ProductGallery;
+      _ProductGallery.on('slideChange', function (e) {
+        setTimeout(function () {
+          var index = +self.querySelector('.swiper-slide-active').dataset.index;
+          var width = self.querySelector('.progress').offsetWidth;
+          var percent = 100 / size * index / 100;
+          progress.style.width = width * percent + 'px';
+        });
+      });
+    }
+  }]);
+  return ProductGallery;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('product-gallery')) customElements.define('product-gallery', ProductGallery);
 
 /***/ }),
@@ -1953,43 +2566,66 @@ if (!customElements.get('product-gallery')) customElements.define('product-galle
 /*!**********************************************!*\
   !*** ./scripts/sections/related-articles.js ***!
   \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class RelatedArticles extends HTMLElement {
-  constructor() {
-    super();
+var RelatedArticles = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(RelatedArticles, _HTMLElement);
+  var _super = _createSuper(RelatedArticles);
+  function RelatedArticles() {
+    _classCallCheck(this, RelatedArticles);
+    return _super.call(this);
   }
-  connectedCallback() {
-    const swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this.querySelector('.related-article-js'), {
-      // Optional parameters
-      slidesPerView: 1.2,
-      freeMode: true,
-      spaceBetween: 16,
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-article-next',
-        prevEl: '.swiper-article-prev'
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2.7,
-          spaceBetween: 32
+  _createClass(RelatedArticles, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this.querySelector('.related-article-js'), {
+        // Optional parameters
+        slidesPerView: 1.2,
+        freeMode: true,
+        spaceBetween: 16,
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-article-next',
+          prevEl: '.swiper-article-prev'
         },
-        1110: {
-          slidesPerView: 3,
-          spaceBetween: 32
+        breakpoints: {
+          768: {
+            slidesPerView: 2.7,
+            spaceBetween: 32
+          },
+          1110: {
+            slidesPerView: 3,
+            spaceBetween: 32
+          }
         }
-      }
-    });
-  }
-}
+      });
+    }
+  }]);
+  return RelatedArticles;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('related-articles')) customElements.define('related-articles', RelatedArticles);
 
 /***/ }),
@@ -1998,36 +2634,59 @@ if (!customElements.get('related-articles')) customElements.define('related-arti
 /*!*******************************************!*\
   !*** ./scripts/sections/search-facets.js ***!
   \*******************************************/
-/***/ (() => {
+/***/ (function() {
 
-class Facets extends HTMLElement {
-  constructor() {
-    super();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var Facets = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(Facets, _HTMLElement);
+  var _super = _createSuper(Facets);
+  function Facets() {
+    _classCallCheck(this, Facets);
+    return _super.call(this);
   }
-  connectedCallback() {
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.facets__disclosure').forEach(button => {
-        button.addEventListener('click', function (e) {
-          switchContent();
-        });
-        window.addEventListener('click', function (e) {
-          switchContent();
+  _createClass(Facets, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.facets__disclosure').forEach(function (button) {
+          button.addEventListener('click', function (e) {
+            switchContent();
+          });
+          window.addEventListener('click', function (e) {
+            switchContent();
+          });
         });
       });
-    });
-    function switchContent() {
-      $('.facets__disclosure').each(function (index, obj) {
-        var x = obj.getAttribute("open");
-        if (x == "") {
-          x = "false";
-        } else {
+      function switchContent() {
+        $('.facets__disclosure').each(function (index, obj) {
+          var x = obj.getAttribute("open");
+          if (x == "") {
+            x = "false";
+          } else {
+            obj.removeAttribute("open");
+          }
           obj.removeAttribute("open");
-        }
-        obj.removeAttribute("open");
-      });
+        });
+      }
     }
-  }
-}
+  }]);
+  return Facets;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('main-search')) customElements.define('main-search', Facets);
 
 /***/ }),
@@ -2036,7 +2695,7 @@ if (!customElements.get('main-search')) customElements.define('main-search', Fac
 /*!***************************************!*\
   !*** ./scripts/sections/side-cart.js ***!
   \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2044,891 +2703,151 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
-class SideCart extends HTMLElement {
-  constructor() {
-    super();
-    this.accessToken = "e4285229c9b8efd6e170205fb5472019";
-    this.graphUrl = "https://animalpak-uk.myshopify.com/api/2022-10/graphql.json";
-    this.progress = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find(".progress");
-    this.totalPrice = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find("#side-cart__total-price");
-    this.totalAmount = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find("#side-cart__amount");
-    this.bundle = document.querySelector("bundle-page");
-    this.renderCart();
-    let self = this;
-    this.recommendedProducts();
+var SideCart = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(SideCart, _HTMLElement);
+  var _super = _createSuper(SideCart);
+  function SideCart() {
+    var _this;
+    _classCallCheck(this, SideCart);
+    _this = _super.call(this);
+    _this.accessToken = "e4285229c9b8efd6e170205fb5472019";
+    _this.graphUrl = "https://animalpak-uk.myshopify.com/api/2022-10/graphql.json";
+    _this.progress = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_assertThisInitialized(_this)).find(".progress");
+    _this.totalPrice = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_assertThisInitialized(_this)).find("#side-cart__total-price");
+    _this.totalAmount = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_assertThisInitialized(_this)).find("#side-cart__amount");
+    _this.bundle = document.querySelector("bundle-page");
+    _this.renderCart();
+    var self = _assertThisInitialized(_this);
+    _this.recommendedProducts();
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(".trigger-cart-open").on("click", function () {
       self.openCart();
     });
+    return _this;
   }
-  openCart() {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart-wrap").removeClass("!hidden");
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("cart-is-open");
-    setTimeout(() => {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart").addClass("active");
-    });
-    document.addEventListener("click", function (e) {
-      if (e.target.classList.contains("side-cart-wrap") || e.target.classList.contains("close-side-cart")) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart").removeClass("active");
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("cart-is-open");
-        setTimeout(() => {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart-wrap").addClass("!hidden");
-        }, 300);
-      }
-    });
-  }
-  itemTemplate(item, discount, cart) {
-    let price = item.discounted_price;
-    let originalPrice = null;
-    if (item?.selling_plan_allocation?.compare_at_price) {
-      originalPrice = item?.selling_plan_allocation?.compare_at_price;
-    }
-    if (item.price > price) {
-      originalPrice = item.price;
-    }
-    if (item.price < item.original_price) {
-      originalPrice = item.original_price;
-    }
-    if (item?.properties?.isStackParent) {
-      price = item.properties.totalPrice;
-      originalPrice = item.properties.originalPrice;
-    }
-    let html = `<div class="cart-item__wrap flex items-center mb-8 ${item.properties?.giftItem && "gift-item"}">
-        <div class="cart-item__img relative flex justify-center items-center">
-            <a href="${item.url}">
-                <img src='${item.featured_image.url}' class="object-contain" />
-            </a>
-        </div>
-        <div class="ml-4 lg:ml-8 w-full">
-            <a href="${item.url}" class="block cart-item__title text-primary font-compacta uppercase font-bold">${item.product_title}</a>
-            <div class="${!item.handle.includes("stack") && "lg:flex"}">`;
-    item.options_with_values.forEach(function (option) {
-      html += `<div class="cart-item__option ${option.name == "Title" && "hidden"}">${option.name}: ${option.value}</div>`;
-    });
-    cart.items.forEach(function (stack) {
-      if (stack.properties && stack.properties?.bundleId == item.properties?.bundleId) {
-        if (item.properties?.isStackParent && !stack.properties?.isStackParent) {
-          html += `<div class="cart-item__option">1 x ${stack.product_title}${stack.variant_title ? " - " + stack.variant_title : ""}</div>`;
+  _createClass(SideCart, [{
+    key: "openCart",
+    value: function openCart() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart-wrap").removeClass("!hidden");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("cart-is-open");
+      setTimeout(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart").addClass("active");
+      });
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("side-cart-wrap") || e.target.classList.contains("close-side-cart")) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart").removeClass("active");
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("cart-is-open");
+          setTimeout(function () {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart-wrap").addClass("!hidden");
+          }, 300);
         }
+      });
+    }
+  }, {
+    key: "itemTemplate",
+    value: function itemTemplate(item, discount, cart) {
+      var _item$selling_plan_al, _item$properties, _item$properties2, _item$properties5, _item$selling_plan_al3, _item$properties6, _item$properties7, _item$properties13;
+      var price = item.discounted_price;
+      var originalPrice = null;
+      if (item !== null && item !== void 0 && (_item$selling_plan_al = item.selling_plan_allocation) !== null && _item$selling_plan_al !== void 0 && _item$selling_plan_al.compare_at_price) {
+        var _item$selling_plan_al2;
+        originalPrice = item === null || item === void 0 || (_item$selling_plan_al2 = item.selling_plan_allocation) === null || _item$selling_plan_al2 === void 0 ? void 0 : _item$selling_plan_al2.compare_at_price;
       }
-    });
-    html += `</div>`;
-    if (item.properties?.giftItem) {
-      if (window.giftProducts.filter(product => product.handle == item.handle)[0]?.variants?.length) {
-        let variants = window.giftProducts.filter(product => product.handle == item.handle)[0]?.variants;
-        let hideOptions = variants?.length === 1 && variants[0].title === "Default Title" ? "hidden" : "";
-        html += `<select class="cart-item__variants !ring-0 !outline-0 ${hideOptions}" data-key="${item.key}">`;
-        variants?.forEach(function (variant) {
-          html += `<option ${variant.id == item.id ? "selected" : ""} data-id="${variant.id}">${variant.title}</option>`;
-        });
-        html += `</select>`;
+      if (item.price > price) {
+        originalPrice = item.price;
       }
-    }
-    if (item.selling_plan_allocation?.selling_plan?.options[0]?.value) {
-      html += `<span class="cart-item__subscription text-primary font-semibold mt-1">Delivery frequency: <span class="font-light">${item.selling_plan_allocation?.selling_plan?.options[0]?.value}</span></span>`;
-    }
-    html += `<div class="cart-item__price mt-1 lg:mt-2 font-sans font-bold text-base flex items-center text-primary">
-            <span class="${!originalPrice && "hidden"} mr-1 line-through opacity-50">${this.formatMoney(originalPrice)}</span>
-            ${item.properties?.giftItem ? "Free Gift" : this.formatMoney(price)} 
-            </div>
-            <div class="text-primary mt-1 text-base font-sans">SKU: ${item.sku || item.product_title}</div>`;
-    if (!item.properties?.giftItem) {
-      html += `<div class="hidden lg:flex quantity-js">
-                    <quantity-input class="quantity cart-item__quantity">
-                        <button class="quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ${item.properties?.isStackParent && "stack-quantity"}" name="minus" type="button">-</button>
-                        <input class="quantity__input" type="number" name="quantity" id="quantity-${item.key}" min="1" ${item.properties["Gift id"] ? `data-product-with-gift="${item.properties["Gift id"]}"` : ""} ${item.properties["Gift product"] ? "disabled" : ""} value="${item.quantity}">
-                        <button class="quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ${item.properties?.isStackParent && "stack-quantity"}" ${item.properties["Gift product"] ? "disabled" : ""} name="plus" type="button">+</button>
-                    </quantity-input>
-                    <button type="button" ${item.properties["Gift product"] ? "disabled" : ""} id="remove-${item.key}" class="${item.properties?.isStackParent && "hidden"} ${item.properties["Gift product"] ? "pointer-events-none" : ""} cart-item__remove cart-item__adjust-qty flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer">remove</button>
-                    <button type="button" id="${item.properties?.bundleId}" class="${!item.properties?.isStackParent && "hidden"} stack-item__remove cart-item__adjust-qty flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer">remove</button>
-                    </div>`;
-    }
-    html += `</div>
-    </div>`;
-    if (!item.properties?.giftItem) {
-      html += `<div class="flex lg:hidden pb-6 quantity-js">
-                    <quantity-input class="quantity cart-item__quantity">
-                        <button class="quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ${item.properties?.isStackParent && "stack-quantity"}" name="minus" type="button">-</button>
-                        <input class="quantity__input" type="number" name="quantity" id="quantity-${item.key}" ${item.properties["Gift id"] ? `data-product-with-gift="${item.properties["Gift id"]}"` : ""} ${item.properties["Gift product"] ? "disabled" : ""} min="1" value="${item.quantity}">
-                        <button class="quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ${item.properties?.isStackParent && "stack-quantity"}" ${item.properties["Gift product"] ? "disabled" : ""} name="plus" type="button">+</button>
-                    </quantity-input>
-                    <button type="button" id="remove-${item.key}" ${item.properties["Gift product"] ? "disabled" : ""} class="${item.properties?.isStackParent && "hidden"} ${item.properties["Gift product"] ? "pointer-events-none" : ""} cart-item__adjust-qty cart-item__remove flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer">remove</button>
-                    <button type="button" id="${item.properties?.bundleId}" class="${!item.properties?.isStackParent && "hidden"} stack-item__remove flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer">remove</button>
-                </div>`;
-    }
-    return html;
-  }
-  changeVariant() {
-    const self = this;
-    document.querySelectorAll(".cart-item__variants").forEach(function (select) {
-      select.addEventListener("change", function () {
-        let id = this.options[this.selectedIndex].dataset.id;
-        let key = this.dataset.key;
-        jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", `updates[${key}]=0`).done(function () {
-          let formData = {
-            items: [{
-              id,
-              quantity: 1,
-              properties: {
-                giftItem: true
-              }
-            }]
-          };
-          fetch(window.Shopify.routes.root + "cart/add.js", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-          }).then(response => {
-            self.renderCart();
-          }).catch(error => {
-            console.error("Error:", error);
+      if (item.price < item.original_price) {
+        originalPrice = item.original_price;
+      }
+      if (item !== null && item !== void 0 && (_item$properties = item.properties) !== null && _item$properties !== void 0 && _item$properties.isStackParent) {
+        price = item.properties.totalPrice;
+        originalPrice = item.properties.originalPrice;
+      }
+      var html = "<div class=\"cart-item__wrap flex items-center mb-8 ".concat(((_item$properties2 = item.properties) === null || _item$properties2 === void 0 ? void 0 : _item$properties2.giftItem) && "gift-item", "\">\n        <div class=\"cart-item__img relative flex justify-center items-center\">\n            <a href=\"").concat(item.url, "\">\n                <img src='").concat(item.featured_image.url, "' class=\"object-contain\" />\n            </a>\n        </div>\n        <div class=\"ml-4 lg:ml-8 w-full\">\n            <a href=\"").concat(item.url, "\" class=\"block cart-item__title text-primary font-compacta uppercase font-bold\">").concat(item.product_title, "</a>\n            <div class=\"").concat(!item.handle.includes("stack") && "lg:flex", "\">");
+      item.options_with_values.forEach(function (option) {
+        html += "<div class=\"cart-item__option ".concat(option.name == "Title" && "hidden", "\">").concat(option.name, ": ").concat(option.value, "</div>");
+      });
+      cart.items.forEach(function (stack) {
+        var _stack$properties, _item$properties3;
+        if (stack.properties && ((_stack$properties = stack.properties) === null || _stack$properties === void 0 ? void 0 : _stack$properties.bundleId) == ((_item$properties3 = item.properties) === null || _item$properties3 === void 0 ? void 0 : _item$properties3.bundleId)) {
+          var _item$properties4, _stack$properties2;
+          if ((_item$properties4 = item.properties) !== null && _item$properties4 !== void 0 && _item$properties4.isStackParent && !((_stack$properties2 = stack.properties) !== null && _stack$properties2 !== void 0 && _stack$properties2.isStackParent)) {
+            html += "<div class=\"cart-item__option\">1 x ".concat(stack.product_title).concat(stack.variant_title ? " - " + stack.variant_title : "", "</div>");
+          }
+        }
+      });
+      html += "</div>";
+      if ((_item$properties5 = item.properties) !== null && _item$properties5 !== void 0 && _item$properties5.giftItem) {
+        var _window$giftProducts$;
+        if ((_window$giftProducts$ = window.giftProducts.filter(function (product) {
+          return product.handle == item.handle;
+        })[0]) !== null && _window$giftProducts$ !== void 0 && (_window$giftProducts$ = _window$giftProducts$.variants) !== null && _window$giftProducts$ !== void 0 && _window$giftProducts$.length) {
+          var _window$giftProducts$2;
+          var variants = (_window$giftProducts$2 = window.giftProducts.filter(function (product) {
+            return product.handle == item.handle;
+          })[0]) === null || _window$giftProducts$2 === void 0 ? void 0 : _window$giftProducts$2.variants;
+          var hideOptions = (variants === null || variants === void 0 ? void 0 : variants.length) === 1 && variants[0].title === "Default Title" ? "hidden" : "";
+          html += "<select class=\"cart-item__variants !ring-0 !outline-0 ".concat(hideOptions, "\" data-key=\"").concat(item.key, "\">");
+          variants === null || variants === void 0 || variants.forEach(function (variant) {
+            html += "<option ".concat(variant.id == item.id ? "selected" : "", " data-id=\"").concat(variant.id, "\">").concat(variant.title, "</option>");
           });
-        });
-      });
-    });
-  }
-  renderCart() {
-    let self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
-      type: "GET",
-      url: "/cart.js",
-      dataType: "json",
-      success: function (cart) {
-        let bundleWidget = self.cartWidget(cart);
-        if (bundleWidget === false) {
-          return;
-        }
-        self.giftProducts(cart);
-        let bundleItems = cart.items.filter(item => item?.properties?.isBundleProduct && !item?.selling_plan_allocation);
-        let subsBundleItems = cart.items.filter(item => item?.properties?.isBundleProduct && item?.selling_plan_allocation);
-        let discount,
-          oneTimeCount = 0,
-          subsCount = 0;
-        bundleItems.forEach(function (item) {
-          oneTimeCount += item.quantity;
-        });
-        subsBundleItems.forEach(function (item) {
-          subsCount += item.quantity;
-        });
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-items").empty();
-        cart.items.forEach(function (item) {
-          if (item?.properties?.isBundleProduct && !item?.selling_plan_allocation) {
-            discount = oneTimeCount == 2 ? 10 : oneTimeCount == 3 ? 15 : oneTimeCount >= 4 ? 20 : null;
-          }
-          if (item?.properties?.isBundleProduct && item?.selling_plan_allocation) {
-            discount = subsCount == 2 ? 5 : subsCount == 3 ? 10 : subsCount >= 4 ? 15 : null;
-          }
-          if (!item.properties?.isStackProduct && !item.properties?.giftItem) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-items").append(self.itemTemplate(item, discount, cart));
-          }
-        });
-        let giftItems = cart.items.filter(item => item.properties?.giftItem);
-        giftItems.sort(function (a, b) {
-          let titleA = a.title.toLowerCase();
-          let titleB = b.title.toLowerCase();
-          return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
-        });
-        giftItems.forEach(function (item) {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-items").append(self.itemTemplate(item, null, cart));
-        });
-        self.changeVariant();
-
-        // free shipping progress bar
-        if (document.querySelector("#bfcm_prices").value == "true") {
-          self.freeShipping(cart.total_price, cart.items.filter(item => item?.selling_plan_allocation).length);
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__subs-shipping").addClass("hidden");
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").removeClass("hidden");
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".progress-wrap").removeClass("hidden");
-        } else {
-          self.freeShipping(cart.total_price);
-          if (cart.items.filter(item => item?.selling_plan_allocation).length) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__subs-shipping").removeClass("hidden");
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").addClass("hidden");
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".progress-wrap").addClass("hidden");
-          } else {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__subs-shipping").addClass("hidden");
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").removeClass("hidden");
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".progress-wrap").removeClass("hidden");
-          }
-        }
-
-        // cart total price
-        let totalPrice = 0;
-        cart.items.forEach(function (item) {
-          let price = item.price;
-          if (item?.properties?.isBundleProduct && !item?.selling_plan_allocation) {
-            discount = oneTimeCount == 2 ? 10 : oneTimeCount == 3 ? 15 : oneTimeCount >= 4 ? 20 : null;
-            price = item.price - discount * item.price / 100;
-          }
-          if (item?.properties?.isBundleProduct && item?.selling_plan_allocation) {
-            discount = subsCount == 2 ? 5 : subsCount == 3 ? 10 : subsCount >= 4 ? 15 : null;
-            price = item.price - discount * item.price / 100;
-          }
-          if (!item?.properties?.giftItem) {
-            totalPrice += price * item.quantity;
-          }
-        });
-        totalPrice = Math.ceil(totalPrice);
-        self.totalPrice.text(self.formatMoney(totalPrice));
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart__clearpay").text(self.formatMoney(totalPrice / 4));
-
-        // cart total amount
-        self.totalAmount.text(cart.item_count);
-
-        //set cart count
-        document.querySelector(".cart-count").innerText = cart.item_count;
-
-        // adjust item quantity
-
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item__adjust-qty").on("click", function () {
-          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass("stack-quantity")) {
-            self.removeStack(this, cart, "adjust");
-          } else {
-            self.changeQuantity(this);
-          }
-        });
-
-        // checkout redirect
-        self.checkoutRedirect(cart);
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".stack-item__remove").on("click", function () {
-          self.removeStack(this, cart, "remove");
-        });
-
-        // remove gift
-        if (cart.items.length == 1 && cart.items[0].properties["Gift product"]) {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/clear.js").then(() => {
-            self.renderCart();
-          });
+          html += "</select>";
         }
       }
-    });
-  }
-  cartWidget(cart) {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".widget-title").text(cart.item_count == 0 ? "recommended products" : "ADD AN ITEM & SAVE");
-
-    // check for added bundle via bundle page
-    let bundleSubs = cart.items.filter(item => item?.properties?.bundleData && item?.properties?.subscription).length;
-    let recommendedSubs = cart.items.filter(item => item?.properties?.enableDiscount && item?.properties?.subscription).length;
-    if (cart.items.filter(item => item?.properties?.bundleData).length && cart.items.filter(item => item?.properties?.enableDiscount).length && !!bundleSubs !== !!recommendedSubs) {
-      let data = "";
-      let allItems = cart.items.filter(item => item.properties?.enableDiscount);
-      allItems.forEach(function (item, i) {
-        if (i == 0) {
-          data = `updates[${item.key}]=0`;
-        } else {
-          data += `&updates[${item.key}]=0`;
-        }
-      });
-      jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
-        let updatedItems = [];
-        allItems.forEach(function (item) {
-          delete item.properties["isBundleProduct"];
-          delete item.properties["enableDiscount"];
-          let itemObj = {
-            id: item.id,
-            quantity: item.quantity,
-            properties: item.properties
-          };
-          if (item.selling_plan_allocation) {
-            itemObj.selling_plan = item.selling_plan_allocation.selling_plan.id;
-          }
-          updatedItems.push(itemObj);
-        });
-        let formData = {
-          items: updatedItems
-        };
-        fetch(window.Shopify.routes.root + "cart/add.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-        }).then(response => {
-          let sidecart = document.querySelector("side-cart");
-          sidecart?.renderCart();
-        }).catch(error => {
-          console.error("Error:", error);
-        });
-      });
-      return false;
+      if ((_item$selling_plan_al3 = item.selling_plan_allocation) !== null && _item$selling_plan_al3 !== void 0 && (_item$selling_plan_al3 = _item$selling_plan_al3.selling_plan) !== null && _item$selling_plan_al3 !== void 0 && (_item$selling_plan_al3 = _item$selling_plan_al3.options[0]) !== null && _item$selling_plan_al3 !== void 0 && _item$selling_plan_al3.value) {
+        var _item$selling_plan_al4;
+        html += "<span class=\"cart-item__subscription text-primary font-semibold mt-1\">Delivery frequency: <span class=\"font-light\">".concat((_item$selling_plan_al4 = item.selling_plan_allocation) === null || _item$selling_plan_al4 === void 0 || (_item$selling_plan_al4 = _item$selling_plan_al4.selling_plan) === null || _item$selling_plan_al4 === void 0 || (_item$selling_plan_al4 = _item$selling_plan_al4.options[0]) === null || _item$selling_plan_al4 === void 0 ? void 0 : _item$selling_plan_al4.value, "</span></span>");
+      }
+      html += "<div class=\"cart-item__price mt-1 lg:mt-2 font-sans font-bold text-base flex items-center text-primary\">\n            <span class=\"".concat(!originalPrice && "hidden", " mr-1 line-through opacity-50\">").concat(this.formatMoney(originalPrice), "</span>\n            ").concat((_item$properties6 = item.properties) !== null && _item$properties6 !== void 0 && _item$properties6.giftItem ? "Free Gift" : this.formatMoney(price), " \n            </div>\n            <div class=\"text-primary mt-1 text-base font-sans\">SKU: ").concat(item.sku || item.product_title, "</div>");
+      if (!((_item$properties7 = item.properties) !== null && _item$properties7 !== void 0 && _item$properties7.giftItem)) {
+        var _item$properties8, _item$properties9, _item$properties10, _item$properties11, _item$properties12;
+        html += "<div class=\"hidden lg:flex quantity-js\">\n                    <quantity-input class=\"quantity cart-item__quantity\">\n                        <button class=\"quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ".concat(((_item$properties8 = item.properties) === null || _item$properties8 === void 0 ? void 0 : _item$properties8.isStackParent) && "stack-quantity", "\" name=\"minus\" type=\"button\">-</button>\n                        <input class=\"quantity__input\" type=\"number\" name=\"quantity\" id=\"quantity-").concat(item.key, "\" min=\"1\" ").concat(item.properties["Gift id"] ? "data-product-with-gift=\"".concat(item.properties["Gift id"], "\"") : "", " ").concat(item.properties["Gift product"] ? "disabled" : "", " value=\"").concat(item.quantity, "\">\n                        <button class=\"quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ").concat(((_item$properties9 = item.properties) === null || _item$properties9 === void 0 ? void 0 : _item$properties9.isStackParent) && "stack-quantity", "\" ").concat(item.properties["Gift product"] ? "disabled" : "", " name=\"plus\" type=\"button\">+</button>\n                    </quantity-input>\n                    <button type=\"button\" ").concat(item.properties["Gift product"] ? "disabled" : "", " id=\"remove-").concat(item.key, "\" class=\"").concat(((_item$properties10 = item.properties) === null || _item$properties10 === void 0 ? void 0 : _item$properties10.isStackParent) && "hidden", " ").concat(item.properties["Gift product"] ? "pointer-events-none" : "", " cart-item__remove cart-item__adjust-qty flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer\">remove</button>\n                    <button type=\"button\" id=\"").concat((_item$properties11 = item.properties) === null || _item$properties11 === void 0 ? void 0 : _item$properties11.bundleId, "\" class=\"").concat(!((_item$properties12 = item.properties) !== null && _item$properties12 !== void 0 && _item$properties12.isStackParent) && "hidden", " stack-item__remove cart-item__adjust-qty flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer\">remove</button>\n                    </div>");
+      }
+      html += "</div>\n    </div>";
+      if (!((_item$properties13 = item.properties) !== null && _item$properties13 !== void 0 && _item$properties13.giftItem)) {
+        var _item$properties14, _item$properties15, _item$properties16, _item$properties17, _item$properties18;
+        html += "<div class=\"flex lg:hidden pb-6 quantity-js\">\n                    <quantity-input class=\"quantity cart-item__quantity\">\n                        <button class=\"quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ".concat(((_item$properties14 = item.properties) === null || _item$properties14 === void 0 ? void 0 : _item$properties14.isStackParent) && "stack-quantity", "\" name=\"minus\" type=\"button\">-</button>\n                        <input class=\"quantity__input\" type=\"number\" name=\"quantity\" id=\"quantity-").concat(item.key, "\" ").concat(item.properties["Gift id"] ? "data-product-with-gift=\"".concat(item.properties["Gift id"], "\"") : "", " ").concat(item.properties["Gift product"] ? "disabled" : "", " min=\"1\" value=\"").concat(item.quantity, "\">\n                        <button class=\"quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ").concat(((_item$properties15 = item.properties) === null || _item$properties15 === void 0 ? void 0 : _item$properties15.isStackParent) && "stack-quantity", "\" ").concat(item.properties["Gift product"] ? "disabled" : "", " name=\"plus\" type=\"button\">+</button>\n                    </quantity-input>\n                    <button type=\"button\" id=\"remove-").concat(item.key, "\" ").concat(item.properties["Gift product"] ? "disabled" : "", " class=\"").concat(((_item$properties16 = item.properties) === null || _item$properties16 === void 0 ? void 0 : _item$properties16.isStackParent) && "hidden", " ").concat(item.properties["Gift product"] ? "pointer-events-none" : "", " cart-item__adjust-qty cart-item__remove flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer\">remove</button>\n                    <button type=\"button\" id=\"").concat((_item$properties17 = item.properties) === null || _item$properties17 === void 0 ? void 0 : _item$properties17.bundleId, "\" class=\"").concat(!((_item$properties18 = item.properties) !== null && _item$properties18 !== void 0 && _item$properties18.isStackParent) && "hidden", " stack-item__remove flex justify-center items-center uppercase font-bold font-sans text-primary cursor-pointer\">remove</button>\n                </div>");
+      }
+      return html;
     }
-
-    // add bundle discount
-    let hasRecommended = cart.items.filter(item => item.properties?.enableDiscount || item.properties?._quiz_kit_id).length;
-    let subsDiscount = cart.items.filter(item => item?.properties?.isBundleProduct && item?.properties?.subscription).length;
-    let oneTimeDiscount = cart.items.filter(item => item?.properties?.isBundleProduct && !item?.properties?.subscription).length;
-    let allItems = null;
-
-    // one-time items discount
-    if (!subsDiscount && (cart.items.filter(item => !item.selling_plan_allocation && !item.properties?.giftItem).length > 1 || cart.items.filter(item => !item.selling_plan_allocation && !item.properties?.giftItem && item.quantity > 1).length)) {
-      allItems = cart.items.filter(item => !item.properties?.isBundleProduct && !item.properties?.gear && !item.properties?.giftItem && !item.selling_plan_allocation && !item.properties?.isStackParent && !item.properties?.isStackProduct);
-    }
-
-    // subs items discount
-    if (!oneTimeDiscount && (cart.items.filter(item => item.selling_plan_allocation && !item.properties?.giftItem).length > 1 || cart.items.filter(item => item.selling_plan_allocation && !item.properties?.giftItem && item.quantity > 1).length)) {
-      allItems = cart.items.filter(item => !item.properties?.isBundleProduct && !item.properties?.gear && !item.properties?.giftItem && item.selling_plan_allocation && !item.properties?.isStackParent && !item.properties?.isStackProduct);
-    }
-    if (hasRecommended && allItems?.length) {
-      let data = "";
-      allItems.forEach(function (item, i) {
-        if (i == 0) {
-          data = `updates[${item.key}]=0`;
-        } else {
-          data += `&updates[${item.key}]=0`;
-        }
-      });
-      jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
-        let updatedItems = [];
-        allItems.forEach(function (item) {
-          item.properties.isBundleProduct = true;
-          item.properties.enableDiscount = true;
-          let itemObj = {
-            id: item.id,
-            quantity: item.quantity,
-            properties: item.properties
-          };
-          if (item.selling_plan_allocation) {
-            itemObj.selling_plan = item.selling_plan_allocation.selling_plan.id;
-            itemObj.properties.subscription = true;
-          }
-          updatedItems.push(itemObj);
-        });
-        let formData = {
-          items: updatedItems
-        };
-        fetch(window.Shopify.routes.root + "cart/add.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-        }).then(response => {
-          let sidecart = document.querySelector("side-cart");
-          sidecart?.renderCart();
-        }).catch(error => {
-          console.error("Error:", error);
-        });
-      });
-      return false;
-    }
-  }
-  giftProducts(cart) {
-    const self = this;
-    let products = window.giftProducts;
-    let addItems = [];
-    let removeItems = [];
-    let item_count = cart.items.filter(item => !item.properties?.giftItem).length;
-    products.forEach(function (gift) {
-      if (gift.available) {
-        let itemInCart = cart.items.filter(item => item.handle == gift.handle && item.properties?.giftItem);
-        let subPresent = cart.items.filter(item => item.selling_plan_allocation && item.selling_plan_allocation.selling_plan.id);
-        if (cart.total_price / 100 >= gift.orderValue && !itemInCart.length && item_count > 0) {
-          if (gift.subscription_only && subPresent.length) {
-            addItems.push(gift.id);
-          } else if (!gift.subscription_only) {
-            addItems.push(gift.id);
-          }
-        }
-        if (cart.total_price / 100 < gift.orderValue && itemInCart.length && item_count > 0) {
-          removeItems.push(cart.items.filter(item => item.handle == gift.handle && item.properties?.giftItem)[0]?.key);
-        }
-        if (item_count == 0 && itemInCart.length) {
-          removeItems.push(cart.items.filter(item => item.handle == gift.handle && item.properties?.giftItem)[0]?.key);
-        }
-        if (gift.subscription_only && subPresent.length <= 0) {
-          removeItems.push(cart.items.filter(item => item.handle == gift.handle && item.properties?.giftItem)[0]?.key);
-        }
-      }
-    });
-    cart.items.forEach(function (item) {
-      if (item.properties?.giftItem && !products.filter(product => product.handle == item.handle).length) {
-        removeItems.push(item.key);
-      }
-    });
-    const addGifts = async data => {
-      try {
-        const response = await fetch("/cart/add.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            items: data
-          })
-        });
-        self.renderCart();
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    if (addItems.length) {
-      let data = [];
-      addItems.forEach(function (id) {
-        data.push({
-          id: id,
-          quantity: 1,
-          properties: {
-            giftItem: true
-          }
-        });
-      });
-      addGifts(data);
-      return;
-    }
-
-    // remove items
-    if (removeItems.length) {
-      let data;
-      removeItems.forEach(function (key) {
-        if (!data) {
-          data = `updates[${key}]=0`;
-        } else {
-          data += `&updates[${key}]=0`;
-        }
-      });
-      jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
-        self.renderCart();
-      });
-    }
-  }
-  checkoutRedirect(cart) {
-    let bundleItems = cart.items.filter(item => item?.properties?.isBundleProduct && item?.selling_plan_allocation);
-    let bundleItemsCounter = 0;
-    let isSubscription = cart.items.filter(item => item?.properties?.isBundleProduct && item?.selling_plan_allocation).length;
-    bundleItems.forEach(function (item) {
-      bundleItemsCounter += item.quantity;
-    });
-    localStorage.removeItem("discount");
-    if (bundleItemsCounter && bundleItemsCounter >= 2 && isSubscription) {
-      let discount;
-      if (isSubscription) {
-        discount = bundleItemsCounter == 2 ? subsDiscountCodes.bundle10 : bundleItemsCounter == 3 ? subsDiscountCodes.bundle20 : subsDiscountCodes.bundle30;
-      }
-      let link = `/checkout?myshopify_domain=animalpak-uk.myshopify.com&cart_token=${cart.token}&discount=${discount}`;
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".checkout-cta").attr("href", link);
-      localStorage.setItem("discount", link);
-      // $('.checkout-cta').on('click', function (e) {
-      //   e.preventDefault()
-
-      //   window.location.href = link
-      //   localStorage.setItem('discount', link)
-      // })
-    } else {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".checkout-cta").attr("href", "/checkout");
-    }
-  }
-  changeQuantity(item) {
-    let self = this;
-    let input = jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).closest(".quantity").find(".quantity__input"),
-      quantity = input?.val() || 0,
-      key = input?.attr("id")?.split("quantity-")[1] || jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).attr("id").split("remove-")[1];
-    jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", `updates[${key}]=${quantity}`).done(function () {
-      self.renderCart();
-    });
-  }
-  freeShipping(price, subsription_present) {
-    let amount = +this.progress.data("amount");
-    if (document.querySelector("#bfcm_prices").value == "true") {
-      if (subsription_present) {
-        amount = 0;
-      }
-      let free_gift_amount = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#free_gift_price_bfcm").val()) * 100;
-      if (price >= amount) {
-        if (price < free_gift_amount) {
-          //Free shipping but not reached gift amount
-          this.progress.css("width", price * 100 / free_gift_amount + "%");
-          let gift_price_left = this.formatMoney(free_gift_amount - price);
-          if (subsription_present) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#sub_pre_free_gift").val().replace("{gift_price_left}", gift_price_left));
-          } else {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ot_pre_free_gift").val().replace("{gift_price_left}", gift_price_left));
-          }
-        } else {
-          //Free shipping and reached free gift amount
-          this.progress.css("width", "100%");
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#free_shipping_free_gift").val());
-        }
-        return;
-      }
-      this.progress.css("width", price * 100 / amount + "%");
-      let free_shipping_left = this.formatMoney(amount - price);
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ot_pre_free_ship").val().replace("{shipping_price_left}", free_shipping_left));
-    } else {
-      if (price >= amount) {
-        this.progress.css("width", "100%");
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text("free shipping");
-        return;
-      }
-      this.progress.css("width", price * 100 / amount + "%");
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(`Spend ${this.formatMoney(amount - price)} more for free shipping`);
-    }
-  }
-  formatMoney(price) {
-    return (price / 100).toLocaleString("en-GB", {
-      style: "currency",
-      currency: "GBP"
-    });
-  }
-  removeStack(item, cart, action) {
-    const self = this;
-    let id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).attr("id") || jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).closest(".cart-item__wrap").find(".stack-item__remove").attr("id"),
-      data,
-      quantity = action == "remove" ? 0 : jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).closest(".quantity").find(".quantity__input").val();
-    function getCart(id) {
-      let arr = [],
-        data = "";
-      jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
-        type: "GET",
-        url: "/cart.js",
-        dataType: "json",
-        success: function (cart) {
-          cart.items.forEach(function (item) {
-            if (item.properties?.bundleId == id) {
-              arr.push(item.key);
-            }
-          });
-          if (arr.length) {
-            arr.forEach(function (key, i) {
-              if (i == 0) {
-                data = `updates[${key}]=0`;
-              } else {
-                data += `&updates[${key}]=0`;
-              }
-            });
-            jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
-              getCart(id);
-            });
-          } else {
-            self.renderCart();
-          }
-        }
-      });
-    }
-    cart.items.forEach(function (item) {
-      if (item.properties?.bundleId == id) {
-        if (!data) {
-          data = `updates[${item.key}]=${quantity}`;
-        } else {
-          data += `&updates[${item.key}]=${quantity}`;
-        }
-      }
-    });
-    jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
-      if (quantity) {
-        self.renderCart();
-      } else {
-        getCart(id);
-      }
-    });
-  }
-  selectedProductQuery(handle) {
-    return `query {
-                product(handle: "${handle}") {
-                    handle
-                    title
-                    productType
-                    tags
-                    metafield(key:"short_description_extra" namespace:"custom") {
-                        value
-                    }
-                    featuredImage {
-                        url
-                    }
-                    sellingPlanGroups(first: 10) {
-                        edges {
-                            node {
-                                sellingPlans(first: 10) {
-                                    edges {
-                                        node {
-                                            id
-                                            name
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    variants(first: 100) {
-                        edges {
-                            node {
-                                id
-                                price{
-                                    amount
-                                }
-                                title
-                                availableForSale
-                                quantityAvailable
-                                metafield(key: "variant_color", namespace: "custom") {
-                                  value
-                                }
-                            }
-                        }
-                    }
-                    options {
-                        name
-                        values
-                    }
+  }, {
+    key: "changeVariant",
+    value: function changeVariant() {
+      var self = this;
+      document.querySelectorAll(".cart-item__variants").forEach(function (select) {
+        select.addEventListener("change", function () {
+          var id = this.options[this.selectedIndex].dataset.id;
+          var key = this.dataset.key;
+          jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", "updates[".concat(key, "]=0")).done(function () {
+            var formData = {
+              items: [{
+                id: id,
+                quantity: 1,
+                properties: {
+                  giftItem: true
                 }
-            }`;
-  }
-  selectedProductDrawer(product) {
-    const self = this;
-    let html = `<div class="cart-selected_product__drawer">
-                <div class="selected_product__drawer-inner bg-white relative">
-                <div class="close-product__drawer selected_product__drawer-mobile"></div>
-                <div class="absolute close-product__drawer cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none" aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" fill="none" viewBox="0 0 18 17" style="width: 20px;">
-                        <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="black"></path>
-                    </svg>
-                </div>
-                <div class="bg-white relative selected_product__drawer-mobile-inner">
-                
-                <div class="lg:flex items-center">
-                    <img src="${product.featuredImage?.url}" class="selected_product__img object-contain" /> 
-                    <div>
-                        <div class="selected_product__title font-compacta upperase text-primary font-bold">${product.title}</div>
-                        <div class="selected_product__type mt-1 font-sans text-primary">${product.productType}</div>
-                        <div class="selected_product__price mt-1 font-sans text-primary">$${product.variants.edges[0].node.price.amount}</div>
-                    </div>
-                </div>
-                <div class="cart-purchase-type hidden mt-4 ${!product.sellingPlanGroups.edges.length && "!hidden"}">
-                    <div class="flex items-center">
-                        <input type="radio" name="cart-purchase" id="cart-subscribe" class="hidden cursor-pointer" value="subscribe">
-                        <label for="cart-subscribe"
-                            class="relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer">Subscribe
-                            & save</label>
-                    </div>
-                    <select class="${!product.sellingPlanGroups?.edges.length && "!hidden"} hidden select__select text-[13.9px] mt-3 mb-3 block pl-3 pr-10 py-2 text-base focus:outline-none focus:ring-0  h-[56px] border border-solid border-[#DBDBDB]">`;
-    if (product.sellingPlanGroups?.edges) {
-      product.sellingPlanGroups?.edges[0]?.node?.sellingPlans?.edges.forEach(function (plan) {
-        html += `<option data-id="${self.decodeId(plan.node.id)}">${plan.node.name}</option>`;
-      });
-    }
-    html += `</select>
-                    <div class="flex items-center mt-1">
-                        <input type="radio" name="cart-purchase" id="cart-one-time" class="hidden cursor-pointer" checked value="one-time">
-                        <label for="cart-one-time"
-                            class="relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer">One-time
-                            purchase</label>
-                    </div>
-                </div>
-                <div class="lg:flex lg:space-x-4 mt-6 mb-[18px]">`;
-    product.options.forEach(function (option) {
-      if (option.name !== "Title") {
-        html += `<div class="product-form__input product-form__input--dropdown w-full lg:w-6/12">
-            <div class="product-select"> 
-              <div class="cart-custom-select-block custom-select-arrow relative">
-                <select name="options-${option.name}"
-                  class="option_select select__select  mt-2 lg:mt-1 block w-full pl-3 pr-10 py-2 text-base focus:outline-none focus:ring-0 h-[56px] border border-solid border-[#DBDBDB]">
-                  <option value="" selected disabled hidden>
-                  Choose ${option.name}
-                  </option>`;
-        option.values.forEach(function (value) {
-          // Find the corresponding variant based on the value
-          const variant = product.variants.edges.find(edge => edge.node.title === value);
-
-          // Check if the variant has a metafield
-          const metafieldValue = variant?.node?.metafield?.value || "#fff";
-          html += `<option value="${value}" data-color="${metafieldValue}">
-              <span class="color-circle"></span>
-              ${value}
-            </option>`;
-        });
-        html += `   </select>
-              </div>
-            </div>
-          </div>`;
-      }
-    });
-    html += `</div>
-                <div class="flex mt-4">
-                    <button class="block cart-item_submit tracking-[1px] w-full border border-solid border-yellow hover:bg-white hover:border-primary transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px] ${product.variants.edges.length > 1 && "disabled"}" >${product.variants.edges.length > 1 ? "make selection" : "add"}</button>
-                </div>
-                </div>
-                </div>
-            </div>`;
-    return html;
-  }
-  generateCustomSelect() {
-    const selects = document.querySelectorAll('select[name="options-Flavor"]');
-    selects.forEach(function (select) {
-      const customSelect = document.createElement("div");
-      customSelect.classList.add("cart-custom-select");
-      const selectedValue = document.createElement("div");
-      selectedValue.classList.add("selected-value");
-      selectedValue.textContent = select.options[select.selectedIndex].textContent;
-
-      // Create the color circle span for the selected option
-      const colorCircle = document.createElement("span");
-      colorCircle.classList.add("color-circle");
-      colorCircle.style.backgroundColor = select.options[select.selectedIndex].getAttribute("data-color");
-      selectedValue.appendChild(colorCircle);
-      customSelect.appendChild(selectedValue);
-      const optionsList = document.createElement("ul");
-      optionsList.classList.add("options-list");
-      for (let i = 0; i < select.options.length; i++) {
-        const option = select.options[i];
-        if (option.value !== "") {
-          // Exclude the "Choose Flavor" option
-          const optionItem = document.createElement("li");
-          const colorCircle = document.createElement("span");
-          colorCircle.classList.add("color-circle");
-          colorCircle.style.backgroundColor = option.getAttribute("data-color");
-          optionItem.appendChild(colorCircle);
-          const optionText = document.createElement("span");
-          optionText.textContent = option.textContent.trim();
-          optionItem.appendChild(optionText);
-          optionItem.addEventListener("click", function () {
-            const clickedOption = option;
-            selectedValue.textContent = clickedOption.textContent;
-
-            // Remove the existing colorCircle element
-            const existingColorCircle = selectedValue.querySelector(".color-circle");
-            if (existingColorCircle) {
-              selectedValue.removeChild(existingColorCircle);
-            }
-
-            // Create a new colorCircle element and add it to selectedValue
-            const newColorCircle = document.createElement("span");
-            newColorCircle.classList.add("color-circle");
-            newColorCircle.style.backgroundColor = clickedOption.getAttribute("data-color");
-            selectedValue.appendChild(newColorCircle);
-            select.selectedIndex = i;
-            customSelect.classList.remove("open");
-
-            // Manually trigger the change event on the original select element
-            const changeEvent = new Event("change", {
-              bubbles: true
-            });
-            select.dispatchEvent(changeEvent);
-          });
-          optionsList.appendChild(optionItem);
-        }
-      }
-      customSelect.appendChild(optionsList);
-      selectedValue.addEventListener("click", function () {
-        customSelect.classList.toggle("open");
-      });
-
-      // Insert the custom select before the original select
-      select.parentNode.insertBefore(customSelect, select);
-
-      // Hide the original select
-      select.style.display = "none";
-    });
-  }
-  decodeId(id) {
-    // const decoded = atob(id)
-    const shopifyId = id.split("/").pop();
-    return parseInt(shopifyId);
-  }
-  recommendedProducts() {
-    const self = this;
-    var CartSlider = new swiper__WEBPACK_IMPORTED_MODULE_1__.Swiper(document.querySelector(".recommended-products-slider"), {
-      loop: true,
-      spaceBetween: 40,
-      slidesPerView: 1.3
-    });
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("click", function (e) {
-      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass("recommended-add")) {
-        let handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).data("handle");
-        let properties = {};
-        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item__wrap").length) {
-          properties.isBundleProduct = true;
-          properties.enableDiscount = true;
-        }
-        fetch(self.graphUrl, {
-          async: true,
-          crossDomain: true,
-          method: "POST",
-          headers: {
-            "X-Shopify-Storefront-Access-Token": self.accessToken,
-            "Content-Type": "application/graphql"
-          },
-          body: self.selectedProductQuery(handle)
-        }).then(res => res.json()).then(res => {
-          let product = res.data.product;
-          let variants = product.variants.edges;
-          console.log(product);
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").append(self.selectedProductDrawer(product));
-          self.generateCustomSelect();
-          jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
-            type: "GET",
-            url: "/cart.js",
-            dataType: "json",
-            success: function (cart) {
-              let bundleItems = cart.items.filter(item => item?.properties?.isBundleProduct && item?.selling_plan_allocation).length;
-              if (bundleItems || cart.items.length == 1 && cart.items.filter(item => item?.selling_plan_allocation).length) {
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type").removeClass("hidden");
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()("input#cart-subscribe").attr("checked", true);
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").removeClass("hidden");
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()("#cart-one-time").parent().addClass("hidden");
-              } else {
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type").addClass("hidden");
-              }
-              if (!cart.items.length) {
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type").removeClass("hidden");
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()("#cart-one-time").parent().removeClass("hidden");
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").addClass("hidden");
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()("input#cart-one-time").attr("checked", true);
-              }
-            }
-          });
-          setTimeout(() => {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".selected_product__drawer-inner").addClass("active");
-          });
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type input").on("change", function () {
-            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() == "subscribe") {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").removeClass("hidden");
-            } else {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").addClass("hidden");
-            }
-          });
-          let selectedvariant = variants.filter(variant => variant.node.availableForSale)[0]?.node;
-          if (!selectedvariant) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").text("sold out");
-          }
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".quantity__input").prop("max", selectedvariant.quantityAvailable);
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".product-select select").on("change", function () {
-            let options = variants;
-            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select option[value=""]:selected').length) {
-              return;
-            }
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".product-select select").each(function (i) {
-              let option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find("option:selected").val();
-              options = options.filter(variant => variant.node.title.split("/")[i].trim() == option);
-              selectedvariant = options[0].node;
-            });
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").removeClass("disabled");
-            if (!selectedvariant.availableForSale) {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").addClass("disabled");
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").text("sold out");
-              return;
-            }
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").removeClass("disabled");
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").text("add");
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".quantity__input").prop("max", selectedvariant.quantityAvailable);
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".selected_product__price").text(`$${selectedvariant.price.amount}`);
-          });
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").on("click", function () {
-            let id = self.decodeId(selectedvariant.id);
-            let obj = {
-              id: id,
-              quantity: 1,
-              properties: {}
-            };
-            obj.properties.enableDiscount = true;
-            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()("#cart-subscribe").is(":checked")) {
-              obj.selling_plan = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select option:selected").data("id");
-              obj.properties.subscription = true;
-            }
-            let formData = {
-              items: [obj]
+              }]
             };
             fetch(window.Shopify.routes.root + "cart/add.js", {
               method: "POST",
@@ -2936,32 +2855,845 @@ class SideCart extends HTMLElement {
                 "Content-Type": "application/json"
               },
               body: JSON.stringify(formData)
-            }).then(response => {
-              let sidecart = document.querySelector("side-cart");
-              sidecart?.renderCart();
-              removeDrawer();
-            }).catch(error => {
+            }).then(function (response) {
+              self.renderCart();
+            })["catch"](function (error) {
               console.error("Error:", error);
             });
           });
-
-          // remove drawer
-          function removeDrawer() {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".selected_product__drawer-inner").removeClass("active");
-            setTimeout(() => {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-selected_product__drawer").remove();
-            }, 300);
+        });
+      });
+    }
+  }, {
+    key: "renderCart",
+    value: function renderCart() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+        type: "GET",
+        url: "/cart.js",
+        dataType: "json",
+        success: function success(cart) {
+          var bundleWidget = self.cartWidget(cart);
+          if (bundleWidget === false) {
+            return;
           }
-          document.addEventListener("click", function (e) {
-            if (e.target.classList.contains("cart-selected_product__drawer") || e.target.classList.contains("close-product__drawer")) {
-              removeDrawer();
+          self.giftProducts(cart);
+          var bundleItems = cart.items.filter(function (item) {
+            var _item$properties19;
+            return (item === null || item === void 0 || (_item$properties19 = item.properties) === null || _item$properties19 === void 0 ? void 0 : _item$properties19.isBundleProduct) && !(item !== null && item !== void 0 && item.selling_plan_allocation);
+          });
+          var subsBundleItems = cart.items.filter(function (item) {
+            var _item$properties20;
+            return (item === null || item === void 0 || (_item$properties20 = item.properties) === null || _item$properties20 === void 0 ? void 0 : _item$properties20.isBundleProduct) && (item === null || item === void 0 ? void 0 : item.selling_plan_allocation);
+          });
+          var discount,
+            oneTimeCount = 0,
+            subsCount = 0;
+          bundleItems.forEach(function (item) {
+            oneTimeCount += item.quantity;
+          });
+          subsBundleItems.forEach(function (item) {
+            subsCount += item.quantity;
+          });
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-items").empty();
+          cart.items.forEach(function (item) {
+            var _item$properties21, _item$properties22, _item$properties23, _item$properties24;
+            if (item !== null && item !== void 0 && (_item$properties21 = item.properties) !== null && _item$properties21 !== void 0 && _item$properties21.isBundleProduct && !(item !== null && item !== void 0 && item.selling_plan_allocation)) {
+              discount = oneTimeCount == 2 ? 10 : oneTimeCount == 3 ? 15 : oneTimeCount >= 4 ? 20 : null;
+            }
+            if (item !== null && item !== void 0 && (_item$properties22 = item.properties) !== null && _item$properties22 !== void 0 && _item$properties22.isBundleProduct && item !== null && item !== void 0 && item.selling_plan_allocation) {
+              discount = subsCount == 2 ? 5 : subsCount == 3 ? 10 : subsCount >= 4 ? 15 : null;
+            }
+            if (!((_item$properties23 = item.properties) !== null && _item$properties23 !== void 0 && _item$properties23.isStackProduct) && !((_item$properties24 = item.properties) !== null && _item$properties24 !== void 0 && _item$properties24.giftItem)) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-items").append(self.itemTemplate(item, discount, cart));
+            }
+          });
+          var giftItems = cart.items.filter(function (item) {
+            var _item$properties25;
+            return (_item$properties25 = item.properties) === null || _item$properties25 === void 0 ? void 0 : _item$properties25.giftItem;
+          });
+          giftItems.sort(function (a, b) {
+            var titleA = a.title.toLowerCase();
+            var titleB = b.title.toLowerCase();
+            return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+          });
+          giftItems.forEach(function (item) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-items").append(self.itemTemplate(item, null, cart));
+          });
+          self.changeVariant();
+
+          // free shipping progress bar
+          if (document.querySelector("#bfcm_prices").value == "true") {
+            self.freeShipping(cart.total_price, cart.items.filter(function (item) {
+              return item === null || item === void 0 ? void 0 : item.selling_plan_allocation;
+            }).length);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__subs-shipping").addClass("hidden");
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").removeClass("hidden");
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".progress-wrap").removeClass("hidden");
+          } else {
+            self.freeShipping(cart.total_price);
+            if (cart.items.filter(function (item) {
+              return item === null || item === void 0 ? void 0 : item.selling_plan_allocation;
+            }).length) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__subs-shipping").removeClass("hidden");
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").addClass("hidden");
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".progress-wrap").addClass("hidden");
+            } else {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__subs-shipping").addClass("hidden");
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").removeClass("hidden");
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".progress-wrap").removeClass("hidden");
+            }
+          }
+
+          // cart total price
+          var totalPrice = 0;
+          cart.items.forEach(function (item) {
+            var _item$properties26, _item$properties27, _item$properties28;
+            var price = item.price;
+            if (item !== null && item !== void 0 && (_item$properties26 = item.properties) !== null && _item$properties26 !== void 0 && _item$properties26.isBundleProduct && !(item !== null && item !== void 0 && item.selling_plan_allocation)) {
+              discount = oneTimeCount == 2 ? 10 : oneTimeCount == 3 ? 15 : oneTimeCount >= 4 ? 20 : null;
+              price = item.price - discount * item.price / 100;
+            }
+            if (item !== null && item !== void 0 && (_item$properties27 = item.properties) !== null && _item$properties27 !== void 0 && _item$properties27.isBundleProduct && item !== null && item !== void 0 && item.selling_plan_allocation) {
+              discount = subsCount == 2 ? 5 : subsCount == 3 ? 10 : subsCount >= 4 ? 15 : null;
+              price = item.price - discount * item.price / 100;
+            }
+            if (!(item !== null && item !== void 0 && (_item$properties28 = item.properties) !== null && _item$properties28 !== void 0 && _item$properties28.giftItem)) {
+              totalPrice += price * item.quantity;
+            }
+          });
+          totalPrice = Math.ceil(totalPrice);
+          self.totalPrice.text(self.formatMoney(totalPrice));
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".side-cart__clearpay").text(self.formatMoney(totalPrice / 4));
+
+          // cart total amount
+          self.totalAmount.text(cart.item_count);
+
+          //set cart count
+          document.querySelector(".cart-count").innerText = cart.item_count;
+
+          // adjust item quantity
+
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item__adjust-qty").on("click", function () {
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass("stack-quantity")) {
+              self.removeStack(this, cart, "adjust");
+            } else {
+              self.changeQuantity(this);
+            }
+          });
+
+          // checkout redirect
+          self.checkoutRedirect(cart);
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".stack-item__remove").on("click", function () {
+            self.removeStack(this, cart, "remove");
+          });
+
+          // remove gift
+          if (cart.items.length == 1 && cart.items[0].properties["Gift product"]) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/clear.js").then(function () {
+              self.renderCart();
+            });
+          }
+        }
+      });
+    }
+  }, {
+    key: "cartWidget",
+    value: function cartWidget(cart) {
+      var _allItems2;
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".widget-title").text(cart.item_count == 0 ? "recommended products" : "ADD AN ITEM & SAVE");
+
+      // check for added bundle via bundle page
+      var bundleSubs = cart.items.filter(function (item) {
+        var _item$properties29, _item$properties30;
+        return (item === null || item === void 0 || (_item$properties29 = item.properties) === null || _item$properties29 === void 0 ? void 0 : _item$properties29.bundleData) && (item === null || item === void 0 || (_item$properties30 = item.properties) === null || _item$properties30 === void 0 ? void 0 : _item$properties30.subscription);
+      }).length;
+      var recommendedSubs = cart.items.filter(function (item) {
+        var _item$properties31, _item$properties32;
+        return (item === null || item === void 0 || (_item$properties31 = item.properties) === null || _item$properties31 === void 0 ? void 0 : _item$properties31.enableDiscount) && (item === null || item === void 0 || (_item$properties32 = item.properties) === null || _item$properties32 === void 0 ? void 0 : _item$properties32.subscription);
+      }).length;
+      if (cart.items.filter(function (item) {
+        var _item$properties33;
+        return item === null || item === void 0 || (_item$properties33 = item.properties) === null || _item$properties33 === void 0 ? void 0 : _item$properties33.bundleData;
+      }).length && cart.items.filter(function (item) {
+        var _item$properties34;
+        return item === null || item === void 0 || (_item$properties34 = item.properties) === null || _item$properties34 === void 0 ? void 0 : _item$properties34.enableDiscount;
+      }).length && !!bundleSubs !== !!recommendedSubs) {
+        var data = "";
+        var _allItems = cart.items.filter(function (item) {
+          var _item$properties35;
+          return (_item$properties35 = item.properties) === null || _item$properties35 === void 0 ? void 0 : _item$properties35.enableDiscount;
+        });
+        _allItems.forEach(function (item, i) {
+          if (i == 0) {
+            data = "updates[".concat(item.key, "]=0");
+          } else {
+            data += "&updates[".concat(item.key, "]=0");
+          }
+        });
+        jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
+          var updatedItems = [];
+          _allItems.forEach(function (item) {
+            delete item.properties["isBundleProduct"];
+            delete item.properties["enableDiscount"];
+            var itemObj = {
+              id: item.id,
+              quantity: item.quantity,
+              properties: item.properties
+            };
+            if (item.selling_plan_allocation) {
+              itemObj.selling_plan = item.selling_plan_allocation.selling_plan.id;
+            }
+            updatedItems.push(itemObj);
+          });
+          var formData = {
+            items: updatedItems
+          };
+          fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+          }).then(function (response) {
+            var sidecart = document.querySelector("side-cart");
+            sidecart === null || sidecart === void 0 || sidecart.renderCart();
+          })["catch"](function (error) {
+            console.error("Error:", error);
+          });
+        });
+        return false;
+      }
+
+      // add bundle discount
+      var hasRecommended = cart.items.filter(function (item) {
+        var _item$properties36, _item$properties37;
+        return ((_item$properties36 = item.properties) === null || _item$properties36 === void 0 ? void 0 : _item$properties36.enableDiscount) || ((_item$properties37 = item.properties) === null || _item$properties37 === void 0 ? void 0 : _item$properties37._quiz_kit_id);
+      }).length;
+      var subsDiscount = cart.items.filter(function (item) {
+        var _item$properties38, _item$properties39;
+        return (item === null || item === void 0 || (_item$properties38 = item.properties) === null || _item$properties38 === void 0 ? void 0 : _item$properties38.isBundleProduct) && (item === null || item === void 0 || (_item$properties39 = item.properties) === null || _item$properties39 === void 0 ? void 0 : _item$properties39.subscription);
+      }).length;
+      var oneTimeDiscount = cart.items.filter(function (item) {
+        var _item$properties40, _item$properties41;
+        return (item === null || item === void 0 || (_item$properties40 = item.properties) === null || _item$properties40 === void 0 ? void 0 : _item$properties40.isBundleProduct) && !(item !== null && item !== void 0 && (_item$properties41 = item.properties) !== null && _item$properties41 !== void 0 && _item$properties41.subscription);
+      }).length;
+      var allItems = null;
+
+      // one-time items discount
+      if (!subsDiscount && (cart.items.filter(function (item) {
+        var _item$properties42;
+        return !item.selling_plan_allocation && !((_item$properties42 = item.properties) !== null && _item$properties42 !== void 0 && _item$properties42.giftItem);
+      }).length > 1 || cart.items.filter(function (item) {
+        var _item$properties43;
+        return !item.selling_plan_allocation && !((_item$properties43 = item.properties) !== null && _item$properties43 !== void 0 && _item$properties43.giftItem) && item.quantity > 1;
+      }).length)) {
+        allItems = cart.items.filter(function (item) {
+          var _item$properties44, _item$properties45, _item$properties46, _item$properties47, _item$properties48;
+          return !((_item$properties44 = item.properties) !== null && _item$properties44 !== void 0 && _item$properties44.isBundleProduct) && !((_item$properties45 = item.properties) !== null && _item$properties45 !== void 0 && _item$properties45.gear) && !((_item$properties46 = item.properties) !== null && _item$properties46 !== void 0 && _item$properties46.giftItem) && !item.selling_plan_allocation && !((_item$properties47 = item.properties) !== null && _item$properties47 !== void 0 && _item$properties47.isStackParent) && !((_item$properties48 = item.properties) !== null && _item$properties48 !== void 0 && _item$properties48.isStackProduct);
+        });
+      }
+
+      // subs items discount
+      if (!oneTimeDiscount && (cart.items.filter(function (item) {
+        var _item$properties49;
+        return item.selling_plan_allocation && !((_item$properties49 = item.properties) !== null && _item$properties49 !== void 0 && _item$properties49.giftItem);
+      }).length > 1 || cart.items.filter(function (item) {
+        var _item$properties50;
+        return item.selling_plan_allocation && !((_item$properties50 = item.properties) !== null && _item$properties50 !== void 0 && _item$properties50.giftItem) && item.quantity > 1;
+      }).length)) {
+        allItems = cart.items.filter(function (item) {
+          var _item$properties51, _item$properties52, _item$properties53, _item$properties54, _item$properties55;
+          return !((_item$properties51 = item.properties) !== null && _item$properties51 !== void 0 && _item$properties51.isBundleProduct) && !((_item$properties52 = item.properties) !== null && _item$properties52 !== void 0 && _item$properties52.gear) && !((_item$properties53 = item.properties) !== null && _item$properties53 !== void 0 && _item$properties53.giftItem) && item.selling_plan_allocation && !((_item$properties54 = item.properties) !== null && _item$properties54 !== void 0 && _item$properties54.isStackParent) && !((_item$properties55 = item.properties) !== null && _item$properties55 !== void 0 && _item$properties55.isStackProduct);
+        });
+      }
+      if (hasRecommended && (_allItems2 = allItems) !== null && _allItems2 !== void 0 && _allItems2.length) {
+        var _data = "";
+        allItems.forEach(function (item, i) {
+          if (i == 0) {
+            _data = "updates[".concat(item.key, "]=0");
+          } else {
+            _data += "&updates[".concat(item.key, "]=0");
+          }
+        });
+        jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", _data).done(function () {
+          var updatedItems = [];
+          allItems.forEach(function (item) {
+            item.properties.isBundleProduct = true;
+            item.properties.enableDiscount = true;
+            var itemObj = {
+              id: item.id,
+              quantity: item.quantity,
+              properties: item.properties
+            };
+            if (item.selling_plan_allocation) {
+              itemObj.selling_plan = item.selling_plan_allocation.selling_plan.id;
+              itemObj.properties.subscription = true;
+            }
+            updatedItems.push(itemObj);
+          });
+          var formData = {
+            items: updatedItems
+          };
+          fetch(window.Shopify.routes.root + "cart/add.js", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+          }).then(function (response) {
+            var sidecart = document.querySelector("side-cart");
+            sidecart === null || sidecart === void 0 || sidecart.renderCart();
+          })["catch"](function (error) {
+            console.error("Error:", error);
+          });
+        });
+        return false;
+      }
+    }
+  }, {
+    key: "giftProducts",
+    value: function giftProducts(cart) {
+      var self = this;
+      var products = window.giftProducts;
+      var addItems = [];
+      var removeItems = [];
+      var item_count = cart.items.filter(function (item) {
+        var _item$properties56;
+        return !((_item$properties56 = item.properties) !== null && _item$properties56 !== void 0 && _item$properties56.giftItem);
+      }).length;
+      products.forEach(function (gift) {
+        if (gift.available) {
+          var itemInCart = cart.items.filter(function (item) {
+            var _item$properties57;
+            return item.handle == gift.handle && ((_item$properties57 = item.properties) === null || _item$properties57 === void 0 ? void 0 : _item$properties57.giftItem);
+          });
+          var subPresent = cart.items.filter(function (item) {
+            return item.selling_plan_allocation && item.selling_plan_allocation.selling_plan.id;
+          });
+          if (cart.total_price / 100 >= gift.orderValue && !itemInCart.length && item_count > 0) {
+            if (gift.subscription_only && subPresent.length) {
+              addItems.push(gift.id);
+            } else if (!gift.subscription_only) {
+              addItems.push(gift.id);
+            }
+          }
+          if (cart.total_price / 100 < gift.orderValue && itemInCart.length && item_count > 0) {
+            var _cart$items$filter$;
+            removeItems.push((_cart$items$filter$ = cart.items.filter(function (item) {
+              var _item$properties58;
+              return item.handle == gift.handle && ((_item$properties58 = item.properties) === null || _item$properties58 === void 0 ? void 0 : _item$properties58.giftItem);
+            })[0]) === null || _cart$items$filter$ === void 0 ? void 0 : _cart$items$filter$.key);
+          }
+          if (item_count == 0 && itemInCart.length) {
+            var _cart$items$filter$2;
+            removeItems.push((_cart$items$filter$2 = cart.items.filter(function (item) {
+              var _item$properties59;
+              return item.handle == gift.handle && ((_item$properties59 = item.properties) === null || _item$properties59 === void 0 ? void 0 : _item$properties59.giftItem);
+            })[0]) === null || _cart$items$filter$2 === void 0 ? void 0 : _cart$items$filter$2.key);
+          }
+          if (gift.subscription_only && subPresent.length <= 0) {
+            var _cart$items$filter$3;
+            removeItems.push((_cart$items$filter$3 = cart.items.filter(function (item) {
+              var _item$properties60;
+              return item.handle == gift.handle && ((_item$properties60 = item.properties) === null || _item$properties60 === void 0 ? void 0 : _item$properties60.giftItem);
+            })[0]) === null || _cart$items$filter$3 === void 0 ? void 0 : _cart$items$filter$3.key);
+          }
+        }
+      });
+      cart.items.forEach(function (item) {
+        var _item$properties61;
+        if ((_item$properties61 = item.properties) !== null && _item$properties61 !== void 0 && _item$properties61.giftItem && !products.filter(function (product) {
+          return product.handle == item.handle;
+        }).length) {
+          removeItems.push(item.key);
+        }
+      });
+      var addGifts = /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
+          var response;
+          return _regeneratorRuntime().wrap(function _callee$(_context) {
+            while (1) switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return fetch("/cart/add.js", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({
+                    items: data
+                  })
+                });
+              case 3:
+                response = _context.sent;
+                self.renderCart();
+                _context.next = 10;
+                break;
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.error(_context.t0);
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }, _callee, null, [[0, 7]]);
+        }));
+        return function addGifts(_x) {
+          return _ref.apply(this, arguments);
+        };
+      }();
+      if (addItems.length) {
+        var data = [];
+        addItems.forEach(function (id) {
+          data.push({
+            id: id,
+            quantity: 1,
+            properties: {
+              giftItem: true
             }
           });
         });
+        addGifts(data);
+        return;
       }
-    });
-  }
-}
+
+      // remove items
+      if (removeItems.length) {
+        var _data2;
+        removeItems.forEach(function (key) {
+          if (!_data2) {
+            _data2 = "updates[".concat(key, "]=0");
+          } else {
+            _data2 += "&updates[".concat(key, "]=0");
+          }
+        });
+        jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", _data2).done(function () {
+          self.renderCart();
+        });
+      }
+    }
+  }, {
+    key: "checkoutRedirect",
+    value: function checkoutRedirect(cart) {
+      var bundleItems = cart.items.filter(function (item) {
+        var _item$properties62;
+        return (item === null || item === void 0 || (_item$properties62 = item.properties) === null || _item$properties62 === void 0 ? void 0 : _item$properties62.isBundleProduct) && (item === null || item === void 0 ? void 0 : item.selling_plan_allocation);
+      });
+      var bundleItemsCounter = 0;
+      var isSubscription = cart.items.filter(function (item) {
+        var _item$properties63;
+        return (item === null || item === void 0 || (_item$properties63 = item.properties) === null || _item$properties63 === void 0 ? void 0 : _item$properties63.isBundleProduct) && (item === null || item === void 0 ? void 0 : item.selling_plan_allocation);
+      }).length;
+      bundleItems.forEach(function (item) {
+        bundleItemsCounter += item.quantity;
+      });
+      localStorage.removeItem("discount");
+      if (bundleItemsCounter && bundleItemsCounter >= 2 && isSubscription) {
+        var discount;
+        if (isSubscription) {
+          discount = bundleItemsCounter == 2 ? subsDiscountCodes.bundle10 : bundleItemsCounter == 3 ? subsDiscountCodes.bundle20 : subsDiscountCodes.bundle30;
+        }
+        var link = "/checkout?myshopify_domain=animalpak-uk.myshopify.com&cart_token=".concat(cart.token, "&discount=").concat(discount);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".checkout-cta").attr("href", link);
+        localStorage.setItem("discount", link);
+        // $('.checkout-cta').on('click', function (e) {
+        //   e.preventDefault()
+
+        //   window.location.href = link
+        //   localStorage.setItem('discount', link)
+        // })
+      } else {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".checkout-cta").attr("href", "/checkout");
+      }
+    }
+  }, {
+    key: "changeQuantity",
+    value: function changeQuantity(item) {
+      var _input$attr;
+      var self = this;
+      var input = jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).closest(".quantity").find(".quantity__input"),
+        quantity = (input === null || input === void 0 ? void 0 : input.val()) || 0,
+        key = (input === null || input === void 0 || (_input$attr = input.attr("id")) === null || _input$attr === void 0 ? void 0 : _input$attr.split("quantity-")[1]) || jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).attr("id").split("remove-")[1];
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", "updates[".concat(key, "]=").concat(quantity)).done(function () {
+        self.renderCart();
+      });
+    }
+  }, {
+    key: "freeShipping",
+    value: function freeShipping(price, subsription_present) {
+      var amount = +this.progress.data("amount");
+      if (document.querySelector("#bfcm_prices").value == "true") {
+        if (subsription_present) {
+          amount = 0;
+        }
+        var free_gift_amount = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#free_gift_price_bfcm").val()) * 100;
+        if (price >= amount) {
+          if (price < free_gift_amount) {
+            //Free shipping but not reached gift amount
+            this.progress.css("width", price * 100 / free_gift_amount + "%");
+            var gift_price_left = this.formatMoney(free_gift_amount - price);
+            if (subsription_present) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#sub_pre_free_gift").val().replace("{gift_price_left}", gift_price_left));
+            } else {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ot_pre_free_gift").val().replace("{gift_price_left}", gift_price_left));
+            }
+          } else {
+            //Free shipping and reached free gift amount
+            this.progress.css("width", "100%");
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#free_shipping_free_gift").val());
+          }
+          return;
+        }
+        this.progress.css("width", price * 100 / amount + "%");
+        var free_shipping_left = this.formatMoney(amount - price);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ot_pre_free_ship").val().replace("{shipping_price_left}", free_shipping_left));
+      } else {
+        if (price >= amount) {
+          this.progress.css("width", "100%");
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text("free shipping");
+          return;
+        }
+        this.progress.css("width", price * 100 / amount + "%");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart__free-shipping").text("Spend ".concat(this.formatMoney(amount - price), " more for free shipping"));
+      }
+    }
+  }, {
+    key: "formatMoney",
+    value: function formatMoney(price) {
+      return (price / 100).toLocaleString("en-GB", {
+        style: "currency",
+        currency: "GBP"
+      });
+    }
+  }, {
+    key: "removeStack",
+    value: function removeStack(item, cart, action) {
+      var self = this;
+      var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).attr("id") || jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).closest(".cart-item__wrap").find(".stack-item__remove").attr("id"),
+        data,
+        quantity = action == "remove" ? 0 : jquery__WEBPACK_IMPORTED_MODULE_0___default()(item).closest(".quantity").find(".quantity__input").val();
+      function getCart(id) {
+        var arr = [],
+          data = "";
+        jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+          type: "GET",
+          url: "/cart.js",
+          dataType: "json",
+          success: function success(cart) {
+            cart.items.forEach(function (item) {
+              var _item$properties64;
+              if (((_item$properties64 = item.properties) === null || _item$properties64 === void 0 ? void 0 : _item$properties64.bundleId) == id) {
+                arr.push(item.key);
+              }
+            });
+            if (arr.length) {
+              arr.forEach(function (key, i) {
+                if (i == 0) {
+                  data = "updates[".concat(key, "]=0");
+                } else {
+                  data += "&updates[".concat(key, "]=0");
+                }
+              });
+              jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
+                getCart(id);
+              });
+            } else {
+              self.renderCart();
+            }
+          }
+        });
+      }
+      cart.items.forEach(function (item) {
+        var _item$properties65;
+        if (((_item$properties65 = item.properties) === null || _item$properties65 === void 0 ? void 0 : _item$properties65.bundleId) == id) {
+          if (!data) {
+            data = "updates[".concat(item.key, "]=").concat(quantity);
+          } else {
+            data += "&updates[".concat(item.key, "]=").concat(quantity);
+          }
+        }
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().post("/cart/update.js", data).done(function () {
+        if (quantity) {
+          self.renderCart();
+        } else {
+          getCart(id);
+        }
+      });
+    }
+  }, {
+    key: "selectedProductQuery",
+    value: function selectedProductQuery(handle) {
+      return "query {\n                product(handle: \"".concat(handle, "\") {\n                    handle\n                    title\n                    productType\n                    tags\n                    metafield(key:\"short_description_extra\" namespace:\"custom\") {\n                        value\n                    }\n                    featuredImage {\n                        url\n                    }\n                    sellingPlanGroups(first: 10) {\n                        edges {\n                            node {\n                                sellingPlans(first: 10) {\n                                    edges {\n                                        node {\n                                            id\n                                            name\n                                        }\n                                    }\n                                }\n                            }\n                        }\n                    }\n                    variants(first: 100) {\n                        edges {\n                            node {\n                                id\n                                price{\n                                    amount\n                                }\n                                title\n                                availableForSale\n                                quantityAvailable\n                                metafield(key: \"variant_color\", namespace: \"custom\") {\n                                  value\n                                }\n                            }\n                        }\n                    }\n                    options {\n                        name\n                        values\n                    }\n                }\n            }");
+    }
+  }, {
+    key: "selectedProductDrawer",
+    value: function selectedProductDrawer(product) {
+      var _product$featuredImag, _product$sellingPlanG, _product$sellingPlanG2;
+      var self = this;
+      var html = "<div class=\"cart-selected_product__drawer\">\n                <div class=\"selected_product__drawer-inner bg-white relative\">\n                <div class=\"close-product__drawer selected_product__drawer-mobile\"></div>\n                <div class=\"absolute close-product__drawer cursor-pointer\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"pointer-events-none\" aria-hidden=\"true\" focusable=\"false\" role=\"presentation\" class=\"icon icon-close\" fill=\"none\" viewBox=\"0 0 18 17\" style=\"width: 20px;\">\n                        <path d=\"M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z\" fill=\"black\"></path>\n                    </svg>\n                </div>\n                <div class=\"bg-white relative selected_product__drawer-mobile-inner\">\n                \n                <div class=\"lg:flex items-center\">\n                    <img src=\"".concat((_product$featuredImag = product.featuredImage) === null || _product$featuredImag === void 0 ? void 0 : _product$featuredImag.url, "\" class=\"selected_product__img object-contain\" /> \n                    <div>\n                        <div class=\"selected_product__title font-compacta upperase text-primary font-bold\">").concat(product.title, "</div>\n                        <div class=\"selected_product__type mt-1 font-sans text-primary\">").concat(product.productType, "</div>\n                        <div class=\"selected_product__price mt-1 font-sans text-primary\">$").concat(product.variants.edges[0].node.price.amount, "</div>\n                    </div>\n                </div>\n                <div class=\"cart-purchase-type hidden mt-4 ").concat(!product.sellingPlanGroups.edges.length && "!hidden", "\">\n                    <div class=\"flex items-center\">\n                        <input type=\"radio\" name=\"cart-purchase\" id=\"cart-subscribe\" class=\"hidden cursor-pointer\" value=\"subscribe\">\n                        <label for=\"cart-subscribe\"\n                            class=\"relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer\">Subscribe\n                            & save</label>\n                    </div>\n                    <select class=\"").concat(!((_product$sellingPlanG = product.sellingPlanGroups) !== null && _product$sellingPlanG !== void 0 && _product$sellingPlanG.edges.length) && "!hidden", " hidden select__select text-[13.9px] mt-3 mb-3 block pl-3 pr-10 py-2 text-base focus:outline-none focus:ring-0  h-[56px] border border-solid border-[#DBDBDB]\">");
+      if ((_product$sellingPlanG2 = product.sellingPlanGroups) !== null && _product$sellingPlanG2 !== void 0 && _product$sellingPlanG2.edges) {
+        var _product$sellingPlanG3;
+        (_product$sellingPlanG3 = product.sellingPlanGroups) === null || _product$sellingPlanG3 === void 0 || (_product$sellingPlanG3 = _product$sellingPlanG3.edges[0]) === null || _product$sellingPlanG3 === void 0 || (_product$sellingPlanG3 = _product$sellingPlanG3.node) === null || _product$sellingPlanG3 === void 0 || (_product$sellingPlanG3 = _product$sellingPlanG3.sellingPlans) === null || _product$sellingPlanG3 === void 0 || _product$sellingPlanG3.edges.forEach(function (plan) {
+          html += "<option data-id=\"".concat(self.decodeId(plan.node.id), "\">").concat(plan.node.name, "</option>");
+        });
+      }
+      html += "</select>\n                    <div class=\"flex items-center mt-1\">\n                        <input type=\"radio\" name=\"cart-purchase\" id=\"cart-one-time\" class=\"hidden cursor-pointer\" checked value=\"one-time\">\n                        <label for=\"cart-one-time\"\n                            class=\"relative flex items-center text-[13.91px] text-primary capitalize font-sans font-semibold leading-[22.26px] cursor-pointer\">One-time\n                            purchase</label>\n                    </div>\n                </div>\n                <div class=\"lg:flex lg:space-x-4 mt-6 mb-[18px]\">";
+      product.options.forEach(function (option) {
+        if (option.name !== "Title") {
+          html += "<div class=\"product-form__input product-form__input--dropdown w-full lg:w-6/12\">\n            <div class=\"product-select\"> \n              <div class=\"cart-custom-select-block custom-select-arrow relative\">\n                <select name=\"options-".concat(option.name, "\"\n                  class=\"option_select select__select  mt-2 lg:mt-1 block w-full pl-3 pr-10 py-2 text-base focus:outline-none focus:ring-0 h-[56px] border border-solid border-[#DBDBDB]\">\n                  <option value=\"\" selected disabled hidden>\n                  Choose ").concat(option.name, "\n                  </option>");
+          option.values.forEach(function (value) {
+            var _variant$node;
+            // Find the corresponding variant based on the value
+            var variant = product.variants.edges.find(function (edge) {
+              return edge.node.title === value;
+            });
+
+            // Check if the variant has a metafield
+            var metafieldValue = (variant === null || variant === void 0 || (_variant$node = variant.node) === null || _variant$node === void 0 || (_variant$node = _variant$node.metafield) === null || _variant$node === void 0 ? void 0 : _variant$node.value) || "#fff";
+            html += "<option value=\"".concat(value, "\" data-color=\"").concat(metafieldValue, "\">\n              <span class=\"color-circle\"></span>\n              ").concat(value, "\n            </option>");
+          });
+          html += "   </select>\n              </div>\n            </div>\n          </div>";
+        }
+      });
+      html += "</div>\n                <div class=\"flex mt-4\">\n                    <button class=\"block cart-item_submit tracking-[1px] w-full border border-solid border-yellow hover:bg-white hover:border-primary transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px] ".concat(product.variants.edges.length > 1 && "disabled", "\" >").concat(product.variants.edges.length > 1 ? "make selection" : "add", "</button>\n                </div>\n                </div>\n                </div>\n            </div>");
+      return html;
+    }
+  }, {
+    key: "generateCustomSelect",
+    value: function generateCustomSelect() {
+      var selects = document.querySelectorAll('select[name="options-Flavor"]');
+      selects.forEach(function (select) {
+        var customSelect = document.createElement("div");
+        customSelect.classList.add("cart-custom-select");
+        var selectedValue = document.createElement("div");
+        selectedValue.classList.add("selected-value");
+        selectedValue.textContent = select.options[select.selectedIndex].textContent;
+
+        // Create the color circle span for the selected option
+        var colorCircle = document.createElement("span");
+        colorCircle.classList.add("color-circle");
+        colorCircle.style.backgroundColor = select.options[select.selectedIndex].getAttribute("data-color");
+        selectedValue.appendChild(colorCircle);
+        customSelect.appendChild(selectedValue);
+        var optionsList = document.createElement("ul");
+        optionsList.classList.add("options-list");
+        var _loop = function _loop(i) {
+          var option = select.options[i];
+          if (option.value !== "") {
+            // Exclude the "Choose Flavor" option
+            var optionItem = document.createElement("li");
+            var _colorCircle = document.createElement("span");
+            _colorCircle.classList.add("color-circle");
+            _colorCircle.style.backgroundColor = option.getAttribute("data-color");
+            optionItem.appendChild(_colorCircle);
+            var optionText = document.createElement("span");
+            optionText.textContent = option.textContent.trim();
+            optionItem.appendChild(optionText);
+            optionItem.addEventListener("click", function () {
+              var clickedOption = option;
+              selectedValue.textContent = clickedOption.textContent;
+
+              // Remove the existing colorCircle element
+              var existingColorCircle = selectedValue.querySelector(".color-circle");
+              if (existingColorCircle) {
+                selectedValue.removeChild(existingColorCircle);
+              }
+
+              // Create a new colorCircle element and add it to selectedValue
+              var newColorCircle = document.createElement("span");
+              newColorCircle.classList.add("color-circle");
+              newColorCircle.style.backgroundColor = clickedOption.getAttribute("data-color");
+              selectedValue.appendChild(newColorCircle);
+              select.selectedIndex = i;
+              customSelect.classList.remove("open");
+
+              // Manually trigger the change event on the original select element
+              var changeEvent = new Event("change", {
+                bubbles: true
+              });
+              select.dispatchEvent(changeEvent);
+            });
+            optionsList.appendChild(optionItem);
+          }
+        };
+        for (var i = 0; i < select.options.length; i++) {
+          _loop(i);
+        }
+        customSelect.appendChild(optionsList);
+        selectedValue.addEventListener("click", function () {
+          customSelect.classList.toggle("open");
+        });
+
+        // Insert the custom select before the original select
+        select.parentNode.insertBefore(customSelect, select);
+
+        // Hide the original select
+        select.style.display = "none";
+      });
+    }
+  }, {
+    key: "decodeId",
+    value: function decodeId(id) {
+      // const decoded = atob(id)
+      var shopifyId = id.split("/").pop();
+      return parseInt(shopifyId);
+    }
+  }, {
+    key: "recommendedProducts",
+    value: function recommendedProducts() {
+      var self = this;
+      var CartSlider = new swiper__WEBPACK_IMPORTED_MODULE_1__.Swiper(document.querySelector(".recommended-products-slider"), {
+        loop: true,
+        spaceBetween: 40,
+        slidesPerView: 1.3
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("click", function (e) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).hasClass("recommended-add")) {
+          var handle = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).data("handle");
+          var properties = {};
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item__wrap").length) {
+            properties.isBundleProduct = true;
+            properties.enableDiscount = true;
+          }
+          fetch(self.graphUrl, {
+            async: true,
+            crossDomain: true,
+            method: "POST",
+            headers: {
+              "X-Shopify-Storefront-Access-Token": self.accessToken,
+              "Content-Type": "application/graphql"
+            },
+            body: self.selectedProductQuery(handle)
+          }).then(function (res) {
+            return res.json();
+          }).then(function (res) {
+            var _variants$filter$;
+            var product = res.data.product;
+            var variants = product.variants.edges;
+            console.log(product);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").append(self.selectedProductDrawer(product));
+            self.generateCustomSelect();
+            jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+              type: "GET",
+              url: "/cart.js",
+              dataType: "json",
+              success: function success(cart) {
+                var bundleItems = cart.items.filter(function (item) {
+                  var _item$properties66;
+                  return (item === null || item === void 0 || (_item$properties66 = item.properties) === null || _item$properties66 === void 0 ? void 0 : _item$properties66.isBundleProduct) && (item === null || item === void 0 ? void 0 : item.selling_plan_allocation);
+                }).length;
+                if (bundleItems || cart.items.length == 1 && cart.items.filter(function (item) {
+                  return item === null || item === void 0 ? void 0 : item.selling_plan_allocation;
+                }).length) {
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type").removeClass("hidden");
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()("input#cart-subscribe").attr("checked", true);
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").removeClass("hidden");
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#cart-one-time").parent().addClass("hidden");
+                } else {
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type").addClass("hidden");
+                }
+                if (!cart.items.length) {
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type").removeClass("hidden");
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#cart-one-time").parent().removeClass("hidden");
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").addClass("hidden");
+                  jquery__WEBPACK_IMPORTED_MODULE_0___default()("input#cart-one-time").attr("checked", true);
+                }
+              }
+            });
+            setTimeout(function () {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".selected_product__drawer-inner").addClass("active");
+            });
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type input").on("change", function () {
+              if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() == "subscribe") {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").removeClass("hidden");
+              } else {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select").addClass("hidden");
+              }
+            });
+            var selectedvariant = (_variants$filter$ = variants.filter(function (variant) {
+              return variant.node.availableForSale;
+            })[0]) === null || _variants$filter$ === void 0 ? void 0 : _variants$filter$.node;
+            if (!selectedvariant) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").text("sold out");
+            }
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".quantity__input").prop("max", selectedvariant.quantityAvailable);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".product-select select").on("change", function () {
+              var options = variants;
+              if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.product-select option[value=""]:selected').length) {
+                return;
+              }
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".product-select select").each(function (i) {
+                var option = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find("option:selected").val();
+                options = options.filter(function (variant) {
+                  return variant.node.title.split("/")[i].trim() == option;
+                });
+                selectedvariant = options[0].node;
+              });
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").removeClass("disabled");
+              if (!selectedvariant.availableForSale) {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").addClass("disabled");
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").text("sold out");
+                return;
+              }
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").removeClass("disabled");
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").text("add");
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".quantity__input").prop("max", selectedvariant.quantityAvailable);
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".selected_product__price").text("$".concat(selectedvariant.price.amount));
+            });
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-item_submit").on("click", function () {
+              var id = self.decodeId(selectedvariant.id);
+              var obj = {
+                id: id,
+                quantity: 1,
+                properties: {}
+              };
+              obj.properties.enableDiscount = true;
+              if (jquery__WEBPACK_IMPORTED_MODULE_0___default()("#cart-subscribe").is(":checked")) {
+                obj.selling_plan = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-purchase-type select option:selected").data("id");
+                obj.properties.subscription = true;
+              }
+              var formData = {
+                items: [obj]
+              };
+              fetch(window.Shopify.routes.root + "cart/add.js", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+              }).then(function (response) {
+                var sidecart = document.querySelector("side-cart");
+                sidecart === null || sidecart === void 0 || sidecart.renderCart();
+                removeDrawer();
+              })["catch"](function (error) {
+                console.error("Error:", error);
+              });
+            });
+
+            // remove drawer
+            function removeDrawer() {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()(".selected_product__drawer-inner").removeClass("active");
+              setTimeout(function () {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()(".cart-selected_product__drawer").remove();
+              }, 300);
+            }
+            document.addEventListener("click", function (e) {
+              if (e.target.classList.contains("cart-selected_product__drawer") || e.target.classList.contains("close-product__drawer")) {
+                removeDrawer();
+              }
+            });
+          });
+        }
+      });
+    }
+  }]);
+  return SideCart;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get("side-cart")) customElements.define("side-cart", SideCart);
 
 /***/ }),
@@ -2970,64 +3702,71 @@ if (!customElements.get("side-cart")) customElements.define("side-cart", SideCar
 /*!********************************************!*\
   !*** ./scripts/sections/stack-products.js ***!
   \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-class StackProducts extends HTMLElement {
-  constructor() {
-    super();
-    this.shellId = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('shell-id');
-    this.selectedProductsId = [];
-    this.productsQuantity = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('products-quantity');
-    this.subscription = true;
-    this.originalPrice = 0;
-    this.price = 0;
-    this.subsPrice = 0;
-    this.sellingPlanDiscount = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('discount');
+var StackProducts = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(StackProducts, _HTMLElement);
+  var _super = _createSuper(StackProducts);
+  function StackProducts() {
+    var _this;
+    _classCallCheck(this, StackProducts);
+    _this = _super.call(this);
+    _this.shellId = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_assertThisInitialized(_this)).data('shell-id');
+    _this.selectedProductsId = [];
+    _this.productsQuantity = jquery__WEBPACK_IMPORTED_MODULE_0___default()(_assertThisInitialized(_this)).data('products-quantity');
+    _this.subscription = true;
+    _this.originalPrice = 0;
+    _this.price = 0;
+    _this.subsPrice = 0;
+    _this.sellingPlanDiscount = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('discount');
+    return _this;
   }
-  connectedCallback() {
-    const self = this;
-    this.selectProducts();
-    this.changePurchaseOption();
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack-product-select').on('change', function () {
-      self.selectProducts();
-    });
-  }
-  selectProducts() {
-    const self = this;
-    let price, subsDiscountedPrice;
-    self.originalPrice = 0;
-    self.price = 0;
-    self.subsPrice = 0;
-    self.selectedProductsId = [];
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack-single-variant').each(function () {
-      self.selectedProductsId.push({
-        productId: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('product-id'),
-        id: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('id')
+  _createClass(StackProducts, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var self = this;
+      this.selectProducts();
+      this.changePurchaseOption();
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack-product-select').on('change', function () {
+        self.selectProducts();
       });
-      price = +jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('price');
-      self.originalPrice += price;
-      subsDiscountedPrice = +(price - price * 0.10);
-      if (self.productsQuantity == 2) {
-        self.price += +(price - price * 0.1);
-        self.subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.05);
-      }
-      if (self.productsQuantity >= 3) {
-        self.price += +(price - price * 0.15);
-        self.subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.1);
-      }
-    });
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack-product-select').each(function () {
-      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val()) {
+    }
+  }, {
+    key: "selectProducts",
+    value: function selectProducts() {
+      var self = this;
+      var price, subsDiscountedPrice;
+      self.originalPrice = 0;
+      self.price = 0;
+      self.subsPrice = 0;
+      self.selectedProductsId = [];
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack-single-variant').each(function () {
         self.selectedProductsId.push({
-          productId: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').data('product-id'),
-          id: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val()
+          productId: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('product-id'),
+          id: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('id')
         });
-        price = +jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').data('price');
+        price = +jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('price');
         self.originalPrice += price;
         subsDiscountedPrice = +(price - price * 0.10);
         if (self.productsQuantity == 2) {
@@ -3038,96 +3777,126 @@ class StackProducts extends HTMLElement {
           self.price += +(price - price * 0.15);
           self.subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.1);
         }
-      }
-    });
-    if (self.selectedProductsId.length == self.productsQuantity) {
-      self.submitStack();
-    }
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.original-price').text(self.formatMoney(self.originalPrice));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-price').text(self.formatMoney(self.price));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscribe-price').text(self.formatMoney(self.subsPrice));
-  }
-  formatMoney(price) {
-    return (price / 100).toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD"
-    });
-  }
-  changePurchaseOption() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').on('change', function () {
-      self.subscription = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() == 'subscribe';
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').closest('.subscription').toggleClass('active');
-      if (self.subscription) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').addClass('active');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').addClass('!hidden');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').removeClass('!hidden');
-      } else {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').removeClass('active');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').removeClass('!hidden');
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').addClass('!hidden');
-      }
-    });
-  }
-  submitStack() {
-    const self = this;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack__submit').removeClass('disabled');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack__submit').on('click', function () {
-      let time = new Date().getTime();
-      let data = [];
-      let subscriptionName = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option:selected').data('name') || jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('name');
-      let quantity = jquery__WEBPACK_IMPORTED_MODULE_0___default()(self).find('.quantity__input').val();
-      let shell = {
-        id: self.shellId,
-        quantity: quantity,
-        properties: {
-          isStackParent: true,
-          bundleId: time,
-          totalPrice: self.price,
-          originalPrice: self.originalPrice
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack-product-select').each(function () {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val()) {
+          self.selectedProductsId.push({
+            productId: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').data('product-id'),
+            id: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').val()
+          });
+          price = +jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('option:selected').data('price');
+          self.originalPrice += price;
+          subsDiscountedPrice = +(price - price * 0.10);
+          if (self.productsQuantity == 2) {
+            self.price += +(price - price * 0.1);
+            self.subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.05);
+          }
+          if (self.productsQuantity >= 3) {
+            self.price += +(price - price * 0.15);
+            self.subsPrice += +(subsDiscountedPrice - subsDiscountedPrice * 0.1);
+          }
         }
-      };
-      if (self.subscription) {
-        shell.selling_plan = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-select option:selected').data('id') || jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('id');
-        shell.properties.totalPrice = self.subsPrice;
-        shell.properties.subscription = true;
+      });
+      if (self.selectedProductsId.length == self.productsQuantity) {
+        self.submitStack();
       }
-      data.push(shell);
-      self.selectedProductsId.forEach(function (item, i) {
-        let obj = {
-          id: item.id,
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.original-price').text(self.formatMoney(self.originalPrice));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-price').text(self.formatMoney(self.price));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscribe-price').text(self.formatMoney(self.subsPrice));
+    }
+  }, {
+    key: "formatMoney",
+    value: function formatMoney(price) {
+      return (price / 100).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+      });
+    }
+  }, {
+    key: "changePurchaseOption",
+    value: function changePurchaseOption() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').on('change', function () {
+        self.subscription = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() == 'subscribe';
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('input[type=radio][name=purchase]').closest('.subscription').toggleClass('active');
+        if (self.subscription) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').addClass('active');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').addClass('!hidden');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').removeClass('!hidden');
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-wrapper').removeClass('active');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.one-time-discount').removeClass('!hidden');
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subs-discount').addClass('!hidden');
+        }
+      });
+    }
+  }, {
+    key: "submitStack",
+    value: function submitStack() {
+      var self = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack__submit').removeClass('disabled');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.stack__submit').on('click', function () {
+        var time = new Date().getTime();
+        var data = [];
+        var subscriptionName = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option:selected').data('name') || jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('name');
+        var quantity = jquery__WEBPACK_IMPORTED_MODULE_0___default()(self).find('.quantity__input').val();
+        var shell = {
+          id: self.shellId,
           quantity: quantity,
           properties: {
-            isStackProduct: true,
-            isBundleProduct: true,
-            bundleId: time
+            isStackParent: true,
+            bundleId: time,
+            totalPrice: self.price,
+            originalPrice: self.originalPrice
           }
         };
         if (self.subscription) {
-          obj.selling_plan = productsJson.filter(product => product.id == item.productId)[0].subs.filter(sub => sub.name == subscriptionName)[0].id;
-          obj.properties.subscription = true;
+          shell.selling_plan = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-select option:selected').data('id') || jquery__WEBPACK_IMPORTED_MODULE_0___default()('.subscription-option').eq(0).data('id');
+          shell.properties.totalPrice = self.subsPrice;
+          shell.properties.subscription = true;
         }
-        data.push(obj);
+        data.push(shell);
+        self.selectedProductsId.forEach(function (item, i) {
+          var obj = {
+            id: item.id,
+            quantity: quantity,
+            properties: {
+              isStackProduct: true,
+              isBundleProduct: true,
+              bundleId: time
+            }
+          };
+          if (self.subscription) {
+            obj.selling_plan = productsJson.filter(function (product) {
+              return product.id == item.productId;
+            })[0].subs.filter(function (sub) {
+              return sub.name == subscriptionName;
+            })[0].id;
+            obj.properties.subscription = true;
+          }
+          data.push(obj);
+        });
+        var formData = {
+          'items': data
+        };
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        }).then(function (response) {
+          var sidecart = document.querySelector('side-cart');
+          sidecart === null || sidecart === void 0 || sidecart.renderCart();
+          sidecart === null || sidecart === void 0 || sidecart.openCart();
+        })["catch"](function (error) {
+          console.error('Error:', error);
+        });
       });
-      let formData = {
-        'items': data
-      };
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      }).then(response => {
-        let sidecart = document.querySelector('side-cart');
-        sidecart?.renderCart();
-        sidecart?.openCart();
-      }).catch(error => {
-        console.error('Error:', error);
-      });
-    });
-  }
-}
+    }
+  }]);
+  return StackProducts;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('stack-products')) customElements.define('stack-products', StackProducts);
 
 /***/ }),
@@ -3136,62 +3905,91 @@ if (!customElements.get('stack-products')) customElements.define('stack-products
 /*!*******************************************!*\
   !*** ./scripts/sections/swiper-slider.js ***!
   \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class SwiperSlider extends HTMLElement {
-  connectedCallback() {
-    const swiperEl = this.querySelector('.swiper');
-    const expandedSlider = this.querySelector('.expanding-slider');
-    const raw = this.getAttribute('data-swiper-options') || '{}';
-    const userOptions = JSON.parse(raw);
-    const nextButton = this.querySelector('.swiper-button-next');
-    const prevButton = this.querySelector('.swiper-button-prev');
-    const scrollbar = this.querySelector('.swiper-scrollbar');
-    const swiperOptions = {
-      modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Scrollbar],
-      ...userOptions,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: nextButton,
-        prevEl: prevButton
-      },
-      observeChildren: true,
-      observer: true,
-      resize: true
-    };
-    if (scrollbar) {
-      swiperOptions.scrollbar = {
-        el: scrollbar
-      };
-    }
-    const swiperInstance = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](swiperEl, swiperOptions);
-    if (expandedSlider) {
-      expandedSlider.addEventListener('click', e => {
-        const slide = e.target.closest('.swiper-slide');
-        if (!slide) return;
-        if (slide.classList.contains('swiper-slide-active')) return;
-        if (slide.classList.contains('swiper-slide-next')) {
-          e.preventDefault();
-          e.stopPropagation();
-          swiperInstance.slideNext();
-        } else if (slide.classList.contains('swiper-slide-prev')) {
-          e.preventDefault();
-          e.stopPropagation();
-          swiperInstance.slidePrev();
-        }
-      });
-    }
+var SwiperSlider = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(SwiperSlider, _HTMLElement);
+  var _super = _createSuper(SwiperSlider);
+  function SwiperSlider() {
+    _classCallCheck(this, SwiperSlider);
+    return _super.apply(this, arguments);
   }
-}
+  _createClass(SwiperSlider, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var swiperEl = this.querySelector('.swiper');
+      var expandedSlider = this.querySelector('.expanding-slider');
+      var raw = this.getAttribute('data-swiper-options') || '{}';
+      var userOptions = JSON.parse(raw);
+      var nextButton = this.querySelector('.swiper-button-next');
+      var prevButton = this.querySelector('.swiper-button-prev');
+      var scrollbar = this.querySelector('.swiper-scrollbar');
+      var swiperOptions = _objectSpread(_objectSpread({
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_0__.Scrollbar]
+      }, userOptions), {}, {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: nextButton,
+          prevEl: prevButton
+        },
+        observeChildren: true,
+        observer: true,
+        resize: true
+      });
+      if (scrollbar) {
+        swiperOptions.scrollbar = {
+          el: scrollbar
+        };
+      }
+      var swiperInstance = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](swiperEl, swiperOptions);
+      if (expandedSlider) {
+        expandedSlider.addEventListener('click', function (e) {
+          var slide = e.target.closest('.swiper-slide');
+          if (!slide) return;
+          if (slide.classList.contains('swiper-slide-active')) return;
+          if (slide.classList.contains('swiper-slide-next')) {
+            e.preventDefault();
+            e.stopPropagation();
+            swiperInstance.slideNext();
+          } else if (slide.classList.contains('swiper-slide-prev')) {
+            e.preventDefault();
+            e.stopPropagation();
+            swiperInstance.slidePrev();
+          }
+        });
+      }
+    }
+  }]);
+  return SwiperSlider;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('swiper-slider')) customElements.define('swiper-slider', SwiperSlider);
 
 /***/ }),
@@ -3200,73 +3998,102 @@ if (!customElements.get('swiper-slider')) customElements.define('swiper-slider',
 /*!************************************************!*\
   !*** ./scripts/sections/testimonial-slider.js ***!
   \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.min.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-class TestimonialSlider extends HTMLElement {
-  constructor() {
-    super();
+var TestimonialSlider = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(TestimonialSlider, _HTMLElement);
+  var _super = _createSuper(TestimonialSlider);
+  function TestimonialSlider() {
+    _classCallCheck(this, TestimonialSlider);
+    return _super.call(this);
   }
-  connectedCallback() {
-    let swiper;
-    function swiperDesktop() {
-      swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('.testimonial-slider'), {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        freeMode: true,
-        loop: true,
-        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade],
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
-        },
-        navigation: {
-          nextEl: '.swiper-testimonials-next',
-          prevEl: '.swiper-testimonials-prev'
-        }
-      });
-    }
-    function swiperMobile() {
-      swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('.testimonial-slider'), {
-        slidesPerView: 1.25,
-        spaceBetween: 24,
-        freeMode: true,
-        loop: true,
-        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade],
-        effect: 'slide',
-        navigation: {
-          nextEl: '.swiper-testimonials-next',
-          prevEl: '.swiper-testimonials-prev'
-        }
-      });
-    }
-    if (window.innerWidth >= 768) {
-      swiperDesktop();
-    } else {
-      swiperMobile();
-    }
-    window.addEventListener("resize", event => {
+  _createClass(TestimonialSlider, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var swiper;
+      function swiperDesktop() {
+        swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('.testimonial-slider'), {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          freeMode: true,
+          loop: true,
+          modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade],
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          },
+          navigation: {
+            nextEl: '.swiper-testimonials-next',
+            prevEl: '.swiper-testimonials-prev'
+          }
+        });
+      }
+      function swiperMobile() {
+        swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(document.querySelector('.testimonial-slider'), {
+          slidesPerView: 1.25,
+          spaceBetween: 24,
+          freeMode: true,
+          loop: true,
+          modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.EffectFade],
+          effect: 'slide',
+          navigation: {
+            nextEl: '.swiper-testimonials-next',
+            prevEl: '.swiper-testimonials-prev'
+          }
+        });
+      }
       if (window.innerWidth >= 768) {
-        swiper.destroy();
         swiperDesktop();
       } else {
-        swiper.destroy();
         swiperMobile();
       }
-    });
-    [...document.querySelectorAll('.swiper-testimonials-next')].forEach(elem => {
-      elem.classList.remove('!hidden');
-    });
-    [...document.querySelectorAll('.swiper-testimonials-prev')].forEach(elem => {
-      elem.classList.remove('!hidden');
-    });
-  }
-}
+      window.addEventListener("resize", function (event) {
+        if (window.innerWidth >= 768) {
+          swiper.destroy();
+          swiperDesktop();
+        } else {
+          swiper.destroy();
+          swiperMobile();
+        }
+      });
+      _toConsumableArray(document.querySelectorAll('.swiper-testimonials-next')).forEach(function (elem) {
+        elem.classList.remove('!hidden');
+      });
+      _toConsumableArray(document.querySelectorAll('.swiper-testimonials-prev')).forEach(function (elem) {
+        elem.classList.remove('!hidden');
+      });
+    }
+  }]);
+  return TestimonialSlider;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('testimonial-slider')) customElements.define('testimonial-slider', TestimonialSlider);
 
 /***/ }),
@@ -3275,49 +4102,56 @@ if (!customElements.get('testimonial-slider')) customElements.define('testimonia
 /*!***********************************!*\
   !*** ./scripts/sections/video.js ***!
   \***********************************/
-/***/ (() => {
+/***/ (function() {
 
-class Video extends HTMLElement {
-  constructor() {
-    super();
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeFunction(fn) { try { return Function.toString.call(fn).indexOf("[native code]") !== -1; } catch (e) { return typeof fn === "function"; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+var Video = /*#__PURE__*/function (_HTMLElement) {
+  _inherits(Video, _HTMLElement);
+  var _super = _createSuper(Video);
+  function Video() {
+    _classCallCheck(this, Video);
+    return _super.call(this);
   }
-  connectedCallback() {
-    this.addEventListener('click', function () {
-      let video = this.dataset.src;
-      let videoBlock = document.createElement('div');
-      videoBlock.classList.add('video-wrapper');
-      let html = `<div class="relative">
-                <video src="${video}" autoplay></video>
-                <span class="absolute close-video flex justify-center items-center">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 12" stroke="white" stroke-width="2" stroke-linecap="square"/>
-                    <path d="M2 2L12 12" stroke="white" stroke-width="2" stroke-linecap="square"/>
-                    </svg>
-                </span>
-            </div>`;
-      if (this.dataset.youtube) {
-        html = `<div class="relative">
-                    <iframe src="https://www.youtube.com/embed/${video}?controls=1&showinfo=0&rel=0&loop=1&mute=0&modestbranding=0&playlist=${video}" frameborder="0" allowfullscreen class="youtube-video h-full w-full lg:w-[800px] aspect-video"></iframe>
-                    <span class="absolute close-video flex justify-center items-center">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 12" stroke="white" stroke-width="2" stroke-linecap="square"/>
-                        <path d="M2 2L12 12" stroke="white" stroke-width="2" stroke-linecap="square"/>
-                        </svg>
-                    </span>
-                </div>`;
-      }
-      videoBlock.innerHTML = html;
-      document.querySelector('body').appendChild(videoBlock);
-
-      // remove video
-      document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('close-video') || e.target.classList.contains('video-wrapper')) {
-          videoBlock.remove();
+  _createClass(Video, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.addEventListener('click', function () {
+        var video = this.dataset.src;
+        var videoBlock = document.createElement('div');
+        videoBlock.classList.add('video-wrapper');
+        var html = "<div class=\"relative\">\n                <video src=\"".concat(video, "\" autoplay></video>\n                <span class=\"absolute close-video flex justify-center items-center\">\n                    <svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M12 2L2 12\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"square\"/>\n                    <path d=\"M2 2L12 12\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"square\"/>\n                    </svg>\n                </span>\n            </div>");
+        if (this.dataset.youtube) {
+          html = "<div class=\"relative\">\n                    <iframe src=\"https://www.youtube.com/embed/".concat(video, "?controls=1&showinfo=0&rel=0&loop=1&mute=0&modestbranding=0&playlist=").concat(video, "\" frameborder=\"0\" allowfullscreen class=\"youtube-video h-full w-full lg:w-[800px] aspect-video\"></iframe>\n                    <span class=\"absolute close-video flex justify-center items-center\">\n                        <svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                        <path d=\"M12 2L2 12\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"square\"/>\n                        <path d=\"M2 2L12 12\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"square\"/>\n                        </svg>\n                    </span>\n                </div>");
         }
+        videoBlock.innerHTML = html;
+        document.querySelector('body').appendChild(videoBlock);
+
+        // remove video
+        document.addEventListener('click', function (e) {
+          if (e.target.classList.contains('close-video') || e.target.classList.contains('video-wrapper')) {
+            videoBlock.remove();
+          }
+        });
       });
-    });
-  }
-}
+    }
+  }]);
+  return Video;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));
 if (!customElements.get('video-block')) customElements.define('video-block', Video);
 
 /***/ }),
@@ -3326,7 +4160,7 @@ if (!customElements.get('video-block')) customElements.define('video-block', Vid
 /*!*******************************************!*\
   !*** ./node_modules/debug/src/browser.js ***!
   \*******************************************/
-/***/ ((module, exports, __webpack_require__) => {
+/***/ (function(module, exports, __webpack_require__) {
 
 /* eslint-env browser */
 
@@ -3605,7 +4439,7 @@ formatters.j = function (v) {
 /*!******************************************!*\
   !*** ./node_modules/debug/src/common.js ***!
   \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
 /**
@@ -14616,7 +15450,7 @@ return jQuery;
 /*!*******************************************!*\
   !*** ./node_modules/load-script/index.js ***!
   \*******************************************/
-/***/ ((module) => {
+/***/ (function(module) {
 
 
 module.exports = function load (src, opts, cb) {
@@ -14691,7 +15525,7 @@ function ieOnEnd (script, cb) {
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/modules/autoplay/autoplay.min.css ***!
   \***************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -14704,7 +15538,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************!*\
   !*** ./node_modules/swiper/swiper-bundle.min.css ***!
   \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -14717,7 +15551,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./node_modules/swiper/swiper.min.css ***!
   \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -14730,7 +15564,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/css/app.scss ***!
   \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -14743,7 +15577,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************!*\
   !*** ./src/css/sections/hero-banner.scss ***!
   \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -14756,7 +15590,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************!*\
   !*** ./src/css/sections/home.scss ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -14769,7 +15603,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************!*\
   !*** ./src/css/tailwind.css ***!
   \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -14782,7 +15616,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./node_modules/ms/index.js ***!
   \**********************************/
-/***/ ((module) => {
+/***/ (function(module) {
 
 /**
  * Helpers.
@@ -14954,7 +15788,7 @@ function plural(ms, msAbs, n, name) {
 /*!*******************************************!*\
   !*** ./node_modules/sister/src/sister.js ***!
   \*******************************************/
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
 
@@ -15037,7 +15871,7 @@ module.exports = Sister;
 /*!**************************************************************!*\
   !*** ./node_modules/youtube-player/dist/FunctionStateMap.js ***!
   \**************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -15079,7 +15913,7 @@ module.exports = exports['default'];
 /*!***********************************************************!*\
   !*** ./node_modules/youtube-player/dist/YouTubePlayer.js ***!
   \***********************************************************/
-/***/ ((module, exports, __webpack_require__) => {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -15227,7 +16061,7 @@ module.exports = exports['default'];
 /*!********************************************************************!*\
   !*** ./node_modules/youtube-player/dist/constants/PlayerStates.js ***!
   \********************************************************************/
-/***/ ((module, exports) => {
+/***/ (function(module, exports) {
 
 "use strict";
 
@@ -15251,7 +16085,7 @@ module.exports = exports["default"];
 /*!********************************************************!*\
   !*** ./node_modules/youtube-player/dist/eventNames.js ***!
   \********************************************************/
-/***/ ((module, exports) => {
+/***/ (function(module, exports) {
 
 "use strict";
 
@@ -15275,7 +16109,7 @@ module.exports = exports['default'];
 /*!***********************************************************!*\
   !*** ./node_modules/youtube-player/dist/functionNames.js ***!
   \***********************************************************/
-/***/ ((module, exports) => {
+/***/ (function(module, exports) {
 
 "use strict";
 
@@ -15297,7 +16131,7 @@ module.exports = exports['default'];
 /*!***************************************************!*\
   !*** ./node_modules/youtube-player/dist/index.js ***!
   \***************************************************/
-/***/ ((module, exports, __webpack_require__) => {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -15397,7 +16231,7 @@ module.exports = exports['default'];
 /*!******************************************************************!*\
   !*** ./node_modules/youtube-player/dist/loadYouTubeIframeApi.js ***!
   \******************************************************************/
-/***/ ((module, exports, __webpack_require__) => {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
@@ -15456,97 +16290,96 @@ module.exports = exports['default'];
 /*!***************************************!*\
   !*** ./node_modules/dom7/dom7.esm.js ***!
   \***************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   $: () => (/* binding */ $),
-/* harmony export */   add: () => (/* binding */ add),
-/* harmony export */   addClass: () => (/* binding */ addClass),
-/* harmony export */   animate: () => (/* binding */ animate),
-/* harmony export */   animationEnd: () => (/* binding */ animationEnd),
-/* harmony export */   append: () => (/* binding */ append),
-/* harmony export */   appendTo: () => (/* binding */ appendTo),
-/* harmony export */   attr: () => (/* binding */ attr),
-/* harmony export */   blur: () => (/* binding */ blur),
-/* harmony export */   change: () => (/* binding */ change),
-/* harmony export */   children: () => (/* binding */ children),
-/* harmony export */   click: () => (/* binding */ click),
-/* harmony export */   closest: () => (/* binding */ closest),
-/* harmony export */   css: () => (/* binding */ css),
-/* harmony export */   data: () => (/* binding */ data),
-/* harmony export */   dataset: () => (/* binding */ dataset),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   detach: () => (/* binding */ detach),
-/* harmony export */   each: () => (/* binding */ each),
-/* harmony export */   empty: () => (/* binding */ empty),
-/* harmony export */   eq: () => (/* binding */ eq),
-/* harmony export */   filter: () => (/* binding */ filter),
-/* harmony export */   find: () => (/* binding */ find),
-/* harmony export */   focus: () => (/* binding */ focus),
-/* harmony export */   focusin: () => (/* binding */ focusin),
-/* harmony export */   focusout: () => (/* binding */ focusout),
-/* harmony export */   hasClass: () => (/* binding */ hasClass),
-/* harmony export */   height: () => (/* binding */ height),
-/* harmony export */   hide: () => (/* binding */ hide),
-/* harmony export */   html: () => (/* binding */ html),
-/* harmony export */   index: () => (/* binding */ index),
-/* harmony export */   insertAfter: () => (/* binding */ insertAfter),
-/* harmony export */   insertBefore: () => (/* binding */ insertBefore),
-/* harmony export */   is: () => (/* binding */ is),
-/* harmony export */   keydown: () => (/* binding */ keydown),
-/* harmony export */   keypress: () => (/* binding */ keypress),
-/* harmony export */   keyup: () => (/* binding */ keyup),
-/* harmony export */   mousedown: () => (/* binding */ mousedown),
-/* harmony export */   mouseenter: () => (/* binding */ mouseenter),
-/* harmony export */   mouseleave: () => (/* binding */ mouseleave),
-/* harmony export */   mousemove: () => (/* binding */ mousemove),
-/* harmony export */   mouseout: () => (/* binding */ mouseout),
-/* harmony export */   mouseover: () => (/* binding */ mouseover),
-/* harmony export */   mouseup: () => (/* binding */ mouseup),
-/* harmony export */   next: () => (/* binding */ next),
-/* harmony export */   nextAll: () => (/* binding */ nextAll),
-/* harmony export */   off: () => (/* binding */ off),
-/* harmony export */   offset: () => (/* binding */ offset),
-/* harmony export */   on: () => (/* binding */ on),
-/* harmony export */   once: () => (/* binding */ once),
-/* harmony export */   outerHeight: () => (/* binding */ outerHeight),
-/* harmony export */   outerWidth: () => (/* binding */ outerWidth),
-/* harmony export */   parent: () => (/* binding */ parent),
-/* harmony export */   parents: () => (/* binding */ parents),
-/* harmony export */   prepend: () => (/* binding */ prepend),
-/* harmony export */   prependTo: () => (/* binding */ prependTo),
-/* harmony export */   prev: () => (/* binding */ prev),
-/* harmony export */   prevAll: () => (/* binding */ prevAll),
-/* harmony export */   prop: () => (/* binding */ prop),
-/* harmony export */   remove: () => (/* binding */ remove),
-/* harmony export */   removeAttr: () => (/* binding */ removeAttr),
-/* harmony export */   removeClass: () => (/* binding */ removeClass),
-/* harmony export */   removeData: () => (/* binding */ removeData),
-/* harmony export */   resize: () => (/* binding */ resize),
-/* harmony export */   scroll: () => (/* binding */ scroll),
-/* harmony export */   scrollLeft: () => (/* binding */ scrollLeft),
-/* harmony export */   scrollTo: () => (/* binding */ scrollTo),
-/* harmony export */   scrollTop: () => (/* binding */ scrollTop),
-/* harmony export */   show: () => (/* binding */ show),
-/* harmony export */   siblings: () => (/* binding */ siblings),
-/* harmony export */   stop: () => (/* binding */ stop),
-/* harmony export */   styles: () => (/* binding */ styles),
-/* harmony export */   submit: () => (/* binding */ submit),
-/* harmony export */   text: () => (/* binding */ text),
-/* harmony export */   toggleClass: () => (/* binding */ toggleClass),
-/* harmony export */   touchend: () => (/* binding */ touchend),
-/* harmony export */   touchmove: () => (/* binding */ touchmove),
-/* harmony export */   touchstart: () => (/* binding */ touchstart),
-/* harmony export */   transform: () => (/* binding */ transform),
-/* harmony export */   transition: () => (/* binding */ transition),
-/* harmony export */   transitionEnd: () => (/* binding */ transitionEnd),
-/* harmony export */   transitionStart: () => (/* binding */ transitionStart),
-/* harmony export */   trigger: () => (/* binding */ trigger),
-/* harmony export */   val: () => (/* binding */ val),
-/* harmony export */   value: () => (/* binding */ value),
-/* harmony export */   width: () => (/* binding */ width)
+/* harmony export */   $: function() { return /* binding */ $; },
+/* harmony export */   add: function() { return /* binding */ add; },
+/* harmony export */   addClass: function() { return /* binding */ addClass; },
+/* harmony export */   animate: function() { return /* binding */ animate; },
+/* harmony export */   animationEnd: function() { return /* binding */ animationEnd; },
+/* harmony export */   append: function() { return /* binding */ append; },
+/* harmony export */   appendTo: function() { return /* binding */ appendTo; },
+/* harmony export */   attr: function() { return /* binding */ attr; },
+/* harmony export */   blur: function() { return /* binding */ blur; },
+/* harmony export */   change: function() { return /* binding */ change; },
+/* harmony export */   children: function() { return /* binding */ children; },
+/* harmony export */   click: function() { return /* binding */ click; },
+/* harmony export */   closest: function() { return /* binding */ closest; },
+/* harmony export */   css: function() { return /* binding */ css; },
+/* harmony export */   data: function() { return /* binding */ data; },
+/* harmony export */   dataset: function() { return /* binding */ dataset; },
+/* harmony export */   detach: function() { return /* binding */ detach; },
+/* harmony export */   each: function() { return /* binding */ each; },
+/* harmony export */   empty: function() { return /* binding */ empty; },
+/* harmony export */   eq: function() { return /* binding */ eq; },
+/* harmony export */   filter: function() { return /* binding */ filter; },
+/* harmony export */   find: function() { return /* binding */ find; },
+/* harmony export */   focus: function() { return /* binding */ focus; },
+/* harmony export */   focusin: function() { return /* binding */ focusin; },
+/* harmony export */   focusout: function() { return /* binding */ focusout; },
+/* harmony export */   hasClass: function() { return /* binding */ hasClass; },
+/* harmony export */   height: function() { return /* binding */ height; },
+/* harmony export */   hide: function() { return /* binding */ hide; },
+/* harmony export */   html: function() { return /* binding */ html; },
+/* harmony export */   index: function() { return /* binding */ index; },
+/* harmony export */   insertAfter: function() { return /* binding */ insertAfter; },
+/* harmony export */   insertBefore: function() { return /* binding */ insertBefore; },
+/* harmony export */   is: function() { return /* binding */ is; },
+/* harmony export */   keydown: function() { return /* binding */ keydown; },
+/* harmony export */   keypress: function() { return /* binding */ keypress; },
+/* harmony export */   keyup: function() { return /* binding */ keyup; },
+/* harmony export */   mousedown: function() { return /* binding */ mousedown; },
+/* harmony export */   mouseenter: function() { return /* binding */ mouseenter; },
+/* harmony export */   mouseleave: function() { return /* binding */ mouseleave; },
+/* harmony export */   mousemove: function() { return /* binding */ mousemove; },
+/* harmony export */   mouseout: function() { return /* binding */ mouseout; },
+/* harmony export */   mouseover: function() { return /* binding */ mouseover; },
+/* harmony export */   mouseup: function() { return /* binding */ mouseup; },
+/* harmony export */   next: function() { return /* binding */ next; },
+/* harmony export */   nextAll: function() { return /* binding */ nextAll; },
+/* harmony export */   off: function() { return /* binding */ off; },
+/* harmony export */   offset: function() { return /* binding */ offset; },
+/* harmony export */   on: function() { return /* binding */ on; },
+/* harmony export */   once: function() { return /* binding */ once; },
+/* harmony export */   outerHeight: function() { return /* binding */ outerHeight; },
+/* harmony export */   outerWidth: function() { return /* binding */ outerWidth; },
+/* harmony export */   parent: function() { return /* binding */ parent; },
+/* harmony export */   parents: function() { return /* binding */ parents; },
+/* harmony export */   prepend: function() { return /* binding */ prepend; },
+/* harmony export */   prependTo: function() { return /* binding */ prependTo; },
+/* harmony export */   prev: function() { return /* binding */ prev; },
+/* harmony export */   prevAll: function() { return /* binding */ prevAll; },
+/* harmony export */   prop: function() { return /* binding */ prop; },
+/* harmony export */   remove: function() { return /* binding */ remove; },
+/* harmony export */   removeAttr: function() { return /* binding */ removeAttr; },
+/* harmony export */   removeClass: function() { return /* binding */ removeClass; },
+/* harmony export */   removeData: function() { return /* binding */ removeData; },
+/* harmony export */   resize: function() { return /* binding */ resize; },
+/* harmony export */   scroll: function() { return /* binding */ scroll; },
+/* harmony export */   scrollLeft: function() { return /* binding */ scrollLeft; },
+/* harmony export */   scrollTo: function() { return /* binding */ scrollTo; },
+/* harmony export */   scrollTop: function() { return /* binding */ scrollTop; },
+/* harmony export */   show: function() { return /* binding */ show; },
+/* harmony export */   siblings: function() { return /* binding */ siblings; },
+/* harmony export */   stop: function() { return /* binding */ stop; },
+/* harmony export */   styles: function() { return /* binding */ styles; },
+/* harmony export */   submit: function() { return /* binding */ submit; },
+/* harmony export */   text: function() { return /* binding */ text; },
+/* harmony export */   toggleClass: function() { return /* binding */ toggleClass; },
+/* harmony export */   touchend: function() { return /* binding */ touchend; },
+/* harmony export */   touchmove: function() { return /* binding */ touchmove; },
+/* harmony export */   touchstart: function() { return /* binding */ touchstart; },
+/* harmony export */   transform: function() { return /* binding */ transform; },
+/* harmony export */   transition: function() { return /* binding */ transition; },
+/* harmony export */   transitionEnd: function() { return /* binding */ transitionEnd; },
+/* harmony export */   transitionStart: function() { return /* binding */ transitionStart; },
+/* harmony export */   trigger: function() { return /* binding */ trigger; },
+/* harmony export */   val: function() { return /* binding */ val; },
+/* harmony export */   value: function() { return /* binding */ value; },
+/* harmony export */   width: function() { return /* binding */ width; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /**
@@ -17045,7 +17878,7 @@ const touchmove = shortcut('touchmove');
 const resize = shortcut('resize');
 const scroll = shortcut('scroll');
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ($);
+/* harmony default export */ __webpack_exports__["default"] = ($);
 
 
 
@@ -17055,16 +17888,15 @@ const scroll = shortcut('scroll');
 /*!*****************************************************!*\
   !*** ./node_modules/dynamic-countdown/index.min.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   counter: () => (/* binding */ counter),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   mountCounter: () => (/* binding */ mountCounter)
+/* harmony export */   counter: function() { return /* binding */ counter; },
+/* harmony export */   mountCounter: function() { return /* binding */ mountCounter; }
 /* harmony export */ });
-const consoleMsg=(t,e="info")=>{const o={info:["#1ae","#88d5f7"],success:["#1ea","#88f7d5"],warning:["#ea1","#f7d588"],error:["#e1a","#f788d5"]};return t?console.log(`\n%c %c${t}`,`background-color:${o[e][0]};padding:8px 1px;`,`background-color:${o[e][1]};color:#111;display:block;font-size:12px;font-weight:bold;padding:8px;`):console.log(`\n%c %c${t}`,`background-color:${o.warning[0]};padding:8px 1px;`,`background-color:${o.warning[1]};color:#111;display:block;font-size:12px;font-weight:bold;padding:8px;`)},fillWithZero=(t,e=2)=>{t||consoleMsg("Ops... não identificamos o tempo restante atual","error");const o=t.length;return o<e?"0".repeat(e-o)+t:t},timeFormatter=(t,e="HMS",o=2)=>{if(!t)return consoleMsg("Ops... houve um erro no cálculo do tempo restante...","error");switch(e){case"DHMS":case"DHM":case"DH":case"D":return{days:fillWithZero(Math.floor(t/86400).toString(),o),hours:fillWithZero(Math.floor(t%86400/3600).toString(),o),minutes:fillWithZero(Math.floor(t%3600/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)};case"HMS":case"HM":case"H":return{hours:fillWithZero(Math.floor(t/3600).toString(),o),minutes:fillWithZero(Math.floor(t%3600/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)};case"MS":case"M":return{minutes:fillWithZero(Math.floor(t/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)};case"S":return{seconds:fillWithZero(Math.floor(t).toString(),o)};default:return{days:fillWithZero(Math.floor(t/86400).toString(),o),hours:fillWithZero(Math.floor(t%86400/3600).toString(),o),minutes:fillWithZero(Math.floor(t%3600/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)}}},render=(t,e,o="HMS",r=2)=>{if(t.children){if(!e)return void consoleMsg("Ops... houve algum problema com o cálculo do tempo restante...","error");for(let n of t.children)o.search("D")>=0&&"days"===n.dataset.unit&&(n.innerText=fillWithZero(e.days,r)),o.search("H")>=0&&"hours"===n.dataset.unit&&(n.innerText=fillWithZero(e.hours,r)),o.search("M")>=0&&"minutes"===n.dataset.unit&&(n.innerText=fillWithZero(e.minutes,r)),o.search("S")>=0&&"seconds"===n.dataset.unit&&(n.innerText=fillWithZero(e.seconds,r))}else consoleMsg("Não encontramos elementos dentro do container com a classe counter","warning")};let count;const counterChecker=(t,e,o="DHMS",r="2")=>{if(!e)return consoleMsg("Por favor, inclua o atributo 'data-time-target' (DHMS) em cada counter.","error"),void clearInterval(count);const n=(new Date(e)-new Date)/1e3;return n<=0?(render(t,timeFormatter(0,o,r),o,r),void clearInterval(count)):render(t,timeFormatter(n,o,r),o)},initCounter=(t,e="2")=>{let{targetDate:o,timeFormat:r}=t.dataset;r&&""!=r||(r="DHMS");let n=1e3;switch(r?r[r.length-1]:"S"){case"D":n=864e5;break;case"H":n=36e5;break;case"M":n=6e4;break;default:n=1e3}t.children?(counterChecker(t,o,r,e),count=setInterval(()=>counterChecker(t,o,r,e),n)):consoleMsg("Não encontramos elementos dentro do container com a classe counter","warning")},preset=(t,e="2")=>{if(t.children&&t.children.length)return initCounter(t,e);consoleMsg("Não encontramos elementos dentro do container com a classe counter","warning")},createCounterUnit=t=>{const e=document.createElement("span");switch(e.setAttribute("class","counter__unit"),t){case"D":e.setAttribute("data-unit","days");break;case"H":e.setAttribute("data-unit","hours");break;case"M":e.setAttribute("data-unit","minutes");break;case"S":e.setAttribute("data-unit","seconds");break;default:console.log("Unit must be H, D, M or S")}return e},mountCounter=(t,e="DHMS",o="2",r="pt",n="")=>{const a=document.createElement("div");""==n?a.setAttribute("class","counter"):a.setAttribute("class",`counter counter--${n}`),a.setAttribute("data-target-date",t),a.setAttribute("data-time-format",e),a.setAttribute("data-min-digits",o),a.setAttribute("data-lang",r);for(let t of e){const e=createCounterUnit(t);a.appendChild(e)}return a},counter=()=>{const t=document.querySelectorAll(".counter");if(!t.length)return consoleMsg("Por favor, declare ao menos uma tag HTML com a classe counter.","error");for(let e of t){const t=e.dataset.minDigits||"2";preset(e,t)}},countdown={counter:counter,mountCounter:mountCounter};/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (countdown);
+const consoleMsg=(t,e="info")=>{const o={info:["#1ae","#88d5f7"],success:["#1ea","#88f7d5"],warning:["#ea1","#f7d588"],error:["#e1a","#f788d5"]};return t?console.log(`\n%c %c${t}`,`background-color:${o[e][0]};padding:8px 1px;`,`background-color:${o[e][1]};color:#111;display:block;font-size:12px;font-weight:bold;padding:8px;`):console.log(`\n%c %c${t}`,`background-color:${o.warning[0]};padding:8px 1px;`,`background-color:${o.warning[1]};color:#111;display:block;font-size:12px;font-weight:bold;padding:8px;`)},fillWithZero=(t,e=2)=>{t||consoleMsg("Ops... não identificamos o tempo restante atual","error");const o=t.length;return o<e?"0".repeat(e-o)+t:t},timeFormatter=(t,e="HMS",o=2)=>{if(!t)return consoleMsg("Ops... houve um erro no cálculo do tempo restante...","error");switch(e){case"DHMS":case"DHM":case"DH":case"D":return{days:fillWithZero(Math.floor(t/86400).toString(),o),hours:fillWithZero(Math.floor(t%86400/3600).toString(),o),minutes:fillWithZero(Math.floor(t%3600/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)};case"HMS":case"HM":case"H":return{hours:fillWithZero(Math.floor(t/3600).toString(),o),minutes:fillWithZero(Math.floor(t%3600/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)};case"MS":case"M":return{minutes:fillWithZero(Math.floor(t/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)};case"S":return{seconds:fillWithZero(Math.floor(t).toString(),o)};default:return{days:fillWithZero(Math.floor(t/86400).toString(),o),hours:fillWithZero(Math.floor(t%86400/3600).toString(),o),minutes:fillWithZero(Math.floor(t%3600/60).toString(),o),seconds:fillWithZero(Math.floor(t%60).toString(),o)}}},render=(t,e,o="HMS",r=2)=>{if(t.children){if(!e)return void consoleMsg("Ops... houve algum problema com o cálculo do tempo restante...","error");for(let n of t.children)o.search("D")>=0&&"days"===n.dataset.unit&&(n.innerText=fillWithZero(e.days,r)),o.search("H")>=0&&"hours"===n.dataset.unit&&(n.innerText=fillWithZero(e.hours,r)),o.search("M")>=0&&"minutes"===n.dataset.unit&&(n.innerText=fillWithZero(e.minutes,r)),o.search("S")>=0&&"seconds"===n.dataset.unit&&(n.innerText=fillWithZero(e.seconds,r))}else consoleMsg("Não encontramos elementos dentro do container com a classe counter","warning")};let count;const counterChecker=(t,e,o="DHMS",r="2")=>{if(!e)return consoleMsg("Por favor, inclua o atributo 'data-time-target' (DHMS) em cada counter.","error"),void clearInterval(count);const n=(new Date(e)-new Date)/1e3;return n<=0?(render(t,timeFormatter(0,o,r),o,r),void clearInterval(count)):render(t,timeFormatter(n,o,r),o)},initCounter=(t,e="2")=>{let{targetDate:o,timeFormat:r}=t.dataset;r&&""!=r||(r="DHMS");let n=1e3;switch(r?r[r.length-1]:"S"){case"D":n=864e5;break;case"H":n=36e5;break;case"M":n=6e4;break;default:n=1e3}t.children?(counterChecker(t,o,r,e),count=setInterval(()=>counterChecker(t,o,r,e),n)):consoleMsg("Não encontramos elementos dentro do container com a classe counter","warning")},preset=(t,e="2")=>{if(t.children&&t.children.length)return initCounter(t,e);consoleMsg("Não encontramos elementos dentro do container com a classe counter","warning")},createCounterUnit=t=>{const e=document.createElement("span");switch(e.setAttribute("class","counter__unit"),t){case"D":e.setAttribute("data-unit","days");break;case"H":e.setAttribute("data-unit","hours");break;case"M":e.setAttribute("data-unit","minutes");break;case"S":e.setAttribute("data-unit","seconds");break;default:console.log("Unit must be H, D, M or S")}return e},mountCounter=(t,e="DHMS",o="2",r="pt",n="")=>{const a=document.createElement("div");""==n?a.setAttribute("class","counter"):a.setAttribute("class",`counter counter--${n}`),a.setAttribute("data-target-date",t),a.setAttribute("data-time-format",e),a.setAttribute("data-min-digits",o),a.setAttribute("data-lang",r);for(let t of e){const e=createCounterUnit(t);a.appendChild(e)}return a},counter=()=>{const t=document.querySelectorAll(".counter");if(!t.length)return consoleMsg("Por favor, declare ao menos uma tag HTML com a classe counter.","error");for(let e of t){const t=e.dataset.minDigits||"2";preset(e,t)}},countdown={counter:counter,mountCounter:mountCounter};/* harmony default export */ __webpack_exports__["default"] = (countdown);
 
 /***/ }),
 
@@ -17072,16 +17904,16 @@ const consoleMsg=(t,e="info")=>{const o={info:["#1ae","#88d5f7"],success:["#1ea"
 /*!***************************************************!*\
   !*** ./node_modules/ssr-window/ssr-window.esm.js ***!
   \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   extend: () => (/* binding */ extend),
-/* harmony export */   getDocument: () => (/* binding */ getDocument),
-/* harmony export */   getWindow: () => (/* binding */ getWindow),
-/* harmony export */   ssrDocument: () => (/* binding */ ssrDocument),
-/* harmony export */   ssrWindow: () => (/* binding */ ssrWindow)
+/* harmony export */   extend: function() { return /* binding */ extend; },
+/* harmony export */   getDocument: function() { return /* binding */ getDocument; },
+/* harmony export */   getWindow: function() { return /* binding */ getWindow; },
+/* harmony export */   ssrDocument: function() { return /* binding */ ssrDocument; },
+/* harmony export */   ssrWindow: function() { return /* binding */ ssrWindow; }
 /* harmony export */ });
 /**
  * SSR Window 4.0.2
@@ -17239,12 +18071,12 @@ function getWindow() {
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/breakpoints/getBreakpoint.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getBreakpoint)
+/* harmony export */   "default": function() { return /* binding */ getBreakpoint; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -17294,18 +18126,15 @@ function getBreakpoint(breakpoints, base = 'window', containerEl) {
 /*!*******************************************************!*\
   !*** ./node_modules/swiper/core/breakpoints/index.js ***!
   \*******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _setBreakpoint_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setBreakpoint.js */ "./node_modules/swiper/core/breakpoints/setBreakpoint.js");
 /* harmony import */ var _getBreakpoint_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getBreakpoint.js */ "./node_modules/swiper/core/breakpoints/getBreakpoint.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   setBreakpoint: _setBreakpoint_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   getBreakpoint: _getBreakpoint_js__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
@@ -17316,12 +18145,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/breakpoints/setBreakpoint.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ setBreakpoint)
+/* harmony export */   "default": function() { return /* binding */ setBreakpoint; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -17416,13 +18245,10 @@ function setBreakpoint() {
 /*!**********************************************************!*\
   !*** ./node_modules/swiper/core/check-overflow/index.js ***!
   \**********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 function checkOverflow() {
   const swiper = this;
   const {
@@ -17458,7 +18284,7 @@ function checkOverflow() {
   }
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   checkOverflow
 });
 
@@ -17468,12 +18294,12 @@ function checkOverflow() {
 /*!********************************************************!*\
   !*** ./node_modules/swiper/core/classes/addClasses.js ***!
   \********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ addClasses)
+/* harmony export */   "default": function() { return /* binding */ addClasses; }
 /* harmony export */ });
 function prepareClasses(entries, prefix) {
   const resultClasses = [];
@@ -17536,18 +18362,15 @@ function addClasses() {
 /*!***************************************************!*\
   !*** ./node_modules/swiper/core/classes/index.js ***!
   \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _addClasses_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addClasses.js */ "./node_modules/swiper/core/classes/addClasses.js");
 /* harmony import */ var _removeClasses_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./removeClasses.js */ "./node_modules/swiper/core/classes/removeClasses.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   addClasses: _addClasses_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   removeClasses: _removeClasses_js__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
@@ -17558,12 +18381,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************************!*\
   !*** ./node_modules/swiper/core/classes/removeClasses.js ***!
   \***********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ removeClasses)
+/* harmony export */   "default": function() { return /* binding */ removeClasses; }
 /* harmony export */ });
 function removeClasses() {
   const swiper = this;
@@ -17581,13 +18404,10 @@ function removeClasses() {
 /*!******************************************!*\
   !*** ./node_modules/swiper/core/core.js ***!
   \******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
@@ -18243,7 +19063,7 @@ Object.keys(prototypes).forEach(prototypeGroup => {
   });
 });
 Swiper.use([_modules_resize_resize_js__WEBPACK_IMPORTED_MODULE_6__["default"], _modules_observer_observer_js__WEBPACK_IMPORTED_MODULE_7__["default"]]);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Swiper);
+/* harmony default export */ __webpack_exports__["default"] = (Swiper);
 
 /***/ }),
 
@@ -18251,14 +19071,11 @@ Swiper.use([_modules_resize_resize_js__WEBPACK_IMPORTED_MODULE_6__["default"], _
 /*!**********************************************!*\
   !*** ./node_modules/swiper/core/defaults.js ***!
   \**********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   init: true,
   direction: 'horizontal',
   touchEventsTarget: 'wrapper',
@@ -18389,15 +19206,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./node_modules/swiper/core/events-emitter.js ***!
   \****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* eslint-disable no-underscore-dangle */
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   on(events, handler, priority) {
     const self = this;
     if (!self.eventsListeners || self.destroyed) return self;
@@ -18517,13 +19331,10 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./node_modules/swiper/core/events/index.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _onTouchStart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./onTouchStart.js */ "./node_modules/swiper/core/events/onTouchStart.js");
 /* harmony import */ var _onTouchMove_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./onTouchMove.js */ "./node_modules/swiper/core/events/onTouchMove.js");
@@ -18624,7 +19435,7 @@ function detachEvents() {
   events(swiper, 'off');
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   attachEvents,
   detachEvents
 });
@@ -18635,12 +19446,12 @@ function detachEvents() {
 /*!****************************************************!*\
   !*** ./node_modules/swiper/core/events/onClick.js ***!
   \****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ onClick)
+/* harmony export */   "default": function() { return /* binding */ onClick; }
 /* harmony export */ });
 function onClick(e) {
   const swiper = this;
@@ -18662,12 +19473,12 @@ function onClick(e) {
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/core/events/onResize.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ onResize)
+/* harmony export */   "default": function() { return /* binding */ onResize; }
 /* harmony export */ });
 function onResize() {
   const swiper = this;
@@ -18719,12 +19530,12 @@ function onResize() {
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/core/events/onScroll.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ onScroll)
+/* harmony export */   "default": function() { return /* binding */ onScroll; }
 /* harmony export */ });
 function onScroll() {
   const swiper = this;
@@ -18768,12 +19579,12 @@ function onScroll() {
 /*!*******************************************************!*\
   !*** ./node_modules/swiper/core/events/onTouchEnd.js ***!
   \*******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ onTouchEnd)
+/* harmony export */   "default": function() { return /* binding */ onTouchEnd; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -18944,12 +19755,12 @@ function onTouchEnd(event) {
 /*!********************************************************!*\
   !*** ./node_modules/swiper/core/events/onTouchMove.js ***!
   \********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ onTouchMove)
+/* harmony export */   "default": function() { return /* binding */ onTouchMove; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -19184,12 +19995,12 @@ function onTouchMove(event) {
 /*!*********************************************************!*\
   !*** ./node_modules/swiper/core/events/onTouchStart.js ***!
   \*********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ onTouchStart)
+/* harmony export */   "default": function() { return /* binding */ onTouchStart; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -19333,18 +20144,15 @@ function onTouchStart(event) {
 /*!*******************************************************!*\
   !*** ./node_modules/swiper/core/grab-cursor/index.js ***!
   \*******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _setGrabCursor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setGrabCursor.js */ "./node_modules/swiper/core/grab-cursor/setGrabCursor.js");
 /* harmony import */ var _unsetGrabCursor_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./unsetGrabCursor.js */ "./node_modules/swiper/core/grab-cursor/unsetGrabCursor.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   setGrabCursor: _setGrabCursor_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   unsetGrabCursor: _unsetGrabCursor_js__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
@@ -19355,12 +20163,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/grab-cursor/setGrabCursor.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ setGrabCursor)
+/* harmony export */   "default": function() { return /* binding */ setGrabCursor; }
 /* harmony export */ });
 function setGrabCursor(moving) {
   const swiper = this;
@@ -19376,12 +20184,12 @@ function setGrabCursor(moving) {
 /*!*****************************************************************!*\
   !*** ./node_modules/swiper/core/grab-cursor/unsetGrabCursor.js ***!
   \*****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ unsetGrabCursor)
+/* harmony export */   "default": function() { return /* binding */ unsetGrabCursor; }
 /* harmony export */ });
 function unsetGrabCursor() {
   const swiper = this;
@@ -19399,18 +20207,15 @@ function unsetGrabCursor() {
 /*!**************************************************!*\
   !*** ./node_modules/swiper/core/images/index.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _loadImage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loadImage.js */ "./node_modules/swiper/core/images/loadImage.js");
 /* harmony import */ var _preloadImages_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./preloadImages.js */ "./node_modules/swiper/core/images/preloadImages.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   loadImage: _loadImage_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   preloadImages: _preloadImages_js__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
@@ -19421,12 +20226,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./node_modules/swiper/core/images/loadImage.js ***!
   \******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ loadImage)
+/* harmony export */   "default": function() { return /* binding */ loadImage; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -19474,12 +20279,12 @@ function loadImage(imageEl, src, srcset, sizes, checkForComplete, callback) {
 /*!**********************************************************!*\
   !*** ./node_modules/swiper/core/images/preloadImages.js ***!
   \**********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ preloadImages)
+/* harmony export */   "default": function() { return /* binding */ preloadImages; }
 /* harmony export */ });
 function preloadImages() {
   const swiper = this;
@@ -19507,20 +20312,17 @@ function preloadImages() {
 /*!************************************************!*\
   !*** ./node_modules/swiper/core/loop/index.js ***!
   \************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _loopCreate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loopCreate.js */ "./node_modules/swiper/core/loop/loopCreate.js");
 /* harmony import */ var _loopFix_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loopFix.js */ "./node_modules/swiper/core/loop/loopFix.js");
 /* harmony import */ var _loopDestroy_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loopDestroy.js */ "./node_modules/swiper/core/loop/loopDestroy.js");
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   loopCreate: _loopCreate_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   loopFix: _loopFix_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   loopDestroy: _loopDestroy_js__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -19532,12 +20334,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/core/loop/loopCreate.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ loopCreate)
+/* harmony export */   "default": function() { return /* binding */ loopCreate; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -19604,12 +20406,12 @@ function loopCreate() {
 /*!******************************************************!*\
   !*** ./node_modules/swiper/core/loop/loopDestroy.js ***!
   \******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ loopDestroy)
+/* harmony export */   "default": function() { return /* binding */ loopDestroy; }
 /* harmony export */ });
 function loopDestroy() {
   const swiper = this;
@@ -19628,12 +20430,12 @@ function loopDestroy() {
 /*!**************************************************!*\
   !*** ./node_modules/swiper/core/loop/loopFix.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ loopFix)
+/* harmony export */   "default": function() { return /* binding */ loopFix; }
 /* harmony export */ });
 function loopFix() {
   const swiper = this;
@@ -19683,12 +20485,12 @@ function loopFix() {
 /*!********************************************************!*\
   !*** ./node_modules/swiper/core/moduleExtendParams.js ***!
   \********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ moduleExtendParams)
+/* harmony export */   "default": function() { return /* binding */ moduleExtendParams; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -19736,12 +20538,12 @@ function moduleExtendParams(params, allModulesParams) {
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/modules/observer/observer.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Observer)
+/* harmony export */   "default": function() { return /* binding */ Observer; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -19826,12 +20628,12 @@ function Observer({
 /*!***********************************************************!*\
   !*** ./node_modules/swiper/core/modules/resize/resize.js ***!
   \***********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Resize)
+/* harmony export */   "default": function() { return /* binding */ Resize; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -19916,13 +20718,10 @@ function Resize({
 /*!*************************************************!*\
   !*** ./node_modules/swiper/core/slide/index.js ***!
   \*************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _slideTo_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slideTo.js */ "./node_modules/swiper/core/slide/slideTo.js");
 /* harmony import */ var _slideToLoop_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slideToLoop.js */ "./node_modules/swiper/core/slide/slideToLoop.js");
 /* harmony import */ var _slideNext_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slideNext.js */ "./node_modules/swiper/core/slide/slideNext.js");
@@ -19937,7 +20736,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   slideTo: _slideTo_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   slideToLoop: _slideToLoop_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   slideNext: _slideNext_js__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -19953,12 +20752,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/core/slide/slideNext.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ slideNext)
+/* harmony export */   "default": function() { return /* binding */ slideNext; }
 /* harmony export */ });
 /* eslint no-unused-vars: "off" */
 function slideNext(speed = this.params.speed, runCallbacks = true, internal) {
@@ -19997,12 +20796,12 @@ function slideNext(speed = this.params.speed, runCallbacks = true, internal) {
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/core/slide/slidePrev.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ slidePrev)
+/* harmony export */   "default": function() { return /* binding */ slidePrev; }
 /* harmony export */ });
 /* eslint no-unused-vars: "off" */
 function slidePrev(speed = this.params.speed, runCallbacks = true, internal) {
@@ -20075,12 +20874,12 @@ function slidePrev(speed = this.params.speed, runCallbacks = true, internal) {
 /*!******************************************************!*\
   !*** ./node_modules/swiper/core/slide/slideReset.js ***!
   \******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ slideReset)
+/* harmony export */   "default": function() { return /* binding */ slideReset; }
 /* harmony export */ });
 /* eslint no-unused-vars: "off" */
 function slideReset(speed = this.params.speed, runCallbacks = true, internal) {
@@ -20094,12 +20893,12 @@ function slideReset(speed = this.params.speed, runCallbacks = true, internal) {
 /*!***************************************************!*\
   !*** ./node_modules/swiper/core/slide/slideTo.js ***!
   \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ slideTo)
+/* harmony export */   "default": function() { return /* binding */ slideTo; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -20289,12 +21088,12 @@ function slideTo(index = 0, speed = this.params.speed, runCallbacks = true, inte
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/slide/slideToClickedSlide.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ slideToClickedSlide)
+/* harmony export */   "default": function() { return /* binding */ slideToClickedSlide; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
@@ -20344,12 +21143,12 @@ function slideToClickedSlide() {
 /*!**********************************************************!*\
   !*** ./node_modules/swiper/core/slide/slideToClosest.js ***!
   \**********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ slideToClosest)
+/* harmony export */   "default": function() { return /* binding */ slideToClosest; }
 /* harmony export */ });
 /* eslint no-unused-vars: "off" */
 function slideToClosest(speed = this.params.speed, runCallbacks = true, internal, threshold = 0.5) {
@@ -20390,12 +21189,12 @@ function slideToClosest(speed = this.params.speed, runCallbacks = true, internal
 /*!*******************************************************!*\
   !*** ./node_modules/swiper/core/slide/slideToLoop.js ***!
   \*******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ slideToLoop)
+/* harmony export */   "default": function() { return /* binding */ slideToLoop; }
 /* harmony export */ });
 function slideToLoop(index = 0, speed = this.params.speed, runCallbacks = true, internal) {
   if (typeof index === 'string') {
@@ -20437,20 +21236,17 @@ function slideToLoop(index = 0, speed = this.params.speed, runCallbacks = true, 
 /*!******************************************************!*\
   !*** ./node_modules/swiper/core/transition/index.js ***!
   \******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _setTransition_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setTransition.js */ "./node_modules/swiper/core/transition/setTransition.js");
 /* harmony import */ var _transitionStart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./transitionStart.js */ "./node_modules/swiper/core/transition/transitionStart.js");
 /* harmony import */ var _transitionEnd_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transitionEnd.js */ "./node_modules/swiper/core/transition/transitionEnd.js");
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   setTransition: _setTransition_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   transitionStart: _transitionStart_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   transitionEnd: _transitionEnd_js__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -20462,12 +21258,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************!*\
   !*** ./node_modules/swiper/core/transition/setTransition.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ setTransition)
+/* harmony export */   "default": function() { return /* binding */ setTransition; }
 /* harmony export */ });
 function setTransition(duration, byController) {
   const swiper = this;
@@ -20485,12 +21281,12 @@ function setTransition(duration, byController) {
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/transition/transitionEmit.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ transitionEmit)
+/* harmony export */   "default": function() { return /* binding */ transitionEmit; }
 /* harmony export */ });
 function transitionEmit({
   swiper,
@@ -20532,12 +21328,12 @@ function transitionEmit({
 /*!**************************************************************!*\
   !*** ./node_modules/swiper/core/transition/transitionEnd.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ transitionEnd)
+/* harmony export */   "default": function() { return /* binding */ transitionEnd; }
 /* harmony export */ });
 /* harmony import */ var _transitionEmit_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./transitionEmit.js */ "./node_modules/swiper/core/transition/transitionEmit.js");
 
@@ -20563,12 +21359,12 @@ function transitionEnd(runCallbacks = true, direction) {
 /*!****************************************************************!*\
   !*** ./node_modules/swiper/core/transition/transitionStart.js ***!
   \****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ transitionStart)
+/* harmony export */   "default": function() { return /* binding */ transitionStart; }
 /* harmony export */ });
 /* harmony import */ var _transitionEmit_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./transitionEmit.js */ "./node_modules/swiper/core/transition/transitionEmit.js");
 
@@ -20597,12 +21393,12 @@ function transitionStart(runCallbacks = true, direction) {
 /*!************************************************************!*\
   !*** ./node_modules/swiper/core/translate/getTranslate.js ***!
   \************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getSwiperTranslate)
+/* harmony export */   "default": function() { return /* binding */ getSwiperTranslate; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -20634,13 +21430,10 @@ function getSwiperTranslate(axis = this.isHorizontal() ? 'x' : 'y') {
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/core/translate/index.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _getTranslate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getTranslate.js */ "./node_modules/swiper/core/translate/getTranslate.js");
 /* harmony import */ var _setTranslate_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setTranslate.js */ "./node_modules/swiper/core/translate/setTranslate.js");
 /* harmony import */ var _minTranslate_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./minTranslate.js */ "./node_modules/swiper/core/translate/minTranslate.js");
@@ -20651,7 +21444,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   getTranslate: _getTranslate_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   setTranslate: _setTranslate_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   minTranslate: _minTranslate_js__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -20665,12 +21458,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************!*\
   !*** ./node_modules/swiper/core/translate/maxTranslate.js ***!
   \************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ maxTranslate)
+/* harmony export */   "default": function() { return /* binding */ maxTranslate; }
 /* harmony export */ });
 function maxTranslate() {
   return -this.snapGrid[this.snapGrid.length - 1];
@@ -20682,12 +21475,12 @@ function maxTranslate() {
 /*!************************************************************!*\
   !*** ./node_modules/swiper/core/translate/minTranslate.js ***!
   \************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ minTranslate)
+/* harmony export */   "default": function() { return /* binding */ minTranslate; }
 /* harmony export */ });
 function minTranslate() {
   return -this.snapGrid[0];
@@ -20699,12 +21492,12 @@ function minTranslate() {
 /*!************************************************************!*\
   !*** ./node_modules/swiper/core/translate/setTranslate.js ***!
   \************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ setTranslate)
+/* harmony export */   "default": function() { return /* binding */ setTranslate; }
 /* harmony export */ });
 function setTranslate(translate, byController) {
   const swiper = this;
@@ -20761,12 +21554,12 @@ function setTranslate(translate, byController) {
 /*!***********************************************************!*\
   !*** ./node_modules/swiper/core/translate/translateTo.js ***!
   \***********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ translateTo)
+/* harmony export */   "default": function() { return /* binding */ translateTo; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -20861,13 +21654,10 @@ function translateTo(translate = 0, speed = this.params.speed, runCallbacks = tr
 /*!**************************************************!*\
   !*** ./node_modules/swiper/core/update/index.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _updateSize_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./updateSize.js */ "./node_modules/swiper/core/update/updateSize.js");
 /* harmony import */ var _updateSlides_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./updateSlides.js */ "./node_modules/swiper/core/update/updateSlides.js");
 /* harmony import */ var _updateAutoHeight_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./updateAutoHeight.js */ "./node_modules/swiper/core/update/updateAutoHeight.js");
@@ -20886,7 +21676,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ __webpack_exports__["default"] = ({
   updateSize: _updateSize_js__WEBPACK_IMPORTED_MODULE_0__["default"],
   updateSlides: _updateSlides_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   updateAutoHeight: _updateAutoHeight_js__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -20904,12 +21694,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************!*\
   !*** ./node_modules/swiper/core/update/updateActiveIndex.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateActiveIndex)
+/* harmony export */   "default": function() { return /* binding */ updateActiveIndex; }
 /* harmony export */ });
 function updateActiveIndex(newActiveIndex) {
   const swiper = this;
@@ -20988,12 +21778,12 @@ function updateActiveIndex(newActiveIndex) {
 /*!*************************************************************!*\
   !*** ./node_modules/swiper/core/update/updateAutoHeight.js ***!
   \*************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateAutoHeight)
+/* harmony export */   "default": function() { return /* binding */ updateAutoHeight; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 
@@ -21053,12 +21843,12 @@ function updateAutoHeight(speed) {
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/update/updateClickedSlide.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateClickedSlide)
+/* harmony export */   "default": function() { return /* binding */ updateClickedSlide; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 
@@ -21104,12 +21894,12 @@ function updateClickedSlide(e) {
 /*!***********************************************************!*\
   !*** ./node_modules/swiper/core/update/updateProgress.js ***!
   \***********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateProgress)
+/* harmony export */   "default": function() { return /* binding */ updateProgress; }
 /* harmony export */ });
 function updateProgress(translate) {
   const swiper = this;
@@ -21168,12 +21958,12 @@ function updateProgress(translate) {
 /*!*******************************************************!*\
   !*** ./node_modules/swiper/core/update/updateSize.js ***!
   \*******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateSize)
+/* harmony export */   "default": function() { return /* binding */ updateSize; }
 /* harmony export */ });
 function updateSize() {
   const swiper = this;
@@ -21215,12 +22005,12 @@ function updateSize() {
 /*!*********************************************************!*\
   !*** ./node_modules/swiper/core/update/updateSlides.js ***!
   \*********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateSlides)
+/* harmony export */   "default": function() { return /* binding */ updateSlides; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -21550,12 +22340,12 @@ function updateSlides() {
 /*!****************************************************************!*\
   !*** ./node_modules/swiper/core/update/updateSlidesClasses.js ***!
   \****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateSlidesClasses)
+/* harmony export */   "default": function() { return /* binding */ updateSlidesClasses; }
 /* harmony export */ });
 function updateSlidesClasses() {
   const swiper = this;
@@ -21628,12 +22418,12 @@ function updateSlidesClasses() {
 /*!***************************************************************!*\
   !*** ./node_modules/swiper/core/update/updateSlidesOffset.js ***!
   \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateSlidesOffset)
+/* harmony export */   "default": function() { return /* binding */ updateSlidesOffset; }
 /* harmony export */ });
 function updateSlidesOffset() {
   const swiper = this;
@@ -21650,12 +22440,12 @@ function updateSlidesOffset() {
 /*!*****************************************************************!*\
   !*** ./node_modules/swiper/core/update/updateSlidesProgress.js ***!
   \*****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ updateSlidesProgress)
+/* harmony export */   "default": function() { return /* binding */ updateSlidesProgress; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 
@@ -21709,12 +22499,12 @@ function updateSlidesProgress(translate = this && this.translate || 0) {
 /*!**************************************************!*\
   !*** ./node_modules/swiper/modules/a11y/a11y.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ A11y)
+/* harmony export */   "default": function() { return /* binding */ A11y; }
 /* harmony export */ });
 /* harmony import */ var _shared_classes_to_selector_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/classes-to-selector.js */ "./node_modules/swiper/shared/classes-to-selector.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -22076,12 +22866,12 @@ function A11y({
 /*!**********************************************************!*\
   !*** ./node_modules/swiper/modules/autoplay/autoplay.js ***!
   \**********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Autoplay)
+/* harmony export */   "default": function() { return /* binding */ Autoplay; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
@@ -22322,12 +23112,12 @@ function Autoplay({
 /*!**************************************************************!*\
   !*** ./node_modules/swiper/modules/controller/controller.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Controller)
+/* harmony export */   "default": function() { return /* binding */ Controller; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 /* eslint no-bitwise: ["error", { "allow": [">>"] }] */
@@ -22528,12 +23318,12 @@ function Controller({
 /*!******************************************************************!*\
   !*** ./node_modules/swiper/modules/effect-cards/effect-cards.js ***!
   \******************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EffectCards)
+/* harmony export */   "default": function() { return /* binding */ EffectCards; }
 /* harmony export */ });
 /* harmony import */ var _shared_create_shadow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/create-shadow.js */ "./node_modules/swiper/shared/create-shadow.js");
 /* harmony import */ var _shared_effect_init_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/effect-init.js */ "./node_modules/swiper/shared/effect-init.js");
@@ -22675,12 +23465,12 @@ function EffectCards({
 /*!**************************************************************************!*\
   !*** ./node_modules/swiper/modules/effect-coverflow/effect-coverflow.js ***!
   \**************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EffectCoverflow)
+/* harmony export */   "default": function() { return /* binding */ EffectCoverflow; }
 /* harmony export */ });
 /* harmony import */ var _shared_create_shadow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/create-shadow.js */ "./node_modules/swiper/shared/create-shadow.js");
 /* harmony import */ var _shared_effect_init_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/effect-init.js */ "./node_modules/swiper/shared/effect-init.js");
@@ -22796,12 +23586,12 @@ function EffectCoverflow({
 /*!************************************************************************!*\
   !*** ./node_modules/swiper/modules/effect-creative/effect-creative.js ***!
   \************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EffectCreative)
+/* harmony export */   "default": function() { return /* binding */ EffectCreative; }
 /* harmony export */ });
 /* harmony import */ var _shared_create_shadow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/create-shadow.js */ "./node_modules/swiper/shared/create-shadow.js");
 /* harmony import */ var _shared_effect_init_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/effect-init.js */ "./node_modules/swiper/shared/effect-init.js");
@@ -22968,12 +23758,12 @@ function EffectCreative({
 /*!****************************************************************!*\
   !*** ./node_modules/swiper/modules/effect-cube/effect-cube.js ***!
   \****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EffectCube)
+/* harmony export */   "default": function() { return /* binding */ EffectCube; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 /* harmony import */ var _shared_effect_init_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/effect-init.js */ "./node_modules/swiper/shared/effect-init.js");
@@ -23179,12 +23969,12 @@ function EffectCube({
 /*!****************************************************************!*\
   !*** ./node_modules/swiper/modules/effect-fade/effect-fade.js ***!
   \****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EffectFade)
+/* harmony export */   "default": function() { return /* binding */ EffectFade; }
 /* harmony export */ });
 /* harmony import */ var _shared_effect_init_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/effect-init.js */ "./node_modules/swiper/shared/effect-init.js");
 /* harmony import */ var _shared_effect_target_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/effect-target.js */ "./node_modules/swiper/shared/effect-target.js");
@@ -23266,12 +24056,12 @@ function EffectFade({
 /*!****************************************************************!*\
   !*** ./node_modules/swiper/modules/effect-flip/effect-flip.js ***!
   \****************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ EffectFlip)
+/* harmony export */   "default": function() { return /* binding */ EffectFlip; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 /* harmony import */ var _shared_create_shadow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/create-shadow.js */ "./node_modules/swiper/shared/create-shadow.js");
@@ -23408,12 +24198,12 @@ function EffectFlip({
 /*!************************************************************!*\
   !*** ./node_modules/swiper/modules/free-mode/free-mode.js ***!
   \************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ freeMode)
+/* harmony export */   "default": function() { return /* binding */ freeMode; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 
@@ -23679,12 +24469,12 @@ function freeMode({
 /*!**************************************************!*\
   !*** ./node_modules/swiper/modules/grid/grid.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Grid)
+/* harmony export */   "default": function() { return /* binding */ Grid; }
 /* harmony export */ });
 function Grid({
   swiper,
@@ -23809,12 +24599,12 @@ function Grid({
 /*!************************************************************************!*\
   !*** ./node_modules/swiper/modules/hash-navigation/hash-navigation.js ***!
   \************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ HashNavigation)
+/* harmony export */   "default": function() { return /* binding */ HashNavigation; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -23921,12 +24711,12 @@ function HashNavigation({
 /*!********************************************************!*\
   !*** ./node_modules/swiper/modules/history/history.js ***!
   \********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ History)
+/* harmony export */   "default": function() { return /* binding */ History; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -24091,12 +24881,12 @@ function History({
 /*!**********************************************************!*\
   !*** ./node_modules/swiper/modules/keyboard/keyboard.js ***!
   \**********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Keyboard)
+/* harmony export */   "default": function() { return /* binding */ Keyboard; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -24238,12 +25028,12 @@ function Keyboard({
 /*!**************************************************!*\
   !*** ./node_modules/swiper/modules/lazy/lazy.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Lazy)
+/* harmony export */   "default": function() { return /* binding */ Lazy; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -24541,12 +25331,12 @@ function Lazy({
 /*!******************************************************************!*\
   !*** ./node_modules/swiper/modules/manipulation/manipulation.js ***!
   \******************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Manipulation)
+/* harmony export */   "default": function() { return /* binding */ Manipulation; }
 /* harmony export */ });
 /* harmony import */ var _methods_appendSlide_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./methods/appendSlide.js */ "./node_modules/swiper/modules/manipulation/methods/appendSlide.js");
 /* harmony import */ var _methods_prependSlide_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./methods/prependSlide.js */ "./node_modules/swiper/modules/manipulation/methods/prependSlide.js");
@@ -24576,12 +25366,12 @@ function Manipulation({
 /*!**********************************************************************!*\
   !*** ./node_modules/swiper/modules/manipulation/methods/addSlide.js ***!
   \**********************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ addSlide)
+/* harmony export */   "default": function() { return /* binding */ addSlide; }
 /* harmony export */ });
 function addSlide(index, slides) {
   const swiper = this;
@@ -24654,12 +25444,12 @@ function addSlide(index, slides) {
 /*!*************************************************************************!*\
   !*** ./node_modules/swiper/modules/manipulation/methods/appendSlide.js ***!
   \*************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ appendSlide)
+/* harmony export */   "default": function() { return /* binding */ appendSlide; }
 /* harmony export */ });
 function appendSlide(slides) {
   const swiper = this;
@@ -24695,12 +25485,12 @@ function appendSlide(slides) {
 /*!**************************************************************************!*\
   !*** ./node_modules/swiper/modules/manipulation/methods/prependSlide.js ***!
   \**************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ prependSlide)
+/* harmony export */   "default": function() { return /* binding */ prependSlide; }
 /* harmony export */ });
 function prependSlide(slides) {
   const swiper = this;
@@ -24743,12 +25533,12 @@ function prependSlide(slides) {
 /*!*****************************************************************************!*\
   !*** ./node_modules/swiper/modules/manipulation/methods/removeAllSlides.js ***!
   \*****************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ removeAllSlides)
+/* harmony export */   "default": function() { return /* binding */ removeAllSlides; }
 /* harmony export */ });
 function removeAllSlides() {
   const swiper = this;
@@ -24767,12 +25557,12 @@ function removeAllSlides() {
 /*!*************************************************************************!*\
   !*** ./node_modules/swiper/modules/manipulation/methods/removeSlide.js ***!
   \*************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ removeSlide)
+/* harmony export */   "default": function() { return /* binding */ removeSlide; }
 /* harmony export */ });
 function removeSlide(slidesIndexes) {
   const swiper = this;
@@ -24828,12 +25618,12 @@ function removeSlide(slidesIndexes) {
 /*!**************************************************************!*\
   !*** ./node_modules/swiper/modules/mousewheel/mousewheel.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Mousewheel)
+/* harmony export */   "default": function() { return /* binding */ Mousewheel; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -25267,12 +26057,12 @@ function Mousewheel({
 /*!**************************************************************!*\
   !*** ./node_modules/swiper/modules/navigation/navigation.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Navigation)
+/* harmony export */   "default": function() { return /* binding */ Navigation; }
 /* harmony export */ });
 /* harmony import */ var _shared_create_element_if_not_defined_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/create-element-if-not-defined.js */ "./node_modules/swiper/shared/create-element-if-not-defined.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -25490,12 +26280,12 @@ function Navigation({
 /*!**************************************************************!*\
   !*** ./node_modules/swiper/modules/pagination/pagination.js ***!
   \**************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Pagination)
+/* harmony export */   "default": function() { return /* binding */ Pagination; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 /* harmony import */ var _shared_classes_to_selector_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/classes-to-selector.js */ "./node_modules/swiper/shared/classes-to-selector.js");
@@ -25948,12 +26738,12 @@ function Pagination({
 /*!**********************************************************!*\
   !*** ./node_modules/swiper/modules/parallax/parallax.js ***!
   \**********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Parallax)
+/* harmony export */   "default": function() { return /* binding */ Parallax; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 
@@ -26077,12 +26867,12 @@ function Parallax({
 /*!************************************************************!*\
   !*** ./node_modules/swiper/modules/scrollbar/scrollbar.js ***!
   \************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Scrollbar)
+/* harmony export */   "default": function() { return /* binding */ Scrollbar; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -26498,12 +27288,12 @@ function Scrollbar({
 /*!******************************************************!*\
   !*** ./node_modules/swiper/modules/thumbs/thumbs.js ***!
   \******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Thumb)
+/* harmony export */   "default": function() { return /* binding */ Thumb; }
 /* harmony export */ });
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -26717,12 +27507,12 @@ function Thumb({
 /*!********************************************************!*\
   !*** ./node_modules/swiper/modules/virtual/virtual.js ***!
   \********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Virtual)
+/* harmony export */   "default": function() { return /* binding */ Virtual; }
 /* harmony export */ });
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
 /* harmony import */ var _shared_utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/utils.js */ "./node_modules/swiper/shared/utils.js");
@@ -27030,12 +27820,12 @@ function Virtual({
 /*!**************************************************!*\
   !*** ./node_modules/swiper/modules/zoom/zoom.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Zoom)
+/* harmony export */   "default": function() { return /* binding */ Zoom; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/dom.js */ "./node_modules/swiper/shared/dom.js");
@@ -27659,12 +28449,12 @@ function Zoom({
 /*!***********************************************************!*\
   !*** ./node_modules/swiper/shared/classes-to-selector.js ***!
   \***********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ classesToSelector)
+/* harmony export */   "default": function() { return /* binding */ classesToSelector; }
 /* harmony export */ });
 function classesToSelector(classes = '') {
   return `.${classes.trim().replace(/([\.:!\/])/g, '\\$1') // eslint-disable-line
@@ -27677,12 +28467,12 @@ function classesToSelector(classes = '') {
 /*!*********************************************************************!*\
   !*** ./node_modules/swiper/shared/create-element-if-not-defined.js ***!
   \*********************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ createElementIfNotDefined)
+/* harmony export */   "default": function() { return /* binding */ createElementIfNotDefined; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -27715,12 +28505,12 @@ function createElementIfNotDefined(swiper, originalParams, params, checkProps) {
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/shared/create-shadow.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ createShadow)
+/* harmony export */   "default": function() { return /* binding */ createShadow; }
 /* harmony export */ });
 /* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom.js */ "./node_modules/swiper/shared/dom.js");
 
@@ -27743,13 +28533,10 @@ function createShadow(params, $slideEl, side) {
 /*!*******************************************!*\
   !*** ./node_modules/swiper/shared/dom.js ***!
   \*******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var dom7__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dom7 */ "./node_modules/dom7/dom7.esm.js");
 
 const Methods = {
@@ -27796,7 +28583,7 @@ Object.keys(Methods).forEach(methodName => {
     writable: true
   });
 });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dom7__WEBPACK_IMPORTED_MODULE_0__.$);
+/* harmony default export */ __webpack_exports__["default"] = (dom7__WEBPACK_IMPORTED_MODULE_0__.$);
 
 /***/ }),
 
@@ -27804,12 +28591,12 @@ Object.keys(Methods).forEach(methodName => {
 /*!***************************************************!*\
   !*** ./node_modules/swiper/shared/effect-init.js ***!
   \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ effectInit)
+/* harmony export */   "default": function() { return /* binding */ effectInit; }
 /* harmony export */ });
 function effectInit(params) {
   const {
@@ -27880,12 +28667,12 @@ function effectInit(params) {
 /*!*****************************************************!*\
   !*** ./node_modules/swiper/shared/effect-target.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ effectTarget)
+/* harmony export */   "default": function() { return /* binding */ effectTarget; }
 /* harmony export */ });
 function effectTarget(effectParams, $slideEl) {
   if (effectParams.transformEl) {
@@ -27904,12 +28691,12 @@ function effectTarget(effectParams, $slideEl) {
 /*!*********************************************************************!*\
   !*** ./node_modules/swiper/shared/effect-virtual-transition-end.js ***!
   \*********************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ effectVirtualTransitionEnd)
+/* harmony export */   "default": function() { return /* binding */ effectVirtualTransitionEnd; }
 /* harmony export */ });
 function effectVirtualTransitionEnd({
   swiper,
@@ -27953,12 +28740,12 @@ function effectVirtualTransitionEnd({
 /*!***************************************************!*\
   !*** ./node_modules/swiper/shared/get-browser.js ***!
   \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getBrowser: () => (/* binding */ getBrowser)
+/* harmony export */   getBrowser: function() { return /* binding */ getBrowser; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -27994,12 +28781,12 @@ function getBrowser() {
 /*!**************************************************!*\
   !*** ./node_modules/swiper/shared/get-device.js ***!
   \**************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getDevice: () => (/* binding */ getDevice)
+/* harmony export */   getDevice: function() { return /* binding */ getDevice; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 /* harmony import */ var _get_support_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./get-support.js */ "./node_modules/swiper/shared/get-support.js");
@@ -28067,12 +28854,12 @@ function getDevice(overrides = {}) {
 /*!***************************************************!*\
   !*** ./node_modules/swiper/shared/get-support.js ***!
   \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getSupport: () => (/* binding */ getSupport)
+/* harmony export */   getSupport: function() { return /* binding */ getSupport; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -28123,20 +28910,20 @@ function getSupport() {
 /*!*********************************************!*\
   !*** ./node_modules/swiper/shared/utils.js ***!
   \*********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   animateCSSModeScroll: () => (/* binding */ animateCSSModeScroll),
-/* harmony export */   deleteProps: () => (/* binding */ deleteProps),
-/* harmony export */   extend: () => (/* binding */ extend),
-/* harmony export */   getComputedStyle: () => (/* binding */ getComputedStyle),
-/* harmony export */   getTranslate: () => (/* binding */ getTranslate),
-/* harmony export */   isObject: () => (/* binding */ isObject),
-/* harmony export */   nextTick: () => (/* binding */ nextTick),
-/* harmony export */   now: () => (/* binding */ now),
-/* harmony export */   setCSSProperty: () => (/* binding */ setCSSProperty)
+/* harmony export */   animateCSSModeScroll: function() { return /* binding */ animateCSSModeScroll; },
+/* harmony export */   deleteProps: function() { return /* binding */ deleteProps; },
+/* harmony export */   extend: function() { return /* binding */ extend; },
+/* harmony export */   getComputedStyle: function() { return /* binding */ getComputedStyle; },
+/* harmony export */   getTranslate: function() { return /* binding */ getTranslate; },
+/* harmony export */   isObject: function() { return /* binding */ isObject; },
+/* harmony export */   nextTick: function() { return /* binding */ nextTick; },
+/* harmony export */   now: function() { return /* binding */ now; },
+/* harmony export */   setCSSProperty: function() { return /* binding */ setCSSProperty; }
 /* harmony export */ });
 /* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
 
@@ -28343,37 +29130,37 @@ function animateCSSModeScroll({
 /*!*******************************************!*\
   !*** ./node_modules/swiper/swiper.esm.js ***!
   \*******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A11y: () => (/* reexport safe */ _modules_a11y_a11y_js__WEBPACK_IMPORTED_MODULE_11__["default"]),
-/* harmony export */   Autoplay: () => (/* reexport safe */ _modules_autoplay_autoplay_js__WEBPACK_IMPORTED_MODULE_14__["default"]),
-/* harmony export */   Controller: () => (/* reexport safe */ _modules_controller_controller_js__WEBPACK_IMPORTED_MODULE_10__["default"]),
-/* harmony export */   EffectCards: () => (/* reexport safe */ _modules_effect_cards_effect_cards_js__WEBPACK_IMPORTED_MODULE_24__["default"]),
-/* harmony export */   EffectCoverflow: () => (/* reexport safe */ _modules_effect_coverflow_effect_coverflow_js__WEBPACK_IMPORTED_MODULE_22__["default"]),
-/* harmony export */   EffectCreative: () => (/* reexport safe */ _modules_effect_creative_effect_creative_js__WEBPACK_IMPORTED_MODULE_23__["default"]),
-/* harmony export */   EffectCube: () => (/* reexport safe */ _modules_effect_cube_effect_cube_js__WEBPACK_IMPORTED_MODULE_20__["default"]),
-/* harmony export */   EffectFade: () => (/* reexport safe */ _modules_effect_fade_effect_fade_js__WEBPACK_IMPORTED_MODULE_19__["default"]),
-/* harmony export */   EffectFlip: () => (/* reexport safe */ _modules_effect_flip_effect_flip_js__WEBPACK_IMPORTED_MODULE_21__["default"]),
-/* harmony export */   FreeMode: () => (/* reexport safe */ _modules_free_mode_free_mode_js__WEBPACK_IMPORTED_MODULE_16__["default"]),
-/* harmony export */   Grid: () => (/* reexport safe */ _modules_grid_grid_js__WEBPACK_IMPORTED_MODULE_17__["default"]),
-/* harmony export */   HashNavigation: () => (/* reexport safe */ _modules_hash_navigation_hash_navigation_js__WEBPACK_IMPORTED_MODULE_13__["default"]),
-/* harmony export */   History: () => (/* reexport safe */ _modules_history_history_js__WEBPACK_IMPORTED_MODULE_12__["default"]),
-/* harmony export */   Keyboard: () => (/* reexport safe */ _modules_keyboard_keyboard_js__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   Lazy: () => (/* reexport safe */ _modules_lazy_lazy_js__WEBPACK_IMPORTED_MODULE_9__["default"]),
-/* harmony export */   Manipulation: () => (/* reexport safe */ _modules_manipulation_manipulation_js__WEBPACK_IMPORTED_MODULE_18__["default"]),
-/* harmony export */   Mousewheel: () => (/* reexport safe */ _modules_mousewheel_mousewheel_js__WEBPACK_IMPORTED_MODULE_3__["default"]),
-/* harmony export */   Navigation: () => (/* reexport safe */ _modules_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_4__["default"]),
-/* harmony export */   Pagination: () => (/* reexport safe */ _modules_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_5__["default"]),
-/* harmony export */   Parallax: () => (/* reexport safe */ _modules_parallax_parallax_js__WEBPACK_IMPORTED_MODULE_7__["default"]),
-/* harmony export */   Scrollbar: () => (/* reexport safe */ _modules_scrollbar_scrollbar_js__WEBPACK_IMPORTED_MODULE_6__["default"]),
-/* harmony export */   Swiper: () => (/* reexport safe */ _core_core_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
-/* harmony export */   Thumbs: () => (/* reexport safe */ _modules_thumbs_thumbs_js__WEBPACK_IMPORTED_MODULE_15__["default"]),
-/* harmony export */   Virtual: () => (/* reexport safe */ _modules_virtual_virtual_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   Zoom: () => (/* reexport safe */ _modules_zoom_zoom_js__WEBPACK_IMPORTED_MODULE_8__["default"]),
-/* harmony export */   "default": () => (/* reexport safe */ _core_core_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   A11y: function() { return /* reexport safe */ _modules_a11y_a11y_js__WEBPACK_IMPORTED_MODULE_11__["default"]; },
+/* harmony export */   Autoplay: function() { return /* reexport safe */ _modules_autoplay_autoplay_js__WEBPACK_IMPORTED_MODULE_14__["default"]; },
+/* harmony export */   Controller: function() { return /* reexport safe */ _modules_controller_controller_js__WEBPACK_IMPORTED_MODULE_10__["default"]; },
+/* harmony export */   EffectCards: function() { return /* reexport safe */ _modules_effect_cards_effect_cards_js__WEBPACK_IMPORTED_MODULE_24__["default"]; },
+/* harmony export */   EffectCoverflow: function() { return /* reexport safe */ _modules_effect_coverflow_effect_coverflow_js__WEBPACK_IMPORTED_MODULE_22__["default"]; },
+/* harmony export */   EffectCreative: function() { return /* reexport safe */ _modules_effect_creative_effect_creative_js__WEBPACK_IMPORTED_MODULE_23__["default"]; },
+/* harmony export */   EffectCube: function() { return /* reexport safe */ _modules_effect_cube_effect_cube_js__WEBPACK_IMPORTED_MODULE_20__["default"]; },
+/* harmony export */   EffectFade: function() { return /* reexport safe */ _modules_effect_fade_effect_fade_js__WEBPACK_IMPORTED_MODULE_19__["default"]; },
+/* harmony export */   EffectFlip: function() { return /* reexport safe */ _modules_effect_flip_effect_flip_js__WEBPACK_IMPORTED_MODULE_21__["default"]; },
+/* harmony export */   FreeMode: function() { return /* reexport safe */ _modules_free_mode_free_mode_js__WEBPACK_IMPORTED_MODULE_16__["default"]; },
+/* harmony export */   Grid: function() { return /* reexport safe */ _modules_grid_grid_js__WEBPACK_IMPORTED_MODULE_17__["default"]; },
+/* harmony export */   HashNavigation: function() { return /* reexport safe */ _modules_hash_navigation_hash_navigation_js__WEBPACK_IMPORTED_MODULE_13__["default"]; },
+/* harmony export */   History: function() { return /* reexport safe */ _modules_history_history_js__WEBPACK_IMPORTED_MODULE_12__["default"]; },
+/* harmony export */   Keyboard: function() { return /* reexport safe */ _modules_keyboard_keyboard_js__WEBPACK_IMPORTED_MODULE_2__["default"]; },
+/* harmony export */   Lazy: function() { return /* reexport safe */ _modules_lazy_lazy_js__WEBPACK_IMPORTED_MODULE_9__["default"]; },
+/* harmony export */   Manipulation: function() { return /* reexport safe */ _modules_manipulation_manipulation_js__WEBPACK_IMPORTED_MODULE_18__["default"]; },
+/* harmony export */   Mousewheel: function() { return /* reexport safe */ _modules_mousewheel_mousewheel_js__WEBPACK_IMPORTED_MODULE_3__["default"]; },
+/* harmony export */   Navigation: function() { return /* reexport safe */ _modules_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_4__["default"]; },
+/* harmony export */   Pagination: function() { return /* reexport safe */ _modules_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_5__["default"]; },
+/* harmony export */   Parallax: function() { return /* reexport safe */ _modules_parallax_parallax_js__WEBPACK_IMPORTED_MODULE_7__["default"]; },
+/* harmony export */   Scrollbar: function() { return /* reexport safe */ _modules_scrollbar_scrollbar_js__WEBPACK_IMPORTED_MODULE_6__["default"]; },
+/* harmony export */   Swiper: function() { return /* reexport safe */ _core_core_js__WEBPACK_IMPORTED_MODULE_0__["default"]; },
+/* harmony export */   Thumbs: function() { return /* reexport safe */ _modules_thumbs_thumbs_js__WEBPACK_IMPORTED_MODULE_15__["default"]; },
+/* harmony export */   Virtual: function() { return /* reexport safe */ _modules_virtual_virtual_js__WEBPACK_IMPORTED_MODULE_1__["default"]; },
+/* harmony export */   Zoom: function() { return /* reexport safe */ _modules_zoom_zoom_js__WEBPACK_IMPORTED_MODULE_8__["default"]; },
+/* harmony export */   "default": function() { return /* reexport safe */ _core_core_js__WEBPACK_IMPORTED_MODULE_0__["default"]; }
 /* harmony export */ });
 /* harmony import */ var _core_core_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core/core.js */ "./node_modules/swiper/core/core.js");
 /* harmony import */ var _modules_virtual_virtual_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/virtual/virtual.js */ "./node_modules/swiper/modules/virtual/virtual.js");
@@ -28468,49 +29255,49 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
+/******/ 		__webpack_require__.n = function(module) {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 		__webpack_require__.d = function(exports, definition) {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
+/******/ 		__webpack_require__.r = function(exports) {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
+!function() {
 "use strict";
 /*!***********************!*\
   !*** ./src/js/app.js ***!
@@ -28588,8 +29375,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-})();
-
+}();
 /******/ })()
 ;
 //# sourceMappingURL=app.js.map

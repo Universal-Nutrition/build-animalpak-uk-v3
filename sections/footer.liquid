@@ -53,13 +53,13 @@
                 {% for link in linklists[section.settings.menu].links %}
                     {% if link.links != blank %}
                         <div class="border-0 {% unless forloop.last %}{% endunless %} lg:border-0">
-                            <h3 class="footer-link-title text-center md:pointer-events-none md:cursor-text lg:text-left lg:!flex font-anton border-b border-white lg:border-0 md:border-white md:mx-10 lg:mx-0 pb-3 relative text-xl text-white uppercase flex justify-center lg:justify-between items-center">{{ link.title }}
+                            <h3 class="footer-link-title text-center md:pointer-events-none md:cursor-text lg:text-left lg:!flex font-anton tracking-[0.01em] border-b border-white lg:border-0 md:border-white md:mx-10 lg:mx-0 pb-3 relative text-xl text-white uppercase flex justify-center lg:justify-between items-center">{{ link.title }}
                                 <span class="absolute right-0 md:hidden">{% render 'icon-chevron-bottom' %}</span></h3>
-                            <ul role="list" class="lg:!flex flex-col gap-1.5 mt-6 lg:mt-4 mb-0 space-y-3 hidden">
+                            <ul role="list" class="lg:!flex flex-col gap-1.5 mt-6 lg:mt-2 mb-0 space-y-3 hidden uppercase font-bebasNeue">
                                 {% for childlink in link.links %}
                                     <li class="md:text-center lg:text-left">
                                         <a href="{{ childlink.url }}"
-                                           class="cursor-pointer text-md text-white transition font-anton duration-500 hover:!text-gray-300 leading-[25.6px] lg:leading-[200%]">{% if childlink.url contains "https://privacy.animalpak.com/opt-out" %}
+                                           class="cursor-pointer text-md text-white transition duration-500 hover:!text-gray-300 leading-[25.6px] lg:leading-[180%]">{% if childlink.url contains "https://privacy.animalpak.com/opt-out" %}
                                                 <span class="inline-block h-[12px] mr-[4px]">{% render 'optout-icon-blue' %}</span>{% endif %}{{ childlink.title }}
                                         </a>
                                     </li>
@@ -75,7 +75,7 @@
                 <div class="flex order-[3] justify-center md:justify-end col-start-2">
                     {% render 'payments-icons' %}
                 </div>
-                <div class="flex order-[2] justify-center md:justify-start col-start-1 flex justify-center md:justify-between items-center w-full">
+                <div class="flex order-[2] justify-center md:justify-start col-start-1 md:justify-between items-center w-full">
                     <span class="text-sm text-white font-bebasNeueExpanded">{{ section.settings.copyright | newline_to_br }}</span>
                 </div>
                 <div class="flex order-[1] justify-center md:justify-end col-start-2 flex mb-3 lg:mb-0">
@@ -93,9 +93,12 @@
     .footer-link-title.active span {
         transform: rotate(180deg);
     }
-    footer-block .footer-menu h3,
-    footer-block .footer-menu a {
+    footer-block .footer-menu h3 {
         font-family: 'Anton', sans-serif;
+    }
+    footer-block .footer-menu a {
+        font-family: 'BebasNeuePro-ExpandedRegular', sans-serif;
+        font-weight: 400;
     }
 </style>
 
