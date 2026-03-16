@@ -79,4 +79,4 @@ class HomepageCarousel extends HTMLElement {
     }
 }
 
-customElements.define('homepage-carousel', HomepageCarousel)
+if (!customElements.get('homepage-carousel')) customElements.define('homepage-carousel', HomepageCarousel)

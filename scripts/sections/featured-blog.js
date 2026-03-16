@@ -26,4 +26,4 @@ class FeaturedBlog extends HTMLElement {
         });
     }
 }
-customElements.define('featured-blog',  FeaturedBlog);
+if (!customElements.get('featured-blog')) customElements.define('featured-blog', FeaturedBlog);

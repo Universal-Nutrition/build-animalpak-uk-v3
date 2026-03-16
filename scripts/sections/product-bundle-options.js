@@ -72,4 +72,4 @@ class ProductBundleOptions extends HTMLElement {
   }
 }
 
-customElements.define("product-bundle-options", ProductBundleOptions);
+if (!customElements.get("product-bundle-options")) customElements.define("product-bundle-options", ProductBundleOptions);

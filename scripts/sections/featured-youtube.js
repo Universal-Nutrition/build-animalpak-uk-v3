@@ -37,4 +37,4 @@ class YoutubeEmbed extends HTMLElement {
     }
   }
 }
-customElements.define("youtube-embed", YoutubeEmbed);
+if (!customElements.get("youtube-embed")) customElements.define("youtube-embed", YoutubeEmbed);

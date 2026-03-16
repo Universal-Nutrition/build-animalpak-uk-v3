@@ -1,6 +1,24 @@
 multi-collection-slider {
     display: block;
 
+    .swiper {
+        width: 100%;
+    }
+
+    .product-card:hover .product-card__content {
+        background-color: #000 !important;
+        color: #fff !important;
+
+        span:not(.product-card__btn), p, a {
+            color: #fff !important;
+        }
+    }
+
+    .product-card:hover .product-card__btn {
+        background-color: #f5d500 !important;
+        color: #000 !important;
+    }
+
     [data-tab-trigger].active {
         background-color: #000;
         color: #fff;

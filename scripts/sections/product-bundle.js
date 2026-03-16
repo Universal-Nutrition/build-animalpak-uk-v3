@@ -106,4 +106,4 @@ class ProductBundle extends HTMLElement {
     
   }
   
-  customElements.define('product-bundle', ProductBundle);
+  if (!customElements.get('product-bundle')) customElements.define('product-bundle', ProductBundle);

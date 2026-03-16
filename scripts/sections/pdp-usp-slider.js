@@ -19,6 +19,6 @@ class pdpUsp extends HTMLElement {
   }
 }
 
-customElements.define('pdp-usp', pdpUsp);
+if (!customElements.get('pdp-usp')) customElements.define('pdp-usp', pdpUsp);
 
 

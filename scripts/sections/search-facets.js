@@ -31,4 +31,4 @@ class Facets extends HTMLElement {
     }
 }
 
-customElements.define('main-search', Facets);
+if (!customElements.get('main-search')) customElements.define('main-search', Facets);

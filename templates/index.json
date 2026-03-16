@@ -283,6 +283,60 @@
         "bottom_divider_image": "shopify://shop_images/transparent-to-white-tear.png"
       }
     },
+    "multi_collection_slider_aTE9DY": {
+      "type": "multi-collection-slider",
+      "blocks": {
+        "collection_XnNDFw": {
+          "type": "collection",
+          "settings": {
+            "collection": "muscle-building-supplements"
+          }
+        },
+        "collection_cH7Aeh": {
+          "type": "collection",
+          "settings": {
+            "collection": "post-workout-recovery-supplements"
+          }
+        },
+        "collection_XPbTXp": {
+          "type": "collection",
+          "settings": {
+            "collection": "wellness-workout-supplements"
+          }
+        },
+        "collection_WfLABg": {
+          "type": "collection",
+          "settings": {
+            "collection": "fat-burning-cutting-supplements"
+          }
+        },
+        "collection_484bBF": {
+          "type": "collection",
+          "settings": {
+            "collection": "pre-workout-pump-supplements"
+          }
+        },
+        "collection_7kqab6": {
+          "type": "collection",
+          "settings": {
+            "collection": "creatine"
+          }
+        }
+      },
+      "block_order": [
+        "collection_XnNDFw",
+        "collection_cH7Aeh",
+        "collection_XPbTXp",
+        "collection_WfLABg",
+        "collection_484bBF",
+        "collection_7kqab6"
+      ],
+      "name": "Multi Collection Slider",
+      "settings": {
+        "title": "Trending Supplements",
+        "slides_per_view_desktop": 4
+      }
+    },
     "banner_message_nkNkC4": {
       "type": "banner-message",
       "settings": {
@@ -820,6 +874,7 @@
     "2025-04-03-hero-banner",
     "announcement_section_Nhp6dg",
     "shop_by_goal_JjBRdg",
+    "multi_collection_slider_aTE9DY",
     "banner_message_nkNkC4",
     "video_and_yotpo_reviews_carousel_tqfDGx",
     "3e6eaef2-63a2-4157-8d88-9415f4e29acc",

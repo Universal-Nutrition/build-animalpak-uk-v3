@@ -728,4 +728,4 @@ class BundlePage extends HTMLElement {
         })
     }
 }
-customElements.define('bundle-page', BundlePage);
+if (!customElements.get('bundle-page')) customElements.define('bundle-page', BundlePage);

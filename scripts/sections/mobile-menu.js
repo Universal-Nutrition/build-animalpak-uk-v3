@@ -124,4 +124,4 @@ class MobileMenu extends HTMLElement {
     }
 }
 
-customElements.define('mobile-menu', MobileMenu);
+if (!customElements.get('mobile-menu')) customElements.define('mobile-menu', MobileMenu);

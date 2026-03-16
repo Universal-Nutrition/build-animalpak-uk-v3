@@ -60,4 +60,4 @@ class TestimonialSlider extends HTMLElement {
     });
   }
 }
-customElements.define('testimonial-slider', TestimonialSlider)
+if (!customElements.get('testimonial-slider')) customElements.define('testimonial-slider', TestimonialSlider)

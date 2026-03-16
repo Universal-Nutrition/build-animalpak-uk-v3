@@ -165,4 +165,4 @@ class BlogFilters extends HTMLElement {
   }
 }
 
-customElements.define('blog-filters', BlogFilters)
+if (!customElements.get('blog-filters')) customElements.define('blog-filters', BlogFilters)

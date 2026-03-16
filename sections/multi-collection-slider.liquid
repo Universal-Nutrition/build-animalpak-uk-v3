@@ -44,7 +44,7 @@
 {%- assign slides_count = 0 -%}
 {%- for product in slider_collection.products limit: 8 -%}
     {%- assign index = forloop.index -%}
-    {%- assign product_description = product.metafields.custom.custom_icon_text -%}
+    {%- assign product_description = product.metafields.custom.custom_icon_text | strip_html | strip -%}
     {%- assign product_price = product.price | money -%}
 
     {%- assign loading = 'lazy' -%}

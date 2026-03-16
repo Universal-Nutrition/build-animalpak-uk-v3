@@ -1,6 +1,6 @@
 {%- layout none -%}
 {%- for product in collection.products -%}
-    {%- assign product_description = product.metafields.custom.custom_icon_text -%}
+    {%- assign product_description = product.metafields.custom.custom_icon_text | strip_html | strip -%}
     {%- assign product_price = product.price | money -%}
 
     <div class="swiper-slide">

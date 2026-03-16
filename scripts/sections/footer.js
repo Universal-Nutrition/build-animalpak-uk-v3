@@ -12,4 +12,4 @@ class Footer extends HTMLElement {
         })
     }
 }
-customElements.define('footer-block',  Footer);
+if (!customElements.get('footer-block')) customElements.define('footer-block', Footer);

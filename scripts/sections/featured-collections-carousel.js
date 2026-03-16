@@ -46,5 +46,5 @@ class FeaturedCollectionsCarousel extends HTMLElement {
 }
 
 
-customElements.define('featured-collections-carousel', FeaturedCollectionsCarousel);
+if (!customElements.get('featured-collections-carousel')) customElements.define('featured-collections-carousel', FeaturedCollectionsCarousel);
 

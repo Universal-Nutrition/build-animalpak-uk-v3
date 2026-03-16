@@ -30,4 +30,4 @@ class RelatedArticles extends HTMLElement {
     })
   }
 }
-customElements.define('related-articles', RelatedArticles)
+if (!customElements.get('related-articles')) customElements.define('related-articles', RelatedArticles)

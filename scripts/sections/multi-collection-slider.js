@@ -97,4 +97,4 @@ class MultiCollectionSlider extends HTMLElement {
     }
 }
 
-customElements.define('multi-collection-slider', MultiCollectionSlider);
+if (!customElements.get('multi-collection-slider')) customElements.define('multi-collection-slider', MultiCollectionSlider);

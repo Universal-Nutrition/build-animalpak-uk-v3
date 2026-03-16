@@ -41,5 +41,5 @@ class ProductGallery extends HTMLElement {
 }
 
 
-customElements.define('product-gallery', ProductGallery);
+if (!customElements.get('product-gallery')) customElements.define('product-gallery', ProductGallery);
 

@@ -34,4 +34,4 @@ class HeroSlider extends HTMLElement {
     });
   }
 }
-customElements.define("hero-slider", HeroSlider);
+if (!customElements.get("hero-slider")) customElements.define("hero-slider", HeroSlider);

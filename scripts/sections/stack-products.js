@@ -179,4 +179,4 @@ class StackProducts extends HTMLElement {
         })
     }
 }
-customElements.define('stack-products',  StackProducts);
+if (!customElements.get('stack-products')) customElements.define('stack-products', StackProducts);

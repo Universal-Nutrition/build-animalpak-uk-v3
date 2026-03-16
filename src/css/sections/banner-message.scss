@@ -1,0 +1,39 @@
+.banner-message {
+    position: relative;
+    overflow: visible;
+}
+
+.banner-message__tear {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(-99%);
+    z-index: 20;
+    pointer-events: none;
+    line-height: 0;
+
+    picture {
+        display: block;
+        width: 100%;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.banner-message__video {
+    position: relative;
+    width: 100%;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

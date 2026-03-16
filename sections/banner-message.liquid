@@ -1,20 +1,88 @@
-<section class='flex flex-col mx-auto text-center max-w-4xl py-16 px-[5vw] gap-10'>
-  <div class='font-anton text-[54px] md:text-[86px] leading-tight'>
-    <span>{{ section.settings.title }}</span>
-    <span class='text-black font-anton bg-goalYellow px-2 w-fit lg:w-min 3xl:w-fit [clip-path:polygon(0%_5%,100%_0%,100%_95%,0%_100%)]'>{{ section.settings.title_highlighted }}</span>
-  </div>
-  <div class='text-[15px] lg:text-[20px] space-y-4'>
-    {{ section.settings.content_text }}
-  </div>
-  <div>
-      <a href="{{ section.settings.button_link }}" class="inline-block font-anton text-bannerBlack bg-goalYellow rounded-md text-[21px] px-[60px] md:px-[90px] py-[20px]">{{ section.settings.button_text }}</a>
-  </div>
+{{- 'bundle.section-banner-message.css' | asset_url | stylesheet_tag -}}
+
+<section class="banner-message bg-black text-white">
+
+    {%- if section.settings.tear_image != blank or section.settings.tear_image_mobile != blank -%}
+        {%- assign tear_desktop = section.settings.tear_image -%}
+        {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
+        {%- assign tear_fallback = tear_desktop | default: section.settings.tear_image_mobile -%}
+        <div class="banner-message__tear">
+            <picture>
+                {%- if tear_mobile != blank -%}
+                    <source media="(max-width: 767px)"
+                        srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w"
+                    />
+                {%- endif -%}
+                {%- if tear_desktop != blank -%}
+                    <source media="(min-width: 768px)"
+                        srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 1600, format: 'webp' }} 1600w, {{ tear_desktop | image_url: width: 2400, format: 'webp' }} 2400w"
+                    />
+                {%- endif -%}
+                <img
+                    src="{{ tear_fallback | image_url: width: 1600, format: 'webp' }}"
+                    alt=""
+                    loading="lazy"
+                    class="block w-full"
+                />
+            </picture>
+        </div>
+    {%- endif -%}
+
+    <div class="container mx-auto max-w-7xl py-16 px-[5vw]">
+        <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+
+            {%- if section.settings.video_url != blank -%}
+                <div class="w-full lg:w-1/2 flex-shrink-0">
+                    <div class="banner-message__video" style="padding-bottom: 56.25%;">
+                        <iframe
+                            src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}"
+                            allow="autoplay; encrypted-media"
+                            allowfullscreen
+                            title="{{ section.settings.title }} {{ section.settings.title_highlighted }}"
+                        ></iframe>
+                    </div>
+                </div>
+            {%- endif -%}
+
+            <div class="w-full {% if section.settings.video_url != blank %}lg:w-1/2{% endif %} flex flex-col gap-8 text-center">
+                <div class="leading-tight">
+                    <div class="font-anton text-white text-[40px] md:text-[60px] lg:text-[54px] xl:text-[62px]">{{ section.settings.title }}</div>
+                    <div class="font-hyperwave text-goalYellow text-[40px] md:text-[60px] lg:text-[54px] xl:text-[92px]">{{ section.settings.title_highlighted }}</div>
+                </div>
+                <div class="font-bebasNeue text-[15px] lg:text-[18px] space-y-4 text-white">
+                    {{ section.settings.content_text }}
+                </div>
+                <div>
+                    <a href="{{ section.settings.button_link }}" class="inline-block font-anton text-black bg-goalYellow rounded-md text-[21px] px-[60px] md:px-[90px] py-[20px]">{{ section.settings.button_text }}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </section>
 
 {% schema %}
 {
   "name": "Banner Message",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "tear_image",
+      "label": "Tear Image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_image_mobile",
+      "label": "Tear Image (mobile, optional)"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "YouTube Video",
+      "accept": ["youtube"],
+      "placeholder": "https://www.youtube.com/watch?v=..."
+    },
     {
       "type": "text",
       "id": "title",
@@ -47,7 +115,7 @@
       "settings": {
         "title": "TRUE EFFORT",
         "title_highlighted": "COUNTS",
-        "content_text": "<p>Every lift, crunch, gain, PR you make is backed by over 40 years of effort, developing, evolving and perfecting everything we do.</p><p>Strong of will, you know what you need to succeed. It’s time to join like-minded people. People who share your desire, your grit. People who care, who will celebrate the effort, not only the result. <strong>Be ANIMAL.</strong></p>",
+        "content_text": "<p>Every lift, crunch, gain, PR you make is backed by over 40 years of effort, developing, evolving and perfecting everything we do.</p><p>Strong of will, you know what you need to succeed. It's time to join like-minded people. People who share your desire, your grit. People who care, who will celebrate the effort, not only the result. <strong>Be ANIMAL.</strong></p>",
         "button_text": "LEARN MORE",
         "button_link": "#"
       }

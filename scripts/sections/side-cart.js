@@ -1352,4 +1352,4 @@ class SideCart extends HTMLElement {
   }
 }
 
-customElements.define("side-cart", SideCart);
+if (!customElements.get("side-cart")) customElements.define("side-cart", SideCart);

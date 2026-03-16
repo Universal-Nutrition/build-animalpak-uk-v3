@@ -1,0 +1,38 @@
+{% assign rating = rating | default: 0.0 %}
+{% assign full_stars = rating | floor %}
+{% assign decimal = rating | minus: full_stars %}
+{% assign has_half_star = 0 %}
+
+{% if decimal >= 0.25 and decimal < 0.75 %}
+  {% assign has_half_star = 1 %}
+{% elsif decimal >= 0.75 %}
+  {% assign full_stars = full_stars | plus: 1 %}
+{% endif %}
+
+{% assign empty_stars = 5 | minus: full_stars | minus: has_half_star %}
+
+<div class="review-stars flex items-center gap-1" aria-label="{{ rating }} out of 5 stars">
+  {% for i in (1..full_stars) %}
+    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 md:w-4 md:h-4">
+      <path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="rgba(245,213,0,1)" />
+    </svg>
+  {% endfor %}
+
+  {% if has_half_star == 1 %}
+    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 md:w-4 md:h-4">
+      <defs>
+        <linearGradient id="halfStarGradient">
+          <stop offset="50%" stop-color="rgba(245,213,0,1)"/>
+          <stop offset="50%" stop-color="#e5e7eb"/>
+        </linearGradient>
+      </defs>
+      <path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="url(#halfStarGradient)" />
+    </svg>
+  {% endif %}
+
+  {% for i in (1..empty_stars) %}
+    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+      <path d="M9 14.118L14.562 17.475L13.086 11.148L18 6.891L11.529 6.342L9 0.375L6.471 6.342L0 6.891L4.914 11.148L3.438 17.475L9 14.118Z" fill="#e5e7eb" />
+    </svg>
+  {% endfor %}
+</div>

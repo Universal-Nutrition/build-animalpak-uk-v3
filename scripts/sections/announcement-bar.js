@@ -39,4 +39,4 @@ class AnnouncementBar extends HTMLElement {
 
 	connectedCallback() {}
 }
-customElements.define('announcement-bar', AnnouncementBar);
+if (!customElements.get('announcement-bar')) customElements.define('announcement-bar', AnnouncementBar);

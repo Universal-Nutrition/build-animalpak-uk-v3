@@ -152,4 +152,4 @@ class CollectionFiltersForm extends HTMLElement {
   }
 }
 
-customElements.define('collection-filters-form', CollectionFiltersForm);
+if (!customElements.get('collection-filters-form')) customElements.define('collection-filters-form', CollectionFiltersForm);

@@ -45,4 +45,4 @@ class Video extends HTMLElement {
     }
 }
 
-customElements.define('video-block', Video);
+if (!customElements.get('video-block')) customElements.define('video-block', Video);

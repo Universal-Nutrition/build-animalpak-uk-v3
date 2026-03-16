@@ -19,4 +19,4 @@ class CountdownBar extends HTMLElement {
     counter()
   }
 }
-customElements.define('countdown-bar', CountdownBar)
+if (!customElements.get('countdown-bar')) customElements.define('countdown-bar', CountdownBar)

@@ -31,5 +31,5 @@ class MobileFilters extends HTMLElement {
 
   }
   
-  customElements.define('mobile-filters', MobileFilters);
+  if (!customElements.get('mobile-filters')) customElements.define('mobile-filters', MobileFilters);
   
