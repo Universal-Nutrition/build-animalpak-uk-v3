@@ -92,7 +92,7 @@
             </ul>
         {% endif %}
     </div>
-    <div class="flex gap-10 w-1/2 max-w-full">
+    <div class="flex gap-10 w-1/2 max-w-full overflow-hidden max-h-[600px]">
      {% if parent_link.title == 'Learn' %}
         {% assign all_articles = blogs['fitness-bodybuilding'].articles | sort: 'published_at' | reverse %}
         {% comment %} {{ all_articles | json }} {% endcomment %}
