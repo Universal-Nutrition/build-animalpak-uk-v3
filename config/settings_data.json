@@ -1,0 +1,598 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "asin": "https://www.amazon.co.uk/dp/",
+    "bfcm_cart": false,
+    "free_gift_price_bfcm": 120,
+    "sub_pre_free_gift": "Subscribers Get FREE Shipping. You're {gift_price_left} Away From Getting A FREE Limited Edition Gym Bag.",
+    "ot_pre_free_gift": "Free Shipping Unlocked! You're {gift_price_left} Away From Unlocking Our FREE Limited Edition Gym Bag!",
+    "ot_pre_free_ship": "Spend {shipping_price_left} More For FREE Shipping + Unlock A FREE Gym Bag When You Spend $125",
+    "free_shipping_free_gift": "You've Unlocked Free Shipping And A FREE Limited Edition Gym Bag!",
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#000000",
+    "colors_accent_2": "#000000",
+    "colors_text": "#000000",
+    "colors_outline_button_labels": "#000000",
+    "colors_background_1": "#FFFFFF",
+    "colors_background_2": "#F3F3F3",
+    "type_header_font": "assistant_n4",
+    "type_body_font": "assistant_n4",
+    "shipping_amount": "50",
+    "side_cart_text": "",
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_instagram_link": "https://www.instagram.com/animalpakuk/",
+    "social_tiktok_link": "",
+    "social_youtube_link": "https://www.youtube.com/@animalpak_uk",
+    "favicon": "shopify://shop_images/a_favicon.png",
+    "trending_search": "Energy,Protein,Creatine,Animal Pak",
+    "bundle10": "",
+    "bundle20": "",
+    "bundle30": "",
+    "subs_bundle10": "2 Product Bundle Discount",
+    "subs_bundle20": "3 Product Bundle Discount",
+    "subs_bundle30": "4 Product Bundle Discount",
+    "currency_code_enabled": false,
+    "animal-omega": "<li>Lower systemic inflammation</li>\n<li>Assists in body fat loss</li>",
+    "animal-pak": "<li>Helps shed excess fat and water naturally</li>\n<li>Laser focus and energy from nootropics</li>",
+    "animal-flex": "<li>Helps block estrogen with ingredients like Resveratrol</li>\n<li>Naturally enhances output of testosterone and GH with 5 unique complexes</li>",
+    "ss_site_id": "",
+    "checkout_logo_image": "shopify://shop_images/Vector_28689ccc-c62b-4d7c-8533-782e2872350c.png",
+    "checkout_sidebar_background_color": "#212121",
+    "checkout_heading_font": "Open Sans",
+    "checkout_body_font": "Open Sans",
+    "checkout_accent_color": "#212121",
+    "checkout_button_color": "#f5d500",
+    "ss_enable": true,
+    "gift_enabled": true,
+    "gift_product": "animal-cuts-powder-strawberry-sample",
+    "gift_order_value_enabled": true,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "f677d7f7-aff2-4c1a-8ff8-3626a1b79ac4": {
+            "type": "announcement",
+            "settings": {
+              "text": "<p>Free shipping on orders £50+  |   Get 10% off your first order</p>",
+              "text_color": "#000000"
+            }
+          }
+        },
+        "block_order": [
+          "f677d7f7-aff2-4c1a-8ff8-3626a1b79ac4"
+        ],
+        "settings": {
+          "bg_color": "#ffffff",
+          "autoplay": 0,
+          "show_icon": false
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "custom_css": [],
+        "settings": {
+          "menu": "footer",
+          "menu_secondary": "",
+          "logo": "shopify://shop_images/logo-footer.png",
+          "bg_color": "#1c1c1c",
+          "copyright": "<p>*10% off your first order only when you sign up to our mailing list</p><p>† These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. When used over time in combination with an appropriate diet and training program.<br/><br/>Copyright © 2024 Animal Europe • All products can be returned to us within 14 days after purchase • All rights reserved. </p>"
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "custom_css": [],
+        "settings": {
+          "form_id": "UAmWtQ",
+          "title": "JOIN THE PAK",
+          "text": "Join the ANIMAL community for deals, advice from pro athletes, news, events and more.",
+          "bg_image": "shopify://shop_images/newsletter_background.png",
+          "bottom_tear_image": "shopify://shop_images/tear-transparent-to-offblack.png"
+        }
+      },
+      "header-eu": {
+        "type": "header-eu",
+        "blocks": {
+          "45d28395-7a2b-4207-8327-a0bb41e6bf56": {
+            "type": "product",
+            "settings": {
+              "nav_menu": "shop",
+              "product": "animal-whey-iso-protein-supplement",
+              "product_title": "",
+              "product_description": "",
+              "show_price": true,
+              "product_link": ""
+            }
+          },
+          "bca8cad2-6d94-44f6-8662-c317be0fb55e": {
+            "type": "product",
+            "settings": {
+              "nav_menu": "shop",
+              "product": "animal-alpha-f-workout-supplement-for-women",
+              "product_title": "",
+              "product_description": "",
+              "show_price": true,
+              "product_link": ""
+            }
+          },
+          "f2ab5497-b5b8-47c9-ba99-7e9d8e572697": {
+            "type": "supplements-2",
+            "disabled": true,
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/Take_The_Quiz_400_x_222_px_1.png",
+              "accent": false,
+              "link": "shopify://collections/bfcm-new-gear"
+            }
+          },
+          "d093fa41-7b9b-475b-b207-78c9dfb4d942": {
+            "type": "supplements-1",
+            "settings": {
+              "header": "Shop By Category",
+              "menu": "shop-by-category"
+            }
+          },
+          "c1290b52-74af-4be2-9717-40f3ff2d8e4d": {
+            "type": "supplements-1",
+            "settings": {
+              "header": "Shop By Goal",
+              "menu": "shop-by-goal"
+            }
+          },
+          "7a74ebce-f9c5-4871-9229-7100d5225558": {
+            "type": "learn-1",
+            "settings": {
+              "header": "About Animal",
+              "menu": "about-animal"
+            }
+          },
+          "6f8fb6ba-df9c-4011-8718-4fef349751d9": {
+            "type": "supplements-2",
+            "disabled": true,
+            "settings": {
+              "name": "New Releases",
+              "image": "shopify://shop_images/03_04JohnRenee5001_2.png",
+              "accent": true,
+              "link": "shopify://products/heather-grey-iconic-tee-w-black-pak-iconic"
+            }
+          },
+          "664bcaf1-a2e0-4457-99b1-14117d2bfda0": {
+            "type": "gear-1",
+            "disabled": true,
+            "settings": {
+              "name": "BFCM",
+              "menu": ""
+            }
+          },
+          "7593fac5-0aeb-4cd1-9afc-5e6261c0ec8d": {
+            "type": "gear-1",
+            "disabled": true,
+            "settings": {
+              "name": "Apparel & Accessories",
+              "menu": "apparel-accessories"
+            }
+          },
+          "6d44d668-6b6b-4e78-a896-d24a0e256f30": {
+            "type": "learn-1",
+            "disabled": true,
+            "settings": {
+              "header": "Trending",
+              "menu": "list-collection"
+            }
+          },
+          "fcd90aa0-30db-4b71-bcbc-4a54cecd3604": {
+            "type": "gear-2",
+            "disabled": true,
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/Take_The_Quiz_400_x_222_px_1.png",
+              "accent": false,
+              "link": "shopify://collections/bfcm-new-gear"
+            }
+          }
+        },
+        "block_order": [
+          "45d28395-7a2b-4207-8327-a0bb41e6bf56",
+          "bca8cad2-6d94-44f6-8662-c317be0fb55e",
+          "f2ab5497-b5b8-47c9-ba99-7e9d8e572697",
+          "d093fa41-7b9b-475b-b207-78c9dfb4d942",
+          "c1290b52-74af-4be2-9717-40f3ff2d8e4d",
+          "7a74ebce-f9c5-4871-9229-7100d5225558",
+          "6f8fb6ba-df9c-4011-8718-4fef349751d9",
+          "664bcaf1-a2e0-4457-99b1-14117d2bfda0",
+          "7593fac5-0aeb-4cd1-9afc-5e6261c0ec8d",
+          "6d44d668-6b6b-4e78-a896-d24a0e256f30",
+          "fcd90aa0-30db-4b71-bcbc-4a54cecd3604"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/Vector_94c4a8a1-6c2d-4d7f-aecf-2e345b304b38.png",
+          "logo_text": "",
+          "logo_width": 170,
+          "menu": "main-menu",
+          "meganav_blog_1": "fitness-bodybuilding",
+          "meganav_bg": "#f5d500",
+          "info_icon_link": "shopify://pages/customer-service",
+          "mobile_menu_footer_bg": "#f5d500",
+          "mobile_menu_footer_title": "follow us"
+        }
+      },
+      "section-login": {
+        "type": "section-login",
+        "settings": {
+          "background": "#F5F5F5"
+        }
+      },
+      "loop-returns": {
+        "type": "loop-returns",
+        "settings": {
+          "button": "Returns portal",
+          "button_link": "https://animalpak.loopreturns.com/#/"
+        }
+      },
+      "main-cart-items": {
+        "type": "main-cart-items",
+        "settings": {
+          "show_vendor": false
+        }
+      },
+      "main-cart-footer": {
+        "type": "main-cart-footer",
+        "settings": {
+          "show_cart_note": false
+        }
+      },
+      "gift-products": {
+        "type": "gift-products",
+        "blocks": {
+          "ae0c138e-a8d0-43b4-97e7-7ca1339cd761": {
+            "type": "product",
+            "disabled": true,
+            "settings": {
+              "product": "",
+              "order_value": 120,
+              "subscription_only": false
+            }
+          },
+          "8ba947a5-d991-4245-a574-237d0fcab0fa": {
+            "type": "product",
+            "disabled": true,
+            "settings": {
+              "product": "",
+              "order_value": 5,
+              "subscription_only": false
+            }
+          }
+        },
+        "block_order": [
+          "ae0c138e-a8d0-43b4-97e7-7ca1339cd761",
+          "8ba947a5-d991-4245-a574-237d0fcab0fa"
+        ],
+        "settings": {}
+      },
+      "side-cart": {
+        "type": "side-cart",
+        "custom_css": [],
+        "settings": {
+          "promo": ""
+        }
+      },
+      "countdown-bar": {
+        "type": "countdown-bar",
+        "custom_css": [],
+        "settings": {
+          "countdown_date": "11/27/2023 23:59",
+          "button_text": "",
+          "button_url": "#",
+          "announcement": "Cyber Monday Ends Tonight",
+          "show_countdown": false
+        }
+      },
+      "header-style-2": {
+        "type": "header-style-2",
+        "blocks": {
+          "transparent_7gBeX7": {
+            "type": "transparent",
+            "settings": {
+              "page": ""
+            }
+          },
+          "product_megamenu_gXV9mp": {
+            "type": "product-megamenu",
+            "settings": {
+              "product_linklist": ""
+            }
+          },
+          "product_megamenu_bH7pLm": {
+            "type": "product-megamenu",
+            "settings": {
+              "product_linklist": ""
+            }
+          },
+          "product_megamenu_rXCG9F": {
+            "type": "product-megamenu",
+            "settings": {
+              "product_linklist": ""
+            }
+          },
+          "category_megamenu_yEdjmR": {
+            "type": "category-megamenu",
+            "settings": {
+              "col_1_title": "",
+              "linklist_1": "shop-by-category",
+              "col_1_link_title": "",
+              "col_1_link_url": "shopify://collections/all",
+              "col_1_image_fit": "cover",
+              "col_2_title": "",
+              "linklist_2": "shop-by-goal",
+              "col_2_link_title": "",
+              "col_2_link_url": "shopify://collections/all",
+              "col_2_image_fit": "cover",
+              "image_block_title": "",
+              "link_1": "",
+              "title_1": "",
+              "link_description_1": "",
+              "link_2": "",
+              "title_2": "",
+              "link_description_2": "",
+              "product_1": "",
+              "product_1_description": "",
+              "product_2": "",
+              "product_2_description": "",
+              "reverse_columns": false
+            }
+          },
+          "category_megamenu_GCwaCe": {
+            "type": "category-megamenu",
+            "settings": {
+              "col_1_title": "",
+              "linklist_1": "",
+              "col_1_link_title": "",
+              "col_1_link_url": "",
+              "col_1_image_fit": "cover",
+              "col_2_title": "",
+              "linklist_2": "",
+              "col_2_link_title": "",
+              "col_2_link_url": "",
+              "col_2_image_fit": "cover",
+              "image_block_title": "",
+              "link_1": "",
+              "title_1": "",
+              "link_description_1": "",
+              "link_2": "",
+              "title_2": "",
+              "link_description_2": "",
+              "product_1": "",
+              "product_1_description": "",
+              "product_2": "",
+              "product_2_description": "",
+              "reverse_columns": false
+            }
+          }
+        },
+        "block_order": [
+          "transparent_7gBeX7",
+          "product_megamenu_gXV9mp",
+          "product_megamenu_bH7pLm",
+          "product_megamenu_rXCG9F",
+          "category_megamenu_yEdjmR",
+          "category_megamenu_GCwaCe"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/animal-logo.svg",
+          "logo_text": "",
+          "logo_width": 100,
+          "upper_nav_bg": "#2c2c2c",
+          "upper_nav_menu": "upper-menu",
+          "header_bg": "#000000",
+          "header_text_color": "#ffffff",
+          "menu": "main-menu",
+          "meganav_blog_1": "fitness-bodybuilding",
+          "meganav_bg": "#ffffff",
+          "info_icon_link": "shopify://policies/contact-information",
+          "mobile_menu_footer_bg": "#ffffff",
+          "mobile_menu_footer_text_color": "#000000",
+          "mobile_menu_footer_title": "",
+          "homepage": false,
+          "pdp": false,
+          "plp": false,
+          "page": false,
+          "blog": false,
+          "article": false
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "7570552984445421165": {
+        "type": "shopify://apps/yotpo-product-reviews/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {}
+      },
+      "15685250022964305326": {
+        "type": "shopify://apps/elevar-conversion-tracking/blocks/dataLayerEmbed/bc30ab68-b15c-4311-811f-8ef485877ad6",
+        "disabled": false,
+        "settings": {}
+      },
+      "48472590952836000000": {
+        "type": "shopify://apps/gdpr-cookie-consent/blocks/banner/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
+        "disabled": false,
+        "settings": {}
+      },
+      "12439146293631897289": {
+        "type": "shopify://apps/blockify-fraud-filter/blocks/app_embed/2e3e0ba5-0e70-447a-9ec5-3bf76b5ef12e",
+        "disabled": false,
+        "settings": {}
+      },
+      "5858961087409699889": {
+        "type": "shopify://apps/geolocation-orbe/blocks/app-embed-footer-selector/7cb09287-cd2b-4646-837c-f1f9b6ea703e",
+        "disabled": false,
+        "settings": {
+          "footer_ui_type": "selector",
+          "block_position": "",
+          "option_language": true,
+          "style_corners": "rounded",
+          "style_dropdown": "without_lines",
+          "option_classic_flag_style": "circle",
+          "option_classic_currency_type": "none",
+          "search_country": false,
+          "option_modal_continent": false,
+          "option_flag_style": "circle",
+          "option_currency_type": "none",
+          "option_modal_language": true,
+          "title": "Select Your Region",
+          "language_title": "Preferred Language",
+          "helper_text": "Changing language will not affect your selected region",
+          "block_background": "#ffffff",
+          "style_colors_background": "#fbfbfb",
+          "style_colors_border": "#000000",
+          "style_colors_text": "#000000",
+          "block_alignement": "flex-end"
+        }
+      },
+      "15912215999290715800": {
+        "type": "shopify://apps/geolocation-orbe/blocks/app-embed-modal/7cb09287-cd2b-4646-837c-f1f9b6ea703e",
+        "disabled": false,
+        "settings": {
+          "test_mode": false,
+          "modal_closeButton": false,
+          "option_flag_style": "none",
+          "option_currency_type": "none",
+          "option_language": true,
+          "option_search_country": false,
+          "title": "Are you in the right place?",
+          "text": "Please select your shipping country.",
+          "helper_text": "<p>Buy from the country of your choice. Remember that we can only ship your order to addresses located in the chosen country.</p>",
+          "cta_text": "Shop now",
+          "fallback_text": "We don’t ship to {country}",
+          "alignment_image": "right",
+          "style_corners": "square",
+          "style_dropdown": "outlined",
+          "modal_button_align": "right",
+          "title_font_size": 20,
+          "text_font_size": 14,
+          "show_blurred_background": false,
+          "style_colors_background": "#ffffff",
+          "style_colors_closeButton": "#5c5f62",
+          "style_colors_cta_text": "#ffffff",
+          "style_colors_cta_button": "#000000",
+          "style_colors_text": "#000000"
+        }
+      },
+      "1768834845299682660": {
+        "type": "shopify://apps/subscriptions/blocks/app-embed-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+        "disabled": true,
+        "settings": {
+          "color_text_title": "#6d7175",
+          "color_text_body": "#6d7175",
+          "dividers_color": "#8f8d8d",
+          "bacgkround_color": "#ffffff",
+          "border_thickness": 1,
+          "border_radius": 0,
+          "subscription_policy_url": ""
+        }
+      },
+      "7391254365982452807": {
+        "type": "shopify://apps/firmhouse/blocks/sepa_plan_cleaner/c05a962b-cac2-4640-98c5-5e2e025abc3a",
+        "disabled": false,
+        "settings": {
+          "refresh_after_revert": false,
+          "use_ajax": true,
+          "submit_cart_attributes": true
+        }
+      },
+      "7512333189395554711": {
+        "type": "shopify://apps/firmhouse/blocks/button_injector/c05a962b-cac2-4640-98c5-5e2e025abc3a",
+        "disabled": false,
+        "settings": {
+          "target_selector": "button[name='checkout']",
+          "display_mode": "original_then_sepa",
+          "injection_method": "clone",
+          "target_content_override": "{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}",
+          "target_payment_icons": "visa,master,paypal",
+          "regular_additional_classes": "",
+          "regular_custom_template": "<button type='button' class='button button--primary' style='width: 100%; margin-top: 0.5rem;'>{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}<span style='display: inline-flex; align-items: center; margin-left: 0.5rem;'><img src='{{ 'visa' | payment_type_img_url }}' alt='Visa' width='38' height='24' style='margin-left: 0.25rem;'> <img src='{{ 'paypal' | payment_type_img_url }}' alt='Paypal' width='38' height='24' style='margin-left: 0.25rem;'> </span></button>",
+          "button_content_override": "{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}",
+          "payment_icons": "ideal,bancontact",
+          "additional_classes": "",
+          "sepa_button_first": false,
+          "custom_button_template": "<button type='button' class='button button--primary' style='width: 100%; margin-top: 0.5rem;'>{% if request.locale.iso_code == 'nl' %}Afrekenen met{% elsif request.locale.iso_code == 'de' %}Bezahlen mit{% elsif request.locale.iso_code == 'fr' %}Payer avec{% else %}Checkout with{% endif %}<span style='display: inline-flex; align-items: center; margin-left: 0.5rem;'><img src='{{ 'ideal' | payment_type_img_url }}' alt='iDeal' width='38' height='24' style='margin-left: 0.25rem;'> <img src='{{ 'bancontact' | payment_type_img_url }}' alt='Bancontact' width='38' height='24' style='margin-left: 0.25rem;'> </span></button>",
+          "disconnect_after_injection": false,
+          "hide_if_cart_empty": true
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "colors_solid_button_labels": "#FFFFFF",
+      "colors_accent_1": "#121212",
+      "colors_accent_2": "#334FB4",
+      "colors_text": "#121212",
+      "colors_outline_button_labels": "#121212",
+      "colors_background_1": "#FFFFFF",
+      "colors_background_2": "#F3F3F3",
+      "type_header_font": "assistant_n4",
+      "type_body_font": "assistant_n4",
+      "sections": {
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "blocks": {
+            "announcement-bar-0": {
+              "type": "announcement",
+              "settings": {
+                "text_color": "#fff"
+              }
+            }
+          },
+          "block_order": [
+            "announcement-bar-0"
+          ],
+          "settings": {
+            "bg_color": "#003DA5"
+          }
+        }
+      }
+    },
+    "Craft": {
+      "colors_solid_button_labels": "#EFECEC",
+      "colors_accent_1": "#2A332F",
+      "colors_accent_2": "#476154",
+      "colors_text": "#1C1A1A",
+      "colors_outline_button_labels": "#7B8382",
+      "colors_background_1": "#EFECEC",
+      "colors_background_2": "#C1BCAE",
+      "type_header_font": "americana_n4",
+      "type_body_font": "quattrocento_sans_n4",
+      "sections": {
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      }
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".shopify_subscriptions_app_block_label ul {line-height: 1.5 !important;}"
+    ]
+  }
+}
