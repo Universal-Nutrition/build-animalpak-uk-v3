@@ -50,9 +50,15 @@
   {% endunless %}
 
 <style>
-      .product-grid-item .yotpo.bottomLine .yotpo-icon-star{
-        color: #212121 !important;
+      .product-grid-item .yotpo.bottomLine .yotpo-icon-star,
+      .product-grid-item .yotpo-sr-star-full {
+        color: #FEDD00 !important;
     }
+      [id^="yotpo_stars_gradient"] stop:nth-child(1) { stop-color: #FEDD00 !important; }
+      [id^="yotpo_stars_gradient"] stop:nth-child(2) { stop-color: #d1d1d1 !important; }
+      .product-grid-item .yotpo path, .product-grid-item .yotpo polygon, .product-grid-item .yotpo rect { stroke: none !important; }
+      .yotpo-sr-star-empty path, .yotpo-sr-star-full path { stroke: none !important; }
+      .yotpo-sr-bottom-line-right-panel span.yotpo-sr-bottom-line-text.yotpo-sr-bottom-line-text--right-panel { font-family: 'BebasNeuePro-ExpandedRegular', sans-serif !important; }
     .product-grid-item .absolute.hidden{
         height: 55%;
         top: 5%;
