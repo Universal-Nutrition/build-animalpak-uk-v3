@@ -356,14 +356,14 @@
       "settings": {
         "tear_image": "shopify://shop_images/black-tear.png",
         "tear_image_mobile": "shopify://shop_images/mobile-black-tear.png",
-        "product": "animal-creatine-chews",
-        "image": "shopify://shop_images/Creatine_HMB.png",
+        "product": "animal-isolate-loaded-whey-protein",
+        "image": "shopify://shop_images/iso-whey-temp.png",
         "platform_image": "shopify://shop_images/Innovation_Platform5-bottom.webp",
         "radial_shadow": "shopify://shop_images/shadow.webp",
-        "subtitle": "Innovation Spotlight",
-        "title": "Creatine HMB+\\nA Powerhouse Tag Team",
-        "description": "<p>This powerful combination of creatine and HMB redefines what creatine alone can do, and goes beyond - unlocking next-level growth and performance results.<br/></p><ul><li><strong>Superior Muscle-building and Recovery</strong></li><li><strong>Increase Lean Body Mass and Strength</strong></li><li><strong>Supports Endurance and Recovery</strong></li><li><strong>Helps Reduce Muscle Breakdown</strong></li></ul>",
-        "button_url": "shopify://products/animal-creatine-chews"
+        "subtitle": "New Flavour Feature",
+        "title": "The premium isolate you trust, now in Caramel Latte.",
+        "description": "<p>This premium isolate-loaded whey in our new Iced Mocha flavour redefines what a daily protein shake can do, and goes beyond – unlocking next-level muscle growth and rapid recovery results.<br/></p><ul><li><strong>Superior Muscle Repair and Fast Recovery</strong></li><li><strong>Fuels Lean Muscle Growth with 25g of Protein</strong></li><li><strong>Fortified with 5.8g of Powerful BCAAs</strong></li><li><strong>Highly Digestible with Less Than 1.3g of Sugar</strong></li></ul>",
+        "button_url": "shopify://products/animal-isolate-loaded-whey-protein"
       }
     },
     "swiper_slider_expanding_8mUFbN": {

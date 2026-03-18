@@ -409,8 +409,8 @@
           "mobile_menu_footer_text_color": "#000000",
           "mobile_menu_footer_title": "",
           "homepage": false,
-          "pdp": false,
-          "plp": false,
+          "pdp": true,
+          "plp": true,
           "page": false,
           "blog": false,
           "article": false
