@@ -2,7 +2,7 @@
 {% assign arrow_color = arrow_color | default: color %}
 
 <div class="breadcrumbs flex items-center font-sans text-[13.91px]">
-    <a href="/" class="font-sans text-[13.91px] text-primary font-semibold">Home</a>
+    <a href="/" class="font-sans text-[13.91px] text-primary">Home</a>
     <span class="px-4">
         <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.99967 11.6665L6.33301 6.99984C4.64074 5.17739 3.69195 4.15562 1.99967 2.33317" stroke="white" stroke-width="2" stroke-linecap="square"/>
@@ -11,18 +11,18 @@
     {% case template.name %}
         {% when 'page' %}
             {% if template.suffix == 'athlete' or template.suffix contains 'athlete' %}
-            <a href="/pages/animal-athletes" class="font-sans text-[13.91px] text-primary font-semibold">animal athletes</a>
+            <a href="/pages/animal-athletes" class="font-sans text-[13.91px] text-primary">animal athletes</a>
             <span class="px-4">
                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.99967 11.6665L6.33301 6.99984C4.64074 5.17739 3.69195 4.15562 1.99967 2.33317" stroke="white" stroke-width="2" stroke-linecap="square"/>
                 </svg>        
             </span>
             {% endif %}   
-            <span class="font-sans text-[13.91px] text-primary font-semibold">{{page.title | downcase | downcase}}</span>
+            <span class="font-sans text-[13.91px] text-primary">{{page.title | downcase | downcase}}</span>
         {% when 'collection' %}
-            <span class="font-sans text-[13.91px] text-primary font-semibold">{{collection.title | downcase | downcase}}</span>
+            <span class="font-sans text-[13.91px] text-primary">{{collection.title | downcase | downcase}}</span>
         {% when 'search' %}
-            <span class="font-sans text-[13.91px] text-primary font-semibold">Search Results</span>
+            <span class="font-sans text-[13.91px] text-primary">Search Results</span>
         {% when 'product' %}
             {% if product.collections[0].url != blank %}
                 {% assign product_collection = product.collections[0] %}

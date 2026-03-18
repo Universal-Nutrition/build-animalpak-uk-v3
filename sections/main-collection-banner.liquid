@@ -1,14 +1,3 @@
-{% assign mobile_img = collection.metafields.custom.banner_mobile_image %}
-{% assign desktop_img = collection.metafields.custom.banner_desktop_image %}
-
-{% comment %} Preload banner images for better performance {% endcomment %}
-{% if desktop_img != blank %}
-  <link rel="preload" as="image" href="{{desktop_img | img_url: 'master'}}" fetchpriority="high">
-{% endif %}
-{% if mobile_img != blank %}
-  <link rel="preload" as="image" href="{{mobile_img | img_url: 'master'}}" fetchpriority="high" media="(max-width: 1024px)">
-{% endif %}
-
 {% if settings.ss_enable and collection.handle == settings.ss_collection_handle %}
   <div class="px-6 pt-[64px] lg:pt-[118px] lg:px-14 relative bg-[#212121]">
     <div class="absolute top-[17px] hidden lg:block">
@@ -17,43 +6,92 @@
     <div id="searchspring-header"></div>
   </div>
 {% else %}
-  <div class="collection-banner px-6 pt-[252px] lg:pt-[233px] pb-[32px] lg:pb-[96px] lg:px-14 relative lg:h-[500px]">
-    <div class="gradient-overlay"></div>
-    <div class="absolute top-[17px] hidden lg:block">
+  <div class="collection-banner px-6 pt-[100px] lg:pt-[120px] pb-[40px] lg:pb-[56px] lg:px-14 bg-black">
+    <div class="absolute top-[30px] hidden lg:block font-bebasNeue">
       {% include 'breadcrumbs' color: '#fff' %}
     </div>
-    <h1 class="relative text-white text-[74.44px] lg:text-[85.6px] font-compacta font-bold uppercase max-w-[610px] leading-[59.55px] lg:leading-[68.48px] z-10">
-      {{collection.title}}<span class="dot text-yellow text-[85.6px] font-compacta font-bold">.</span>
+    <h1 class="relative text-yellow text-[42px] lg:text-[42px] font-anton uppercase max-w-[610px] leading-none z-10">
+      {{collection.title}}
     </h1>
-    <div class="relative pt-2 lg:pt-4 text-white text-[13.91px] lg:text-[18.4px] max-w-[600px] font-normal font-sans">
+    <div class="collection-banner__desc relative pt-2 lg:pt-4 text-[13.91px] lg:text-[18.4px] max-w-[600px] font-normal font-sans">
       {{collection.description}}
     </div>
   </div>
+  {%- if section.settings.tear_image != blank or section.settings.tear_image_mobile != blank -%}
+    {%- assign tear_desktop = section.settings.tear_image -%}
+    {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
+    {%- assign tear_fallback = tear_desktop | default: section.settings.tear_image_mobile -%}
+    <div class="collection-banner__tear">
+      <picture>
+        {%- if tear_mobile != blank -%}
+          <source
+            srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w"
+            sizes="100vw"
+            media="(max-width: 767px)"
+            type="image/webp"
+          />
+        {%- endif -%}
+        {%- if tear_desktop != blank -%}
+          <source
+            srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 1600, format: 'webp' }} 1600w, {{ tear_desktop | image_url: width: 2000, format: 'webp' }} 2000w"
+            sizes="100vw"
+            media="(min-width: 768px)"
+            type="image/webp"
+          />
+        {%- endif -%}
+        <img
+          src="{{ tear_fallback | image_url: width: 1600, format: 'webp' }}"
+          class="block w-full"
+          loading="eager"
+          alt=""
+        />
+      </picture>
+    </div>
+  {%- endif -%}
 {% endif %}
 
 <style>
-  .text-white span{
+  .collection-banner__desc,
+  .collection-banner__desc p,
+  .collection-banner__desc a {
     color: #fff !important;
-  } 
-  span.dot{
+  }
+  span.dot {
     color: var(--yellow) !important;
   }
-  {% if desktop_img != blank %}
-    .collection-banner {
-      background: url({{desktop_img | img_url: "master"}});
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: #000;
-    }
-  {% endif %}
-  {% if mobile_img != blank %}
-    @media screen and (max-width: 1024px) {
-      .collection-banner {
-        background: url({{mobile_img | img_url: "master"}});
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-color: #000;
-      }
-    }
-  {% endif %}
+  .collection-banner__tear {
+    display: block;
+    line-height: 0;
+    margin-top: -1px;
+  }
+  .collection-banner__tear picture {
+    display: block;
+    width: 100%;
+  }
+  .collection-banner__tear img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: scaleY(-1);
+  }
 </style>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "tear_image",
+      "label": "Bottom Tear Image (desktop)",
+      "info": "Overlays the bottom of the banner. Use a PNG with transparency."
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_image_mobile",
+      "label": "Bottom Tear Image (mobile)",
+      "info": "Shown on screens below 768px. Falls back to desktop image if left blank."
+    }
+  ]
+}
+{% endschema %}

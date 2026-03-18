@@ -14,237 +14,106 @@
   .flex-checkbx:nth-child(2) .checkbox-container input:checked + .checkbox-design:after{background:yellow;}
   .flex-checkbx:nth-child(3) .checkbox-container input:checked + .checkbox-design:after{background:cyan;}
   .checkbox-container .checkbox-design:after{content:'';display:block;border-radius:50px;height:70%;width:70%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#21212140;}
-  .irs--round .irs-handle{background:#f5d500;border:none;}
-  .irs--round .irs-bar{background-color:#cecece;}
-  .irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single{
-    background-color: #f5d500;
-    color:#000000;
-  }
-  .irs--round .irs-from::before, .irs--round .irs-to::before, .irs--round .irs-single::before{
-    border-top-color: #f5d500;
-  }
-  .irs--round .irs-handle{
-    width: 18px;
-  height: 18px;
-    top: 30px;
-  }
+  .filter-group-header { font-family: Anton, sans-serif !important; }
+  .filter-price-heading { font-family: Anton, sans-serif !important; }
+  .filter-option { font-family: 'BebasNeuePro-ExpandedRegular', sans-serif !important; }
+  .filter-checkbox { appearance: none !important; -webkit-appearance: none !important; accent-color: unset; width: 22px; height: 22px; min-width: 22px; border: 1px solid #000 !important; border-radius: 2px; cursor: pointer; position: relative; background: #fff !important; }
+  .filter-checkbox:checked { background: #000 !important; border-color: #000 !important; }
+  .filter-checkbox:checked::after { content: '' !important; display: block; width: 5px; height: 10px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); position: absolute; top: 3px; left: 7px; }
+  .irs--round .irs-handle { background: #212121; border-color: #212121; width: 18px; height: 18px; top: 30px; box-shadow: none !important; }
+  .irs--round .irs-handle:hover, .irs--round .irs-handle:focus, .irs--round .irs-handle.state_hover { box-shadow: none !important; }
+  .irs--round * { box-shadow: none !important; }
+  .irs--round .irs-bar { background: #212121; }
+  .irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single { background: #FEDD00; color: #000; font-family: 'BebasNeuePro-ExpandedRegular', sans-serif; }
+  .irs--round .irs-min, .irs--round .irs-max { font-family: 'BebasNeuePro-ExpandedRegular', sans-serif; }
+  .irs--round .irs-from:before, .irs--round .irs-to:before, .irs--round .irs-single:before { border-top-color: #FEDD00; }
 </style>
 {% capture filters %}
- <div
-  class="mb-6 pb-3 {% unless i == 3 %} border-0 border border-b border-[#DBDBDB] border-solid {% endunless %} lg:w-[236px]">
-  <div class="text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold">Sort By : </div>
-  
-  <div class="flex items-center mb-3 sswrap">
-    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-     <select name="sort_by"
-          class="sortselect w-[48%] font-bold lg:w-auto select__select uppercase caption-large cursor-pointer block w-full pl-3 pr-10 py-2 text-[12.1px] border-gray-300 border-solid focus:outline-none sm:text-sm"
-          id="SortBy">
-       {%- for option in collection.sort_options -%}
-          <option class="text-gray-500 block px-4 py-2 text-sm cursor-pointer" value="{{ option.value }}" {% if
-            option.value==sort_by %} selected="selected" {% endif %}>{{ option.name | capitalize  }}</option>
-          {%- endfor -%}
-     </select>
-  </div>
-   
-</div>
-<div
-  class="mb-6 pb-3 {% unless i == 3 %} border-0 border border-b border-[#DBDBDB] border-solid {% endunless %} lg:w-[236px]">
-  <div class="text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold">Price : </div>
-  
-  <div class="mb-3" >
-     {% for filter in collection.filters %}
-        {% if filter.type == 'price_range' %}
-          {{ filter.max_value.url_to_add }}
-           <input
-                data-minvalue="{{  filter.min_value.value | default : 0 | money_without_currency | replace: ',', ''   }}"
-                data-maxvalue="{{  filter.max_value.value | default : filter.range_max| money_without_currency | replace: ',', ''   }}"
-                type="text"
-                class="js-range-slider"
-                name="my_range"
-                value=""
-                data-skin="round"
-                data-type="double"
-                data-min="0"
-                data-max="{{  filter.range_max | money_without_currency | replace: ',', ''   }}"
-                data-grid="false"
-              >
-        {% endif %}  
-     {% endfor %}  
-  </div>
-   
-</div>
-<div
-  class="mb-6 pb-3 {% unless i == 3 %} border-0 border border-b border-[#DBDBDB] border-solid {% endunless %} lg:w-[236px]">
-  <div class="text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold">Format : </div>
-
-  {% assign formattags = 'format_Powder,format_Pills,format_Chews' %}
-  {% assign arformats = formattags | split : ',' %}
-  <div class="grid" style="grid-template-columns:1fr 1fr 1fr;margin-left:0px;">
-  {% for format in arformats %}
-  <div class="flex items-left mb-3 flex-checkbx" style="flex-direction:column;">
-     
-         <div style="display:none!important;">
-           {% if current_tags contains format %}
-             {{ format | link_to_remove_tag: format }}
-           {% else %}  
-             {{ format | link_to_add_tag: format }}
-           {% endif %}  
-         </div>
-         <label for="cb-{{format}}" class="font-sans text-[13.91px] text-[#212121] cursor-pointer">{{format | replace :'format_',''}}</label>
-          <div class="checkbox-container">
-         <input {% if current_tags contains format %}checked{% endif %} type="checkbox" name="format" id="cb-{{format}}" >
-            <div class="checkbox-design">
-              
-            </div>
-          </div>
-         
-      
-  </div>
-   {% endfor %} 
-  </div>
-</div>
-{% endcapture %}
-<div class="block-tops">
-  <div class="inner-container relative">
-        <div
-      style="left:-300px"
-      class="filters-wrap overflow-scroll lg:mb-[50px] lg:overflow-[unset] px-6 lg:px-0 bg-white z-[9999] lg:z-[unset] fixed top-0 left-0 w-full h-full lg:relative lg:w-[300px] lg:h-[unset] lg:min-w-[300px] hidden lg:block"
-    >
-      <a href="#" class="menu-close">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="pointer-events-none"
-          width="14"
-          height="14"
-          viewBox="0 0 14 14"
-          fill="none"
-        >
-          <path d="M12.4444 0H1.55556C1.143 0 0.747335 0.163888 0.455612 0.455612C0.163888 0.747335 0 1.143 0 1.55556V12.4444C0 12.857 0.163888 13.2527 0.455612 13.5444C0.747335 13.8361 1.143 14 1.55556 14H12.4444C12.857 14 13.2527 13.8361 13.5444 13.5444C13.8361 13.2527 14 12.857 14 12.4444V1.55556C14 1.143 13.8361 0.747335 13.5444 0.455612C13.2527 0.163888 12.857 0 12.4444 0ZM9.8 10.8889L7 8.08889L4.2 10.8889L3.11111 9.8L5.91111 7L3.11111 4.2L4.2 3.11111L7 5.91111L9.8 3.11111L10.8889 4.2L8.08889 7L10.8889 9.8L9.8 10.8889Z" fill="black"/>
-        </svg>
-      </a>
-      {% if is_apparel %}
-        <div class="apparel-links-wrap hidden ss__facet ss__facet--list ss__facet--expanded mb-6 pb-3  border-0 border border-b border-[#DBDBDB] border-solid  lg:w-[236px]">
-          <div class="apparel-links-title active flex justify-between items-center ss__title ss__pointer text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold cursor-pointer">
-            {{ linklists['apparel-accessories'].title }}
-            <span class="ss__icon__wrapper">
-              <svg
-                class="ss__icon ss__icon--angle-down w-[12px] h-[12px]"
-                viewBox="0 0 56 56"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M56 16.329c0 0.449-0.224 0.954-0.561 1.291l-26.148 26.148c-0.337 0.337-0.842 0.561-1.291 0.561s-0.954-0.224-1.291-0.561l-26.148-26.148c-0.337-0.337-0.561-0.842-0.561-1.291s0.224-0.954 0.561-1.291l2.806-2.806c0.337-0.337 0.786-0.561 1.291-0.561 0.449 0 0.954 0.224 1.291 0.561l22.052 22.052 22.052-22.052c0.337-0.337 0.842-0.561 1.291-0.561s0.954 0.224 1.291 0.561l2.806 2.806c0.337 0.337 0.561 0.842 0.561 1.291z"></path>
-              </svg>
-            </span>
-          </div>
-          <div class="ss__facet__options apparel-links-options active">
-            <div class="ss__list">
-              {% for link in linklists['apparel-accessories'].links %}
-                <div class="ss__list__option mb-3">
-                  <a href="{{link.url}}" class="ss__list__link font-sans text-[13.91px] text-[#212121] cursor-pointer">
-                    {{- link.title -}}
-                  </a>
-                </div>
-              {% endfor %}
-            </div>
-          </div>
+{% for filter in collection.filters %}
+  {% if filter.type == 'list' %}
+    {% assign label_lower = filter.label | downcase %}
+    {% if label_lower contains 'type' or label_lower contains 'flavour' or label_lower contains 'flavor' or label_lower contains 'size' %}
+      <div class="mb-6 pb-3 border-0 border border-b border-[#DBDBDB] border-solid w-full filter-group" data-has-active="{{ filter.active_values.size | default: 0 }}">
+        <div class="filter-group-header text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold flex justify-between items-center cursor-pointer select-none">
+          <span>{{ filter.label }}</span>
+          <span class="filter-toggle-icon text-[18px] leading-none">+</span>
         </div>
-      {% endif %}
-
-      <div class="filtopt text-[42.56px] uppercase font-compacta text-[#212121] mt-[48px] leading-[34.05px] mb-10 lg:hidden">
-        filters
+        <div class="mb-3 filter-options">
+          {% for value in filter.values %}
+            <label class="filter-option{% if value.active %} filter-option-active{% endif %} flex items-center gap-2 mb-2 cursor-pointer font-sans text-[13.91px] text-[#212121]">
+              <input
+                type="checkbox"
+                class="filter-checkbox"
+                {% if value.active %}checked{% endif %}
+                onchange="window.location.href='{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}'"
+              >
+              {{ value.label }}
+            </label>
+          {% endfor %}
+        </div>
       </div>
-      <span class="close-mobile-filters absolute top-8 right-8 lg:hidden">{% include 'icon-close' %}</span>
-      <div class="mb-20 lg:mb-0">
-        {{ filters }}
-      </div>
-      <div
-        class="filter-footer flex justify-between items-center lg:hidden fixed w-full left-0 bottom-[200px] p-4 bg-white border-0 border border-t border-[#DBDBDB] border-solid "
-      >
-        <button
-          class="text-white text-[12.1px] h-[54px] flex items-center justify-center w-[48%] text-[13.9px] font-bold uppercase bg-black"
-        >
-          clear
-        </button>
-        <button
-          class="text-black text-[12.1px] h-[54px] flex items-center justify-center w-[48%] text-[13.9px] font-bold uppercase bg-yellow"
-        >
-          apply
-        </button>
-      </div>
-    </div>
-    {% include 'breadcrumbs', color: '#fff', arrow_color: '#FEDD00' %}
-    <h1>{{ collection.metafields.custom.collection_title_seo }}</h1>
-    {% if collection.description != blank %}
-      <div class="col-desc"><br>{{ collection.description }}</div>
     {% endif %}
-    <ul id="sbg" class="items-center lg:absolute">
-      {% for link in linklists.shop-by-goal.links %}
-        <a href="{{ link.url }}" class="{% if link.active %}active{% endif %} shop-by-goal">{{ link.title }}</a>
-      {% endfor %}
-    </ul>
-    <ul id="settingsmenu" class="items-center lg:absolute">
-      {% for link in linklists[section.settings.menu].links %}
-        <a href="{{ link.url }}" class="{% if link.active %}active{% endif %} {{ section.settings.menu.handle }}">{{ link.title }}</a>
-      {% endfor %}
-    </ul>
-    <!-- {% assign path_parts = request.path | split: '/' %}
-    {% if request.path == '/collections/all' %}
-        <a href="#" class="menu-toggle flex items-center gap-[10px] !relative !right-0 !top-0 menu-top-toggle pl-[40px]" id="mt_dt">
-            {% render 'filter-icon' %} <span>Filter</span>
-        </a>
-    {% elsif path_parts[1] == 'collections' and path_parts[2] == 'all' %}
-        <a href="#" class="menu-toggle flex items-center gap-[10px] !relative !right-0 !top-0 menu-top-toggle pl-[40px]" id="mt_dt">
-            {% render 'filter-icon' %} <span>Filter</span>
-        </a>
-    {% endif %} -->
-    
-  </div>
-  <img src="https://cdn.shopify.com/s/files/1/0674/6164/4518/files/yellow-tear.png?v=1724036386" width="100%" class="relative" style="z-index: 1;">
-</div>
-<div class="px-6 lg:px-[58px] pt-[35px] coll_nudge">
-  {% if settings.ss_enable %}
-    <a href="#" class="menu-toggle2"><div id="searchspring-toolbar" class="lg:flex justify-between items-center pb-[32px]"></div></a>
-  {% else %}
-    <div class="showing_block lg:flex justify-between items-center pb-[32px]">
-      {% comment %} results counter {% endcomment %}
-      <div class="text-base font-sans text-center lg:text-left mb-4 lg:mb-0 text-[#5E5A59]">
-        Showing 1 - 24 of 36 results
-      </div>
-      {% comment %} sorting {% endcomment %}
-      <div class="flex items-center justify-between">
-        <div
-          class="mobile-filter-trigger font-bold uppercase lg:hidden p-3 bg-black flex justify-between text-white text-[12.1px] w-[48%]"
-        >
-          <span class="mr-[28px]">{% include 'icon-filtering' %}</span>
-          filter by
-        </div>
-        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+  {% endif %}
+{% endfor %}
 
-        <select
-          name="sort_by"
-          class="12 facet-filters__sort w-[48%] font-bold lg:w-auto select__select uppercase caption-large cursor-pointer block w-full pl-3 pr-10 py-2 text-[12.1px] border-gray-300 border-solid focus:outline-none sm:text-sm"
-          id="SortBy"
-          aria-describedby="a11y-refresh-page-message"
+{% for filter in collection.filters %}
+  {% if filter.type == 'price_range' %}
+    <div class="mb-6 pb-3 border-0 border border-b border-[#DBDBDB] border-solid w-full">
+      <div class="filter-price-heading text-[#212121] mb-4 uppercase font-anton font-light text-[13.9px]">Price :</div>
+      <div class="mb-3">
+        <input
+          data-minvalue="{{ filter.min_value.value | default: 0 | divided_by: 100.0 | ceil }}"
+          data-maxvalue="{{ filter.max_value.value | default: filter.range_max | divided_by: 100.0 | ceil }}"
+          type="text"
+          class="js-range-slider"
+          name="my_range"
+          value=""
+          data-skin="round"
+          data-type="double"
+          data-min="0"
+          data-max="{{ filter.range_max | divided_by: 100.0 | ceil }}"
+          data-grid="false"
+          data-prefix="{{ cart.currency.symbol }}"
         >
-          {%- for option in collection.sort_options -%}
-            <option
-              class="text-gray-500 block px-4 py-2 text-sm cursor-pointer"
-              value="{{ option.value | capitalize  }}"
-              {% if option.value == sort_by %}
-                selected="selected"
-              {% endif %}
-            >
-              {{ option.name | capitalize }}
-            </option>
-          {%- endfor -%}
-        </select>
       </div>
     </div>
   {% endif %}
-  {% unless request.path == '/collections/all' %}
-  <a href="#" class="menu-toggle menu-toggle-mobile md:!hidden !flex !relative !top-0 !left-0 pt-[10px] justify-end" id="mt_dt"><img src="https://cdn.shopify.com/s/files/1/0675/6882/8736/files/filter.svg"></a>
-  {% endunless %}
-
+{% endfor %}
+{% endcapture %}
+<div class="px-6 lg:px-[58px] pt-[35px] coll_nudge">
+  <div class="flex justify-between items-center pb-[32px]">
+    <div
+      class="mobile-filter-trigger font-bold uppercase p-3 bg-black inline-flex items-center text-white text-[12.1px] cursor-pointer"
+      onclick="collFilterOpen();"
+    >
+      <span class="mr-[10px]">{% include 'icon-filtering' %}</span>
+      filter by
+    </div>
+    <div class="flex items-center gap-3">
+      {% if settings.ss_enable %}
+        <div id="searchspring-toolbar"></div>
+      {% endif %}
+      {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+      <select
+        name="sort_by"
+        class="facet-filters__sort font-bold select__select uppercase caption-large cursor-pointer block pl-3 pr-10 py-2 text-[12.1px] border-gray-300 border-solid focus:outline-none sm:text-sm"
+        id="SortBy"
+        aria-describedby="a11y-refresh-page-message"
+      >
+        {%- for option in collection.sort_options -%}
+          <option
+            class="text-gray-500 block px-4 py-2 text-sm cursor-pointer"
+            value="{{ option.value | capitalize  }}"
+            {% if option.value == sort_by %}
+              selected="selected"
+            {% endif %}
+          >
+            {{ option.name | capitalize }}
+          </option>
+        {%- endfor -%}
+      </select>
+    </div>
+  </div>
   {% assign is_apparel = false %}
   {% for link in linklists['apparel-accessories'].links %}
     {% if collection.url == link.url %}
@@ -252,42 +121,38 @@
       {% break %}
     {% endif %}
   {% endfor %}
+  <div class="filters-overlay" id="filters-overlay" onclick="collFilterClose()"></div>
   <script>
-$(document).ready(function() {
-  // Toggle filter for menu-toggle
-  $('.menu-toggle').click(function() {
-    if ($(".filters-wrap").hasClass("someClass active")) {
-      // If it's open, hide the filter by removing the classes
-      $(".filters-wrap").removeClass("someClass active hidden");
-    } else {
-      // If it's closed, show the filter by adding the classes
-      $(".filters-wrap").addClass("someClass active").removeClass("hidden");
-    }
-  });
-
-  // Toggle filter for menu-toggle2
-  $('.menu-toggle2').click(function() {
-    if ($(".filters-wrap").hasClass("someClass active")) {
-      // If it's open, hide the filter by removing the classes
-      $(".filters-wrap").removeClass("someClass active hidden");
-    } else {
-      // If it's closed, show the filter by adding the classes
-      $(".filters-wrap").addClass("someClass active").removeClass("hidden");
-    }
-  });
-
-  // Close filter when clicking on menu-close
-  $('.menu-close').click(function() {
-    $(".filters-wrap").removeClass("someClass active hidden");
-  });
-});
-
+  function collFilterOpen() {
+    document.querySelector('.filters-wrap').classList.add('active', 'someClass');
+    document.getElementById('filters-overlay').classList.add('active');
+  }
+  function collFilterClose() {
+    document.querySelector('.filters-wrap').classList.remove('active', 'someClass');
+    document.getElementById('filters-overlay').classList.remove('active');
+  }
   </script>
+
+  <div class="filters-wrap bg-white z-[9999] fixed top-0 left-0 w-full lg:w-[340px] h-screen overflow-scroll px-6">
+    <a href="#" class="menu-close block pt-6 pb-4 text-right" onclick="collFilterClose(); return false;">
+      {% include 'icon-close' %}
+    </a>
+    <div class="text-[42.56px] uppercase font-anton text-[#212121] mt-4 leading-[34.05px] mb-8">
+      Filters
+    </div>
+    <div class="mb-28">
+      {{ filters }}
+    </div>
+    <div class="filter-footer flex items-center fixed w-full lg:w-[340px] left-0 bottom-0 p-4 bg-white border-t border-[#DBDBDB]">
+      <button onclick="window.location.href='{{ collection.url }}';" class="text-white h-[54px] flex items-center justify-center w-full text-[13.9px] font-bold uppercase bg-black">clear</button>
+    </div>
+  </div>
+
   <div class="flex flex-col">
 
     <div class="mb-[64px] lg:mb-[96px]">
       {% comment %} product grid {% endcomment %}
-      <div class="collection-wrapper lg:grid grid-cols-3 gap-6">
+      <div class="collection-wrapper grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {% for product in collection.products %}
           {% include 'product-grid-item' %}
         {% endfor %}
@@ -312,7 +177,15 @@ $(document).ready(function() {
 </div>
 
 <style>
-  [type="checkbox"]:checked:focus, [type="checkbox"]:checked:hover, [type="checkbox"]:indeterminate, [type="radio"]:checked:focus, [type="radio"]:checked:hover {
+  /* Reset legacy float-based grid so CSS grid controls layout */
+  .collection .collection-wrapper .product-grid-item.items-center,
+  body.collection .product-grid-item.items-center {
+    width: 100% !important;
+    float: none !important;
+    min-height: 0 !important;
+  }
+
+  [type="checkbox"]:not(.filter-checkbox):checked:focus, [type="checkbox"]:not(.filter-checkbox):checked:hover, [type="checkbox"]:not(.filter-checkbox):indeterminate, [type="radio"]:checked:focus, [type="radio"]:checked:hover {
     background-color: none;
     border-color: transparent;
   }
@@ -376,6 +249,9 @@ $(document).ready(function() {
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+    .showing_block {
+      display: flex !important;
+    }
     .mobile-filter-trigger,
     .facet-filters__sort {
       font-weight: 700;
@@ -417,9 +293,9 @@ $(document).ready(function() {
 
     @media screen and (max-width: 768px) {
       .filters-wrap{
-      top: 200px;
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
+      top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
       transition: .3s;
       transform: translateY(100%);
       overflow: scroll;
@@ -449,10 +325,24 @@ $(document).ready(function() {
       bottom: 200px;
     }
     }
-    .facet-filters__sort{min-width:300px;}
+    .facet-filters__sort{min-width:0;}
     body .filters-wrap.active {
       left: 0 !important;
       position: fixed !important;
+      top: 0 !important;
+    }
+    .filters-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9998;
+    }
+    .filters-overlay.active {
+      display: block;
+    }
+    .filters-wrap {
+      z-index: 9999 !important;
     }
 
     .collection .block-tops {
@@ -535,7 +425,7 @@ $(document).ready(function() {
     }
 
     .pt-\[35px\] {
-      background-color: #FEDD00;
+      background-color: #ffffff;
     }
 
     .col-desc span {
@@ -549,7 +439,6 @@ $(document).ready(function() {
     h1 {
       color: #FEDD00;
       font-family: Anton;
-      font-size: 50px !important;
       text-transform: Uppercase;
     }
 
@@ -742,62 +631,88 @@ $(document).ready(function() {
   //     }
 
   // }, 500)
-      var $range = $(".js-range-slider"),
-          from = '{{  }}',
-          to;
+  document.addEventListener('DOMContentLoaded', function () {
+    // Auto-reopen sidebar if active filters are in the URL
+    if (window.location.search.indexOf('filter.') !== -1) {
+      collFilterOpen();
+    }
 
+    // Collapse filter groups that have active selections; expand/collapse on header click
+    document.querySelectorAll('.filter-group').forEach(function (group) {
+      var hasActive = parseInt(group.dataset.hasActive, 10) > 0;
+      var header = group.querySelector('.filter-group-header');
+      var icon = group.querySelector('.filter-toggle-icon');
+      var allOptions = group.querySelectorAll('.filter-option');
+
+      function collapse() {
+        allOptions.forEach(function (opt) {
+          opt.style.display = opt.classList.contains('filter-option-active') ? '' : 'none';
+        });
+        icon.textContent = '+';
+        group.dataset.expanded = 'false';
+      }
+
+      function expand() {
+        allOptions.forEach(function (opt) { opt.style.display = ''; });
+        icon.textContent = '−';
+        group.dataset.expanded = 'true';
+      }
+
+      if (hasActive) {
+        collapse();
+      } else {
+        expand();
+      }
+
+      header.addEventListener('click', function () {
+        if (group.dataset.expanded === 'true') {
+          collapse();
+        } else {
+          expand();
+        }
+      });
+    });
+
+    var $range = $(".js-range-slider");
+    if ($range.length) {
+      var from, to;
       var updateValues = function () {
-          var params = new URLSearchParams(window.location.search)
-          var newparams = []
-          for (let param of params) {
-              var k = param[0]
-              var v = param[1]
-              if (k !== 'filter.v.price.gte' && k !== 'filter.v.price.lte') {
-                  newparams.push(encodeURIComponent(k) + '=' + encodeURIComponent(v))
-              }
+        var params = new URLSearchParams(window.location.search);
+        var newparams = [];
+        for (let param of params) {
+          var k = param[0], v = param[1];
+          if (k !== 'filter.v.price.gte' && k !== 'filter.v.price.lte') {
+            newparams.push(encodeURIComponent(k) + '=' + encodeURIComponent(v));
           }
-      
-          newparams.unshift('filter.v.price.gte=' + from)
-          newparams.unshift('filter.v.price.lte=' + to)
-          window.location.search = newparams.join('&')
-          // $from.prop("value", from);
-          // $to.prop("value", to);
+        }
+        newparams.unshift('filter.v.price.gte=' + from);
+        newparams.unshift('filter.v.price.lte=' + to);
+        window.location.search = newparams.join('&');
       };
-
       $range.ionRangeSlider({
-          onChange: function (data) {
-            from = data.from;
-            to = data.to;
-
-          },
-          onFinish :  function (data) {
-             updateValues();
-          }
+        onChange: function (data) { from = data.from; to = data.to; },
+        onFinish: function (data) { updateValues(); }
       });
       var range = $range.data("ionRangeSlider");
-      if(range){
-      range.update({
-        from: $range.data('minvalue'),
-        to:  $range.data('maxvalue')
-      });
-      }
-      document.querySelector('.sortselect').addEventListener('change', function (e) {
-        var params = new URLSearchParams(window.location.search)
-        var newparams = []
+      if (range) { range.update({ from: $range.data('minvalue'), to: $range.data('maxvalue') }); }
+    }
+
+    var sortSelect = document.querySelector('.sortselect');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', function (e) {
+        var params = new URLSearchParams(window.location.search);
+        var newparams = [];
         for (let param of params) {
-            var k = param[0]
-            var v = param[1]
-            if (k !== 'sort_by') {
-                newparams.push(encodeURIComponent(k) + '=' + encodeURIComponent(v))
-            }
+          var k = param[0], v = param[1];
+          if (k !== 'sort_by') {
+            newparams.push(encodeURIComponent(k) + '=' + encodeURIComponent(v));
+          }
         }
-    
-        newparams.unshift('sort_by=' + e.currentTarget.value)
-        window.location.search = newparams.join('&')
-    })
-  $('input[name="format"]').change(function(){
-    window.location.href=$(this).parents('.flex-checkbx').find('a').attr('href');
-  })
+        newparams.unshift('sort_by=' + e.currentTarget.value);
+        window.location.search = newparams.join('&');
+      });
+    }
+  });
 </script>
 
 {% schema %}

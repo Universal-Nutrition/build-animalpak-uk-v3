@@ -11,8 +11,9 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
-      "disabled": true,
       "settings": {
+        "tear_image": "shopify://shop_images/black-tear.png",
+        "tear_image_mobile": "shopify://shop_images/mobile-black-tear.png"
       }
     },
     "product-grid": {
@@ -21,7 +22,7 @@
         "menu": "shop-by-category",
         "promo_title": "Save 25% on your first order",
         "promo_subtitle": "Subscribe & save 25% on your first order plus free shipping, 10% off and free shipping on subsequent orders.",
-        "bg": "#f5d500"
+        "bg": "#ffffff"
       }
     },
     "collection_bottom_text_NXWbB6": {

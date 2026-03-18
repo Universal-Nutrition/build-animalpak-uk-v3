@@ -109,13 +109,13 @@
             {% assign product_description = block.settings.product_1_description | truncate: 100 %}
             {% render 'product-card-new', product: block.settings.product_1, product_description: block.settings.product_1_description, parent_link: parent_link, loading: 'lazy' %}
         {% elsif block.settings.image_1 != blank %}
-            {% render 'image-block', block: block, image: block.settings.image_1, title: block.settings.title_1, link_description: block.settings.link_description_1, link: block.settings.link_1 %}
+            {% render 'image-block', block: block, image: block.settings.image_1, title: block.settings.title_1, link_description: block.settings.link_description_1, link: block.settings.link_1, square: true %}
         {% endif %}
         {% if block.settings.product_2 != blank %}
             {% assign product_description = block.settings.product_2_description | truncate: 100 %}
             {% render 'product-card-new', product: block.settings.product_2, product_description: product_description, parent_link: parent_link, loading: 'lazy' %}
         {% elsif block.settings.image_2 != blank %}
-            {% render 'image-block', block: block, image: block.settings.image_2, title: block.settings.title_2, link_description: block.settings.link_description_2, link: block.settings.link_2 %}
+            {% render 'image-block', block: block, image: block.settings.image_2, title: block.settings.title_2, link_description: block.settings.link_description_2, link: block.settings.link_2, square: true %}
         {% endif %}
     {% endif %}
     </div>
