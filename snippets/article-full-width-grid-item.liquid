@@ -13,7 +13,7 @@
       <div class="mb-6 md:mb-10 flex flex-wrap items-center">
         {% for tag in article.tags %}
           {% unless tag contains 'read_time' or tag contains 'featured_banner' %}
-          {% if tag == 'News & events' or tag == 'Supplementation' or tag == 'Diet & Nutrition' or tag == 'Training' or tag == 'Lifestyle' or tag == 'news & events' or tag == 'supplementation' or tag == 'diet & nutrition' or tag == 'training' or tag == 'lifestyle' %}
+          {% if tag == 'News & Events' or tag == 'Supplementation' or tag == 'Diet & Nutrition' or tag == 'Training & Lifestyle' or tag == 'news & events' or tag == 'supplementation' or tag == 'diet & nutrition' or tag == 'training & lifestyle' %}
             {% if template contains 'blog' %}
               <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="font-medium bg-primary text-yellow py-[2px] text-[12.1px] px-2 capitalize mr-2 mb-2">{{ tag | replace: '_', ' '}}</a>
             {% else %}
