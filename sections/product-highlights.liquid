@@ -1,7 +1,11 @@
 {% liquid
-  assign backgroundImage = section.settings.background_image
   assign textColor = section.settings.text_color
-  assign tearImage = section.settings.tear_image
+  assign tear_top_desktop = section.settings.tear_top_image
+  assign tear_top_mobile = section.settings.tear_top_image_mobile | default: tear_top_desktop
+  assign tear_top_fallback = tear_top_desktop | default: section.settings.tear_top_image_mobile
+  assign tear_bottom_desktop = section.settings.tear_bottom_image
+  assign tear_bottom_mobile = section.settings.tear_bottom_image_mobile | default: tear_bottom_desktop
+  assign tear_bottom_fallback = tear_bottom_desktop | default: section.settings.tear_bottom_image_mobile
 %}
 
 {% for block in section.blocks %}
@@ -12,7 +16,31 @@
 
 {% if is_active %}
 <pdp-highlight-image>
-  <section id="section-highlights" class="overflow-hidden relative">
+  <section id="section-highlights-{{ section.id }}" class="overflow-hidden relative">
+
+    {%- if tear_top_desktop != blank or section.settings.tear_top_image_mobile != blank -%}
+      <div class="section-highlights__tear section-highlights__tear--top">
+        <picture>
+          {%- if tear_top_mobile != blank -%}
+            <source media="(max-width: 767px)"
+              srcset="{{ tear_top_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_top_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ tear_top_mobile | image_url: width: 900, format: 'webp' }} 900w"
+            />
+          {%- endif -%}
+          {%- if tear_top_desktop != blank -%}
+            <source media="(min-width: 768px)"
+              srcset="{{ tear_top_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_top_desktop | image_url: width: 1600, format: 'webp' }} 1600w, {{ tear_top_desktop | image_url: width: 2400, format: 'webp' }} 2400w"
+            />
+          {%- endif -%}
+          <img
+            src="{{ tear_top_fallback | image_url: width: 1600, format: 'webp' }}"
+            alt=""
+            loading="lazy"
+            class="block w-full"
+          />
+        </picture>
+      </div>
+    {%- endif -%}
+
     <div class="container" style="margin: 100px auto; max-width: 1024px;">
       <div class="w-full relative z-10 text-wrapper bg-transparent pb-8 md:pb-0">
           {% if section.settings.headline %}
@@ -38,45 +66,73 @@
             {% endfor %}
             </ul>
       </div>
-    </div>    
-  </section>
-{% if section.settings.tear_image != blank %}
-    <div class="bg-primary">
-      {{ tearImage | image_url: width: 1920 | image_tag: class: "w-full" }}
     </div>
-{% endif %}
+
+    {%- if tear_bottom_desktop != blank or section.settings.tear_bottom_image_mobile != blank -%}
+      <div class="section-highlights__tear section-highlights__tear--bottom">
+        <picture>
+          {%- if tear_bottom_mobile != blank -%}
+            <source media="(max-width: 767px)"
+              srcset="{{ tear_bottom_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_bottom_mobile | image_url: width: 600, format: 'webp' }} 600w, {{ tear_bottom_mobile | image_url: width: 900, format: 'webp' }} 900w"
+            />
+          {%- endif -%}
+          {%- if tear_bottom_desktop != blank -%}
+            <source media="(min-width: 768px)"
+              srcset="{{ tear_bottom_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_bottom_desktop | image_url: width: 1600, format: 'webp' }} 1600w, {{ tear_bottom_desktop | image_url: width: 2400, format: 'webp' }} 2400w"
+            />
+          {%- endif -%}
+          <img
+            src="{{ tear_bottom_fallback | image_url: width: 1600, format: 'webp' }}"
+            alt=""
+            loading="lazy"
+            class="block w-full"
+          />
+        </picture>
+      </div>
+    {%- endif -%}
+
+  </section>
 </pdp-highlight-image>
 {% endif %}
 
-{% if section.settings.background_image %}
-  <style>
-    #section-highlights {
-      background-color: #FBDE15;
-      background-image: url('{{ backgroundImage | image_url: width: 1200 }}');
-      background-position: center center;
-      background-size: 600px auto;
-  </style>
-{% endif %}
+{% style %}
+  #section-highlights-{{ section.id }} {
+    background-color: #FBDE15;
+    background-position: center center;
+    background-size: cover;
+    {% if section.settings.background_image_mobile != blank %}
+      background-image: url('{{ section.settings.background_image_mobile | image_url: width: 800 }}');
+    {% elsif section.settings.background_image != blank %}
+      background-image: url('{{ section.settings.background_image | image_url: width: 800 }}');
+    {% endif %}
+  }
+  @media (min-width: 768px) {
+    #section-highlights-{{ section.id }} {
+      {% if section.settings.background_image != blank %}
+        background-image: url('{{ section.settings.background_image | image_url: width: 1600 }}');
+      {% endif %}
+    }
+  }
+{% endstyle %}
 
 <style>
-#section-highlights ul {
+#section-highlights-{{ section.id }} ul {
   margin-bottom: 0;
 }
-#section-highlights li img {
+#section-highlights-{{ section.id }} li img {
   max-width: 100px;
 }
-#section-highlights h2 {
+#section-highlights-{{ section.id }} h2 {
   line-height: 1.1;
   font-size: 40px;
   margin-bottom: .5em;
 }
-#section-highlights .description {
+#section-highlights-{{ section.id }} .description {
   font-size: 18px;
   line-height: 1.3;
 }
 
-
-#section-highlights .description h3 {
+#section-highlights-{{ section.id }} .description h3 {
   display: block;
   font-family: "Familjen Grotesk", sans-serif;
   color: inherit !important;
@@ -88,39 +144,61 @@
 }
 
 @media only screen and (min-width: 768px) {
-  #section-highlights ul {
+  #section-highlights-{{ section.id }} ul {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
-  #section-highlights h2 {
+  #section-highlights-{{ section.id }} h2 {
     font-size: 60px;
   }
 }
 
-
-
-.text-image p,
-.metafield-multi_line_text_field{
-  background-color: transparent;
+.section-highlights__tear--top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+  line-height: 0;
+}
+.section-highlights__tear--top picture {
+  display: block;
+  width: 100%;
+  transform: scaleY(-1);
 }
 
-@media screen and(max-width: 640px) {
-  #section-hero-medium.bgImage img {
-
-  }
+.section-highlights__tear--bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+  line-height: 0;
+}
+.section-highlights__tear--bottom picture {
+  display: block;
+  width: 100%;
 }
 
-@media screen and(max-width: 550px) {
-  #section-hero-medium.bgImage img {
+.section-highlights__tear--top img,
+.section-highlights__tear--bottom img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-  }
+#section-highlights-{{ section.id }} .container {
+  position: relative;
+  z-index: 20;
 }
 </style>
 
-<script> 
+<script>
   const iconImg = document.getElementById('icon-image');
   var icons = document.querySelectorAll('#icon');
-  
+
   if (iconImg) {
     iconImg.addEventListener('load', function() {
       icons.forEach(function(element, index) {
@@ -128,7 +206,7 @@
       });
     });
   }
-</script> 
+</script>
 
 
 
@@ -139,7 +217,12 @@
     {
       "type": "image_picker",
       "id": "background_image",
-      "label": "Background Image"
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image (Mobile, optional)"
     },
     {
       "type": "color",
@@ -154,8 +237,23 @@
     },
     {
       "type": "image_picker",
-      "id": "tear_image",
-      "label": "Tear Image"
+      "id": "tear_top_image",
+      "label": "Tear Image \u2013 Top (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_top_image_mobile",
+      "label": "Tear Image \u2013 Top (Mobile, optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_bottom_image",
+      "label": "Tear Image \u2013 Bottom (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_bottom_image_mobile",
+      "label": "Tear Image \u2013 Bottom (Mobile, optional)"
     }
   ],
   "blocks": [
