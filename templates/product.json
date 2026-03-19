@@ -133,6 +133,7 @@
     },
     "img_block_WM7TPf": {
       "type": "img-block",
+      "disabled": true,
       "custom_css": [
         "img {transform: rotate(0.5turn);}"
       ],
@@ -180,10 +181,11 @@
         "highlight_VAAnVa"
       ],
       "settings": {
-        "background_image": "shopify://shop_images/animal_logo_860.png",
-        "text_color": "#000000",
+        "background_image": "shopify://shop_images/distressed-torn-bg-charcoal-tinified.jpg",
+        "text_color": "#ffffff",
         "headline": "<p>{{ product.metafields.custom.product_highlights_headline.value }}</p>",
-        "tear_image": "shopify://shop_images/tear_image.png"
+        "tear_top_image": "shopify://shop_images/white-tear-down.png",
+        "tear_bottom_image": "shopify://shop_images/white-tear-down.png"
       }
     },
     "product-image-and-text": {

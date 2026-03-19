@@ -1,5 +1,5 @@
 {% liquid
-  assign textColor = section.settings.text_color
+  assign textColor = section.settings.text_color | default: '#ffffff'
   assign tear_top_desktop = section.settings.tear_top_image
   assign tear_top_mobile = section.settings.tear_top_image_mobile | default: tear_top_desktop
   assign tear_top_fallback = tear_top_desktop | default: section.settings.tear_top_image_mobile
@@ -41,7 +41,7 @@
       </div>
     {%- endif -%}
 
-    <div class="container" style="margin: 100px auto; max-width: 1024px;">
+    <div class="container" style="margin: 0 auto; max-width: 1024px;">
       <div class="w-full relative z-10 text-wrapper bg-transparent pb-8 md:pb-0">
           {% if section.settings.headline %}
             <h2 class="uppercase text-left" style="color: {{ textColor }};">
@@ -50,15 +50,13 @@
           {% endif %}
           <ul class="grid">
             {% for block in section.blocks %}
-              {% if block.settings.highlight_image != blank or block.settings.highlight_text != blank %}
-                {% assign time = forloop.index | times: 150 %}
+              {% if block.settings.highlight_text != blank %}
                 <li>
-                  <div class="flex items-center">
-                    <div id="icon">
-                      {% if block.settings.highlight_image != blank %}
-                        <img id="icon-image" src="{{ block.settings.highlight_image | img_url: 'master' }}" alt="{{ block.settings.highlight_image.alt | escape }}" style="display: block; margin-right: 10px;">
-                      {% endif %}
-                    </div>
+                  <div class="flex items-start gap-3">
+                    <svg class="highlight-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M7 12.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <div class="description" style="color: {{ textColor }};">{{ block.settings.highlight_text }}</div>
                   </div>
                 </li>
@@ -96,6 +94,14 @@
 {% endif %}
 
 {% style %}
+  #section-highlights-{{ section.id }} .description,
+  #section-highlights-{{ section.id }} .description p,
+  #section-highlights-{{ section.id }} .description li,
+  #section-highlights-{{ section.id }} .description ul,
+  #section-highlights-{{ section.id }} h2 {
+    color: {{ textColor }} !important;
+  }
+
   #section-highlights-{{ section.id }} {
     background-color: #FBDE15;
     background-position: center center;
@@ -119,13 +125,22 @@
 #section-highlights-{{ section.id }} ul {
   margin-bottom: 0;
 }
-#section-highlights-{{ section.id }} li img {
-  max-width: 100px;
+.highlight-check-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: {{ textColor }};
+  margin-top: 2px;
 }
 #section-highlights-{{ section.id }} h2 {
   line-height: 1.1;
-  font-size: 40px;
-  margin-bottom: .5em;
+  font-size: 28px;
+  margin-bottom: 1em;
+}
+#section-highlights-{{ section.id }} .description,
+#section-highlights-{{ section.id }} .description *,
+#section-highlights-{{ section.id }} h2 {
+  color: {{ textColor }} !important;
 }
 #section-highlights-{{ section.id }} .description {
   font-size: 18px;
@@ -134,28 +149,42 @@
 
 #section-highlights-{{ section.id }} .description h3 {
   display: block;
-  font-family: "Familjen Grotesk", sans-serif;
+  font-family: "Anton", sans-serif;
   color: inherit !important;
-  font-size: 23px;
+  font-size: 20px;
   margin-bottom: .5em;
-  text-transform: Uppercase;
-  font-weight: 600 !important;
+  text-transform: uppercase;
+  font-weight: 400 !important;
   letter-spacing: 0;
+}
+#section-highlights-{{ section.id }} .description p {
+  font-family: "BebasNeue", sans-serif;
+  font-size: 16px;
+}
+
+#section-highlights-{{ section.id }} .container {
+  padding: 80px 16px;
+}
+#section-highlights-{{ section.id }} ul {
+  gap: 30px;
 }
 
 @media only screen and (min-width: 768px) {
+  #section-highlights-{{ section.id }} .container {
+    padding: 160px 16px;
+  }
   #section-highlights-{{ section.id }} ul {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
   #section-highlights-{{ section.id }} h2 {
-    font-size: 60px;
+    font-size: 42px;
   }
 }
 
 .section-highlights__tear--top {
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
   right: 0;
   z-index: 10;
@@ -170,7 +199,7 @@
 
 .section-highlights__tear--bottom {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   right: 0;
   z-index: 10;
@@ -193,20 +222,19 @@
   position: relative;
   z-index: 20;
 }
+#section-highlights-{{ section.id }} sup {
+  font-size: 0.55em;
+  vertical-align: super;
+  line-height: 0;
+}
 </style>
 
 <script>
-  const iconImg = document.getElementById('icon-image');
-  var icons = document.querySelectorAll('#icon');
-
-  if (iconImg) {
-    iconImg.addEventListener('load', function() {
-      icons.forEach(function(element, index) {
-        element.style.width = iconImg.width + 10 + 'px';
-      });
-    });
-  }
+  document.querySelectorAll('#section-highlights-{{ section.id }} .description, #section-highlights-{{ section.id }} h2').forEach(function(el) {
+    el.innerHTML = el.innerHTML.replace(/®/g, '<sup>®</sup>');
+  });
 </script>
+
 
 
 
@@ -262,11 +290,6 @@
       "type": "highlight",
       "limit": 4,
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "highlight_image",
-          "label": "Highlight Image"
-        },
         {
           "type": "richtext",
           "id": "highlight_text",

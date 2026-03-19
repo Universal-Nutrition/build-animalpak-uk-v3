@@ -1,0 +1,63 @@
+{% assign variant_id = product.selected_or_first_available_variant.id %}
+<div x-data="addToCart({{ variant_id }})" class="grid grid-cols-[0.5fr_1fr] md:grid-cols-1 xl:grid-cols-2 h-full gap-4 lg:gap-6 p-4 lg:p-6 bg-white border border-black mb-0 lg:mb-[30px]">
+    <a href="{{ product.url }}" class="aspect-square h-full w-full min-w-[94px]">
+      <img :src="image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="w-full h-full object-contain">
+    </a>
+    <div class="flex flex-col gap-3 lg:gap-0 justify-between">
+      <div class="flex flex-col gap-3 items-center md:items-start">
+        <div class="flex items-center gap-1">
+        {% render 'reivew-stars', rating: product.metafields.yotpo.reviews_average %}
+        <span class="text-sm font-bebasNeue">{{ product.metafields.yotpo.reviews_average }}</span>
+        <span class="text-sm font-bebasNeue">({{ product.metafields.yotpo.reviews_count }})</span>
+        </div>
+        <a href="{{ product.url }}" class="text-[20px] font-anton !no-underline text-center md:text-left">{{ product.title }}</a>
+        <span class="text-base opacity-70 font-bebasNeue text-center md:text-left">{{ product.metafields.custom.subtitle }}</span>
+      </div>
+       <form @submit="addToCart($event)" class="flex flex-col gap-5">
+          <input x-model="selectedVariantId" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <input name="quantity" type="hidden" value="1">
+          <input name="selling_plan" type="hidden" value="">
+          {% if product.variants.size > 1 %}
+          <div class="flex flex-col gap-2">
+            <select x-ref="variant" @change="changeVariant()" name="variant" id="variant" class="bg-white !border !border-black h-12 max-w-full w-full">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                {% unless variant.metafields.custom.hide_variant %}
+                  <option value="{{ variant.id }}">{{ variant.title }}</option>
+                {% endunless %}
+              {% endif %}
+            {% endfor %}
+            </select>
+          </div>
+          {% endif %}
+          <button type="submit" class="px-5 py-3 flex justify-between items-center text-base bg-black !text-white transition-all duration-300 hover:bg-[#f5d500] group">
+            <span class="font-anton text-base uppercase !text-white group-hover:!text-black">Add to Cart</span>
+            <span x-text="price" class="text-lg font-bebasNeue font-bold !text-white group-hover:!text-black">{{ product.price | money }}</span>
+          </button>
+          <a href="{{ product.url }}" class="font-bebasNeue text-center underline">See Detail</a>
+
+          <script x-ref="productObject" id="productObject" type="json+ld">
+            {
+              "id": {{ product.id }},
+              "variants": {
+                {% for variant in product.variants %}
+                  "{{ variant.id }}": {
+                    "id": {{ variant.id }},
+                    "title": "{{ variant.title }}",
+                    "price": {{ variant.price | money | json }},
+                    {% if variant.featured_image != blank %}
+                      "image": {{ variant.featured_image.src | image_url | json }},
+                    {% else %}
+                      "image": "{{ product.images[0] | image_url }}",
+                    {% endif %}
+                    "available": {{ variant.available }}
+                    {% comment %} "description": "{{ product.description | metafield_tag | escape }}" {% endcomment %}
+                    {% comment %} "hide_variant": {{ variant.metafields.custom.hide_variant }} {% endcomment %}
+                  }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              }
+            }
+          </script>
+       </form>
+    </div>
+  </div>
