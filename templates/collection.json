@@ -27,7 +27,6 @@
     },
     "collection_bottom_text_NXWbB6": {
       "type": "collection-bottom-text",
-      "disabled": true,
       "settings": {
         "bottomtext": "<p>{{ collection.metafields.custom.collection_bottom_text | metafield_tag }}</p>",
         "bg": "#ffffff"
@@ -43,36 +42,12 @@
         "tear_image": "shopify://shop_images/black-tear.png",
         "tear_image_mobile": "shopify://shop_images/mobile-black-tear.png"
       }
-    },
-    "6b3dee8a-4908-43e3-ae59-243dd05b742b": {
-      "type": "collection-featured-slider",
-      "disabled": true,
-      "settings": {
-        "bg_color": "#000000",
-        "title": "featured",
-        "sub_title": "",
-        "btn": "view all",
-        "url": "",
-        "collection": "frontpage",
-        "itemsOnRow": "4"
-      }
-    },
-    "eec4e693-f8cb-407d-9152-d58327480eea": {
-      "type": "seo-section",
-      "disabled": true,
-      "settings": {
-        "title": "seo section",
-        "subtitle": "<p>A combination of nutritional supplement products strategically taken together to optimize your workout progress and help you reach your strength and physique goals. It is important to understand which supplements can and should be taken together, and which supplements you should avoid taking together.</p>",
-        "bg": "#f5f5f5"
-      }
     }
   },
   "order": [
     "banner",
     "product-grid",
     "collection_bottom_text_NXWbB6",
-    "collection_faq_M8NHap",
-    "6b3dee8a-4908-43e3-ae59-243dd05b742b",
-    "eec4e693-f8cb-407d-9152-d58327480eea"
+    "collection_faq_M8NHap"
   ]
 }

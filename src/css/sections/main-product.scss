@@ -1,0 +1,138 @@
+// Main Product (PDP) layout styles
+.product-section {
+
+  .product {
+    background: #fff;
+    padding: 48px 64px;
+    max-width: 1440px;
+    overflow: unset;
+    @media(max-width: 1109px) {
+      padding: 0 0rem 24px 0rem;
+      overflow: visible;
+    }
+  }
+
+  .product-wrapper {
+    display: grid;
+    grid-template-columns: auto 568px;
+    max-width: 1440px;
+    gap: 82px;
+    justify-content: center;
+    margin: auto;
+
+    @media(min-width: 1110px) and (max-width: 1440px) {
+      grid-template-columns: 50% 50%;
+    }
+
+    @media(max-width: 1109px) {
+      grid-template-columns: 100%;
+      gap: 16px;
+    }
+  }
+
+  // Product Gallery column
+  .product-image-wrapper {
+    width: 100%;
+    overflow: unset;
+    margin-left: auto;
+    @media(max-width: 992px) {
+      margin-top: 0;
+    }
+  }
+
+  .swiper-product-gallery {
+    display: block;
+    position: sticky;
+    top: 120px;
+    max-width: 600px;
+
+    .swiper-pagination {
+      z-index: 1 !important;
+      background: unset;
+      width: max-content;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 24px;
+      padding: 2px 12px 3px 12px;
+      bottom: 0;
+      min-height: 31px;
+      min-width: 210px;
+
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: #D0D0D0;
+        opacity: 1;
+        outline-style: solid;
+        outline-color: #FFF;
+        outline-width: 2px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+      }
+
+      .swiper-pagination-bullet-active {
+        background: #fedd00;
+      }
+    }
+
+    @media(max-width: 991px) {
+      margin: auto;
+    }
+  }
+
+  // Product Info column
+  .product-info-wrapper {
+    width: 100%;
+    max-width: unset;
+    @media(max-width: 992px) {
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+
+  .product__info-container {
+    background-color: white;
+    padding: 0px 0 24px 0;
+    width: 100%;
+    @media(max-width: 992px) {
+      padding: 0px 12px 0 12px;
+    }
+  }
+
+  .product-title-container {
+    .product-subtitle {
+      color: #000;
+      font-family: "Familjen Grotesk";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 4px;
+    }
+  }
+
+  .product-sku {
+    @media(max-width: 767px) {
+      margin-top: 0 !important;
+    }
+  }
+
+  // Sticky ATC on mobile
+  .product-form__wrap.is-sticky {
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    padding: 0;
+  }
+
+  // Bottom info container
+  .bottom-info-container {
+    @media(max-width: 992px) {
+      padding: 24px 12px;
+    }
+  }
+}
+
+// Breadcrumb desktop/mobile visibility handled by Tailwind (hidden lg:block / block lg:hidden)

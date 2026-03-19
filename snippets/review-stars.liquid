@@ -1,0 +1,44 @@
+{% assign is_product = false %}
+{% if template.name == 'product' %}
+  {% assign is_product = true %}
+{% endif %}
+
+{% assign max_stars = max_stars | default: 5 | plus: 0 %}
+{%- comment -%}
+Remove .0 if present, then coerce to number
+{%- endcomment -%}
+{% assign rating_string = rating | replace: '.0', '' %}
+{% assign rating = rating_string | plus: 0 %}
+
+<div class="rating-stars flex gap-0.5 items-center">
+  {% for i in (1..max_stars) %}
+    {% assign j = i | minus: 1 %}
+    {% if rating >= i %}
+      <!-- Full star -->
+      <svg xmlns="http://www.w3.org/2000/svg" {% if is_product %} width="16" height="16" {% else %} width="12" height="12" {% endif %} viewBox="0 0 12 12" fill="none">
+        <path d="M6 9.56202L9.708 11.8L8.724 7.58202L12 4.74402L7.686 4.37802L6 0.400024L4.314 4.37802L0 4.74402L3.276 7.58202L2.292 11.8L6 9.56202Z" fill="#F5D500"/>
+      </svg>
+
+    {% elsif rating > j %}
+      <!-- Partial star -->
+      {% assign percent = rating | minus: i | plus: 1 | times: 100 %}
+      <svg xmlns="http://www.w3.org/2000/svg" {% if is_product %} width="16" height="16" {% else %} width="12" height="12" {% endif %} viewBox="0 0 12 12" fill="none">
+      <defs>
+          <linearGradient id="grad-star-{{ product.id }}-{{ blockId }}" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#F5D500"/>
+            <stop offset="{{ percent }}%" stop-color="#F5D500"/>
+            <stop offset="{{ percent }}%" stop-color="#ddd"/>
+            <stop offset="100%" stop-color="#ddd"/>
+          </linearGradient>
+        </defs>
+        <path d="M6 9.56202L9.708 11.8L8.724 7.58202L12 4.74402L7.686 4.37802L6 0.400024L4.314 4.37802L0 4.74402L3.276 7.58202L2.292 11.8L6 9.56202Z" fill="url(#grad-star-{{ product.id }}-{{ blockId }})"/>
+      </svg>
+
+    {% else %}
+      <!-- Empty star -->
+      <svg xmlns="http://www.w3.org/2000/svg" {% if is_product %} width="16" height="16" {% else %} width="12" height="12" {% endif %} viewBox="0 0 12 12" fill="none">
+        <path d="M6 9.56202L9.708 11.8L8.724 7.58202L12 4.74402L7.686 4.37802L6 0.400024L4.314 4.37802L0 4.74402L3.276 7.58202L2.292 11.8L6 9.56202Z" fill="#ddd"/>
+      </svg>
+    {% endif %}
+  {% endfor %}
+</div>

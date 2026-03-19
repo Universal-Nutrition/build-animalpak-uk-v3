@@ -2,6 +2,7 @@ import '../css/app.scss'
 import '../css/tailwind.css'
 import '../css/sections/hero-banner.scss'
 import '../css/sections/home.scss'
+import '../css/sections/main-product.scss'
 
 import '../../scripts/sections/announcement-bar.js'
 import '../../scripts/sections/header.js'
