@@ -126,11 +126,6 @@
         "enable_video_looping": false
       }
     },
-    "458c6b0c-bb1e-4f86-982c-29e5a93529a8": {
-      "type": "Section-animation",
-      "disabled": true,
-      "settings": {}
-    },
     "img_block_WM7TPf": {
       "type": "img-block",
       "custom_css": [
@@ -238,25 +233,6 @@
         "bg_color": "#212121"
       }
     },
-    "product-text-and-badge": {
-      "type": "product-text-and-badge",
-      "disabled": true,
-      "settings": {
-        "headline": "<p><strong>IRONCLAD QUALITY & GUARANTEE. </strong>ANIMAL IS DEDICATED TO BEING THE VERY BEST. </p>",
-        "guarantee": "we offer a \"no-questions-asked\" 90-day 100% guarantee",
-        "text": "<p>Made from premium ingredients sourced from around the world, our products are rigorously tested to meet the highest standards of quality.<br/><br/>That's why we stand behind every single pill, every powder, and every single Animal \"pack\" we make. If you bought a product directly from our website and it hasn't met your tough requirements for any reason, we offer a \"no-questions-asked\" 90-day 100% guarantee.</p>",
-        "badge": "https://cdn.shopify.com/s/files/1/0675/6882/8736/files/quality.svg?v=1669305737"
-      }
-    },
-    "product-full-width-image": {
-      "type": "product-full-width-image",
-      "disabled": true,
-      "settings": {
-        "text": "<p><strong>High potency</strong> multivitamin pack with digestion support and natural energy.</p>",
-        "bg_img": "shopify://shop_images/Image_one.jpg",
-        "mobile_bg_img": "shopify://shop_images/mobile-fw-image-_3x_34a86014-4405-42d6-a269-41776209841b.jpg"
-      }
-    },
     "product-recommend": {
       "type": "product-recommendations",
       "custom_css": [
@@ -292,13 +268,10 @@
   },
   "order": [
     "main",
-    "458c6b0c-bb1e-4f86-982c-29e5a93529a8",
     "img_block_WM7TPf",
     "product_highlights_afB9ta",
     "product-image-and-text",
     "product-faq",
-    "product-text-and-badge",
-    "product-full-width-image",
     "product-recommend",
     "yotpo-product-reviews-cl140325",
     "section_instafeed_abx123"

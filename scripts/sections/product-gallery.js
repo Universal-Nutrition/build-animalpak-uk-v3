@@ -1,33 +1,45 @@
-import { Swiper, Navigation } from "swiper";
+import { Swiper, Navigation, Thumbs } from "swiper";
 
 import 'swiper/css/bundle';
 
 
 class ProductGallery extends HTMLElement {
 	constructor() {
-		super(); 
+		super();
 	}
 
     connectedCallback() {
-       
+
         let progress = this.querySelector('.inner-progress')
         let size = +this.dataset.size
         let self = this
+
+        const thumbsEl = this.parentElement.querySelector('.product-gallery-thumbs')
+        let thumbsSwiper = null
+
+        if (thumbsEl) {
+            thumbsSwiper = new Swiper(thumbsEl, {
+                slidesPerView: 'auto',
+                spaceBetween: 8,
+                watchSlidesProgress: true,
+            })
+        }
 
         var ProductGallery = new Swiper(this, {
             loop: true,
             autoHeight: true,
             spaceBetween: 10,
             slidesPerView: 1,
-            modules: [Navigation],
+            modules: [Navigation, Thumbs],
             navigation: {
                 nextEl: '.swiper-product-next',
                 prevEl: '.swiper-product-prev',
             },
+            thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
           });
 
         window.gallery = ProductGallery
-        
+
         ProductGallery.on( 'slideChange', function(e) {
             setTimeout(() => {
                 let index = +self.querySelector('.swiper-slide-active').dataset.index
@@ -36,7 +48,7 @@ class ProductGallery extends HTMLElement {
                 progress.style.width =  width * percent + 'px'
             });
         })
-   
+
     }
 }
 

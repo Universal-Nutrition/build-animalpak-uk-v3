@@ -2547,16 +2547,28 @@ var ProductGallery = /*#__PURE__*/function (_HTMLElement) {
       var progress = this.querySelector('.inner-progress');
       var size = +this.dataset.size;
       var self = this;
+      var thumbsEl = this.parentElement.querySelector('.product-gallery-thumbs');
+      var thumbsSwiper = null;
+      if (thumbsEl) {
+        thumbsSwiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(thumbsEl, {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          watchSlidesProgress: true
+        });
+      }
       var _ProductGallery = new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(this, {
         loop: true,
         autoHeight: true,
         spaceBetween: 10,
         slidesPerView: 1,
-        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation],
+        modules: [swiper__WEBPACK_IMPORTED_MODULE_0__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_0__.Thumbs],
         navigation: {
           nextEl: '.swiper-product-next',
           prevEl: '.swiper-product-prev'
-        }
+        },
+        thumbs: thumbsSwiper ? {
+          swiper: thumbsSwiper
+        } : undefined
       });
       window.gallery = _ProductGallery;
       _ProductGallery.on('slideChange', function (e) {
