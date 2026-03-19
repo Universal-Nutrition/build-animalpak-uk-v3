@@ -1,6 +1,7 @@
 {% if section.settings.bottomtext != blank %}
-    <div class="py-[64px] lg:py-[64px] px-6" style="background: {{section.settings.bg}}">
+    <div class="pb-[64px] lg:pb-[64px] lg:mt-[20px] px-6" style="background: {{section.settings.bg}}; padding-top: 24px;"
         <div class="max-w-[1000px] m-auto">
+            <h2 class="bottom-text-heading">About {{ collection.title }}</h2>
             <div class="bottom-text text-center text-base font-sans mt-3">
                 {% if collection.metafields.custom.collection_bottom_text != blank %}
                     {{collection.metafields.custom.collection_bottom_text}}
@@ -13,8 +14,21 @@
     {% endif %}
     
     <style>
+        .bottom-text-heading {
+            font-family: Anton, sans-serif;
+            font-size: 40px;
+            color: #000000;
+            text-align: center;
+            margin: 0 0 25px;
+            text-transform: uppercase;
+        }
+        .bottom-text {
+            max-width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .bottom-text p {
-            font-size: 20px;
+            font-size: 18.4px;
         }
         .bottom-text p a {
             font-weight: Bold;

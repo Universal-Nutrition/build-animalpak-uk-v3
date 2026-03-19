@@ -35,6 +35,19 @@
     font-display: swap;
     }
 
+    @media (max-width: 1279px) {
+      .header-s2__logo-wrap {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        pointer-events: none;
+      }
+      .header-s2__logo-wrap a {
+        pointer-events: auto;
+      }
+    }
+
     .accordion-faq .accordion-content {
     display: none;
     padding-bottom: 40px;
@@ -372,7 +385,7 @@
                             </div>
                             <div class="header-s2__icons flex xl:hidden"></div>
 
-                            <div class="h-full flex xl:flex-0-auto relative z-[2] w-full xl:!w-fit justify-center xl:justify-start">
+                            <div class="header-s2__logo-wrap h-full flex xl:flex-0-auto relative z-[2] w-full xl:!w-fit justify-center xl:justify-start">
                                 <a href="{{ routes.root_url }}" class="flex items-center">
                                     <span class="sr-only">Workflow</span>
                                     {%- if section.settings.logo_text == blank and section.settings.logo != blank -%}
@@ -452,7 +465,7 @@
                                 </div>
                             </div>
 
-                            <div class="header-s2__icons flex items-center justify-end h-full">
+                            <div class="header-s2__icons flex items-center justify-end h-full" style="margin-left: auto;">
                                 <div class="flex items-center h-full">
                                     <!-- Search -->
                                     <div class="hidden xl:flex mr-6 header_icon pb-0 h-full justify-center items-center">

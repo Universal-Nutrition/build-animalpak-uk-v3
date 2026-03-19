@@ -81,15 +81,15 @@
 {% endfor %}
 {% endcapture %}
 <div class="px-6 lg:px-[58px] pt-[35px] coll_nudge">
-  <div class="flex justify-between items-center pb-[32px]">
+  <div class="flex justify-between items-center pb-[16px] lg:pb-[32px]">
     <div
-      class="mobile-filter-trigger font-bold uppercase p-3 bg-black inline-flex items-center text-white text-[12.1px] cursor-pointer"
+      class="mobile-filter-trigger font-bold uppercase p-3 bg-black inline-flex w-full lg:w-auto items-center text-white text-[12.1px] cursor-pointer"
       onclick="collFilterOpen();"
     >
       <span class="mr-[10px]">{% include 'icon-filtering' %}</span>
       filter by
     </div>
-    <div class="filter-quick-buttons hidden lg:flex items-center gap-2">
+    <div class="filter-quick-buttons hidden lg:flex items-center gap-2" style="transform: translateX(60px);">
       {% for filter in collection.filters %}
         {% assign label_lower = filter.label | downcase %}
         {% if filter.type == 'list' and label_lower contains 'type' %}
@@ -112,7 +112,7 @@
         {% endif %}
       {% endfor %}
     </div>
-    <div class="flex items-center gap-3">
+    <div class="hidden lg:flex items-center gap-3">
       {% if settings.ss_enable %}
         <div id="searchspring-toolbar"></div>
       {% endif %}
@@ -133,6 +133,32 @@
       </div>
     </div>
   </div>
+  <div class="mobile-quick-slider lg:hidden w-full overflow-x-auto" style="padding-bottom: 4px;">
+    <div class="flex gap-2" style="width:max-content;">
+      {% for filter in collection.filters %}
+        {% assign label_lower = filter.label | downcase %}
+        {% if filter.type == 'list' and label_lower contains 'type' %}
+          {% for value in filter.values %}
+            {% assign val_lower = value.label | downcase %}
+            {% if val_lower contains 'chew' %}
+              {% assign quick_icon = 'chews.svg' %}
+            {% elsif val_lower contains 'pill' or val_lower contains 'capsule' %}
+              {% assign quick_icon = 'capsules.svg' %}
+            {% elsif val_lower contains 'powder' %}
+              {% assign quick_icon = 'scoop.svg' %}
+            {% else %}
+              {% assign quick_icon = '' %}
+            {% endif %}
+            <a
+              href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+              class="filter-quick-btn {% if value.active %}active{% endif %}"
+            >{% if quick_icon != '' %}<img src="{{ quick_icon | asset_url }}" alt="" width="28" height="28" style="display:inline-block;vertical-align:middle;">{% endif %}{{ value.label }}{% if value.active %}<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg>{% endif %}</a>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
   {% assign is_apparel = false %}
   {% for link in linklists['apparel-accessories'].links %}
     {% if collection.url == link.url %}
@@ -204,6 +230,56 @@
     min-height: 0 !important;
   }
 
+  @media (min-width: 1024px) {
+    .coll_nudge {
+      padding-top: 30px !important;
+    }
+    .coll_nudge .mb-\[64px\] {
+      margin-bottom: 40px !important;
+    }
+  }
+  @media (max-width: 1023px) {
+    .coll_nudge {
+      padding-top: 28px !important;
+    }
+  }
+  .mobile-quick-slider {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .mobile-quick-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .coll-shopnow {
+    display: block !important;
+  }
+
+  @media (max-width: 767px) {
+    .product-grid-item {
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+    }
+    .product-grid-item .product-title {
+      margin-bottom: -2px !important;
+    }
+    .product-grid-item .product-des {
+      font-size: 12px !important;
+      text-align: left !important;
+    }
+  }
+
+  /* Force 2-column grid on mobile */
+  @media (max-width: 767px) {
+    body.collection .coll_nudge .collection-wrapper {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    body.collection .coll_nudge .product-grid-item.items-center {
+      width: 100% !important;
+    }
+  }
+
   [type="checkbox"]:not(.filter-checkbox):checked:focus, [type="checkbox"]:not(.filter-checkbox):checked:hover, [type="checkbox"]:not(.filter-checkbox):indeterminate, [type="radio"]:checked:focus, [type="radio"]:checked:hover {
     background-color: none;
     border-color: transparent;
@@ -225,8 +301,7 @@
       color: #FEDD00 !important;
     }
     .ypm.yotpo.bottomLine {
-      margin: 12px;
-      margin-bottom: 0;
+      margin: 0;
     }
     .ypm.yotpo.bottomLine span.yotpo-stars {
       margin-right: 5px;
@@ -276,7 +351,7 @@
       font-size: 13.9px;
       letter-spacing: 0.3px;
       height: 48px;
-      padding: 0 14px;
+      padding: 0 22px;
       border: 1px solid #212121;
       outline: none;
       background: #fff;
@@ -524,20 +599,28 @@
       font-family: Anton;
       text-transform: Uppercase;
       font-size: 30px;
-      margin-left: 15px;
-      margin-top: 25px;
+      margin-left: 0 !important;
+      margin-top: 5px !important;
+    }
+    .collection .product-price {
+      margin-left: 0 !important;
+    }
+    .collection .product-grid-item .ypm {
+      margin-left: 0 !important;
+      margin-top: 10px !important;
+      margin-bottom: 0 !important;
     }
 
     @media (max-width: 767px) {
       body.collection .ypm {
-          margin-left: 15px;
+          margin-left: 0;
       }
       body.collection .product-price {
-        margin-left: 15px;
+        margin-left: 0;
         font-size: 18px;
       }
       .collection .product-des {
-        padding-right: 15px !important;
+        padding-right: 0 !important;
       }
   }
 
@@ -545,25 +628,28 @@
     .collection .product-grid-item .product-title {
       font-size: 24px !important;
       line-height: 25px;
-      padding-right: 15px !important;
+      padding-right: 0 !important;
     }
   }
 
-    .collection .product-des {
-      margin-left: 15px;
+  @media (max-width: 767px) {
+    .collection .product-grid-item .product-title {
+      font-size: 22px !important;
+      line-height: 22px !important;
+      margin-bottom: -10px !important;
     }
-
-    .collection .product-price {
-      margin-left: 15px;
-    }
+  }
 
     .block-tops .breadcrumbs a,
     .block-tops span {
       color: #FFFFFF;
     }
 
-    .px-4 svg {
+    .block-tops .px-4 svg {
       fill: #FEDD00 !important;
+    }
+    .breadcrumbs .px-4 svg {
+      fill: none !important;
     }
 
     .block-tops ul a {

@@ -64,7 +64,7 @@
   {%- if section.settings.tear_image != blank -%}
     {%- assign tear_desktop = section.settings.tear_image -%}
     {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
-    <div class="faq-tear faq-tear--bottom">
+    <div class="faq-tear faq-tear--bottom" style="margin-top: -1px;">
       <picture>
         {%- if tear_mobile != blank -%}
           <source srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w" sizes="100vw" media="(max-width: 767px)" type="image/webp" />
@@ -161,8 +161,8 @@
   }
   @media only screen and (max-width: 768px) {
     #section-collection-faq .container {
-      padding-bottom: 30px;
-      padding-top: 0;
+      padding-bottom: 40px;
+      padding-top: 32px;
     }
     .faq-line1 { font-size: 42px; }
     .faq-line2 { font-size: 72px; margin-top: -10px; }
