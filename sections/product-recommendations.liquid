@@ -29,13 +29,15 @@
   {% if recommendations.performed and recommendations.products_count > 0 %}
     <div class="relative z-[2] mx-auto px-4 pt-[64px] lg:pt-[220px] max-w-[1500px]">
     <h2 class="text-[48px] md:text-[80px] uppercase font-anton mb-[64px]">{{ section.settings.heading | escape }}</h2>
-      <ul class="grid grid-cols-1 max-w-[1500px] mx-auto
-      {% if recommendations.products_count > 2 %} md:grid-cols-3 {% else %} md:grid-cols-2 {% endif %} gap-6" role="list">
+      <ul class="flex flex-wrap gap-6 justify-center" role="list">
         {% for recommendation in recommendations.products limit:3 %}
           {% unless recommendation.tags contains 'algolia-ignore' %}
-          <li class="w-full">
+          <li class="{% if section.settings.card_layout == 'vertical' %}w-[280px]{% else %}w-[360px]{% endif %}">
             {% render 'product-card-simple',
-              product: recommendation
+              product: recommendation,
+              layout: section.settings.card_layout,
+              show_rating: section.settings.show_rating,
+              show_subtitle: section.settings.show_subtitle
             %}
           </li>
             {% endunless %}
@@ -62,6 +64,7 @@
             const recommendations = html.querySelector('product-recommendations');
             if (recommendations && recommendations.innerHTML.trim().length) {
               this.innerHTML = recommendations.innerHTML;
+              if (window.Alpine) Alpine.initTree(this);
             }
           })
           .catch((e) => {
@@ -96,6 +99,32 @@
       "id": "heading",
       "default": "You may also like",
       "label": "t:sections.product-recommendations.settings.heading.label"
+    },
+    {
+      "type": "header",
+      "content": "Card Options"
+    },
+    {
+      "type": "select",
+      "id": "card_layout",
+      "label": "Card Layout",
+      "default": "horizontal",
+      "options": [
+        { "value": "horizontal", "label": "Horizontal (image beside)" },
+        { "value": "vertical", "label": "Vertical (image on top)" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show Rating",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subtitle",
+      "label": "Show Subtitle",
+      "default": true
     }
   ]
 }

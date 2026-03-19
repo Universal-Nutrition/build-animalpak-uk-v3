@@ -1,6 +1,69 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./scripts/components/add-to-cart.js":
+/*!*******************************************!*\
+  !*** ./scripts/components/add-to-cart.js ***!
+  \*******************************************/
+/***/ (function() {
+
+document.addEventListener('alpine:init', function () {
+  Alpine.data('addToCart', function (selectedVariantId) {
+    return {
+      selectedVariantId: selectedVariantId,
+      selectedVariant: {},
+      productObject: {},
+      price: 0,
+      description: '',
+      image: '',
+      sideCart: document.querySelector('side-cart'),
+      init: function init() {
+        var raw = this.$refs.productObject.textContent.trim();
+        this.productObject = JSON.parse(raw);
+        this.selectedVariant = this.productObject.variants[String(this.selectedVariantId)];
+        this.updateUi();
+      },
+      changeVariant: function changeVariant() {
+        this.selectedVariantId = this.$refs.variant.value;
+        this.selectedVariant = this.productObject.variants[String(this.selectedVariantId)];
+        this.updateUi();
+      },
+      updateUi: function updateUi() {
+        var _this$selectedVariant, _this$selectedVariant2, _this$selectedVariant3;
+        this.price = (_this$selectedVariant = this.selectedVariant) === null || _this$selectedVariant === void 0 ? void 0 : _this$selectedVariant.price;
+        this.description = (_this$selectedVariant2 = this.selectedVariant) === null || _this$selectedVariant2 === void 0 ? void 0 : _this$selectedVariant2.description;
+        this.image = ((_this$selectedVariant3 = this.selectedVariant) === null || _this$selectedVariant3 === void 0 ? void 0 : _this$selectedVariant3.image) || this.productObject.featured_image;
+      },
+      addToCart: function addToCart(event) {
+        var _this = this;
+        event.preventDefault();
+        var formData = {
+          items: [{
+            id: this.selectedVariantId,
+            quantity: 1
+          }]
+        };
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        }).then(function (response) {
+          return response.json();
+        }).then(function () {
+          _this.sideCart.renderCart();
+          _this.sideCart.openCart();
+        })["catch"](function (error) {
+          console.error('Error:', error);
+        });
+      }
+    };
+  });
+});
+
+/***/ }),
+
 /***/ "./scripts/helpers/utils.js":
 /*!**********************************!*\
   !*** ./scripts/helpers/utils.js ***!
@@ -29409,6 +29472,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_sections_homepage_carousel_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../scripts/sections/homepage-carousel.js */ "./scripts/sections/homepage-carousel.js");
 /* harmony import */ var _scripts_sections_multi_collection_slider_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../../scripts/sections/multi-collection-slider.js */ "./scripts/sections/multi-collection-slider.js");
 /* harmony import */ var _scripts_sections_swiper_slider_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../../scripts/sections/swiper-slider.js */ "./scripts/sections/swiper-slider.js");
+/* harmony import */ var _scripts_components_add_to_cart_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../../scripts/components/add-to-cart.js */ "./scripts/components/add-to-cart.js");
+/* harmony import */ var _scripts_components_add_to_cart_js__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_scripts_components_add_to_cart_js__WEBPACK_IMPORTED_MODULE_33__);
+
 
 
 

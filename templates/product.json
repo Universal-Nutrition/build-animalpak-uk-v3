@@ -148,28 +148,24 @@
         "highlight_rAgVVD": {
           "type": "highlight",
           "settings": {
-            "highlight_image": "{{ product.metafields.custom.product_highlights_image_1.value }}",
             "highlight_text": "{{ product.metafields.custom.product_highlights_description_1 | metafield_tag }}"
           }
         },
         "highlight_JFzJzV": {
           "type": "highlight",
           "settings": {
-            "highlight_image": "{{ product.metafields.custom.product_highlights_image_2.value }}",
             "highlight_text": "{{ product.metafields.custom.product_highlights_description_2 | metafield_tag }}"
           }
         },
         "highlight_qUbgJL": {
           "type": "highlight",
           "settings": {
-            "highlight_image": "{{ product.metafields.custom.product_highlights_image_3.value }}",
             "highlight_text": "{{ product.metafields.custom.product_highlights_description_3 | metafield_tag }}"
           }
         },
         "highlight_VAAnVa": {
           "type": "highlight",
           "settings": {
-            "highlight_image": "{{ product.metafields.custom.product_highlights_image_4.value }}",
             "highlight_text": "{{ product.metafields.custom.product_highlights_description_4 | metafield_tag }}"
           }
         }
@@ -186,6 +182,16 @@
         "headline": "<p>{{ product.metafields.custom.product_highlights_headline.value }}</p>",
         "tear_top_image": "shopify://shop_images/white-tear-down.png",
         "tear_bottom_image": "shopify://shop_images/white-tear-down.png"
+      }
+    },
+    "product-recommend": {
+      "type": "product-recommendations",
+      "custom_css": [
+        "product-recommendations {padding-bottom: var(--tear-height);}"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/distressed-torn-bg-white-tinified.jpg",
+        "heading": "PAIRS WELL WITH"
       }
     },
     "product-image-and-text": {
@@ -240,21 +246,6 @@
         "bg_color": "#212121"
       }
     },
-    "product-recommend": {
-      "type": "product-recommendations",
-      "custom_css": [
-        "product-recommendations {padding-bottom: var(--tear-height);}"
-      ],
-      "settings": {
-        "heading": "PAIRS WELL WITH",
-        "image_ratio": "portrait",
-        "show_secondary_image": false,
-        "add_image_padding": false,
-        "show_image_outline": false,
-        "show_vendor": false,
-        "show_rating": false
-      }
-    },
     "yotpo-product-reviews-cl140325": {
       "type": "yotpo-product-reviews",
       "settings": {
@@ -277,9 +268,9 @@
     "main",
     "img_block_WM7TPf",
     "product_highlights_afB9ta",
+    "product-recommend",
     "product-image-and-text",
     "product-faq",
-    "product-recommend",
     "yotpo-product-reviews-cl140325",
     "section_instafeed_abx123"
   ]
