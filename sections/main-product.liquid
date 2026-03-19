@@ -143,8 +143,20 @@
                 <span>{% render 'icon-chevron-right' %}</span>
               </button>
 
+            {%- when 'short_description' -%}
+              <div class="short-description-block text-primary">
+                {% if product.metafields.custom.short_description != blank %}
+                  <div class="mb-3">{{ product.metafields.custom.short_description }}</div>
+                {% endif %}
+                {% unless is_stack %}
+                  {% if product.metafields.custom.short_description_extra != blank %}
+                    <div class="product-short-list">{{ product.metafields.custom.short_description_extra }}</div>
+                  {% endif %}
+                {% endunless %}
+              </div>
+
             {%- when 'description' -%}
-              <div x-data="{ open: false }" class="border-b border-black">
+              <div x-data="{ open: false }" class="border-b border-black mt-4">
                 <button @click="open = !open"
                         class="flex items-center justify-between w-full py-4 font-anton uppercase text-black"
                         style="font-size:14px">
@@ -154,16 +166,8 @@
                   </span>
                 </button>
                 <div x-show="open" x-transition class="pb-4 text-[13.91px] font-sans leading-[22.26px] text-primary">
-                  {% if product.metafields.custom.short_description != blank %}
-                    <div class="mb-3">{{ product.metafields.custom.short_description }}</div>
-                  {% endif %}
-                  {% unless is_stack %}
-                    {% if product.metafields.custom.short_description_extra != blank %}
-                      <div class="mb-3">{{ product.metafields.custom.short_description_extra }}</div>
-                    {% endif %}
-                  {% endunless %}
                   {% if product.description != blank %}
-                    <div>{{ product.description }}</div>
+                    <div class="description-accordion-body">{{ product.description }}</div>
                   {% endif %}
                 </div>
               </div>
@@ -922,13 +926,34 @@
     stroke: #000;
   }
   .product-info-title {
-    font-size: 56.29px;
+    font-size: 40px;
     line-height: 45.03px;
     letter-spacing: -1px;
-    font-family: 'Compacta Std';
+    font-family: 'Anton', sans-serif;
     color: #212121;
     text-transform: uppercase;
     margin-bottom: 32px;
+  }
+
+  .description-accordion-body iframe {
+    display: none !important;
+  }
+
+  .short-description-block {
+    font-family: 'BebasNeue', sans-serif;
+    font-size: 16px;
+  }
+  .short-description-block ul {
+    list-style: disc !important;
+    padding-left: 1.25em !important;
+  }
+  .short-description-block ol {
+    list-style: decimal !important;
+    padding-left: 1.25em !important;
+  }
+  .short-description-block li {
+    display: list-item !important;
+    margin-bottom: 0.25em;
   }
 
   .product-info-wrap {
@@ -1075,8 +1100,8 @@
       width: 22px;
     }
     .product-info-title {
-      font-size: 42.56px;
-      line-height: 34.05px;
+      font-size: 40px;
+      line-height: 40px;
       letter-spacing: -1px;
     }
   }
@@ -1503,6 +1528,11 @@
     {
       "type": "nutrition",
       "name": "Nutrition Facts",
+      "limit": 1
+    },
+    {
+      "type": "short_description",
+      "name": "Short Description",
       "limit": 1
     },
     {

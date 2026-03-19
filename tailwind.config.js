@@ -142,7 +142,7 @@ module.exports = {
       header: ["Familjen Grotesk", "sans-serif"],
       familjen: ["Familjen Grotesk", "sans-serif"],
       anton: ["Anton", "sans-serif"],
-      bebasNeue: ["BebasNeuePro-ExpandedRegular", "sans-serif"],
+      bebasNeue: ["BebasNeue", "sans-serif"],
       bebasNeueExpanded: ["BebasNeuePro-ExpandedRegular", "sans-serif"],
       hyperwave: ["Hyperwave", "sans-serif"],
       brixton: ["Brixton Wood", "sans-serif"],

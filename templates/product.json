@@ -42,12 +42,14 @@
           "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
           "disabled": true,
           "settings": {
+            "widget_style": "card",
+            "widget_style_card_selector": "radio_button",
+            "subscription_policy_url": "",
             "color_text_body": "#000000",
             "dividers_color": "#dadada",
-            "bacgkround_color": "#f3f3f3",
+            "background_color": "#ffffff",
             "border_thickness": 1,
             "border_radius": 0,
-            "subscription_policy_url": "",
             "product": "{{product}}"
           }
         },
@@ -72,6 +74,9 @@
             "margin": 8,
             "border_radius": 16,
             "product": "{{product}}",
+            "show_placeholder": false,
+            "placeholder_text": "",
+            "plan_selection_error_text": "",
             "selling_plan_metadata": [],
             "card_layout_subscription_selector_label": "",
             "variant_id_selector": "",
@@ -83,6 +88,14 @@
           "settings": {
             "show_dynamic_checkout": true
           }
+        },
+        "description_NUhM7t": {
+          "type": "description",
+          "settings": {}
+        },
+        "nutrition_gYqweM": {
+          "type": "nutrition",
+          "settings": {}
         }
       },
       "block_order": [
@@ -94,7 +107,9 @@
         "4a6a1f42-966a-4cf5-ae72-5e9c7c853a5c",
         "subscriptions_app_block_wxcant",
         "firmhouse_subscription_options_3g6GYE",
-        "buy_buttons"
+        "buy_buttons",
+        "description_NUhM7t",
+        "nutrition_gYqweM"
       ],
       "custom_css": [
         "h1 {font-family: Anton; font-size: 50px; line-height: 50px;}"
