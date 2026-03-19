@@ -1,6 +1,6 @@
 {% assign variant_id = product.selected_or_first_available_variant.id %}
 <div x-data="addToCart({{ variant_id }})" class="grid grid-cols-[0.5fr_1fr] md:grid-cols-1 xl:grid-cols-2 h-full gap-4 lg:gap-6 p-4 lg:p-6 bg-white border border-black mb-0 lg:mb-[30px]">
-    <a href="{{ product.url }}" class="aspect-square h-full w-full min-w-[94px]">
+    <a href="{{ product.url }}" class="aspect-square h-full w-full min-w-[94px] max-h-[300px]">
       <img :src="image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="w-full h-full object-contain">
     </a>
     <div class="flex flex-col gap-3 lg:gap-0 justify-between">

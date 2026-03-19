@@ -62,6 +62,7 @@
             const recommendations = html.querySelector('product-recommendations');
             if (recommendations && recommendations.innerHTML.trim().length) {
               this.innerHTML = recommendations.innerHTML;
+              if (window.Alpine) Alpine.initTree(this);
             }
           })
           .catch((e) => {
