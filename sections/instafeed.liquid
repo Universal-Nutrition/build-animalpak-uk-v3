@@ -3,6 +3,10 @@
     position: relative;
     z-index: 10;
   }
+  @font-face {
+    font-family: 'Hyperwave';
+    src: url('{{ 'Hyperwave.woff' | asset_url }}') format('woff');
+  }
 {% endstyle %}
 
 <div
@@ -15,14 +19,14 @@
   </div>
 
   {% if settings.social_instagram_link != blank %}
-      <a target="_blank" href="{{settings.social_instagram_link}}" aria-label="instagram">
+      <a target="_blank" href="{{settings.social_instagram_link}}" aria-label="instagram" class="block w-full">
   {% endif %}
-  <div class="flex gap-10 pt-6 md:pt-10">
-    <div class="leading-tight text-center">
+  <div class="flex gap-10 pt-6 md:pt-10 justify-center w-full">
+    <div class="leading-tight text-center w-full md:w-auto">
       <div class="text-[2rem] md:text-[2.5rem] text-white font-anton">{{ section.settings.title }}</div>
       <div class="text-[100px] md:text-[80px] -mt-5 -mb-10 text-goalYellow font-hyperwave">{{ section.settings.subtitle }}</div>
     </div>
-    <div class="md:border-r-4 md:border-r-white"></div>
+    <div class="hidden md:block md:border-r-4 md:border-r-white"></div>
     <div class="hidden md:flex flex-col justify-center items-center">
       {{ section.settings.icon | image_url: width: 80 | image_tag: width: 80, height: 80 }}
     </div>

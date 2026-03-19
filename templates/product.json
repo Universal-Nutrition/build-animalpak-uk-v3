@@ -20,8 +20,13 @@
           "type": "price",
           "settings": {}
         },
+        "short_description_eiReDP": {
+          "type": "short_description",
+          "settings": {}
+        },
         "6a8c8864-2370-4cd3-873f-4a3d617696be": {
           "type": "listIconText",
+          "disabled": true,
           "settings": {}
         },
         "62ab6ba1-0cfa-480d-9b4a-4c04000190cb": {
@@ -101,6 +106,7 @@
       "block_order": [
         "title",
         "price_rprHUW",
+        "short_description_eiReDP",
         "6a8c8864-2370-4cd3-873f-4a3d617696be",
         "62ab6ba1-0cfa-480d-9b4a-4c04000190cb",
         "variant_picker",

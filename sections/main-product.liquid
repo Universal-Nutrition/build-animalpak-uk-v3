@@ -134,8 +134,8 @@
                   </div>
                 {%- endif -%}
               {%- endunless -%}
-              <button class="info-trigger info-trigger-nutrition flex items-center justify-between w-full py-4 font-anton uppercase text-black border-b border-black"
-                      style="font-size:14px"
+              <button class="info-trigger info-trigger-nutrition flex items-center justify-between w-full py-5 font-anton uppercase text-black border-b border-black"
+                      style="font-size:18px"
                       data-title="Nutritional Info"
                       data-type="html"
                       data-id="nutrition-html-{{ product.selected_or_first_available_variant.id }}">
@@ -144,7 +144,7 @@
               </button>
 
             {%- when 'short_description' -%}
-              <div class="short-description-block text-primary">
+              <div class="short-description-block text-primary mt-5 -mb-4">
                 {% if product.metafields.custom.short_description != blank %}
                   <div class="mb-3">{{ product.metafields.custom.short_description }}</div>
                 {% endif %}
@@ -156,21 +156,29 @@
               </div>
 
             {%- when 'description' -%}
-              <div x-data="{ open: false }" class="border-b border-black mt-4">
+              <div x-data="{ open: false }" class="border-b border-black">
                 <button @click="open = !open"
-                        class="flex items-center justify-between w-full py-4 font-anton uppercase text-black"
-                        style="font-size:14px">
+                        class="flex items-center justify-between w-full py-5 font-anton uppercase text-black"
+                        style="font-size:18px">
                   <span>Description</span>
                   <span :class="open ? 'rotate-180' : ''" class="transition-transform duration-200">
                     {% render 'icon-chevron-bottom' %}
                   </span>
                 </button>
-                <div x-show="open" x-transition class="pb-4 text-[13.91px] font-sans leading-[22.26px] text-primary">
+                <div x-show="open" x-transition class="pb-4 text-primary" style="font-family:'BebasNeue',sans-serif;font-size:16px;">
                   {% if product.description != blank %}
                     <div class="description-accordion-body">{{ product.description }}</div>
                   {% endif %}
                 </div>
               </div>
+
+            {%- when 'faqs' -%}
+              <a data-scroll-href="#section-product-faq"
+                 class="flex items-center justify-between w-full py-5 font-anton uppercase text-black border-b border-black cursor-pointer"
+                 style="font-size:18px">
+                <span>FAQs</span>
+                <span>{% render 'icon-chevron-right' %}</span>
+              </a>
 
             {%- when 'price' -%}
               <div class="mt-3">
@@ -580,8 +588,8 @@
                                     }
                                   </style>
                                 {% else %}
-                                  <div class="grid grid-cols-3 gap-3 items-stretch">
-                                    <quantity-input class="quantity col-span-1 border border-[#DBDBDB] w-full h-full">
+                                  <div class="grid gap-3 items-stretch w-full" style="grid-template-columns: 1fr 3fr">
+                                    <quantity-input class="quantity border border-[#DBDBDB] w-full h-full">
                                       <button class="quantity__button no-js-hidden" name="minus" type="button">
                                         <span class="visually-hidden">
                                           {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
@@ -608,7 +616,7 @@
                                       type="submit"
                                       name="add"
                                       ss-track-cart-add="{{ product.variants[0].sku }}"
-                                      class="product-form__submit col-span-2 border border-solid border-black bg-black uppercase w-full text-center py-[18px] transition duration-150 text-white text-[13.9px] font-anton tracking-[1px]"
+                                      class="product-form__submit border border-solid border-black bg-black uppercase w-full text-center py-[18px] transition duration-150 text-white text-[13.9px] font-anton tracking-[1px]"
                                       {% if product.selected_or_first_available_variant.available == false %}
                                         disabled
                                       {% endif %}
@@ -738,15 +746,7 @@
                 >
               {% endif %}
 
-              {% if product.metafields.custom.faq_1_title != blank %}
-                <a
-                  data-scroll-href="#section-product-faq"
-                  class="tracking-[1px] flex justify-between items-center font-bold capitalize lg:underline cursor-pointer text-[13.9px] leading-[22.24px] font-sans text-primary border-0 border-b border-solid border-black/[.2] lg:border-0"
-                  >FAQs</a
-                >
-              {% endif %}
-
-              {% for block in section.blocks %}
+{% for block in section.blocks %}
                 {% if block.type == 'tab' %}
                   {% if block.settings.tab_title != blank %}
                     {% for collection in product.collections %}
@@ -845,6 +845,10 @@
     margin-left: 22px;
     margin-top: 7px;
   }
+  .quantity__input {
+    font-family: 'BebasNeuePro-ExpandedRegular', sans-serif !important;
+  }
+
   .quantity__button svg {
     width: 11px;
   }
@@ -934,6 +938,11 @@
     text-transform: uppercase;
     margin-bottom: 32px;
   }
+
+  .info-trigger-nutrition {
+    border-bottom: 1px solid black !important;
+  }
+
 
   .description-accordion-body iframe {
     display: none !important;
@@ -1528,6 +1537,11 @@
     {
       "type": "nutrition",
       "name": "Nutrition Facts",
+      "limit": 1
+    },
+    {
+      "type": "faqs",
+      "name": "FAQs",
       "limit": 1
     },
     {

@@ -70,12 +70,3 @@
       
     </product-gallery>
    </div>
-    {% if product.metafields.custom.video != blank or product.metafields.custom.youtube_video_id != blank %}
-        <video-block class="vid-block flex justify-center mt-[22px] lg:mt-0 lg:inline-flex items-center cursor-pointer z-[9] top-6 right-6" {% if product.metafields.custom.youtube_video_id != blank %} data-youtube="true" {% endif %} data-src="{{product.metafields.custom.youtube_video_id | default: product.metafields.custom.video.value.sources[0].url}}">
-          <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 21V2L17 11.5L1 21Z" stroke="#212121" stroke-width="2"/>
-          </svg>
-            
-          <span class="ml-2 text-[13.9px] uppercase font-bold">watch video</span>
-        </video-block>
-      {% endif %}
