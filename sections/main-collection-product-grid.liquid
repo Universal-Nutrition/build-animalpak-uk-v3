@@ -33,7 +33,7 @@
   {% if filter.type == 'list' %}
     {% assign label_lower = filter.label | downcase %}
     {% if label_lower contains 'type' or label_lower contains 'flavour' or label_lower contains 'flavor' or label_lower contains 'size' %}
-      <div class="mb-6 pb-3 border-0 border border-b border-[#DBDBDB] border-solid w-full filter-group" data-has-active="{{ filter.active_values.size | default: 0 }}">
+      <div class="mb-6 pb-3 border-0 border border-b border-[#DBDBDB] border-solid w-full filter-group" id="filter-group-{{ filter.label | handleize }}" data-has-active="{{ filter.active_values.size | default: 0 }}">
         <div class="filter-group-header text-[#212121] mb-4 uppercase font-sans text-[13.9px] font-bold flex justify-between items-center cursor-pointer select-none">
           <span>{{ filter.label }}</span>
           <span class="filter-toggle-icon text-[18px] leading-none">+</span>
@@ -58,7 +58,7 @@
 
 {% for filter in collection.filters %}
   {% if filter.type == 'price_range' %}
-    <div class="mb-6 pb-3 border-0 border border-b border-[#DBDBDB] border-solid w-full">
+    <div class="mb-6 pb-3 border-0 border border-b border-[#DBDBDB] border-solid w-full" id="filter-group-price">
       <div class="filter-price-heading text-[#212121] mb-4 uppercase font-anton font-light text-[13.9px]">Price :</div>
       <div class="mb-3">
         <input
@@ -89,29 +89,48 @@
       <span class="mr-[10px]">{% include 'icon-filtering' %}</span>
       filter by
     </div>
+    <div class="filter-quick-buttons hidden lg:flex items-center gap-2">
+      {% for filter in collection.filters %}
+        {% assign label_lower = filter.label | downcase %}
+        {% if filter.type == 'list' and label_lower contains 'type' %}
+          {% for value in filter.values %}
+            {% assign val_lower = value.label | downcase %}
+            {% if val_lower contains 'chew' %}
+              {% assign quick_icon = 'chews.svg' %}
+            {% elsif val_lower contains 'pill' or val_lower contains 'capsule' %}
+              {% assign quick_icon = 'capsules.svg' %}
+            {% elsif val_lower contains 'powder' %}
+              {% assign quick_icon = 'scoop.svg' %}
+            {% else %}
+              {% assign quick_icon = '' %}
+            {% endif %}
+            <a
+              href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+              class="filter-quick-btn {% if value.active %}active{% endif %}"
+            >{% if quick_icon != '' %}<img src="{{ quick_icon | asset_url }}" alt="" width="28" height="28" style="display:inline-block;vertical-align:middle;">{% endif %}{{ value.label }}{% if value.active %}<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="2" x2="10" y2="10"/><line x1="10" y1="2" x2="2" y2="10"/></svg>{% endif %}</a>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
     <div class="flex items-center gap-3">
       {% if settings.ss_enable %}
         <div id="searchspring-toolbar"></div>
       {% endif %}
       {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-      <select
-        name="sort_by"
-        class="facet-filters__sort font-bold select__select uppercase caption-large cursor-pointer block pl-3 pr-10 py-2 text-[12.1px] border-gray-300 border-solid focus:outline-none sm:text-sm"
-        id="SortBy"
-        aria-describedby="a11y-refresh-page-message"
-      >
-        {%- for option in collection.sort_options -%}
-          <option
-            class="text-gray-500 block px-4 py-2 text-sm cursor-pointer"
-            value="{{ option.value | capitalize  }}"
-            {% if option.value == sort_by %}
-              selected="selected"
-            {% endif %}
-          >
-            {{ option.name | capitalize }}
-          </option>
-        {%- endfor -%}
-      </select>
+      <div class="sort-wrapper">
+        <span class="sort-label">Sorted by</span>
+        <select
+          name="sort_by"
+          class="facet-filters__sort sortselect cursor-pointer"
+          id="SortBy"
+          aria-describedby="a11y-refresh-page-message"
+        >
+          <option value="manual" {% if sort_by == 'manual' %}selected{% endif %}>Relevance</option>
+          <option value="best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>Most Popular</option>
+          <option value="price-asc" {% if sort_by == 'price-asc' %}selected{% endif %}>Price: Low to High</option>
+          <option value="price-desc" {% if sort_by == 'price-desc' %}selected{% endif %}>Price: High to Low</option>
+        </select>
+      </div>
     </div>
   </div>
   {% assign is_apparel = false %}
@@ -252,12 +271,54 @@
     .showing_block {
       display: flex !important;
     }
+    .filter-quick-btn {
+      font-family: 'BebasNeuePro-ExpandedRegular', sans-serif;
+      font-size: 13.9px;
+      letter-spacing: 0.3px;
+      height: 48px;
+      padding: 0 14px;
+      border: 1px solid #212121;
+      outline: none;
+      background: #fff;
+      color: #212121;
+      cursor: pointer;
+      text-transform: capitalize;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .filter-quick-btn.active {
+      background: #212121;
+      color: #fff;
+    }
+    .filter-quick-btn:hover:not(.active) {
+      background: #f5f5f5;
+      color: #212121;
+      border-color: #f5f5f5;
+    }
     .mobile-filter-trigger,
     .facet-filters__sort {
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.3px;
       height: 48px;
       align-items: center;
+    }
+    .sort-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sort-label {
+      font-family: 'BebasNeuePro-ExpandedRegular', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: #000000;
+      opacity: 0.7;
+      white-space: nowrap;
     }
     .facet-filters__sort{
       -webkit-appearance: none;
@@ -265,6 +326,19 @@
       text-indent: 1px;
       background: #fff;
       height: 48px;
+      border: 1px solid #212121 !important;
+      outline: none;
+      font-family: 'BebasNeuePro-ExpandedRegular', sans-serif;
+      font-size: 13.9px;
+      text-transform: Capitalize;
+      letter-spacing: 0.3px;
+      font-weight: 400;
+      color: #212121;
+      padding: 0 42px 0 14px;
+      border-radius: 0 !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23212121' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
     }
     #searchspring-toolbar .ss__theme{
       position: relative;
@@ -632,11 +706,6 @@
 
   // }, 500)
   document.addEventListener('DOMContentLoaded', function () {
-    // Auto-reopen sidebar if active filters are in the URL
-    if (window.location.search.indexOf('filter.') !== -1) {
-      collFilterOpen();
-    }
-
     // Collapse filter groups that have active selections; expand/collapse on header click
     document.querySelectorAll('.filter-group').forEach(function (group) {
       var hasActive = parseInt(group.dataset.hasActive, 10) > 0;

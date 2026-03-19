@@ -31,7 +31,7 @@
         {% if product.price < 1 %}{% else %}{{product.price | money}} {% endif %}
     </div>
     {% if shop_now %}
-        <a href="{{product.url}}" class="coll-shopnow block bg-[#212121] uppercase w-full font-anton text-center py-[18px] transition duration-500 text-white">
+        <a href="{{product.url}}" class="coll-shopnow block bg-[#212121] uppercase w-full font-anton text-center py-[18px] transition duration-500 text-white text-[13px] tracking-[0.08em]">
             shop now
         </a>
     {% endif %}

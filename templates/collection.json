@@ -36,7 +36,9 @@
       "type": "collection-faq",
       "settings": {
         "heading": "FAQs",
-        "bg_color": "#1c1c1c"
+        "bg_color": "#000000",
+        "tear_image": "shopify://shop_images/black-tear.png",
+        "tear_image_mobile": "shopify://shop_images/mobile-black-tear.png"
       }
     },
     "6b3dee8a-4908-43e3-ae59-243dd05b742b": {

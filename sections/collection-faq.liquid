@@ -11,30 +11,46 @@
   assign faqThreeBody = collection.metafields.custom.faq_3_body
 %}
 {% if faqOneTitle != blank %}
-<div id="section-collection-faq" class="collection-faq w-full " style="background-color: {{color}}; border-bottom: 2px solid #1C1C1C;">
+<div id="section-collection-faq" class="collection-faq w-full">
+
+  {%- if section.settings.tear_image != blank -%}
+    {%- assign tear_desktop = section.settings.tear_image -%}
+    {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
+    <div class="faq-tear faq-tear--top">
+      <picture>
+        {%- if tear_mobile != blank -%}
+          <source srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w" sizes="100vw" media="(max-width: 767px)" type="image/webp" />
+        {%- endif -%}
+        <source srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 2000, format: 'webp' }} 2000w" sizes="100vw" media="(min-width: 768px)" type="image/webp" />
+        <img src="{{ tear_desktop | image_url: width: 1600, format: 'webp' }}" class="block w-full" loading="lazy" alt="">
+      </picture>
+    </div>
+  {%- endif -%}
+
+  <div class="faq-content-bg" style="background-color: {{color}};">
   <div class="container">
-  
-    {% if sectionHeading != blank %}
-      <h2 class="text-6xl md:text-[85.6px] uppercase text-left sm:text-center text-primary mb-6 sm:mb-12 font-bold leading-[0.8em]">{{ sectionHeading }}</h2>
-    {% endif %}
+
+    <div class="faq-heading-wrap">
+      <p class="faq-line1">{{ section.settings.heading_line1 }}</p>
+      <p class="faq-line2">{{ section.settings.heading_line2 }}</p>
+    </div>
   <div class="accordion-wrapper" style="background: none;">
       <div class="accordion">
         {% for i in (1..12) %}
           {% assign title = 'faq_' | append: i | append: '_title' %}
           {% assign body = 'faq_' | append: i | append: '_body' %}
           {% if collection.metafields.custom[title] != blank %}
-            <details {% unless forloop.last %}class="border-b border-[#000]"{% endunless %}>
-                <summary class="bg-yellow">
-                  <div class="" style="padding: .5em 1em;">
-                      <p class="w-full flex justify-between items-center h4 accordion__title text-base py-6 cursor-pointer font-sans font-bold tracking-normal text-primary">
-                        {{collection.metafields.custom[title]}}
-                        {% render 'icon-accordion' %}
-                      </p>
-                  </div>
-                </summary>
-                <div class="accordion__content text-base rte pb-[15px] pr-10" >
-                  {{collection.metafields.custom[body]}}
-                </div>
+            <details class="faq-item">
+              <summary class="faq-summary">
+                <span class="faq-summary__title">{{collection.metafields.custom[title]}}</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <span class="faq-icon__plus">+</span>
+                  <span class="faq-icon__minus">−</span>
+                </span>
+              </summary>
+              <div class="faq-body">
+                {{collection.metafields.custom[body]}}
+              </div>
             </details>
           {% endif %}
         {% endfor %}
@@ -43,70 +59,114 @@
   </div>
     </div>
   </div>
+  </div>
+
+  {%- if section.settings.tear_image != blank -%}
+    {%- assign tear_desktop = section.settings.tear_image -%}
+    {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
+    <div class="faq-tear faq-tear--bottom">
+      <picture>
+        {%- if tear_mobile != blank -%}
+          <source srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w" sizes="100vw" media="(max-width: 767px)" type="image/webp" />
+        {%- endif -%}
+        <source srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 2000, format: 'webp' }} 2000w" sizes="100vw" media="(min-width: 768px)" type="image/webp" />
+        <img src="{{ tear_desktop | image_url: width: 1600, format: 'webp' }}" class="block w-full" loading="lazy" alt="" style="transform: scaleY(-1);">
+      </picture>
+    </div>
+  {%- endif -%}
+
+</div>
 {% endif %}
 
 
 <style>
-details[open]>summary .icon-caret {
-  transform: rotate(180deg);
-}
-#section-collection-faq h2 {
-  justify-content: center;
-  background: none;
-  color: #FFF;
-  margin: 0 auto;
-  line-height: 1;
-  font-family: Anton;
-  font-size: 60px;
-  color: #FFFFFF;
-  padding-bottom: 25px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-#section-collection-faq .container {
-  padding-bottom: 85px;
-  padding-top: 60px;
-}
-
-.collection-faq h2:after {
-  display: none;
-}
-
-.accordion__title {
-  font-size: 23px;
-  font-weight: 600 !important;
-  font-family: "Familjen Grotesk", sans-serif !important;
-  text-transform: Uppercase;
-}
-
-.accordion__content {
-  
-}
-
-@media only screen and (max-width: 768px) {
+  @font-face {
+    font-family: 'Hyperwave';
+    src: url('{{ 'Hyperwave.woff' | asset_url }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  .faq-heading-wrap {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 32px;
+    text-align: center;
+  }
+  .faq-line1 {
+    font-family: Anton, sans-serif;
+    font-size: 50px;
+    color: #ffffff !important;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+  }
+  .faq-line2 {
+    font-family: 'Hyperwave', sans-serif;
+    font-size: 120px;
+    color: #FEDD00 !important;
+    line-height: 1;
+    margin: 0;
+    margin-top: -16px;
+  }
   #section-collection-faq .container {
-    padding-bottom: 30px;
-    padding-top: 0;
+    padding-bottom: 85px;
+    padding-top: 60px;
   }
-}
-
-details {
-  background-color: #FFF;
-}
-.accordion__content.rte {
-  padding: 1em;
-}
-@media only screen and (min-width: 768px) {
-  #section-collection-faq h2  {
-    font-size: 60px;
+  .faq-item {
+    background: #000;
+    border-bottom: 1px solid #fff;
   }
-}
-
-@media screen and (max-width: 767px) {
-  #section-collection-faq h2  {
-    padding-top: 1em;
+  .faq-item:first-child {
+    border-top: 1px solid #fff;
   }
-}
+  .faq-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-summary::-webkit-details-marker { display: none; }
+  .faq-summary__title {
+    font-family: "Familjen Grotesk", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff !important;
+  }
+  .faq-icon {
+    font-size: 24px;
+    color: #FEDD00 !important;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-left: 12px;
+    position: relative;
+    top: -2px;
+  }
+  .faq-icon__plus,
+  .faq-icon__minus {
+    color: #FEDD00 !important;
+  }
+  .faq-icon__minus { display: none; }
+  details[open] .faq-icon__plus { display: none; }
+  details[open] .faq-icon__minus { display: block; }
+  .faq-body {
+    padding: 0 16px 28px;
+    color: #fff !important;
+  }
+  .faq-body * {
+    color: #fff !important;
+  }
+  @media only screen and (max-width: 768px) {
+    #section-collection-faq .container {
+      padding-bottom: 30px;
+      padding-top: 0;
+    }
+    .faq-line1 { font-size: 42px; }
+    .faq-line2 { font-size: 72px; margin-top: -10px; }
+  }
 </style>
 
 {% if collection.metafields.custom.faq_1_title != blank %}
@@ -147,10 +207,32 @@ details {
       "default": "FAQs"
     },
     {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading line 1",
+      "default": "Frequently Asked"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading line 2",
+      "default": "Questions"
+    },
+    {
       "type": "color",
       "id": "bg_color",
-      "default": "#FFFFFF",
+      "default": "#000000",
       "label": "Background Colour of Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_image",
+      "label": "Tear image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "tear_image_mobile",
+      "label": "Tear image (mobile)"
     }
   ],
   "presets": [
