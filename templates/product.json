@@ -167,6 +167,7 @@
       "custom_css": [
         "product-recommendations {padding-bottom: var(--tear-height);}"
       ],
+      "name": "Product Recommendations",
       "settings": {
         "background_image": "shopify://shop_images/distressed-torn-bg-white-tinified.jpg",
         "heading": "PAIRS WELL WITH",
