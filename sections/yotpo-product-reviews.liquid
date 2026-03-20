@@ -1,6 +1,4 @@
 <div class="relative">
-  {% render 'tear-image', image: section.settings.top_tear_image, position: 'top', overlap: true %}
-
   <div
     class="yotpo-widget-instance"
     data-yotpo-instance-id="{{ section.settings.yotpo_widget_id }}"
@@ -22,11 +20,6 @@
       "id": "yotpo_widget_id",
       "label": "Yotpo Widget ID",
       "info": "You can get this from https://reviews.yotpo.com/#/display-reviews/on-site-widgets - click on a widget and the ID is in the URL immediately after /widget/ e.g. 1050491"
-    },
-    {
-      "type": "image_picker",
-      "id": "top_tear_image",
-      "label": "Top Tear Image",
     }
   ]
 }

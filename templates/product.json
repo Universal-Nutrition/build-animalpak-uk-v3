@@ -242,15 +242,15 @@
     "product-faq": {
       "type": "product-faq",
       "settings": {
-        "heading": "FREQUENTLY ASKED QUESTIONS",
-        "bg_color": "#212121"
+        "heading_line1": "Frequently Asked",
+        "heading_line2": "Questions",
+        "bg_color": "#000000"
       }
     },
     "yotpo-product-reviews-cl140325": {
       "type": "yotpo-product-reviews",
       "settings": {
-        "yotpo_widget_id": "893580",
-        "top_tear_image": "shopify://shop_images/transparent-to-white-tear.png"
+        "yotpo_widget_id": "893580"
       }
     },
     "section_instafeed_abx123": {
