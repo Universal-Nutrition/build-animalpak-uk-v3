@@ -12,7 +12,7 @@
           <span class="text-sm font-bebasNeue">({{ product.metafields.yotpo.reviews_count }})</span>
         </div>
         {% endif %}
-        <a href="{{ product.url }}" class="text-[20px] font-anton !no-underline text-left">{{ product.title }}</a>
+        <a href="{{ product.url }}" class="text-[20px] font-anton !no-underline text-left uppercase">{{ product.title }}</a>
         {% if show_subtitle != false %}
         <span class="text-base opacity-70 font-bebasNeue text-left">{{ product.metafields.custom.subtitle }}</span>
         {% endif %}
@@ -23,7 +23,7 @@
         <input name="selling_plan" type="hidden" value="">
         {% if product.variants.size > 1 %}
         <div class="flex flex-col gap-2">
-          <select x-ref="variant" @change="changeVariant()" name="variant" id="variant" class="bg-gray-100 !border !border-black h-12 max-w-full w-full">
+          <select x-ref="variant" @change="changeVariant()" name="variant" id="variant" class="bg-gray-100 !border !border-black h-12 max-w-full w-full font-bebasNeue">
           {% for variant in product.variants %}
             {% if variant.available %}
               {% unless variant.metafields.custom.hide_variant %}
@@ -36,7 +36,7 @@
         {% endif %}
         <button type="submit" class="px-5 py-3 flex justify-between items-center text-base bg-black !text-white transition-all duration-300 hover:bg-[#f5d500] group">
           <span class="font-anton text-base uppercase !text-white group-hover:!text-black">Add to Cart</span>
-          <span x-text="price" class="text-lg font-bebasNeue font-bold !text-white group-hover:!text-black">{{ product.price | money }}</span>
+          <span x-text="price" class="text-lg font-anton !text-white font-[400] group-hover:!text-black">{{ product.price | money }}</span>
         </button>
         <a href="{{ product.url }}" class="font-bebasNeue text-center underline">See Detail</a>
 
