@@ -6,7 +6,7 @@
 
       {%- comment -%} Benefits — order 1 on mobile (2-col grid), middle on desktop {%- endcomment -%}
       {%- if section.blocks.size > 0 -%}
-        <ul class='order-1 md:order-none md:ml-auto grid grid-cols-2 md:flex md:flex-row md:items-center gap-3 md:gap-8 lg:gap-12 md:px-10 lg:px-14'>
+        <ul class='order-1 md:order-none md:ml-auto grid grid-cols-2 place-items-center md:place-items-start md:flex md:flex-row md:items-center gap-3 md:gap-8 lg:gap-12 md:px-10 lg:px-14'>
           {%- for block in section.blocks -%}
             {%- if block.type == 'content' -%}
               <li class='flex items-center gap-3' {{ block.shopify_attributes }}>
@@ -29,7 +29,7 @@
 
       {%- comment -%} Newsletter CTA — order 2 on mobile, right on desktop {%- endcomment -%}
       {%- if section.settings.newsletter_text != blank or section.settings.newsletter_button_text != blank -%}
-        <div class='order-2 md:order-none flex flex-row items-center gap-4 md:gap-6 shrink-0 md:pr-8 lg:pr-15'>
+        <div class='order-2 md:order-none flex flex-row items-center justify-center md:justify-start gap-4 md:gap-6 shrink-0 md:pr-8 lg:pr-15'>
           {%- if section.settings.newsletter_text != blank -%}
             <div class='font-bebasNeueExpanded text-white text-sm md:text-[13px] lg:text-[15px] uppercase leading-tight max-w-[160px] md:max-w-[160px] lg:max-w-[200px]'>
               {{ section.settings.newsletter_text }}

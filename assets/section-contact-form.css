@@ -41,3 +41,21 @@
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+.contact-form__label {
+  font-family: BebasNeuePro-ExpandedRegular, sans-serif !important;
+}
+
+.contact-form__aside-label,
+.contact-form__caption {
+  font-family: BebasNeue, sans-serif !important;
+  font-size: 16px !important;
+}
+
+.contact-form__aside p,
+.contact-form__aside dd,
+.contact-form__aside span,
+.contact-form__aside a {
+  font-family: BebasNeue, sans-serif !important;
+  font-size: 16px !important;
+}

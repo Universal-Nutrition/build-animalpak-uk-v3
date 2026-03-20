@@ -71,7 +71,7 @@ class SideCart extends HTMLElement {
         </div>
         <div class="ml-4 lg:ml-8 w-full">
             <a href="${item.url
-      }" class="block cart-item__title text-primary font-bold" style="font-family: Anton, sans-serif; text-transform: uppercase;">${item.product_title
+      }" class="block cart-item__title text-primary" style="font-family: Anton, sans-serif; text-transform: uppercase; font-weight: 400;">${item.product_title
       }</a>
             <div class="${!item.handle.includes("stack") && "lg:flex"}">`;
 
@@ -128,7 +128,7 @@ class SideCart extends HTMLElement {
 
     html += `<div class="text-primary mt-1" style="font-family: BebasNeue, sans-serif; font-size: 0.75rem;">SKU: ${item.sku || item.product_title
       }</div>
-            <div class="cart-item__price mt-1 lg:mt-2 flex items-center text-primary" style="font-family: Anton, sans-serif; font-size: 1.5rem;">
+            <div class="cart-item__price mt-1 lg:mt-2 flex items-center text-primary" style="font-family: Anton, sans-serif; font-size: 1rem;">
             <span class="${!originalPrice && "hidden"
       } mr-1 line-through opacity-50">${this.formatMoney(
         originalPrice

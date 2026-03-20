@@ -1,5 +1,5 @@
 {{ 'search.css' | asset_url | stylesheet_tag }}
-<div class="search-wrapper !hidden fixed top-0 left-0 z-[10000] w-full h-full">
+<div class="search-wrapper !hidden fixed top-0 lg:top-[102px] left-0 z-[10000] w-full h-full lg:h-[calc(100vh-78px)]">
   <div class="h-[58px] lg:h-[78px] w-full bg-white flex justify-between items-center px-6 lg:px-[58px]">
     <div class="search-wrap"> <div class="predictive md:w-[650px] w-full"> {% render 'main-search' %}</div></div>
     <div class="close-search cursor-pointer">
