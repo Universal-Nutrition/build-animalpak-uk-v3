@@ -3249,9 +3249,9 @@ quantity-input.quantity {
 }
 .side-cart-wrap .side-cart-product .cart-items .cart-item__title {
   font-size: 16px;
-  font-weight: bold !important;
-  font-family: Familjen Grotesk;
-  text-transform: capitalize;
+  font-weight: normal !important;
+  font-family: Anton, sans-serif;
+  text-transform: uppercase;
   padding-right: 30px;
 }
 .side-cart-wrap .side-cart-product .cart-items .w-full {
