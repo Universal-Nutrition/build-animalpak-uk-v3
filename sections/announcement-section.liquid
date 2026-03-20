@@ -2,65 +2,69 @@
 
 <div class='w-full bg-black text-white font-bebasNeueExpanded'>
   <section class='py-4 md:py-5 w-full'>
-    <div class='flex flex-col md:flex-row md:items-center gap-5 md:gap-0'>
+    <div class='flex flex-col md:flex-row md:items-center gap-4 md:gap-0 px-8 md:px-0 lg:px-0'>
 
-      {%- comment -%} Left: Shop by Goal heading — 100px from screen edge {%- endcomment -%}
+      {%- comment -%} Benefits — order 1 on mobile (2-col grid), middle on desktop {%- endcomment -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class='order-1 md:order-none md:ml-auto grid grid-cols-2 md:flex md:flex-row md:items-center gap-3 md:gap-8 lg:gap-12 md:px-10 lg:px-14'>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'content' -%}
+              <li class='flex items-center gap-3' {{ block.shopify_attributes }}>
+                {%- if block.settings.icon != blank -%}
+                  <div class='shrink-0 text-yellow'>
+                    {%- render 'icon-announcement', icon: block.settings.icon, class: 'w-[26px] h-[26px] md:w-[30px] md:h-[30px]' -%}
+                  </div>
+                {%- endif -%}
+                <div class='text-white text-sm md:text-[15px] lg:text-[17px] leading-tight uppercase'>
+                  {{ block.settings.content_text }}
+                </div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- comment -%} Horizontal divider between rows — mobile only {%- endcomment -%}
+      <div class='order-2 md:hidden w-full h-px bg-white/30'></div>
+
+      {%- comment -%} Newsletter CTA — order 2 on mobile, right on desktop {%- endcomment -%}
+      {%- if section.settings.newsletter_text != blank or section.settings.newsletter_button_text != blank -%}
+        <div class='order-2 md:order-none flex flex-row items-center gap-4 md:gap-6 shrink-0 md:pr-8 lg:pr-15'>
+          {%- if section.settings.newsletter_text != blank -%}
+            <div class='font-bebasNeueExpanded text-white text-sm md:text-[13px] lg:text-[15px] uppercase leading-tight max-w-[160px] md:max-w-[160px] lg:max-w-[200px]'>
+              {{ section.settings.newsletter_text }}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.newsletter_button_text != blank -%}
+            <a
+              href='{{ section.settings.newsletter_button_link | default: "#" }}'
+              class='font-anton text-white border-2 border-yellow px-6 py-3 md:px-8 md:py-4 uppercase text-[18px] md:text-[20px] whitespace-nowrap hover:bg-yellow hover:text-black transition-colors shrink-0'
+            >
+              {{ section.settings.newsletter_button_text }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Divider — hidden on mobile {%- endcomment -%}
+      <div class='hidden md:block self-stretch w-px bg-white/30 shrink-0'></div>
+
+      {%- comment -%} Heading — order 3 on mobile (bottom), left on desktop {%- endcomment -%}
       {%- if section.settings.heading_text != blank -%}
-        <div class='font-anton pl-8 lg:pl-15 pr-8 md:pr-12 text-white text-[22px] md:text-[24px] lg:text-[30px] uppercase whitespace-nowrap shrink-0'>
+        <div class='announcement-heading hidden md:block font-anton md:pl-8 lg:pl-15 md:pr-12 text-white text-[22px] md:text-[24px] lg:text-[30px] uppercase whitespace-nowrap shrink-0'>
           {{ section.settings.heading_text }}
         </div>
       {%- endif -%}
 
-      {%- comment -%} Right group: benefits + divider + newsletter, all in one line {%- endcomment -%}
-      <div class='flex flex-row items-center gap-6 md:gap-10 lg:gap-14 ml-auto pr-8 lg:pr-15'>
-
-        {%- comment -%} Benefits {%- endcomment -%}
-        {%- if section.blocks.size > 0 -%}
-          <ul class='flex flex-row items-center gap-6 md:gap-8 lg:gap-12'>
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'content' -%}
-                <li class='flex items-center gap-3' {{ block.shopify_attributes }}>
-                  {%- if block.settings.icon != blank -%}
-                    <div class='shrink-0 text-yellow'>
-                      {%- render 'icon-announcement', icon: block.settings.icon, class: 'w-[26px] h-[26px] md:w-[30px] md:h-[30px]' -%}
-                    </div>
-                  {%- endif -%}
-                  <div class='text-white text-sm md:text-[15px] lg:text-[17px] leading-tight uppercase'>
-                    {{ block.settings.content_text }}
-                  </div>
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-
-        {%- comment -%} Divider {%- endcomment -%}
-        <div class='self-stretch w-px bg-white/30 shrink-0'></div>
-
-        {%- comment -%} Newsletter CTA: text left of button, one line {%- endcomment -%}
-        {%- if section.settings.newsletter_text != blank or section.settings.newsletter_button_text != blank -%}
-          <div class='flex flex-row items-center gap-4 md:gap-6 shrink-0'>
-            {%- if section.settings.newsletter_text != blank -%}
-              <div class='font-bebasNeueExpanded text-white text-sm md:text-[13px] lg:text-[15px] uppercase leading-tight max-w-[140px] md:max-w-[160px] lg:max-w-[200px]'>
-                {{ section.settings.newsletter_text }}
-              </div>
-            {%- endif -%}
-            {%- if section.settings.newsletter_button_text != blank -%}
-              <a
-                href='{{ section.settings.newsletter_button_link | default: "#" }}'
-                class='font-anton text-white border-2 border-yellow px-6 py-3 md:px-8 md:py-4 uppercase text-[18px] md:text-[20px] whitespace-nowrap hover:bg-yellow hover:text-black transition-colors shrink-0'
-              >
-                {{ section.settings.newsletter_button_text }}
-              </a>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-
-      </div>
-
     </div>
   </section>
 </div>
+
+<style>
+  @media (min-width: 768px) {
+    .announcement-heading { order: -1; }
+  }
+</style>
 
 {% schema %}
 {

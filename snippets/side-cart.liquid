@@ -13,8 +13,8 @@
       <div class="side-cart-header relative">
   
         <div
-          class="cart-heading flex justify-between uppercase text-white font-compacta text-[42.56px] lg:text-[56.29px] leading-[34.05px] lg:leading-[45.03px] font-bold -tracking-[1px]">
-          <h2>Your Cart </h2>
+          class="cart-heading flex justify-between uppercase text-white font-compacta !text-[56px] lg:!text-[72px] leading-[45px] lg:leading-[58px] font-bold -tracking-[1px]">
+          <h2 style="font-size: 28px; line-height: 34px;">Your Cart </h2>
         </div>
         <div class="absolute close-side-cart top-8 lg:top-[42px] right-8 lg:right-[42px] cursor-pointer">
 
@@ -31,14 +31,14 @@
         {% assign free_shipping_price = settings.shipping_amount | times: 100 %}
 
         <div class="progress-bar text-black text-[13.9px]  leading-[18.07px] tracking-[1px] mt-6">
-          <div class="cart__free-shipping text-black text-[13.9px] font-bold">
+          <div class="cart__free-shipping text-black text-[13.9px] font-bebasNeueExpanded">
             {% if cart.total_price >= free_shipping_price %}
             You've Unlocked Free Shipping!
             {% else %}
             Spend {{free_shipping_price | minus: cart.total_price | money}} more for free shipping
             {% endif %}
           </div>
-          <div class="cart__subs-shipping hidden text-black text-[13.9px] font-bold">FREE SHIPPING WHEN YOU SUBSCRIBE
+          <div class="cart__subs-shipping hidden text-black text-[13.9px] font-bebasNeueExpanded">FREE SHIPPING WHEN YOU SUBSCRIBE
             AND SAVE</div>
 
           <div class="progress-wrap w-full h-[6px] bg-[#909090] mt-3 overflow-hidden">
@@ -61,7 +61,7 @@
 <div class="cart-product-list">
       <div class="side-cart-product pt-6 lg:pt-8 px-6 lg:px-[64px] bg-white">
         <div
-          class="text-[12.1px] lg:text-[13.9px] font-sans font-bold uppercase text-primary leading-[18.07px] tracking-[1px]">
+          class="text-[12.1px] lg:text-[13.9px] font-bebasNeueExpanded uppercase text-primary leading-[18.07px] tracking-[1px]">
           <span id="side-cart__amount">{{cart.item_count}}</span> items added
         </div>
         <div class="cart-items pt-6 bg-white relative">
@@ -75,14 +75,14 @@
       {%- comment -%} end of recommended products {%- endcomment -%}
 <div class="cart-footer">
       <div class="flex justify-between block-bottom-cart">
-          <span class="text-subtotal">subtotal</span>
-          <span id="side-cart__total-price" >
+          <span class="text-subtotal font-anton">subtotal</span>
+          <span id="side-cart__total-price" class="font-bebasNeue">
             {{cart.total_price | money}}
           </span>
         </div>
       <div class="checkout-btn px-6 lg:px-[64px] bg-white pb-8">
         <a href="/checkout"
-          class="block checkout-cta product-form__submit w-full border border-solid border-yellow hover:bg-white tracking-[1px] hover:border-[#DBDBDB] transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-sans font-bold leading-[18.07px]">checkout</a>
+          class="block checkout-cta product-form__submit w-full border border-solid border-yellow hover:bg-white tracking-[1px] hover:border-[#DBDBDB] transition duration-500 bg-yellow uppercase w-full text-center py-[18px] transition duration-500 text-primary text-[13.9px] font-anton leading-[18.07px]">checkout</a>
       </div>
 
     </div>

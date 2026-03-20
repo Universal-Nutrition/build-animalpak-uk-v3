@@ -55,9 +55,9 @@
                         <div class="border-0 {% unless forloop.last %}{% endunless %} lg:border-0">
                             <h3 class="footer-link-title text-center md:pointer-events-none md:cursor-text lg:text-left lg:!flex font-anton tracking-[0.01em] border-b border-white lg:border-0 md:border-white md:mx-10 lg:mx-0 pb-3 relative text-xl text-white uppercase flex justify-center lg:justify-between items-center">{{ link.title }}
                                 <span class="absolute right-0 md:hidden">{% render 'icon-chevron-bottom' %}</span></h3>
-                            <ul role="list" class="lg:!flex flex-col gap-1.5 mt-6 lg:mt-2 mb-0 space-y-3 hidden uppercase font-bebasNeue">
+                            <ul role="list" class="lg:!flex flex-col gap-1.5 mt-6 lg:mt-2 mb-0 pb-8 lg:pb-0 space-y-3 hidden uppercase font-bebasNeue">
                                 {% for childlink in link.links %}
-                                    <li class="md:text-center lg:text-left">
+                                    <li class="text-center lg:text-left">
                                         <a href="{{ childlink.url }}"
                                            class="cursor-pointer text-md text-white transition duration-500 hover:!text-gray-300 leading-[25.6px] lg:leading-[180%]">{% if childlink.url contains "https://privacy.animalpak.com/opt-out" %}
                                                 <span class="inline-block h-[12px] mr-[4px]">{% render 'optout-icon-blue' %}</span>{% endif %}{{ childlink.title }}
@@ -70,8 +70,8 @@
                 {% endfor %}
             </div>
             <div class="hidden md:block h-[1px] my-12 bg-white w-full"></div>
-            <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">
-                <span class="text-sm text-white font-bebasNeueExpanded text-center md:text-left">{{ section.settings.copyright | newline_to_br }}</span>
+            <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4 mt-8 md:mt-0">
+                <span class="text-white font-bebasNeue text-center md:text-left" style="font-size:12px;">{{ section.settings.copyright | newline_to_br }}</span>
                 <div class="flex flex-col items-center md:items-end gap-3">
                     <div class="flex flex-wrap justify-center md:justify-end gap-2">
                         {% for link in linklists[section.settings.menu_secondary].links %}
@@ -95,6 +95,14 @@
     footer-block .footer-menu a {
         font-family: 'BebasNeuePro-ExpandedRegular', sans-serif;
         font-weight: 400;
+    }
+    @media (max-width: 767px) {
+        .footer-link-title {
+            margin-top: 10px;
+        }
+        .footer-link-title span svg {
+            filter: brightness(0) invert(1);
+        }
     }
 </style>
 

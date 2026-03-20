@@ -66,6 +66,20 @@
     .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide-active {
         width: 100% !important;
     }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide .relative {
+        min-height: 280px !important;
+    }
+
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide img,
+    .section-{{ section.id }} swiper-slider[data-expanding-slider] .swiper-slide.swiper-slide-active img {
+        max-height: 280px !important;
+    }
+
+    .section-{{ section.id }} .content-card__content {
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
   }
 
     .section-{{ section.id }} swiper-slider .swiper-button-next,
