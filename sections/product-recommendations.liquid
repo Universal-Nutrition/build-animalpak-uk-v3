@@ -27,7 +27,7 @@
     </div>
   {% endif %}
   {% if recommendations.performed and recommendations.products_count > 0 %}
-    <div class="relative z-[2] mx-auto py-[80px] max-w-[1500px]">
+    <div class="relative z-[2] mx-auto py-[40px] md:py-[80px] max-w-[1500px]">
     <h2 class="text-2xl md:text-5xl uppercase font-anton mb-8">{{ section.settings.heading | escape }}</h2>
       <ul class="flex flex-wrap gap-6 justify-center" role="list">
         {% for recommendation in recommendations.products limit:3 %}
