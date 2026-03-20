@@ -12,6 +12,7 @@
     "743e7f49-14d5-4121-b8cf-f28d9f85125f": {
       "type": "page-hero-banner",
       "settings": {
+        "bottom_tear": "shopify://shop_images/white-tear-down.png",
         "breadcrumbs": true,
         "d_height": 450,
         "m_height": 500,
@@ -25,6 +26,27 @@
     "main": {
       "type": "customer-service",
       "blocks": {
+        "btn_7tn4AM": {
+          "type": "btn",
+          "settings": {
+            "text": "Contact Us",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "btn_3jMf89": {
+          "type": "btn",
+          "settings": {
+            "text": "Refund Policy",
+            "link": "shopify://policies/refund-policy"
+          }
+        },
+        "btn_fkJnm9": {
+          "type": "btn",
+          "settings": {
+            "text": "Terms of Service",
+            "link": "shopify://policies/terms-of-service"
+          }
+        },
         "8460f45c-7563-483f-badf-2257b330af1c": {
           "type": "content",
           "settings": {
@@ -44,10 +66,14 @@
         }
       },
       "block_order": [
+        "btn_7tn4AM",
+        "btn_3jMf89",
+        "btn_fkJnm9",
         "8460f45c-7563-483f-badf-2257b330af1c",
         "9da4bf44-0d7b-4695-b660-44a2e514c0b0"
       ],
       "settings": {
+        "bg_image": "shopify://shop_images/distressed-torn-bg-white-tinified.jpg",
         "title": ""
       }
     },
