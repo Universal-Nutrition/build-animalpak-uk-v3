@@ -31,7 +31,6 @@
     <h2 class="text-2xl md:text-5xl uppercase font-anton mb-8">{{ section.settings.heading | escape }}</h2>
       <ul class="flex flex-wrap gap-6 justify-center" role="list">
         {% for recommendation in recommendations.products limit:3 %}
-          {% unless recommendation.tags contains 'algolia-ignore' %}
           <li class="{% if section.settings.card_layout == 'vertical' %}w-[280px]{% else %}w-[360px]{% endif %}">
             {% render 'product-card-simple',
               product: recommendation,
@@ -40,7 +39,6 @@
               show_subtitle: section.settings.show_subtitle
             %}
           </li>
-            {% endunless %}
         {% endfor %}
       </ul>
     </div>
