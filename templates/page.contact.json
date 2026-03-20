@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -14,18 +14,18 @@
       "disabled": true,
       "settings": {
         "breadcrumbs": true,
-        "subtitle": "<p>Page subtitle<\/p>"
+        "subtitle": "<p>Page subtitle</p>"
       }
     },
     "form": {
       "type": "contact-form",
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
+        "bg_texture": "shopify://shop_images/distressed-torn-bg-charcoal-tinified.jpg",
+        "bottom_tear": "shopify://shop_images/white-tear-down.png",
         "text": "Leave a message and one of our customer support team members will get back to you right away. Our normal business hours are Monday-Friday 9:00am–5:00pm local time.",
         "phone": "+(31)0168381784",
-        "whatsapp": "<p><strong>Universal Nutrition <\/strong><br\/>Manor Royal <br\/>Churchill Court 3 <br\/>Crawley<br\/>West Sussex RH10 9LU <br\/>United Kingdom<strong> <\/strong><br\/> <br\/><strong>Customer Service:<\/strong> (+44) 07488889993<br\/><strong>Whatsapp service:<\/strong> +31 85 000 3193 <\/p>",
+        "whatsapp": "<p><strong>Universal Nutrition </strong><br/>Manor Royal <br/>Churchill Court 3 <br/>Crawley<br/>West Sussex RH10 9LU <br/>United Kingdom<strong> </strong><br/> <br/><strong>Customer Service:</strong> (+44) 07488889993<br/><strong>Whatsapp service:</strong> +31 85 000 3193 </p>",
         "email": "",
         "fb_link": "#"
       }
