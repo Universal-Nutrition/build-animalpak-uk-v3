@@ -7,16 +7,10 @@
 <div id="section-product-faq" class="product-faq w-full">
 
   {%- if section.settings.tear_image != blank -%}
-    {%- assign tear_desktop = section.settings.tear_image -%}
-    {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
     <div class="faq-tear faq-tear--top">
-      <picture>
-        {%- if tear_mobile != blank -%}
-          <source srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w" sizes="100vw" media="(max-width: 767px)" type="image/webp" />
-        {%- endif -%}
-        <source srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 2000, format: 'webp' }} 2000w" sizes="100vw" media="(min-width: 768px)" type="image/webp" />
-        <img src="{{ tear_desktop | image_url: width: 1600, format: 'webp' }}" class="block w-full" loading="lazy" alt="" style="transform: scaleX(-1) scaleY(-1);">
-      </picture>
+      <img src="{{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }}"
+           srcset="{{ section.settings.tear_image | image_url: width: 400, format: 'webp' }} 400w, {{ section.settings.tear_image | image_url: width: 900, format: 'webp' }} 900w, {{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }} 1600w, {{ section.settings.tear_image | image_url: width: 2000, format: 'webp' }} 2000w"
+           sizes="100vw" class="block w-full" loading="lazy" alt="" style="transform: scaleX(-1) scaleY(-1);">
     </div>
   {%- endif -%}
 
@@ -55,16 +49,10 @@
   </div>
 
   {%- if section.settings.tear_image != blank -%}
-    {%- assign tear_desktop = section.settings.tear_image -%}
-    {%- assign tear_mobile = section.settings.tear_image_mobile | default: tear_desktop -%}
     <div class="faq-tear faq-tear--bottom" style="margin-top: -1px;">
-      <picture>
-        {%- if tear_mobile != blank -%}
-          <source srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w" sizes="100vw" media="(max-width: 767px)" type="image/webp" />
-        {%- endif -%}
-        <source srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 2000, format: 'webp' }} 2000w" sizes="100vw" media="(min-width: 768px)" type="image/webp" />
-        <img src="{{ tear_desktop | image_url: width: 1600, format: 'webp' }}" class="block w-full" loading="lazy" alt="" style="transform: scaleY(-1);">
-      </picture>
+      <img src="{{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }}"
+           srcset="{{ section.settings.tear_image | image_url: width: 400, format: 'webp' }} 400w, {{ section.settings.tear_image | image_url: width: 900, format: 'webp' }} 900w, {{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }} 1600w, {{ section.settings.tear_image | image_url: width: 2000, format: 'webp' }} 2000w"
+           sizes="100vw" class="block w-full" loading="lazy" alt="">
     </div>
   {%- endif -%}
 
@@ -214,12 +202,7 @@
     {
       "type": "image_picker",
       "id": "tear_image",
-      "label": "Tear image (desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "tear_image_mobile",
-      "label": "Tear image (mobile)"
+      "label": "Tear image"
     }
   ],
   "presets": [
