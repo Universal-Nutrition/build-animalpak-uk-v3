@@ -71,12 +71,12 @@ class SideCart extends HTMLElement {
         </div>
         <div class="ml-4 lg:ml-8 w-full">
             <a href="${item.url
-      }" class="block cart-item__title text-primary font-compacta uppercase font-bold">${item.product_title
+      }" class="block cart-item__title text-primary font-anton uppercase font-bold">${item.product_title
       }</a>
             <div class="${!item.handle.includes("stack") && "lg:flex"}">`;
 
     item.options_with_values.forEach(function(option) {
-      html += `<div class="cart-item__option ${option.name == "Title" && "hidden"
+      html += `<div class="cart-item__option font-bebasNeue ${option.name == "Title" && "hidden"
         }">${option.name}: ${option.value}</div>`;
     });
 
@@ -126,19 +126,19 @@ class SideCart extends HTMLElement {
       html += `<span class="cart-item__subscription text-primary font-semibold mt-1">Delivery frequency: <span class="font-light">${item.selling_plan_allocation?.selling_plan?.options[0]?.value}</span></span>`;
     }
 
-    html += `<div class="cart-item__price mt-1 lg:mt-2 font-sans font-bold text-base flex items-center text-primary">
+    html += `<div class="text-primary mt-1 text-xs font-bebasNeue">SKU: ${item.sku || item.product_title
+      }</div>
+            <div class="cart-item__price mt-1 lg:mt-2 font-anton text-xl flex items-center text-primary">
             <span class="${!originalPrice && "hidden"
       } mr-1 line-through opacity-50">${this.formatMoney(
         originalPrice
       )}</span>
             ${item.properties?.giftItem ? "Free Gift" : this.formatMoney(price)
-      } 
-            </div>
-            <div class="text-primary mt-1 text-base font-sans">SKU: ${item.sku || item.product_title
-      }</div>`;
+      }
+            </div>`;
     if (!item.properties?.giftItem) {
       html += `<div class="hidden lg:flex quantity-js">
-                    <quantity-input class="quantity cart-item__quantity">
+                    <quantity-input class="quantity cart-item__quantity rounded-none">
                         <button class="quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ${item.properties?.isStackParent && "stack-quantity"
         }" name="minus" type="button">-</button>
                         <input class="quantity__input" type="number" name="quantity" id="quantity-${item.key
@@ -167,7 +167,7 @@ class SideCart extends HTMLElement {
     </div>`;
     if (!item.properties?.giftItem) {
       html += `<div class="flex lg:hidden pb-6 quantity-js">
-                    <quantity-input class="quantity cart-item__quantity">
+                    <quantity-input class="quantity cart-item__quantity rounded-none">
                         <button class="quantity__button cart-item__quantity-btn cart-item__adjust-qty no-js-hidden ${item.properties?.isStackParent && "stack-quantity"
         }" name="minus" type="button">-</button>
                         <input class="quantity__input" type="number" name="quantity" id="quantity-${item.key
