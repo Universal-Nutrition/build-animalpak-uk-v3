@@ -27,11 +27,11 @@
     </div>
   {% endif %}
   {% if recommendations.performed and recommendations.products_count > 0 %}
-    <div class="relative z-[2] mx-auto px-4 py-[80px] max-w-[1500px]">
+    <div class="relative z-[2] mx-auto py-[80px] max-w-[1500px]">
     <h2 class="text-2xl md:text-5xl uppercase font-anton mb-8">{{ section.settings.heading | escape }}</h2>
       <ul class="flex flex-wrap gap-6 justify-center" role="list">
         {% for recommendation in recommendations.products limit:3 %}
-          <li class="{% if section.settings.card_layout == 'vertical' %}w-[280px]{% else %}w-[360px]{% endif %}">
+          <li class="{% if section.settings.card_layout == 'vertical' %}w-[320px]{% else %}w-[360px]{% endif %}">
             {% render 'product-card-simple',
               product: recommendation,
               layout: section.settings.card_layout,
