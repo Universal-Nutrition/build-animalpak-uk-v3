@@ -181,7 +181,9 @@
         "text_color": "#ffffff",
         "headline": "<p>{{ product.metafields.custom.product_highlights_headline.value }}</p>",
         "tear_top_image": "shopify://shop_images/white-tear-down.png",
-        "tear_bottom_image": "shopify://shop_images/white-tear-down.png"
+        "tear_top_image_mobile": "shopify://shop_images/white-tear-down.png",
+        "tear_bottom_image": "shopify://shop_images/white-tear-down.png",
+        "tear_bottom_image_mobile": "shopify://shop_images/white-tear-down.png"
       }
     },
     "product-recommend": {
