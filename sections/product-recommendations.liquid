@@ -8,7 +8,7 @@
 {% liquid
   assign background_image = section.settings.background_image
 %}
-<product-recommendations class="product-recommendations relative flex w-full h-full pb-[80px]" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
+<product-recommendations class="product-recommendations relative flex w-full" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
   {% if background_image != blank %}
     <div class="absolute top-0 left-0 right-0 bottom-0 w-full h-full">
     {% capture sources %}
@@ -27,8 +27,8 @@
     </div>
   {% endif %}
   {% if recommendations.performed and recommendations.products_count > 0 %}
-    <div class="relative z-[2] mx-auto px-4 pt-[80px] max-w-[1500px]">
-    <h2 class="text-2xl md:text-[42px] uppercase font-anton mb-8">{{ section.settings.heading | escape }}</h2>
+    <div class="relative z-[2] mx-auto px-4 py-[80px] max-w-[1500px]">
+    <h2 class="text-2xl md:text-5xl uppercase font-anton mb-8">{{ section.settings.heading | escape }}</h2>
       <ul class="flex flex-wrap gap-6 justify-center" role="list">
         {% for recommendation in recommendations.products limit:3 %}
           {% unless recommendation.tags contains 'algolia-ignore' %}
