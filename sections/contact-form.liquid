@@ -18,7 +18,7 @@
   }
   ```
 -->
-<div class="bg-gray-100">
+<div class="bg-black" {% if section.settings.bg_texture != blank %}style="background-image: url('{{ section.settings.bg_texture | img_url: 'master' }}'); background-size: cover; background-position: center;"{% endif %}>
   <div class="lg:max-w-[76.666%] mx-auto py-0 md:py-24">
     <div class="relative bg-white shadow-xl">
       <h2 class="sr-only">Contact us</h2>
@@ -27,8 +27,8 @@
         <!-- Contact information -->
         <div class="relative overflow-hidden py-10 px-6 bg-white sm:px-10 xl:p-12 lg:max-w-[39%] w-full contact-form__aside">
     
-          <h1 class="text-primary mb-4">{{ 'sections.contact-form.title' | t }}</h1>
-          <p class=" text-base text-primary max-w-3xl">{{section.settings.text}}</p>
+          <h1 class="text-primary mb-6" style="font-family: Anton, sans-serif; text-transform: uppercase; font-size: 3.5rem; line-height: 1;">{{ 'sections.contact-form.title' | t }}</h1>
+          <p class="text-primary max-w-3xl" style="font-family: BebasNeue, sans-serif; font-size: 18px !important;">{{section.settings.text}}</p>
           <hr class="bg-mediumBorder border-mediumBorder border-solid border-b-[0.5px] border-t-[0.5px]" />
           <dl class="mt-8 space-y-6">
             <dt class="!m-0"><span class="sr-only">{{ 'sections.contact-form.phone_label' | t }}</span></dt>
@@ -64,16 +64,13 @@
             </dd>
             {% endif %}
             <div class="mt-7 flex space-x-4 items-center">
-              <a target="_blank" href="{{settings.social_facebook_link}}">{% include 'icon-facebook' %}</a>
               <a target="_blank" href="{{settings.social_instagram_link}}">{% include 'icon-instagram' %}</a>
-              <a target="_blank" href="{{settings.social_tiktok_link}}">{% include 'icon-tiktok' %}</a>
-              <a target="_blank" href="{{settings.social_twitter_link}}">{% include 'icon-twitter' %}</a>
             </div>
           </div>
 
         <!-- Contact form -->
         <div class="py-10 px-6 sm:px-10 lg:max-w-[61%] xl:p-16 bg-card w-full contact-form__form">
-          <h4 class="text-primary mb-6">{{ 'sections.contact-form.card.title' | t }}</h4>
+          <h4 class="text-primary mb-6" style="font-family: Anton, sans-serif; text-transform: uppercase;">{{ 'sections.contact-form.card.title' | t }}</h4>
          
           {%- form 'contact', id: 'ContactForm' -%}
           {%- if form.posted_successfully? -%}
@@ -149,7 +146,7 @@
               </div>
             </div>
             <div class="sm:col-span-2 sm:flex sm:justify-end">
-              <button type="submit" class="button contact-form__button">{{ 'sections.contact-form.form.submit' | t }}</button>
+              <button type="submit" class="button contact-form__button font-bebasNeue">{{ 'sections.contact-form.form.submit' | t }}</button>
             </div>
             </div>
             {%- endunless -%}
@@ -159,6 +156,11 @@
       </div>
     </div>
   </div>
+  {%- if section.settings.bottom_tear != blank -%}
+    <div class="w-full pointer-events-none">
+      <img src="{{ section.settings.bottom_tear | img_url: 'master' }}" alt="" class="w-full block" loading="lazy">
+    </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -167,6 +169,16 @@
   "tag": "section",
   "class": "contact-form",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_texture",
+      "label": "Background Texture Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_tear",
+      "label": "Bottom Tear Image"
+    },
     {
       "type": "text",
       "id": "text",

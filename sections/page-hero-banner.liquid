@@ -62,7 +62,7 @@
             mx-auto items-center text-center center-x w-[90%]
         {% endif %}">
           {% if section.settings.custom_heading != blank %}
-            <h1 class="animate font-anton {% if template.name == 'blog' %}text-[48.944px] lg:text-[85.604px]{% else %}text-[74.438px] md:text-[85.604px]{% if section.settings.subheading == blank %} !mb-[-20px] {% endif %}{% endif %} mb-2 md:mb-5 leading-[80%] font-bold tracking-[-1px] text-white uppercase">
+            <h1 class="animate font-anton {% if template.name == 'blog' %}text-[48.944px] lg:text-[85.604px]{% else %}text-[62px] md:text-[72px]{% if section.settings.subheading == blank %} lg:!mb-[-20px] {% endif %}{% endif %} mb-2 md:mb-5 leading-[95%] font-bold tracking-[-1px] text-white uppercase">
               {{ section.settings.custom_heading | newline_to_br }}
             </h1>
           {% endif %}
@@ -72,6 +72,11 @@
       </div>
     </div>
   </div>
+  {%- if section.settings.bottom_tear != blank -%}
+    <div class="w-full pointer-events-none absolute bottom-0 left-0">
+      <img src="{{ section.settings.bottom_tear | img_url: 'master' }}" alt="" class="w-full block" loading="lazy">
+    </div>
+  {%- endif -%}
 </div>
 <style>
   .hero-landing-page .breadcrumbs {
@@ -95,6 +100,11 @@
   "tag": "section",
   "class": "spaced-section spaced-section--full-width",
   "settings": [
+    {
+    "type": "image_picker",
+    "id": "bottom_tear",
+    "label": "Bottom Tear Image"
+    },
     {
     "type": "checkbox",
     "id": "breadcrumbs",
