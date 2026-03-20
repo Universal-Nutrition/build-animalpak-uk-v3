@@ -29,10 +29,6 @@
           "disabled": true,
           "settings": {}
         },
-        "62ab6ba1-0cfa-480d-9b4a-4c04000190cb": {
-          "type": "customTabs",
-          "settings": {}
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -112,7 +108,6 @@
         "price_rprHUW",
         "short_description_eiReDP",
         "6a8c8864-2370-4cd3-873f-4a3d617696be",
-        "62ab6ba1-0cfa-480d-9b4a-4c04000190cb",
         "variant_picker",
         "4a6a1f42-966a-4cf5-ae72-5e9c7c853a5c",
         "subscriptions_app_block_wxcant",
