@@ -191,7 +191,10 @@
       ],
       "settings": {
         "background_image": "shopify://shop_images/distressed-torn-bg-white-tinified.jpg",
-        "heading": "PAIRS WELL WITH"
+        "heading": "PAIRS WELL WITH",
+        "card_layout": "vertical",
+        "show_rating": true,
+        "show_subtitle": true
       }
     },
     "product-image-and-text": {
@@ -244,7 +247,9 @@
       "settings": {
         "heading_line1": "Frequently Asked",
         "heading_line2": "Questions",
-        "bg_color": "#000000"
+        "bg_color": "#000000",
+        "tear_image": "shopify://shop_images/black-tear.png",
+        "tear_image_mobile": "shopify://shop_images/mobile-black-tear.png"
       }
     },
     "yotpo-product-reviews-cl140325": {
