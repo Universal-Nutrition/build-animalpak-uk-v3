@@ -15,7 +15,7 @@
           <source srcset="{{ tear_mobile | image_url: width: 400, format: 'webp' }} 400w, {{ tear_mobile | image_url: width: 900, format: 'webp' }} 900w" sizes="100vw" media="(max-width: 767px)" type="image/webp" />
         {%- endif -%}
         <source srcset="{{ tear_desktop | image_url: width: 1200, format: 'webp' }} 1200w, {{ tear_desktop | image_url: width: 2000, format: 'webp' }} 2000w" sizes="100vw" media="(min-width: 768px)" type="image/webp" />
-        <img src="{{ tear_desktop | image_url: width: 1600, format: 'webp' }}" class="block w-full" loading="lazy" alt="">
+        <img src="{{ tear_desktop | image_url: width: 1600, format: 'webp' }}" class="block w-full" loading="lazy" alt="" style="transform: scaleX(-1) scaleY(-1);">
       </picture>
     </div>
   {%- endif -%}

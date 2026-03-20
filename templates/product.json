@@ -242,8 +242,9 @@
     "product-faq": {
       "type": "product-faq",
       "settings": {
-        "heading": "FREQUENTLY ASKED QUESTIONS",
-        "bg_color": "#212121"
+        "heading_line1": "Frequently Asked",
+        "heading_line2": "Questions",
+        "bg_color": "#000000"
       }
     },
     "yotpo-product-reviews-cl140325": {
