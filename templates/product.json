@@ -24,15 +24,6 @@
           "type": "short_description",
           "settings": {}
         },
-        "6a8c8864-2370-4cd3-873f-4a3d617696be": {
-          "type": "listIconText",
-          "disabled": true,
-          "settings": {}
-        },
-        "62ab6ba1-0cfa-480d-9b4a-4c04000190cb": {
-          "type": "customTabs",
-          "settings": {}
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -111,8 +102,6 @@
         "title",
         "price_rprHUW",
         "short_description_eiReDP",
-        "6a8c8864-2370-4cd3-873f-4a3d617696be",
-        "62ab6ba1-0cfa-480d-9b4a-4c04000190cb",
         "variant_picker",
         "4a6a1f42-966a-4cf5-ae72-5e9c7c853a5c",
         "subscriptions_app_block_wxcant",
@@ -129,17 +118,6 @@
         "enable_sticky_info": false,
         "hide_variants": true,
         "enable_video_looping": false
-      }
-    },
-    "img_block_WM7TPf": {
-      "type": "img-block",
-      "disabled": true,
-      "custom_css": [
-        "img {transform: rotate(0.5turn);}"
-      ],
-      "settings": {
-        "desktop": "shopify://shop_images/tear_image.png",
-        "mobile": "shopify://shop_images/tear_image.png"
       }
     },
     "product_highlights_afB9ta": {
@@ -271,7 +249,6 @@
   },
   "order": [
     "main",
-    "img_block_WM7TPf",
     "product_highlights_afB9ta",
     "product-recommend",
     "product-image-and-text",
