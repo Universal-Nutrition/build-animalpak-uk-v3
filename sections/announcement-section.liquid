@@ -37,7 +37,7 @@
           {%- endif -%}
           {%- if section.settings.newsletter_button_text != blank -%}
             <a
-              href='{{ section.settings.newsletter_button_link | default: "#" }}'
+              href='{{ section.settings.newsletter_button_link | default: "#newsletter" }}'
               class='font-anton text-white border-2 border-yellow px-6 py-3 md:px-8 md:py-4 uppercase text-[18px] md:text-[20px] whitespace-nowrap hover:bg-yellow hover:text-black transition-colors shrink-0'
             >
               {{ section.settings.newsletter_button_text }}
