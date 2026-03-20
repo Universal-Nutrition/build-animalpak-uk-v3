@@ -10,7 +10,7 @@
     <div class="faq-tear faq-tear--top">
       <img src="{{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }}"
            srcset="{{ section.settings.tear_image | image_url: width: 400, format: 'webp' }} 400w, {{ section.settings.tear_image | image_url: width: 900, format: 'webp' }} 900w, {{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }} 1600w, {{ section.settings.tear_image | image_url: width: 2000, format: 'webp' }} 2000w"
-           sizes="100vw" class="block w-full" loading="lazy" alt="" style="transform: scaleX(-1) scaleY(-1);">
+           sizes="100vw" class="block w-full" loading="lazy" alt="">
     </div>
   {%- endif -%}
 
@@ -52,7 +52,7 @@
     <div class="faq-tear faq-tear--bottom" style="margin-top: -1px;">
       <img src="{{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }}"
            srcset="{{ section.settings.tear_image | image_url: width: 400, format: 'webp' }} 400w, {{ section.settings.tear_image | image_url: width: 900, format: 'webp' }} 900w, {{ section.settings.tear_image | image_url: width: 1600, format: 'webp' }} 1600w, {{ section.settings.tear_image | image_url: width: 2000, format: 'webp' }} 2000w"
-           sizes="100vw" class="block w-full" loading="lazy" alt="">
+           sizes="100vw" class="block w-full" loading="lazy" alt="" style="transform: scaleY(-1);">
     </div>
   {%- endif -%}
 
